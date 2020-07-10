@@ -15,6 +15,9 @@ public class LocaleHelper
         }
     }
 
+
+
+    #region For easy copy
     public static string GetCountryForLang2(string lang)
     {
         Langs l = EnumHelper.Parse<Langs>(lang, Langs.en);
@@ -27,8 +30,6 @@ public class LocaleHelper
                 return "GB";
         }
     }
-
-    #region For easy copy
     public static Langs? GetLangForCountry2(string country)
     {
         foreach (var item in CountryLang.d)

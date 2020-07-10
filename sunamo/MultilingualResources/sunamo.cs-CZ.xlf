@@ -1774,7 +1774,7 @@
         </trans-unit>
         <trans-unit id="inFormatMDYMinAge18" translate="no" xml:space="preserve">
           
-          <target state="translated">ve formátu m/d/r, min. věk 18 let</target>
+          <target state="translated">ve formátu m/d/r, min. věk 18</target>
         </trans-unit>
         <trans-unit id="District" translate="no" xml:space="preserve">
           
@@ -4375,6 +4375,14 @@
         <trans-unit id="showPassword" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">zobrazit heslo</target>
+        </trans-unit>
+        <trans-unit id="lowercaseLettersNumbersAndCharactersAreAllowed" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">malá písmena, čísla a ./-/_ znaky jsou povoleny</target>
+        </trans-unit>
+        <trans-unit id="minAge18" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">min věk 18</target>
         </trans-unit>
       </group>
     </body>

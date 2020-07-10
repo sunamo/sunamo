@@ -646,7 +646,6 @@
     <Compile Include="Interfaces\IPath.cs" />
     <Compile Include="Interfaces\IRandom.cs" />
     <Compile Include="Interfaces\IRegistry.cs" />
-    <Compile Include="Interfaces\IResourceHelper.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Interfaces\ISatisfiesSearch.cs" />
     <Compile Include="Interfaces\ISearchable.cs" />

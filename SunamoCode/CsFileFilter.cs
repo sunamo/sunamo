@@ -18,6 +18,7 @@ public class CsFileFilter : FiltersNotTranslateAble
 
     bool obj = false;
     bool bin = false;
+    bool tildaRf = false;
 
     /// <summary>
     /// A2 is also for master.designer.cs and aspx.designer.cs
@@ -26,53 +27,67 @@ public class CsFileFilter : FiltersNotTranslateAble
     /// <param name="designerCs"></param>
     /// <param name="xamlCs"></param>
     /// <param name="sharedCs"></param>
-    public static bool AllowOnly(string item, bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs, bool tmp, bool TMP, bool DesignerCs, bool notTranslateAble)
+    public static bool AllowOnly(string item, EndArgs end, ContainsArgs c)
     {
-        if (!designerCs && item.EndsWith(designerCsPp))
+        if (!end.designerCs && item.EndsWith(End.designerCsPp))
         {
             return false;
         }
-        if (!xamlCs && item.EndsWith(xamlCsPp))
+        if (!end.xamlCs && item.EndsWith(End.xamlCsPp))
         {
             return false;
         }
-        if (!sharedCs && item.EndsWith(sharedCsPp))
+        if (!end.sharedCs && item.EndsWith(End.sharedCsPp))
         {
             return false;
         }
-        if (!iCs && item.EndsWith(iCsPp))
+        if (!end.iCs && item.EndsWith(End.iCsPp))
         {
             return false;
         }
-        if (!gICs && item.EndsWith(gICsPp))
+        if (!end.gICs && item.EndsWith(End.gICsPp))
         {
             return false;
         }
-        if (!gCs && item.EndsWith(gCsPp))
+        if (!end.gCs && item.EndsWith(End.gCsPp))
         {
             return false;
         }
-        if (!tmp && item.EndsWith(tmpPp))
+        if (!end.tmp && item.EndsWith(End.tmpPp))
         {
             return false;
         }
-        if (!TMP && item.EndsWith(TMPPp))
+        if (!end.TMP && item.EndsWith(End.TMPPp))
         {
             return false;
         }
-        if (!DesignerCs && item.EndsWith(DesignerCsPp))
+        if (!end.DesignerCs && item.EndsWith(End.DesignerCsPp))
         {
             return false;
         }
-        if (!notTranslateAble && item.EndsWith(NotTranslateAblePp))
+        if (!end.notTranslateAble && item.EndsWith(NotTranslateAblePp))
+        {
+            return false;
+        }
+
+
+        if (!c.binFp && item.Contains(Contains.binFp))
+        {
+            return false;
+        }
+
+        if (!c.objFp && item.Contains(Contains.objFp))
+        {
+            return false;
+        }
+
+        if (!c.tildaRF && item.Contains(Contains.tildaRF))
         {
             return false;
         }
 
         return true;
     }
-
-    //".TMP", ".tmp"
 
     /// <summary>
     /// In default is everything in false
@@ -99,67 +114,54 @@ public class CsFileFilter : FiltersNotTranslateAble
 
     public void SetDefault()
     {
-         designerCs = false;  xamlCs = true;  sharedCs = true;  iCs = false;  gICs = false;  gCs = false;
-         obj = false;  bin = false;
+        designerCs = false;  xamlCs = true;  sharedCs = true;  iCs = false;  gICs = false;  gCs = false;
+        obj = false;  bin = false;
         DesignerCs = false;
         NotTranslateAble = false;
     }
-
-    const string designerCsPp = ".designer.cs";
-    const string DesignerCsPp = ".Designer.cs"; 
-    const string xamlCsPp = ".xaml.cs"; 
-    const string sharedCsPp = "Shared.cs"; 
-    const string iCsPp = ".i.cs"; 
-    const string gICsPp = ".g.i.cs"; 
-    const string gCsPp = ".g.cs";
-    const string tmpPp = ".tmp";
-    const string TMPPp = ".TMP";
-    const string notTranslateAblePp = "NotTranslateAble.cs";
-
-    static string objFp = @"\obj\"; static string binFp = @"\bin\";
 
     public List<string> GetEndingByFlags()
     {
         List<string> l = new List<string>();
         if (designerCs)
         {
-            l.Add(designerCsPp);
+            l.Add(End.designerCsPp);
         }
         else if (xamlCs)
         {
-            l.Add(xamlCsPp);
+            l.Add(End.xamlCsPp);
         }
         else if (xamlCs)
         {
-            l.Add(xamlCsPp);
+            l.Add(End.xamlCsPp);
         }
         else if (sharedCs)
         {
-            l.Add(sharedCsPp);
+            l.Add(End.sharedCsPp);
         }
         else if (iCs)
         {
-            l.Add(iCsPp);
+            l.Add(End.iCsPp);
         }
         else if (gICs)
         {
-            l.Add(gICsPp);
+            l.Add(End.gICsPp);
         }
         else if (gCs)
         {
-            l.Add(gCsPp);
+            l.Add(End.gCsPp);
         }
         else if (tmp)
         {
-            l.Add(tmpPp);
+            l.Add(End.tmpPp);
         }
         else if (TMP)
         {
-            l.Add(TMPPp);
+            l.Add(End.TMPPp);
         }
         else if (DesignerCs)
         {
-            l.Add(DesignerCsPp);
+            l.Add(End.DesignerCsPp);
         }
         else if (NotTranslateAble)
         {
@@ -201,7 +203,7 @@ public class CsFileFilter : FiltersNotTranslateAble
     #region Take by class variables
     public  bool AllowOnly(string item)
     {
-        return !AllowOnly(item, designerCs, xamlCs, sharedCs, iCs, gICs, gCs, tmp, TMP, DesignerCs, NotTranslateAble);
+        return !AllowOnly(item, new EndArgs( designerCs, xamlCs, sharedCs, iCs, gICs, gCs, tmp, TMP, DesignerCs, NotTranslateAble), new ContainsArgs(obj, bin, tildaRf));
     }
 
     public  bool AllowOnlyContains(string i)
@@ -209,4 +211,55 @@ public class CsFileFilter : FiltersNotTranslateAble
         return !AllowOnlyContains(i, obj, bin);
     }
     #endregion
+
+    public class Contains
+    {
+        public static string objFp = @"\obj\";
+        public static string binFp = @"\bin\";
+        public static string tildaRF = "~RF";
+    }
+
+    public class ContainsArgs
+    {
+        public bool objFp; public bool binFp; public bool tildaRF;
+
+        public ContainsArgs(bool objFp, bool binFp, bool tildaRF)
+        {
+            this.objFp = objFp;
+            this.binFp = binFp;
+            this.tildaRF = tildaRF;
+        }
+    }
+
+    public class End
+    {
+        public const string designerCsPp = ".designer.cs";
+        public const string DesignerCsPp = ".Designer.cs";
+        public const string xamlCsPp = ".xaml.cs";
+        public const string sharedCsPp = "Shared.cs";
+        public const string iCsPp = ".i.cs";
+        public const string gICsPp = ".g.i.cs";
+        public const string gCsPp = ".g.cs";
+        public const string tmpPp = ".tmp";
+        public const string TMPPp = ".TMP";
+        public const string notTranslateAblePp = "NotTranslateAble.cs";
+    }
+
+    public class EndArgs
+    {
+        public bool designerCs; public bool xamlCs; public bool sharedCs; public  bool  iCs; public  bool  gICs; public  bool  gCs; public  bool  tmp; public  bool  TMP; public  bool  DesignerCs; public  bool  notTranslateAble;
+
+        public EndArgs(bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs, bool tmp, bool TMP, bool DesignerCs, bool notTranslateAble)
+        {
+            this.designerCs = designerCs;
+            this.xamlCs = xamlCs;
+            this.sharedCs = sharedCs;
+            this.iCs = iCs;
+            this.gCs = gCs;
+            this.tmp = tmp;
+            this.TMP = TMP;
+            this.DesignerCs = DesignerCs;
+            this.notTranslateAble = notTranslateAble;
+        }
+    }
 }

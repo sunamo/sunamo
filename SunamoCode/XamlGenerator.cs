@@ -68,6 +68,8 @@ namespace desktop
         public void MenuItems(List<string> headers, bool methodHandlers)
         {
             CA.Trim(headers);
+            CA.RemoveStringsEmpty(headers);
+            CA.RemoveStartingWith("//", headers);
             CA.TrimEnd(headers, AllChars.comma);
 
             List<string> headersInPascal = new List<string>(headers.Count);
@@ -97,6 +99,7 @@ namespace desktop
 
                 WriteTagWithAttrs("MenuItem", "x:" + "Name", menuItemName, "Header", item, "Click", method);
                 TerminateTag("MenuItem");
+                AppendLine();
             }
 
             if (methodHandlers)

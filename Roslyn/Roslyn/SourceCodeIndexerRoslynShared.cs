@@ -30,10 +30,11 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
         tree = null;
         root = null;
-        if (!CsFileFilter.AllowOnly(pathFile, false, true, true, false, false, false,false, false, false, true))
+        if (!CsFileFilter.AllowOnly(pathFile, new CsFileFilter.EndArgs( false, true, true, false, false, false,false, false, false, true), new CsFileFilter.ContainsArgs(false, false, false)))
         {
             return false;
         }
+
         if (!CsFileFilter.AllowOnlyContains(pathFile, false, false))
         {
             return false;

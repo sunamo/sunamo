@@ -10980,7 +10980,7 @@ A fraternal form of manifestation is the bliss</target>
         </trans-unit>
         <trans-unit id="inFormatMDYMinAge18" translate="no" xml:space="preserve">
           
-          <target state="translated">in format m/d/y, min age 18</target>
+          <target state="translated">in format m/d/y, min. age 18</target>
         </trans-unit>
         <trans-unit id="DoItNow" translate="no" xml:space="preserve">
           
@@ -13313,6 +13313,14 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="showPassword" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">show password</target>
+        </trans-unit>
+        <trans-unit id="lowercaseLettersNumbersAndCharactersAreAllowed" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">lowercase letters, numbers, and ./-/_ characters are allowed</target>
+        </trans-unit>
+        <trans-unit id="minAge18" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">min age 18</target>
         </trans-unit>
       </group>
     </body>
