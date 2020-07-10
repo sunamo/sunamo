@@ -136,6 +136,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Helpers\NetHelperSunamo.cs" />
     <Compile Include="Vps\VpsHelperIsVps.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
@@ -550,7 +551,7 @@
     <Compile Include="Helpers\i18n\Translation.cs" />
     <Compile Include="Helpers\LocaleHelper.cs" />
     <Compile Include="Helpers\Net\IPAddressHelper.cs" />
-    <Compile Include="Helpers\NetHelperSunamo.cs" />
+    <Compile Include="Helpers\NetHelperSunamoShared.cs" />
     <Compile Include="Helpers\Number\HexHelper.cs" />
     <Compile Include="Helpers\Number\LinearHelper.cs" />
     <Compile Include="Helpers\Number\LinearHelperShared.cs" />

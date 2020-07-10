@@ -14,4 +14,5 @@ public class HttpRequestData
     /// Assign: StreamContent,ByteArrayContent,FormUrlEncodedContent,StringContent,MultipartContent,MultipartFormDataContent
     /// </summary>
     public HttpContent content = null;
+    public bool? forceLocalhost = null;
 }

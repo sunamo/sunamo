@@ -184,6 +184,8 @@ public static Stream GetResponseStream(string address, HttpMethod method)
 /// <param name = "hrd"></param>
     public static string GetResponseText(HttpWebRequest request, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
     {
+        NetHelperSunamo.NEVER_EAT_POISON_Disable_CertificateValidation();
+
         response = null;
         
         if (hrd == null)
