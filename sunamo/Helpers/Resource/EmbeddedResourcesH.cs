@@ -20,7 +20,6 @@ public class EmbeddedResourcesH : IResourceHelper
     /*usage:
 uri = new Uri("Wpf.Tests.Resources.EmbeddedResource.txt", UriKind.Relative);
 GetString(uri.ToString()) - the same string as passed in ctor Uri
-
      */
 
     /// <summary>
