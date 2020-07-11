@@ -6,7 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string minAge18 = "minAge18"; 
+	public const string with = "with";
+    public const string with2 = "with2";
+    public const string minAge18 = "minAge18"; 
 	public const string lowercaseLettersNumbersAndCharactersAreAllowed = "lowercaseLettersNumbersAndCharactersAreAllowed"; 
 	public const string showPassword = "showPassword"; 
 	public const string ShowPassword = "ShowPassword"; 

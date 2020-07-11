@@ -20,7 +20,8 @@ public class LocaleHelper
     #region For easy copy
     public static string GetCountryForLang2(string lang)
     {
-        Langs l = EnumHelper.Parse<Langs>(lang, Langs.en);
+        // Easy copy = BCL enum parse
+        Langs l = (Langs)Enum.Parse(typeof(Langs), lang); 
         switch (l)
         {
             case Langs.cs:

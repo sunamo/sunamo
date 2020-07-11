@@ -4416,6 +4416,14 @@
           <source></source>
           <target state="translated">Něco se pokazilo</target>
         </trans-unit>
+        <trans-unit id="with" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">s</target>
+        </trans-unit>
+		  <trans-unit id="with2" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">se</target>
+        </trans-unit>
       </group>
     </body>
   </file>

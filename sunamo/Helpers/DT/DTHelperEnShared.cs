@@ -170,7 +170,7 @@ public partial class DTHelperEn
     /// <param name="dt"></param>
     public static string ToShortTimeString(DateTime dt)
     {
-        return string.Format("{0:mm:ss tt}", dt);
+        return string.Format("{0:hh:mm tt}", dt);
     } 
     #endregion
     #endregion

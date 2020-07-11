@@ -26,6 +26,7 @@ namespace desktop.Controls
 
         /// <summary>
         /// A2 like used-car-comparing
+        /// A4 = SellingHelper.CheckNewVersion etc.
         /// </summary>
         /// <param name="updateUri"></param>
         /// <param name="appUri"></param>
