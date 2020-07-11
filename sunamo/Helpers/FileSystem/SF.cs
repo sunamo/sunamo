@@ -77,11 +77,18 @@ public static int keyCodeSeparator
         return vr;
     }
 
-    public static void AppendToFile(string path, string line)
+    public static List<List<string>> AppendToFile(string path, string line)
     {
-        var content = TF.ReadFile(path).Trim();
-        content += Environment.NewLine + line + Environment.NewLine;
-        TF.SaveFile(content, path);
+        var content = TF.ReadAllLines(path);
+        CA.Trim(content);
+        //content += Environment.NewLine + line + Environment.NewLine;
+        content.Add(line);
+
+        var vr = GetAllElementsLines(content);
+
+        TF.SaveLines(content, path);
+
+        return vr;
     }
 
     /// <summary>
@@ -90,8 +97,14 @@ public static int keyCodeSeparator
     /// <param name = "file"></param>
     public static List<List<string>> GetAllElementsFile(string file)
     {
-        List<List<string>> vr = new List<List<string>>();
+        
         var lines = TF.ReadAllLines(file);
+        return GetAllElementsLines( lines);
+    }
+
+    private static List<List<string>> GetAllElementsLines( List<string> lines)
+    {
+        List<List<string>> vr = new List<List<string>>();
         foreach (string var in lines)
         {
             if (!string.IsNullOrWhiteSpace(var))
@@ -99,7 +112,6 @@ public static int keyCodeSeparator
                 vr.Add(SF.GetAllElementsLine(var));
             }
         }
-
         return vr;
     }
 

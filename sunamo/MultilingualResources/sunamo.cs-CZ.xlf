@@ -4384,6 +4384,38 @@
           <source></source>
           <target state="translated">min věk 18</target>
         </trans-unit>
+        <trans-unit id="NoNickWasFoundForYourUserNumber" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nenalezen nick pro už. jméno</target>
+        </trans-unit>
+        <trans-unit id="FailedToSaveProfileImagePleaseTryAgain" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Profilovku se nepodařilo změnit. Zkuste to znovu.</target>
+        </trans-unit>
+        <trans-unit id="ProfileImageChangedSuccessfully" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Profilovka změněna úspěšně</target>
+        </trans-unit>
+        <trans-unit id="UpdateYourProfilePictureToSunamoCz" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změnit profilový obrázek</target>
+        </trans-unit>
+        <trans-unit id="ClickTheButtonToUploadANewProfilePictureToSunamoCz" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">2. Klepněte na tlačítko k nahrání nové profilovky na sunamo.cz</target>
+        </trans-unit>
+        <trans-unit id="ChangeYourProfilePictureOn" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zmeňte si svůj profilový obrázek na</target>
+        </trans-unit>
+        <trans-unit id="ChangeProfilePicture" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změna profilového obrázku</target>
+        </trans-unit>
+        <trans-unit id="SomethingWentWrong" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Něco se pokazilo</target>
+        </trans-unit>
       </group>
     </body>
   </file>

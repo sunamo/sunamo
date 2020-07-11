@@ -70,6 +70,29 @@ public static partial class CL{
         return DialogResult.No;
     }
 
+    
+
+   
+
+    public static void CmdTable(IEnumerable<List<string>> last)
+    {
+        StringBuilder formattingString = new StringBuilder();
+
+        var f = last.First();
+        for (int i = 0; i < f.Count; i++)
+        {
+            formattingString.Append("{" + i + ",5}|");
+        }
+        formattingString.Append("|");
+
+        var fs = formattingString.ToString();
+
+        foreach (var item in last)
+        {
+            Console.WriteLine(string.Format(fs, item.ToArray()));
+        }
+    }
+
     static void ChangeColorOfConsoleAndWrite(string text, TypeOfMessage tz)
     {
         ConsoleLogger.SetColorOfConsole(tz);
