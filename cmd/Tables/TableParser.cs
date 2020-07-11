@@ -83,7 +83,7 @@ public static class TableParser
         return sb.ToString();
     }
 
-    public static void ToStringTable(List<string> headers, IEnumerable<List<string>> last)
+    public static string ToStringTable(List<string> headers, IEnumerable<List<string>> last)
     {
         var f = last.First();
         List<string> s = new List<string>((f.Count * last.Count()) + f.Count);
@@ -96,7 +96,7 @@ public static class TableParser
 
         var od = CA.OneDimensionArrayToTwoDirection(s.ToArray(), f.Count);
 
-        ToStringTable(od);
+        return ToStringTable(od);
     }
     #endregion
 
