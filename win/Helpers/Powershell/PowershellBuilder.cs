@@ -27,6 +27,7 @@ namespace win.Helpers.Powershell
         /// <summary>
         /// Dont postfix with NewLine
         /// Automatically prepend by space
+        /// Add to previous command, not create new!
         /// </summary>
         /// <param name="v"></param>
         public void AddRaw(string v)

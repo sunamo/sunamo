@@ -136,6 +136,18 @@ public static partial class EnumHelper
         return result;
     }
 
+    public static T? ParseNullable<T>(string web, T? _def)
+        where T : struct
+    {
+        T result;
+        if (Enum.TryParse<T>(web, true, out result))
+        {
+            return result;
+        }
+
+        return _def;
+    }
+
     /// <summary>
     /// ignore case. 
     /// A1 must be, default(T) cant be returned because in comparing default(T) is always true for any value of T
