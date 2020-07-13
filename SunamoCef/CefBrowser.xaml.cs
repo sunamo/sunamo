@@ -53,7 +53,7 @@ static Type type = typeof(CefBrowser);
         public event VoidT<Control> ShowPopup;
         public Task<HtmlDocument> GetHtmlDocument()
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException();
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException());
         }
     }
 }
