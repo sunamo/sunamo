@@ -32,8 +32,16 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
     public const string SessI18n = SunamoNotTranslateAble.SessI18n;
     public const string XlfKeysDot = SunamoNotTranslateAble.XlfKeysDot;
 
+    /// <summary>
+    /// XmlLocalisationInterchangeFileFormatSunamo.removeSessI18nIfLineContains
+    /// </summary>
     public static List<string> removeSessI18nIfLineContains = CA.ToList<string>("MSStoredProceduresI");
 
+    /// <summary>
+    /// Before is possible use ReplaceRlDataToSessionI18n
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
     public static string RemoveSessI18nIfLineContains(string c)
     {
         return RemoveSessI18nIfLineContainsWorker(c, removeSessI18nIfLineContains.ToArray());
@@ -65,6 +73,11 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         return SH.JoinNL(l);
     }
 
+    /// <summary>
+    /// Before is possible use ReplaceRlDataToSessionI18n
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
     public static string RemoveAllSessI18n(string c)
     {
         var sb = new StringBuilder(c);
@@ -73,6 +86,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
 
         var occ = SH.ReturnOccurencesOfString(c, sessI18n);
         var ending = new List<int>(occ.Count);
+
         foreach (var item in occ)
         {
             ending.Add(c.IndexOf(AllChars.rb, item));

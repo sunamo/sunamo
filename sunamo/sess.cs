@@ -16,7 +16,7 @@ public static class sess
             case Langs.cs:
                 return RLData.cs[key];
             case Langs.en:
-                return RLData.en[key];
+                return sess.i18n(key);
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), ThisApp.l);
                 break;

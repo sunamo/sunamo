@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-public class CsFileFilter : FiltersNotTranslateAble
+/// <summary>
+/// Cant be derived from FiltersNotTranslateAble because easy of finding instances of CsFileFilter
+/// </summary>
+public class CsFileFilter //: FiltersNotTranslateAble
 {
-    bool designerCs= false; 
-    bool xamlCs= false; 
-    bool sharedCs= false; 
-    bool iCs= false; 
-    bool gICs= false; 
-    bool gCs= false;
-    bool tmp = false;
-    bool TMP = false;
-    bool DesignerCs = false;
-    bool NotTranslateAble = false;
+    EndArgs e = null;
+    ContainsArgs c = null;
 
-    bool obj = false;
-    bool bin = false;
-    bool tildaRf = false;
+    static FiltersNotTranslateAble f =  FiltersNotTranslateAble.Instance;
 
     /// <summary>
     /// A2 is also for master.designer.cs and aspx.designer.cs
@@ -65,7 +58,7 @@ public class CsFileFilter : FiltersNotTranslateAble
         {
             return false;
         }
-        if (!end.notTranslateAble && item.EndsWith(NotTranslateAblePp))
+        if (!end.notTranslateAble && item.EndsWith(f.NotTranslateAblePp))
         {
             return false;
         }
@@ -98,74 +91,68 @@ public class CsFileFilter : FiltersNotTranslateAble
 
     }
 
-    public void Set(bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs, bool tmp, bool TMP, bool DesignerCs, bool notTranslateAble)
+    public void Set(bool designerCs, EndArgs ea, ContainsArgs c)
     {
-        this.designerCs = designerCs;
-        this.xamlCs = xamlCs;
-        this.sharedCs = sharedCs;
-        this.iCs = iCs;
-        this.gICs = gICs;
-        this.gCs = gCs;
-        this.tmp = tmp;
-        this.TMP = TMP;
-        this.DesignerCs = DesignerCs;
-        this.NotTranslateAble = notTranslateAble;
+        this.e = ea;
+        this.c = c;
     }
 
     public void SetDefault()
     {
-        designerCs = false;  xamlCs = true;  sharedCs = true;  iCs = false;  gICs = false;  gCs = false;
-        obj = false;  bin = false;
-        DesignerCs = false;
-        NotTranslateAble = false;
+        e.designerCs = false; e.xamlCs = true; e.sharedCs = true; e.iCs = false; e.gICs = false; e.gCs = false;
+        
+        e.DesignerCs = false;
+        e.notTranslateAble = false;
+
+        c.objFp = false; c.binFp = false;
     }
 
     public List<string> GetEndingByFlags()
     {
         List<string> l = new List<string>();
-        if (designerCs)
+        if (e.designerCs)
         {
             l.Add(End.designerCsPp);
         }
-        else if (xamlCs)
+        else if (e.xamlCs)
         {
             l.Add(End.xamlCsPp);
         }
-        else if (xamlCs)
+        else if (e.xamlCs)
         {
             l.Add(End.xamlCsPp);
         }
-        else if (sharedCs)
+        else if (e.sharedCs)
         {
             l.Add(End.sharedCsPp);
         }
-        else if (iCs)
+        else if (e.iCs)
         {
             l.Add(End.iCsPp);
         }
-        else if (gICs)
+        else if (e.gICs)
         {
             l.Add(End.gICsPp);
         }
-        else if (gCs)
+        else if (e.gCs)
         {
             l.Add(End.gCsPp);
         }
-        else if (tmp)
+        else if (e.tmp)
         {
             l.Add(End.tmpPp);
         }
-        else if (TMP)
+        else if (e.TMP)
         {
             l.Add(End.TMPPp);
         }
-        else if (DesignerCs)
+        else if (e.DesignerCs)
         {
             l.Add(End.DesignerCsPp);
         }
-        else if (NotTranslateAble)
+        else if (e.notTranslateAble)
         {
-            l.Add(NotTranslateAblePp);
+            l.Add(f.NotTranslateAblePp);
         }
 
         return l;
@@ -174,14 +161,17 @@ public class CsFileFilter : FiltersNotTranslateAble
     #region Take by method
     
 
-    public static  bool AllowOnlyContains(string i, bool obj, bool bin)
+    public static  bool AllowOnlyContains(string i, ContainsArgs c)
     {
-        if (!obj && i.Contains(@"\obj\"))
+        if (!c.objFp && i.Contains(@"\obj\"))
         {
             return false;
         }
-
-        if (!bin && i.Contains(@"\bin\"))
+        if (!c.binFp && i.Contains(@"\bin\"))
+        {
+            return false;
+        }
+        if (!c.tildaRF && i.Contains(@"RF~"))
         {
             return false;
         }
@@ -203,12 +193,12 @@ public class CsFileFilter : FiltersNotTranslateAble
     #region Take by class variables
     public  bool AllowOnly(string item)
     {
-        return !AllowOnly(item, new EndArgs( designerCs, xamlCs, sharedCs, iCs, gICs, gCs, tmp, TMP, DesignerCs, NotTranslateAble), new ContainsArgs(obj, bin, tildaRf));
+        return !AllowOnly(item, e, c);
     }
 
     public  bool AllowOnlyContains(string i)
     {
-        return !AllowOnlyContains(i, obj, bin);
+        return !AllowOnlyContains(i, c);
     }
     #endregion
 
