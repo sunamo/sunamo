@@ -9,6 +9,7 @@ using System.Windows;
 /// </summary>
 public partial class XmlLocalisationInterchangeFileFormatSunamo
 {
+    public static string pathXlfKeys = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs";
     static Type type = typeof(XmlLocalisationInterchangeFileFormatSunamo);
     public const string cs = "const string ";
     const string eqBs = " = \"";
