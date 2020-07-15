@@ -9,6 +9,7 @@ using System.Windows;
 public partial class RuntimeHelper
 {
     static Type type = typeof(RuntimeHelper);
+
     public static List<Delegate> GetInvocationList(Delegate e)
     {
         if (e == null)

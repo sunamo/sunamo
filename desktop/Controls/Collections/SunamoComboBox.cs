@@ -14,6 +14,8 @@ namespace desktop.Controls.Collections
     /// </summary>
     public class SunamoComboBox : ComboBox
     {
+        static Type type = typeof(SunamoComboBox);
+
         public SunamoComboBox()
         {
             this.KeyUp += SunamoComboBox_KeyUp;
@@ -46,11 +48,18 @@ namespace desktop.Controls.Collections
             string nameChild = "PART_EditableTextBox";
             //var d = GetTemplateChild(nameChild);
             var d = Template.FindName(nameChild, this);
-            string type = d.GetType().FullName;
-            var myTextBox = d as TextBox;
-            if (myTextBox != null)
+            if (d != null)
             {
-                this.editableTextBox = myTextBox;
+                string type = d.GetType().FullName;
+                var myTextBox = d as TextBox;
+                if (myTextBox != null)
+                {
+                    this.editableTextBox = myTextBox;
+                }
+            }
+            else
+            {
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "create instance of SunamoComboBox later in ctor");
             }
         }
 

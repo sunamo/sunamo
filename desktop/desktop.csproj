@@ -262,6 +262,7 @@
     <Compile Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml.cs">
       <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Panels\DynLayout.cs" />
     <Compile Include="Controls\Panels\FrugalContainer.cs" />
     <Compile Include="Controls\Panels\StackPanelUC.cs" />
     <Compile Include="Controls\Panels\SunamoVariableSizedWrapGrid.cs" />
@@ -345,6 +346,7 @@
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="Extensions\CheckBoxExtensions.cs" />
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Common\ArgumentType.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Common\WatcherInfo.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">

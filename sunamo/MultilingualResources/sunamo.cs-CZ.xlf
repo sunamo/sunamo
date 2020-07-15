@@ -1,4 +1,5 @@
-﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -4313,116 +4314,156 @@
           <target state="translated">Aplikace se někdy může zdát zamrzlá. Buďte trpěliví, asynchronní operace bude implementována v nadcházející verzi</target>
         </trans-unit>
         <trans-unit id="ThankYouForYourPurchase" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Děkuji za Váš nákup</target>
         </trans-unit>
         <trans-unit id="InAttachmentIsJoinedActualTermsOfUse" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">V příloze jsou připojeny skutečné podmínky použití</target>
         </trans-unit>
         <trans-unit id="monthlySubscription" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">měsíční předplatné</target>
         </trans-unit>
         <trans-unit id="" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated"></target>
         </trans-unit>
         <trans-unit id="forApplication" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">pro aplikaci</target>
         </trans-unit>
         <trans-unit id="CodeSearch" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Hledání kódu</target>
         </trans-unit>
         <trans-unit id="EveryLine" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Každý řádek</target>
         </trans-unit>
         <trans-unit id="AppWillBeYourInOneMinute" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Aplikace bude Vaše za minutu</target>
         </trans-unit>
         <trans-unit id="HassleFreeOneClickBuy" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Zrychlený nákup</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustBeCharactersLong" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Heslo musí být dlouhé 10-20 znaků</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustBeAtLeast2DigitsLong" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Heslo musí mít nejméně 2 číslice</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharacter" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Heslo musí obsahovat alespoň jeden zvláštní znak (!, @, #, $,%, ^, &amp;, *</target>
         </trans-unit>
         <trans-unit id="PasswordCannotBeEmpty" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Heslo nemůže být prázdné</target>
         </trans-unit>
         <trans-unit id="ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Heslo je silné a ve správném formátu. Vaše heslo je</target>
         </trans-unit>
         <trans-unit id="ShowPassword" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Zobrazit heslo</target>
         </trans-unit>
         <trans-unit id="showPassword" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">zobrazit heslo</target>
         </trans-unit>
         <trans-unit id="lowercaseLettersNumbersAndCharactersAreAllowed" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">malá písmena, čísla a ./-/_ znaky jsou povoleny</target>
         </trans-unit>
         <trans-unit id="minAge18" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">min věk 18</target>
         </trans-unit>
         <trans-unit id="NoNickWasFoundForYourUserNumber" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Nenalezen nick pro už. jméno</target>
         </trans-unit>
         <trans-unit id="FailedToSaveProfileImagePleaseTryAgain" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Profilovku se nepodařilo změnit. Zkuste to znovu.</target>
         </trans-unit>
         <trans-unit id="ProfileImageChangedSuccessfully" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Profilovka změněna úspěšně</target>
         </trans-unit>
         <trans-unit id="UpdateYourProfilePictureToSunamoCz" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Změnit profilový obrázek</target>
         </trans-unit>
         <trans-unit id="ClickTheButtonToUploadANewProfilePictureToSunamoCz" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">2. Klepněte na tlačítko k nahrání nové profilovky na sunamo.cz</target>
         </trans-unit>
         <trans-unit id="ChangeYourProfilePictureOn" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Zmeňte si svůj profilový obrázek na</target>
         </trans-unit>
         <trans-unit id="ChangeProfilePicture" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Změna profilového obrázku</target>
         </trans-unit>
         <trans-unit id="SomethingWentWrong" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Něco se pokazilo</target>
         </trans-unit>
         <trans-unit id="with" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">s</target>
         </trans-unit>
-		  <trans-unit id="with2" translate="no" xml:space="preserve">
-          <source></source>
+        <trans-unit id="with2" translate="no" xml:space="preserve">
+          
           <target state="translated">se</target>
+        </trans-unit>
+        <trans-unit id="RedForPathFilenamePart" translate="no" xml:space="preserve">
+          
+          <target state="translated">Červená pro část cesty / názvu souboru</target>
+        </trans-unit>
+        <trans-unit id="GreenForPathFilenamePart" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zelená pro část cesty / názvu souboru</target>
+        </trans-unit>
+        <trans-unit id="FoldersToIndexing" translate="no" xml:space="preserve">
+          
+          <target state="translated">Složky pro indexování</target>
+        </trans-unit>
+        <trans-unit id="unindexablePathParts" translate="no" xml:space="preserve">
+          
+          <target state="translated">neindexovatelné části cesty</target>
+        </trans-unit>
+        <trans-unit id="UnindexablePathParts" translate="no" xml:space="preserve">
+          
+          <target state="translated">Neindexovatelné části cesty</target>
+        </trans-unit>
+        <trans-unit id="UnindexableFileNames" translate="no" xml:space="preserve">
+          
+          <target state="translated">Neindexovatelné názvy souborů</target>
+        </trans-unit>
+        <trans-unit id="UnindexablePathEnds" translate="no" xml:space="preserve">
+          
+          <target state="translated">Neindexovatelná cesta končí</target>
+        </trans-unit>
+        <trans-unit id="UnindexableExtensions" translate="no" xml:space="preserve">
+          
+          <target state="translated">Neindexovatelná rozšíření</target>
+        </trans-unit>
+        <trans-unit id="Open" translate="no" xml:space="preserve">
+          
+          <target state="translated">otevřeno</target>
+        </trans-unit>
+        <trans-unit id="PrefixWithForIgnoring" translate="no" xml:space="preserve">
+          
+          <target state="translated">Vlož na začátek # pro ignorování</target>
         </trans-unit>
       </group>
     </body>

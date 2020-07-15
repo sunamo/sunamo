@@ -44,7 +44,7 @@ public static partial class DW{
     /// <summary>
     /// Default is All Files|*.*
     /// </summary>
-    public static string filterDefault = sess.i18n(XlfKeys.AllFiles) + "*.*";
+    public static string filterDefault = sess.i18n(XlfKeys.AllFiles) + AllStrings.verbar + "*.*";
 
     /// <summary>
     /// G null při nenalezení

@@ -9,6 +9,8 @@ using System;
 /// </summary>
 public class PpkOnDrive : PpkOnDriveBase<string>
 {
+    public bool removeDuplicates = false;
+
     static PpkOnDrive wroteOnDrive = null;
     public static PpkOnDrive WroteOnDrive
     {
@@ -33,6 +35,11 @@ public class PpkOnDrive : PpkOnDriveBase<string>
             this.AddRange(TF.ReadAllLines(a.file));
 
             CA.RemoveStringsEmpty2(this);
+
+            if (removeDuplicates)
+            {
+                CA.RemoveDuplicitiesList<string>(this);
+            }
         }
     }
 

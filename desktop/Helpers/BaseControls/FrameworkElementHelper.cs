@@ -23,6 +23,28 @@ public partial class FrameworkElementHelper
         return s.tagCheckBoxListUC;
     }
 
+    public static T CastTo<T>(FrameworkElement o) where T : class
+    {
+        T casted = default(T);
+
+        //var casted2 = o as T;
+
+        ScrollViewer sw;
+        
+
+        while (EqualityComparer<T>.Default.Equals(casted, default(T)))
+        {
+            if (o.Parent == null)
+            {
+                break;
+            }
+            o = (FrameworkElement)o.Parent;
+            casted = o as T;
+        }
+
+        return casted;
+    }
+
     public static Size GetMaxContentSize(FrameworkElement fe)
     {
         return new Size(fe.ActualWidth, fe.ActualHeight);

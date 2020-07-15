@@ -75,6 +75,7 @@ namespace desktop
                 ThrowExceptions.IsNotNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), "d.OnClick", d.OnClick);
             }
 
+            txt.Name = d.name;
             // Set up NaN due to fill all available size
             txt.Width = double.NaN;
             txt.Tag = d.tag;

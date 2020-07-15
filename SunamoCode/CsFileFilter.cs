@@ -74,7 +74,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
             return false;
         }
 
-        if (!c.tildaRF && item.Contains(Contains.tildaRF))
+        if (!c.tildaRF && item.Contains(Contains.tildaRFPp))
         {
             return false;
         }
@@ -91,7 +91,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
 
     }
 
-    public void Set(bool designerCs, EndArgs ea, ContainsArgs c)
+    public void Set(EndArgs ea, ContainsArgs c)
     {
         this.e = ea;
         this.c = c;
@@ -99,58 +99,78 @@ public class CsFileFilter //: FiltersNotTranslateAble
 
     public void SetDefault()
     {
-        e.designerCs = false; e.xamlCs = true; e.sharedCs = true; e.iCs = false; e.gICs = false; e.gCs = false;
-        
-        e.DesignerCs = false;
-        e.notTranslateAble = false;
-
-        c.objFp = false; c.binFp = false;
+        e = new EndArgs(false, true, true, false, false, false, false, false, false, false);
+        c = new ContainsArgs(false, false, false);
     }
 
-    public List<string> GetEndingByFlags()
+    /// <summary>
+    /// A1 = negate
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public List<string> GetContainsByFlags(bool n)
     {
         List<string> l = new List<string>();
-        if (e.designerCs)
+        if (BTS.Is( c.binFp, n))
+        {
+            l.Add(Contains.binFp);
+        }
+        if (BTS.Is(c.objFp, n))
+        {
+            l.Add(Contains.objFp);
+        }
+        if (BTS.Is(c.tildaRF,n))
+        {
+            l.Add(Contains.tildaRFPp);
+        }
+
+        return l;
+    }
+
+    public List<string> GetEndingByFlags(bool n)
+    {
+        List<string> l = new List<string>();
+        if (Is(e.designerCs, n))
         {
             l.Add(End.designerCsPp);
         }
-        else if (e.xamlCs)
+        if (Is(e.xamlCs, n))
         {
             l.Add(End.xamlCsPp);
         }
-        else if (e.xamlCs)
+        if (Is(e.xamlCs, n))
         {
             l.Add(End.xamlCsPp);
         }
-        else if (e.sharedCs)
+        if (Is(e.sharedCs, n))
         {
             l.Add(End.sharedCsPp);
         }
-        else if (e.iCs)
+        if (Is(e.iCs, n))
         {
             l.Add(End.iCsPp);
         }
-        else if (e.gICs)
+        if (Is(e.gICs, n))
         {
             l.Add(End.gICsPp);
         }
-        else if (e.gCs)
+        if (Is(e.gCs, n))
         {
             l.Add(End.gCsPp);
         }
-        else if (e.tmp)
+        if (Is(e.tmp, n))
         {
             l.Add(End.tmpPp);
         }
-        else if (e.TMP)
+        if (Is(e.TMP, n))
         {
             l.Add(End.TMPPp);
         }
-        else if (e.DesignerCs)
+        if (Is(e.DesignerCs, n))
         {
             l.Add(End.DesignerCsPp);
         }
-        else if (e.notTranslateAble)
+        if (Is(e.notTranslateAble, n))
         {
             l.Add(f.NotTranslateAblePp);
         }
@@ -158,8 +178,13 @@ public class CsFileFilter //: FiltersNotTranslateAble
         return l;
     }
 
+    private bool Is(bool tMP, bool n)
+    {
+        return BTS.Is(tMP, n);
+    }
+
     #region Take by method
-    
+
 
     public static  bool AllowOnlyContains(string i, ContainsArgs c)
     {
@@ -206,7 +231,26 @@ public class CsFileFilter //: FiltersNotTranslateAble
     {
         public static string objFp = @"\obj\";
         public static string binFp = @"\bin\";
-        public static string tildaRF = "~RF";
+        public static string tildaRFPp = "~RF";
+
+        public static List<string> u = null;
+
+        /// <summary>
+        /// Into A1 is inserting copy to leave only unindexed
+        /// </summary>
+        /// <param name="unindexablePathEnds"></param>
+        /// <returns></returns>
+        public static ContainsArgs FillEndFromFileList(List<string> unindexablePathEnds)
+        {
+            u = unindexablePathEnds;
+            ContainsArgs ea = new ContainsArgs(c(objFp), c(binFp), c(tildaRFPp));
+            return ea;
+        }
+
+        static bool c(string k)
+        {
+            return u.Contains(k);
+        }
     }
 
     public class ContainsArgs
@@ -233,6 +277,30 @@ public class CsFileFilter //: FiltersNotTranslateAble
         public const string tmpPp = ".tmp";
         public const string TMPPp = ".TMP";
         public const string notTranslateAblePp = "NotTranslateAble.cs";
+
+        public static List<string> u = null;
+
+        /// <summary>
+        /// Into A1 is inserting copy to leave only unindexed
+        /// </summary>
+        /// <param name="unindexablePathEnds"></param>
+        /// <returns></returns>
+        public static EndArgs FillEndFromFileList(List<string> unindexablePathEnds)
+        {
+            u = unindexablePathEnds;
+            EndArgs ea = new EndArgs(c(designerCsPp), c(xamlCsPp), c(sharedCsPp), c(iCsPp), c(gICsPp), c(gCsPp), c(tmpPp), c(TMPPp), c(DesignerCsPp), c(notTranslateAblePp));
+            return ea;
+        }
+
+        static bool c(string k)
+        {
+            if(u.Contains(k))
+            {
+                u.Remove(k);
+                return true;
+            }
+            return false;
+        }
     }
 
     public class EndArgs
@@ -251,5 +319,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
             this.DesignerCs = DesignerCs;
             this.notTranslateAble = notTranslateAble;
         }
+
+        
     }
 }

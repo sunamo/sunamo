@@ -142,7 +142,6 @@ namespace desktop.Storage
                     //def[sender.Name + AllStrings.dot + element.Key.Name] = value;
 
                 }
-
             }
             def.Save();
         }

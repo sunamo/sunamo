@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using win.Helpers.Powershell;
 
 public class PHDesktop
 {
+    public static void OpenFileInTag(object s, RoutedEventArgs e)
+    {
+        var fe = (FrameworkElement)s;
+        PH.Start(fe.Tag.ToString());
+    }
+
     /// <summary>
     /// A1 without extension
     /// </summary>

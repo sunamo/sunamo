@@ -87,6 +87,15 @@ namespace sunamo.Essential
             SetStatus(tom, v);
         }
 
-        
+        /// <summary>
+        /// Strings which is on lines calling this method is not translate
+        /// Debug method when I running app on release and app is behave extraordinary
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="o"></param>
+        public static void a(string v, params object[] o)
+        {
+            ThisApp.SetStatus(TypeOfMessage.Appeal, v, o);
+        }
     }
 }

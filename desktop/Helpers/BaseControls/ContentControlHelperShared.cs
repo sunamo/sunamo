@@ -8,12 +8,20 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 
 public partial class ContentControlHelper{ 
+
 public static StackPanel GetContent(ControlInitData d)
     {
         var img = d.imagePath;
         var text = d.text;
         bool isImg = img != null;
         bool isText = text != null;
+
+        if (!isText)
+        {
+            isText = d.xlfKey != null;
+            text = sess.i18n(d.xlfKey);
+        }
+
         StackPanel sp = new StackPanel();
         sp.Orientation = Orientation.Horizontal;
         //10*2 padding

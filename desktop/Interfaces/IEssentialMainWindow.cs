@@ -12,7 +12,7 @@ using System.Windows.Controls;
 /// </summary>
 public interface IEssentialMainWindow : IWindowOpener
 {
-         UserControl actual { get; set; }
+    UserControl actual { get; set; }
         void SetMode(object mode);
      string ModeString { get; }
     }

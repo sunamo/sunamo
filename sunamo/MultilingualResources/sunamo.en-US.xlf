@@ -1,4 +1,5 @@
-﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -13271,64 +13272,104 @@ A fraternal form of manifestation is the bliss</target>
           <target state="translated">App can sometimes seem to be frozen. Please be patient, async operation will be implemented in upcoming version</target>
         </trans-unit>
         <trans-unit id="ThankYouForYourPurchase" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Thank you for your purchase</target>
         </trans-unit>
         <trans-unit id="InAttachmentIsJoinedActualTermsOfUse" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">In attachment is joined actual Terms of use</target>
         </trans-unit>
         <trans-unit id="monthlySubscription" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">monthly subscription</target>
         </trans-unit>
         <trans-unit id="" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated"></target>
         </trans-unit>
         <trans-unit id="forApplication" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">for application</target>
         </trans-unit>
         <trans-unit id="CodeSearch" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Code Search</target>
         </trans-unit>
         <trans-unit id="EveryLine" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Every line</target>
         </trans-unit>
         <trans-unit id="AppWillBeYourInOneMinute" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">App will be your in one minute</target>
         </trans-unit>
         <trans-unit id="HassleFreeOneClickBuy" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Hassle-free One-Click buy</target>
         </trans-unit>
         <trans-unit id="ShowPassword" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Show password</target>
         </trans-unit>
         <trans-unit id="showPassword" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">show password</target>
         </trans-unit>
         <trans-unit id="lowercaseLettersNumbersAndCharactersAreAllowed" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">lowercase letters, numbers, and ./-/_ characters are allowed</target>
         </trans-unit>
         <trans-unit id="minAge18" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">min age 18</target>
         </trans-unit>
         <trans-unit id="with" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">with</target>
         </trans-unit>
-	     <trans-unit id="with2" translate="no" xml:space="preserve">
-          <source></source>
+        <trans-unit id="with2" translate="no" xml:space="preserve">
+          
           <target state="translated">with</target>
+        </trans-unit>
+        <trans-unit id="RedForPathFilenamePart" translate="no" xml:space="preserve">
+          
+          <target state="translated">Red for path/filename part</target>
+        </trans-unit>
+        <trans-unit id="GreenForPathFilenamePart" translate="no" xml:space="preserve">
+          
+          <target state="translated">Green for path/filename part</target>
+        </trans-unit>
+        <trans-unit id="FoldersToIndexing" translate="no" xml:space="preserve">
+          
+          <target state="translated">Folders to indexing</target>
+        </trans-unit>
+        <trans-unit id="unindexablePathParts" translate="no" xml:space="preserve">
+          
+          <target state="translated">unindexable path parts</target>
+        </trans-unit>
+        <trans-unit id="UnindexablePathParts" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unindexable path parts</target>
+        </trans-unit>
+        <trans-unit id="UnindexableFileNames" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unindexable file names</target>
+        </trans-unit>
+        <trans-unit id="UnindexablePathEnds" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unindexable path ends</target>
+        </trans-unit>
+        <trans-unit id="UnindexableExtensions" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unindexable extensions</target>
+        </trans-unit>
+        <trans-unit id="Open" translate="no" xml:space="preserve">
+          
+          <target state="translated">Open</target>
+        </trans-unit>
+        <trans-unit id="PrefixWithForIgnoring" translate="no" xml:space="preserve">
+          
+          <target state="translated">Prefix with # for ignoring</target>
         </trans-unit>
       </group>
     </body>

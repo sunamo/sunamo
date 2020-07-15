@@ -11,8 +11,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using static CsFileFilter;
+
 public partial class SourceCodeIndexerRoslyn
 {
+    // Ve LoadAllFiles mi odstraní soubory jež nebyly ve selectMoreFolders
+    // Z indexu odstraním ty z EndArgs aj. souvisejících v ProcessFile kde odjakživa se s tímto pracovalo
+
+    public EndArgs endArgs = null;
+    public ContainsArgs containsArgs = null;
+    public List<string> endsOther = null;
+    public List<string> containsOther = null;
+    public PpkOnDrive fileNames = null;
+
     #region Working method
     public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions, bool fromFileSystemWatcher)
     {
@@ -46,6 +57,10 @@ public partial class SourceCodeIndexerRoslyn
                 sourceFileTrees[pathFile] = new SourceFileTree { root = root, tree = _tree };
             }
         }
+        else
+        {
+            RemoveFile(pathFile);
+        }
     }
 
     public void RemoveFile(string t, bool fromFileSystemWatcher = false)
@@ -76,6 +91,7 @@ public partial class SourceCodeIndexerRoslyn
     /// </summary>
     public Dictionary<string, List<string>> linesWithContent = new Dictionary<string, List<string>>();
     public Dictionary<string, List<int>> linesWithIndexes = new Dictionary<string, List<int>>();
+
     public void Nuke()
     {
         linesWithContent.Clear();
@@ -174,10 +190,10 @@ public partial class SourceCodeIndexerRoslyn
         {
             
 #if DEBUG
-            if (FS.GetFileName( item.Key) == "MainWindow.cs")
-            {
+            //if (FS.GetFileName( item.Key) == "MainWindow.cs")
+            //{
 
-            }
+            //}
 #endif
             var indexes = linesWithIndexes[item.Key];
             include = false;

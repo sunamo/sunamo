@@ -244,6 +244,8 @@ DeadCharProcessed");
         }
 
         /// <summary>
+        /// Working only when key is letter, not digit (NumPadX, DX)
+        /// 
         /// Not working in Release and NotifyIcon it's not the fault
         /// Are there passed from PreviewKeyDown
         /// Working also with more modifiers specified
@@ -254,17 +256,45 @@ DeadCharProcessed");
         /// <param name="modifier"></param>
         public static bool KeyWithModifier(KeyEventArgs e, Key key, ModifierKeys modifier)
         {
+            #region With KeysCatcher
+            //var key2 = EnumHelper.Parse<System.Windows.Forms.Keys>(key.ToString(), System.Windows.Forms.Keys.None);
+            //if (key2 == System.Windows.Forms.Keys.None)
+            //{
+            //    return false;
+            //}
+            //if (KeysCatcher.GetKeyState(key2) != KeysCatcher.KeyStates.None)
+            //{
+            //    return true;
+            //}
+            //return false; 
+            #endregion
+
+            
             /*
             stisknul jsem 1, mam 1, d1,u0
                 Hned nasledne na to se zkontroluje i na 2 a 3
 mam 2, d0, u1 - logicke
 mam 3, d0, u1 - nechapu */
 
-            bool keyPressed = Keyboard.IsKeyDown(key);
+            bool keyPressed = false;
+
+                var kd = Keyboard.IsKeyDown(key);
+            //var ku = Keyboard.IsKeyUp(key);
+            //var kt = Keyboard.IsKeyToggled(key);
+
+            //bool keyPressed = kd || kt;
+
+            keyPressed = kd; //e.Key.HasFlag( key);
+
             bool modifierPressed = modifier == Keyboard.Modifiers;
             bool result = keyPressed && modifierPressed;
             return result;
+
+            // For ctrl+1 return 34 values. Without LeftCtrl
+            //List<string> ls = EnumHelper.GetFlags<Key>(e.Key);
         }
+
+
 
         /// <summary>
         /// If was pressed ctrl+shift and want only ctrl, return also true!! Must be ==

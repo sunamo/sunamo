@@ -2099,8 +2099,8 @@ private static double ConvertToSmallerComputerUnitSize(double value, ComputerSiz
         ext = Path.GetExtension(fn);
     }
 
-/// <summary>
-    /// 
+    /// <summary>
+    /// txt files (*.txt)|*.txt|All files (*.*)|*.*"
     /// </summary>
     /// <param name="filter"></param>
     public static string RepairFilter(string filter)

@@ -13,6 +13,7 @@ using sunamo;
 public class ControlInitData
 {
     #region Sort by alphabet (same as in intellisense popup)
+    public string xlfKey = null;
     public ButtonAction action;
     public bool checkable = false;
     public object content = null;
@@ -36,6 +37,7 @@ public class ControlInitData
     public RoutedEventHandler OnClick = null;
     public MouseButtonEventHandler MouseDown = null;
     public object tag = null;
+    public string name = null;
     public string tooltip = null;
     public bool isEditable = false;
     public TextChangedEventHandler OnTextChange;
@@ -48,7 +50,7 @@ public class ControlInitData
             {
                 return content.ToString();
             }
-            return string.Empty;
+            return null;
         }
         set
         {

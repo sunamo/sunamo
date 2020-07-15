@@ -254,6 +254,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         }
     }
 
+   
+
     void MiAlwaysOnTop_Click(object sender, RoutedEventArgs e)
     {
         Topmost = miAlwaysOnTop.IsChecked;

@@ -61,4 +61,19 @@ public static partial class EnumHelper
 
         return values;
     }
+
+    public static List<string> GetFlags<T>(T key) where T : Enum
+    {
+        List<string> ls = new List<string>();
+        var v = Enum.GetValues(typeof(T));
+
+        foreach (Enum item in v)
+        {
+            if (key.HasFlag(item))
+            {
+                ls.Add(item.ToString());
+            }
+        }
+        return ls;
+    }
 }

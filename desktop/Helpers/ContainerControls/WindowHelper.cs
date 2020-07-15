@@ -15,7 +15,6 @@ public partial class WindowHelper
     public static Size WindowSize(bool noScaleFactor)
     {
         return WpfApp.mp.actual.RenderSize;
-
     }
     public static bool? SetDialogResult(Window w, bool dialog, bool? dialogResult)
     {

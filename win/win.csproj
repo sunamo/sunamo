@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -93,6 +93,7 @@
     <Compile Include="PHWin.cs" />
     <Compile Include="PInvoke\ByDll\User32.cs" />
     <Compile Include="PInvoke\IconExtractor.cs" />
+    <Compile Include="PInvoke\KeysCatcher.cs" />
     <Compile Include="PInvoke\KnownFoldersGuid.cs" />
     <Compile Include="PInvoke\SHFILEINFO.cs" />
     <Compile Include="PInvoke\W32.cs" />

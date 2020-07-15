@@ -123,6 +123,15 @@ public static partial class BTS
         return false;
     }
 
+    public static bool Is(bool binFp, bool n)
+    {
+        if (n)
+        {
+            return !binFp;
+        }
+        return binFp;
+    }
+
     #region TryParse*
     /// <summary>
     /// For parsing from serialized file use DTHelperEn

@@ -6,6 +6,17 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string PrefixWithForIgnoring = "PrefixWithForIgnoring"; 
+
+	public const string Open = "Open"; 
+	public const string UnindexableExtensions = "UnindexableExtensions"; 
+	public const string UnindexablePathEnds = "UnindexablePathEnds"; 
+	public const string UnindexableFileNames = "UnindexableFileNames"; 
+	public const string UnindexablePathParts = "UnindexablePathParts"; 
+	public const string unindexablePathParts = "unindexablePathParts"; 
+	public const string FoldersToIndexing = "FoldersToIndexing"; 
+	public const string GreenForPathFilenamePart = "GreenForPathFilenamePart"; 
+	public const string RedForPathFilenamePart = "RedForPathFilenamePart"; 
 	public const string with = "with";
     public const string with2 = "with2";
     public const string minAge18 = "minAge18"; 

@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using static CsFileFilter;
+
 public partial class SourceCodeIndexerRoslyn{ 
 public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
@@ -30,19 +32,37 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
         tree = null;
         root = null;
-        if (!CsFileFilter.AllowOnly(pathFile, new CsFileFilter.EndArgs( false, true, true, false, false, false,false, false, false, true), new CsFileFilter.ContainsArgs(false, false, false)))
-        {
-            return false;
-        }
 
-        if (!CsFileFilter.AllowOnlyContains(pathFile, false, false))
-        {
-            return false;
-        }
         if (!FS.ExistsFile(pathFile))
         {
             return false;
         }
+
+        if (!CsFileFilter.AllowOnly(pathFile, endArgs, containsArgs))
+        {
+            return false;
+        }
+
+        if (CA.ReturnWhichContainsIndexes(endsOther, pathFile, SearchStrategy.FixedSpace).Count > 0)
+        {
+            return false;
+        }
+
+        var fn = FS.GetFileName(pathFile);
+        if (CA.ReturnWhichContainsIndexes(fileNames, fn, SearchStrategy.FixedSpace ).Count > 0)
+        {
+            return false;
+        }
+
+        if (CA.EndsWith(pathFile, endsOther))
+        {
+            return false;
+        }
+
+        //if (!CsFileFilter.AllowOnlyContains(pathFile, new CsFileFilter.ContainsArgs( false, false, false)))
+        //{
+        //    return false;
+        //}
 
         if (!linesWithContent.ContainsKey(pathFile))
         {

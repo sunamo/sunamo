@@ -26,13 +26,8 @@ namespace desktop.Controls.Input
     {
         static Type type = typeof(EnterOneValueUC);
         public ValidateData validateData = null;
-        public object this[int i]
-        {
-            get
-            {
-                return fwElemements[i].GetContent();
-            }
-        }
+       
+        
             
         //
         #region ctor
@@ -42,6 +37,8 @@ namespace desktop.Controls.Input
         public EnterOneValueUC()
         {
             InitializeComponent();
+
+            dynLayout = new DynLayout(gridGrowable);
 
             fwElemements = CA.ToList<FrameworkElement>(txtEnteredText);
 
@@ -109,17 +106,7 @@ namespace desktop.Controls.Input
             btnEnter.Content = sess.i18n(XlfKeys.Enter);
         }
 
-        public object GetContentByTag(object tag)
-        {
-            foreach (var item in fwElemements)
-            {
-                if (item.Tag == tag)
-                {
-                    return item.GetContent();
-                }
-            }
-            return null;
-        }
+        
 
         /// <summary>
         /// TextBlock.Text is take from Tag, which can be TWithName<object>
@@ -177,35 +164,9 @@ namespace desktop.Controls.Input
             return name;
         }
 
-        public List<FrameworkElement> fwElemements = null;
+        
 
-        /// <summary>
-        /// Example and best case use is in Wpf.Tests
-        /// </summary>
-        /// <param name="i"></param>
-        /// <param name="name"></param>
-        /// <param name="ui"></param>
-        void AddControl(int i, string name, FrameworkElement ui)
-        {
-            Thickness uit = new Thickness(10,5,10,5);
-            
-            Grid.SetRow(ui, i);
-            Grid.SetColumn(ui, 1);
-            // Horizontal alignment cant be set here - otherwise won't be horizontally stretched
-            //ui.HorizontalAlignment = HorizontalAlignment.Left;
-            ui.Margin = uit;
-            // double.NaN to fill all available width
-            // HorizontalAligment have no effect
-            ui.Width = double.NaN;
-            gridGrowable.Children.Add(ui);
-
-            var tb = TextBlockHelper.Get(new ControlInitData { text = name });
-            tb.HorizontalAlignment = HorizontalAlignment.Right;
-            tb.Margin = uit;
-            Grid.SetRow(tb, i);
-            Grid.SetColumn(tb, 0);
-            gridGrowable.Children.Add(tb);
-        }
+        
 
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)
         {
@@ -230,6 +191,16 @@ namespace desktop.Controls.Input
         }//
 
         public string Title => sess.i18n(XlfKeys.EnteringData);
+
+        public object GetContentByTag(object tag)
+        {
+            return dynLayout.GetContentByTag(tag);
+        }
+
+        public void AddControl(int row, string name, FrameworkElement ui)
+        {
+            dynLayout.AddControl(row, name, ui);
+        }
 
         private bool AfterEnteredValue(List<FrameworkElement> txtEnteredText)
         {
@@ -283,7 +254,26 @@ namespace desktop.Controls.Input
 
             return false;
         }
+        public List<FrameworkElement> fwElemements
+        {
+            get
+            {
+                return dynLayout.fwElements;
+            }
+            set
+            {
+                dynLayout.fwElements = value;
+            }
+        }
+        public object this[int i]
+        {
+            get
+            {
+                return fwElemements[i].GetContent();
+            }
+        }
 
+        public DynLayout dynLayout = null;
 
         private void txtEnteredText_KeyDown_1(object sender, KeyEventArgs e)
         {
