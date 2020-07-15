@@ -92,9 +92,9 @@ public static SolutionFolder SolutionWithName(string name)
                 break;
             }
 
-            if (FS.GetFileName(item).StartsWith("Visual Studio "))
+            if (FS.GetFileName(item).StartsWith(sess.i18n(XlfKeys.VisualStudio)+" "))
             {
-                tokens.Add(FS.GetFileName(item.TrimEnd(AllChars.bs)).Replace("Visual Studio ", ""));
+                tokens.Add(FS.GetFileName(item.TrimEnd(AllChars.bs)).Replace(sess.i18n(XlfKeys.VisualStudio)+" ", ""));
                 break;
             }
 

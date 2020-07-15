@@ -27,6 +27,14 @@ namespace desktop.Controls
         public ResultButtons()
         {
             InitializeComponent();
+
+            Loaded += ResultButtons_Loaded;
+        }
+
+        private void ResultButtons_Loaded(object sender, RoutedEventArgs e)
+        {
+            btnAllRight.Content = sess.i18n(XlfKeys.AllRight) + AllStrings.excl;
+            btnCopyToClipboard.Content = sess.i18n(XlfKeys.CopyTextToClipboard);
         }
 
         private void btnCopyToClipboard_Click(object sender, RoutedEventArgs e)

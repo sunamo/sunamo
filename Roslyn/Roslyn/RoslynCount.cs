@@ -27,8 +27,8 @@ namespace Roslyn
         }
         public void Log(string operation)
         {
-            ThisApp.SetStatus(TypeOfMessage.Information, operation + $": " + "Before members {before}, methods {before2" + "}");
-            ThisApp.SetStatus(TypeOfMessage.Information, operation + $": " + "After members {after}, methods {after2" + "}");
+            ThisApp.SetStatus(TypeOfMessage.Information, operation + $": Before members {before}, methods {before2}");
+            ThisApp.SetStatus(TypeOfMessage.Information, operation + $": After members {after}, methods {after2}");
         }
         public void ThrowException()
         {

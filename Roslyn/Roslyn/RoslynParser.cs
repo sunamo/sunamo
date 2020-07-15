@@ -70,7 +70,7 @@ namespace Roslyn
                 {
                     string project2 = nameProject.Substring(0, nameProject.Length - 1);
                     // General files is in Nope. GeneralX is only for pages in General folder
-                    if (project2 != "General")
+                    if (project2 != XlfKeys.General)
                     {
                         project.Add(project2);
                     }
@@ -104,7 +104,7 @@ namespace Roslyn
                 sb.AppendLine(file2.Key);
                 foreach (var method in file2.Value)
                 {
-                    if (method.Name.StartsWith("On") || method.Name.StartsWith("Page" + "_"))
+                    if (method.Name.StartsWith("On") || method.Name.StartsWith(sess.i18n(XlfKeys.Page) + "_"))
                     {
                         sb.AppendLine(method.Name);
                     }
@@ -204,7 +204,7 @@ namespace Roslyn
                 //Console.WriteLine(variableDeclaration.Variables.First().Identifier.);
                 //Console.WriteLine(variableDeclaration.Variables.First().Identifier.Value);
                 string variableName = variableDeclaration.Declaration.Type.ToString();
-                variableName = SH.ReplaceOnce(variableName, "global" + "::", "");
+                variableName = SH.ReplaceOnce(variableName, "global::", "");
                 int lastIndex = variableName.LastIndexOf(AllChars.dot);
                 string ns, cn;
                 SH.GetPartsByLocation(out ns, out cn, variableName, lastIndex);
@@ -229,7 +229,7 @@ namespace Roslyn
                 var line = item.Trim();
                 if (line != string.Empty)
                 {
-                    if (line.StartsWith("using" + " "))
+                    if (line.StartsWith("using "))
                     {
                         removeLines.Add(i);
                         usings.Add(line);

@@ -117,13 +117,13 @@ public class FoldersWithSolutions
 
                 if (p == ProjectsTypes.None)
                 {
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Can't assign to enum type of folder " + item);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.CanTAssignToEnumTypeOfFolder)+" " + item);
                 }
 
                 projectTypes.Add(p, l);
             }
         }
-        projectTypes.Add(ProjectsTypes.Cs, "Projects");
+        projectTypes.Add(ProjectsTypes.Cs, sess.i18n(XlfKeys.Projects));
     }
 
     public static List<string> onlyRealLoadedSolutionsFolders = new List<string>();

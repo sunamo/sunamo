@@ -58,10 +58,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
         {
             return false;
         }
-        if (!end.notTranslateAble && item.EndsWith(f.NotTranslateAblePp))
-        {
-            return false;
-        }
+        
 
 
         if (!c.binFp && item.Contains(Contains.binFp))
@@ -74,7 +71,11 @@ public class CsFileFilter //: FiltersNotTranslateAble
             return false;
         }
 
-        if (!c.tildaRF && item.Contains(Contains.tildaRFPp))
+        if (!c.tildaRF && item.Contains(Contains.tildaRFFp))
+        {
+            return false;
+        }
+        if (!c.notTranslateAble && item.EndsWith(f.NotTranslateAblePp))
         {
             return false;
         }
@@ -99,8 +100,8 @@ public class CsFileFilter //: FiltersNotTranslateAble
 
     public void SetDefault()
     {
-        e = new EndArgs(false, true, true, false, false, false, false, false, false, false);
-        c = new ContainsArgs(false, false, false);
+        e = new EndArgs(false, true, true, false, false, false, false, false, false);
+        c = new ContainsArgs(false, false, false, false);
     }
 
     /// <summary>
@@ -121,7 +122,11 @@ public class CsFileFilter //: FiltersNotTranslateAble
         }
         if (BTS.Is(c.tildaRF,n))
         {
-            l.Add(Contains.tildaRFPp);
+            l.Add(Contains.tildaRFFp);
+        }
+        if (Is(c.notTranslateAble, n))
+        {
+            l.Add(f.NotTranslateAblePp);
         }
 
         return l;
@@ -170,10 +175,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
         {
             l.Add(End.DesignerCsPp);
         }
-        if (Is(e.notTranslateAble, n))
-        {
-            l.Add(f.NotTranslateAblePp);
-        }
+        
 
         return l;
     }
@@ -231,7 +233,8 @@ public class CsFileFilter //: FiltersNotTranslateAble
     {
         public static string objFp = @"\obj\";
         public static string binFp = @"\bin\";
-        public static string tildaRFPp = "~RF";
+        public static string tildaRFFp = "~RF";
+        public const string notTranslateAbleFp = "NotTranslateAble";
 
         public static List<string> u = null;
 
@@ -243,7 +246,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
         public static ContainsArgs FillEndFromFileList(List<string> unindexablePathEnds)
         {
             u = unindexablePathEnds;
-            ContainsArgs ea = new ContainsArgs(c(objFp), c(binFp), c(tildaRFPp));
+            ContainsArgs ea = new ContainsArgs(c(objFp), c(binFp), c(tildaRFFp), c(notTranslateAbleFp));
             return ea;
         }
 
@@ -255,13 +258,14 @@ public class CsFileFilter //: FiltersNotTranslateAble
 
     public class ContainsArgs
     {
-        public bool objFp; public bool binFp; public bool tildaRF;
+        public bool objFp; public bool binFp; public bool tildaRF; public bool notTranslateAble;
 
-        public ContainsArgs(bool objFp, bool binFp, bool tildaRF)
+        public ContainsArgs(bool objFp, bool binFp, bool tildaRF, bool notTranslateAble)
         {
             this.objFp = objFp;
             this.binFp = binFp;
             this.tildaRF = tildaRF;
+            this.notTranslateAble = notTranslateAble;
         }
     }
 
@@ -276,7 +280,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
         public const string gCsPp = ".g.cs";
         public const string tmpPp = ".tmp";
         public const string TMPPp = ".TMP";
-        public const string notTranslateAblePp = "NotTranslateAble.cs";
+        
 
         public static List<string> u = null;
 
@@ -288,7 +292,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
         public static EndArgs FillEndFromFileList(List<string> unindexablePathEnds)
         {
             u = unindexablePathEnds;
-            EndArgs ea = new EndArgs(c(designerCsPp), c(xamlCsPp), c(sharedCsPp), c(iCsPp), c(gICsPp), c(gCsPp), c(tmpPp), c(TMPPp), c(DesignerCsPp), c(notTranslateAblePp));
+            EndArgs ea = new EndArgs(c(designerCsPp), c(xamlCsPp), c(sharedCsPp), c(iCsPp), c(gICsPp), c(gCsPp), c(tmpPp), c(TMPPp), c(DesignerCsPp));
             return ea;
         }
 
@@ -305,9 +309,9 @@ public class CsFileFilter //: FiltersNotTranslateAble
 
     public class EndArgs
     {
-        public bool designerCs; public bool xamlCs; public bool sharedCs; public  bool  iCs; public  bool  gICs; public  bool  gCs; public  bool  tmp; public  bool  TMP; public  bool  DesignerCs; public  bool  notTranslateAble;
+        public bool designerCs; public bool xamlCs; public bool sharedCs; public  bool  iCs; public  bool  gICs; public  bool  gCs; public  bool  tmp; public  bool  TMP; public  bool  DesignerCs; 
 
-        public EndArgs(bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs, bool tmp, bool TMP, bool DesignerCs, bool notTranslateAble)
+        public EndArgs(bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs, bool tmp, bool TMP, bool DesignerCs)
         {
             this.designerCs = designerCs;
             this.xamlCs = xamlCs;
@@ -317,7 +321,7 @@ public class CsFileFilter //: FiltersNotTranslateAble
             this.tmp = tmp;
             this.TMP = TMP;
             this.DesignerCs = DesignerCs;
-            this.notTranslateAble = notTranslateAble;
+            
         }
 
         

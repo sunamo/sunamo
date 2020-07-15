@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -2831,7 +2830,7 @@
         </trans-unit>
         <trans-unit id="AvailableShortcuts" translate="no" xml:space="preserve">
           
-          <target state="translated">Dostupné zkratky</target>
+          <target state="translated">Klávesové zkratky</target>
         </trans-unit>
         <trans-unit id="ParameterDefValInMenuItemWithSubitemsHelperAddValuesOfEnumAsItemsWasNotTypeOfEnum" translate="no" xml:space="preserve">
           
@@ -4339,7 +4338,7 @@
         </trans-unit>
         <trans-unit id="EveryLine" translate="no" xml:space="preserve">
           
-          <target state="translated">Každý řádek</target>
+          <target state="translated">EveryLine</target>
         </trans-unit>
         <trans-unit id="AppWillBeYourInOneMinute" translate="no" xml:space="preserve">
           
@@ -4451,7 +4450,7 @@
         </trans-unit>
         <trans-unit id="UnindexablePathEnds" translate="no" xml:space="preserve">
           
-          <target state="translated">Neindexovatelná cesta končí</target>
+          <target state="translated">Neindexovatelná cesty končící</target>
         </trans-unit>
         <trans-unit id="UnindexableExtensions" translate="no" xml:space="preserve">
           
@@ -4464,6 +4463,190 @@
         <trans-unit id="PrefixWithForIgnoring" translate="no" xml:space="preserve">
           
           <target state="translated">Vlož na začátek # pro ignorování</target>
+        </trans-unit>
+        <trans-unit id="CopiedToClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zkopírováno do schránky</target>
+        </trans-unit>
+        <trans-unit id="IsIncludedAlsoPolymorfismMethods" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zahrnuty jsou také metody polymorfismu</target>
+        </trans-unit>
+        <trans-unit id="IndexOfCachedFiles" translate="no" xml:space="preserve">
+          
+          <target state="translated">Rejstřík souborů v mezipaměti</target>
+        </trans-unit>
+        <trans-unit id="CopyToClipboardNamesOfAllDuplicatedMethods" translate="no" xml:space="preserve">
+          
+          <target state="translated">Názvy všech duplikovaných metod</target>
+        </trans-unit>
+        <trans-unit id="ElementsOfSourceFile" translate="no" xml:space="preserve">
+          
+          <target state="translated">Prvky zdrojového souboru</target>
+        </trans-unit>
+        <trans-unit id="ElementsOfSourceFilesInFolder" translate="no" xml:space="preserve">
+          
+          <target state="translated">Prvky zdrojových souborů ve složce</target>
+        </trans-unit>
+        <trans-unit id="PathSettedToClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cesta byla nastavena do schránky</target>
+        </trans-unit>
+        <trans-unit id="Shared" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sdíleno</target>
+        </trans-unit>
+        <trans-unit id="KeyboardShortcut" translate="no" xml:space="preserve">
+          
+          <target state="translated">Klávesové zkratky</target>
+        </trans-unit>
+        <trans-unit id="Reload" translate="no" xml:space="preserve">
+          
+          <target state="translated">Znovu načíst</target>
+        </trans-unit>
+        <trans-unit id="MoveToNextSearchOccurence" translate="no" xml:space="preserve">
+          
+          <target state="translated">Přejít na další výskyt hledání</target>
+        </trans-unit>
+        <trans-unit id="SearchInPath" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hledání v cestě</target>
+        </trans-unit>
+        <trans-unit id="SearchInContent" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hledání v obsahu</target>
+        </trans-unit>
+        <trans-unit id="SearchInCodeElementsName" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hledání v názvu prvků kódu</target>
+        </trans-unit>
+        <trans-unit id="SaveFile" translate="no" xml:space="preserve">
+          
+          <target state="translated">Uložení souboru</target>
+        </trans-unit>
+        <trans-unit id="FileDatabaseWasReloadedWith" translate="no" xml:space="preserve">
+          
+          <target state="translated">Databáze souborů byla znovu načtena</target>
+        </trans-unit>
+        <trans-unit id="PathE" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cesta (e</target>
+        </trans-unit>
+        <trans-unit id="ContentW" translate="no" xml:space="preserve">
+          
+          <target state="translated">Obsah (w</target>
+        </trans-unit>
+        <trans-unit id="CodeElementsNamesQ" translate="no" xml:space="preserve">
+          
+          <target state="translated">Názvy prvků kódu (q</target>
+        </trans-unit>
+        <trans-unit id="SearchCodeElements" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hledejte prvky kódu</target>
+        </trans-unit>
+        <trans-unit id="IsNotInRange" translate="no" xml:space="preserve">
+          
+          <target state="translated">Není v dosahu</target>
+        </trans-unit>
+        <trans-unit id="ToOpen" translate="no" xml:space="preserve">
+          
+          <target state="translated">Otevřít</target>
+        </trans-unit>
+        <trans-unit id="New" translate="no" xml:space="preserve">
+          
+          <target state="translated">Nový</target>
+        </trans-unit>
+        <trans-unit id="New2" translate="no" xml:space="preserve">
+          
+          <target state="translated">Nová</target>
+        </trans-unit>
+        <trans-unit id="SaveSetAsTemplate" translate="no" xml:space="preserve">
+          
+          <target state="translated">Uložit jako šablonu</target>
+        </trans-unit>
+        <trans-unit id="EnterAValueAndPressEnter" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zadejte hodnotu a stisknete. enter</target>
+        </trans-unit>
+        <trans-unit id="TheValueForTheProgressBarCannotBeGreaterThan100" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hodnota pro ProgressBar nemuze byt vyssi nez 100</target>
+        </trans-unit>
+        <trans-unit id="Child" translate="no" xml:space="preserve">
+          
+          <target state="translated">Dítě</target>
+        </trans-unit>
+        <trans-unit id="Parent" translate="no" xml:space="preserve">
+          
+          <target state="translated">Rodič</target>
+        </trans-unit>
+        <trans-unit id="CantProcessTokenAndSyntaxNodeOutputCouldBeDuplicated" translate="no" xml:space="preserve">
+          
+          <target state="translated">Není možné zároveň zpracovat token a SyntaxNode - výstup by mohl být duplikovaný</target>
+        </trans-unit>
+        <trans-unit id="StopSearch" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zastavit hledání</target>
+        </trans-unit>
+        <trans-unit id="InComments" translate="no" xml:space="preserve">
+          
+          <target state="translated">V komentářích</target>
+        </trans-unit>
+        <trans-unit id="ClassElements" translate="no" xml:space="preserve">
+          
+          <target state="translated">Prvky třídy</target>
+        </trans-unit>
+        <trans-unit id="NamespaceElements" translate="no" xml:space="preserve">
+          
+          <target state="translated">Prvky jmenného prostoru</target>
+        </trans-unit>
+        <trans-unit id="SearchIn" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hledat v</target>
+        </trans-unit>
+        <trans-unit id="AllRight" translate="no" xml:space="preserve">
+          
+          <target state="translated">V pořádku</target>
+        </trans-unit>
+        <trans-unit id="SavedFoldersSets" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložené sady složek</target>
+        </trans-unit>
+        <trans-unit id="Folders" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Složky</target>
+        </trans-unit>
+        <trans-unit id="nameOfSet" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">název sady</target>
+        </trans-unit>
+        <trans-unit id="withName" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">s názvem</target>
+        </trans-unit>
+        <trans-unit id="alreadyExists" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">již existuje</target>
+        </trans-unit>
+        <trans-unit id="UnindexableEntriesCount" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet neindexovatelných položek</target>
+        </trans-unit>
+        <trans-unit id="WholePath" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celá cesta</target>
+        </trans-unit>
+        <trans-unit id="PathEnding" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Konec cesty</target>
+        </trans-unit>
+        <trans-unit id="files7" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">soubory</target>
+        </trans-unit>
+        <trans-unit id="FileName" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název souboru</target>
         </trans-unit>
       </group>
     </body>

@@ -52,7 +52,7 @@ namespace F.WF
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Select browser to open OAuth" + ":";
+            this.label1.Text = sess.i18n(XlfKeys.SelectBrowserToOpenOAuth) + ":";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(16, 30);
             this.comboBox1.Name = "comboBox1";
@@ -63,7 +63,7 @@ namespace F.WF
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Paste given access token" + ":";
+            this.label2.Text = sess.i18n(XlfKeys.PasteGivenAccessToken) + ":";
             this.textBox1.Location = new System.Drawing.Point(19, 74);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(146, 20);
@@ -79,7 +79,7 @@ namespace F.WF
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(65, 23);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Cancel";
+            this.button2.Text = sess.i18n(XlfKeys.Cancel);
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             this.ClientSize = new System.Drawing.Size(179, 137);
@@ -103,7 +103,7 @@ namespace F.WF
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Musite ziskat AccessToken");
+                System.Windows.Forms.MessageBox.Show(sess.i18n(XlfKeys.MusiteZiskatAccessToken));
             }
         }
 

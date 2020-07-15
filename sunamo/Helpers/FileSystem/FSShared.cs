@@ -982,7 +982,7 @@ public partial class FS
             CA.Replace(dirs, folder, string.Empty);
         }
         // Must have backslash on end - is folder
-        CA.PostfixIfNotEnding("\\", dirs);
+        CA.PostfixIfNotEnding(@"\", dirs);
         return dirs;
     }
     public static List<string> GetFolders(string folder, SearchOption so)

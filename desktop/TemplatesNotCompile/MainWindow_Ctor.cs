@@ -19,7 +19,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     EmptyUC emptyUC = null;
     LogUC logUC = null;
     UserControl settingsUC = null;
-    UserControl _actual = new UserControl(); public UserControl actual { get => _actual; set => _actual = value; }
+    Control _actual = new UserControl(); public Control actual { get => _actual; set => _actual = value; }
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
     IUserControlClosing userControlClosing;

@@ -71,7 +71,7 @@ public class AllStrings
     public const string tab = "\t";
     public const string nl = "\n";
     public const string cr = "\r";
-    public const string bs = "\\";
+    public const string bs = @"\";
     public const string slash = "/";
 
     public const string dot = ".";

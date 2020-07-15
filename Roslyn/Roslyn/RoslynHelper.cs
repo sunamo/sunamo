@@ -62,7 +62,7 @@ namespace Roslyn
 
         public static string WrapIntoClass(string code)
         {
-            return "class Dummy" + " {" + code + "}";
+            return RoslynNotTranslateAble.classDummy + " {" + code + "}";
         }
 
         /// <summary>
@@ -205,13 +205,13 @@ namespace Roslyn
                 }
                 else
                 {
-                    ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "Format", syntaxNodeType);
+                    ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod(), syntaxNodeType);
                 }
             }
 
             if (node2 && token)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Cant process token and SyntaxNode - output could be duplicated");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.CantProcessTokenAndSyntaxNodeOutputCouldBeDuplicated));
             }
 
             // Early if token we get Parent, so now we dont get Parent again
@@ -435,7 +435,7 @@ namespace Roslyn
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "FindNode", SH.JoinPairs("Parent", parent, "Child", child));
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "FindNode", SH.JoinPairs(XlfKeys.Parent, parent, XlfKeys.Child, child));
             }
 
             

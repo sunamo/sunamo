@@ -124,7 +124,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                     var cl = RoslynHelper.GetClass(tree.GetRoot());
                     if (cl == null)
                     {
-                        Console.WriteLine(fnwoeAspxCs + " " + "contains more classes");
+                        Console.WriteLine(fnwoeAspxCs + " contains more classes");
                         continue;
                     }
 
@@ -139,7 +139,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                         //cl.Members.Remove(item);
                         if (i == 0)
                         {
-                            var firstTree = CSharpSyntaxTree.ParseText("  " + "  " + "  " + "  " + "  " + "  " + "public" + " " + fnwoeAspxCs + "Cs cs" + ";");
+                            var firstTree = CSharpSyntaxTree.ParseText("            public " + fnwoeAspxCs + RoslynNotTranslateAble.CsCs + ";");
                             firstNode = firstTree.GetRoot().ChildNodes().First();
                             cl = cl.ReplaceNode(item, firstNode);
                         }
@@ -172,7 +172,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                     var ctorArgs = SH.JoinKeyValueCollection(dict.OnlyAs(), onlyB, AllStrings.space, AllStrings.comma);
                     var ctorInner = CSharpHelper.GetCtorInner(3, onlyB);
                     var code = swCode.ToString();
-                    code = SH.ReplaceOnce(code, "protected void Page_Load", "public override void Page_Load");
+                    code = SH.ReplaceOnce(code, RoslynNotTranslateAble.protectedVoidPageLoad, RoslynNotTranslateAble.publicOverrideVoidPageLoad);
 
                     string c = GetContentOfNewAspxCs(fnwoeAspxCs + "Cs", SH.Join(AllStrings.comma, onlyB));
                     //SyntaxTree addedCode = CSharpSyntaxTree.ParseText(c);
@@ -183,14 +183,14 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                     int classIndex = -1;
                     contentFileNew = CSharpGenerator.AddIntoClass(contentFileNew, SH.GetLines(c), out classIndex, ns);
 
-                    List<string> us = CA.ToList(ns, ns + "X", "System", "System.Web.UI");
+                    List<string> us = CA.ToList(ns, ns + "X", XlfKeys.System, "System.Web.UI");
                     CSharpGenerator genUs = new CSharpGenerator();
                     foreach (var item in us)
                     {
                         genUs.Using(item);
                     }
                     genUs.AppendLine();
-                    genUs.Namespace(0, ("sunamo.cz" + "." + ns).TrimEnd(AllChars.dot));
+                    genUs.Namespace(0, ("sunamo.cz." + ns).TrimEnd(AllChars.dot));
 
 
                     contentFileNew.Insert(0, genUs.ToString());

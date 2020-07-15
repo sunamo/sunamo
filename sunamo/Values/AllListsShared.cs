@@ -54,7 +54,7 @@ public partial class AllLists
 			htmlEntitiesDict.Add("commat", "@");
 			htmlEntitiesDict.Add("lsqb", "[");
 			htmlEntitiesDict.Add("lbrack", "[");
-			htmlEntitiesDict.Add("bsol", "\\");
+			htmlEntitiesDict.Add("bsol", @"\");
 			htmlEntitiesDict.Add("rsqb", "]");
 			htmlEntitiesDict.Add("rbrack", "]");
 			htmlEntitiesDict.Add("Hat", "^");

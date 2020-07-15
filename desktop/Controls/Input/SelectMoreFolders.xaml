@@ -18,7 +18,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <Button x:Name="btnAddFolder" Click="BtnAddFolder_Click"></Button>
-            <Button x:Name="btnAddAsTemplate" Click="BtnAddAsTemplate_Click"></Button>
+            <Button x:Name="btnAddAsTemplate" Click="BtnAddAsTemplate_Click" ></Button>
         </StackPanel>
         </StackPanel>
     </Grid>

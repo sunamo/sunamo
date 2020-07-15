@@ -808,7 +808,7 @@ Into A1 insert:
                 }
             }
 
-            CSharpParser.RemoveConsts(@"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs", idsEndingEnd);
+            CSharpParser.RemoveConsts(XmlLocalisationInterchangeFileFormatSunamo.pathXlfKeys, idsEndingEnd);
 
             d.xd.Save(fn);
         }
@@ -1025,7 +1025,7 @@ sess.i18n(XlfKeys.IsNotInRange)");
             addToNotToTranslateStrings = new CollectionWithoutDuplicates<string>();
             solutionsExcludeWhileWorkingOnSourceCode.Add("AllProjectsSearchTestFiles");
 
-            CA.WrapWith(solutionsExcludeWhileWorkingOnSourceCode, "\\");
+            CA.WrapWith(solutionsExcludeWhileWorkingOnSourceCode, @"\");
 
             Dictionary<string, string> filesWithXlf = new Dictionary<string, string>();
 

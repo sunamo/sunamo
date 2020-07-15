@@ -22,7 +22,7 @@ namespace F.WF
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Enter";
+            this.button1.Text = sess.i18n(XlfKeys.Enter);
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -42,7 +42,7 @@ namespace F.WF
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Zadejte hodnotu a stisknete. enter" + ":";
+            this.label1.Text = sess.i18n(XlfKeys.EnterAValueAndPressEnter) + ":";
             // 
             // EnterValueForm
             // 
@@ -84,8 +84,8 @@ namespace F.WF
         public EnterValueForm(string label)
             : this()
         {
-            Text = "Enter" + " " + label;
-            label1.Text = "Enter" + " " + label + " " + "and press enter" + ": ";
+            Text = sess.i18n(XlfKeys.Enter) + " " + label;
+            label1.Text = sess.i18n(XlfKeys.Enter) + " " + label + " and press enter: ";
 
         }
 

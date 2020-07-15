@@ -20,7 +20,7 @@ public static partial class CL{
     {
         foreach (var item in actions)
         {
-            if (item.Key != "None")
+            if (item.Key != sess.i18n(XlfKeys.None))
             {
                 allActions.Add(v + AllStrings.swd + item.Key, item.Value);
             }

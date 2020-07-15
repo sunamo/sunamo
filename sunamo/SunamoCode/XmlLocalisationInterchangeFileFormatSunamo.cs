@@ -77,14 +77,16 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
 
         //Clipboard.SetText(sb.ToString());
     }
-    
+
+    public static string pathXlfKeys = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs";
+
     /// <summary>
     /// Compare to whole line
     /// </summary>
     public static void RemoveDuplicatedXlfKeysConsts()
     {
         int i;
-        var pathXlfKeys = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs";
+        
         var l = File.ReadAllLines(pathXlfKeys).ToList();
 
         for (i = 0; i < l.Count(); i++)
@@ -141,7 +143,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
     {
         int y, i;
         //AllLists.InitHtmlEntitiesDict();
-        var path = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs";
+        var path = pathXlfKeys;
         var ls = File.ReadAllLines(path).ToList();
         //var ls = SH.GetLines(s);
         int first;

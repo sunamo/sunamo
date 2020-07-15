@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-public static partial class SHNotTranslateAble{ 
-/// <summary>
+public static partial class SHNotTranslateAble
+{
+    /// <summary>
     /// Due to app take to2 which is \\\\" and first line dont have ending quote
     /// </summary>
     /// <param name="value"></param>

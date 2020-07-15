@@ -233,7 +233,7 @@ using System.Diagnostics;
                             // Note that if the symlink target path contains any ..s these are not normalised but returned as is.
                         }
                         // Remove any final slash for consistency
-                        if (normalisedTarget.EndsWith("\\"))
+                        if (normalisedTarget.EndsWith(@"\"))
                         {
                             normalisedTarget = normalisedTarget.Substring(0, normalisedTarget.Length - 1);
                         }

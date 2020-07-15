@@ -40,8 +40,10 @@ namespace desktop.Controls
             cbDefaultFolders.IsEditable = false;
             cbDefaultFolders.ItemsSource = DefaultPaths.All;
             cbDefaultFolders.SelectionChanged += CbDefaultFolders_SelectionChanged;
-            
+
 #endif
+
+            btnSelectFolder.Content = sess.i18n(XlfKeys.SelectTheFolder);
 
             Loaded += SelectFolder_Loaded;
         }

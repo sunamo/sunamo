@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>9a19103f-16f7-4668-be54-9a1e7a4f7556</ProjectTypeGuids>
     <ProjectGuid>3204432D-B6E7-4481-BEB0-8B177AF809C2</ProjectGuid>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <ProjectTypeGuids>9a19103f-16f7-4668-be54-9a1e7a4f7556</ProjectTypeGuids>

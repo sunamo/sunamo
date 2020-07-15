@@ -23,6 +23,6 @@ public static string ActualWindowsUserName()
     {
         // return ed\w
         var un = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-        return SH.TextAfter(un, "\\");
+        return SH.TextAfter(un, @"\");
     }
 }

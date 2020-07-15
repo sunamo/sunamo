@@ -37,6 +37,8 @@ public class DynLayout
         }
     }
 
+    Thickness uit = new Thickness(10, 5, 10, 5);
+
     /// <summary>
     /// Example and best case use is in Wpf.Tests
     /// </summary>
@@ -45,7 +47,7 @@ public class DynLayout
     /// <param name="ui"></param>
     public void AddControl(int row, string name, FrameworkElement ui)
     {
-        Thickness uit = new Thickness(10, 5, 10, 5);
+        
 
         Grid.SetRow(ui, row);
         Grid.SetColumn(ui, 1);
@@ -57,14 +59,30 @@ public class DynLayout
         ui.Width = double.NaN;
         gridGrowable.Children.Add(ui);
 
-        var tb = TextBlockHelper.Get(new ControlInitData { text = name });
-        tb.HorizontalAlignment = HorizontalAlignment.Right;
-        tb.Margin = uit;
+        if (name != null)
+        {
+            AddLabel(row, name);
+        }
 
+
+
+        fwElements.Add(ui);
+    }
+
+    public void AddLabel(int row, string name)
+    {
+        var tb = TextBlockHelper.Get(new ControlInitData { text = name });
+        
+        AddLabel(row, tb);
+    }
+
+    public void AddLabel(int row, TextBlock tb)
+    {
+        tb.HorizontalAlignment = HorizontalAlignment.Right;
+        tb.VerticalAlignment = VerticalAlignment.Center;
+        tb.Margin = uit;
         Grid.SetRow(tb, row);
         Grid.SetColumn(tb, 0);
         gridGrowable.Children.Add(tb);
-
-        fwElements.Add(ui);
     }
 }

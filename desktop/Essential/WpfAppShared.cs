@@ -92,7 +92,7 @@ public partial class WpfApp{
         return false;
 
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Entering IsSomethingNull");
+        sb.AppendLine(DesktopNotTranslateAble.EnteringIsSomethingNull);
         bool vr = false;
 
         if (WpfApp.cd == null)
@@ -102,18 +102,20 @@ public partial class WpfApp{
 
         if (vr)
         {
-            sb.AppendLine("WpfApp.cd was null");
+
+            sb.AppendLine(DesktopNotTranslateAble.WpfAppCdWasNull);
             Exception ex = new Exception();
 
             try
             {
-                sb.AppendLine("Empty try block");
+                sb.AppendLine(DesktopNotTranslateAble.EmptyTryBlock);
             }
             catch (Exception ex2)
             {
                 ex = ex2;
-                sb.AppendLine("Catch block from empty try block");
+                sb.AppendLine(DesktopNotTranslateAble.CatchBlockFromEmptyTryBlock);
             }
+
 
             bool run = false;
             //sb.AppendLine("Is my computer");

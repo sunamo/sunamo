@@ -18,6 +18,6 @@
 
         <GridSplitter Grid.Column="1" Width="6" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Stretch"></GridSplitter>
 
-        <desktopControlsCollections:LoggerUC x:Name="lbLogsOthers" x:FieldModifier="public" Grid.Column="2"></desktopControlsCollections:LoggerUC>
+        <desktopControlsCollections:LoggerUC Grid.Column="2" x:Name="lbLogsOthers" x:FieldModifier="public"></desktopControlsCollections:LoggerUC>
     </Grid> 
 </UserControl>

@@ -61,7 +61,7 @@ public static partial class CL
     /// <param name = "text"></param>
     public static bool? UserMustTypeYesNo(string text)
     {
-        string entered = UserMustType(text + " (" + "Yes/No" + ") ", false);
+        string entered = UserMustType(text + " (Yes/No) ", false);
         // was pressed esc etc.
         if (entered == null)
         {
@@ -109,7 +109,7 @@ public static partial class CL
         Console.WriteLine();
         for (int i = 0; i < variants.Count; i++)
         {
-            Console.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "    " + variants[i]);
+            Console.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "  " + variants[i]);
         }
 
         return UserMustTypeNumber(what, variants.Count - 1);
@@ -126,7 +126,7 @@ public static partial class CL
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
-            Console.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "    " + kvp.Key);
+            Console.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "  " + kvp.Key);
             i++;
         }
 
@@ -178,7 +178,7 @@ public static partial class CL
             whatOrTextWithoutEndingDot = sess.i18n(XlfKeys.Enter) + " " + whatOrTextWithoutEndingDot + "";
         }
 
-        whatOrTextWithoutEndingDot += ". " + sess.i18n(XlfKeys.ForExitEnter) + " -1" + ".";
+        whatOrTextWithoutEndingDot += ". " + sess.i18n(XlfKeys.ForExitEnter) + " -1.";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -234,7 +234,7 @@ public static partial class CL
         if (z == string.Empty)
         {
             z = ClipboardHelper.GetText();
-            TypedConsoleLogger.Instance.Information(sess.i18n(XlfKeys.AppLoadedFromClipboard) + " " + ": " + z);
+            TypedConsoleLogger.Instance.Information(sess.i18n(XlfKeys.AppLoadedFromClipboard) + " : " + z);
         }
 
         return z.Trim().Trim(AllChars.st).Trim();
@@ -372,7 +372,7 @@ public static void OperationWasStopped()
         }
         else
         {
-            Console.WriteLine("Press enter when data will be in clipboard");
+            Console.WriteLine(sess.i18n(XlfKeys.PressEnterWhenDataWillBeInClipboard));
             Console.ReadLine();
             imageFile = ClipboardHelper.GetText();
         }
@@ -394,7 +394,7 @@ public static string AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> Ad
             //168-0-143-16
 
             bool? loadFromClipboard = false;
-            loadFromClipboard = CL.UserMustTypeYesNo("Do you want load data only from clipboard");
+            loadFromClipboard = CL.UserMustTypeYesNo(sess.i18n(XlfKeys.DoYouWantLoadDataOnlyFromClipboard));
 
             CmdApp.loadFromClipboard = loadFromClipboard.Value;
 
@@ -435,7 +435,7 @@ public static string AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> Ad
 
                     if (potentiallyValid.Count == 0)
                     {
-                        ThisApp.SetStatus(TypeOfMessage.Information, "No action was found");
+                        ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.NoActionWasFound));
                     }
                     else
                     {

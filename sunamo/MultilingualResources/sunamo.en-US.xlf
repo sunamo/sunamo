@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -13267,6 +13266,10 @@ A fraternal form of manifestation is the bliss</target>
           
           <target state="translated">is not in range</target>
         </trans-unit>
+        <trans-unit id="IsNotInRange" translate="no" xml:space="preserve">
+          
+          <target state="translated">Is not in range</target>
+        </trans-unit>
         <trans-unit id="AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion" translate="no" xml:space="preserve">
           
           <target state="translated">App can sometimes seem to be frozen. Please be patient, async operation will be implemented in upcoming version</target>
@@ -13357,7 +13360,7 @@ A fraternal form of manifestation is the bliss</target>
         </trans-unit>
         <trans-unit id="UnindexablePathEnds" translate="no" xml:space="preserve">
           
-          <target state="translated">Unindexable path ends</target>
+          <target state="translated">Unindexable paths ends</target>
         </trans-unit>
         <trans-unit id="UnindexableExtensions" translate="no" xml:space="preserve">
           
@@ -13370,6 +13373,278 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="PrefixWithForIgnoring" translate="no" xml:space="preserve">
           
           <target state="translated">Prefix with # for ignoring</target>
+        </trans-unit>
+        <trans-unit id="CopiedToClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Copied to clipboard</target>
+        </trans-unit>
+        <trans-unit id="SearchCodeElements" translate="no" xml:space="preserve">
+          
+          <target state="translated">Search code elements</target>
+        </trans-unit>
+        <trans-unit id="CodeElementsNamesQ" translate="no" xml:space="preserve">
+          
+          <target state="translated">Code elements names (q</target>
+        </trans-unit>
+        <trans-unit id="ContentW" translate="no" xml:space="preserve">
+          
+          <target state="translated">Content (w</target>
+        </trans-unit>
+        <trans-unit id="PathE" translate="no" xml:space="preserve">
+          
+          <target state="translated">Path (e</target>
+        </trans-unit>
+        <trans-unit id="FileDatabaseWasReloadedWith" translate="no" xml:space="preserve">
+          
+          <target state="translated">File database was reloaded with</target>
+        </trans-unit>
+        <trans-unit id="SaveFile" translate="no" xml:space="preserve">
+          
+          <target state="translated">Save file</target>
+        </trans-unit>
+        <trans-unit id="SearchInCodeElementsName" translate="no" xml:space="preserve">
+          
+          <target state="translated">Search in code elements name</target>
+        </trans-unit>
+        <trans-unit id="SearchInContent" translate="no" xml:space="preserve">
+          
+          <target state="translated">Search in content</target>
+        </trans-unit>
+        <trans-unit id="SearchInPath" translate="no" xml:space="preserve">
+          
+          <target state="translated">Search in path</target>
+        </trans-unit>
+        <trans-unit id="MoveToNextSearchOccurence" translate="no" xml:space="preserve">
+          
+          <target state="translated">Move to next search occurence</target>
+        </trans-unit>
+        <trans-unit id="Reload" translate="no" xml:space="preserve">
+          
+          <target state="translated">Reload</target>
+        </trans-unit>
+        <trans-unit id="KeyboardShortcut" translate="no" xml:space="preserve">
+          
+          <target state="translated">Keyboard shortcut</target>
+        </trans-unit>
+        <trans-unit id="PathSettedToClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Path setted to clipboard</target>
+        </trans-unit>
+        <trans-unit id="ElementsOfSourceFilesInFolder" translate="no" xml:space="preserve">
+          
+          <target state="translated">Elements of source files in folder</target>
+        </trans-unit>
+        <trans-unit id="ElementsOfSourceFile" translate="no" xml:space="preserve">
+          
+          <target state="translated">Elements of source file</target>
+        </trans-unit>
+        <trans-unit id="CopyToClipboardNamesOfAllDuplicatedMethods" translate="no" xml:space="preserve">
+          
+          <target state="translated">Copy to clipboard names of all duplicated methods</target>
+        </trans-unit>
+        <trans-unit id="IndexOfCachedFiles" translate="no" xml:space="preserve">
+          
+          <target state="translated">Index of cached files</target>
+        </trans-unit>
+        <trans-unit id="IsIncludedAlsoPolymorfismMethods" translate="no" xml:space="preserve">
+          
+          <target state="translated">Is included also polymorfism methods</target>
+        </trans-unit>
+        <trans-unit id="ToOpen" translate="no" xml:space="preserve">
+          
+          <target state="translated">To open</target>
+        </trans-unit>
+        <trans-unit id="New" translate="no" xml:space="preserve">
+          
+          <target state="translated">New</target>
+        </trans-unit>
+        <trans-unit id="New2" translate="no" xml:space="preserve">
+          
+          <target state="translated">New</target>
+        </trans-unit>
+        <trans-unit id="SaveSetAsTemplate" translate="no" xml:space="preserve">
+          
+          <target state="translated">Save set as template</target>
+        </trans-unit>
+        <trans-unit id="PressEnterWhenDataWillBeInClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Press enter when data will be in clipboard</target>
+        </trans-unit>
+        <trans-unit id="DoYouWantLoadDataOnlyFromClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Do you want load data only from clipboard</target>
+        </trans-unit>
+        <trans-unit id="NoActionWasFound" translate="no" xml:space="preserve">
+          
+          <target state="translated">No action was found</target>
+        </trans-unit>
+        <trans-unit id="MinimumAndMaximumValuesAreNotSupported" translate="no" xml:space="preserve">
+          
+          <target state="translated">Minimum and maximum values are not supported</target>
+        </trans-unit>
+        <trans-unit id="SelectBrowserToOpenOAuth" translate="no" xml:space="preserve">
+          
+          <target state="translated">Select browser to open OAuth</target>
+        </trans-unit>
+        <trans-unit id="PasteGivenAccessToken" translate="no" xml:space="preserve">
+          
+          <target state="translated">Paste given access token</target>
+        </trans-unit>
+        <trans-unit id="MusiteZiskatAccessToken" translate="no" xml:space="preserve">
+          
+          <target state="translated">Musite ziskat AccessToken</target>
+        </trans-unit>
+        <trans-unit id="MicrosoftSansSerif" translate="no" xml:space="preserve">
+          
+          <target state="translated">Microsoft Sans Serif</target>
+        </trans-unit>
+        <trans-unit id="WhatDoYouWantProceed" translate="no" xml:space="preserve">
+          
+          <target state="translated">What do you want proceed</target>
+        </trans-unit>
+        <trans-unit id="KeepRight" translate="no" xml:space="preserve">
+          
+          <target state="translated">Keep right</target>
+        </trans-unit>
+        <trans-unit id="KeepLeft" translate="no" xml:space="preserve">
+          
+          <target state="translated">Keep left</target>
+        </trans-unit>
+        <trans-unit id="Merge" translate="no" xml:space="preserve">
+          
+          <target state="translated">Merge</target>
+        </trans-unit>
+        <trans-unit id="EnterAValueAndPressEnter" translate="no" xml:space="preserve">
+          
+          <target state="translated">Enter a value and press. enter</target>
+        </trans-unit>
+        <trans-unit id="TypeValuesForReplacing" translate="no" xml:space="preserve">
+          
+          <target state="translated">Type values for replacing</target>
+        </trans-unit>
+        <trans-unit id="OldValue" translate="no" xml:space="preserve">
+          
+          <target state="translated">Old value</target>
+        </trans-unit>
+        <trans-unit id="NewValue" translate="no" xml:space="preserve">
+          
+          <target state="translated">New value</target>
+        </trans-unit>
+        <trans-unit id="Replace" translate="no" xml:space="preserve">
+          
+          <target state="translated">Replace</target>
+        </trans-unit>
+        <trans-unit id="ValuesAreEquals" translate="no" xml:space="preserve">
+          
+          <target state="translated">Values are equals</target>
+        </trans-unit>
+        <trans-unit id="TheValueForTheProgressBarCannotBeGreaterThan100" translate="no" xml:space="preserve">
+          
+          <target state="translated">The value for the ProgressBar cannot be greater than 100</target>
+        </trans-unit>
+        <trans-unit id="Format" translate="no" xml:space="preserve">
+          
+          <target state="translated">Format</target>
+        </trans-unit>
+        <trans-unit id="CantProcessTokenAndSyntaxNodeOutputCouldBeDuplicated" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cant process token and SyntaxNode - output could be duplicated</target>
+        </trans-unit>
+        <trans-unit id="Parent" translate="no" xml:space="preserve">
+          
+          <target state="translated">Parent</target>
+        </trans-unit>
+        <trans-unit id="Child" translate="no" xml:space="preserve">
+          
+          <target state="translated">Child</target>
+        </trans-unit>
+        <trans-unit id="System" translate="no" xml:space="preserve">
+          
+          <target state="translated">System</target>
+        </trans-unit>
+        <trans-unit id="CanTAssignToEnumTypeOfFolder" translate="no" xml:space="preserve">
+          
+          <target state="translated">Can't assign to enum type of folder</target>
+        </trans-unit>
+        <trans-unit id="Projects" translate="no" xml:space="preserve">
+          
+          <target state="translated">Projects</target>
+        </trans-unit>
+        <trans-unit id="VisualStudio" translate="no" xml:space="preserve">
+          
+          <target state="translated">Visual Studio</target>
+        </trans-unit>
+        <trans-unit id="FromVPS" translate="no" xml:space="preserve">
+          
+          <target state="translated">From VPS</target>
+        </trans-unit>
+        <trans-unit id="BeforePublishingToVPS" translate="no" xml:space="preserve">
+          
+          <target state="translated">Before publishing to VPS</target>
+        </trans-unit>
+        <trans-unit id="SearchIn" translate="no" xml:space="preserve">
+          
+          <target state="translated">Search in</target>
+        </trans-unit>
+        <trans-unit id="NamespaceElements" translate="no" xml:space="preserve">
+          
+          <target state="translated">Namespace elements</target>
+        </trans-unit>
+        <trans-unit id="ClassElements" translate="no" xml:space="preserve">
+          
+          <target state="translated">Class elements</target>
+        </trans-unit>
+        <trans-unit id="InComments" translate="no" xml:space="preserve">
+          
+          <target state="translated">In comments</target>
+        </trans-unit>
+        <trans-unit id="StopSearch" translate="no" xml:space="preserve">
+          
+          <target state="translated">Stop search</target>
+        </trans-unit>
+        <trans-unit id="AllRight" translate="no" xml:space="preserve">
+          
+          <target state="translated">All right</target>
+        </trans-unit>
+        <trans-unit id="SavedFoldersSets" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Saved folders sets</target>
+        </trans-unit>
+        <trans-unit id="Folders" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Folders</target>
+        </trans-unit>
+        <trans-unit id="nameOfSet" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">name of set</target>
+        </trans-unit>
+        <trans-unit id="withName" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">with name</target>
+        </trans-unit>
+        <trans-unit id="alreadyExists" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">already exists</target>
+        </trans-unit>
+        <trans-unit id="UnindexableEntriesCount" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Unindexable entries count</target>
+        </trans-unit>
+        <trans-unit id="WholePath" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Whole path</target>
+        </trans-unit>
+        <trans-unit id="PathEnding" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Path ending</target>
+        </trans-unit>
+        <trans-unit id="files7" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">files</target>
+        </trans-unit>
+        <trans-unit id="KeyboardShortcuts" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Keyboard shortcuts</target>
         </trans-unit>
       </group>
     </body>

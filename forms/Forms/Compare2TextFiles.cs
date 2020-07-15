@@ -54,12 +54,12 @@ namespace F.WF
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font(sess.i18n(XlfKeys.MicrosoftSansSerif), 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(41, 313);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(232, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "What do you want proceed" + "?";
+            this.label1.Text = sess.i18n(XlfKeys.WhatDoYouWantProceed) + "?";
             // 
             // button1
             // 
@@ -68,7 +68,7 @@ namespace F.WF
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Keep right";
+            this.button1.Text = sess.i18n(XlfKeys.KeepRight);
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -79,7 +79,7 @@ namespace F.WF
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Keep left";
+            this.button2.Text = sess.i18n(XlfKeys.KeepLeft);
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -90,7 +90,7 @@ namespace F.WF
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
-            this.button3.Text = "Merge";
+            this.button3.Text = sess.i18n(XlfKeys.Merge);
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

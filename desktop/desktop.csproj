@@ -250,6 +250,7 @@
     <Compile Include="Controls\Input\SelectMoreFolders.xaml.cs">
       <DependentUpon>SelectMoreFolders.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SelectMoreFoldersWithTemplateSets.cs" />
     <Compile Include="Controls\Input\SelectOneValue.xaml.cs">
       <DependentUpon>SelectOneValue.xaml</DependentUpon>
     </Compile>

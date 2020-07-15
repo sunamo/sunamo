@@ -119,7 +119,7 @@ namespace forms
         {
             if (value > 100)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Hodnota pro ProgressBar nemuze byt vyssi nez 100" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.TheValueForTheProgressBarCannotBeGreaterThan100) + ".");
                 //value = 100;
             }
             p.Value = value;

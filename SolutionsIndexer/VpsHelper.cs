@@ -41,7 +41,7 @@ public class VpsHelper
             var folders = FS.GetFolders(path, SearchOption.TopDirectoryOnly);
             bool release = true;
             string pushArgs = string.Empty;
-            string commitMessage = "From VPS " + DateTime.Today.ToShortDateString();
+            string commitMessage = sess.i18n(XlfKeys.FromVPS)+" " + DateTime.Today.ToShortDateString();
 
             var gitBashBuilder = new GitBashBuilder();
             var gitStatus = new GitBashBuilder();
@@ -57,7 +57,7 @@ public class VpsHelper
             
                 bool release = true;
                 string pushArgs = string.Empty;
-                string commitMessage = "Before publishing to VPS " + DateTime.Today.ToShortDateString();
+                string commitMessage = sess.i18n(XlfKeys.BeforePublishingToVPS)+" " + DateTime.Today.ToShortDateString();
 
             
 
