@@ -187,6 +187,13 @@ public class ClipboardHelper
         ClipboardHelper.SetText(sb.ToString());
     }
 
+    public static void AppendText(string ext)
+    {
+        var t = ClipboardHelper.GetText();
+        t += Environment.NewLine + Environment.NewLine + ext;
+        ClipboardHelper.SetText(t);
+    }
+
     //public static string GetText()
     //{
     //    return Instance.GetText();

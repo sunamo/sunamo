@@ -78,7 +78,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         //Clipboard.SetText(sb.ToString());
     }
 
-    public static string pathXlfKeys = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs";
+    
 
     /// <summary>
     /// Compare to whole line

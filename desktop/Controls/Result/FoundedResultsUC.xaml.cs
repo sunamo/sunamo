@@ -38,6 +38,7 @@ namespace desktop.Controls.Result
         /// <param name="basePath"></param>
         public void Init(params string[] basePath)
         {
+            tbNoResultsFound.Text = sess.i18n(XlfKeys.NoResultsFound);
             basePaths = basePath.ToList();
             SunamoComparerICompare.StringLength.Desc s = new SunamoComparerICompare.StringLength.Desc(SunamoComparer.StringLength.Instance);
             basePaths.Sort(s);

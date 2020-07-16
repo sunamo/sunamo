@@ -16,7 +16,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <TextBlock FontSize="20" x:Name="tbNoResultsFound" Text="No results found" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock FontSize="20" x:Name="tbNoResultsFound" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         
     </Grid>
 </UserControl>

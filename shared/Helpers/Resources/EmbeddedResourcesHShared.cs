@@ -26,6 +26,17 @@ public class EmbeddedResourcesHShared : EmbeddedResourcesH
         _defaultNamespace = ThisApp.Name;
     }
 
+    /// <summary>
+    /// because static ctor sometimes not raise
+    /// </summary>
+    public static void LoadEntryAssembly()
+    {
+        ciShared = new EmbeddedResourcesHShared();
+        ci = ciShared;
+
+       
+    }
+
     public EmbeddedResourcesHShared(Assembly _entryAssembly, string defaultNamespace) : base(_entryAssembly, defaultNamespace)
     {
 

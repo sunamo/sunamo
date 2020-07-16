@@ -6,6 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string Quit = "Quit"; 
+
+	public const string filesFounded = "filesFounded"; 
 	public const string KeyboardShortcuts = "KeyboardShortcuts"; 
 	public const string files7 = "files7"; 
 	public const string PathEnding = "PathEnding"; 

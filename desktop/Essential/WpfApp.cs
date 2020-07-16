@@ -24,7 +24,7 @@ public partial class WpfApp
 
     public static void Shutdown(object o, EventArgs eh)
     {
-        //WpfApp.mp.SetCancelClosing(false);
+        WpfApp.htt.SetCancelClosing(false);
         Application.Current.MainWindow.Close();
     }
 
@@ -215,6 +215,8 @@ public partial class WpfApp
 
     static IEssentialMainWindow _mp = null;
     public static Window window = null;
+
+    public static IHideToTray htt = null;
 
     public static IEssentialMainWindow mp
     {

@@ -517,12 +517,21 @@ public partial class FS
             result = result.ToLower(); 
         }
 
-        if (!SH.ContainsOnly(result.Substring(1), RandomHelper.vsZnakyWithoutSpecial))
+        if (!IsExtension(result))
         {
             return string.Empty;
         }
 
         return result;
+    }
+
+    public static bool IsExtension(string result)
+    {
+        if (!SH.ContainsOnly(result.Substring(1), RandomHelper.vsZnakyWithoutSpecial))
+        {
+            return false;
+        }
+        return true;
     }
 
     /// <summary>
@@ -1706,7 +1715,7 @@ public static byte[] StreamToArrayBytes(System.IO.Stream stream)
     
             if (!SH.ContainsOnly(ext, RandomHelper.vsZnakyWithoutSpecial))
             {
-                return (dynamic)vr + ext;
+                return (dynamic)vr + AllStrings.dot + ext;
             }
             return (dynamic)vr;
         }

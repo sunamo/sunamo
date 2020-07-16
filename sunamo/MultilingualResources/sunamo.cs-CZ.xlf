@@ -2490,7 +2490,7 @@
         </trans-unit>
         <trans-unit id="ScrolledToLine" translate="no" xml:space="preserve">
           
-          <target state="translated">Posunutý na řádek</target>
+          <target state="translated">Posunuto na řádek</target>
         </trans-unit>
         <trans-unit id="AllOfTheInputsMustBeFilled" translate="no" xml:space="preserve">
           
@@ -4609,44 +4609,56 @@
           <target state="translated">V pořádku</target>
         </trans-unit>
         <trans-unit id="SavedFoldersSets" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Uložené sady složek</target>
         </trans-unit>
         <trans-unit id="Folders" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Složky</target>
         </trans-unit>
         <trans-unit id="nameOfSet" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">název sady</target>
         </trans-unit>
         <trans-unit id="withName" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">s názvem</target>
         </trans-unit>
         <trans-unit id="alreadyExists" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">již existuje</target>
         </trans-unit>
         <trans-unit id="UnindexableEntriesCount" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Počet neindexovatelných položek</target>
         </trans-unit>
         <trans-unit id="WholePath" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Celá cesta</target>
         </trans-unit>
         <trans-unit id="PathEnding" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Konec cesty</target>
         </trans-unit>
         <trans-unit id="files7" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">soubory</target>
         </trans-unit>
         <trans-unit id="FileName" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Název souboru</target>
+        </trans-unit>
+        <trans-unit id="filesFounded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">soubory nalezeny</target>
+        </trans-unit>
+        <trans-unit id="KeyboardShortcuts" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Klávesové zkratky</target>
+        </trans-unit>
+        <trans-unit id="Quit" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ukončit</target>
         </trans-unit>
       </group>
     </body>

@@ -13607,44 +13607,52 @@ A fraternal form of manifestation is the bliss</target>
           <target state="translated">All right</target>
         </trans-unit>
         <trans-unit id="SavedFoldersSets" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Saved folders sets</target>
         </trans-unit>
         <trans-unit id="Folders" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Folders</target>
         </trans-unit>
         <trans-unit id="nameOfSet" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">name of set</target>
         </trans-unit>
         <trans-unit id="withName" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">with name</target>
         </trans-unit>
         <trans-unit id="alreadyExists" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">already exists</target>
         </trans-unit>
         <trans-unit id="UnindexableEntriesCount" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Unindexable entries count</target>
         </trans-unit>
         <trans-unit id="WholePath" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Whole path</target>
         </trans-unit>
         <trans-unit id="PathEnding" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Path ending</target>
         </trans-unit>
         <trans-unit id="files7" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">files</target>
         </trans-unit>
         <trans-unit id="KeyboardShortcuts" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Keyboard shortcuts</target>
+        </trans-unit>
+        <trans-unit id="filesFounded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">files founded</target>
+        </trans-unit>
+        <trans-unit id="Quit" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Quit</target>
         </trans-unit>
       </group>
     </body>
