@@ -5,6 +5,12 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
+    public static int FullYear(byte b)
+    {
+        var bs = b.ToString().PadLeft(3, AllChars.zero);
+        return int.Parse("2" + bs);
+    }
+
     #region Helper
     /// <summary>
     /// A2 = SqlServerHelper.DateTimeMinVal
@@ -42,6 +48,11 @@ public partial class DTHelperGeneral
         }
 
         return mal * DTConstants.secondsInDay;
+    }
+
+    public static DateTime WithoutTime(DateTime time)
+    {
+        return new DateTime(time.Year, time.Month, time.Day);
     }
 
     public static string TimeInMsToSeconds(Stopwatch p)

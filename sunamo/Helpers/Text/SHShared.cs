@@ -114,6 +114,13 @@ public static partial class SH
         return i--;
     }
 
+    public static string LastChars(string v1, int v2)
+    {
+        return v1.Substring(v1.Length - v2);
+
+        //mystring.Substring(Math.Max(0, mystring.Length - 4));
+    }
+
     public static List<string> SplitByLetterCount(string s, int c)
     {
         int sl = s.Length;

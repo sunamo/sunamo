@@ -58,6 +58,11 @@ public static partial class NH
         }
     }
 
+    /// <summary>
+    /// Reversion is DTHelperGeneral.FullYear
+    /// </summary>
+    /// <param name="year"></param>
+    /// <returns></returns>
     public static byte Last2NumberByte(int year)
     {
         var ts = year.ToString();
