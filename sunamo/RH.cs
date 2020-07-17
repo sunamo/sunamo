@@ -33,6 +33,11 @@ public class RH
         return value;
     }
 
+    public static string DumpAsString(string v, object device)
+    {
+        return DumpAsString(v, device, DumpProvider.Yaml);
+    }
+
     #region Copy object
     public static object CopyObject(object input)
     {
@@ -486,11 +491,7 @@ public class RH
         return name + Environment.NewLine + dump;
     }
 
-    private static string DumpAsString(string name, object o)
-    {
-        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, "DumpAsString" );
-        return null;
-    }
+
 
     public static string DumpListAsString(string name, IEnumerable o)
     {

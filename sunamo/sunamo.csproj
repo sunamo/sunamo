@@ -156,6 +156,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Constants\ShortenedExceptions.cs" />
     <Compile Include="ConvertBetweenTwoEnums.cs" />
     <Compile Include="Helpers\DT\DTHelperMultiNotTranslateAble.cs" />
     <Compile Include="Helpers\NetHelperSunamo.cs" />

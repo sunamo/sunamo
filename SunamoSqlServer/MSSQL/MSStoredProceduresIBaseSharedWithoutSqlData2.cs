@@ -44,6 +44,48 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesInt(comm);
     }
 
+    /// <summary>
+    /// -1 / short.MaxValue
+    /// </summary>
+    /// <param name="signed"></param>
+    /// <param name="table"></param>
+    /// <param name="d"></param>
+    /// <returns></returns>
+    public short IDOfIDNameShort(bool signed, string table, string d)
+    {
+        return MSStoredProceduresI.ci.SelectCellDataTableShortOneRow(signed, table, ColumnNamesWeb.ID, ColumnNamesWeb.Name, d);
+    }
+
+    public short AddIfNotExistsIDNamesShort(bool signed, string table, string d)
+    {
+        var id = IDOfIDNameShort(signed, table, d);
+        if (IsNullShort(signed, id))
+        {
+            MSTableRowIDName r = new MSTableRowIDName(table, d);
+            return (short)r.InsertToTable();
+        }
+        return id;
+    }
+
+    public bool IsNullShort(bool signed, short v)
+    {
+        if (signed)
+        {
+            if (v == short.MaxValue)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (v == -1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<int> SelectValuesOfColumnAllRowsIntOR(string tabulka, string hledanySloupec, params AB[] aB)
     {
         string hodnoty = MSDatabaseLayer.GetValues(aB);

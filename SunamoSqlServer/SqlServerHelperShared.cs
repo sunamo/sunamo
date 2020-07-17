@@ -147,6 +147,8 @@ public partial class SqlServerHelper
         {
             if (isNVarChar.Count != 0)
             {
+                // Is saved to them in AddLayer
+                // Must call Copy To be actualized
                 column = isNVarChar[table][serie].Name;
             }
 

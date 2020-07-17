@@ -947,11 +947,37 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
     }
     public static MSColumnsDB IDName(int p)
     {
+        return IDNameWorker(p, SqlDbType2.NVarChar);
+    }
+
+    public static MSColumnsDB IDNameVarChar(int p)
+    {
+        return IDNameWorker(p, SqlDbType2.VarChar);
+    }
+
+    public static MSColumnsDB IDNameChar(int p)
+    {
+        return IDNameWorker(p, SqlDbType2.Char);
+    }
+
+    public static MSColumnsDB IDNameNChar(int p)
+    {
+        return IDNameWorker(p, SqlDbType2.NChar);
+    }
+
+    public static MSColumnsDB IDNameWorker(int p, SqlDbType2 tName)
+    {
+        return IDNameWorker(p, tName, SqlDbType2.Int);
+    }
+
+    public static MSColumnsDB IDNameWorker(int p, SqlDbType2 tName, SqlDbType2 tID)
+    {
         return new MSColumnsDB(
-            MSSloupecDB.CI(SqlDbType2.Int, "ID", true),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "Name(" + p.ToString() + ")", false, true)
+            MSSloupecDB.CI(tID, "ID", true),
+            MSSloupecDB.CI(tName, "Name(" + p.ToString() + ")", false, true)
             );
     }
+
     public static MSColumnsDB IDNameShort(int p)
     {
         return new MSColumnsDB(
