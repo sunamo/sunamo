@@ -257,13 +257,13 @@ public static void RenameNumberedSerieFiles(List<string> d, string p, int startF
     /// </summary>
     /// <param name="folder"></param>
     /// <param name="v"></param>
-    public  static string GetStorageFile<StorageFolder, StorageFile>(StorageFolder folder, string v, AbstractCatalog<StorageFolder, StorageFile> ac)
+    public  static StorageFile GetStorageFile<StorageFolder, StorageFile>(StorageFolder folder, string v, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
         if (ac != null)
         {
             return ((dynamic)ac.fs.getStorageFile(folder, v)).Path;
         }
-        return FS.Combine(folder.ToString(), v);
+        return (dynamic)FS.Combine(folder.ToString(), v);
     }
 
     public static void DeleteEmptyFiles(string folder, SearchOption so)

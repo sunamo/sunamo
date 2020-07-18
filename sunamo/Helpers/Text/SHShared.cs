@@ -202,23 +202,26 @@ public static partial class SH
     public static List<int> TabOrSpaceNextTo(string input)
     {
         var tabs = SH.ReturnOccurencesOfString(input, AllStrings.tab);
-        for (int i = 0; i < tabs.Count-1; i++)
-        {
-            var dx = tabs[i] + 1;
-            if (input[i] == AllChars.space)
-            {
-                tabs.Add(dx);
-            }
-        }
 
-        for (int i = 1; i < tabs.Count; i++)
-        {
-            var dx = tabs[i] - 1;
-            if (input[i] == AllChars.space)
-            {
-                tabs.Add(dx);
-            }
-        }
+        // nevím k čemu to tu je ale když jsem měl řetězec b nopCommerce\tSimplCommerce\tSmartStoreNET\tgrandnode\tKartris tak mi to vrátilo navíc o 2 \t kde nikdy nebyly
+
+        //for (int i = 0; i < tabs.Count-1; i++)
+        //{
+        //    var dx = tabs[i] + 1;
+        //    if (input[i] == AllChars.space)
+        //    {
+        //        tabs.Add(dx);
+        //    }
+        //}
+
+        //for (int i = 1; i < tabs.Count; i++)
+        //{
+        //    var dx = tabs[i] - 1;
+        //    if (input[i] == AllChars.space)
+        //    {
+        //        tabs.Add(dx);
+        //    }
+        //}
         return tabs;
     }
 

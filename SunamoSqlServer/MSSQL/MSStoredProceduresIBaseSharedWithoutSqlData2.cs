@@ -3402,6 +3402,20 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return n;
     }
 
+    public short UpdatePlusShortValue(string table, string sloupecKUpdate, short pridej, params AB[] where)
+    {
+        short d = SelectCellDataTableShortOneRow(true, table, sloupecKUpdate, where);
+        if (d == short.MaxValue)
+        {
+            return d;
+        }
+        short n = pridej;
+        n = (short)(d + pridej);
+        //}
+        Update(table, sloupecKUpdate, n, where);
+        return n;
+    }
+
     public byte UpdateMinusByteValue(string table, string sloupecKUpdate, byte pridej, string sloupecID, object hodnotaID)
     {
         byte d = SelectCellDataTableByteOneRow(table, sloupecKUpdate, sloupecID, hodnotaID);

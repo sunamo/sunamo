@@ -19,7 +19,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
     public string GetFullPath(FileNameWithDateTime<StorageFolder, StorageFile> o)
     {
         //ThrowExceptions.Custom
-        return FS.GetStorageFile<StorageFolder, StorageFile>(_folder, o.fnwoe + _ext, ac);
+        return FS.StorageFilePath<StorageFolder, StorageFile>( FS.GetStorageFile<StorageFolder, StorageFile>(_folder, o.fnwoe + _ext, ac), ac);
     }
     
     public DateTimeFileIndex()
@@ -36,7 +36,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
     {
         this.ac = ac;
         _ds = ds;
-        _folder = ac.appData.GetFolder(af);
+        _folder = FS.CiStorageFolder<StorageFolder, StorageFile>( AppData.ci.GetFolder(af), null);
         _ext = ext;
         string mask = "????_??_??_";
         if (ds == FileEntriesDuplicitiesStrategy.Serie)
@@ -55,7 +55,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
         var files2 = FS.GetFilesInterop(_folder, mask, false, ac);
         foreach (var item in files2)
         {
-            var itemS = ac.fs.pathFromStorageFile(item);
+            var itemS = FS.StorageFilePath<StorageFolder, StorageFile>(item, ac);
             files.Add(CreateObjectFileNameWithDateTime(string.Empty, string.Empty, itemS, ac));
         }
         if (ds == FileEntriesDuplicitiesStrategy.Serie)
@@ -161,7 +161,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
     }
     public string GetStorageFile(FileNameWithDateTime<StorageFolder, StorageFile> o)
     {
-        return FS.GetStorageFile(_folder, o.fnwoe + _ext, ac);
+        return FS.StorageFilePath<StorageFolder, StorageFile>( FS.GetStorageFile(_folder, o.fnwoe + _ext, ac), ac);
         //return FS.Combine(folder, o.fnwoe + ext);
     }
     /// <summary>
@@ -198,8 +198,9 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
         {
             // Zbytečné, kontroluje se již v konstruktoru
         }
-        var storageFile = ac.fs.getStorageFile(_folder, DeleteWrongCharsInFileName(fnwoe) + _ext);
-        ac.tf.writeAllText(storageFile, content);
+
+        var storageFile = FS.GetStorageFile<StorageFolder, StorageFile>(_folder, DeleteWrongCharsInFileName(fnwoe) + _ext, ac);
+        TF.WriteAllText<StorageFolder, StorageFile>(storageFile, content, ac);
 #if DEBUG
         //DebugLogger.DebugWriteLine(storageFile.FullPath());
 #endif
