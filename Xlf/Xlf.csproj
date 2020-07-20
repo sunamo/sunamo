@@ -89,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CredentialsWithoutDep\WinSec\WinSec.csproj">
-      <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
+      <Project>{158d67b1-d895-4a7d-a5d4-fcd24a4fbf65}</Project>
       <Name>WinSec</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">

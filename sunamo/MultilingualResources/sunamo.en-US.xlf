@@ -13654,6 +13654,10 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Quit</target>
         </trans-unit>
+        <trans-unit id="GeoCaching" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">GeoCaching</target>
+        </trans-unit>
       </group>
     </body>
   </file>

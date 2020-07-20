@@ -4660,6 +4660,30 @@
           <source></source>
           <target state="translated">Ukončit</target>
         </trans-unit>
+        <trans-unit id="Lyrics" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Lyrics</target>
+        </trans-unit>
+        <trans-unit id="GeoCaching" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Geocaching</target>
+        </trans-unit>
+        <trans-unit id="Apps" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace</target>
+        </trans-unit>
+        <trans-unit id="Shortener" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zkrátka</target>
+        </trans-unit>
+        <trans-unit id="Photos" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fotky</target>
+        </trans-unit>
+        <trans-unit id="Dart" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Šipka</target>
+        </trans-unit>
       </group>
     </body>
   </file>

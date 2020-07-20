@@ -14,6 +14,15 @@ public class ExternalLoginResult //: ExternalLoginResult
         get;
         set;
     }
+
+    /// <summary>
+    /// int.MaxValue for never asking
+    /// </summary>
+    public string P1
+    {
+        get;
+        set;
+    }
 }
 
 //public interface ExternalLoginResult

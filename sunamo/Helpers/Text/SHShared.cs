@@ -134,15 +134,18 @@ public static partial class SH
         List<string> ls = new List<string>(c);
         int from = 0;
 
-        while(true)
+        while(s.Length > from + c-2)
         {
-            ls.Add(s.Substring(from, c));
+            
+                ls.Add(s.Substring(from, c));
 
                 from += c;
-            if (from == sl)
-            {
-                break;
-            }
+                if (from == sl)
+                {
+                    break;
+                }
+            
+            
         }
         return ls;
     }
