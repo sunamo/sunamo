@@ -122,7 +122,7 @@ public class XlfResourcesH
             exists = true;
         }
 
-        exists = false;
+        //exists = false;
 
         // This is totally important
         // Otherwise is loading in non UWP apps from resx
