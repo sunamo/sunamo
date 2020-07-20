@@ -122,6 +122,8 @@ public class XlfResourcesH
             exists = true;
         }
 
+        exists = false;
+
         // This is totally important
         // Otherwise is loading in non UWP apps from resx
         if (!exists)
@@ -138,6 +140,8 @@ public class XlfResourcesH
             var enc = Encoding.GetEncoding(65001);
 
             xlfContent = rm.GetByteArrayAsString(fn);
+
+            FS.CreateUpfoldersPsysicallyUnlessThere(file);
             //xlfContent = xlfContent.Skip(3);
             File.WriteAllText(file, xlfContent, enc);
             TFXlf.RemoveDoubleBomUtf8(file);
@@ -252,8 +256,5 @@ public class XlfResourcesH
                 }
             }
         }
-
-
-
     }
 }
