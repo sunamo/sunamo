@@ -770,6 +770,10 @@
     <Folder Include="MultilingualResources\CopyWhileMassAdding\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
+      <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
+      <Name>SunamoExceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\sunamoWithoutDep\SunamoJson\SunamoJson.csproj">
       <Project>{08FB687D-1C9D-4E67-AD6F-9AA93FC750AA}</Project>
       <Name>SunamoJson</Name>

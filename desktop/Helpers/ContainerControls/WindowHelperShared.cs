@@ -32,11 +32,17 @@ public partial class WindowHelper{
         dump = RH.DumpAsString(string.Empty, e, DumpProvider.Reflection);
         ShowTextResult result = new ShowTextResult(methodName + dump);
         result.ChangeDialogResult += Result_ChangeDialogResult;
-        windowOpener = Application.Current.MainWindow as IWindowOpener;
+        var mw = Application.Current.MainWindow;
+        windowOpener = mw as IWindowOpener;
 
         if (windowOpener == null)
         {
-            MessageBox.Show(sess.i18n(XlfKeys.MainWindowMustBeIWindowOpenerDueToShowExceptions));
+            var d = sess.i18n(XlfKeys.MainWindowMustBeIWindowOpenerDueToShowExceptions) + $"Is Application.Current.MainWindow null: {mw == null}";
+            if (mw != null)
+            {
+                d += $"Type: {mw.GetType()}";
+            }
+            MessageBox.Show(d);
         }
         else
         {

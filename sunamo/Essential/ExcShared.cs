@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 public class Exc
 {
+    public static bool aspnet
+    {
+        get => SunamoExceptions.Exc.aspnet;
+        set => SunamoExceptions.Exc.aspnet = value;
+    }
+
     #region For easy copy in SunamoException project
-    public static bool aspnet = false;
+
     static StringBuilder sb = new StringBuilder();
 
     /// <summary>

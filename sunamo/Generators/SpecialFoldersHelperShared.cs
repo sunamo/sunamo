@@ -5,7 +5,17 @@ using System.IO;
 
 public static partial class SpecialFoldersHelper
 {
-    public static bool aspnet = false;
+    public static bool aspnet
+    {
+        get
+        {
+            return Exc.aspnet;
+        }
+        set
+        {
+            Exc.aspnet = SunamoExceptions.Exc.aspnet = value;
+        }
+    }
 
     public static string AppDataRoaming()
     {
