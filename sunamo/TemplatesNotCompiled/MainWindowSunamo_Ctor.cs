@@ -6,13 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-   public  class MainWindowSunamo_Ctor
-    {
+public  class MainWindowSunamo_Ctor
+{
     public static void FirstSection(string appName, Action WpfAppInit, IClipboardHelper ClipboardHelperWinInstance, Action checkForAlreadyRunning)
     {
         ThisApp.Name = appName;
         WpfAppInit();
-        checkForAlreadyRunning();
+        if (checkForAlreadyRunning != null)
+        {
+            checkForAlreadyRunning();
+        }
 
         ClipboardHelper.Instance = ClipboardHelperWinInstance;
         AppData.ci.CreateAppFoldersIfDontExists();

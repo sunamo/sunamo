@@ -1,0 +1,152 @@
+cd zkontrolovat nabití in karty,nabití 14.3. a 17.4.
+doma se kouknout na aktuální odměny za cd body 
+buy sd cards, in mobile I don't have any 
+remove *sync-conflict* files from sync-thing files
+vodnář a další to text 
+Herudek raději napsat ať si to může rozmyslet 
+zkontrolovat všechny webmaster tools jestli nehlásí nějaké chyby 
+nedávat sess na řádky s parametry uri,na Warning(PageHelperBase.GetErrorDescriptionStringURI(rTerm, XlfKeys.Term));,ResultCheckWebArgument rTerm = RoutePageHelper.CheckStringArgument(RouteData, XlfKeys.Term, out searchTerm);
+restore mahjong but backup backup first 
+download rande 6. 9. 1997 silvie,stir
+v onedrive mám soubory .gdoc, .gsheet aj. Všechny musí být logicky v Google Drive smazané. udělat si kopie v Google Drive jinak o ně přijdu definitivně.
+najít a případně použít NotTranslateAble in ashx, cs, pak tu mám chyby jako sb.Append( PageHelperBase.GetErrorDescriptionStringURI(rVersion, sess.i18n(XlfKeys.Version)));, otestovat to ve unit testech
+make it regularly check make for my purposes top 100,check lyrics at top 20
+frázová slovesa subscription,najít kde mají nejvíce frázových sloves https://www.google.com/search?q=fr%C3%A1zov%C3%A1+slovesa+seznam a ty vložit ,přeložit do aj, možná už ho mám, hledal jsem to jen pod českými frázová slovesa
+přece nemusíš dělat jen pyramidu a oblbovat lidi, můžeš ty peníze vydělávat i bez kupování “vstupních balíčků” za tisíce, ale musíš něco umět no nebo bejt ochotná se něco naučit... z mikrotasking webů jde pracovat třeba u appen.com, lionbridge.com, teemwork.ai, rev.com, práci můžeš najít i na upwork.com, freelancer.com, ale tam už musíš něco umět líp než indové dělající za misku kari. Naučit se spoustu věcí můžeš na skillshare.com, lynda.com atd. ￼
+my purchases chce zjednodušit, nejsou třeba informace o žádných sln, proj atd ale pouze o době zaplacení, způsobu, a aplikace ne v pascal case
+Phs_DeleteThesePhotos vyhazuje chybu a zapisuje txt
+vytisknout moje trika s logem vs
+zkontrolovat všechny webmaster tools jestli nehlásí nějaké chyby 
+restore mahjong but backup backup first  
+do všech sešitu poznačit si co jsem v nich počítal 
+MenTypes, MenMenials is empty on VPS
+jsem s ní neměl jít na Filipku ale na Prašivou abych ji naznačil jaká je
+
+---
+https://about.ads.microsoft.com/en-US/h/a/microsoft-advertising?s_cid=US-Acq-ONEMSFT-src_WebMasterTools-sub_evergreen-cam_ADC3135_WMT_US_EN_T1_Promotional-cat_Button1_Redeem&s_eid=SMART98806_12C3AD80-5883-43BC-AB12-6EB44FC69636&pbcv2=true&cco=10F71B84E7624E73 100 usd credit
+---
+
+pokud se nezádá mustBeUnique je false
+
+zavolat mirce jestli je už doma, půjčit si od ní prachy
+půjčit si prachy od každého
+vlastě kaletové
+
+
+
+
+
+1) napsat splátkový kalendář, formulář záloha 
+
+2) opravit footer
+3) požádat o půjčku fio
+4) apps purchased - musí to být ještě dnes, dělají na tom
+5) lyrics scraping
+6) fotky zafira kouknout stáhnout
+7) poslat nabídky práce
+8) write denis paříž
+9) ucc gifs
+10) send all
+
+až to budu mít tak veškeré VS dát někde pryč abych k nim neměl přístup a mít to tak dokud nebudu pracovat.
+
+
+
+po práci legraci
+
+těstoviny
+
+na register, login min. si musí pamatovat zadané údaje, nebo nesmím dovolit odeslat stránku. zvláště u register mám furt tendence něco vynechat a pak musím vše znovu.
+---
+udělat ještě speciální zálohu tabulek Users a Licensed jež se bude dělat každou hodinu
+scz users dát do tabulky UsersScz
+
+další weby pro p2p investing
+
+videa o prokletí i anglické 
+květiny po pa 9 16 
+porovnat lahvinka.cz s ostatními. v tescu Pálava sladší 
+
+
+capture also menu items 
+gif for ucc, needed 
+
+change currency flags, find Al ready developed 
+gopay test account in other currency than cz 
+add social buttons to apps 
+bold in description for really useful features 
+app for 99 can save you many thousabd And nerves 
+
+
+napushuji tuto aplikaci a jdu se někde zaměstnat!!!
+
+ z unicredit se nevolá gopay notifikace? ověřit to ještě
+
+ znovu transactions
+ úplně mi to rozhodilo design
+
+ na mém kompu ed /r se vždy dotazuje localhostu. zapsat to když vyhazuje chybu že nemám zakoupeno
+
+zatím přišlo tie grosse seize
+
+zjistit si banky v havru
+lidl ostrava fazolky
+
+hlavně pomalu aplikace
+hlídat počet stisknutí klávesnice
+
+rekompilovat vše!, chtělo by to číslovat verze y.m.d.unixtime a zobrazovat je v browseru abych věděl že se používá aktuální
+
+přidat tabulku na useragenty
+
+show in wpfApp1 kolik jsem již ztratil na pojistce, za každý den mi utíká 14 Kč,začal jsem 20.1., t.z. že mi do dneška uteklo 280 Kč 
+
+how I find when there is more same name exe in PATH what is called windows¨
+udělat to na localu
+dát si 2 exe, každé bude vypisovat něco jiného, obě 2 v pathu, co bude rozhodovat, jestli pořadí v path proměnné nebo něco jiného
+
+footer.InnerHtml = SunamoPageHelper.GetFooterHtml(CastToSunamoPage(Page)); nefunguje
+footer.InnerHtml = SunamoPageHelper.GetFooterHtml(sp); funguje
+
+musím přijet abych ukázal že mám čisté svědomí
+
+v pondělí poslat vše na FIO aby mi na Uni zůstalo 1600 Kč(1000 jiné věci a 600 tonery)
+pak poslat 300 z fio na uni a zažádat si o podnikatelský kontokorent s určitým zůstatkem
+
+improve feedback to use also in web
+apps which I cant find
+musím každý den volat ValidLicences jinak mi budou moci užívat bez placení
+
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-3.1#common-errors
+
+Read our Terms of use before buy still in lyrics footer!!!
+
+captcha to lyricw ,if your ip is not visiting for purpose of webscraping 
+už by se mi mohli otevřít zase ty línked in kurzy tak pres druhy účet prvně 
+---
+zrušit omezení do 10protože za včerejšek jsem měl jen 30 návštěv 
+
+vykorist  auto 
+sedm to Karel uri 
+sent to all my friend, it is my forgive, can't wait to get it even better !'!!
+
+print message about denied limit contact me 
+create templates to all other, how is recognize when it's core and need to publish and is not 
+brotli, I think that bad core web vitals is mainly due to speed 
+write response to conf file - either number (when will be remain the number then Czech or completely turn off after on start-up checking) 
+---
+zapsat si vždy kdykoliv budu prendavat min xlf 
+
+parse mra flats another app 
+even after push one web call
+
+dá se zadat verze aby se zobrazil její konkrétní changwlog 
+přidávat verze po větších cifrach ať to vypadá že už jsem zavedený 
+přidat lajky i disluky aby šla vidět účast 
+hodnocení spokojenosti auto po nebo kdykoliv z nabídky 
+kouknout na lyr, co když jsou některé texty písní špatně ?
+sauto jak dlouho ucho inzeráty 
+
+is something which is not intuitive and should be in this help?
+---
+
