@@ -137,6 +137,7 @@ public static partial class CL
             return;
         }
 
+        i = 0;
         string operation = null;
         foreach (string var in actions.Keys)
         {
@@ -149,7 +150,9 @@ public static partial class CL
             i++;
         }
 
-        actions[operation].Invoke();
+
+        var act = actions[operation];
+        act.Invoke();
     }
 
 /// <summary>
@@ -173,12 +176,7 @@ public static partial class CL
     static string UserMustType(string whatOrTextWithoutEndingDot, bool append, params string[] acceptableTyping)
     {
         string z = "";
-        if (append)
-        {
-            whatOrTextWithoutEndingDot = sess.i18n(XlfKeys.Enter) + " " + whatOrTextWithoutEndingDot + "";
-        }
-
-        whatOrTextWithoutEndingDot += ". " + sess.i18n(XlfKeys.ForExitEnter) + " -1.";
+        whatOrTextWithoutEndingDot = AskForEnter(whatOrTextWithoutEndingDot, append);
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -240,7 +238,18 @@ public static partial class CL
         return z.Trim().Trim(AllChars.st).Trim();
     }
 
-/// <summary>
+    private static string AskForEnter(string whatOrTextWithoutEndingDot, bool append)
+    {
+        if (append)
+        {
+            whatOrTextWithoutEndingDot = sess.i18n(XlfKeys.Enter) + " " + whatOrTextWithoutEndingDot + "";
+        }
+
+        whatOrTextWithoutEndingDot += ". " + sess.i18n(XlfKeys.ForExitEnter) + " -1.";
+        return whatOrTextWithoutEndingDot;
+    }
+
+    /// <summary>
     /// Return int.MinValue when user force stop operation
     /// </summary>
     /// <param name = "what"></param>
@@ -372,6 +381,7 @@ public static void OperationWasStopped()
         }
         else
         {
+            CL.AskForEnter(what, true);
             Console.WriteLine(sess.i18n(XlfKeys.PressEnterWhenDataWillBeInClipboard));
             Console.ReadLine();
             imageFile = ClipboardHelper.GetText();
@@ -409,8 +419,6 @@ public static string AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> Ad
 
                 if (whatUserNeed == "-1")
                 {
-
-
                     CL.PerformAction(groupsOfActions);
                 }
                 else

@@ -160,6 +160,9 @@
     <Compile Include="ConvertBetweenTwoEnums.cs" />
     <Compile Include="Helpers\DT\DTHelperMultiNotTranslateAble.cs" />
     <Compile Include="Helpers\NetHelperSunamo.cs" />
+    <Compile Include="Lazy\LazyGetCommonSettings.cs" />
+    <Compile Include="Lazy\LazyObject.cs" />
+    <Compile Include="Lazy\LazyString.cs" />
     <Compile Include="Vps\VpsHelperIsVps.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />

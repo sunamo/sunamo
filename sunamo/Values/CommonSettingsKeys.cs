@@ -15,6 +15,7 @@ public static class CommonSettingsKeys
     public static string patrikHorka1SeznamCz = "patrikHorka1SeznamCz";
     public static string smutekutek = "smutekutek";
     public static string pwUsersScz = "pwUsersScz";
+    public static string scFixed = "scFixed";
     public static string pwSql = "pwSql";
     public static string radusSlivovaSeznamCz = "radusSlivovaSeznamCz";
     public static string mathpix_app_id = "mathpix_app_id";

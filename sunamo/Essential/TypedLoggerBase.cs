@@ -83,6 +83,7 @@ namespace sunamo.Essential
 
         public void Information(string text, params string[] p)
         {
+            
             _typedWriteLineDelegate.Invoke(TypeOfMessage.Information, text, p);
         }
         #endregion

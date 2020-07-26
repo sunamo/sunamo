@@ -311,6 +311,12 @@ public static partial class SH
         return null;
     }
 
+    /// <summary>
+    /// Add postfix if text not ends with
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="postfix"></param>
+    /// <returns></returns>
     public static string PostfixIfNotEmpty(string text, string postfix)
     {
         if (text.Length != 0)

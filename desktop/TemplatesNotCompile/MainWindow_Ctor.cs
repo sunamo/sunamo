@@ -55,7 +55,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     }
 
     
-    public static void CheckIsAlreadyRunning()
+    public  void CheckIsAlreadyRunning()
     {
         #if !DEBUG
               

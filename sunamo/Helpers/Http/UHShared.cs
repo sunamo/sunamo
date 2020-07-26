@@ -63,6 +63,14 @@ public partial class UH
         return title;
     }
 
+    public static void BeforeCombine(ref string hostApp)
+    {
+        
+
+        hostApp = SH.PrefixIfNotStartedWith(hostApp, Consts.https);
+        hostApp = SH.PostfixIfNotEmpty(hostApp, AllStrings.slash);
+    }
+
     public static string GetUriSafeString(string title, int maxLenght)
     {
         if (String.IsNullOrEmpty(title)) return "";
