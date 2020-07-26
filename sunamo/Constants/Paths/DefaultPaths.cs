@@ -18,6 +18,8 @@ namespace sunamo.Constants
         public static string Music2 = @"d:\Music2\";
         public static string Backup = @"d:\Documents\Backup\";
         public static string VisualStudio2017 = @"d:\Documents\Visual Studio 2017\";
+        
+
         /// <summary>
         /// For all is here sczRootPath
         /// edn with bs

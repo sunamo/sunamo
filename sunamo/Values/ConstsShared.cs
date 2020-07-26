@@ -12,6 +12,7 @@ using System.Text;
     public const string slashScz = AllStrings.slash + Consts.Cz;
     public const string dotScz = ".sunamo.cz";
     public const string dotSczSlash = ".sunamo.cz/";
+    public const string localhostSlash = "localhost/";
     /// <summary>
     /// Min age is 18 due to GDPR - below 18 is needed parent agreement of child
     /// </summary>
