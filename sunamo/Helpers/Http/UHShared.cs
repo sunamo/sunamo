@@ -287,6 +287,14 @@ public partial class UH
         {
             return null;
         }
-    } 
+    }
+
+    public static string urlDecoded = null;
+
+    public static bool IsUrlEncoded(string uri)
+    {
+        urlDecoded = UH.UrlDecode(uri);
+        return urlDecoded != uri;
+    }
     #endregion
 }
