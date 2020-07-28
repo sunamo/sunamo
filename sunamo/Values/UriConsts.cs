@@ -13,7 +13,8 @@ using System.Text;
     public const string RpsCz = "repairservice.sunamo.cz";
     public const string ShoCz = "shortener.sunamo.cz";
     public const string PhsCz = "photos.sunamo.cz";
+    public const string AcsCz = "chytre-aplikace.cz";
 
-
-    public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
+    // miss acs
+    //public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
 }

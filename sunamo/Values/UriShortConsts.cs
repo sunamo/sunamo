@@ -13,6 +13,8 @@ public class UriShortConsts
     public const string ShoCz = "sho.localhost";
     public const string RpsCz = "rps.localhost";
     public const string PhsCz = "phs.localhost";
+    public const string AcsCz = "acs.localhost";
 
-    public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
+    // miss acs
+    //public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
 }

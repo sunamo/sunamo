@@ -6,6 +6,8 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string PurchasedApps = "PurchasedApps"; 
+
 	public const string GeoCaching = "GeoCaching"; 
 	public const string Quit = "Quit"; 
 	public const string filesFounded = "filesFounded"; 

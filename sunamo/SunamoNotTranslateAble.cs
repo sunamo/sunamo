@@ -12,4 +12,5 @@ public class SunamoNotTranslateAble
     public const string RLDataCs = "RLData.cs[";
     public const string RLDataEn2 = "RLDataEn[";
     public const string XlfKeysDot = "XlfKeys.";
+    public const string on = "on";
 }
