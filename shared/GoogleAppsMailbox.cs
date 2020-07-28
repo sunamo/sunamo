@@ -83,6 +83,7 @@ using System.Net.Mail;
 
             MailAddress ma = new MailAddress(fromEmail, fromName);
             mail.From = ma;
+
             if (replyTo != "")
             {
                 MailAddress ma2 = new MailAddress(replyTo, replyTo);
@@ -92,6 +93,7 @@ using System.Net.Mail;
             {
                 mail.ReplyToList.Add(ma);
             }
+
             mail.Sender = ma;
 
             #region Recipient

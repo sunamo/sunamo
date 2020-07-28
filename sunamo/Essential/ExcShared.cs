@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Essential;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -57,6 +58,8 @@ public class Exc
         return name;
     }
 
+    private static object lockObject = new object();
+
     private static string JoinNL(List<string> l)
     {
         sb.Clear();
@@ -64,7 +67,12 @@ public class Exc
         {
             sb.AppendLine(item);
         }
-        return sb.ToString();
+        var r = string.Empty;
+        lock (lockObject)
+        {
+            r = sb.ToString();
+        }
+        return r;
     }
 
     public static List<string> Trim(List<string> l)
