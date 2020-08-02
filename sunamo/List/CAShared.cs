@@ -13,7 +13,32 @@ using System.Text.RegularExpressions;
 
 public static partial class CA
 {
+    public static int Count(IEnumerable e)
+    {
+        if (e == null)
+        {
+            return 0;
+        }
 
+        if (e is IList)
+        {
+            return (e as IList).Count;
+        }
+
+        if (e is Array)
+        {
+            return (e as Array).Length;
+        }
+
+        int count = 0;
+
+        foreach (var item in e)
+        {
+            count++;
+        }
+
+        return count;
+    }
 
     private static Type type = typeof(CA);
 
