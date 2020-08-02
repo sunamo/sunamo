@@ -17,7 +17,7 @@ public static partial class CA
 
     private static Type type = typeof(CA);
 
-    #region ChangeContent
+    #region ChangeContent for easy copy
  
 
     /// <summary>

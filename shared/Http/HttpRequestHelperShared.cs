@@ -184,6 +184,8 @@ public static Stream GetResponseStream(string address, HttpMethod method)
 /// <param name = "hrd"></param>
     public static string GetResponseText(HttpWebRequest request, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
     {
+
+
         NetHelperSunamo.NEVER_EAT_POISON_Disable_CertificateValidation();
 
         response = null;
@@ -210,7 +212,6 @@ public static Stream GetResponseStream(string address, HttpMethod method)
 
         string result = null;
 
-        
         request.Method = method.Method;
 
         if (method == HttpMethod.Post)
@@ -259,7 +260,7 @@ public static Stream GetResponseStream(string address, HttpMethod method)
                 Encoding encoding = null;
                 if (response.CharacterSet == "")
                 {
-                //encoding = Encoding.UTF8;
+                    //encoding = Encoding.UTF8;
                 }
                 else
                 {

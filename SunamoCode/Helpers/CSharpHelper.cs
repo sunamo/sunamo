@@ -379,6 +379,13 @@ public static partial class CSharpHelper
         }
         return sb.ToString().TrimEnd(AllChars.comma);
     }
+
+    /// <summary>
+    /// value - data type
+    /// key - name
+    /// </summary>
+    /// <param name="l"></param>
+    /// <returns></returns>
     public static Dictionary<string, string> ParseFields(List<string> l)
     {
         CA.RemoveStringsEmpty2(l);
@@ -393,12 +400,38 @@ public static partial class CSharpHelper
         }
         return r;
     }
+
+
+    /// <summary>
+    /// 0 - item.Value
+    /// 1 - CSharpHelperSunamo.DefaultValueForType(item.Value)
+    /// 2 - item.Key
+    /// 3 - SH.FirstCharUpper(item.Key)
+    /// </summary>
     const string tProperty = @"{0} {2} = {1};
     public {0} {3} { get { return {2}; } set { {2} = value; OnPropertyChanged(" + "\"{3}\"); } }" + @"
 ";
-    public static string GenerateProperties(List<string> l)
+
+    public static string GenerateProperties(GeneratePropertiesArgs a)
     {
-        var d = ParseFields(l);
+        var l = a.input;
+        Dictionary<string, string> d = null;
+        if (a.allStrings)
+        {
+            d = new Dictionary<string, string>(l.Count);
+            foreach (var item in l)
+            {
+                var p = ConvertPascalConventionWithNumbers.ToConvention(item);
+                p = SH.FirstCharLower(p);
+                //DebugLogger.Instance.WriteLine(p);
+                d.Add(p, "string");
+            }
+        }
+        else
+        {
+            d = ParseFields(l);
+        }
+        
         StringBuilder sb = new StringBuilder();
         foreach (var item in d)
         {

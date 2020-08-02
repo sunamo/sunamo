@@ -150,6 +150,16 @@ public static partial class SH
         return ls;
     }
 
+    public static string TabToNewLine(string v)
+    {
+        //Environment.NewLine
+        v = v.Replace("\t", "\r");
+        var l = SH.GetLines(v);
+        CA.Trim(l);
+        CA.RemoveStringsEmpty(l);
+        return SH.JoinNL(l);
+    }
+
     internal static bool IsAllLower(string ext)
     {
         return IsAllLower(ext, char.IsLower);

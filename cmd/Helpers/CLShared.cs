@@ -235,7 +235,7 @@ public static partial class CL
             TypedConsoleLogger.Instance.Information(sess.i18n(XlfKeys.AppLoadedFromClipboard) + " : " + z);
         }
 
-        return z.Trim().Trim(AllChars.st).Trim();
+        return SH. ConvertTypedWhitespaceToString( z.Trim().Trim(AllChars.st).Trim());
     }
 
     private static string AskForEnter(string whatOrTextWithoutEndingDot, bool append)

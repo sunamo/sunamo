@@ -119,7 +119,6 @@ public partial class ThrowExceptions
             {
                 exception = exception.Replace("Violation of PRIMARY KEY constraint", ShortenedExceptions.ViolationOfPK);
 
-
                 //if (HttpRuntime.AppDomainAppId != null)
                 //{
                 //Debugger.Break();

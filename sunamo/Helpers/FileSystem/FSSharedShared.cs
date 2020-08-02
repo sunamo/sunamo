@@ -124,4 +124,13 @@ public partial class FS{
 
         return SH.Join(AllStrings.bs, pBasePath);
     }
+
+    public static string GetDirectoryNameIfIsFile(string f)
+    {
+        if (File.Exists(f))
+        {
+            return Path.GetDirectoryName(f);
+        }
+        return f;
+    }
 }

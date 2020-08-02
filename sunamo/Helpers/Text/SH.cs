@@ -1775,6 +1775,9 @@ public static partial class SH
         // TODO: Delete after all app working, has here method Join with same arguments
         return Join(delimiter, CA.ToEnumerable(parts));
     }
+
+
+
     /// <summary>
     /// Will be delete after final refactoring
     /// Automaticky ořeže poslední znad A1

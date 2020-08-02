@@ -10,9 +10,7 @@ using SunamoExceptions;
 public class TranslateDictionary : IDictionary<string, string>
 {
     private static Type type = typeof(TranslateDictionary);
-
     public static string basePathSolution = null;
-
     private Dictionary<string, string> _d = new Dictionary<string, string>();
     private Langs _l = Langs.en;
 

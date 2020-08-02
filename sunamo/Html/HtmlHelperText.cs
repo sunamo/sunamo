@@ -127,6 +127,9 @@ using System.Text.RegularExpressions;
 
             var result = SH.JoinNL(lines);
             result = SH.ReplaceAll(result, endP + AllStrings.cr + AllStrings.nl, endP);
+
+
+
             return result;
         }
 
