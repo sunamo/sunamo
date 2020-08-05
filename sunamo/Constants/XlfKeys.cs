@@ -6,8 +6,11 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string PurchasedApps = "PurchasedApps"; 
+	public const string FolderWithHtmlOfMRAResults = "FolderWithHtmlOfMRAResults"; 
 
+	public const string WriteMeAboutItTo = "WriteMeAboutItTo"; 
+	public const string DoYouThinkSomethingCouldBeHereAndIsnT = "DoYouThinkSomethingCouldBeHereAndIsnT"; 
+	public const string PurchasedApps = "PurchasedApps"; 
 	public const string GeoCaching = "GeoCaching"; 
 	public const string Quit = "Quit"; 
 	public const string filesFounded = "filesFounded"; 

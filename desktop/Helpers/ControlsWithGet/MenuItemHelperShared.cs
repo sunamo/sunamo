@@ -16,6 +16,7 @@ public partial class MenuItemHelper{
     {
         MenuItem mi = new MenuItem();
         mi.IsCheckable = d.checkable;
+        mi.IsChecked = d.isChecked;
 
         if (d.foreground != null)
         {

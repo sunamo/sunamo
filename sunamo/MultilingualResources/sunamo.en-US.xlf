@@ -10948,7 +10948,7 @@ A fraternal form of manifestation is the bliss</target>
         </trans-unit>
         <trans-unit id="AppWasFoundButNoHelpForIt" translate="no" xml:space="preserve">
           
-          <target state="translated">App was found but no help for it</target>
+          <target state="translated">App was found but wasn't created help for it</target>
         </trans-unit>
         <trans-unit id="Type" translate="no" xml:space="preserve">
           
@@ -13657,6 +13657,18 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="PurchasedApps" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Purchased apps</target>
+        </trans-unit>
+        <trans-unit id="DoYouThinkSomethingCouldBeHereAndIsnT" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do you think something could be here and isn't</target>
+        </trans-unit>
+        <trans-unit id="WriteMeAboutItTo" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Write me about it to</target>
+        </trans-unit>
+        <trans-unit id="FolderWithHtmlOfMRAResults" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Folder with html of MRA results</target>
         </trans-unit>
       </group>
     </body>

@@ -1741,8 +1741,7 @@
           <target state="translated">Zobrazit graf zobrazení za posledních 7 dní</target>
         </trans-unit>
         <trans-unit id="AppWasFoundButNoHelpForIt" translate="no" xml:space="preserve">
-          
-          <target state="translated">Aplikace byla nalezena, ale bez pomoci</target>
+          <target state="translated">Aplikace byla nalezena, ale zatím k ní nebyla vytvořena nápověda</target>
         </trans-unit>
         <trans-unit id="Type" translate="no" xml:space="preserve">
           
@@ -4687,6 +4686,18 @@
         <trans-unit id="PurchasedApps" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Zakoupené aplikace</target>
+        </trans-unit>
+        <trans-unit id="DoYouThinkSomethingCouldBeHereAndIsnT" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Myslíš, že by tu mohlo něco být a co ne</target>
+        </trans-unit>
+        <trans-unit id="WriteMeAboutItTo" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Napište mi o tom na</target>
+        </trans-unit>
+        <trans-unit id="FolderWithHtmlOfMRAResults" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Složka s html výsledků MRA</target>
         </trans-unit>
       </group>
     </body>

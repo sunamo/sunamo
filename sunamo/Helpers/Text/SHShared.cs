@@ -150,6 +150,15 @@ public static partial class SH
         return ls;
     }
 
+    public static string ReplaceAll4(string t, string to, string from)
+    {
+        while (t.Contains(from))
+        {
+            t = t.Replace(from, to);
+        }
+        return t;
+    }
+
     public static string TabToNewLine(string v)
     {
         //Environment.NewLine

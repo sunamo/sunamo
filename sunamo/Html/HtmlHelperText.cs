@@ -71,7 +71,13 @@ using System.Text.RegularExpressions;
             return value;
         }
 
-        public static bool IsHtmlEntity(string i)
+    public static List<string> SplitBySpaceAndLtGt(string shortDescription)
+    {
+        var f = SH.Split(shortDescription, AllStrings.lt, AllStrings.gt, AllStrings.space);
+        return f;
+    }
+
+    public static bool IsHtmlEntity(string i)
         {
             i = i.TrimStart('&').TrimEnd(';');
             return AllLists.htmlEntities.Contains(i);

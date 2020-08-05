@@ -11,6 +11,15 @@ public static partial class HtmlTemplates
     //    return $"<img src=\"{src}\" />";
     //}
 
+
+    public static void Mail(HtmlGenerator sb)
+    {
+        
+        sb.WriteTagWithAttrs("a", "href", "mailto:radek.jancik@sunamo.cz");
+        sb.WriteRaw("radek.jancik@sunamo.cz");
+        sb.TerminateTag("a");
+    }
+
 public static string HiddenField(string id, string value)
     {
         string format = "<input type='hidden' id='" + id + "' value='" + value + "' />";

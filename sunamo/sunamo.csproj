@@ -159,6 +159,7 @@
     <Compile Include="Constants\Mails.cs" />
     <Compile Include="Constants\ShortenedExceptions.cs" />
     <Compile Include="ConvertBetweenTwoEnums.cs" />
+    <Compile Include="Data\GoogleMapsSearchResult.cs" />
     <Compile Include="Helpers\DT\DTHelperMultiNotTranslateAble.cs" />
     <Compile Include="Helpers\NetHelperSunamo.cs" />
     <Compile Include="Lazy\LazyGetCommonSettings.cs" />

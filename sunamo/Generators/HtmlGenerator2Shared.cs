@@ -10,8 +10,6 @@ using System.Text;
 /// </summary>
 public partial class HtmlGenerator2 : HtmlGenerator
 {
-
-
     public static string Calendar(List<string> htmlBoxesEveryDay, int year, int mesic)
     {
         List<string> colors = new List<string>(htmlBoxesEveryDay.Count);
@@ -213,11 +211,6 @@ public partial class HtmlGenerator2 : HtmlGenerator
         gh.WriteTagWithAttrs("input", "type", "text", "name", "inputText" + id, "value", value);
         return gh.ToString();
     }
-
-
-
-
-
 
     /// <summary>
     /// Jedná se o divy pod sebou, nikoliv o ol/ul>li 
@@ -481,7 +474,6 @@ public partial class HtmlGenerator2 : HtmlGenerator
     }
     #endregion
 
-
     #region Ul
     public static string GetUlWoCheckDuplicate(string baseAnchor, List<string> to)
     {
@@ -609,9 +601,6 @@ public partial class HtmlGenerator2 : HtmlGenerator
         http = UH.AppendHttpIfNotExists(www);
         return AnchorWithHttpCore(targetBlank, text, http);
     }
-
-
-
     public static string AnchorWithHttpCore(bool targetBlank, string text, string http)
     {
         if (targetBlank)
@@ -743,7 +732,13 @@ public partial class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
-
+    public static string HtmlGeneratorToString(Action<HtmlGenerator> d)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+        d.Invoke(hg);
+        var r = hg.ToString();
+        return r;
+    }
 
     public static string Italic(string p)
     {
@@ -849,10 +844,6 @@ public partial class HtmlGenerator2 : HtmlGenerator
 
         #region Zapíšu vrchní řádky - názvy dnů
         #endregion
-
-
-
-
 
         for (int i = 0; i < yearsCount; i++)
         {
