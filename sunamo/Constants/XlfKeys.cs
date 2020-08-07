@@ -2373,7 +2373,7 @@ public class XlfKeys
     public const string ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs = "ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs";
     public const string OutputTextWasEmpty = "OutputTextWasEmpty";
     public const string OutputTextCanNotBeCopiedToTheClipboardUnsupportedBrowser = "OutputTextCanNotBeCopiedToTheClipboardUnsupportedBrowser";
-    public const string OutputTextCopiedToClipboard = "OutputTextCopiedToClipboard";
+    public const string OutputText = "OutputText";
     public const string NonMatchingNumberOfParameterNamesAndValues = "NonMatchingNumberOfParameterNamesAndValues";
     public const string InvalidDate = "InvalidDate";
     public const string NoEmailWasSent = "NoEmailWasSent";

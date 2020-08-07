@@ -6,7 +6,7 @@ using System.Text;
 public class Types
 {
     // must be in Types.desktop
-    //public static readonly Type tBitmapImage = typeof(BitmapImage);
+    //
     public static readonly Type tVoidString = typeof(VoidString);
     public static readonly Type tObject = typeof(object);
     

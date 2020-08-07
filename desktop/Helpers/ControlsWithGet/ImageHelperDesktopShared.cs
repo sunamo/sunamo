@@ -12,7 +12,7 @@ public static Image Get(object imagePathOrBitmapImage)
     {
         var t = imagePathOrBitmapImage.GetType();
         BitmapImage bi = null;
-        if (t == Types.tBitmapImage)
+        if (t == TypesDesktop.tBitmapImage)
         {
             bi = (BitmapImage)imagePathOrBitmapImage;
         }
