@@ -122,8 +122,13 @@ public partial class LoggerBase
     /// <param name="text"></param>
     public void WriteLine(string what, object text)
     {
-        if (text != null)
+        if (text == null)
         {
+            text = Consts.nulled;
+        }
+
+        
+
             string append = string.Empty;
             if (!string.IsNullOrEmpty(what))
             {
@@ -131,7 +136,7 @@ public partial class LoggerBase
             }
 
             WriteLine(append + text.ToString());
-        }
+        
     }
 
     public void WriteNumberedList(string what, List<string> list, bool numbered)
