@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-
 public class Types
 {
-    
+    // must be in Types.desktop
+    //public static readonly Type tBitmapImage = typeof(BitmapImage);
     public static readonly Type tVoidString = typeof(VoidString);
     public static readonly Type tObject = typeof(object);
     
@@ -38,10 +38,6 @@ public class Types
     public static readonly Type tGuid = typeof(Guid);
     public static readonly Type tChar = typeof(char);
     #endregion
-
-
-    
-    
 
     public static readonly List<Type> allBasicTypes = CA.ToList<Type>(tObject, tString, tStringBuilder, tInt, tDateTime,
         tDouble, tFloat, tChar, tBinary, tByte, tShort, tBinary, tLong, tDecimal, tSbyte, tUshort, tUint, tUlong);

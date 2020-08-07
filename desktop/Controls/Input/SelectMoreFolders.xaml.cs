@@ -61,10 +61,10 @@ namespace desktop.Controls.Input
                 FolderAdded(this, SelectedFolders());
             }
             // Must be called after sf is on panel and has registered Sf_FolderChanged, because control for FolderChanged != null
-            Sf_FolderChanged(folder);
+            Sf_FolderChanged(null, folder);
         }
 
-        private void Sf_FolderChanged(string s)
+        private void Sf_FolderChanged(object o, string s)
         {
             if (FolderChanged != null)
             {

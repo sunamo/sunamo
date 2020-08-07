@@ -1,12 +1,31 @@
 ﻿using sunamo;
+using System;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 public partial class ImageHelperDesktop : ImageHelperBase<ImageSource, Image>
-{ 
-public static Image Get(string imagePath)
+{
+    static Type type = typeof(ImageHelperDesktop);
+
+public static Image Get(object imagePathOrBitmapImage)
     {
-        Image img = ImageHelper.ReturnImage(BitmapImageHelper.PathToBitmapImage(imagePath));
+        var t = imagePathOrBitmapImage.GetType();
+        BitmapImage bi = null;
+        if (t == Types.tBitmapImage)
+        {
+            bi = (BitmapImage)imagePathOrBitmapImage;
+        }
+        else if (t == Types.tString)
+        {
+            bi = BitmapImageHelper.PathToBitmapImage(imagePathOrBitmapImage.ToString());
+        }
+        else
+        {
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), t);
+        }
+
+        Image img = ImageHelper.ReturnImage(bi);
         return img;
     }
 

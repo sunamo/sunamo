@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using sunamo.Collections;
+using sunamo.Essential;
 
 public class SheetsHelper
 {
@@ -82,9 +83,18 @@ public class SheetsHelper
         }
 
         var bm = SH.TabOrSpaceNextTo(input);
-        var vr = SH.SplitByIndexes(input, bm);
+        List<string> vr = new List<string>();
 
-        vr.Reverse();
+        if (bm.Count > 0)
+        {
+            vr.AddRange( SH.SplitByIndexes(input, bm));
+
+            vr.Reverse();
+        }
+        else
+        {
+            ThisApp.SetStatus(TypeOfMessage.Warning, "Bad data in clipboard");
+        }
         //var vr = SH.Split(input, AllStrings.tab);
         return vr;
     }

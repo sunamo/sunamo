@@ -27,7 +27,10 @@ public class ControlInitData
     /// FontSize when is used Awesome
     /// </summary>
     public double imageHeight = 16;
-    public string imagePath = null;
+    /// <summary>
+    /// BitmapImage (from EmbeddedResources for example) or string pack:///
+    /// </summary>
+    public object imagePath = null;
     public bool isChecked = false;
     public double imageWidth = 16;
     public IEnumerable list = null;

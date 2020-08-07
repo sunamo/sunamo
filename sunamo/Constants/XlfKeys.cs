@@ -6,8 +6,14 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string FolderWithHtmlOfMRAResults = "FolderWithHtmlOfMRAResults"; 
+	public const string CheckYourData = "CheckYourData"; 
 
+    public const string pages = "pages";
+    public const string ExportForGoogleMyMaps = "ExportForGoogleMyMaps"; 
+	public const string WasOpened = "WasOpened"; 
+	public const string wasNotEntered = "wasNotEntered"; 
+	public const string SetUpItInSettings = "SetUpItInSettings"; 
+	public const string FolderWithHtmlOfMRAResults = "FolderWithHtmlOfMRAResults"; 
 	public const string WriteMeAboutItTo = "WriteMeAboutItTo"; 
 	public const string DoYouThinkSomethingCouldBeHereAndIsnT = "DoYouThinkSomethingCouldBeHereAndIsnT"; 
 	public const string PurchasedApps = "PurchasedApps"; 

@@ -27,21 +27,24 @@ namespace sunamo.Collections
         {
             DataTable newTable = new DataTable();
 
-            newTable.Columns.Add(string.Empty);
-            for (int i = 0; i < _exists.Count; i++)
-                newTable.Columns.Add();
-
-            var s = _exists[0];
-            for (int i = 0; i < s.Count; i++)
+            if (_exists.Count > 0)
             {
-                DataRow newRow = newTable.NewRow();
+                newTable.Columns.Add(string.Empty);
+                for (int i = 0; i < _exists.Count; i++)
+                    newTable.Columns.Add();
 
-                var caption = CA.GetIndex(captions, i);
-                newRow[0] = caption == null ? string.Empty : caption.ToString();
+                var s = _exists[0];
+                for (int i = 0; i < s.Count; i++)
+                {
+                    DataRow newRow = newTable.NewRow();
 
-                for (int j = 0; j < _exists.Count; j++)
-                    newRow[j + 1] = _exists[j][i];
-                newTable.Rows.Add(newRow);
+                    var caption = CA.GetIndex(captions, i);
+                    newRow[0] = caption == null ? string.Empty : caption.ToString();
+
+                    for (int j = 0; j < _exists.Count; j++)
+                        newRow[j + 1] = _exists[j][i];
+                    newTable.Rows.Add(newRow);
+                }
             }
 
             return newTable;

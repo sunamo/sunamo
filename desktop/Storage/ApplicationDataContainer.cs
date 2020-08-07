@@ -1,4 +1,5 @@
-﻿using desktop.Controls.Collections;
+﻿using desktop.Controls;
+using desktop.Controls.Collections;
 using desktop.Controls.Input;
 using desktop.Controls.Visualization;
 using desktop.Storage;
@@ -72,13 +73,12 @@ static Type type = typeof(ApplicationDataContainer);
             ThrowExceptions.DoesntHaveRequiredType(Exc.GetStackTrace(),type, "SaveControl", "o");
         }
     }
-    private void Chb_Click(object sender, RoutedEventArgs e)
-    {
-        CheckBox chb = sender as CheckBox;
-        Set(sender, IsChecked, chb.IsChecked);
-        SaveControl(chb);
-    }
-    public void Add(UserControl uc)
+   
+    /// <summary>
+    /// Must be AddUserControl, not Add coz many control is derived from UC like SelectFolder
+    /// </summary>
+    /// <param name="uc"></param>
+    public void AddUserControl(UserControl uc)
     {
         var adcl = AddFrameworkElement(uc);
     }
@@ -102,6 +102,30 @@ static Type type = typeof(ApplicationDataContainer);
         cb.KeyUp += Cb_KeyUp;
         //cb.DataContextChanged += Cb_DataContextChanged;
     }
+
+    public void Add(SelectFolder chb)
+    {
+        ApplicationDataContainerList adcl = AddFrameworkElement(chb);
+        chb.SelectedFolder = adcl.GetString(SelectedFolder); 
+        chb.FolderChanged += Chb_FolderChanged;
+        
+    }
+
+    private void Chb_Click(object sender, RoutedEventArgs e)
+    {
+        CheckBox chb = sender as CheckBox;
+        Set(sender, IsChecked, chb.IsChecked);
+        SaveControl(chb);
+    }
+
+    private void Chb_FolderChanged(object o, string s)
+    {
+        var cb = o as SelectFolder;
+            
+            Set(cb, SelectedFolder, s);
+            SaveControl(cb);
+    }
+
     public void Add(CheckBox chb)
     {
         ApplicationDataContainerList adcl = AddFrameworkElement(chb);

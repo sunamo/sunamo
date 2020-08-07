@@ -28,7 +28,7 @@ namespace desktop.Controls
         
 
         //public event VoidString FolderSelected;
-        public event VoidString FolderChanged;
+        public event Action<object, string> FolderChanged;
         public event VoidT<SelectFolder> FolderRemoved;
 
         public SelectFolder()
@@ -40,7 +40,6 @@ namespace desktop.Controls
             cbDefaultFolders.IsEditable = false;
             cbDefaultFolders.ItemsSource = DefaultPaths.All;
             cbDefaultFolders.SelectionChanged += CbDefaultFolders_SelectionChanged;
-
 #endif
 
             btnSelectFolder.Content = sess.i18n(XlfKeys.SelectTheFolder);
@@ -73,16 +72,19 @@ namespace desktop.Controls
             }
             set
             {
-                OnFolderChanged(value);
-                if (FS.ExistsDirectory(value))
+                if (!string.IsNullOrEmpty(value))
                 {
-                    //FireFolderChanged = false;
-                    txtFolder.Text = value;
-                    //FireFolderChanged = true;
-                }
-                else
-                {
-                    txtFolder.Text = "";
+                    OnFolderChanged(value);
+                    if (FS.ExistsDirectory(value))
+                    {
+                        //FireFolderChanged = false;
+                        txtFolder.Text = value;
+                        //FireFolderChanged = true;
+                    }
+                    else
+                    {
+                        txtFolder.Text = "";
+                    }
                 }
             }
         }
@@ -116,7 +118,7 @@ namespace desktop.Controls
         {
             if (FolderChanged != null)
             {
-                FolderChanged(folder);
+                FolderChanged(this, folder);
             }
         }
 

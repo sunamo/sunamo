@@ -1,4 +1,5 @@
-﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -4684,20 +4685,44 @@
           <target state="translated">Šipka</target>
         </trans-unit>
         <trans-unit id="PurchasedApps" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Zakoupené aplikace</target>
         </trans-unit>
         <trans-unit id="DoYouThinkSomethingCouldBeHereAndIsnT" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Myslíš, že by tu mohlo něco být a co ne</target>
         </trans-unit>
         <trans-unit id="WriteMeAboutItTo" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Napište mi o tom na</target>
         </trans-unit>
         <trans-unit id="FolderWithHtmlOfMRAResults" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Složka s html výsledků MRA</target>
+        </trans-unit>
+        <trans-unit id="SetUpItInSettings" translate="no" xml:space="preserve">
+          
+          <target state="translated">Nastavte ji v nastavení</target>
+        </trans-unit>
+        <trans-unit id="wasNotEntered" translate="no" xml:space="preserve">
+          
+          <target state="translated">nebyl zadán</target>
+        </trans-unit>
+        <trans-unit id="WasOpened" translate="no" xml:space="preserve">
+          
+          <target state="translated">Byla otevřena</target>
+        </trans-unit>
+        <trans-unit id="pages" translate="no" xml:space="preserve">
+          
+          <target state="translated">stránky</target>
+        </trans-unit>
+        <trans-unit id="ExportForGoogleMyMaps" translate="no" xml:space="preserve">
+          
+          <target state="translated">Export do Google My maps</target>
+        </trans-unit>
+        <trans-unit id="CheckYourData" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zkontrolujte svá data</target>
         </trans-unit>
       </group>
     </body>

@@ -51,16 +51,22 @@ public static StackPanel GetContent(ControlInitData d)
     /// <param name="w"></param>
     /// <param name="h"></param>
     /// <returns></returns>
-private static double AddImg(string img, StackPanel sp, double w, double h)
+private static double AddImg(object img, StackPanel sp, double w, double h)
     {
         bool isAwesome = false;
+        var imgS = img.ToString();
 
-        if (img.Length == 1)
+        if (img.GetType() == Types.tString)
         {
-            var ch = img[0];
-            if (ch >= AwesomeFontControls.low && ch <= AwesomeFontControls.high)
+            
+
+            if (imgS.Length == 1)
             {
-                isAwesome = true;
+                var ch = imgS[0];
+                if (ch >= AwesomeFontControls.low && ch <= AwesomeFontControls.high)
+                {
+                    isAwesome = true;
+                }
             }
         }
 
@@ -73,7 +79,7 @@ private static double AddImg(string img, StackPanel sp, double w, double h)
 
             sp.Height = h + tb.Padding.Top + tb.Padding.Bottom;
 
-            AwesomeFontControls.SetAwesomeFontSymbol(tb, img);
+            AwesomeFontControls.SetAwesomeFontSymbol(tb, imgS);
             sp.Children.Add(tb);
         }
         else

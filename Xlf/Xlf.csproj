@@ -64,10 +64,23 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\CredentialsWithoutDep\WinSec\MyPc.cs">
+      <Link>WinSec\MyPc.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CredentialsWithoutDep\WinSec\SczSecureCodesWinSec.cs">
+      <Link>WinSec\SczSecureCodesWinSec.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CredentialsWithoutDep\WinSec\VpsHelperIsVps.cs">
+      <Link>WinSec\VpsHelperIsVps.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CredentialsWithoutDep\WinSec\WinSecHelper.cs">
+      <Link>WinSec\WinSecHelper.cs</Link>
+    </Compile>
     <Compile Include="CountryLang.cs" />
     <Compile Include="DefaultPaths.cs" />
     <Compile Include="Delegates.cs" />
@@ -85,10 +98,6 @@
     <Compile Include="XlfResourcesHUwp.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSec\WinSec.csproj">
-      <Project>{158d67b1-d895-4a7d-a5d4-fcd24a4fbf65}</Project>
-      <Name>WinSec</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
       <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
       <Name>SunamoExceptions</Name>
@@ -104,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WinSec\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

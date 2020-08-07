@@ -65,9 +65,9 @@ public class EmbeddedResourcesHShared : EmbeddedResourcesH
     /// <param name="defaultNamespace"></param>
     /// <param name="v"></param>
     /// <returns></returns>
-    public ImageSource GetAppIcon(Assembly _entryAssembly, string defaultNamespace, string v)
+    public ImageSource GetAppIcon(Assembly _entryAssembly, string defaultNamespace, string v, ref EmbeddedResourcesHShared er)
     {
-        var er = new EmbeddedResourcesHShared(_entryAssembly, defaultNamespace);
+         er = new EmbeddedResourcesHShared(_entryAssembly, defaultNamespace);
         return er.GetBitmapImageSource(v);
     }
 
