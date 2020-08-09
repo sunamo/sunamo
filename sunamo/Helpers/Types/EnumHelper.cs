@@ -167,6 +167,25 @@ public static partial class EnumHelper
     }
 
     /// <summary>
+    /// když se snažím přetypovat číslo na vyčet kde toto číslo není, tak přetypuje a při TS vrací číslo 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="idProvider"></param>
+    /// <returns></returns>
+    public static T ParseFromNumber<T, Number>(Number idProvider, T _def) where T : struct
+    {
+        T tn = (T)(dynamic)idProvider;
+        var tns = tn.ToString();
+        if (tns == idProvider.ToString())
+        {
+            return _def;
+        }
+
+        T t = Parse<T>(tns, _def);
+        return t;
+    }
+
+    /// <summary>
     /// Tested with EnumA
     /// </summary>
     /// <typeparam name = "T"></typeparam>

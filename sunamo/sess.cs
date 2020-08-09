@@ -11,6 +11,11 @@ public static class sess
 
     public static string i18n(string key)
     {
+        if (Exc.aspnet)
+        {
+            ThrowExceptions.IsNotAllowed(Exc.GetStackTrace(), type, Exc.CallingMethod(), "sess.i18n in asp.net due to use global ThisApp.l");
+        }       
+
         switch (ThisApp.l)
         {
             case Langs.cs:

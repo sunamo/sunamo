@@ -6,8 +6,16 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string Prolongation = "Prolongation"; 
+	public const string ValidTo = "ValidTo"; 
+	public const string Module = "Module"; 
+	public const string OrderID = "OrderID"; 
+	public const string Prolong = "Prolong"; 
+	public const string UncheckAll = "UncheckAll"; 
+	public const string CheckAll = "CheckAll"; 
+	public const string TransactionFinished = "TransactionFinished"; 
+	public const string PaymentGateway = "PaymentGateway"; 
 	public const string CheckYourData = "CheckYourData"; 
-
     public const string pages = "pages";
     public const string ExportForGoogleMyMaps = "ExportForGoogleMyMaps"; 
 	public const string WasOpened = "WasOpened"; 

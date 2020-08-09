@@ -11,6 +11,11 @@ public class ConvertSnakeConvention
         return string.Concat(str.Select((x, i) => i > 0 && char.IsUpper(x) ? "_" + x.ToString() : x.ToString())).ToLower();
     }
 
+    /// <summary>
+    /// Hello 
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
     public static string FromConvention(string p)
     {
         var pa = SH.Split(p, AllChars.lowbar);
