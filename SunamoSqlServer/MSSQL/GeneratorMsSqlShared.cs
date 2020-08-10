@@ -265,93 +265,124 @@ public partial class GeneratorMsSql{
             int p = 0;
             if (where != null)
             {
-                foreach (AB var in where)
+                if (where.Count > 0)
                 {
-                    if (první)
+                    //
+                    foreach (AB var in where)
                     {
-                        první = false;
+                        if (první)
+                        {
+                            první = false;
+                            
+                        }
+                        else
+                        {
+                            sb.Append(" AND ");
+                        }
+                        sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
+                        p++;
                     }
-                    else
-                    {
-                        sb.Append(" AND ");
-                    }
-                    sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
-                    p++;
+                    
                 }
             }
             if (isNotWhere != null)
             {
-                foreach (AB var in isNotWhere)
+                if (isNotWhere.Count > 0)
                 {
-                    if (první)
+                    //
+                    foreach (AB var in isNotWhere)
                     {
-                        první = false;
-                    }
-                    else
-                    {
-                        sb.Append(" AND ");
-                    }
+                        if (první)
+                        {
+                            první = false;
+                            
+                        }
+                        else
+                        {
+                            sb.Append(" AND ");
+                        }
 
-                    if (SqlServerHelper.IsNull( var.B))
-                    {
-                        sb.Append(SH.Format2(" {0} is not null ", var.A));
-                    }
-                    else
-                    {
-                        sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + p));
+                        if (SqlServerHelper.IsNull(var.B))
+                        {
+                            sb.Append(SH.Format2(" {0} is not null ", var.A));
+                        }
+                        else
+                        {
+                            sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + p));
+                        }
+
+                        p++;
                     }
                     
-                    p++;
                 }
             }
             if (greaterThanWhere != null)
             {
-                foreach (AB var in greaterThanWhere)
+                if (greaterThanWhere.Count > 0)
                 {
-                    if (první)
+                    //
+                    foreach (AB var in greaterThanWhere)
                     {
-                        první = false;
+                        if (první)
+                        {
+                            
+                            první = false;
+                        }
+                        else
+                        {
+                            sb.Append(" AND ");
+                        }
+                        sb.Append(SH.Format2(" {0} > {1} ", var.A, "@p" + p));
+                        p++;
                     }
-                    else
-                    {
-                        sb.Append(" AND ");
-                    }
-                    sb.Append(SH.Format2(" {0} > {1} ", var.A, "@p" + p));
-                    p++;
+                    //
                 }
             }
             if (lowerThanWhere != null)
             {
-                foreach (AB var in lowerThanWhere)
+                if (lowerThanWhere.Count > 0)
                 {
-                    if (první)
+                    //
+                    foreach (AB var in lowerThanWhere)
                     {
-                        první = false;
+                        if (první)
+                        {
+                            
+                            první = false;
+                        }
+                        else
+                        {
+                            sb.Append(" AND ");
+                        }
+                        sb.Append(SH.Format2(" {0} < {1} ", var.A, "@p" + p));
+                        p++;
                     }
-                    else
-                    {
-                        sb.Append(" AND ");
-                    }
-                    sb.Append(SH.Format2(" {0} < {1} ", var.A, "@p" + p));
-                    p++;
+                    
                 }
             }
             první = true;
             if (whereOr != null)
             {
-                foreach (AB var in whereOr)
+                if (whereOr.Count > 0)
                 {
-                    if (první)
+                    
+                    foreach (AB var in whereOr)
                     {
-                        první = false;
-                        sb.Append(" AND ");
+                        if (první)
+                        {
+                            první = false;
+                            
+                            sb.Append(" AND ");
+                            sb.Append(AllStrings.lb);
+                        }
+                        else
+                        {
+                            sb.Append(" OR ");
+                        }
+                        sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
+                        p++;
                     }
-                    else
-                    {
-                        sb.Append(" OR ");
-                    }
-                    sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
-                    p++;
+                    sb.Append(AllStrings.rb);
                 }
             }
             return sb.ToString();
@@ -479,7 +510,7 @@ public static string GetValuesDirect(int i2, int to)
     {
         to += i2;
         StringBuilder sb = new StringBuilder();
-        sb.Append(AllStrings.lb);
+        
         for (int i = i2; i < to; i++)
         {
             sb.Append("@p" + (i).ToString() + AllStrings.comma);
@@ -532,7 +563,7 @@ public static string CombinedWhereOR(ABC where, ref int p)
         }
         else
         {
-            sb.Append(AllStrings.lb);
+            
         }
         
         bool první = true;
@@ -553,7 +584,7 @@ public static string CombinedWhereOR(ABC where, ref int p)
         }
         if (pCopy != 0)
         {
-            sb.Append(AllStrings.rb);
+            
         }
         return sb.ToString();
     }

@@ -518,6 +518,9 @@ public static partial class SH
         {
 
             var lines = SH.GetLines(input);
+
+            CA.RemoveStringsEmpty2(lines);
+
             foreach (var item in lines)
             {
                 var p = SH.Split(item, Consts.transformTo);

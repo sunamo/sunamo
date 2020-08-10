@@ -162,10 +162,11 @@
     <Compile Include="Data\GoogleMapsSearchResult.cs" />
     <Compile Include="Helpers\DT\DTHelperMultiNotTranslateAble.cs" />
     <Compile Include="Helpers\NetHelperSunamo.cs" />
-    <Compile Include="Interfaces\ISunamoPaymentGateway.cs" />
     <Compile Include="Lazy\LazyGetCommonSettings.cs" />
     <Compile Include="Lazy\LazyObject.cs" />
     <Compile Include="Lazy\LazyString.cs" />
+    <Compile Include="Values\AllListsNotTranslateAble.cs" />
+    <Compile Include="Values\AllListsNotTranslateAbleShared.cs" />
     <Compile Include="Vps\VpsHelperIsVps.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
@@ -737,8 +738,6 @@
     <Compile Include="Values\AllHtmlAttrs.cs" />
     <Compile Include="Values\AllHtmlAttrsValues.cs" />
     <Compile Include="Values\AllHtmlTags.cs" />
-    <Compile Include="Values\AllLists.cs" />
-    <Compile Include="Values\AllListsShared.cs" />
     <Compile Include="Values\AspxConsts.cs" />
     <Compile Include="Values\CommonSettingsKeys.cs" />
     <Compile Include="Values\Consts.cs" />

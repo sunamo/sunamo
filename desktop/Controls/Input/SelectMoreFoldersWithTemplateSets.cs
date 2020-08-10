@@ -34,6 +34,8 @@ namespace desktop.Controls.Input
         /// <param name="rowSmf"></param>
     public SelectMoreFoldersWithTemplateSets(Grid gridCbSets, int rowCbSets,Grid gridSmf, int rowSmf)
     {
+            txtFolders.Name = "txtFoldersSelectMoreFoldersWithTemplateSets";
+
             #region CbSets
             if (gridCbSets != null)
             {

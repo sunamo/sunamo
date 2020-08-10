@@ -4737,7 +4737,7 @@
         </trans-unit>
         <trans-unit id="UncheckAll" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">Odškrtnutí všech</target>
+          <target state="translated">Odškrtnout všechny</target>
         </trans-unit>
         <trans-unit id="Prolong" translate="no" xml:space="preserve">
           <source></source>

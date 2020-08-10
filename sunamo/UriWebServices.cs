@@ -184,7 +184,7 @@ public partial class UriWebServices
         {
             if (s_list == null)
             {
-                s_list = new List<string>(CA.ToEnumerable("kotanyi", "avok\u00E1do", "nadir", sess.i18n(XlfKeys.Orient), sess.i18n(XlfKeys.Drago), "v\u00EDtana", "sv\u011Bt bylinek"));
+                s_list = new List<string>(CA.ToEnumerable("kotanyi", "avok\u00E1do", "nadir", XlfKeys.Orient, XlfKeys.Drago, "v\u00EDtana", "sv\u011Bt bylinek"));
             }
 
             foreach (var item in s_list)

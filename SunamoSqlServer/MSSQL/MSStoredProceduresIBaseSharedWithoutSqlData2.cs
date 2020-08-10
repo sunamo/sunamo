@@ -368,6 +368,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 ab[dex++] = lowerThanWhere[i];
             }
         }
+
         if (whereOr != null)
         {
             for (int i = 0; i < whereOr.Count; i++)
@@ -375,6 +376,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 ab[dex++] = whereOr[i];
             }
         }
+
         AddCommandParameterFromAbc(comm, ab, i2);
     }
 

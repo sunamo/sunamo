@@ -57,6 +57,12 @@ public class UlozTo
         return uri;
     }
 
+    /// <summary>
+    /// Cant have sess, is in webforms 
+    /// </summary>
+    /// <param name="uri"></param>
+    /// <param name="sess"></param>
+    /// <returns></returns>
     public static UlozToMediaUriParts Parse(string uri)
     {
 

@@ -79,6 +79,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoNTextCat", "..\sunamo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoVcf", "SunamoVcf\SunamoVcf.csproj", "{D560F9D5-3E38-491C-8AAC-6C168B84C913}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoPayments", "SunamoPayments\SunamoPayments.csproj", "{5768D44A-E024-4141-AD54-ED05FCB9C4CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -545,6 +547,18 @@ Global
 		{D560F9D5-3E38-491C-8AAC-6C168B84C913}.Release|x64.Build.0 = Release|Any CPU
 		{D560F9D5-3E38-491C-8AAC-6C168B84C913}.Release|x86.ActiveCfg = Release|Any CPU
 		{D560F9D5-3E38-491C-8AAC-6C168B84C913}.Release|x86.Build.0 = Release|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Debug|x64.Build.0 = Debug|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Debug|x86.Build.0 = Debug|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Release|x64.ActiveCfg = Release|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Release|x64.Build.0 = Release|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Release|x86.ActiveCfg = Release|Any CPU
+		{5768D44A-E024-4141-AD54-ED05FCB9C4CE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
