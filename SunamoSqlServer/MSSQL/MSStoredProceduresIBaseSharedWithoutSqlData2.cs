@@ -2579,6 +2579,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectCellDataTableStringOneRow(tabulka, "Name", nameColumnID, id);
     }
 
+    public string SelectNameOfID(string tabulka, long id, string nameColumnID, string nameColumnValue)
+    {
+        return SelectCellDataTableStringOneRow(tabulka, nameColumnValue, nameColumnID, id);
+    }
+
     public string SelectNameOfIDOrSE(string tabulka, string idColumnName, int id)
     {
         return SelectCellDataTableStringOneRow(tabulka, "Name", idColumnName, id);

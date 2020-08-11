@@ -17,7 +17,7 @@ public static bool IsUserAdministrator()
         WindowsPrincipal principal = new WindowsPrincipal(user);
         isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
     }
-    catch (UnauthorizedAccessException ex)
+    catch (UnauthorizedAccessException)
     {
         isAdmin = false;
     }

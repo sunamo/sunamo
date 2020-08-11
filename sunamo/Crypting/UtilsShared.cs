@@ -40,7 +40,7 @@ public partial class Utils
         {
             return Convert.FromBase64String(base64Encoded);
         }
-        catch (System.FormatException ex)
+        catch (System.FormatException)
         {
             ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.TheProvidedStringDoesNotAppearToBeBase64Encoded) + ":" + Environment.NewLine + base64Encoded + Environment.NewLine);
         }

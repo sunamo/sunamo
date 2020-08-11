@@ -53,7 +53,7 @@ namespace ConsoleStandardApp2
         {
             sb.AppendLine(SH.Format4(c, addNamespacesLines, className, fields, contentOfInitMethod));
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
 
@@ -62,7 +62,7 @@ namespace ConsoleStandardApp2
             sb.AppendLine(SH.Format3(c, addNamespacesLines, className, fields, contentOfInitMethod));
 
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
 

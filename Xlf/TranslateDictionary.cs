@@ -22,10 +22,17 @@ public class TranslateDictionary : IDictionary<string, string>
     public static Func<string,  string> ReloadIfKeyWontBeFound;
     public static Action<string> ShowMb;
 
+    public static bool returnXlfKey = false;
+
     public string this[string key]
     {
         get
         {
+            if (returnXlfKey)
+            {
+                return key;
+            }
+
             //ShowMb(_l + ": " + Count +" . Key was copied to clipboard");
             ////Clipboard.SetText(Exc.GetStackTrace());
             //Clipboard.SetText(SH.NullToStringOrDefault( key));

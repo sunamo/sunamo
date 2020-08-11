@@ -26,7 +26,7 @@ public static partial class SH
         {
             formatted = SH.Format4(c, innerMain);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
 
@@ -34,7 +34,7 @@ public static partial class SH
         {
             formatted = SH.Format3(c, innerMain);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
 

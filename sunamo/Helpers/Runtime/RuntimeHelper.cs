@@ -75,7 +75,7 @@ public partial class RuntimeHelper
         var count = controlWithResult.CountOfHandlersChangeDialogResult();
         if (count > 0)
         {
-            if (throwException)
+            if (throwException )
             {
                 ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), sess.i18n(XlfKeys.ChangeDialogResultHasAlredyRegisteredHandler));
             }

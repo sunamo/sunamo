@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="AdminSection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SunamoPayments\SunamoPayments.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_\Api\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.4" />
+  </ItemGroup>
+</Project>

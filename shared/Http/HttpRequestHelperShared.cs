@@ -161,7 +161,7 @@ public static Stream GetResponseStream(string address, HttpMethod method)
     {
         response = (HttpWebResponse)request.GetResponse();
     }
-    catch (System.Exception ex)
+    catch (System.Exception)
     {
         return null;
     }

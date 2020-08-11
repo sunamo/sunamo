@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB110883-0FA4-4ED4-AC2E-CD2106C755FF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GoPay.net_sdk</RootNamespace>
+    <AssemblyName>GoPay.net-sdk</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Newtonsoft.Json, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.Newtonsoft.Json.1.0.0\lib\net45\RestSharp.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConsoleApp\GoConsts2.cs" />
+    <Compile Include="ConsoleApp\Program.cs" />
+    <Compile Include="_\src\GPConnector.cs" />
+    <Compile Include="_\src\Model\Account\AccountStatement.cs" />
+    <Compile Include="_\src\Model\APIError.cs" />
+    <Compile Include="_\src\Model\Common\CheckoutGroup.cs" />
+    <Compile Include="_\src\Model\Common\Country.cs" />
+    <Compile Include="_\src\Model\Common\Currency.cs" />
+    <Compile Include="_\src\Model\AccessToken.cs" />
+    <Compile Include="_\src\Model\AuthHeader.cs" />
+    <Compile Include="_\src\Model\Common\DefensiveJsonEnumStringConvertor.cs" />
+    <Compile Include="_\src\Model\Common\SessionSubState.cs" />
+    <Compile Include="_\src\Model\Account\StatementGeneratingFormat.cs" />
+    <Compile Include="_\src\Model\EET\EET.cs" />
+    <Compile Include="_\src\Model\EET\EETCode.cs" />
+    <Compile Include="_\src\Model\EET\EETReceipt.cs" />
+    <Compile Include="_\src\Model\EET\EETReceiptFilter.cs" />
+    <Compile Include="_\src\Model\ErrorElement.cs" />
+    <Compile Include="_\src\GPClientException.cs" />
+    <Compile Include="_\src\Model\OAuth.cs" />
+    <Compile Include="_\src\Model\Common\GPDateAdapter.cs" />
+    <Compile Include="_\src\Model\Payment\AdditionalParam.cs" />
+    <Compile Include="_\src\Model\Payment\BankAccount.cs" />
+    <Compile Include="_\src\Model\Payment\BasePayment.cs" />
+    <Compile Include="_\src\Model\Payment\Callback.cs" />
+    <Compile Include="_\src\Model\Payment\CapturePayment.cs" />
+    <Compile Include="_\src\Model\Payment\EnabledPaymentInstrument.cs" />
+    <Compile Include="_\src\Model\Payment\Group.cs" />
+    <Compile Include="_\src\Model\Payment\Image.cs" />
+    <Compile Include="_\src\Model\Payment\ItemType.cs" />
+    <Compile Include="_\src\Model\Payment\Lang.cs" />
+    <Compile Include="_\src\Model\Payment\NextPayment.cs" />
+    <Compile Include="_\src\Model\Payment\OrderItem.cs" />
+    <Compile Include="_\src\Model\Payment\Payer.cs" />
+    <Compile Include="_\src\Model\Payment\PayerContact.cs" />
+    <Compile Include="_\src\Model\Payment\PayerPaymentCard.cs" />
+    <Compile Include="_\src\Model\Payment\Payment.cs" />
+    <Compile Include="_\src\Model\Payment\PaymentInstrument.cs" />
+    <Compile Include="_\src\Model\Payment\PaymentInstrumentRoot.cs" />
+    <Compile Include="_\src\Model\Payment\PaymentResult.cs" />
+    <Compile Include="_\src\Model\Payment\PreAuthorization.cs" />
+    <Compile Include="_\src\Model\Payment\Recurrence.cs" />
+    <Compile Include="_\src\Model\Payment\RecurrenceCycle.cs" />
+    <Compile Include="_\src\Model\Payment\RefundPayment.cs" />
+    <Compile Include="_\src\Model\Payment\Swift.cs" />
+    <Compile Include="_\src\Model\Payment\Target.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_\src\Model\Payment\VatRate.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashBatchRequest.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashBatchItem.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashCouponRequest.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashBatchResult.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashBatchState.cs" />
+    <Compile Include="_\src\Model\Supercash\SubType.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashBatch.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashCoupon.cs" />
+    <Compile Include="_\src\Model\Supercash\SupercashPayment.cs" />
+    <Compile Include="_\SunamoAdds\GoPayData.cs" />
+    <Compile Include="_\SunamoAdds\GopayException.cs" />
+    <Compile Include="_\SunamoAdds\SunamoGoPayHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
+    <Content Include="sunamo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj">
+      <Project>{ba541df7-be88-43e2-9ee4-08aac92da941}</Project>
+      <Name>Scz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoPayments\SunamoPayments.csproj">
+      <Project>{2f54b127-c144-4c12-8174-cebd3299b558}</Project>
+      <Name>SunamoPayments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xlf\Xlf.csproj">
+      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
+      <Name>Xlf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

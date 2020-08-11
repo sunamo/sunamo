@@ -167,6 +167,7 @@ public class XlfResourcesH
     private static void ProcessXlfFiles(string path)
     {
         var files = FS.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
+        files.RemoveAll(d => d.EndsWith(".min.xlf"));
         foreach (var file3 in files)
         {
             var lang = XmlLocalisationInterchangeFileFormatXlf.GetLangFromFilename(file3);

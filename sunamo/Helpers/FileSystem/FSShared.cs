@@ -75,7 +75,7 @@ public partial class FS
                         {
                             list.AddRange(Directory.GetFiles(folder, masc, searchOption));
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
                         }
 
@@ -1203,7 +1203,7 @@ public partial class FS
         {
             Directory.CreateDirectory(v);
         }
-        catch (NotSupportedException ex)
+        catch (NotSupportedException)
         {
 
             
