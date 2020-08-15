@@ -32,7 +32,7 @@ namespace desktop.Controls.Visualization
     /// 
     /// Use in apps:
     /// IlCamminoManager - DataGridCamminoTracklist, IlCamminoManager,  SearchingIlCammino , ListenToIlCammino 
-    /// WpfApp1 - EncodingOfFiles
+    /// Events - EncodingOfFiles
     /// LastFmClient/LastFmClient - artists/songs
     /// GeoCachingTool/SavedCaches
     /// SeznamCzReality/ListViewFlats

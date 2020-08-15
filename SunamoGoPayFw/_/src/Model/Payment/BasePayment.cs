@@ -45,6 +45,7 @@ namespace GoPay.Model.Payment
         [JsonProperty("additional_params")]
         public List<AdditionalParam> AdditionalParams { get; set; }
 
+
         [JsonProperty("lang")]
         public string Lang { get; set; }
 

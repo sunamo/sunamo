@@ -68,7 +68,7 @@ public class InlineBuilder : InlineBuilderBase, IInlineBuilder
     {
         Bold b = new Bold();
         FontArgs fa = FontArgs.DefaultRun();
-        fa.fontSize = 50;
+        fa.fontSize = HeaderSize.h1;
         //b.FontSize = 40;
         b.Inlines.Add(new LineBreak());
         //b.Inlines.Add(GetRun(text, fa));
@@ -82,7 +82,7 @@ public class InlineBuilder : InlineBuilderBase, IInlineBuilder
     {
         Bold b = new Bold();
         FontArgs fa = FontArgs.DefaultRun();
-        fa.fontSize = 50;
+        fa.fontSize = HeaderSize.h1;
         //b.FontSize = 40;
         b.Inlines.Add(new LineBreak());
         b.Inlines.Add(GetRun(text, fa));
@@ -96,7 +96,7 @@ public class InlineBuilder : InlineBuilderBase, IInlineBuilder
         Bold b = new Bold();
         FontArgs fa = FontArgs.DefaultRun();
         //fa.fontSize = 50;
-        fa.fontSize = 40;
+        fa.fontSize = HeaderSize.h2;
         b.Inlines.Add(new LineBreak());
         b.Inlines.Add(GetRun(text, fa));
         b.Inlines.Add(new LineBreak());
@@ -108,7 +108,7 @@ public class InlineBuilder : InlineBuilderBase, IInlineBuilder
     {
         Italic b = new Italic();
         FontArgs fa = FontArgs.DefaultRun();
-        fa.fontSize = 30;
+        fa.fontSize = HeaderSize.h3;
         //b.FontSize = 30;
         b.Inlines.Add(new LineBreak());
         b.Inlines.Add(GetRun(text, fa));
@@ -170,3 +170,4 @@ public class InlineBuilder : InlineBuilderBase, IInlineBuilder
         DivideStringToRows(fa, text, maxSize);
     }
 }
+

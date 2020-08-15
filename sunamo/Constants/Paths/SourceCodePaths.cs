@@ -16,6 +16,6 @@ namespace sunamo.Constants
         public const string GoodContent = @"d:\_\_GoodContent\";
 
 
-        public const string GoodContentTest = @"d:\_Test\WpfApp1\WpfApp1\ReviewRestoredSourceFilesUC\_GoodContent\";
+        public const string GoodContentTest = @"d:\_Test\Events\Events\ReviewRestoredSourceFilesUC\_GoodContent\";
     }
 }

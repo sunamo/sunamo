@@ -22,11 +22,6 @@ public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState
 
     static SunamoGoPayHelper()
     {
-
-    //}
-
-    //public static void Init()
-    //{
         var v = EnumHelper.GetValues<SessionState>();
         string cs = null;
         foreach (var item in v)
@@ -154,7 +149,6 @@ public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState
         try
         {
             alg.Key = new ASCIIEncoding().GetBytes(secureKey);
-
         }
         catch (Exception ex)
         {

@@ -4,8 +4,8 @@
     xmlns:Controls="clr-namespace:desktop.Controls.ToggleSwitch">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Brushes.xaml"/>
-        <ResourceDictionary Source="Fonts.xaml"/>
+        <ResourceDictionary Source="BrushesDictionary.xaml"/>
+        <ResourceDictionary Source="FontsDictionary.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!-- ******MAIN PAGE STYLES****** -->

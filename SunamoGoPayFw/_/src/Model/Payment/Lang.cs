@@ -1,6 +1,6 @@
 ﻿namespace GoPay.Model.Payments
 {
-    class Lang
+    public class Lang
     {
         public const string CS = "CS";
         public const string EN = "EN";

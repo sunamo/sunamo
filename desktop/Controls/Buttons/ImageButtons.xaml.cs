@@ -33,8 +33,6 @@ namespace desktop.Controls.Buttons
         public event VoidVoid SelectAll;
         public event VoidVoid UnselectAll;
 
-        public const string awesomeFontPath = "/Fonts/FontAwesome.otf#FontAwesome";
-
         async void SetAwesomeIcons()
         {
             // In serie how is written in xaml

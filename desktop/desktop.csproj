@@ -276,6 +276,9 @@
     <Compile Include="Controls\Result\FoundedResultUC.xaml.cs">
       <DependentUpon>FoundedResultUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Result\NoResultsFound.xaml.cs">
+      <DependentUpon>NoResultsFound.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Result\ShowCodeResultUC.xaml.cs">
       <DependentUpon>ShowCodeResultUC.xaml</DependentUpon>
     </Compile>
@@ -501,6 +504,7 @@
     </Compile>
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
+    <Compile Include="Values\HeaderSize.cs" />
     <Compile Include="Values\TypesControls.cs" />
     <Compile Include="Values\TypesDesktop.cs" />
     <Compile Include="VisualTreeHelpers.cs" />
@@ -658,6 +662,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\Result\NoResultsFound.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Result\ShowCodeResultUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -678,11 +686,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ToggleSwitch\Assets\Brushes.xaml">
+    <Page Include="Controls\ToggleSwitch\Assets\BrushesDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ToggleSwitch\Assets\Fonts.xaml">
+    <Page Include="Controls\ToggleSwitch\Assets\FontsDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -702,7 +710,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ToggleSwitch\WPF\Themes\Generic.xaml">
+    <Page Include="Controls\ToggleSwitch\WPF\Themes\GenericDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

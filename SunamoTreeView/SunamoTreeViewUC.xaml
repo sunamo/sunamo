@@ -11,11 +11,7 @@
         <DataTemplate DataType="{x:Type local:ItemsViewModel}">
             <local:ItemView/>
         </DataTemplate>
-        <ResourceDictionary x:Key="m">
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="pack://application:,,,/OptimalAllocationSizeUnit;component/Resources.xaml"></ResourceDictionary>-->
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+
     </UserControl.Resources>
     
     <TreeView  x:Name="tvFolders" x:FieldModifier="public">
