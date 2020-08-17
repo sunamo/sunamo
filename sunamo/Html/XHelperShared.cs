@@ -152,12 +152,12 @@ public static XElement MakeAllElementsWithDefaultNs(XElement settings)
         if (FS.ExistsFile(xml))
         {
             TF.SaveFile(formatted, xml);
-            ThisApp.SetStatus(TypeOfMessage.Success, sess.i18n(XlfKeys.ChangesSavedToFile));
+            ThisApp.SetStatus(TypeOfMessage.Success, SunamoPageHelperSunamo.i18n(XlfKeys.ChangesSavedToFile));
             return null;
         }
         else
         {
-            ThisApp.SetStatus(TypeOfMessage.Success, sess.i18n(XlfKeys.ChangesSavedToClipboard));
+            ThisApp.SetStatus(TypeOfMessage.Success, SunamoPageHelperSunamo.i18n(XlfKeys.ChangesSavedToClipboard));
             return formatted;
         }
     }

@@ -25,7 +25,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
     }
 
     /// <summary>
-    /// sess.i18n(
+    /// SunamoPageHelperSunamo.i18n(
     /// </summary>
     public const string RLDataEn = SunamoNotTranslateAble.RLDataEn;
     public const string RLDataCs = SunamoNotTranslateAble.RLDataCs;

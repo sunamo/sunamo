@@ -123,7 +123,7 @@ namespace sunamo.Generators
                 tlb.Information("Is sunamo.cz");
                 pathSearchForFiles += AllStrings.bs + solution;
             }
-            tlb.Information(sess.i18n(XlfKeys.Path) + ": " + pathSearchForFiles);
+            tlb.Information(SunamoPageHelperSunamo.i18n(XlfKeys.Path) + ": " + pathSearchForFiles);
 
             FS.WithEndSlash(ref pathRepository);
 

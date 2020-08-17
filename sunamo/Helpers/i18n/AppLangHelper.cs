@@ -49,7 +49,7 @@ namespace sunamo
         static AppLangHelper()
         {
             s_fixedLanguages.Add("cs", "\u010Ce\u0161tina");
-            s_fixedLanguages.Add("en", sess.i18n(XlfKeys.English));
+            s_fixedLanguages.Add("en", SunamoPageHelperSunamo.i18n(XlfKeys.English));
 
             List<string> systemLanguageCS = new List<string>();
             systemLanguageCS.Add(cs0);

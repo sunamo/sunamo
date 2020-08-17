@@ -22,24 +22,31 @@ public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState
 
     static SunamoGoPayHelper()
     {
-        var v = EnumHelper.GetValues<SessionState>();
-        string cs = null;
-        foreach (var item in v)
+        try
         {
-            var fromSnake = ConvertSnakeConvention.FromConvention(item.ToString());
-
-            if (fromSnake.Contains(AllStrings.space))
+            var v = EnumHelper.GetValues<SessionState>();
+            string cs = null;
+            foreach (var item in v)
             {
-                var pascal = ConvertPascalConvention.ToConvention(fromSnake);
-                cs = RLData.cs[ pascal];
-            }
-            else
-            {
-                cs = RLData.cs[ fromSnake];
-            }
+                var fromSnake = ConvertSnakeConvention.FromConvention(item.ToString());
 
-            stateToStringCs.Add(item, cs);
-            stateToStringEn.Add(item, fromSnake);
+                if (fromSnake.Contains(AllStrings.space))
+                {
+                    var pascal = ConvertPascalConvention.ToConvention(fromSnake);
+                    cs = RLData.cs[pascal];
+                }
+                else
+                {
+                    cs = RLData.cs[fromSnake];
+                }
+
+                stateToStringCs.Add(item, cs);
+                stateToStringEn.Add(item, fromSnake);
+            }
+        }
+        catch (Exception ex)
+        {
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "In SunamoGoPayHelper: " + Exceptions.TextOfExceptions(ex));
         }
     }
 

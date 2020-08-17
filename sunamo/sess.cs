@@ -13,7 +13,7 @@ public static class sess
     {
         if (Exc.aspnet)
         {
-            ThrowExceptions.IsNotAllowed(Exc.GetStackTrace(), type, Exc.CallingMethod(), "sess.i18n in asp.net due to use global ThisApp.l");
+            ThrowExceptions.IsNotAllowed(Exc.GetStackTrace(), type, Exc.CallingMethod(), "SunamoPageHelperSunamo.i18n in asp.net due to use global ThisApp.l");
         }       
 
         switch (ThisApp.l)

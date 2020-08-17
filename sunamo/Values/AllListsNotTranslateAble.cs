@@ -10,7 +10,7 @@ public partial class AllLists
     {
         public static List<string> leftBrackets = CA.ToListString(AllStrings.lb, AllStrings.lcub, AllStrings.lsqb);
         public static List<string> rightBrackets = CA.ToListString(AllStrings.rb, AllStrings.rcub, AllStrings.rsqb);
-        public static List<string> featUpper = CA.ToListString("Feat.", sess.i18n(XlfKeys.Featuring), "Ft.");
+        public static List<string> featUpper = CA.ToListString("Feat.", SunamoPageHelperSunamo.i18n(XlfKeys.Featuring), "Ft.");
         public static List<string> featLower = CA.ToListString("feat.", "featuring", "ft.");
         public static List<string> OstravaCityParts = null;
         public static List<string> HtmlNonPairTags = CA.ToListString("area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr");

@@ -19,11 +19,11 @@ public partial class DTHelperMulti
         {
             if (l == Langs.cs)
             {
-                return sess.i18n(XlfKeys.ItWasNotMentioned);
+                return SunamoPageHelperSunamo.i18n(XlfKeys.ItWasNotMentioned);
             }
             else
             {
-                return sess.i18n(XlfKeys.NotIndicated);
+                return SunamoPageHelperSunamo.i18n(XlfKeys.NotIndicated);
             }
         }
 

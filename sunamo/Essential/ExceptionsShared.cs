@@ -17,7 +17,7 @@ using System.Threading.Tasks;
     {
         if (!en.ContainsKey(key))
         {
-            return key + " "+sess.i18n(XlfKeys.isNotExistsInDictionary)+" " + dictName;
+            return key + " "+SunamoPageHelperSunamo.i18n(XlfKeys.isNotExistsInDictionary)+" " + dictName;
         }
         return null;
     }
@@ -60,7 +60,7 @@ using System.Threading.Tasks;
             }
         }
 
-        return CheckBefore(before) + sess.i18n(XlfKeys.NotImplementedCase) + fr + ". "+sess.i18n(XlfKeys.publicProgramErrorPleaseContactDeveloper) + ".";
+        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedCase) + fr + ". "+SunamoPageHelperSunamo.i18n(XlfKeys.publicProgramErrorPleaseContactDeveloper) + ".";
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ using System.Threading.Tasks;
 
     public static object NotImplementedMethod(string before)
     {
-        return CheckBefore(before) + sess.i18n(XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper) + ".";
+        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper) + ".";
     }
     private static string CheckBefore(string before)
         {
@@ -107,7 +107,7 @@ using System.Threading.Tasks;
 
     public static string BadFormatOfElementInList(string before, object elVal, string listName)
     {
-        return before + sess.i18n(XlfKeys.BadFormatOfElement)+" " + SH.NullToStringOrDefault(elVal) + " in list " + listName; 
+        return before + SunamoPageHelperSunamo.i18n(XlfKeys.BadFormatOfElement)+" " + SH.NullToStringOrDefault(elVal) + " in list " + listName; 
     }
 
     public static string IsEmpty(string before, IEnumerable folders, string colName, string additionalMessage)

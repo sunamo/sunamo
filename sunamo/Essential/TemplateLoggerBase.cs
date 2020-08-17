@@ -16,12 +16,12 @@ static Type type = typeof(TemplateLoggerBase);
 
         public void SavedToDrive(string v)
         {
-            WriteLine(TypeOfMessage.Success, sess.i18n(XlfKeys.SavedToDrive)+": " + v);
+            WriteLine(TypeOfMessage.Success, SunamoPageHelperSunamo.i18n(XlfKeys.SavedToDrive)+": " + v);
         }
 
         public void Finished(string nameOfOperation)
         {
-            WriteLine(TypeOfMessage.Success, nameOfOperation + " - " + sess.i18n(XlfKeys.Finished));
+            WriteLine(TypeOfMessage.Success, nameOfOperation + " - " + SunamoPageHelperSunamo.i18n(XlfKeys.Finished));
         }
         public void EndRunTime()
         {
@@ -40,15 +40,15 @@ static Type type = typeof(TemplateLoggerBase);
         }
         public void SomeErrorsOccuredSeeLog()
         {
-            WriteLine(TypeOfMessage.Error, sess.i18n(XlfKeys.SomeErrorsOccuredSeeLog));
+            WriteLine(TypeOfMessage.Error, SunamoPageHelperSunamo.i18n(XlfKeys.SomeErrorsOccuredSeeLog));
         }
         public void FolderDontExists(string folder)
         {
-            WriteLine(TypeOfMessage.Error, sess.i18n(XlfKeys.Folder) + " " + folder + " doesn't exists.");
+            WriteLine(TypeOfMessage.Error, SunamoPageHelperSunamo.i18n(XlfKeys.Folder) + " " + folder + " doesn't exists.");
         }
         public void FileDontExists(string selectedFile)
         {
-            WriteLine(TypeOfMessage.Error, sess.i18n(XlfKeys.File) + " " + selectedFile + " doesn't exists.");
+            WriteLine(TypeOfMessage.Error, SunamoPageHelperSunamo.i18n(XlfKeys.File) + " " + selectedFile + " doesn't exists.");
         }
         private void WriteLine(TypeOfMessage error, string v)
         {
@@ -58,24 +58,24 @@ static Type type = typeof(TemplateLoggerBase);
         #region Information
         public void LoadedFromStorage(string item)
         {
-            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.LoadedFromStorage)+": " + item);
+            WriteLine(TypeOfMessage.Information, SunamoPageHelperSunamo.i18n(XlfKeys.LoadedFromStorage)+": " + item);
         }
 
         public void InsertAsIndexesZeroBased()
         {
-            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.InsertAsIndexesZeroBased));
+            WriteLine(TypeOfMessage.Information, SunamoPageHelperSunamo.i18n(XlfKeys.InsertAsIndexesZeroBased));
         }
         public void UnfortunatelyBadFormatPleaseTryAgain()
         {
-            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.UnfortunatelyBadFormatPleaseTryAgain) + ".");
+            WriteLine(TypeOfMessage.Information, SunamoPageHelperSunamo.i18n(XlfKeys.UnfortunatelyBadFormatPleaseTryAgain) + ".");
         }
         public void OperationWasStopped()
         {
-            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.OperationWasStopped));
+            WriteLine(TypeOfMessage.Information, SunamoPageHelperSunamo.i18n(XlfKeys.OperationWasStopped));
         }
         public void NoData()
         {
-            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.PleaseEnterRightInputData));
+            WriteLine(TypeOfMessage.Information, SunamoPageHelperSunamo.i18n(XlfKeys.PleaseEnterRightInputData));
         }
         /// <summary>
         /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
@@ -83,7 +83,7 @@ static Type type = typeof(TemplateLoggerBase);
         /// <param name="fn"></param>
         public void SuccessfullyResized(string fn)
         {
-            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.SuccessfullyResizedTo) + " " + fn);
+            WriteLine(TypeOfMessage.Information, SunamoPageHelperSunamo.i18n(XlfKeys.SuccessfullyResizedTo) + " " + fn);
         }
         private string FullNameOfExecutedCode(object type, string methodName)
         {

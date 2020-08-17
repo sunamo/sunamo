@@ -1,4 +1,5 @@
 ﻿using sunamo.Data;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -50,7 +51,7 @@ namespace sunamo.Helpers
             }
         }
 
-        public static HttpResponseMessage GetResponse(string address, HttpMethod method, HttpRequestData hrd)
+        public static HttpResponseMessage GetResponse( string address, HttpMethod method, HttpRequestData hrd)
         {
             if (hrd == null)
             {
@@ -77,7 +78,7 @@ namespace sunamo.Helpers
             }
             else
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.NonSupportedHttpMethodInHttpMethodGetResponseText));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SunamoPageHelperSunamo.i18n(ThisApp.l, XlfKeys.NonSupportedHttpMethodInHttpMethodGetResponseText, Consts.Nope));
             }
             //HttpResponseMessage response = responseTask.Result;
             return response;

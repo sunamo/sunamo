@@ -128,7 +128,7 @@ public static partial class SH
         int remain = sl % c; 
         if (remain != 0)
         {
-            ThrowExceptions.Custom(null, type, Exc.CallingMethod(), sess.i18n(XlfKeys.NumbersOfLetters)+" " + s + " is not dividable with " + c);
+            ThrowExceptions.Custom(null, type, Exc.CallingMethod(), SunamoPageHelperSunamo.i18n(XlfKeys.NumbersOfLetters)+" " + s + " is not dividable with " + c);
         }
 
         List<string> ls = new List<string>(c);
@@ -1769,7 +1769,7 @@ public static partial class SH
     {
         if (deli == null || deli.Count() == 0)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.NoDelimiterDetermined));   
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SunamoPageHelperSunamo.i18n(XlfKeys.NoDelimiterDetermined));   
         }
 
         var deli3 = CA.ToListString( CA.OneElementCollectionToMulti(deli));
@@ -1988,7 +1988,7 @@ public static partial class SH
 
             if (ie.Count() > 1 && enu.Count() == 1)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), SunamoPageHelperSunamo.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
             }
         }
 

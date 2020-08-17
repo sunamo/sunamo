@@ -21,7 +21,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.Accept);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.Accept);
     //    }
     //}
     //#endregion
@@ -31,7 +31,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.EditUserAccount);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.EditUserAccount);
     //    }
     //}
 
@@ -39,7 +39,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.UserDetail);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.UserDetail);
     //    }
     //}
 
@@ -47,7 +47,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.ErrorSerie255);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.ErrorSerie255);
     //    }
     //}
 
@@ -55,7 +55,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.ErrorSerie0);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.ErrorSerie0);
     //    }
     //}
 
@@ -63,7 +63,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.ViewLastWeek);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.ViewLastWeek);
     //    }
     //}
 
@@ -71,7 +71,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.YouAreNotLogged);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.YouAreNotLogged);
     //    }
     //}
 
@@ -79,7 +79,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.YouAreBlocked);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.YouAreBlocked);
     //    }
     //}
 
@@ -87,7 +87,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.TurnOnSelectingPhotos);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.TurnOnSelectingPhotos);
     //    }
     //}
 
@@ -95,7 +95,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.TurnOffSelectingPhotos);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.TurnOffSelectingPhotos);
     //    }
     //}
 
@@ -103,7 +103,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.StringNotFound);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.StringNotFound);
     //    }
     //}
 
@@ -111,7 +111,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.NoRightArgumentsToPage);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.NoRightArgumentsToPage);
     //    }
     //}
 
@@ -119,7 +119,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.YouAreNotLoggedAsWebAdmin);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.YouAreNotLoggedAsWebAdmin);
     //    }
     //}
 
@@ -127,7 +127,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.YouHaveNotValidIPv4Address);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.YouHaveNotValidIPv4Address);
     //    }
     //}
 
@@ -135,7 +135,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.UriTooShort);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.UriTooShort);
     //    }
     //}
 
@@ -143,7 +143,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.UriTooLong);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.UriTooLong);
     //    }
     //}
 
@@ -151,7 +151,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.CustomShortUriOccupatedYet);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.CustomShortUriOccupatedYet);
     //    }
     //}
 
@@ -159,7 +159,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.LinkSuccessfullyShorted);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.LinkSuccessfullyShorted);
     //    }
     //}
 
@@ -167,7 +167,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.UnauthorizedOperation);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.UnauthorizedOperation);
     //    }
     //}
 
@@ -175,7 +175,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.Error);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.Error);
     //    }
     //}
 
@@ -183,7 +183,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.Success);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.Success);
     //    }
     //}
 
@@ -191,7 +191,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.RemoveFromFavoritesSuccess);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.RemoveFromFavoritesSuccess);
     //    }
     //}
 
@@ -199,7 +199,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.AddToFavoritesSuccess);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.AddToFavoritesSuccess);
     //    }
     //}
 
@@ -207,7 +207,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.RemoveFromFavorites);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.RemoveFromFavorites);
     //    }
     //}
 
@@ -215,7 +215,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.AddToFavorites);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.AddToFavorites);
     //    }
     //}
 
@@ -223,7 +223,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.RemoveAsRsvpSuccess);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.RemoveAsRsvpSuccess);
     //    }
     //}
 
@@ -231,7 +231,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.RemoveAsRsvp);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.RemoveAsRsvp);
     //    }
     //}
 
@@ -239,7 +239,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.AddAsRsvp);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.AddAsRsvp);
     //    }
     //}
 
@@ -247,7 +247,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.DetailsClickSurveyAspxLabel);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.DetailsClickSurveyAspxLabel);
     //    }
     //}
 
@@ -255,7 +255,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.UnvalidSession);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.UnvalidSession);
     //    }
     //}
 
@@ -263,7 +263,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.ScIsNotTheSame);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.ScIsNotTheSame);
     //    }
     //}
 
@@ -271,7 +271,7 @@ public class SunamoStrings
     //{
     //    get
     //    {
-    //        return "";//sess.i18n(XlfKeys.NotImplementedPleaseContactWebAdmin);
+    //        return "";//SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedPleaseContactWebAdmin);
     //    }
     //} 
     //#endregion

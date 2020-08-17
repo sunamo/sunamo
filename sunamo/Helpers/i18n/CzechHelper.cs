@@ -13,11 +13,11 @@
     {
         if (sex)
         {
-            return sess.i18n(XlfKeys.Madam)+" " + name;
+            return SunamoPageHelperSunamo.i18n(XlfKeys.Madam)+" " + name;
         }
         else
         {
-            return sess.i18n(XlfKeys.Sir)+" " + name;
+            return SunamoPageHelperSunamo.i18n(XlfKeys.Sir)+" " + name;
         }
     }
 

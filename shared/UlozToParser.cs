@@ -67,89 +67,89 @@ public class UlozTo
     {
 
 
-        var sp = SH.Split(uri, AllStrings.slash, AllStrings.q, "=", AllStrings.dot, "&");
-        if (sp.Count > 10)
-        {
-            StringBuilder errors = new StringBuilder();
-            UlozToMediaUriParts ut = new UlozToMediaUriParts();
-            ut.server = sp[1];
-            if (ut.server.Length > 4)
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Server), ut.server));
-            }
-            else
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Server), ut.server));
-            }
-            ut.part1 = sp[4];
-            if (ut.part1.Length > 1)
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part1), ut.part1));
-            }
-            else
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part1), ut.part1));
-            }
-            ut.part2 = sp[5];
-            if (ut.part2.Length >1)
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part2), ut.part2));
-            }
-            else
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part2), ut.part2));
-            }
-            ut.part3 = sp[6];
-            if (ut.part3.Length > 1)
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part3), ut.part3));
-            }
-            else
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part3), ut.part3));
-            }
-            ut.fileCode = sp[7];
-            if (ut.fileCode.Length > 32)
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("red", "FileCode", ut.fileCode));
-            }
-            else
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("green", "FileCode", ut.fileCode));
-            }
-            ut.maxQuality = sp[8];
-            if (ut.maxQuality.Length > 3)
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("red", "MaxQuality", ut.maxQuality));
-            }
-            else
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("green", "MaxQuality", ut.maxQuality));
-            }
-            ut.ext = sp[9];
-            if (ut.ext.Length > 3)
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("red", "Ext", ut.ext));
-            }
-            else
-            {
-                errors.Append(HtmlGenerator2.DetailStatic("green", "Ext", ut.ext));
-            }
-            int nt = 0;
-            if (!int.TryParse(sp[11], out nt))
-            {
+        //var sp = SH.Split(uri, AllStrings.slash, AllStrings.q, "=", AllStrings.dot, "&");
+        //if (sp.Count > 10)
+        //{
+        //    StringBuilder errors = new StringBuilder();
+        //    UlozToMediaUriParts ut = new UlozToMediaUriParts();
+        //    ut.server = sp[1];
+        //    if (ut.server.Length > 4)
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Server), ut.server));
+        //    }
+        //    else
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Server), ut.server));
+        //    }
+        //    ut.part1 = sp[4];
+        //    if (ut.part1.Length > 1)
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part1), ut.part1));
+        //    }
+        //    else
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part1), ut.part1));
+        //    }
+        //    ut.part2 = sp[5];
+        //    if (ut.part2.Length >1)
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part2), ut.part2));
+        //    }
+        //    else
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part2), ut.part2));
+        //    }
+        //    ut.part3 = sp[6];
+        //    if (ut.part3.Length > 1)
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part3), ut.part3));
+        //    }
+        //    else
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part3), ut.part3));
+        //    }
+        //    ut.fileCode = sp[7];
+        //    if (ut.fileCode.Length > 32)
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", "FileCode", ut.fileCode));
+        //    }
+        //    else
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", "FileCode", ut.fileCode));
+        //    }
+        //    ut.maxQuality = sp[8];
+        //    if (ut.maxQuality.Length > 3)
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", "MaxQuality", ut.maxQuality));
+        //    }
+        //    else
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", "MaxQuality", ut.maxQuality));
+        //    }
+        //    ut.ext = sp[9];
+        //    if (ut.ext.Length > 3)
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", "Ext", ut.ext));
+        //    }
+        //    else
+        //    {
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", "Ext", ut.ext));
+        //    }
+        //    int nt = 0;
+        //    if (!int.TryParse(sp[11], out nt))
+        //    {
                 
-                errors.Append(HtmlGenerator2.DetailStatic("red", "FileID", ut.fileId));
-            }
-            else
-            {
-                ut.fileId = nt;
-                errors.Append(HtmlGenerator2.DetailStatic("green", "FileID", ut.fileId));
-            }
-            ut.htmlErrors = errors.ToString();
-            return ut;
-            //http://thv1.uloz.to/a/1/7/a17627ad6321ad0739b2f7401b8dce6e.480.mp4?fileId=43429293&amp;_ga=1.65666158.1775030816.1442328201
-        }
+        //        errors.Append(HtmlGenerator2.DetailStatic("red", "FileID", ut.fileId));
+        //    }
+        //    else
+        //    {
+        //        ut.fileId = nt;
+        //        errors.Append(HtmlGenerator2.DetailStatic("green", "FileID", ut.fileId));
+        //    }
+        //    ut.htmlErrors = errors.ToString();
+        //    return ut;
+        //    //http://thv1.uloz.to/a/1/7/a17627ad6321ad0739b2f7401b8dce6e.480.mp4?fileId=43429293&amp;_ga=1.65666158.1775030816.1442328201
+        //}
         return null;
     }
 

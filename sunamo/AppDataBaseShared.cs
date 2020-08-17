@@ -34,7 +34,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataB
     //public  string CommonFolder()
     //{
     //    var path = GetSunamoFolder().Result.ToString();
-    //    return FS.Combine(path, sess.i18n(XlfKeys.Common), AppFolders.Settings.ToString());
+    //    return FS.Combine(path, SunamoPageHelperSunamo.i18n(XlfKeys.Common), AppFolders.Settings.ToString());
     //}
     //public abstract StorageFolder CommonFolder();
 
@@ -70,7 +70,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataB
             bool isNull = Abstract.IsRootFolderNull();
             if (isNull)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na "+sess.i18n(XlfKeys.LookDirectIntoIsRootFolderNull)+".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na "+SunamoPageHelperSunamo.i18n(XlfKeys.LookDirectIntoIsRootFolderNull)+".");
             }
 
             return rootFolder;

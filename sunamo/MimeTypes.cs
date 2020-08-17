@@ -681,7 +681,7 @@ using System.Collections.Generic;
                 {"image/jpeg", ".jpg"},
                 {"image/pict", ".pic"},
                 {"image/png", ".png"}, //Defined in [RFC-2045], [RFC-2048]
-                {"image/x-png", ".png"}, //See https://www.w3.org/TR/PNG/#A-Media-type :sess.i18n(XlfKeys.ItIsRecommendedThatImplementationsAlsoRecognizeTheMediaType)+" "image/x-png"."
+                {"image/x-png", ".png"}, //See https://www.w3.org/TR/PNG/#A-Media-type :SunamoPageHelperSunamo.i18n(XlfKeys.ItIsRecommendedThatImplementationsAlsoRecognizeTheMediaType)+" "image/x-png"."
                 {"image/tiff", ".tiff"},
                 {"image/x-macpaint", ".mac"},
                 {"image/x-quicktime", ".qti"},

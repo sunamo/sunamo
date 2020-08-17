@@ -481,8 +481,8 @@ namespace sunamo
         public List<string> AlternateArtists()
         {
             var remix = Remix();
-            remix = SH.ReplaceAll(remix, "Ft", "ft", 
-                sess.i18n(XlfKeys.Feat), "feat");
+            remix = SH.ReplaceAll(remix, "Ft", "ft",
+                SunamoPageHelperSunamo.i18n(XlfKeys.Feat), "feat");
             remix = remix.Trim(AllChars.dot);
             remix = remix.Trim();
 

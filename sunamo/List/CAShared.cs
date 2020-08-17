@@ -2029,7 +2029,7 @@ public static bool HasPostfix(string key, params string[] v1)
     /// <param name="input"></param>
     private static void Prepend(List<string> numbered, List<string> input)
     {
-        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, sess.i18n(XlfKeys.Prepend), "numbered", numbered.Count(), "input", input.Count);
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, SunamoPageHelperSunamo.i18n(XlfKeys.Prepend), "numbered", numbered.Count(), "input", input.Count);
         for (int i = 0; i < input.Count; i++)
         {
             input[i] = numbered[i] + input[i];

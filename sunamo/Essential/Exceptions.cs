@@ -42,7 +42,7 @@ public partial class Exceptions
 
     public static object UseRlc(string before)
     {
-        return CheckBefore(before) + sess.i18n(XlfKeys.DonTImplementUseMethodsInRlc);
+        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.DonTImplementUseMethodsInRlc);
     }
 
     public static object IsWhitespaceOrNull(string before, string variable, object data)
@@ -81,12 +81,12 @@ public partial class Exceptions
     /// </summary>
     public static string FileHasExtensionNotParseableToImageFormat(string before, string fnOri)
     {
-        return CheckBefore(before) + sess.i18n(XlfKeys.File) + " " + fnOri + " has wrong file extension";
+        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.File) + " " + fnOri + " has wrong file extension";
     }
 
     public static string WrongCountInList2(int numberOfElementsWithoutPause, int numberOfElementsWithPause, int arrLength)
     {
-        return SH.Format2(sess.i18n(XlfKeys.ArrayShouldHave0Or1ElementsHave2), numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
+        return SH.Format2(SunamoPageHelperSunamo.i18n(XlfKeys.ArrayShouldHave0Or1ElementsHave2), numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
     }
 
     public static object IsOdd(string before, string colName, IEnumerable col)
@@ -122,7 +122,7 @@ public partial class Exceptions
         {
             return null;
         }
-        return CheckBefore(before) + " " + sess.i18n(XlfKeys.DoesnTExists) + ": " + fulLPath;
+        return CheckBefore(before) + " " + SunamoPageHelperSunamo.i18n(XlfKeys.DoesnTExists) + ": " + fulLPath;
     }
 
 
@@ -132,7 +132,7 @@ public partial class Exceptions
         {
             return null;
         }
-        return CheckBefore(before) + " " + sess.i18n(XlfKeys.DoesnTExists) + ": " + fulLPath;
+        return CheckBefore(before) + " " + SunamoPageHelperSunamo.i18n(XlfKeys.DoesnTExists) + ": " + fulLPath;
     }
 
     #region Without parameters
@@ -151,7 +151,7 @@ public partial class Exceptions
     {
         if (string.IsNullOrWhiteSpace(nameFromProperty))
         {
-            return CheckBefore(before) + nameControl + " " + sess.i18n(XlfKeys.doesntHaveSettedName);
+            return CheckBefore(before) + nameControl + " " + SunamoPageHelperSunamo.i18n(XlfKeys.doesntHaveSettedName);
         }
         return null;
     }
@@ -187,7 +187,7 @@ public partial class Exceptions
 
     public static string DoesntHaveRequiredType(string before, string variableName)
     {
-        return variableName + sess.i18n(XlfKeys.DoesnTHaveRequiredType) + ".";
+        return variableName + SunamoPageHelperSunamo.i18n(XlfKeys.DoesnTHaveRequiredType) + ".";
     }
 
     public static string IsNullOrEmpty(string before, string argName, string argValue)
@@ -236,7 +236,7 @@ public partial class Exceptions
 
             if (badFormat)
             {
-                return CheckBefore(before) + " " + argName + " "+sess.i18n(XlfKeys.isNotInWindowsPathFormat);
+                return CheckBefore(before) + " " + argName + " "+SunamoPageHelperSunamo.i18n(XlfKeys.isNotInWindowsPathFormat);
             }
         }
 
@@ -252,7 +252,7 @@ public partial class Exceptions
         {
             if (r[r.Length - 1] != AllChars.bs)
             {
-                return CheckBefore(before) + sess.i18n(XlfKeys.StringHasNotBeenInPathFormat) + "!";
+                return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.StringHasNotBeenInPathFormat) + "!";
             }
         }
 
@@ -266,7 +266,7 @@ public partial class Exceptions
 
     public static string FileWasntFoundInDirectory(string before, string directory, string fileName)
     {
-        return CheckBefore(before) + sess.i18n(XlfKeys.File) + " " + fileName + " wasn't found in " + directory;
+        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.File) + " " + fileName + " wasn't found in " + directory;
     }
 
     public static string FileWasntFoundInDirectory(string before, string fullPath)
@@ -278,7 +278,7 @@ public partial class Exceptions
 
     public static string NotSupported(string v)
     {
-        return CheckBefore(v) + sess.i18n(XlfKeys.NotSupported);
+        return CheckBefore(v) + SunamoPageHelperSunamo.i18n(XlfKeys.NotSupported);
     }
 
 
@@ -294,7 +294,7 @@ public partial class Exceptions
     {
         if (countfc != countsc)
         {
-            return CheckBefore(before) + " " + sess.i18n(XlfKeys.DifferentCountElementsInCollection) + " " + string.Concat(namefc + AllStrings.swda + countfc) + " vs. " + string.Concat(namesc + AllStrings.swda + countsc);
+            return CheckBefore(before) + " " + SunamoPageHelperSunamo.i18n(XlfKeys.DifferentCountElementsInCollection) + " " + string.Concat(namefc + AllStrings.swda + countfc) + " vs. " + string.Concat(namesc + AllStrings.swda + countsc);
         }
 
         return null;
@@ -327,7 +327,7 @@ public partial class Exceptions
         List<string> foundedUnallowed = SH.ContainsAny(valueElement, false, unallowedStrings);
         if (foundedUnallowed.Count != 0)
         {
-            return CheckBefore(before) + " " + sess.i18n(XlfKeys.ElementOf) + " " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(AllChars.comma, unallowedStrings);
+            return CheckBefore(before) + " " + SunamoPageHelperSunamo.i18n(XlfKeys.ElementOf) + " " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(AllChars.comma, unallowedStrings);
         }
 
         return null;
@@ -337,7 +337,7 @@ public partial class Exceptions
     {
         if (keysHandler == null)
         {
-            return CheckBefore(before) + name + " " + sess.i18n(XlfKeys.wasNotIKeysHandler);
+            return CheckBefore(before) + name + " " + SunamoPageHelperSunamo.i18n(XlfKeys.wasNotIKeysHandler);
         }
         return null;
     }
@@ -346,7 +346,7 @@ public partial class Exceptions
 
     public static object FolderCantBeRemoved(string v, string folder)
     {
-        return CheckBefore(v) + sess.i18n(XlfKeys.CanTDeleteFolder) + ": " + folder;
+        return CheckBefore(v) + SunamoPageHelperSunamo.i18n(XlfKeys.CanTDeleteFolder) + ": " + folder;
     }
 
     /// <summary>
@@ -360,7 +360,7 @@ public partial class Exceptions
     {
         if (before2 == after)
         {
-            return CheckBefore(before) + sess.i18n(XlfKeys.ElementWasntRemovedDuring) + ": " + detailLocation;
+            return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.ElementWasntRemovedDuring) + ": " + detailLocation;
         }
         return null;
     }
@@ -371,7 +371,7 @@ public partial class Exceptions
     {
         if (folders.Count() == 0)
         {
-            return CheckBefore(before) + sess.i18n(XlfKeys.NoPassedFolderInto);
+            return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NoPassedFolderInto);
         }
         return null;
     }
@@ -389,7 +389,7 @@ public partial class Exceptions
     {
         if (!FS.ExistsDirectory(directory))
         {
-            return CheckBefore(before) + sess.i18n(XlfKeys.Directory) + " " + directory + " wasn't found.";
+            return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.Directory) + " " + directory + " wasn't found.";
         }
 
         return null;
@@ -424,7 +424,7 @@ public partial class Exceptions
 
     public static string MoreCandidates(string before, List<string> list, string item)
     {
-        return CheckBefore(before) + sess.i18n(XlfKeys.Under) + " " + item + " is more candidates: " + Environment.NewLine + SH.JoinNL(list);
+        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.Under) + " " + item + " is more candidates: " + Environment.NewLine + SH.JoinNL(list);
     }
 
    
