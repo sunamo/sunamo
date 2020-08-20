@@ -78,7 +78,6 @@ namespace sunamo.Helpers
             }
             else
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SunamoPageHelperSunamo.i18n(ThisApp.l, XlfKeys.NonSupportedHttpMethodInHttpMethodGetResponseText, Consts.Nope));
             }
             //HttpResponseMessage response = responseTask.Result;
             return response;

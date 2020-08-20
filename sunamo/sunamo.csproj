@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -156,18 +156,6 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Constants\Mails.cs" />
-    <Compile Include="Constants\ShortenedExceptions.cs" />
-    <Compile Include="ConvertBetweenTwoEnums.cs" />
-    <Compile Include="Data\GoogleMapsSearchResult.cs" />
-    <Compile Include="Helpers\DT\DTHelperMultiNotTranslateAble.cs" />
-    <Compile Include="Helpers\NetHelperSunamo.cs" />
-    <Compile Include="Lazy\LazyGetCommonSettings.cs" />
-    <Compile Include="Lazy\LazyObject.cs" />
-    <Compile Include="Lazy\LazyString.cs" />
-    <Compile Include="Values\AllListsNotTranslateAble.cs" />
-    <Compile Include="Values\AllListsNotTranslateAbleShared.cs" />
-    <Compile Include="Vps\VpsHelperIsVps.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -245,6 +233,7 @@
     <Compile Include="Constants\HtmlTags.cs" />
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="Constants\HttpKnownHeaderValues.cs" />
+    <Compile Include="Constants\Mails.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="Constants\Paths\CompareFilesPaths.cs" />
     <Compile Include="Constants\Paths\DefaultPaths.cs" />
@@ -253,10 +242,12 @@
     <Compile Include="Constants\Paths\TemporaryPaths.cs" />
     <Compile Include="Constants\Paths\TodoPaths.cs" />
     <Compile Include="Constants\RuntimeFrameworks.cs" />
+    <Compile Include="Constants\ShortenedExceptions.cs" />
     <Compile Include="Constants\SunamoStrings.cs" />
     <Compile Include="Constants\UnicodeWhiteToVisible.cs" />
     <Compile Include="Constants\XlfKeys.cs" />
     <Compile Include="Control\ColumnSizeHelper.cs" />
+    <Compile Include="ConvertBetweenTwoEnums.cs" />
     <Compile Include="ConvertersSimple\BlobConverter.cs" />
     <Compile Include="ConvertersSimple\ColorConverter.cs" />
     <Compile Include="ConvertersSimple\PluralConverter.cs" />
@@ -332,6 +323,7 @@
     <Compile Include="Data\FolderEntryDB.cs" />
     <Compile Include="Data\FoundedCodeElement.cs" />
     <Compile Include="Data\FromTo.cs" />
+    <Compile Include="Data\GoogleMapsSearchResult.cs" />
     <Compile Include="Data\HttpRequestData.cs" />
     <Compile Include="Data\ImageWithSize.cs" />
     <Compile Include="Data\IntegerXY.cs" />
@@ -556,6 +548,7 @@
     <Compile Include="Helpers\DT\DTHelperGeneral.cs" />
     <Compile Include="Helpers\DT\DTHelperGeneralShared.cs" />
     <Compile Include="Helpers\DT\DTHelperMulti.cs" />
+    <Compile Include="Helpers\DT\DTHelperMultiNotTranslateAble.cs" />
     <Compile Include="Helpers\DT\DTHelperMultiShared.cs" />
     <Compile Include="Helpers\DT\DTHelperShared.cs" />
     <Compile Include="Helpers\DT\DTHelperUs.cs" />
@@ -581,6 +574,7 @@
     <Compile Include="Helpers\i18n\Translation.cs" />
     <Compile Include="Helpers\LocaleHelper.cs" />
     <Compile Include="Helpers\Net\IPAddressHelper.cs" />
+    <Compile Include="Helpers\NetHelperSunamo.cs" />
     <Compile Include="Helpers\NetHelperSunamoShared.cs" />
     <Compile Include="Helpers\Number\HexHelper.cs" />
     <Compile Include="Helpers\Number\LinearHelper.cs" />
@@ -699,6 +693,9 @@
     <Compile Include="Interfaces\IValidateControl.cs" />
     <Compile Include="Interfaces\IWorking.cs" />
     <Compile Include="Interfaces\IXParser.cs" />
+    <Compile Include="Lazy\LazyGetCommonSettings.cs" />
+    <Compile Include="Lazy\LazyObject.cs" />
+    <Compile Include="Lazy\LazyString.cs" />
     <Compile Include="List\CA.cs" />
     <Compile Include="List\CAShared.cs" />
     <Compile Include="List\DictionaryHelper.cs" />
@@ -728,6 +725,7 @@
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamoShared.cs" />
     <Compile Include="SunamoNotTranslateAble.cs" />
+    <Compile Include="SunamoPageHelperSunamo.cs" />
     <Compile Include="SunamoTimer.cs" />
     <Compile Include="TemplatesNotCompiled\MainWindowSunamo_Ctor.cs" />
     <Compile Include="Threating\IThreatPool.cs" />
@@ -738,6 +736,8 @@
     <Compile Include="Values\AllHtmlAttrs.cs" />
     <Compile Include="Values\AllHtmlAttrsValues.cs" />
     <Compile Include="Values\AllHtmlTags.cs" />
+    <Compile Include="Values\AllListsNotTranslateAble.cs" />
+    <Compile Include="Values\AllListsNotTranslateAbleShared.cs" />
     <Compile Include="Values\AspxConsts.cs" />
     <Compile Include="Values\CommonSettingsKeys.cs" />
     <Compile Include="Values\Consts.cs" />
@@ -752,6 +752,7 @@
     <Compile Include="Values\RepairMobileValues.cs" />
     <Compile Include="Values\Types.cs" />
     <Compile Include="Values\TypesControlsSunamo.cs" />
+    <Compile Include="Vps\VpsHelperIsVps.cs" />
     <Compile Include="VpsHelperSunamo.cs" />
     <Compile Include="Web\YouTube.cs" />
     <Compile Include="Web\YouTubeShared.cs" />

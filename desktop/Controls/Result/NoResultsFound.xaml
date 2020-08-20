@@ -13,7 +13,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
+        <Grid MinHeight="200">
         <TextBlock x:Name="tbNoResultsFound" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+        </Grid>
     </Grid>
 </UserControl>

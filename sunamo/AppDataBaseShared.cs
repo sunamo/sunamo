@@ -75,7 +75,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataB
 
             return rootFolder;
         }
-
         set
         {
             rootFolder = value;

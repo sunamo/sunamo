@@ -74,8 +74,6 @@ public partial class Exceptions
         return null;
     }
 
-    
-
     /// <summary>
     /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
     /// </summary>
