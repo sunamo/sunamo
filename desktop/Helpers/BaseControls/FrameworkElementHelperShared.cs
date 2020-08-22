@@ -31,16 +31,7 @@ public partial class FrameworkElementHelper{
         }
 
         renderTarget.Render(visual);
-        PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
-        bitmapEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
-        using (Stream stm = File.Create(fn))
-        {
-            FS.CreateUpfoldersPsysicallyUnlessThere(fn);
-            bitmapEncoder.Save(stm);
-
-            // Cant be, otherwise could be visible on another screenshot
-            //ThisApp.SetStatus(TypeOfMessage.Success, "File written to " + fn);
-        }
+        BitmapImageHelper.Save(renderTarget, fn);
 
         return fn;
     }

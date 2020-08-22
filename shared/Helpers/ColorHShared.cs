@@ -17,8 +17,8 @@ public partial class ColorH
         return c;
     }
 
-    public static Color RandomColor(bool light)
+    public static Color RandomColor(bool dark)
     {
-        return GetOpaqueColor(RandomHelper.RandomColorPart(light), RandomHelper.RandomColorPart(light), RandomHelper.RandomColorPart(light));
+        return GetOpaqueColor(RandomHelper.RandomColorPart(dark), RandomHelper.RandomColorPart(dark), RandomHelper.RandomColorPart(dark));
     }
 }

@@ -33,7 +33,7 @@ public class BitmapHelper
         return newBitmap;
     }
 
-    public static Bitmap ChangeColor2( Bitmap image, Color fromColor, Color toColor)
+    public static Image ChangeColor2( Image image, Color fromColor, Color toColor)
     {
         ImageAttributes attributes = new ImageAttributes();
         attributes.SetRemapTable(new ColorMap[]

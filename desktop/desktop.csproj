@@ -444,6 +444,7 @@
     <Compile Include="Helpers\IHWPF.cs" />
     <Compile Include="Helpers\KeyboardHelper.cs" />
     <Compile Include="Helpers\PicturesDesktop.cs" />
+    <Compile Include="Helpers\PicturesDesktopShared.cs" />
     <Compile Include="Helpers\PrintHelper.cs" />
     <Compile Include="Helpers\SecureStringHelper.cs" />
     <Compile Include="Helpers\SizeH.cs" />

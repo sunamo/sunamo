@@ -74,22 +74,6 @@ public static partial class BitmapImageHelper
         return new BitmapImage(new Uri(ImageHelper.protocolRoot + p, UriKind.Absolute));
     }
 
-    public static BitmapImage Resize(BitmapImage source, int width, int height)
-    {
-        source.BeginInit();
-        source.DecodePixelHeight = width;
-        source.DecodePixelWidth = height;
-        source.EndInit();
-        return source;
-    }
-
-    public static BitmapImage Resize(BitmapImage source, int rate)
-    {
-        source.BeginInit();
-        source.DecodePixelHeight = rate;
-        source.DecodePixelWidth = rate;
-        source.EndInit();
-        return source;
-    }
+    
 
 }

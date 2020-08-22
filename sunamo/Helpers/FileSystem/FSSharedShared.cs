@@ -49,7 +49,21 @@ public partial class FS{
                 }
                 else
                 {
-                    if (TF.ReadFile(selectedFile) == string.Empty)
+                    var c = string.Empty;
+                    try
+                    {
+                        c = TF.ReadFile(selectedFile);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.Message.StartsWith("The process cannot access the file"))
+                        {
+                            return true;
+                        }
+                        
+                    }
+
+                    if (c == string.Empty)
                     {
                         // Měl jsem tu chybu že ač exists bylo true, TF.ReadFile selhalo protože soubor neexistoval. 
                         // Vyřešil jsem to kontrolou přípony, snad
