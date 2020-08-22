@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class SunamoPageHelperSunamo
 {
+    
     public static Func<Langs, string, string, string> localizedString;
 
     public static string i18n(string key)

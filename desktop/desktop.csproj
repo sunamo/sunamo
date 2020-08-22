@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -391,6 +391,7 @@
     <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
+    <Compile Include="Helpers\Content\BitmapHelper.cs" />
     <Compile Include="Helpers\Content\Resources\BitmapImageHelper.cs" />
     <Compile Include="Helpers\Content\Resources\BitmapImagesHelper.cs" />
     <Compile Include="Helpers\Content\Resources\DrawingImageHelper.cs" />
@@ -475,6 +476,7 @@
     <Compile Include="SczNotifyServerErrorChecker.cs" />
     <Compile Include="SearchCodeElementsUCData.cs" />
     <Compile Include="SHWithControls.cs" />
+    <Compile Include="SHWithControlsShared.cs" />
     <Compile Include="StatusesLogger.cs" />
     <Compile Include="Storage\ApplicationData.cs" />
     <Compile Include="Storage\ApplicationDataConsts.cs" />
@@ -483,6 +485,7 @@
     <Compile Include="Storage\AppSettingsManager.cs" />
     <Compile Include="Storage\SettingsManager.cs" />
     <Compile Include="Storage\SunamoApplicationSettings.cs" />
+    <Compile Include="SunamoPageHelperDesktop.cs" />
     <Compile Include="TemplatesNotCompile\MainWindow_Ctor.cs" />
     <Compile Include="TemplatesNotCompile\MainWindow_CtorShared.cs" />
     <Compile Include="TrialManager.cs" />

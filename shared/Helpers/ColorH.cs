@@ -9,7 +9,7 @@ using sunamo.Enums;
 /// <summary>
 /// Is shared between apps ColorH and shared's ColorH 
 /// </summary>
-public class ColorH
+public partial class ColorH
 {
     #region For easy copy
     static Type type = typeof(ColorH);
@@ -22,20 +22,7 @@ public class ColorH
         PixelColor white2 = new PixelColor() { Alpha = alpha.Value, Red = color.R, Green = color.G, Blue = color.B };
         return white2;
     }
-    public static Color GetOpaqueColor(byte r, byte g, byte b)
-    {
-        Color c = new Color();
-        c.A = 255;
-        c.R = r;
-        c.G = g;
-        c.B = b;
-        return c;
-    }
-
-    public static Color RandomColor(bool light)
-    {
-        return GetOpaqueColor(RandomHelper.RandomColorPart(light), RandomHelper.RandomColorPart(light), RandomHelper.RandomColorPart(light));
-    }
+    
     public static SolidColorBrush RandomLightBrush(ColorComponent shade)
     {
         byte r = 0;

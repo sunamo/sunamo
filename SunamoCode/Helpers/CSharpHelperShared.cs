@@ -12,6 +12,7 @@ static Type type = typeof(CSharpHelper);
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
+
         switch (type)
         {
             case "string":
@@ -43,5 +44,62 @@ static Type type = typeof(CSharpHelper);
         }
         ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný typ");
         return null;
+    }
+
+    /// <summary>
+    /// call CsKeywords.Init before use
+    /// </summary>
+    /// <param name="con"></param>
+    /// <returns></returns>
+    public static bool IsKeyword(string con)
+    {
+        //CsKeywords.Init();
+
+        if (CsKeywordsList.modifier.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.accessModifier.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.statement.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.methodParameter.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList._namespace.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList._operator.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.access.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.literal.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.type.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.contextual.Contains(con))
+        {
+            return true;
+        }
+        if (CsKeywordsList.query.Contains(con))
+        {
+            return true;
+        }
+
+        return false;
     }
 }

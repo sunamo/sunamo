@@ -66,6 +66,7 @@ public partial class Exceptions
     }
 
     public static object OutOfRange(string v, string colName, IEnumerable col, string indexName, int index)
+
     {
         if (col.Count() <= index)
         {

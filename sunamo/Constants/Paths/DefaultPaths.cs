@@ -8,17 +8,17 @@ namespace sunamo.Constants
     {
         
 
-        public const string KeysXlf = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Enums\KeysXlf.cs";
+        public const string KeysXlf = @"e:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Enums\KeysXlf.cs";
         public const string capturedUris = @"C:\Users\Administrator\AppData\Roaming\sunamo\SunamoCzAdmin\Data\SubsSignalR\CapturedUris.txt";
-        public const string DllSunamo = @"d:\Documents\Visual Studio 2017\Projects\sunamo\dll\";
+        public const string DllSunamo = @"e:\Documents\Visual Studio 2017\Projects\sunamo\dll\";
         public const string rootVideos0Kb = @"d:\Documents\Videos0kb\";
         public static string Documents = @"d:\Documents\";
         public static string Docs = @"d:\Docs\";
         public static string Downloads = @"d:\Downloads\";
         public static string Music2 = @"d:\Music2\";
         public static string Backup = @"d:\Documents\Backup\";
-        public static string VisualStudio2017 = @"d:\Documents\Visual Studio 2017\";
-        
+        public static string VisualStudio2017 = @"e:\Documents\Visual Studio 2017\";
+        public static string Streamline = @"d:\Pictures\Streamline_All_Icons_PNG\PNG Icons\";
 
         /// <summary>
         /// For all is here sczRootPath
@@ -36,22 +36,22 @@ namespace sunamo.Constants
         /// <summary>
         /// Solution, not project
         /// </summary>
-        public static string sunamo = @"d:\Documents\Visual Studio 2017\Projects\sunamo\";
-        public static string sunamoProject = @"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\";
+        public static string sunamo = @"e:\Documents\Visual Studio 2017\Projects\sunamo\";
+        public static string sunamoProject = @"e:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\";
         /// <summary>
-        /// d:\Documents\Visual Studio 2017\Projects\
+        /// e:\Documents\Visual Studio 2017\Projects\
         /// </summary>
-        public static string vsProjects = @"d:\Documents\Visual Studio 2017\Projects\";
+        public static string vsProjects = @"e:\Documents\Visual Studio 2017\Projects\";
         /// <summary>
-        /// d:\Documents\Visual Studio 2017\Projects\
+        /// e:\Documents\Visual Studio 2017\Projects\
         /// </summary>
-        public static string vs = @"d:\Documents\Visual Studio 2017\Projects\";
+        public static string vs = @"e:\Documents\Visual Studio 2017\Projects\";
         public static string vsDocuments = FS.Combine(DefaultPaths.Documents, @"vs\");
         /// <summary>
         /// Use vs for non shortcuted folder
         /// d:\vs17\
         /// </summary>
-        public static string vs17 = @"d:\vs17\";
+        public static string vs17 = @"e:\vs17\";
         public static string vs17Documents = FS.Combine(DefaultPaths.Documents, @"vs17\");
         public static string NormalizePathToFolder = FS.Combine(DefaultPaths.Documents, @"Visual Studio 2017\Projects\");
         public static string Test_MoveClassElementIntoSharedFileUC = "d:\\_Test\\AllProjectsSearch\\AllProjectsSearch\\MoveClassElementIntoSharedFileUC\\";

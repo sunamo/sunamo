@@ -81,11 +81,7 @@ public static void RenameNumberedSerieFiles(List<string> d, string p, int startF
         }
         return vr.ToArray();
     }
-    public static string GetActualDateTime()
-    {
-        DateTime dt = DateTime.Now;
-        return ReplaceIncorrectCharactersFile(dt.ToString());
-    }
+   
 
     /// <summary>
     /// A1 MUST BE WITH EXTENSION

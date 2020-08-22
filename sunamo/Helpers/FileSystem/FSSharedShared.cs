@@ -3,6 +3,7 @@ using sunamo.Data;
 using sunamo.Enums;
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,12 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 public partial class FS{
+    public static string GetActualDateTime()
+    {
+        DateTime dt = DateTime.Now;
+        return ReplaceIncorrectCharactersFile(dt.ToString());
+    }
+
     /// <summary>
     /// Dont check for size
     /// Into A2 is good put true - when storage was fulled, all new files will be written with zero size. But then failing because HtmlNode as null - empty string as input
@@ -73,7 +80,38 @@ public partial class FS{
 
     }
 
-    
+    public static List<string> FilesWhichContainsAll(object sunamo, string masc, params string[] mustContains)
+    {
+        return FilesWhichContainsAll(sunamo, masc, mustContains);
+    }
+
+    public static List<string> FilesWhichContainsAll(object sunamo, string masc, IEnumerable<string> mustContains)
+    {
+        var mcl = mustContains.Count();
+
+        List<string> ls = new List<string>();
+        IEnumerable<string> f = null;
+
+        if (sunamo is IEnumerable<string>)
+        {
+            f = (IEnumerable<string>)sunamo;
+        }
+        else
+        {
+            f = FS.GetFiles(sunamo.ToString(), masc, true);
+        }
+
+        foreach (var item in f)
+        {
+            var c = TF.ReadAllText(item);
+            if (CA.ContainsAnyFromElement(c, mustContains).Count == mcl)
+            {
+                ls.Add(item);
+            }
+        }
+
+        return ls;
+    }
 
     public static bool IsException(string ext)
     {

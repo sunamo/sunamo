@@ -1,5 +1,8 @@
 ﻿using sunamo;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 /// <summary>
@@ -88,4 +91,5 @@ public static partial class BitmapImageHelper
         source.EndInit();
         return source;
     }
+
 }

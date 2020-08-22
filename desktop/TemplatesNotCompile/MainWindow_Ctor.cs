@@ -85,6 +85,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
         string appName = "";
         MainWindowSunamo_Ctor.FirstSection(appName, WpfApp.Init, ClipboardHelperWin.Instance, CheckIsAlreadyRunning);
+        SunamoPageHelperSunamo.localizedString = SunamoPageHelper.LocalizedString_String;
         #endregion
 
         // All initialization must be after #region Initialize base properties of every app 
@@ -153,8 +154,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 5) Set modes
-
-
         // 2nd Edit only in #if
         SetMode(Mode.Empty);
 
