@@ -6,10 +6,11 @@ public static string ConvertTextToHtmlWithAnchors(string p)
         var d = SH.SplitAndKeepDelimiters(p, CA.ToList<char>( AllChars.space, AllChars.lt, AllChars.gt));
         for (int i = 0; i < d.Length(); i++)
         {
-            if (d[i].StartsWith("https://") || d[i].StartsWith("https://"))
+            var item = d[i].Trim();
+            if (item.StartsWith("https://") || item.StartsWith("https://") || item.StartsWith("www."))
             {
-                var res = d[i];
-                 res = HtmlGenerator2.AnchorWithHttp(res);
+                var res = item;
+                res = HtmlGenerator2.AnchorWithHttp(res);
                 d[i] = res;
             }
         }
