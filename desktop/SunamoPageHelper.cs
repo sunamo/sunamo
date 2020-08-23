@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Must be SunamoPageHelper, not SunamoPageHelperDesktop
+/// </summary>
 public static partial class SunamoPageHelper
 {
-    static Type type = typeof(SunamoPageHelper);
     public static string LocalizedString_String(Langs l, string key, string ms)
     {
         var ms2 = EnumHelper.Parse<MySites>(ms, MySites.None);

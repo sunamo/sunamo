@@ -486,7 +486,7 @@
     <Compile Include="Storage\AppSettingsManager.cs" />
     <Compile Include="Storage\SettingsManager.cs" />
     <Compile Include="Storage\SunamoApplicationSettings.cs" />
-    <Compile Include="SunamoPageHelperDesktop.cs" />
+    <Compile Include="SunamoPageHelper.cs" />
     <Compile Include="TemplatesNotCompile\MainWindow_Ctor.cs" />
     <Compile Include="TemplatesNotCompile\MainWindow_CtorShared.cs" />
     <Compile Include="TrialManager.cs" />
