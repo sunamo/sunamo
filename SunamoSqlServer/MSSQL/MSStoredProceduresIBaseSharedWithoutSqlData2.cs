@@ -2364,6 +2364,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
     }
 
+    /// <summary>
+    /// return DateTime.MinValue if not found
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="column"></param>
+    /// <param name="ab"></param>
+    /// <returns></returns>
     public DateTime SelectMaxDateTime(string table, string column, params AB[] ab)
     {
         SqlCommand comm = new SqlCommand("SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(ab));

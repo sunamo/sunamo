@@ -8,7 +8,4 @@ public class HtmlGenerator : XmlGenerator
     {
         base.WriteNonPairTag("br");
     }
-
-
-    
 }

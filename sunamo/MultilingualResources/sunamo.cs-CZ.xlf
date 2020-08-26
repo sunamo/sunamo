@@ -4763,6 +4763,18 @@
           <source></source>
           <target state="translated">Stav</target>
         </trans-unit>
+        <trans-unit id="YourLicences" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vaše licence</target>
+        </trans-unit>
+        <trans-unit id="ValidLicenses" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Platné licence</target>
+        </trans-unit>
+        <trans-unit id="InvalidLicenses" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Neplatné licence</target>
+        </trans-unit>
       </group>
     </body>
   </file>

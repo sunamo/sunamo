@@ -11,7 +11,7 @@ public static string ConvertTextToHtmlWithAnchors(string p)
             {
                 var res = item;
                 res = HtmlGenerator2.AnchorWithHttp(res);
-                d[i] = res;
+                d[i] = AllStrings.space + res + AllStrings.space;
             }
         }
 

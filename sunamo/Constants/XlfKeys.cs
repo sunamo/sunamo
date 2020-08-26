@@ -6,6 +6,10 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string InvalidLicenses = "InvalidLicenses"; 
+
+	public const string ValidLicenses = "ValidLicenses"; 
+	public const string YourLicences = "YourLicences"; 
 	public const string Prolongation = "Prolongation"; 
 	public const string ValidTo = "ValidTo"; 
 	public const string Module = "Module"; 
