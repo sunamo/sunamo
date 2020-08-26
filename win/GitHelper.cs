@@ -14,7 +14,7 @@ using win.Helpers.Powershell;
 /// </summary>
 public class GitHelper
 {
-    public static void PushSolution(bool release, GitBashBuilder gitBashBuilder, string pushArgs, string commitMessage, string fullPathFolder, PushSolutionsData pushSolutionsData, GitBashBuilder gitStatus)
+    public static bool PushSolution(bool release, GitBashBuilder gitBashBuilder, string pushArgs, string commitMessage, string fullPathFolder, PushSolutionsData pushSolutionsData, GitBashBuilder gitStatus)
     {
         // 1. better solution is commented only getting files
         int countFiles = 0;
@@ -102,7 +102,11 @@ public class GitHelper
                 // Dont run, better is paste into powershell due to checking errors
                 //var git = gitBashBuilder.Commands;
                 //PowershellRunner.Invoke(git);
+
+                return true;
             }
         }
+
+        return false;
     }
 }
