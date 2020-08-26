@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 /// </summary>
 public static partial class SunamoPageHelper
 {
+    static Type type = typeof(SunamoPageHelper);
+
     public static string LocalizedString_String(Langs l, string key, string ms)
     {
         var ms2 = EnumHelper.Parse<MySites>(ms, MySites.None);

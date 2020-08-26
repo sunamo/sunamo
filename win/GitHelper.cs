@@ -36,7 +36,6 @@ public class GitHelper
                 result = PowershellRunner.Invoke(gitStatus.Commands);
             }
 
-
             var statusOutput = result[1];
             // If solution has changes
             var hasChanges = CA.ReturnWhichContains(statusOutput, "nothing to commit").Count == 0;

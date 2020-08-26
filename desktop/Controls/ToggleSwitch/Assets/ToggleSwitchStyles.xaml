@@ -8,7 +8,8 @@
      xmlns:DemoUtils="clr-namespace:desktop.Utils">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/desktop;component/Controls/ToggleSwitch/WPF/Themes/Generic.xaml" />
+        <!--/desktop;component/Controls/ToggleSwitch-->
+        <ResourceDictionary Source="../WPF/Themes/GenericDictionary.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DemoUtils:CornerRadiusValueConverter x:Key="CornerRadiusValueConverter"/>
