@@ -55,9 +55,9 @@ public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState
         this.goPayData = goPayData;
     }
 
-    public object CreatePayment(string orderId, BasePayment payment)
+    public object CreatePayment(string orderId, BasePayment payment, params object[] args)
     {
-        throw new NotImplementedException();
+        return CreatePayment(payment, args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState
     /// </summary>
     /// <param name="payment"></param>
     /// <returns></returns>
-    public object CreatePayment(BasePayment payment)
+    public object CreatePayment(BasePayment payment, params object[] args)
     {
         GPConnector token;
 
