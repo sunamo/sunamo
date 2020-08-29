@@ -1500,9 +1500,13 @@
           
           <target state="translated">Nebo si vyberte</target>
         </trans-unit>
-        <trans-unit id="UsefulAppsForYourNeeds" translate="no" xml:space="preserve">
+        <trans-unit id="ForYourNeeds" translate="no" xml:space="preserve">
           
-          <target state="translated">Užitečné aplikace pro vaše potřeby</target>
+          <target state="translated">Užitečné aplikace</target>
+        </trans-unit>
+        <trans-unit id="forYourNeeds" translate="no" xml:space="preserve">
+          
+          <target state="translated">pro vaše potřeby</target>
         </trans-unit>
         <trans-unit id="PriceIsWithAllTaxes" translate="no" xml:space="preserve">
           

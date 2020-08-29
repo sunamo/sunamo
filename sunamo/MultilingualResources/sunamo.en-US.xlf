@@ -13,9 +13,13 @@
     </header>
     <body>
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
-        <trans-unit id="UsefulAppsForYourNeeds" translate="no" xml:space="preserve">
+        <trans-unit id="UsefulApps" translate="no" xml:space="preserve">
           
-          <target state="translated">Useful apps for your needs</target>
+          <target state="translated">Useful apps</target>
+        </trans-unit>
+        <trans-unit id="forYourNeeds" translate="no" xml:space="preserve">
+          
+          <target state="translated">for your needs</target>
         </trans-unit>
         <trans-unit id="AddANewApp" translate="no" xml:space="preserve">
           

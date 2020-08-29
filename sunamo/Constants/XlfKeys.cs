@@ -747,8 +747,9 @@ public class XlfKeys
 	public const string License = "License"; 
 	public const string TheRecommendedVersionHasNotBeenUploadedYet = "TheRecommendedVersionHasNotBeenUploadedYet"; 
 	public const string DoporučenáVerzeNebylaDosudNauploadována = "DoporučenáVerzeNebylaDosudNauploadována"; 
-	public const string UsefulAppsForYourNeeds = "UsefulAppsForYourNeeds"; 
-	public const string _thCenturyStyleOfFrenchAccordionBasedDanceMusic = "_thCenturyStyleOfFrenchAccordionBasedDanceMusic"; 
+	public const string UsefulApps = "UsefulApps";
+    public const string forYourNeeds = "forYourNeeds";
+    public const string _thCenturyStyleOfFrenchAccordionBasedDanceMusic = "_thCenturyStyleOfFrenchAccordionBasedDanceMusic"; 
 	public const string _th15thCenturyItalianMusicalAndPoeticFormBasedOnAnAbbaAStructureThatActedAsAFormOfDanceMusic = "_th15thCenturyItalianMusicalAndPoeticFormBasedOnAnAbbaAStructureThatActedAsAFormOfDanceMusic"; 
 	public const string _thCenturyCubanDanceMusic = "_thCenturyCubanDanceMusic"; 
 	public const string _0sBritishRevivalOfNewWaveMusic = "_0sBritishRevivalOfNewWaveMusic"; 
