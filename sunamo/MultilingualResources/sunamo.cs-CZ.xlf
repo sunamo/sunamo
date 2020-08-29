@@ -4775,6 +4775,14 @@
           <source></source>
           <target state="translated">Neplatné licence</target>
         </trans-unit>
+        <trans-unit id="YouRe" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ty jsi</target>
+        </trans-unit>
+        <trans-unit id="welcome" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vítejte</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -130,8 +130,6 @@ public partial class ThrowExceptions
             {
                 throw new Exception(exception);
             }
-
-            return false;
         }
         return true;
     }

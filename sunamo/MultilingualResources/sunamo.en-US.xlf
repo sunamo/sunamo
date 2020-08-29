@@ -13739,6 +13739,14 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Invalid Licenses</target>
         </trans-unit>
+        <trans-unit id="YouRe" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">You're</target>
+        </trans-unit>
+        <trans-unit id="welcome" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">welcome</target>
+        </trans-unit>
       </group>
     </body>
   </file>

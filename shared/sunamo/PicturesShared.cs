@@ -83,7 +83,7 @@ using sunamo.Essential;
         return bmpRet;
     }
 
-    public static object ImageToBase64(string imageFile)
+    public static string ImageToBase64(string imageFile)
     {
         return ImageToBase64(Bitmap.FromFile(imageFile), PicturesShared.GetImageFormatFromExtension2(FS.GetExtension(imageFile)));
     }

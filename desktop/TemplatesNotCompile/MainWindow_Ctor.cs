@@ -83,9 +83,10 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
              */
 
         #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
+        SunamoPageHelperSunamo.localizedString = SunamoPageHelper.LocalizedString_String;
         string appName = "";
         MainWindowSunamo_Ctor.FirstSection(appName, WpfApp.Init, ClipboardHelperWin.Instance, CheckIsAlreadyRunning);
-        SunamoPageHelperSunamo.localizedString = SunamoPageHelper.LocalizedString_String;
+        
         #endregion
 
         // All initialization must be after #region Initialize base properties of every app 

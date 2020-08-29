@@ -137,6 +137,14 @@ public partial class DictionaryHelper
         AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
     }
 
+    public static void AddOrCreate<Key, Value>(IDictionary<Key, List<Value>> sl, Key key, List< Value> values, bool withoutDuplicitiesInValue = false)
+    {
+        foreach (var value in values)
+        {
+            AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
+        }
+    }
+
     public static Dictionary<T1, T2> GetDictionaryFromIEnumerable<T1, T2>(IEnumerable<KeyValuePair<T1, T2>> enumerable)
     {
         Dictionary<T1, T2> d = new Dictionary<T1, T2>();
@@ -385,5 +393,16 @@ public static List<string> GetListStringFromDictionaryIntInt(IOrderedEnumerable<
         }
 
         return vr;
+    }
+
+    public static List<T2> AddOrCreate<T1, T2>(Dictionary<T1, List< T2>> b64Images, T1 idApp, Func<T1, List< T2>> base64ImagesOfApp)
+    {
+        if (!b64Images.ContainsKey(idApp))
+        {
+            var r = base64ImagesOfApp(idApp);
+            b64Images.Add(idApp, r);
+            return r;
+        }
+        return b64Images[idApp];
     }
 }

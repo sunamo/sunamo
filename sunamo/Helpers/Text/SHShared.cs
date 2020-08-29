@@ -3756,4 +3756,9 @@ public static string FirstLine(string item)
         }
         return lines[0];
     }
+
+    public static string JoinComma(params string[] args)
+    {
+        return Join(AllStrings.comma, (IEnumerable)args);
+    }
 }

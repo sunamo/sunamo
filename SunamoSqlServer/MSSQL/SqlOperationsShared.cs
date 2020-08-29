@@ -35,6 +35,8 @@ public partial class SqlOperations : SqlServerHelper
         }
     }
 
+    public static SqlOperations ci = new SqlOperations();
+
     #region Inner classes
     public class Parse
     {

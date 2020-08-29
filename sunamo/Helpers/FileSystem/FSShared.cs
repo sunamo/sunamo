@@ -94,8 +94,11 @@ public partial class FS
                             masc = FS.MascFromExtension(mask);
                         }
 
+                        var files = di.GetFiles(masc, searchOption);
+                        var files2 = files.Select(d => d.FullName);
+
                         //list.AddRange(Directory.GetFiles(folder3, masc, searchOption));
-                        list.AddRange(di.GetFiles(masc, searchOption).Select(d=>d.FullName));
+                        list.AddRange(files2);
                     }
                     catch (Exception ex)
                     {
