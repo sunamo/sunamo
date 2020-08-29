@@ -4783,6 +4783,10 @@
           <source></source>
           <target state="translated">Vítejte</target>
         </trans-unit>
+        <trans-unit id="AllApps" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny aplikace</target>
+        </trans-unit>
       </group>
     </body>
   </file>

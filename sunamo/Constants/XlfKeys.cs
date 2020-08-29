@@ -7,7 +7,6 @@ using System.Text;
 public class XlfKeys
 {
 	public const string welcome = "welcome"; 
-
 	public const string YouRe = "YouRe"; 
 	public const string InvalidLicenses = "InvalidLicenses"; 
 	public const string ValidLicenses = "ValidLicenses"; 
