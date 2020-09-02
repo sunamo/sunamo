@@ -9,7 +9,25 @@ public partial class SqlServerHelper
 {
     static Type type = typeof(SqlServerHelper);
 
-  
+    internal static T EmptyNonSigned<T>() where T : struct
+    {
+        var t = typeof(T);
+
+        if (t == Types.tShort)
+        {
+            short v = -1;
+            return (T)(dynamic)v;
+        }
+        if (t == Types.tInt)
+        {
+            short v = -1;
+            return (T)(dynamic)v;
+        }
+        ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), t);
+        return default(T);
+    }
+
+
     /// <summary>
     /// Update - return always first element
     /// </summary>

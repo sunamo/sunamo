@@ -55,6 +55,13 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
     }
+
+    public static void HasNotKeyDictionary<Key,Value>(string stacktrace, object type, string methodName, string nameDict, IDictionary<Key, Value> qsDict, Key remains)
+    {
+        ThrowIsNotNull(stacktrace, Exceptions.HasNotKeyDictionary<Key, Value>(FullNameOfExecutedCode(type, methodName), nameDict,
+            qsDict, remains));
+    }
+
     public static void IsOdd(string stacktrace, object type, string methodName, string colName, IEnumerable col)
     {
         ThrowIsNotNull(stacktrace, Exceptions.IsOdd(FullNameOfExecutedCode(type, methodName), colName, col));

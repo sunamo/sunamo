@@ -24,10 +24,6 @@ public static partial class RandomHelper
         return p;
     }
 
-    
-
-    
-
     public static List<string> RandomElementsOfCollection(IList sou, int pol)
     {
         List<string> vr = new List<string>();

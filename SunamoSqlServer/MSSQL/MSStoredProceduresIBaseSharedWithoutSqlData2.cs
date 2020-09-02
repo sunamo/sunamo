@@ -61,8 +61,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         var id = IDOfIDNameShort(signed, table, d);
         if (IsNullShort(signed, id))
         {
-            MSTableRowIDName r = new MSTableRowIDName(table, d);
-            return (short)r.InsertToTable();
+            MSTableRowIDNameShort r = new MSTableRowIDNameShort(table, d);
+            return (short)r.InsertToTable2();
         }
         return id;
     }

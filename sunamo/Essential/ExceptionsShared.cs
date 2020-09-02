@@ -96,6 +96,16 @@ using System.Threading.Tasks;
     {
         return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper) + ".";
     }
+
+    internal static string HasNotKeyDictionary<Key, Value>(string v, string nameDict, IDictionary<Key, Value> qsDict,  Key remains)
+    {
+        if (!qsDict.ContainsKey(remains))
+        {
+            return CheckBefore(v) + nameDict + " does not contains key " + remains;
+        }
+        return null;
+    }
+
     private static string CheckBefore(string before)
         {
             if (string.IsNullOrWhiteSpace(before))
