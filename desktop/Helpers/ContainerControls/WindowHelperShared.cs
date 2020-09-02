@@ -18,6 +18,13 @@ public partial class WindowHelper{
     {
         windowOpener.windowWithUserControl.Close();
     }
+
+    /// <summary>
+    /// Return dump A1
+    /// </summary>
+    /// <param name="e"></param>
+    /// <param name="methodName"></param>
+    /// <returns></returns>
     public static string ShowExceptionWindow(object e, string methodName = "")
     {
         if (methodName != string.Empty)

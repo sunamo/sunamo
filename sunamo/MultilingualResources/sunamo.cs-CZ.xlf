@@ -1500,7 +1500,7 @@
           
           <target state="translated">Nebo si vyberte</target>
         </trans-unit>
-        <trans-unit id="ForYourNeeds" translate="no" xml:space="preserve">
+        <trans-unit id="UsefulApps" translate="no" xml:space="preserve">
           
           <target state="translated">Užitečné aplikace</target>
         </trans-unit>
@@ -4693,7 +4693,7 @@
         </trans-unit>
         <trans-unit id="DoYouThinkSomethingCouldBeHereAndIsnT" translate="no" xml:space="preserve">
           
-          <target state="translated">Myslíš, že by tu mohlo něco být a co ne</target>
+          <target state="translated">Myslíte, že by tu mělo něco být a není</target>
         </trans-unit>
         <trans-unit id="WriteMeAboutItTo" translate="no" xml:space="preserve">
           
@@ -4728,68 +4728,76 @@
           <target state="translated">Zkontrolujte svá data</target>
         </trans-unit>
         <trans-unit id="PaymentGateway" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Platební brána</target>
         </trans-unit>
         <trans-unit id="TransactionFinished" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Transakce byla dokončena</target>
         </trans-unit>
         <trans-unit id="CheckAll" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Zaškrtnout vše</target>
         </trans-unit>
         <trans-unit id="UncheckAll" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Odškrtnout všechny</target>
         </trans-unit>
         <trans-unit id="Prolong" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Prodloužit</target>
         </trans-unit>
         <trans-unit id="OrderID" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Objednávka</target>
         </trans-unit>
         <trans-unit id="Module" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Modul</target>
         </trans-unit>
         <trans-unit id="ValidTo" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Platné do</target>
         </trans-unit>
         <trans-unit id="Prolongation" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Prodloužení</target>
         </trans-unit>
         <trans-unit id="Status" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Stav</target>
         </trans-unit>
         <trans-unit id="YourLicences" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Vaše licence</target>
         </trans-unit>
         <trans-unit id="ValidLicenses" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Platné licence</target>
         </trans-unit>
         <trans-unit id="InvalidLicenses" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Neplatné licence</target>
         </trans-unit>
         <trans-unit id="YouRe" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Ty jsi</target>
         </trans-unit>
         <trans-unit id="welcome" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Vítejte</target>
         </trans-unit>
         <trans-unit id="AllApps" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Všechny aplikace</target>
+        </trans-unit>
+        <trans-unit id="Saved" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložené</target>
+        </trans-unit>
+        <trans-unit id="Updated" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktualizováno</target>
         </trans-unit>
       </group>
     </body>

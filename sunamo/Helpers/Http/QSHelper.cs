@@ -160,7 +160,7 @@ public partial class QSHelper
             for (int i = 0; i < to; i++)
             {
                 string k = p[i].ToString();
-                sb.Append("ToString(" + k + "..toString()");
+                sb.Append("su.ToString(" + k + ")");
                 if (to2 != i)
                 {
                     sb.Append(AllStrings.comma);

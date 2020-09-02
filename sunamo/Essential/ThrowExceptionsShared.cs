@@ -113,6 +113,7 @@ public partial class ThrowExceptions
     /// <param name="exception"></param>
     public static bool ThrowIsNotNull(string stacktrace, string exception)
     {
+
         if (exception != null)
         {
             if (Exc.aspnet)
@@ -128,6 +129,10 @@ public partial class ThrowExceptions
             }
             else
             {
+                #if MB
+                TranslateDictionary.ShowMb("Throw exc");
+#endif
+
                 throw new Exception(exception);
             }
         }
@@ -171,5 +176,5 @@ public partial class ThrowExceptions
         }
         return true;
     }
-    #endregion
+#endregion
 }

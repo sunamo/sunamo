@@ -13696,60 +13696,68 @@ A fraternal form of manifestation is the bliss</target>
           <target state="translated">Check your data</target>
         </trans-unit>
         <trans-unit id="PaymentGateway" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Payment gateway</target>
         </trans-unit>
         <trans-unit id="TransactionFinished" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Transaction finished</target>
         </trans-unit>
         <trans-unit id="CheckAll" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Check all</target>
         </trans-unit>
         <trans-unit id="UncheckAll" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Uncheck all</target>
         </trans-unit>
         <trans-unit id="Prolong" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Prolong</target>
         </trans-unit>
         <trans-unit id="OrderID" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Order ID</target>
         </trans-unit>
         <trans-unit id="Module" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Module</target>
         </trans-unit>
         <trans-unit id="ValidTo" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Valid to</target>
         </trans-unit>
         <trans-unit id="Prolongation" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Prolongation</target>
         </trans-unit>
         <trans-unit id="YourLicences" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Your licences</target>
         </trans-unit>
         <trans-unit id="ValidLicenses" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Valid Licenses</target>
         </trans-unit>
         <trans-unit id="InvalidLicenses" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Invalid Licenses</target>
         </trans-unit>
         <trans-unit id="YouRe" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">You're</target>
         </trans-unit>
         <trans-unit id="welcome" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">welcome</target>
+        </trans-unit>
+        <trans-unit id="Saved" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Saved</target>
+        </trans-unit>
+        <trans-unit id="Updated" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Updated</target>
         </trans-unit>
       </group>
     </body>

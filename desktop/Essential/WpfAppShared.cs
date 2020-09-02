@@ -17,25 +17,39 @@ public partial class WpfApp{
     static bool initialized = false;
     static bool attached = false;
 
+     
+
     public static void Init()
     {
-        //MessageBox.Show("Init WpfApp");
+#if MB
+        MessageBox.Show("Init WpfApp");
+#endif
         if (!initialized)
         {
+            #if MB
             //MessageBox.Show("inside if");
+#endif
             initialized = true;
             Application.Current.ShutdownMode = ShutdownMode.OnLastWindowClose;
 
-#if !DEBUG
-            //MessageBox.Show("attach in release");
-            AttachHandlers();
+#if MB
+            MessageBox.Show("attach in release");
+            //AttachHandlers();
 #endif
 
             // change ! by needs
             if (!Debugger.IsAttached)
             {
-                //MessageBox.Show("Debugger wasnt attached");
+#if MB
+                MessageBox.Show("Debugger wasnt attached");
+#endif
                 AttachHandlers();
+            }
+            else
+            {
+#if MB
+                MessageBox.Show("Debugger was attached, no exceptions handlers is attached");
+#endif
             }
         }
     }
@@ -53,31 +67,7 @@ public partial class WpfApp{
         }
     }
 
-    private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
-    {
-        if (IsSomethingNull("TaskScheduler_UnobservedTaskException"))
-        {            
-            return;
-        }
-
-        var typeExc = e.Exception.GetType();
-        var t = typeExc.Name;
-
-        //https://stackoverflow.com/a/7883087/9327173
-        e.SetObserved();
-
-        //DebugLogger.Instance.WriteLine(t);
-
-        WpfApp.cd.Invoke(() =>
-        {
-            if (!Debugger.IsAttached)
-            {
-                ShowExceptionWindow(e, "TaskScheduler_UnobservedTaskException");
-            }
-            else { if (breakAt) { DebuggerIsAttached(); } }
-        }
-        );
-    }
+    
 
     static void DebuggerIsAttached()
     {
@@ -87,8 +77,15 @@ public partial class WpfApp{
 
     private static bool IsSomethingNull(string handler)
     {
+#if MB
+        TranslateDictionary.ShowMb("IsSomethingNull " + handler);
+#endif
+
         WpfApp.cd = Application.Current.Dispatcher;
         WpfApp.cdp = System.Windows.Threading.DispatcherPriority.Normal;
+
+
+
         return false;
 
         StringBuilder sb = new StringBuilder();
@@ -126,16 +123,69 @@ public partial class WpfApp{
             {
                 
                 Clipboard.SetText(Exc.GetStackTrace() + Environment.NewLine + Exceptions.TextOfExceptions(ex));
+#if MB
                 MessageBox.Show(handler + " " + DesktopNotTranslateAble.SomethingIsNullProbablyWpfAppCdIntoClipboardWasCopiedStacktrace + ".");
+#endif
             }
             
         }
         else
         {
-            //MessageBox.Show(handler + " Everything is ok");
+#if MB
+            MessageBox.Show(handler + " Everything is ok");
+#endif
         }
 
         return vr;
+    }
+
+    
+
+    /// <summary>
+    /// A2 = name of calling method (like Current_DispatcherUnhandledException)
+    /// </summary>
+    /// <param name="e"></param>
+    /// <param name="n"></param>
+    public static void ShowExceptionWindow(EventArgs e, string n)
+    {
+        var dump = WindowHelper.ShowExceptionWindow(e, n);
+
+        WriterEventLog.WriteToMainAppLog(n + Environment.NewLine + dump, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
+    }
+
+
+
+
+
+
+
+
+
+
+    private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+    {
+        if (IsSomethingNull("TaskScheduler_UnobservedTaskException"))
+        {
+            return;
+        }
+
+        var typeExc = e.Exception.GetType();
+        var t = typeExc.Name;
+
+        //https://stackoverflow.com/a/7883087/9327173
+        e.SetObserved();
+
+        //DebugLogger.Instance.WriteLine(t);
+
+        WpfApp.cd.Invoke(() =>
+        {
+            if (!Debugger.IsAttached)
+            {
+                ShowExceptionWindow(e, "TaskScheduler_UnobservedTaskException");
+            }
+            else { if (breakAt) { DebuggerIsAttached(); } }
+        }
+        );
     }
 
     /// <summary>
@@ -150,7 +200,7 @@ public partial class WpfApp{
         {
             return;
         }
-        
+
         e.Handled = handled;
         WpfApp.cd.Invoke(() =>
         {
@@ -163,14 +213,6 @@ public partial class WpfApp{
 
         }
         );
-    }
-
-    public static void ShowExceptionWindow(EventArgs e, string n)
-    {
-        var d = WindowHelper.ShowExceptionWindow(e, n);
-
-
-        WriterEventLog.WriteToMainAppLog(n + Environment.NewLine + d, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
     }
 
     /// <summary>

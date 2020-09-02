@@ -106,7 +106,7 @@ public static partial class WriterEventLog{
         mainEventLogOfApplication.WriteEntry(text, type);
     }
 
-    private static bool IsAdmin()
+    public static bool IsAdmin()
     {
         return WindowsSecurityHelper.IsUserAdministrator();
     }

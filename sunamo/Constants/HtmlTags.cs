@@ -31,4 +31,5 @@ public class HtmlTags
     public static string li = "li";
     public static string b = "b";
     public static string p = "p";
+    public static string h4 = "h4";
 }

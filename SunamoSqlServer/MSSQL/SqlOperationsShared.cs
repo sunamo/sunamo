@@ -1667,7 +1667,11 @@ public partial class SqlOperations : SqlServerHelper
     /// </summary>
     public SqlResult<DataTable> SelectDataTableSelective(SqlData data, string tabulka, string nazvySloupcu, params AB[] ab)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", nazvySloupcu, tabulka) + GeneratorMsSql.CombinedWhere(new ABC(ab)));
+        var com = string.Format("SELECT " + TopDistinct(data) + " {0} FROM {1}", nazvySloupcu, tabulka) + GeneratorMsSql.CombinedWhere(new ABC(ab));
+        AddOrderBy(data, ref com);
+
+        SqlCommand comm = new SqlCommand(com);
+        
         AddCommandParameterFromAbc(comm, ab);
         //NT
         return this.SelectDataTable(data, comm);
@@ -1676,15 +1680,23 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<DataTable> SelectDataTableSelective(SqlData data, string tabulka, string nazvySloupcu, string sloupecID, object id)
     {
         string cmd = string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID);
-        if (data.orderBy != string.Empty)
-        {
-            cmd += GeneratorMsSql.OrderBy(data.orderBy, data.sortOrder);
-        }
+        
+        AddOrderBy(data, ref cmd);
 
         SqlCommand comm = new SqlCommand(cmd);
         AddCommandParameter(comm, 0, id);
         //NT
         return this.SelectDataTable(data, comm);
+    }
+
+    private static string AddOrderBy(SqlData data, ref string cmd)
+    {
+        if (data.orderBy != string.Empty)
+        {
+            cmd += GeneratorMsSql.OrderBy(data.orderBy, data.sortOrder);
+        }
+
+        return cmd;
     }
 
     public SqlResult<DataTable> SelectDataTableSelective(SqlData data, string table, string vraceneSloupce, ABC where, ABC whereIsNot)

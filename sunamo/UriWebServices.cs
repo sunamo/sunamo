@@ -28,6 +28,29 @@ public partial class UriWebServices
         }
     }
 
+
+    public static class TechSitesRss
+    {
+        public static Type type = typeof(TechSitesRss);
+
+        public const string feedsFeedburnerCom = "http://feeds.feedburner.com/TechCrunch/";
+        public const string wwwEngadgetCom = "http://www.engadget.com/rss.xml";
+        
+        /// <summary>
+        /// Unknown rss feed
+        /// </summary>
+        public const string wwwThevergeCom = "http://www.theverge.com/rss/index.xml";
+
+        public const string wwwSciencedailyCom = "https://www.sciencedaily.com/rss/all.xml";
+        public const string wwwTechradarCom = "https://www.techradar.com/rss";
+        public const string wwwWiredCom = "https://www.wired.com/feed/rss";
+        public const string feedsArstechnicaCom = "http://feeds.arstechnica.com/arstechnica/index";
+        public const string thenextwebCom = "https://thenextweb.com/feed/";
+        public const string wwwTomshardwareCom = "https://www.tomshardware.com/feeds/all";
+
+
+    }
+
     public static class Business
     {
         public const string wwwFirmoCz = "www.firmo.cz";

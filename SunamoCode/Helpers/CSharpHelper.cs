@@ -328,7 +328,7 @@ public static partial class CSharpHelper
 
             if (toCamelConvention)
             {
-                name = ConvertCamelConvention.ToConvention(item);
+                name = ConvertCamelConvention.ToConvention(name);
             }
             csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
         }

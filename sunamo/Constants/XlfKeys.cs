@@ -6,6 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string Updated = "Updated"; 
+
+	public const string Saved = "Saved"; 
 	public const string welcome = "welcome"; 
 	public const string YouRe = "YouRe"; 
 	public const string InvalidLicenses = "InvalidLicenses"; 
