@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 /// <summary>
 /// Most NotTranslateAble class due to many regex and duplicated \
@@ -68,6 +69,16 @@ public static class RegexHelper
     public static bool IsUri(string text)
     {
         return rUri.IsMatch(text) && UH.HasHttpProtocol(text);
+    }
+
+    public static List<string> AllFromGroup(MatchCollection m, int v)
+    {
+        List<string> vr = new List<string>(m.Count);
+        foreach (Match item in m)
+        {
+            vr.Add(item.Groups[v].Value);
+        }
+        return vr;
     }
 
     static RegexHelper()

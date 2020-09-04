@@ -17,7 +17,7 @@ using System.Web;
 /// </summary>
 public static partial class HttpRequestHelper
 {
-    
+
 
     public static bool IsNotFound(object uri)
     {
