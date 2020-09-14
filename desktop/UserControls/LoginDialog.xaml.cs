@@ -37,13 +37,11 @@ namespace desktop
             btnc = CA.ToList<Button>(btnForgetLoginAndPassword, btnForgetPassword, btnLogin);
             pwbc = CA.ToList<PasswordBox>(txtHeslo);
 
-            
             ResourceDictionaryStyles.Padding10(tbc);
             ResourceDictionaryStyles.Margin10(chbc);
             ResourceDictionaryStyles.Margin10(txtc);
             ResourceDictionaryStyles.Margin10(btnc);
             ResourceDictionaryStyles.Margin(10,pwbc);
-
         }
 
         public string Login
@@ -97,8 +95,6 @@ namespace desktop
 
             Loaded += LoginDialog_Loaded;
         }
-
-       
 
         void chbRememberLogin_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -249,8 +245,9 @@ namespace desktop
             {
                 ThrowExceptionConfigNotSupported();
             }
-            if (storageApplicationData != StorageApplicationData.NoWhere)
+            else //if (storageApplicationData != StorageApplicationData.NoWhere)
             {
+                // Musím nastavit loginClicked na true nebo false. false je znamení že musím hned zobrazovat v selling dialog 
                 if (txtLogin.Text.Trim() != "" && txtHeslo.Password.Trim() != "")
                 {
                     loginClicked = true;
@@ -260,11 +257,6 @@ namespace desktop
                 {
                     loginClicked = false;
                 }
-            }
-            else
-            {
-                loginClicked = true;
-                Close();
             }
         }
 
@@ -294,6 +286,10 @@ namespace desktop
             {
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),MethodBase.GetCurrentMethod(), "", storageApplicationData);
             }
+
+            // For sure set loginClicked for default value
+            loginClicked = false;
+            Close();
         }
 
         private void btnForgetPassword_Click(object sender, RoutedEventArgs e)
@@ -319,8 +315,10 @@ namespace desktop
             {
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),MethodBase.GetCurrentMethod(), "", storageApplicationData);
             }
+
+            // For sure set loginClicked for default value
+            loginClicked = false;
+            Close();
         }
-
-
     }
 }

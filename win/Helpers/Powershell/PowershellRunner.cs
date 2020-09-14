@@ -75,6 +75,7 @@ namespace win.Helpers.Powershell
 
                     var async = ps.BeginInvoke();
                     // Return for SleepWithRandomOutputConsole zero outputs
+                    // Pokud se to zasekává, zkontroluj si jestli nenecháváš v app Console.Readline(). S tímto ji powershell nikdy nedokončí
                     var psObjects = ps.EndInvoke(async);
 
                     returnList.Add(ProcessPSObjects(psObjects));

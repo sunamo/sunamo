@@ -56,10 +56,7 @@ using System.Net.Mail;
         {
             this.smtpServerData = smtpServer;
         }
-        
     }
-
-
     public GoogleAppsMailbox( SmtpData d) : this(d.login,d.login, d.pw, d)
     {
         

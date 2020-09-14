@@ -18,4 +18,5 @@ public class MSSloupecDB : SloupecDBBase< MSSloupecDB, SqlDbType2>
         SloupecDBBase< MSSloupecDB, SqlDbType2>.databaseLayer = MSDatabaseLayer.ci;
         // could set up here also factory column DB
     }
+
 }

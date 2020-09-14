@@ -13,7 +13,6 @@ public class SmtpData : SmtpServerData, IParseCollection, INotifyPropertyChanged
 {
     public string login { get; set; }
     public string pw { get; set; }
-
   #region How I was doing idiot with creating table with row's grid instead of use GridViewColumn
     //GridLength width = new GridLength(20);
 

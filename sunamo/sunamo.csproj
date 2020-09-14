@@ -156,6 +156,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Data\AsyncLoadingBase.cs" />
     <Compile Include="Data\ItemWithDt.cs" />
     <Compile Include="Entity\SunamoComparerIComparer.cs" />
     <Compile Include="Entity\SunamoComparerIComparerShared.cs" />

@@ -40,21 +40,7 @@ public partial class SunamoComparer
         }
     }
 
-    public class Float : ISunamoComparer<float>
-    {
-        public static Float Instance = new Float();
-
-        public int Desc(float x, float y)
-        {
-            return x.CompareTo(y) * -1;
-        }
-
-        public int Asc(float x, float y)
-        {
-            return x.CompareTo(y);
-        }
-    }
-
+    
     public class IEnumerableCharLength : ISunamoComparer<IEnumerable<char>>
     {
         public static IEnumerableCharLength Instance = new IEnumerableCharLength();

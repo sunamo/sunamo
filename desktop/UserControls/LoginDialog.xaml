@@ -31,9 +31,9 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button  Content="Přihlásit" x:Name="btnLogin" Click="btnLogin_Click"></Button>
-            <Button  Content="Zapomenout heslo" x:Name="btnForgetPassword" Click="btnForgetPassword_Click"></Button>
-            <Button   Content="Zapomenout login i heslo"  x:Name="btnForgetLoginAndPassword" Click="btnForgetLoginAndPassword_Click"></Button>
+            <Button Content="Přihlásit" x:Name="btnLogin" Click="btnLogin_Click"></Button>
+            <Button Content="Zapomenout heslo" x:Name="btnForgetPassword" Click="btnForgetPassword_Click"></Button>
+            <Button Content="Zapomenout login i heslo"  x:Name="btnForgetLoginAndPassword" Click="btnForgetLoginAndPassword_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

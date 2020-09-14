@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string SavedSmtp = "SavedSmtp"; 
+	public const string NewsFromPopularITSites = "NewsFromPopularITSites"; 
 
+	public const string SavedSmtp = "SavedSmtp"; 
 	public const string ForgetLoginAndPassword = "ForgetLoginAndPassword"; 
 	public const string ForgetPassword = "ForgetPassword"; 
 	public const string Updated = "Updated"; 

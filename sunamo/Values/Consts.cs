@@ -18,6 +18,6 @@ using System.Threading.Tasks;
     public const string na = "n/a";
     public const string NA = "N/A";
     public const string x = "X";
-    public const int defaultPortIfCannotBeParsed = 587;
+    
 
 }
