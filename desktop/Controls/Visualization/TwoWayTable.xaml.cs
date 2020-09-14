@@ -22,7 +22,7 @@ namespace desktop.Controls.Visualization
     /// <summary>
     /// T je typ ve kterém se spravují data k UIElements nebo checkboxes
     /// Its is normal grid, in default state there is no padding / margin in cell
-    /// Ways to show data in WPF:
+    /// Ways to show data in WPF - see where is used in D:\Sync\Develop of Future\UsedTableControls.txt
     /// TwoWayTable
     /// DataGrid
     /// ListView
@@ -32,7 +32,8 @@ namespace desktop.Controls.Visualization
     /// 
     /// Use in apps:
     /// IlCamminoManager - DataGridCamminoTracklist, IlCamminoManager,  SearchingIlCammino , ListenToIlCammino 
-    /// Events - EncodingOfFiles
+    /// 
+    /// WpfApp1 - EncodingOfFiles
     /// LastFmClient/LastFmClient - artists/songs
     /// GeoCachingTool/SavedCaches
     /// SeznamCzReality/ListViewFlats
@@ -145,6 +146,20 @@ namespace desktop.Controls.Visualization
         public TwoWayTable()
         {
             InitializeComponent();
+
+            Loaded += TwoWayTable_Loaded;
+        }
+
+        private void TwoWayTable_Loaded(object sender, RoutedEventArgs e)
+        {
+#if DEBUG
+            //if (grid.Children.Count > 0)
+            //{
+            //    var d = grid.Children[7];
+            //    var fw = d as FrameworkElement;
+            //    var s = fw.ActualHeight;
+            //}
+#endif
         }
 
         public void CreateGrid(int row, int column)
@@ -157,6 +172,7 @@ namespace desktop.Controls.Visualization
             {
                 checkBoxes = new CheckBox[row, column];
             }
+
             controls = new UIElement[row, column];
             data = new object[row, column];
             rows = row;
@@ -366,6 +382,8 @@ namespace desktop.Controls.Visualization
             }
         }
 
+        public double maxHeightRowBorder = 30;
+
         /// <summary>
         /// Can be use AddColumn or AddRow in dependent how I have structured data
         /// A1 is columns in table
@@ -385,9 +403,22 @@ namespace desktop.Controls.Visualization
                     item = uie[i].t;
                 }
 
+                if (i % 2 == 1)
+                {
+                    
+                    Control fw = item as Control;
+                    DebugLogger.Instance.WriteLine(item.GetType().Name);
+                    if (fw != null)
+                    {
+                        //fw.Background = Brushes.LightGray;
+                    }
+
+                }
+
                 if (item != null)
                 {
                     Border b = new Border();
+                    b.Height = maxHeightRowBorder;
                     b.Padding = new Thickness(5);
                     b.Child = item;
                     // Must be transparent, it's only around inner control (which is often empty), not complex with checkbox
@@ -395,6 +426,8 @@ namespace desktop.Controls.Visualization
                     b.BorderThickness = new Thickness( 1);
                     item = b;
                 }
+
+                
 
                 controls[i, dexCol] = item;
 

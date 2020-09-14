@@ -56,11 +56,8 @@ static Type type = typeof(ApplicationDataContainer);
     public ApplicationDataContainer()
     {
     }
-    public void Add(TwoWayTable twt)
-    {
-        //twt.c = list;
-        //twt.Save += Twt_Save;
-    }
+  
+
     public void SaveControl(object o)
     {
         FrameworkElement fw = (FrameworkElement)o;
@@ -82,17 +79,16 @@ static Type type = typeof(ApplicationDataContainer);
     {
         var adcl = AddFrameworkElement(uc);
     }
-    public void Add(Window cb)
+
+
+
+    #region Add - list. Data do listů ukládám zásadně přes SF
+    public void Add(TwoWayTable twt)
     {
-        // Automatically load
-        var adcl = AddFrameworkElement(cb);
-        var list = adcl.GetListString(ItemsSource);
-        
-        
-        //cb.ItemsSource = list;
-        //cb.KeyUp += Cb_KeyUp;
-        //cb.DataContextChanged += Cb_DataContextChanged;
+        //twt.c = list;
+        //twt.Save += Twt_Save;
     }
+
     public void Add(ComboBox cb)
     {
         // Automatically load
@@ -103,13 +99,38 @@ static Type type = typeof(ApplicationDataContainer);
         //cb.DataContextChanged += Cb_DataContextChanged;
     }
 
-    public void Add(SelectFolder chb)
+    public void Add(CheckBoxListUC chbl)
     {
-        ApplicationDataContainerList adcl = AddFrameworkElement(chb);
-        chb.SelectedFolder = adcl.GetString(SelectedFolder); 
-        chb.FolderChanged += Chb_FolderChanged;
-        
+        var adcl = AddFrameworkElement(chbl);
+        var list = adcl.GetListString(chbAdded, innerDelimiter);
+        for (int i = 0; i < list.Count; i++)
+        {
+            var chb = CheckBoxHelper.Get(new ControlInitData { text = list[i] });
+            var maybeInt = list[++i];
+            if (!BTS.IsInt(maybeInt))
+            {
+            }
+            chb.IsChecked = BTS.IntToBool(maybeInt);
+
+            NotifyPropertyChangedWrapper<CheckBox> notifyChb = new NotifyPropertyChangedWrapper<CheckBox>(chb, ToggleButton.IsCheckedProperty);
+
+            chbl.l.l.Add(notifyChb);
+        }
+        chbl.l.CollectionChanged += Chbl_CollectionChanged;
     }
+
+    public void Add(SelectMoreFolders txtFolders)
+    {
+        var adcl = AddFrameworkElement(txtFolders);
+        var folders = adcl.GetListString(SelectedFolders, innerDelimiter);
+        foreach (var item in folders)
+        {
+            txtFolders.AddFolder(item);
+        }
+        txtFolders.FolderChanged += TxtFolders_FolderChanged;
+        txtFolders.FolderRemoved += TxtFolders_FolderRemoved;
+    } 
+    #endregion
 
     private void Chb_Click(object sender, RoutedEventArgs e)
     {
@@ -126,37 +147,47 @@ static Type type = typeof(ApplicationDataContainer);
             SaveControl(cb);
     }
 
+    #region Add - single
+    public void Add(SelectFolder chb)
+    {
+        ApplicationDataContainerList adcl = AddFrameworkElement(chb);
+        chb.SelectedFolder = adcl.GetString(SelectedFolder);
+        chb.FolderChanged += Chb_FolderChanged;
+
+    }
+
+    public void Add(Window cb)
+    {
+        // Automatically load
+        var adcl = AddFrameworkElement(cb);
+        var list = adcl.GetListString(ItemsSource);
+
+
+        //cb.ItemsSource = list;
+        //cb.KeyUp += Cb_KeyUp;
+        //cb.DataContextChanged += Cb_DataContextChanged;
+    }
+
+    public void Add(TextBlock tb)
+    {
+        var tb2 = AddFrameworkElement(tb);
+        //tb.TextChanged +=
+    }
+
     public void Add(CheckBox chb)
     {
         ApplicationDataContainerList adcl = AddFrameworkElement(chb);
         chb.Click += Chb_Click;
-        chb.IsChecked = adcl.GetNullableBool( IsChecked);
+        chb.IsChecked = adcl.GetNullableBool(IsChecked);
     }
     public void Add(TextBox txt)
     {
         var adcl = AddFrameworkElement(txt);
         txt.Text = adcl.GetString(Text);
         txt.TextChanged += Txt_TextChanged;
-    }
-    public void Add(CheckBoxListUC chbl)
-    {
-        var adcl = AddFrameworkElement(chbl);
-        var list = adcl.GetListString(chbAdded, innerDelimiter);
-        for (int i = 0; i < list.Count; i++)
-        {
-            var chb = CheckBoxHelper.Get(new ControlInitData { text = list[i] });
-            var maybeInt = list[++i];
-            if (!BTS.IsInt(maybeInt))
-            {
-            }
-            chb.IsChecked = BTS.IntToBool(maybeInt);
-
-            NotifyPropertyChangedWrapper<CheckBox> notifyChb = new NotifyPropertyChangedWrapper<CheckBox>(chb, ToggleButton.IsCheckedProperty); 
-
-            chbl.l.l.Add(notifyChb);
-        }
-        chbl.l.CollectionChanged += Chbl_CollectionChanged;
-    }
+    } 
+    #endregion
+    
     private void Chbl_CollectionChanged(object sender, string operation, object data)
     {
         CheckBoxListUC chb = sender as CheckBoxListUC;
@@ -169,18 +200,7 @@ static Type type = typeof(ApplicationDataContainer);
         Set(sender, chbAdded, sb.ToString());
         SaveControl(chb);
     }
-    public void Add(SelectMoreFolders txtFolders)
-    {
-        var adcl = AddFrameworkElement(txtFolders);
-        var folders = adcl.GetListString(SelectedFolders, innerDelimiter);
-        foreach (var item in folders)
-        {
-            txtFolders.AddFolder(item);
-        }
-        txtFolders.FolderChanged += TxtFolders_FolderChanged;
-        txtFolders.FolderRemoved += TxtFolders_FolderRemoved;
-        
-    }
+    
     private void Txt_TextChanged(object sender, TextChangedEventArgs e)
     {
         TextBox chb = sender as TextBox;
@@ -230,11 +250,7 @@ static Type type = typeof(ApplicationDataContainer);
         f[key] = v;
     }
     
-    public void Add(TextBlock tb)
-    {
-        var tb2 = AddFrameworkElement(tb);
-        //tb.TextChanged +=
-    }
+   
     
     private void Cb_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
     {

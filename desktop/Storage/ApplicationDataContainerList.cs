@@ -245,6 +245,7 @@ public class ApplicationDataContainerList : IEnumerable
         {
             return new List<string>();
         }
+
         if (value.ToString().Trim() == string.Empty)
         {
             return new List<string>();
@@ -252,6 +253,7 @@ public class ApplicationDataContainerList : IEnumerable
 
         var list2 = CA.ToListString(value as IEnumerable);
         var result = SF.GetAllElementsLine(list2[0], delimiter).ToList();
+
         CA.RemoveStringsEmpty(result);
         return result;
     }

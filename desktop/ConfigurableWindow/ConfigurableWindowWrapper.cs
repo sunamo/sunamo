@@ -20,7 +20,7 @@ namespace ConfigurableWindow.Shared
 
        
 
-        private void MiAlwaysOnTop_Click(object o, RoutedEventArgs e)
+        public void MiAlwaysOnTop_Click(object o, RoutedEventArgs e)
         {
             w.Topmost = miAlwaysOnTop.IsChecked;
             CheckMenuItemTopMost();
@@ -43,9 +43,15 @@ namespace ConfigurableWindow.Shared
         public ConfigurableWindowWrapper(Window w2, MenuItem miAlwaysOnTop)
         {
             this.miAlwaysOnTop = miAlwaysOnTop;
-            miAlwaysOnTop.Click += MiAlwaysOnTop_Click;
-            miAlwaysOnTop.IsCheckable = true;
-            miAlwaysOnTop.Header = ContentControlHelper.GetContent(new ControlInitData { text = sess.i18n(XlfKeys.AlwaysOnTop) });
+            if (miAlwaysOnTop == null)
+            {
+                // Only in non selling apps. in Selling must be padding!
+                miAlwaysOnTop = new MenuItem();
+                miAlwaysOnTop.Click += MiAlwaysOnTop_Click;
+                miAlwaysOnTop.IsCheckable = true;
+                miAlwaysOnTop.Header = ContentControlHelper.GetContent(new ControlInitData { text = sess.i18n(XlfKeys.AlwaysOnTop) });
+            }
+            
 
             w = w2;
             w.LocationChanged += W_LocationChanged;

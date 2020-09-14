@@ -13,42 +13,11 @@ using GoPay.Model.Payments;
 using SunamoPayments;
 using static GoPay.Model.Payments.Target;
 
-public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState>
+public partial class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState>
 {
-    GoPayData goPayData = null;
     static Type type = typeof(SunamoGoPayHelper);
-    public static Dictionary<SessionState, string> stateToStringEn = new Dictionary<SessionState, string>();
-    public static Dictionary<SessionState, string> stateToStringCs = new Dictionary<SessionState, string>();
-
-    static SunamoGoPayHelper()
-    {
-        try
-        {
-            var v = EnumHelper.GetValues<SessionState>();
-            string cs = null;
-            foreach (var item in v)
-            {
-                var fromSnake = ConvertSnakeConvention.FromConvention(item.ToString());
-
-                if (fromSnake.Contains(AllStrings.space))
-                {
-                    var pascal = ConvertPascalConvention.ToConvention(fromSnake);
-                    cs = RLData.cs[pascal];
-                }
-                else
-                {
-                    cs = RLData.cs[fromSnake];
-                }
-
-                stateToStringCs.Add(item, cs);
-                stateToStringEn.Add(item, fromSnake);
-            }
-        }
-        catch (Exception ex)
-        {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "In SunamoGoPayHelper: " + Exceptions.TextOfExceptions(ex));
-        }
-    }
+    GoPayData goPayData = null;
+    
 
     public SunamoGoPayHelper(GoPayData goPayData)
     {

@@ -145,12 +145,23 @@ public partial class DictionaryHelper
         }
     }
 
-    public static Dictionary<T1, T2> GetDictionaryFromIEnumerable<T1, T2>(IEnumerable<KeyValuePair<T1, T2>> enumerable)
+    public static Dictionary<T1, T2> GetDictionaryFromIEnumerable<T1, T2>(IEnumerable<KeyValuePair<T1, T2>> enumerable, bool addRandomWhenKeyExists = false)
     {
         Dictionary<T1, T2> d = new Dictionary<T1, T2>();
         foreach (var item in enumerable)
         {
-            d.Add(item.Key, item.Value);
+            var key = item.Key;
+
+            var c = d.ContainsKey(item.Key) ;
+            if (c)
+            {
+                if (addRandomWhenKeyExists)
+                {
+                    var k = key.ToString() + " " + RandomHelper.RandomString(5);
+                    key = (T1)(dynamic)k;
+                }
+            }
+            d.Add(key, item.Value);
         }
         return d;
     }
@@ -160,7 +171,7 @@ public partial class DictionaryHelper
         return GetDictionaryFromIEnumerable<T1, T2>(orderedEnumerable);
     }
 
-    public static Dictionary<T1, T2> GetDictionaryFromTwoList<T1, T2>(List<T1> t1, List<T2> t2)
+    public static Dictionary<T1, T2> GetDictionaryFromTwoList<T1, T2>(List<T1> t1, List<T2> t2, bool addRandomWhenKeyExists = false)
     {
         ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(), type, "GetDictionaryFromTwoList", "t1", t1, "t2", t2);
 
@@ -171,7 +182,7 @@ public partial class DictionaryHelper
             l.Add(new KeyValuePair<T1, T2>(t1[i], t2[i]));
         }
 
-        return GetDictionaryFromIEnumerable<T1, T2>(l);
+        return GetDictionaryFromIEnumerable<T1, T2>(l, addRandomWhenKeyExists);
     }
 
     /// <summary>

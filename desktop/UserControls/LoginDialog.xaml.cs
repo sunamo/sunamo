@@ -22,8 +22,29 @@ namespace desktop
     /// </summary>
     public partial class LoginDialog : Window
     {
-        
         static Type type = typeof(Type);
+        public List<TextBlock> tbc;
+        public List<CheckBox> chbc;
+        public List<TextBox> txtc;
+        public List<Button> btnc;
+        public List<PasswordBox> pwbc;
+
+        private void LoginDialog_Loaded(object sender, RoutedEventArgs e)
+        {
+            tbc = CA.ToList<TextBlock>(tbLogin, tbPw);
+            chbc = CA.ToList<CheckBox>(chbAutoLogin, chbRememberLogin);
+            txtc = CA.ToList<TextBox>(txtLogin);
+            btnc = CA.ToList<Button>(btnForgetLoginAndPassword, btnForgetPassword, btnLogin);
+            pwbc = CA.ToList<PasswordBox>(txtHeslo);
+
+            
+            ResourceDictionaryStyles.Padding10(tbc);
+            ResourceDictionaryStyles.Margin10(chbc);
+            ResourceDictionaryStyles.Margin10(txtc);
+            ResourceDictionaryStyles.Margin10(btnc);
+            ResourceDictionaryStyles.Margin(10,pwbc);
+
+        }
 
         public string Login
         {
@@ -69,7 +90,15 @@ namespace desktop
             tbPw.Text = sess.i18n(XlfKeys.Password) + AllStrings.cs2;
             chbRememberLogin.Content = sess.i18n(XlfKeys.RememberLogin);
             chbAutoLogin.Content = sess.i18n(XlfKeys.AutoLogin);
+
+            btnLogin.Content = sess.i18n(XlfKeys.Login);
+            btnForgetPassword.Content = sess.i18n(XlfKeys.ForgetPassword);
+            btnForgetLoginAndPassword.Content = sess.i18n(XlfKeys.ForgetLoginAndPassword);
+
+            Loaded += LoginDialog_Loaded;
         }
+
+       
 
         void chbRememberLogin_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -79,7 +108,6 @@ namespace desktop
         void chbAutoLogin_Checked(object sender, RoutedEventArgs e)
         {
                 chbRememberLogin.IsChecked = true;
-            //}
         }
 
         public CryptDelegates cryptDelegates = null;

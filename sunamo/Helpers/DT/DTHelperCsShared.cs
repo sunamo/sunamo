@@ -115,12 +115,12 @@ public partial class DTHelperCs
             }
         }
         return vr;
-    } 
+    }
     #endregion
 
     #region Date
     /// <summary>
-    /// 21.6.1989
+    /// 21.6.1989. DateTime.MinValue when cannot be parsed
     /// </summary>
     /// <param name="input"></param>
     public static DateTime ParseDateCzech(string input)

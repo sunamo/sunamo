@@ -21,9 +21,9 @@ using System.Net.Mail;
         /// <summary>
         /// Povinný. Heslo k mailu userName, které se taktéž nastavuje na https://ks.aspone.cz/
         /// </summary>
-        string password = null;
+        public string password = null;
         public string mailOfAdmin = null;
-        SmtpServerData smtpServerData = new SmtpServerData();
+        public SmtpServerData smtpServerData = new SmtpServerData();
 
     /// <summary>
     /// For sending from noreply@sunamo.cz
@@ -33,6 +33,11 @@ using System.Net.Mail;
 
         }
 
+    public GoogleAppsMailbox(string fromEmail, string mailOfAdmin, string password, SmtpServerData smtpServer = null) : this(string.Empty, fromEmail, mailOfAdmin, password, smtpServer) 
+    {
+
+    }
+
         /// <summary>
         /// Do A3 se ve výchozí stavu předává GeneralCells.EmailOfUser(1). Can be null, its used in scz to send mails to webmaster
         /// Dont forget set password for A2 or use without-parametric ctor
@@ -40,18 +45,25 @@ using System.Net.Mail;
         /// <param name="fromName"></param>
         /// <param name="fromEmail"></param>
         /// <param name="mailOfAdmin"></param>
-        public GoogleAppsMailbox(string fromName, string fromEmail, string mailOfAdmin, string password, SmtpServerData smtpServer = null)
+    public GoogleAppsMailbox(string fromName, string fromEmail, string mailOfAdmin, string password, SmtpServerData smtpServer = null)
         {
             this.fromName = fromName;
             this.fromEmail = fromEmail;
             this.mailOfAdmin = mailOfAdmin;
             this.password = password;
+
         if (smtpServer != null)
         {
             this.smtpServerData = smtpServer;
         }
         
-        }
+    }
+
+
+    public GoogleAppsMailbox( SmtpData d) : this(d.login,d.login, d.pw, d)
+    {
+        
+    }
 
     /// <summary>
     /// Return either success or starting with error:

@@ -115,6 +115,8 @@
     <Compile Include="Crypting\Utils.cs" />
     <Compile Include="Data\ImageWithPath.cs" />
     <Compile Include="Data\PushSolutionsData.cs" />
+    <Compile Include="Data\SmtpData.cs" />
+    <Compile Include="Data\SmtpDataCollection.cs" />
     <Compile Include="Data\SmtpServerData.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="DependencyReflection.cs" />
@@ -135,6 +137,8 @@
     <Compile Include="Helpers\NetHelper.cs" />
     <Compile Include="Helpers\Resources\EmbeddedResourcesHShared.cs" />
     <Compile Include="Helpers\Resources\ResourcesH.cs" />
+    <Compile Include="Helpers\SmtpHelper.cs" />
+    <Compile Include="Helpers\SmtpHelperShared.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
     <Compile Include="Http\HttpClientHelper.cs" />

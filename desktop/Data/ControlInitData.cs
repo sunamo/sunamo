@@ -44,6 +44,10 @@ public class ControlInitData
     public string tooltip = null;
     public bool isEditable = false;
     public TextChangedEventHandler OnTextChange;
+    /// <summary>
+    /// Good for menu items but bad for checkboxes etc. (MoveToPa case)
+    /// </summary>
+    public double addPadding = 0;
 
     public string text
     {

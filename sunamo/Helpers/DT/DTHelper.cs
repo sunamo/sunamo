@@ -196,7 +196,8 @@ public partial class DTHelper
     /// <param name="p"></param>
     public static DateTime? ParseDateMonthDayYear(string p)
     {
-        return DTHelperMulti.ParseDateMonthDayYear(p);
+        int dayTo = -1;
+        return DTHelperMulti.ParseDateMonthDayYear(p, out dayTo);
     }
     #endregion
 

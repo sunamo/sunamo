@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 
 public class SmtpServerData
 {
-    public string smtpServer = "smtp.gmail.com";
-    public int port = 587;
+    public string smtpServer { get; set; } = "smtp.gmail.com";
+    public int port { get; set; } = 587;
+
+    public static SmtpServerData Gmail()
+    {
+        var s = new SmtpServerData();
+        s.port = 587;
+        s.smtpServer = "smtp.gmail.com";
+        return s;
+    }
 
     public static SmtpServerData SeznamCz()
     {

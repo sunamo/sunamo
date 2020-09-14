@@ -30,6 +30,7 @@ public partial class MenuItemHelper{
         mi.Tag = d.tag;
         mi.ToolTip = d.tooltip;
 
+        d.addPadding = 20;
         // into Header I cant insert StackPanel from ContentControlHelper.GetContent( d);, because then is no show
         //mi.Header = d.text;
         mi.Header = ContentControlHelper.GetContent(d);

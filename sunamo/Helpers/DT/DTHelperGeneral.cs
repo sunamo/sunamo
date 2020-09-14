@@ -115,6 +115,11 @@ public partial class DTHelperGeneral
     #endregion
 
     #region Create*
+    public static DateTime? Create(string y, string m, string d)
+    {
+        return Create(BTS.ParseInt(y), BTS.ParseInt(m), BTS.ParseInt(d));
+    }
+
     public static DateTime? Create(int y, int m, int d)
     {
         try

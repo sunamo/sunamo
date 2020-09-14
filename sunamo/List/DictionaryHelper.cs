@@ -149,20 +149,43 @@ public partial class DictionaryHelper
         return i;
     }
 
-    public static Dictionary<T1, T2> RemoveDuplicatedFromDictionaryByValues<T1, T2>(Dictionary<T1, T2> airPlaneCompanies, out Dictionary<T1, T2> twoTimes)
+    /// <summary>
+    /// A2 can be null
+    /// </summary>
+    /// <typeparam name="T1"></typeparam>
+    /// <typeparam name="T2"></typeparam>
+    /// <param name="airPlaneCompanies"></param>
+    /// <param name="twoTimes"></param>
+    /// <returns></returns>
+    public static Dictionary<T1, T2> RemoveDuplicatedFromDictionaryByValues<T1, T2>(Dictionary<T1, T2> airPlaneCompanies,  Dictionary<T1, T2> twoTimes)
     {
-        twoTimes = new Dictionary<T1, T2>();
+        //twoTimes = new Dictionary<T1, T2>();
         CollectionWithoutDuplicates<T2> processed = new CollectionWithoutDuplicates<T2>();
         foreach (var item in airPlaneCompanies.Keys.ToList())
         {
             T2 value = airPlaneCompanies[item];
             if (!processed.Add(value))
             {
-                twoTimes.Add(item, value);
+                if (twoTimes != null)
+                {
+                    twoTimes.Add(item, value);
+                }
+                
                 airPlaneCompanies.Remove(item);
             }
         }
 
         return airPlaneCompanies;
+    }
+
+    public static int CountAllValues<Key, Value>(Dictionary<Key, List<Value>> fe)
+    {
+        int nt = 0;
+        foreach (var item in fe)
+        {
+            nt += item.Value.Count();
+        }
+
+        return nt;
     }
 }

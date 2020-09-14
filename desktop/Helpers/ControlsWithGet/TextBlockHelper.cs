@@ -76,6 +76,11 @@ public partial class TextBlockHelper
         p.Visibility = Visibility.Collapsed;
     }
 
+    public static void AddTextPostColon(TextBlock tbSmtpServer)
+    {
+        tbSmtpServer.Text += ": ";
+    }
+
     static TextBlockHelper()
     {
         InicializeWidths();

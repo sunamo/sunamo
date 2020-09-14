@@ -8,7 +8,20 @@ namespace sunamo.Essential
 {
     public class DebugTemplateLogger : TemplateLoggerBase
     {
-        public static DebugTemplateLogger Instance = new DebugTemplateLogger();
+        static DebugTemplateLogger instance = null;
+
+        public static DebugTemplateLogger Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DebugTemplateLogger();
+                }
+
+                return instance;
+            }
+        }
 
         private DebugTemplateLogger() : base(DebugLogger.DebugWriteLine)
         {

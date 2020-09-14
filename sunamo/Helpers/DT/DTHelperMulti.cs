@@ -477,27 +477,47 @@ public partial class DTHelperMulti
     /// m/d/yyyy / d/m/yyyy
     /// </summary>
     /// <param name="p"></param>
-    public static DateTime? ParseDateMonthDayYear(string p)
+    public static DateTime? ParseDateMonthDayYear(string p, out int dayTo)
     {
+        dayTo = -1;
+
         var s = SH.SplitNone(p, AllStrings.slash);
         if (s.Count == 1)
         {
             s = SH.SplitNone(p, AllStrings.dot);
-            DateTime vr;
-            if (DateTime.TryParse(s[0] + AllStrings.dot + s[1] + AllStrings.dot + s[2], out vr))
+
+            s[0] = DayTo(s[0], out dayTo);
+
+            DateTime vr = DTHelperCs.ParseDateCzech(s[0] + AllStrings.dot + s[1] + AllStrings.dot + s[2]);
+            if (vr != DateTime.MinValue)
             {
                 return vr;
             }
         }
         else
         {
-            DateTime vr;
-            if (DateTime.TryParse(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2], out vr))
+            s[1] = DayTo(s[1], out dayTo);
+
+            DateTime vr = DTHelperCs.ParseDateCzech(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2]);
+            if (vr != DateTime.MinValue)
             {
                 return vr;
             }
         }
         return null;
-    } 
+    }
+
+    private static string DayTo(string v, out int dayTo)
+    {
+        if (v.Contains(AllStrings.dash))
+        {
+            string b, a;
+            SH.GetPartsByLocation(out b, out a, v, AllChars.dash);
+            dayTo = BTS.ParseInt(v, -1);
+            return b;
+        }
+        dayTo =- 1;
+        return v;
+    }
     #endregion
 }

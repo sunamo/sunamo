@@ -36,6 +36,35 @@ public class SheetsHelper
         return sb.ToString();
     }
 
+    public static string CalculateMedianAverage(string input, bool mustBeAllNumbers = true)
+    {
+        var defDouble = -1;
+        var list = CA.ToNumber<double>(BTS.ParseDouble, SheetsHelper.SplitFromGoogleSheets(input), defDouble, false);
+
+        return NH.CalculateMedianAverage(list);
+    }
+
+    public static string CalculateMedianFromTwoRows(string s)
+    {
+        var r = SheetsHelper.Rows(s);
+        for (int i = 0; i < r.Count; i++)
+        {
+            r[i] = CalculateMedianAverage(r[i]);
+        }
+        return SH.JoinNL(r);
+    }
+
+    public static List<List<string> > AllLines(string d)
+    {
+        List<List<string>> result = new List<List<string>>();
+        var l = SH.GetLines(d);
+        foreach (var item in l)
+        {
+            result.Add(GetRowCells(item));
+        }
+        return result;
+    }
+
     public static List<string> GetRowCells(string ClipboardS)
     {
         return SplitFromGoogleSheets(ClipboardS);
@@ -73,6 +102,7 @@ public class SheetsHelper
 
     /// <summary>
     /// If A1 null, take from clipboard
+    /// Not to parse whole content 
     /// </summary>
     /// <param name="input"></param>
     public static List<string> SplitFromGoogleSheets(string input = null)

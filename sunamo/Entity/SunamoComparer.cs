@@ -5,109 +5,9 @@ using System.Linq;
 using System.Text;
 using sunamo.Data;
 
-public class SunamoComparerICompare
-{
-    public class StringLength
-    {
-        public class Asc : IComparer<string>
-        {
-            private ISunamoComparer<string> _sc = null;
-
-            /// <summary>
-            /// As parameter I can insert SunamoComparer.IEnumerableCharLength or SunamoComparer.StringLength
-            /// </summary>
-            /// <param name="sc"></param>
-            public Asc(ISunamoComparer<string> sc)
-            {
-                _sc = sc;
-            }
 
 
-            public int Compare(string x, string y)
-            {
-                return _sc.Asc(x, y);
-            }
-        }
-
-        public class Desc : IComparer<string>
-        {
-            private ISunamoComparer<string> _sc = null;
-
-            /// <summary>
-            /// As parameter I can insert SunamoComparer.IEnumerableCharLength or SunamoComparer.StringLength
-            /// </summary>
-            /// <param name="sc"></param>
-            public Desc(ISunamoComparer<string> sc)
-            {
-                _sc = sc;
-            }
-
-
-            public int Compare(string x, string y)
-            {
-                return _sc.Desc(x, y);
-            }
-        }
-    }
-
-    public class IEnumerableCharCountAsc<T> : IComparer<T> where T : IEnumerable<char>
-    {
-        public int Compare(T x, T y)
-        {
-            int a = 0;
-            int b = 0;
-
-            foreach (var item in x)
-            {
-                a++;
-            }
-
-
-            foreach (var item in y)
-            {
-                b++;
-            }
-
-
-            return a.CompareTo(b);
-        }
-    }
-
-    public class ItemWithCountComparer
-    {
-        public class Desc<T> : IComparer<ItemWithCount<T>>
-        {
-            private ISunamoComparer<ItemWithCount<T>> _sc = null;
-
-            public Desc(ISunamoComparer<ItemWithCount<T>> sc)
-            {
-                _sc = sc;
-            }
-
-            public int Compare(ItemWithCount<T> x, ItemWithCount<T> y)
-            {
-                return _sc.Desc(x, y);
-            }
-        }
-
-        public class Asc<T> : IComparer<ItemWithCount<T>>
-        {
-            private ISunamoComparer<ItemWithCount<T>> _sc = null;
-
-            public Asc(ISunamoComparer<ItemWithCount<T>> sc)
-            {
-                _sc = sc;
-            }
-
-            public int Compare(ItemWithCount<T> x, ItemWithCount<T> y)
-            {
-                return _sc.Asc(x, y);
-            }
-        }
-    }
-}
-
-public class SunamoComparer
+public partial class SunamoComparer
 {
     public class Integer : ISunamoComparer<int>
     {
@@ -200,24 +100,7 @@ public class SunamoComparer
         }
     }
 
-    public class StringLength : ISunamoComparer<string>
-    {
-        public static StringLength Instance = new StringLength();
-
-        public int Desc(string x, string y)
-        {
-            int a = x.Length;
-            int b = y.Length;
-            return a.CompareTo(b) * -1;
-        }
-
-        public int Asc(string x, string y)
-        {
-            int a = x.Length;
-            int b = y.Length;
-            return a.CompareTo(b);
-        }
-    }
+    
 
     public class ItemWithCountSunamoComparer<T> : ISunamoComparer<ItemWithCount<T>>
     {
@@ -232,6 +115,23 @@ public class SunamoComparer
         {
             int a = x.count;
             int b = y.count;
+            return a.CompareTo(b);
+        }
+    }
+
+    public class ItemWithDtSunamoComparer<T> : ISunamoComparer<IItemWithDt<T>>
+    {
+        public int Desc(IItemWithDt<T> x, IItemWithDt<T> y)
+        {
+            DateTime a = x.Dt;
+            DateTime b = y.Dt;
+            return a.CompareTo(b) * -1;
+        }
+
+        public int Asc(IItemWithDt<T> x, IItemWithDt<T> y)
+        {
+            DateTime a = x.Dt;
+            DateTime b = y.Dt;
             return a.CompareTo(b);
         }
     }

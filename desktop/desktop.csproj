@@ -291,6 +291,9 @@
     <Compile Include="Controls\Text\MultiLineTextBlock.xaml.cs">
       <DependentUpon>MultiLineTextBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Text\SunamoPasswordBox.xaml.cs">
+      <DependentUpon>SunamoPasswordBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Text\TextBoxOnlyNumbers.xaml.cs">
       <DependentUpon>TextBoxOnlyNumbers.xaml</DependentUpon>
     </Compile>
@@ -326,6 +329,7 @@
     <Compile Include="Converters\HeaderToImageConverter.cs" />
     <Compile Include="Converters\StringHexDrawingColorConverter.cs" />
     <Compile Include="Converters\StringHexWindowsMediaColorConverter.cs" />
+    <Compile Include="Converters\VisibilityBooleanConverter.cs" />
     <Compile Include="Data\BitmapImageWithPath.cs" />
     <Compile Include="Data\BorderData.cs" />
     <Compile Include="Data\ControlInitData.cs" />
@@ -474,6 +478,7 @@
     <Compile Include="Registry\RegistryEntries.cs" />
     <Compile Include="Registry\RegistryEntry.cs" />
     <Compile Include="Registry\RegistryHelper.cs" />
+    <Compile Include="ResourceDictionaryStyles.cs" />
     <Compile Include="SczNotifyServerErrorChecker.cs" />
     <Compile Include="SearchCodeElementsUCData.cs" />
     <Compile Include="SHWithControls.cs" />
@@ -683,6 +688,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Text\MultiLineTextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Text\SunamoPasswordBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

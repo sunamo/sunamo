@@ -88,6 +88,11 @@ public partial class ThrowExceptions
         ThrowIsNotNull(stacktrace, Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName, true), listName, count));
     }
 
+    public static bool NotInt(string stacktrace, object type, string methodName, string what, object value)
+    {
+        return ThrowIsNotNull(stacktrace, Exceptions.NotInt(FullNameOfExecutedCode(type, methodName, true), what, value));
+    }
+
     /// <summary>
     /// Should always check for null before because otherwise stacktrace and methodName is computed uselessly
     /// must be in code coz Invoke in ThrowIsNotNull should add more lines

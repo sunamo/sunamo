@@ -86,16 +86,20 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         SunamoPageHelperSunamo.localizedString = SunamoPageHelper.LocalizedString_String;
         string appName = "";
         MainWindowSunamo_Ctor.FirstSection(appName, WpfApp.Init, ClipboardHelperWin.Instance, CheckIsAlreadyRunning);
-        
+
         #endregion
 
         // All initialization must be after #region Initialize base properties of every app 
 
         #region 2) Initialize logging
 #if DEBUG
-        sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.DebugTemplateLogger.Instance;
-        sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
-        sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
+        //sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.DebugTemplateLogger.Instance;
+        //sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
+        //sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
+
+        sunamo.Essential.InitApp.TemplateLogger = SunamoTemplateLogger.Instance;
+        sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;
+        sunamo.Essential.InitApp.TypedLogger = TypedSunamoLogger.Instance;
 #else
         //sunamo.Essential.InitApp.TemplateLogger = SunamoTemplateLogger.Instance;
         // sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;

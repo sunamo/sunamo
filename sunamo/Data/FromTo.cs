@@ -52,6 +52,16 @@ public class FromTo : IParser
             v = CA.ToListString(input);
         }
 
+        if (v[0] == "0")
+        {
+            v[0] = "00:01";
+        }
+
+        if (v[1] == "24")
+        {
+            v[1] = "23:59";
+        }
+
         int v0 = ReturnSecondsFromTimeFormat(v[0]);
         from = v0;
         if (CA.HasIndex(1, v))
@@ -63,7 +73,8 @@ public class FromTo : IParser
 
     public bool IsFilledWithData()
     {
-        return from != 0 && to != 0;
+        //from != 0 && - cant be, if entered 0-24 fails
+        return to >= 0 && to != 0;
     }
 
     /// <summary>

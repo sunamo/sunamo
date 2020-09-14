@@ -27,11 +27,18 @@ public static partial class TextBoxExtensions{
             text = text.Trim();
         }
 
+        var tbTos = TextBlockHelper.TextOrToString(tb);
+
         if (d.validateMethod != null)
         {
             // ContainsInvalidFileNameChars return true if fails, therefore here cant be!
             if (d.validateMethod(text))
             {
+                if (d.messageWhenValidateMethodFails == null)
+                {
+                    d.messageWhenValidateMethodFails = tbTos + " must be filled";
+                }
+
                 d.messageToReallyShow = d.messageWhenValidateMethodFails;
                 validated = false;
                 return;
@@ -41,14 +48,14 @@ public static partial class TextBoxExtensions{
 
         if (CA.IsEqualToAnyElement<string>(text.Trim(), d.excludedStrings))
         {
-            InitApp.TemplateLogger.HaveUnallowedValue(TextBlockHelper.TextOrToString(tb));
+            InitApp.TemplateLogger.HaveUnallowedValue(tbTos);
             validated = false;
             return;
         }
 
         if (text == string.Empty && !d.allowEmpty)
         {
-            InitApp.TemplateLogger.MustHaveValue(TextBlockHelper.TextOrToString(tb));
+            InitApp.TemplateLogger.MustHaveValue(tbTos);
             validated = false;
         }
         else

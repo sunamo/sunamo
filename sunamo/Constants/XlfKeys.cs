@@ -6,8 +6,11 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string Updated = "Updated"; 
+	public const string SavedSmtp = "SavedSmtp"; 
 
+	public const string ForgetLoginAndPassword = "ForgetLoginAndPassword"; 
+	public const string ForgetPassword = "ForgetPassword"; 
+	public const string Updated = "Updated"; 
 	public const string Saved = "Saved"; 
 	public const string welcome = "welcome"; 
 	public const string YouRe = "YouRe"; 
@@ -424,8 +427,8 @@ public class XlfKeys
 	public const string ChangeDialogResultHasAlredyRegisteredHandler = "ChangeDialogResultHasAlredyRegisteredHandler"; 
 	public const string AsyncHelpersRunMethodThrewAnException = "AsyncHelpersRunMethodThrewAnException"; 
 	public const string WeCannotSendToOurSameThread = "WeCannotSendToOurSameThread"; 
-	public const string Sir = "Sir"; 
-	public const string Madam = "Madam"; 
+	public const string sir = "sir"; 
+	public const string madam = "madam"; 
 	public const string GetFilesWithPath = "GetFilesWithPath"; 
 	public const string NIUwpSeeMethodForStacktrace = "NIUwpSeeMethodForStacktrace"; 
 	public const string UseMethodsInFSApps = "UseMethodsInFSApps"; 

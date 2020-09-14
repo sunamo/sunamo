@@ -48,6 +48,7 @@ public class HtmlAttrs
     public static string alt = "alt";
     public static string keywords = "keywords";
     public static string placeholder = "placeholder";
+    public static string ariaLabel = "aria-label";
     public const string uibTooltip = "uib-tooltip";
     public const string dataType = "data-type";
     public const string dataDescription = "data-description";

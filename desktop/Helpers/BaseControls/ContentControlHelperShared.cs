@@ -25,7 +25,7 @@ public static StackPanel GetContent(ControlInitData d)
         StackPanel sp = new StackPanel();
         sp.Orientation = Orientation.Horizontal;
         //10*2 padding
-        sp.Height = d.imageHeight + 20;
+        sp.Height = d.imageHeight + d.addPadding;
         if (isImg && isText)
         {
             var tbHeight = AddImg(img, sp, d.imageWidth, d.imageHeight);

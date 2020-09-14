@@ -128,5 +128,14 @@ using System.Threading.Tasks;
         }
         return null;
     }
+
+    internal static string NotInt(string before, string what, object value)
+    {
+        if (!BTS.IsInt(value.ToString()))
+        {
+            return before + what + " is not with value " + value + " valid integer number";
+        }
+        return null;
+    }
     #endregion
 }
