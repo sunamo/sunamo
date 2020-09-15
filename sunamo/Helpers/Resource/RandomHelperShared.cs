@@ -167,13 +167,22 @@ public static partial class RandomHelper
     /// Vr�t� ��slo mezi A1 a A2 v�etn�
     /// </summary>
     /// <param name="od"></param>
-    /// <param name="to"></param>
+    /// <param name="to"></param>\
     public static int RandomInt(int od, int to)
     {
+        if (to == int.MaxValue)
+        {
+            to--;
+        }
+        if (od > to)
+        {
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), $"From {od} is higher than to {to}");
+        }
+
         return s_rnd.Next(od, to + 1);
     }
 
-
+    public static Type type = typeof(RandomHelper);
 
     /// <summary>
     /// Zad�vej ��slo o 1 v�t�� ne� skute�n� po�et znak� kter� chce�
