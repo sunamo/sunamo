@@ -45,6 +45,7 @@ public class VpsHelper
 
             var gitBashBuilder = new GitBashBuilder();
             var gitStatus = new GitBashBuilder();
+
             foreach (var item in folders)
             {
                 GitHelper.PushSolution(release, gitBashBuilder, pushArgs, commitMessage, item, pushSolutionsData, gitStatus);
@@ -54,12 +55,9 @@ public class VpsHelper
         }
         else
         {
-            
                 bool release = true;
                 string pushArgs = string.Empty;
                 string commitMessage = sess.i18n(XlfKeys.BeforePublishingToVPS)+" " + DateTime.Today.ToShortDateString();
-
-            
 
                 var gitBashBuilder = new GitBashBuilder();
                 var gitStatus = new GitBashBuilder();

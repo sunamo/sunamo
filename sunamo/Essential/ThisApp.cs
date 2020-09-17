@@ -95,6 +95,7 @@ namespace sunamo.Essential
         /// <param name="o"></param>
         public static void a(string v, params object[] o)
         {
+
             ThisApp.SetStatus(TypeOfMessage.Appeal, v, o);
         }
     }

@@ -251,13 +251,14 @@ namespace desktop
                 if (txtLogin.Text.Trim() != "" && txtHeslo.Password.Trim() != "")
                 {
                     loginClicked = true;
-                    Close();
+                    
                 }
                 else
                 {
                     loginClicked = false;
                 }
             }
+            Close();
         }
 
         private void btnForgetLoginAndPassword_Click(object sender, RoutedEventArgs e)
@@ -315,6 +316,8 @@ namespace desktop
             {
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),MethodBase.GetCurrentMethod(), "", storageApplicationData);
             }
+
+            
 
             // For sure set loginClicked for default value
             loginClicked = false;

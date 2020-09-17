@@ -55,6 +55,7 @@
     <Compile Include="..\..\sunamo\cmd\Essential\ConsoleTemplateLogger.cs" />
     <Compile Include="..\..\sunamo\cmd\Essential\TypedConsoleLogger.cs" />
     <Compile Include="..\..\sunamo\cmd\Helpers\CLShared.cs" />
+    <Compile Include="CmdBootStrap.cs" />
     <Compile Include="Essential\CmdApp.cs" />
     <Compile Include="Essential\ConsoleLogger.cs" />
     <Compile Include="Essential\ConsoleTemplateLogger.cs" />
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\..\sunamoWithoutDep\SunamoJson\SunamoJson.csproj">
       <Project>{de4301c1-ac61-4c89-bf2c-7c860560a979}</Project>
       <Name>SunamoJson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\duo\duo.csproj">
+      <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
+      <Name>duo</Name>
     </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
