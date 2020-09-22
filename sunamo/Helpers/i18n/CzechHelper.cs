@@ -4,7 +4,7 @@ using System;
 public class CzechHelper
 {
     static Type type = typeof(CzechHelper);
-    public const string esteemed = "Vážený/á";
+    
 
     public static string Dear(bool sex)
     {
@@ -48,11 +48,11 @@ public class CzechHelper
         if (sex)
         {
             // its auto with dear 
-            f= dear +AllStrings.space+ SunamoPageHelperSunamo.i18n(XlfKeys.madam)+" " + name;
+            f= dear +AllStrings.space+ sess.i18n(XlfKeys.madam)+" " + name;
         }
         else
         {
-            f= dear + AllStrings.space + SunamoPageHelperSunamo.i18n(XlfKeys.sir)+" " + name;
+            f= dear + AllStrings.space + sess.i18n(XlfKeys.sir)+" " + name;
         }
 
         return SH.FirstCharUpper(f);

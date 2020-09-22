@@ -47,8 +47,6 @@ public class DynLayout
     /// <param name="ui"></param>
     public void AddControl(int row, string name, FrameworkElement ui)
     {
-        
-
         Grid.SetRow(ui, row);
         Grid.SetColumn(ui, 1);
         // Horizontal alignment cant be set here - otherwise won't be horizontally stretched
@@ -63,8 +61,6 @@ public class DynLayout
         {
             AddLabel(row, name);
         }
-
-
 
         fwElements.Add(ui);
     }
@@ -81,6 +77,7 @@ public class DynLayout
         tb.HorizontalAlignment = HorizontalAlignment.Right;
         tb.VerticalAlignment = VerticalAlignment.Center;
         tb.Margin = uit;
+
         Grid.SetRow(tb, row);
         Grid.SetColumn(tb, 0);
         gridGrowable.Children.Add(tb);

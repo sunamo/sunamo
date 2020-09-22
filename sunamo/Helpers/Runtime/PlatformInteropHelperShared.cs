@@ -1,4 +1,10 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +12,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class PlatformInteropHelper{
+public partial class PlatformInteropHelper
+{
     static bool? isUwp = null;
+
+    #region For easy copy
+    public static bool IsSellingApp()
+    {
+        return RH.ExistsClass("SellingHelper");
+    } 
+    #endregion
 
     /// <summary>
     /// Working excellent 11-3-19
@@ -60,19 +74,8 @@ public partial class PlatformInteropHelper{
         return isUwp.Value;
     }
 
-public static Type GetTypeOfResources()
+    public static Type GetTypeOfResources()
     {
         return typeof(Resources.ResourcesDuo);
-        //return null;
-
-
-    //if (IsUseStandardProject())
-    //{
-    //    return typeof(standard.ResourcesStandard);
-    //}
-    //else
-    //{
-    //    return typeof(sunamo.Properties.Resources);
-    //}
     }
 }

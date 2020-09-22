@@ -2865,7 +2865,7 @@
         </trans-unit>
         <trans-unit id="EnterForFastClosing" translate="no" xml:space="preserve">
           
-          <target state="translated">Zadejte pro rychlé uzavření</target>
+          <target state="translated">Enter pro rychlé uzavření</target>
         </trans-unit>
         <trans-unit id="Part3" translate="no" xml:space="preserve">
           

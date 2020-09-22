@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Text
 {
     /// <summary>
-    /// Interaction logic for SunamoPasswordBox.xaml
+    ///  
     /// </summary>
     public partial class SunamoPasswordBox : UserControl
     {
@@ -25,6 +25,11 @@ namespace desktop.Controls.Text
             InitializeComponent();
         }
 
+        public Brush BrushOfBorder
+        {
+            get; set;
+        } = Brushes.Yellow;
+
         public bool ShowTxtShowPassword
         {
             set
@@ -32,6 +37,14 @@ namespace desktop.Controls.Text
                 var v = VisibilityBooleanConverter.FromBool(value);
                 txtShowPassword.Visibility = v;
                 btnShowPassword.Visibility = v;
+            }
+        }
+
+        public double OverallWidth
+        {
+            set
+            {
+                txtPassword.Width = value;
             }
         }
 

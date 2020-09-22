@@ -58,8 +58,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         var e2 = ControlHelper.ActualInnerSize(this).Height;
         var growingRow = e2 - hMenu - staturBarH - dialogButtonsH;
         OnSizeChanged(new DesktopSize(ActualWidth, growingRow));
-
-        //Title = SH.Join(",", "Growing row", growingRow, "Height", ActualHeight);
     }
 
     private double ah(FrameworkElement dialogButtons)
@@ -140,7 +138,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         //DockPanel.SetDock(dialogButtons, Dock.Bottom);
         //dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
         //dock.Children.Add(dialogButtons);
-
 
         TextBlock textBlockStatus = TextBlockHelper.Get(new ControlInitData { text = "" });
         WpfApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
@@ -322,10 +319,11 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     {
         if (dialogButtons != null)
         {
-            if (dialogButtons.clickedOk)
-            {
+            // not only when click ok, could also when click cancel or apply
+            //if (dialogButtons.clickedOk)
+            //{
                 uc_ChangeDialogResult(b);
-            }
+            //}
         }
         else
         {
@@ -415,8 +413,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         {
             userControlWithResult.Accept(input);
         }
-
-
     }
 
     public void OnSizeChanged(DesktopSize maxSize)
@@ -434,9 +430,5 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     public void FocusOnMainElement()
     {
-        if (true)
-        {
-
-        }
     }
 }

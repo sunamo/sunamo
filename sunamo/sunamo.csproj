@@ -134,7 +134,6 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\RuntimeHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamo.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamoShared.cs" />
@@ -156,12 +155,16 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Constants\Lang\CsConsts.cs" />
+    <Compile Include="Constants\Lang\EnConsts.cs" />
     <Compile Include="Data\AsyncLoadingBase.cs" />
     <Compile Include="Data\ItemWithDt.cs" />
     <Compile Include="Entity\SunamoComparerIComparer.cs" />
     <Compile Include="Entity\SunamoComparerIComparerShared.cs" />
     <Compile Include="Entity\SunamoComparerShared.cs" />
+    <Compile Include="Helpers\Runtime\PlatformInteropHelperShared.cs" />
     <Compile Include="Interfaces\IItemWithDt.cs" />
+    <Compile Include="UriWebServices2.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -773,7 +776,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Fonts\FontAwesome.otf" />
-    <None Include="Html\HtmlParserSShared.cs~RF6ca9257.TMP" />
     <None Include="MultilingualResources\sunamo.cs-CZ.xlf" />
     <None Include="MultilingualResources\sunamo.en-US.xlf" />
   </ItemGroup>

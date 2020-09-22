@@ -3007,6 +3007,7 @@ public static partial class SH
         {
             return p.Substring(0, dex);
         }
+
         if (returnEmptyWhenDontHaveLenght)
         {
             return string.Empty;

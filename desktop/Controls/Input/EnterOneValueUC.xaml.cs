@@ -226,9 +226,12 @@ namespace desktop.Controls.Input
                             c.BorderThickness = new Thickness(2);
                             c.BorderBrush = new SolidColorBrush(Colors.Red);
 
-                            if (!string.IsNullOrEmpty(validateData.messageToReallyShow))
+                            if (validateData != null)
                             {
-                                tbHint.Text = validateData.messageToReallyShow;
+                                if (!string.IsNullOrEmpty(validateData.messageToReallyShow))
+                                {
+                                    tbHint.Text = validateData.messageToReallyShow;
+                                }
                             }
 
                             allOk = false;

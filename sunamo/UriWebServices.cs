@@ -15,6 +15,26 @@ public partial class UriWebServices
 {
     static int opened = 0;
 
+    public static class BatteryEshops
+    {
+        #region Specialize on batteries
+        public static readonly string wwwBatteryshopCz = "www.batteryshop.cz";
+        public static readonly string wwwAvacomCz = "www.avacom.cz";
+        public static readonly string wwwAkuShopCz = "www.aku-shop.cz";
+        public static readonly string wwwPowerguyCz = "www.powerguy.cz";
+        #endregion
+
+
+        #region Have category for it
+        public static readonly string wwwCeskyMobilCz = "www.cesky-mobil.cz";
+        public static readonly string wwwDatartCz = "www.datart.cz";
+        public static readonly string wwwSmartyCz = "www.smarty.cz";
+        public static readonly string wwwMobilprislusenstviCz = "www.mobilprislusenstvi.cz";
+        public static readonly string wwwHuramobilCz = "www.huramobil.cz"; 
+        #endregion
+
+    }
+
     public static class RepairMobile
     {
         public static void SearchInAll(string what)
@@ -27,7 +47,6 @@ public partial class UriWebServices
             }
         }
     }
-
 
     public static class TechSitesRss
     {
@@ -616,7 +635,8 @@ Template for which I will find, have to be in derivates the same:
             {
                 Debugger.Break();
             }
-            Process.Start(GoogleSearchSite(item, v));
+            var uri = GoogleSearchSite(item, v);
+            Process.Start(uri);
             opened++;
         }
     }
@@ -656,6 +676,8 @@ Template for which I will find, have to be in derivates the same:
 
     public static string GoogleSearchSite(string site, string v)
     {
+        site = site.Trim();
+
         var uri = UH.CreateUri(site);
 
         var host = string.Empty;

@@ -23,12 +23,11 @@ public partial class PlatformInteropHelper
         return false;
     }
 
-    
-//public static AppDataBase<StorageFolder, StorageFile> AppData()
-//{
-//    if (IsUwpWindowsStoreApp())
-//    {
-//        return AppData.
-//    }
-//}
+    //public static AppDataBase<StorageFolder, StorageFile> AppData()
+    //{
+    //    if (IsUwpWindowsStoreApp())
+    //    {
+    //        return AppData.
+    //    }
+    //}
 }

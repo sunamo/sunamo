@@ -19,6 +19,18 @@ public class RH
 {
     private static Type type = typeof(RH);
 
+    #region For easy copy
+    public static bool ExistsClass(string className)
+    {
+        var type2 = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                     from type in assembly.GetTypes()
+                     where type.Name == className
+                     select type).FirstOrDefault();
+
+        return type != null;
+    } 
+    #endregion
+
     public static object GetValueOfPropertyOrField(object o, string name)
     {
         var type = o.GetType();
@@ -80,7 +92,16 @@ public class RH
         }
     }
 
-    
+    public static List<string> GetValuesOfConsts(Type type)
+    {
+        var c = GetConsts(type);
+        List<string> vr = new List<string>();
+        foreach (var item in c)
+        {
+            vr.Add(SH.NullToStringOrDefault( item.GetValue(null)));
+        }
+        return vr;
+    }
 
     public static Assembly AssemblyWithName(string name)
     {

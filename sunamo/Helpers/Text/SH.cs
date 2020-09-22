@@ -573,6 +573,26 @@ public static partial class SH
         input.Sort();
         return input;
     }
+
+    public static string GetLastWord(string p, bool returnEmptyWhenDontHaveLenght = true)
+    {
+        p = p.Trim();
+        int dex = p.LastIndexOf(AllChars.space);
+        if (dex != -1)
+        {
+            return p.Substring(dex).Trim();
+        }
+        else
+        {
+            if (returnEmptyWhenDontHaveLenght)
+            {
+                return string.Empty;
+            }
+
+        }
+        return p;
+    }
+
     public static string AddSpaceAndDontDuplicate(bool after, string text, string colon)
     {
         List<int> dxsColons = null;
@@ -1395,16 +1415,7 @@ public static partial class SH
             fileName = null;
         }
     }
-    public static string GetLastWord(string p)
-    {
-        p = p.Trim();
-        int dex = p.LastIndexOf(AllChars.space);
-        if (dex != -1)
-        {
-            return p.Substring(dex).Trim();
-        }
-        return "";
-    }
+   
     public static string GetWithoutLastWord(string p)
     {
         p = p.Trim();

@@ -332,7 +332,8 @@ public static partial class CSharpHelper
             }
             csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
         }
-        return csg.ToString();
+        var r = csg.ToString();
+        return r;
     }
 
     /// <summary>

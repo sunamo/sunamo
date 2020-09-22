@@ -130,7 +130,12 @@ public partial class XlfResourcesH
         {
             String xlfContent = null;
 
-            var fn = "sunamo_cs_CZ_min";
+            var fn = "sunamo_cs_CZ";
+
+            if (PlatformInteropHelperXlf.IsSellingApp())
+            {
+                fn += "_min";
+            }
 
             var file = appData.GetFileCommonSettings(fn + ".xlf");
 
@@ -146,7 +151,12 @@ public partial class XlfResourcesH
             File.WriteAllText(file, xlfContent, enc);
             TFXlf.RemoveDoubleBomUtf8(file);
 
-            fn = "sunamo_en_US_min";
+            fn = "sunamo_en_US";
+
+            if (PlatformInteropHelperXlf.IsSellingApp())
+            {
+                fn += "_min";
+            }
 
             var file2 = appData.GetFileCommonSettings(fn + ".xlf");
 
