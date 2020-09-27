@@ -21,7 +21,7 @@ namespace desktop.Controls.Collections
 
 
     /// <summary>
-    /// Interaction logic for Compare3InCheckBoxListUC.xaml
+    /// 
     /// </summary>
     public partial class Compare3InCheckBoxListUC : UserControl, IUserControl, IControlWithResult, IUserControlWithMenuItemsList, IUserControlWithSizeChange
     {

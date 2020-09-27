@@ -17,7 +17,7 @@
        
     <StackPanel Orientation="Vertical" Grid.Column="1">
         <TextBlock x:Name="tbSelectedFile"></TextBlock>
-        <Button x:Name="btnSelectFile" Click="btnSelectFile_Click" Content="Select file"></Button>
+        <Button x:Name="btnSelectFile" Click="btnSelectFile_Click"></Button>
     </StackPanel>
 
     </Grid>

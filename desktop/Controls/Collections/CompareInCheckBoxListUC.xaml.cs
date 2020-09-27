@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Collections
 {
     /// <summary>
-    /// Interaction logic for CompareInCheckBoxListUC.xaml
+    /// 
     /// </summary>
     public partial class CompareInCheckBoxListUC : UserControl, IUserControl, IControlWithResult, IUserControlWithMenuItemsList, IUserControlWithSizeChange
     {

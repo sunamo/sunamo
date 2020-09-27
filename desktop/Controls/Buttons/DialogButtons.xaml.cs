@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for DialogButtons.xaml
+    /// 
     /// </summary>
     public partial class DialogButtons : UserControl, IControlWithResult
     {

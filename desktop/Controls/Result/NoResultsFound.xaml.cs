@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Result
 {
     /// <summary>
-    /// Interaction logic for NoResultsFound.xaml
+    /// 
     /// </summary>
     public partial class NoResultsFound : UserControl
     {

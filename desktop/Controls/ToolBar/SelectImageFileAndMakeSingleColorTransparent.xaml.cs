@@ -20,7 +20,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for SelectImageFileAndMakeSingleColorTransparent.xaml
+    /// 
     /// </summary>
     public partial class SelectImageFileAndMakeSingleColorTransparent : UserControl
     {

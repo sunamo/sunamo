@@ -59,6 +59,14 @@ public class SmtpData : SmtpServerData, IParseCollection, INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
+    public string SetAsDefault
+    {
+        get => TranslatedStrings.Instance.SetAsDefault;
+    }
+    public string Delete
+    {
+        get => TranslatedStrings.Instance.Delete;
+    }
     void OnPropertyChanged(string propName)
     {
         if (PropertyChanged != null)

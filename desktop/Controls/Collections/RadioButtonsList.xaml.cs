@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Collections
 {
     /// <summary>
-    /// Interaction logic for RadioButtonsList.xaml
+    /// 
     /// </summary>
     public partial class RadioButtonsList : UserControl, IUserControl, IControlWithResultDebug
     {

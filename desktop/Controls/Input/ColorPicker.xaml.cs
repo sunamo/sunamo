@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for ColorPicker.xaml
+    /// 
     /// </summary>
     public partial class ColorPicker : UserControl
     {

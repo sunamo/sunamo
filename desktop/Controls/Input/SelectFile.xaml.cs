@@ -20,11 +20,10 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for SelectFile.xaml
+    /// 
     /// </summary>
     public partial class SelectFile : UserControl
     {
-        
         /// <summary>
         /// In folder has hame Folder*Changed* but there already exists FileSelected
         /// </summary>
@@ -35,6 +34,8 @@ namespace desktop.Controls
         {
             InitializeComponent();
             SelectedFile = "";
+
+            btnSelectFile.Content = sess.i18n(XlfKeys.SelectFile);
 
             Loaded += SelectFile_Loaded;
         }
@@ -87,8 +88,6 @@ namespace desktop.Controls
                 }
             }
         }
-
-        
 
         public string SelectedFile
         {

@@ -20,6 +20,18 @@ namespace desktop.Controls.Text
     /// </summary>
     public partial class SunamoPasswordBox : UserControl
     {
+        public string Password
+        {
+            get
+            {
+                return txtPassword.Password;
+            }
+            set
+            {
+                txtPassword.Password = value;
+            }
+        }
+
         public SunamoPasswordBox()
         {
             InitializeComponent();

@@ -18,7 +18,6 @@ using System.Web;
 public static partial class HttpRequestHelper
 {
 
-
     public static bool IsNotFound(object uri)
     {
         HttpWebResponse r;
@@ -55,8 +54,6 @@ public static partial class HttpRequestHelper
             FS.MoveFile(tempPath, to, co);
         }
     }
-
- 
 
         /// <summary>
         /// A2 can be null (if dont have duplicated extension, set null)

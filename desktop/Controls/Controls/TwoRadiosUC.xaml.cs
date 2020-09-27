@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Controls
 {
     /// <summary>
-    /// Interaction logic for TwoRadiosUC.xaml
+    /// 
     /// </summary>
     public partial class TwoRadiosUC : UserControl
     {

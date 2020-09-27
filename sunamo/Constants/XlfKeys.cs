@@ -6,8 +6,24 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string NewsFromPopularITSites = "NewsFromPopularITSites"; 
+	public const string FillFromPredefined = "FillFromPredefined"; 
 
+	public const string SelectFile = "SelectFile"; 
+	public const string ToDelimitedByAnyWhitespaceCouldBeCopiedFromGoogleSheets = "ToDelimitedByAnyWhitespaceCouldBeCopiedFromGoogleSheets"; 
+	public const string SalutationEnterJustNameWithoutAnyWhitespacesInEachDearMadamEtc = "SalutationEnterJustNameWithoutAnyWhitespacesInEachDearMadamEtc"; 
+	public const string previewOfAutoPrefixingYouWillApproveBeforeSending = "previewOfAutoPrefixingYouWillApproveBeforeSending"; 
+	public const string SendingMailsFrom = "SendingMailsFrom"; 
+	public const string Attachments = "Attachments"; 
+	public const string Subject = "Subject"; 
+	public const string OpenSMTPServerSettings = "OpenSMTPServerSettings"; 
+	public const string Delete = "Delete"; 
+	public const string SetAsDefault = "SetAsDefault"; 
+	public const string YouMustSetUpAndSetAsDefaultOneSmtpServer = "YouMustSetUpAndSetAsDefaultOneSmtpServer"; 
+	public const string BatteryZTEBladeA52019 = "BatteryZTEBladeA52019"; 
+	public const string GoodDay = "GoodDay"; 
+	public const string MassMailSender = "MassMailSender"; 
+	public const string SMTPData = "SMTPData"; 
+	public const string NewsFromPopularITSites = "NewsFromPopularITSites"; 
 	public const string SavedSmtp = "SavedSmtp"; 
 	public const string ForgetLoginAndPassword = "ForgetLoginAndPassword"; 
 	public const string ForgetPassword = "ForgetPassword"; 

@@ -1,6 +1,8 @@
 ﻿using sunamo.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,55 @@ public partial class PicturesSunamo
     private static List<string> s_supportedExtensionForResize = new List<string> {
         "png", "jpg", "jpeg", "gif"
     };
+
+    public static string ExtensionFromImage(Image mg)
+    {
+        var imf2 = mg.RawFormat;
+        var imf = imf2.Guid;
+        if (imf == ImageFormat.Jpeg.Guid)
+        {
+            return AllExtensions.jpg;
+        }
+        else if (imf == ImageFormat.Gif.Guid)
+        {
+            return AllExtensions.gif;
+        }
+        else if (imf == ImageFormat.Bmp.Guid)
+        {
+            return AllExtensions.bmp;
+        }
+        else if (imf == ImageFormat.Icon.Guid)
+        {
+            return AllExtensions.ico;
+        }
+        else if (imf == ImageFormat.Tiff.Guid)
+        {
+            return AllExtensions.tiff;
+        }
+        else if (imf == ImageFormat.Wmf.Guid)
+        {
+            return AllExtensions.wmf;
+        }
+        else if (imf == ImageFormat.Emf.Guid)
+        {
+            return AllExtensions.emf;
+        }
+        else if (imf == ImageFormat.Exif.Guid)
+        {
+            return AllExtensions.exif;
+        }
+        else if (imf == ImageFormat.MemoryBmp.Guid)
+        {
+            return AllExtensions.bmp;
+        }
+        else 
+        {
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), imf);
+        }
+        return null;
+    }
+
+    static Type type = typeof(PicturesSunamo);
 
     /// <summary>
     /// Vypočte optimální šířku v případě že obrázek je postaven na výšku.

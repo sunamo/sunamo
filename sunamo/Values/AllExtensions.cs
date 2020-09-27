@@ -722,4 +722,7 @@ public class AllExtensions
     public const string java = ".java";
     [TypeOfExtension(TypeOfExtension.source_code)]
     public static string go = ".go";
+    public static string wmf = ".wmf";
+    public static string emf = ".emf";
+    public static string exif = ".exif";
 }

@@ -13774,6 +13774,70 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">News from popular IT sites</target>
         </trans-unit>
+        <trans-unit id="SMTPData" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">SMTP data</target>
+        </trans-unit>
+        <trans-unit id="MassMailSender" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Mass mail sender</target>
+        </trans-unit>
+        <trans-unit id="GoodDay" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Good day</target>
+        </trans-unit>
+        <trans-unit id="BatteryZTEBladeA52019" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Battery ZTE Blade A5 2019</target>
+        </trans-unit>
+        <trans-unit id="YouMustSetUpAndSetAsDefaultOneSmtpServer" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">You must set up and set as default one smtp server</target>
+        </trans-unit>
+        <trans-unit id="SetAsDefault" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Set as default</target>
+        </trans-unit>
+        <trans-unit id="Delete" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete</target>
+        </trans-unit>
+        <trans-unit id="OpenSMTPServerSettings" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Open SMTP server settings</target>
+        </trans-unit>
+        <trans-unit id="Subject" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Subject</target>
+        </trans-unit>
+        <trans-unit id="Attachments" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Attachments</target>
+        </trans-unit>
+        <trans-unit id="SendingMailsFrom" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sending mails from</target>
+        </trans-unit>
+        <trans-unit id="previewOfAutoPrefixingYouWillApproveBeforeSending" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">preview of auto prefixing you will approve before sending</target>
+        </trans-unit>
+        <trans-unit id="SalutationEnterJustNameWithoutAnyWhitespacesInEachDearMadamEtc" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Salutation (enter just name, without any whitespaces in each, Dear, Madam etc</target>
+        </trans-unit>
+        <trans-unit id="ToDelimitedByAnyWhitespaceCouldBeCopiedFromGoogleSheets" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">To (delimited by any whitespace, could be copied from Google Sheets</target>
+        </trans-unit>
+        <trans-unit id="SelectFile" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Select file</target>
+        </trans-unit>
+        <trans-unit id="FillFromPredefined" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fill from predefined</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for DialogLogin2.xaml
+    /// 
     /// </summary>
     public partial class LoginUc : UserControl, IControlWithResult, IKeysHandler
     {

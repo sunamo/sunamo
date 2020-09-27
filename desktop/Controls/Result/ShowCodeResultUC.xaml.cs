@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Result
 {
     /// <summary>
-    /// Interaction logic for ShowCodeResultUC.xaml
+    /// 
     /// </summary>
     public partial class ShowCodeResultUC : UserControl
     {

@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for SelectImageFile.xaml
+    /// 
     /// </summary>
     public partial class SelectImageFile : UserControl
     {

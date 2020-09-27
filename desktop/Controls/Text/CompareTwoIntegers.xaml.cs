@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for CompareTwoIntegers.xaml
+    /// 
     /// </summary>
     public partial class CompareTwoIntegers : UserControl
     {

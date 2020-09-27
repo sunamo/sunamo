@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Result
 {
     /// <summary>
-    /// Interaction logic for FoundedResultUC.xaml
+    /// 
     /// </summary>
     public partial class FoundedResultUC : UserControl
     {

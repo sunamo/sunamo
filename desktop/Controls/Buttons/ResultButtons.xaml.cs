@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for ResultButtons.xaml
+    /// 
     /// </summary>
     public partial class ResultButtons : UserControl
     {

@@ -67,7 +67,7 @@ public partial class UriWebServices
         public const string thenextwebCom = "https://thenextweb.com/feed/";
         public const string wwwTomshardwareCom = "https://www.tomshardware.com/feeds/all";
 
-
+        public static List<string> haveImages = CA.ToList<string>("thenextwebCom", "wwwEngadgetCom");
     }
 
     public static class Business

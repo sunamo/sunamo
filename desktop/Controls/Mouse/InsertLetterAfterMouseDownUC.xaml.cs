@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Mouse
 {
     /// <summary>
-    /// Interaction logic for InsertLetterAfterMouseDownUC.xaml
+    /// 
     /// </summary>
     public partial class InsertLetterAfterMouseDownUC : UserControl, IControlWithResult,IShowSearchResults
     {

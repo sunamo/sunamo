@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for MultiLineTextBlock.xaml
+    /// 
     /// </summary>
     public partial class MultiLineTextBlock : UserControl
     {

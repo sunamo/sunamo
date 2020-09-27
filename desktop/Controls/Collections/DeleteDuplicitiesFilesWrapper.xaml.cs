@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for DeleteDuplicitiesFilesWrapper.xaml
+    /// 
     /// </summary>
     public partial class DeleteDuplicitiesFilesWrapper : UserControl
     {

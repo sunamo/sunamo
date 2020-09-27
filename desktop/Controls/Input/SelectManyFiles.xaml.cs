@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Input
 {
     /// <summary>
-    /// Interaction logic for SelectManyFiles.xaml
+    /// 
     /// </summary>
     public partial class SelectManyFiles : UserControl
     {
@@ -85,7 +85,7 @@ namespace desktop.Controls.Input
 
         async void SetAwesomeIcons()
         {
-            await AwesomeFontControls.SetAwesomeFontSymbol(btnAddFile, "\uf07c New");
+            await AwesomeFontControls.SetAwesomeFontSymbol(btnAddFile, "\uf07c " + sess.i18n(XlfKeys.New));
             await AwesomeFontControls.SetAwesomeFontSymbol(btnAddAsTemplate, "\uf022 Save set as template");
         }
 

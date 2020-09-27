@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Collections
 {
     /// <summary>
-    /// Interaction logic for LoggerUC.xaml
+    /// 
     /// </summary>
     public partial class LoggerUC : UserControl
     {

@@ -7,11 +7,12 @@ public class FiltersNotTranslateAble
     private FiltersNotTranslateAble()
     {
         ending = CA.ToList<string>(AssemblyInfo, Layer);
-        contains = CA.ToList<string>(SunamoXlf, WithoutDep, Credentials, Interfaces, Enums, NotTranslateAblePp);
+        contains = CA.ToList<string>(SunamoXlf, WithoutDep, Credentials, Interfaces, Enums, NotTranslateAblePp, Consts);
     }
 
     public static FiltersNotTranslateAble Instance = new FiltersNotTranslateAble();
     public  string NotTranslateAblePp = "NotTranslateAble";
+    public string Consts = "Consts";
     public  string AssemblyInfo = "AssemblyInfo.cs";
     public  string Layer = "Layer.cs";
     public  string EnigmaData = "EnigmaData.cs";

@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for DeleteDuplicitiesFiles.xaml
+    /// 
     /// </summary>
     public partial class DeleteDuplicitiesFilesCheckBox : UserControl, ISelectFromMany<TWithSizeInString<string>>
     {

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -155,16 +155,6 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Constants\Lang\CsConsts.cs" />
-    <Compile Include="Constants\Lang\EnConsts.cs" />
-    <Compile Include="Data\AsyncLoadingBase.cs" />
-    <Compile Include="Data\ItemWithDt.cs" />
-    <Compile Include="Entity\SunamoComparerIComparer.cs" />
-    <Compile Include="Entity\SunamoComparerIComparerShared.cs" />
-    <Compile Include="Entity\SunamoComparerShared.cs" />
-    <Compile Include="Helpers\Runtime\PlatformInteropHelperShared.cs" />
-    <Compile Include="Interfaces\IItemWithDt.cs" />
-    <Compile Include="UriWebServices2.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -242,6 +232,8 @@
     <Compile Include="Constants\HtmlTags.cs" />
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="Constants\HttpKnownHeaderValues.cs" />
+    <Compile Include="Constants\Lang\CsConsts.cs" />
+    <Compile Include="Constants\Lang\EnConsts.cs" />
     <Compile Include="Constants\Mails.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="Constants\Paths\CompareFilesPaths.cs" />
@@ -309,6 +301,7 @@
     <Compile Include="Data\ABS.cs" />
     <Compile Include="Data\ABT.cs" />
     <Compile Include="Data\AllItems.cs" />
+    <Compile Include="Data\AsyncLoadingBase.cs" />
     <Compile Include="Data\CharFormatData.cs" />
     <Compile Include="Data\CheckBoxData.cs" />
     <Compile Include="Data\ColumnRow.cs" />
@@ -337,6 +330,7 @@
     <Compile Include="Data\ImageWithSize.cs" />
     <Compile Include="Data\IntegerXY.cs" />
     <Compile Include="Data\ItemWithCount.cs" />
+    <Compile Include="Data\ItemWithDt.cs" />
     <Compile Include="Data\LoginData.cs" />
     <Compile Include="Data\MedianAverage.cs" />
     <Compile Include="Data\MonthYear.cs" />
@@ -386,6 +380,9 @@
     <Compile Include="Entity\ManageArtistDashTitleShared.cs" />
     <Compile Include="Entity\SongFromInternet.cs" />
     <Compile Include="Entity\SunamoComparer.cs" />
+    <Compile Include="Entity\SunamoComparerIComparer.cs" />
+    <Compile Include="Entity\SunamoComparerIComparerShared.cs" />
+    <Compile Include="Entity\SunamoComparerShared.cs" />
     <Compile Include="Entity\Timestamp.cs" />
     <Compile Include="Entity\TimestampShared.cs" />
     <Compile Include="Entity\Wildcard.cs" />
@@ -607,6 +604,7 @@
     <Compile Include="Helpers\Resource\ResourcesHelper.cs" />
     <Compile Include="Helpers\Runtime\AsyncHelper.cs" />
     <Compile Include="Helpers\Runtime\PlatformInteropHelper.cs" />
+    <Compile Include="Helpers\Runtime\PlatformInteropHelperShared.cs" />
     <Compile Include="Helpers\Runtime\RuntimeHelper.cs" />
     <Compile Include="Helpers\StatusHelperSunamo.cs" />
     <Compile Include="Helpers\Text\EncodingHelper.cs" />
@@ -665,6 +663,7 @@
     <Compile Include="Interfaces\IIDParent.cs" />
     <Compile Include="Interfaces\IInlineBuilder.cs" />
     <Compile Include="Interfaces\IInstance.cs" />
+    <Compile Include="Interfaces\IItemWithDt.cs" />
     <Compile Include="Interfaces\IKeysHandler.cs" />
     <Compile Include="Interfaces\IL.cs" />
     <Compile Include="Interfaces\IListBoxHelperItem.cs" />
@@ -739,6 +738,7 @@
     <Compile Include="TemplatesNotCompiled\MainWindowSunamo_Ctor.cs" />
     <Compile Include="Threating\IThreatPool.cs" />
     <Compile Include="UriWebServices.cs" />
+    <Compile Include="UriWebServices2.cs" />
     <Compile Include="UriWebServicesDontTranslate.cs" />
     <Compile Include="Values\AllChars.cs" />
     <Compile Include="Values\AllExtensions.cs" />

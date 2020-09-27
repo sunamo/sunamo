@@ -1070,8 +1070,8 @@ public partial class FS
         item = Consts.UncLongPath + item;
         MakeUncLongPath(ref fileTo);
         FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
-        if (FS.ExistsFile(fileTo))
-        {
+        //if (FS.ExistsFile(fileTo))
+        //{
             if (co == FileMoveCollisionOption.AddFileSize)
             {
                 var newFn = FS.InsertBetweenFileNameAndExtension(fileTo, AllStrings.space + FS.GetFileSize(item));
@@ -1122,7 +1122,7 @@ public partial class FS
             {
                 return false;
             }
-        }
+        //}
 
         return true;
     }

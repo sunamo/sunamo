@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.UserControls
 {
     /// <summary>
-    /// Interaction logic for EmptyUC.xaml
+    /// 
     /// </summary>
     public partial class EmptyUC : UserControl, IUserControl, IKeysHandler
     {

@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for SelectFolderAdvanced.xaml
+    /// 
     /// </summary>
     public partial class SelectFolderAdvanced : UserControl, IControlWithResult
     {

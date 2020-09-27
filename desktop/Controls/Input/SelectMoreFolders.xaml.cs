@@ -9,7 +9,7 @@ using System.Windows.Controls;
 namespace desktop.Controls.Input
 {
     /// <summary>
-    /// Interaction logic for SelectMoreFolders.xaml
+    /// 
     /// </summary>
     public partial class SelectMoreFolders : UserControl
     {

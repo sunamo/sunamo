@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for LoginDialog.xaml
+    /// 
     /// </summary>
     public partial class LoginDialog : Window
     {
@@ -27,7 +27,7 @@ namespace desktop
         public List<CheckBox> chbc;
         public List<TextBox> txtc;
         public List<Button> btnc;
-        public List<PasswordBox> pwbc;
+        //public List<PasswordBox> pwbc;
 
         private void LoginDialog_Loaded(object sender, RoutedEventArgs e)
         {
@@ -35,13 +35,13 @@ namespace desktop
             chbc = CA.ToList<CheckBox>(chbAutoLogin, chbRememberLogin);
             txtc = CA.ToList<TextBox>(txtLogin);
             btnc = CA.ToList<Button>(btnForgetLoginAndPassword, btnForgetPassword, btnLogin);
-            pwbc = CA.ToList<PasswordBox>(txtHeslo);
+            //pwbc = CA.ToList<PasswordBox>(txtHeslo);
 
             ResourceDictionaryStyles.Padding10(tbc);
             ResourceDictionaryStyles.Margin10(chbc);
             ResourceDictionaryStyles.Margin10(txtc);
             ResourceDictionaryStyles.Margin10(btnc);
-            ResourceDictionaryStyles.Margin(10,pwbc);
+            //ResourceDictionaryStyles.Margin(10,pwbc);
         }
 
         public string Login

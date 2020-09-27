@@ -7,4 +7,7 @@ using System.Threading.Tasks;
 public class CsConsts
 {
     public const string esteemed = "Vážený/á";
+    public const string dobryDen = "Dobrý den";
+    public const string Zdravim = "Zdravím";
+
 }

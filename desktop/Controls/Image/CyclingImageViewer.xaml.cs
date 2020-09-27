@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for CyclingImageViewer.xaml
+    /// 
     /// </summary>
     public partial class CyclingImageViewer : UserControl, IStatusBroadcasterAppend
     {

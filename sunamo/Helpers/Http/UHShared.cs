@@ -6,6 +6,22 @@ using System.Text.RegularExpressions;
 
 public partial class UH
 {
+    public static string RemoveHostAndProtocol(Uri uri)
+    {
+        string p = RemovePrefixHttpOrHttps(uri.ToString());
+        int dex = p.IndexOf(AllChars.slash);
+        return p.Substring(dex);
+    }
+
+    #region Remove*
+    public static string RemovePrefixHttpOrHttps(string t)
+    {
+        t = t.Replace("http://", "");
+        t = t.Replace("https://", "");
+        return t;
+    }
+    #endregion
+
     #region Append
 
     public static string AppendHttpsIfNotExists(string p)

@@ -4815,6 +4815,86 @@
           <source></source>
           <target state="translated">Novinky z oblíbených IT webů</target>
         </trans-unit>
+        <trans-unit id="SMTPData" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">SMTP data</target>
+        </trans-unit>
+        <trans-unit id="GoodDay" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dobrý den</target>
+        </trans-unit>
+        <trans-unit id="BatteryZTEBladeA52019" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Baterie ZTE Blade A5 2019</target>
+        </trans-unit>
+        <trans-unit id="SetAsDefault" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nastavit jako výchozí</target>
+        </trans-unit>
+        <trans-unit id="Delete" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vymazat</target>
+        </trans-unit>
+        <trans-unit id="previewOfAutoPrefixingYouWillApproveBeforeSending" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">náhled oslovení pro každý mail před odesláním schválíte</target>
+        </trans-unit>
+        <trans-unit id="SalutationEnterJustNameWithoutAnyWhitespacesInEachDearMadamEtc" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pozdrav (zadejte pouze jméno, bez jakýchkoli mezer v každém, drahá, paní atd</target>
+        </trans-unit>
+        <trans-unit id="ToDelimitedByAnyWhitespaceCouldBeCopiedFromGoogleSheets" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do (oddělené mezerami, lze zkopírovat z Tabulek Google</target>
+        </trans-unit>
+        <trans-unit id="YouMustSetUpAndSetAsDefaultOneSmtpServer" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Musíte nastavit a nastavit jako výchozí jeden SMTP server</target>
+        </trans-unit>
+        <trans-unit id="Hello" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zdravíčko</target>
+        </trans-unit>
+        <trans-unit id="SendingMailsFrom" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odesílání e-mailů z</target>
+        </trans-unit>
+        <trans-unit id="Attachments" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přílohy</target>
+        </trans-unit>
+        <trans-unit id="Text" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Text</target>
+        </trans-unit>
+        <trans-unit id="Subject" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Předmět</target>
+        </trans-unit>
+        <trans-unit id="OpenSMTPServerSettings" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Otevřete nastavení serveru SMTP</target>
+        </trans-unit>
+        <trans-unit id="Dear" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Milý</target>
+        </trans-unit>
+        <trans-unit id="MassMailSender" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hromadné odesílání pošty</target>
+        </trans-unit>
+        <trans-unit id="AddNew" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat nový</target>
+        </trans-unit>
+        <trans-unit id="SelectFile" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zvolte soubor</target>
+        </trans-unit>
+        <trans-unit id="FillFromPredefined" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyplnit z předdefinovaného</target>
+        </trans-unit>
       </group>
     </body>
   </file>

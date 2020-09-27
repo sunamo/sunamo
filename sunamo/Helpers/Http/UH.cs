@@ -233,12 +233,7 @@ public partial class UH
     #endregion
 
     #region Ŕemove*
-    public static string RemovePrefixHttpOrHttps(string t)
-    {
-        t = t.Replace("http://", "");
-        t = t.Replace("https://", "");
-        return t;
-    }
+    
 
     /// <summary>
     /// V p��pad� �e v A1 nebude protokol, ulo�� se do A2 ""
@@ -264,12 +259,7 @@ public partial class UH
         return t;
     }
 
-    public static string RemoveHostAndProtocol(Uri uri)
-    {
-        string p = RemovePrefixHttpOrHttps(uri.ToString());
-        int dex = p.IndexOf(AllChars.slash);
-        return p.Substring(dex);
-    }
+    
 
     public static bool IsUri(string href)
     {

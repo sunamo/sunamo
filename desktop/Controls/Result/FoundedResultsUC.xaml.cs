@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Result
 {
     /// <summary>
-    /// Interaction logic for FoundedResultsUC.xaml
+    /// 
     /// </summary>
     public partial class FoundedResultsUC : UserControl, ISelectedT<string>
     {

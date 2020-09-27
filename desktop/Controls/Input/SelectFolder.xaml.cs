@@ -21,7 +21,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for SelectFolder.xaml
+    /// 
     /// </summary>
     public partial class SelectFolder : UserControl
     {

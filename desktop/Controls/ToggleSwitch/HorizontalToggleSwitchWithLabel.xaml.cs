@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.ToggleSwitch
 {
     /// <summary>
-    /// Interaction logic for HorizontalToggleSwitchWithLabel.xaml
+    /// 
     /// </summary>
     public partial class HorizontalToggleSwitchWithLabel : UserControl
     {

@@ -71,7 +71,11 @@ public partial class HtmlAssistant
             }
         }
 
-        node.Attributes.Add(atr, hod);
+        var atr2 = node.OwnerDocument.CreateAttribute(atr, hod);
+
+        node.Attributes.Add(atr2);
+
+        var html = node.OuterHtml;
     }
 
     public static string InnerText(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool contains = false)

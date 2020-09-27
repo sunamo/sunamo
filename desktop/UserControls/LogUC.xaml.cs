@@ -7,7 +7,7 @@ using sunamo.Interfaces;
 namespace desktop.UserControls
 {
     /// <summary>
-    /// Interaction logic for LogUC.xaml
+    /// 
     /// </summary>
     public partial class LogUC : UserControl, IUserControl, IWindowOpener, IUserControlShared, IKeysHandler
     {

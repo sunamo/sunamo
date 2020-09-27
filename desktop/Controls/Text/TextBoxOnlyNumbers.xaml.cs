@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for TextBoxOnlyNumbers.xaml
+    /// 
     /// </summary>
     public partial class TextBoxOnlyNumbers : UserControl
     {

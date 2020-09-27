@@ -72,11 +72,15 @@ public class DynLayout
         AddLabel(row, tb);
     }
 
-    public void AddLabel(int row, TextBlock tb)
+    public void AddLabel(int row, UIElement tb)
     {
-        tb.HorizontalAlignment = HorizontalAlignment.Right;
-        tb.VerticalAlignment = VerticalAlignment.Center;
-        tb.Margin = uit;
+        if (tb is TextBlock)
+        {
+            var tbb = (TextBlock)tb;
+            tbb.HorizontalAlignment = HorizontalAlignment.Right;
+            tbb.VerticalAlignment = VerticalAlignment.Center;
+            tbb.Margin = uit;
+        }
 
         Grid.SetRow(tb, row);
         Grid.SetColumn(tb, 0);
