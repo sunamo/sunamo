@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace desktop.AwesomeFont
 {
@@ -16,8 +17,21 @@ namespace desktop.AwesomeFont
     /// </summary>
     public  static partial class AwesomeFontControls
     {
+        const string FontAwesome = "FontAwesome";
         public const int low = 61440;
         public const int high = 62176;
+
+        public static bool IsFamilyFontFontAwesome(FontFamily f )
+        {
+            foreach (var item in f.FamilyNames)
+            {
+                if (item.Value.Contains(FontAwesome))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public static async Task SetAwesomeFontSymbol(Button txtSearchIcon, string v)
         {

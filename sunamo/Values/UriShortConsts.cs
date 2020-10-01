@@ -16,5 +16,5 @@ public class UriShortConsts
     public const string HtpCz = "htp.localhost";
 
     // miss acs
-    //public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
+    public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
 }

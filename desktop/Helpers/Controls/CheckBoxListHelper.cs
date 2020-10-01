@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using desktop.Controls.Collections;
 
 public class CheckBoxListHelper
@@ -93,8 +94,16 @@ public class CheckBoxListHelper
     /// <param name="chbs"></param>
     public static List<StackPanel> AllContent(IEnumerable<CheckBox> chbs)
     {
-        var d = chbs.Select(e => e.Content);
-        var result = CA.ToListString(d);
-        return result.Cast<StackPanel>().ToList();
+        IEnumerable<object> d = null;
+
+        if (chbs.Count() > 0)
+        {
+            d = chbs.Select(e => (StackPanel)e.Dispatcher.Invoke(() => { return (StackPanel)e.Content; }));
+
+            //Nevím proč to převádím na string když o řádek níže to dávám na StackPanel
+            //var result = CA.ToListString(d);
+            return d.Cast<StackPanel>().ToList();
+        }
+       return new List<StackPanel>();
     }
 }

@@ -9,6 +9,29 @@ using System.Windows.Controls;
 
 public partial class ContentControlHelper{ 
 
+    public static string ExtractContent(StackPanel sp)
+    {
+        /*
+Je zde ta věc že 
+         */
+
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var item in sp.Children)
+        {
+            //if (item is StackPanel)
+            //{
+                var sp2 = (TextBlock)item;
+                if (AwesomeFontControls.IsFamilyFontFontAwesome(sp2.FontFamily))
+                {
+                continue;
+                }
+            sb.Append(sp2.Text);
+            //}
+        }
+        return sb.ToString();
+    }
+
 public static StackPanel GetContent(ControlInitData d)
     {
         var img = d.imagePath;
@@ -58,8 +81,6 @@ private static double AddImg(object img, StackPanel sp, double w, double h)
 
         if (img.GetType() == Types.tString)
         {
-            
-
             if (imgS.Length == 1)
             {
                 var ch = imgS[0];

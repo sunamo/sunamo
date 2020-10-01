@@ -94,6 +94,12 @@ namespace desktop.Controls.Collections
             Loaded += uc_Loaded;
         }
 
+        public void Clear()
+        {
+            l.l.Clear();
+            lb.ItemsSource = l.l;
+        }
+
         /// <summary>
         /// A2 can be null
         /// Into A1.add can be CheckBoxListUC.ColButtons_Added
@@ -144,11 +150,22 @@ namespace desktop.Controls.Collections
         {
             var ac = AllContent();
             List<string> result = new List<string>();
+            string text = null;
+
             foreach (var item in ac)
             {
-                List<TextBlock> textboxes = null; //VisualTreeHelpers.FindDescendents<TextBlock>(item);
-                var first = textboxes.First();
-                result.Add(first.Text);
+                //null; //
+                //IEnumerable<TextBlock> textboxes = null;
+                ////textboxes = VisualTreeHelpers.FindDescendents<TextBlock>(item);
+
+                ////textboxes = item.Children.Where(i=>i);
+
+                //var first = textboxes.First();
+                //text = first.Text;
+
+                text = ContentControlHelper.ExtractContent(item);
+
+                result.Add(text);
             }
 
             return result;
@@ -214,9 +231,22 @@ namespace desktop.Controls.Collections
             }
         }
 
-        public void AddCheckbox(object input, bool defChecked)
+        private void NotifyWrapper_PropertyChanged(CheckBox obj)
+        {
+
+        }
+
+        #region AddCheckbox - everything is private, wiht object input, bool defChecked is even important in that. It must be added to underlying NotifyChangesCollection<NotifyPropertyChangedWrapper<CheckBox>> l and l.l set as ItemsSource
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="defChecked"></param>
+        /// <returns></returns>
+        private NotifyPropertyChangedWrapper<CheckBox> AddCheckbox(object input, bool defChecked)
         {
             var lines = SH.GetLines(input.ToString());
+            NotifyPropertyChangedWrapper<CheckBox> notifyWrapper = null;
 
             foreach (var item in lines)
             {
@@ -239,20 +269,17 @@ namespace desktop.Controls.Collections
 
                 var chb = CheckBoxHelper.Get(new ControlInitData { text = item });
 
-                NotifyPropertyChangedWrapper<CheckBox> notifyWrapper = new NotifyPropertyChangedWrapper<CheckBox>(chb, FrameworkElement.VisibilityProperty);
+                notifyWrapper = new NotifyPropertyChangedWrapper<CheckBox>(chb, FrameworkElement.VisibilityProperty);
                 NotifyPropertyHelper.CheckBox(notifyWrapper);
 
                 notifyWrapper.o.IsChecked = defChecked;
                 AddCheckbox(notifyWrapper);
             }
+            return notifyWrapper;
         }
 
-        private void NotifyWrapper_PropertyChanged(CheckBox obj)
-        {
-            
-        }
 
-        public void AddCheckbox(NotifyPropertyChangedWrapper<CheckBox> n)
+        private void AddCheckbox(NotifyPropertyChangedWrapper<CheckBox> n)
         {
             var chb = n.o;
 
@@ -260,7 +287,8 @@ namespace desktop.Controls.Collections
             chb.Checked += CheckBox_Checked;
             chb.Unchecked += CheckBox_Unchecked;
             l.Add(n);
-        }
+        } 
+        #endregion
 
         int dexLastChecked = -1;
 
@@ -372,6 +400,37 @@ namespace desktop.Controls.Collections
 
             var actChecked = lb.Items.IndexOf(UIElement);
 
+            if (actChecked == -1)
+            {
+                var sp2 = (StackPanel)UIElement.Content;
+                var t =  ContentControlHelper.ExtractContent(sp2);
+                int i = 0;
+
+                foreach (var item in lb.Items)
+                {
+                    var chb2 = (NotifyPropertyChangedWrapper<CheckBox>)item;
+                    var sp = (StackPanel)chb2.o.Content;
+                    var ts = ContentControlHelper.ExtractContent(sp);
+
+                    if (ts != string.Empty)
+                    {
+
+                    }
+
+                    if (t != string.Empty)
+                    {
+
+                    }
+
+                    if (ts == t)
+                    {
+                        actChecked = i;
+                        break;
+                    }
+                    i++;
+                }
+            }
+
             if (actChecked != -1)
             {
                 if (KeyboardHelper.IsModifier(Key.LeftShift))
@@ -383,7 +442,12 @@ namespace desktop.Controls.Collections
 
                         for (int i = p[0]; i < p[1]; i++)
                         {
+                            var ich2 = l[i].o.GetValue(CheckBox.IsCheckedProperty);
+
                             l[i].o.IsChecked = UIElement.IsChecked;
+
+                            var ich = l[i].o.GetValue(CheckBox.IsCheckedProperty);
+                            int s = 0;
                         }
                     }
                 }
@@ -432,6 +496,7 @@ namespace desktop.Controls.Collections
 
             foreach (var item in where)
             {
+                // Uložím do 
                 item.o.IsChecked = b;
             }
         }
@@ -519,11 +584,13 @@ Here its is not possible with set up visibility
             }
             else
             {
+
                 foreach (var item in l)
                 {
                     var o = item.o;
                     var sp = (StackPanel)o.Content;
                     var c = CheckBoxListUC.ContentOfTextBlock(sp);
+
                     if (c.Contains(k))
                     {
                         item.IsActive = true;

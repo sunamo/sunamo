@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string FillFromPredefined = "FillFromPredefined"; 
+	public const string ShowFromLocation = "ShowFromLocation"; 
 
+	public const string FillFromPredefined = "FillFromPredefined"; 
 	public const string SelectFile = "SelectFile"; 
 	public const string ToDelimitedByAnyWhitespaceCouldBeCopiedFromGoogleSheets = "ToDelimitedByAnyWhitespaceCouldBeCopiedFromGoogleSheets"; 
 	public const string SalutationEnterJustNameWithoutAnyWhitespacesInEachDearMadamEtc = "SalutationEnterJustNameWithoutAnyWhitespacesInEachDearMadamEtc"; 

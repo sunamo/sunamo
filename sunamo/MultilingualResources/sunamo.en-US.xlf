@@ -13838,6 +13838,10 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Fill from predefined</target>
         </trans-unit>
+        <trans-unit id="ShowFromLocation" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Show from location</target>
+        </trans-unit>
       </group>
     </body>
   </file>

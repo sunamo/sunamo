@@ -4895,6 +4895,10 @@
           <source></source>
           <target state="translated">Vyplnit z předdefinovaného</target>
         </trans-unit>
+        <trans-unit id="ShowFromLocation" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit z umístění</target>
+        </trans-unit>
       </group>
     </body>
   </file>

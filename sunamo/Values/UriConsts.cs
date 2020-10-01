@@ -16,5 +16,5 @@ using System.Text;
     public const string HtpCz = "chytre-aplikace.cz";
 
     // miss acs
-    //public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
+    public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz, PhsCz);
 }

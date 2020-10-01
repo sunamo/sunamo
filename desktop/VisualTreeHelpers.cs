@@ -192,6 +192,8 @@ public class VisualTreeHelpers
     /// Finding in sub only if all parents are A1. Therefore, if as child of A2 will be Panel with sub TB, I won't get it, Panel is not TB and therefore wont be iretated
     /// FindDescendents - check for equality with RH.IsOrIsDeriveFromBaseClass
     /// FindDescendents3 - check for equality with is T
+    /// 
+    /// Often The calling thread cannot access this object because a different thread owns it. -              better is get controls directlry with Children, if it is possible
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="vr"></param>
@@ -200,7 +202,7 @@ public class VisualTreeHelpers
     {
         if (depObj != null)
         {
-            var count = VisualTreeHelper.GetChildrenCount(depObj);
+            var count =  VisualTreeHelper.GetChildrenCount(depObj);
             for (int i = 0; i < count; i++)
             {
                 DependencyObject child = VisualTreeHelper.GetChild(depObj, i);

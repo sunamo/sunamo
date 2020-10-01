@@ -28,4 +28,11 @@ public static partial class IEnumerableExtensions
 
         return null;
     }
+
+    public static IEnumerable<TSource> Where2<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+    {
+        //source.ToList().Where(predicate); - StackOverflowExtension
+        //return new List<TSource>(source).Where(predicate) ;
+        return source.ToList().Where(predicate);
+    }
 }

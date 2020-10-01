@@ -729,31 +729,7 @@ public static partial class CA
         ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.InvalidRowIndexInMethodCAGetRowOfTwoDimensionalArray) + ";");
         return null;
     }
-    /// <summary>
-    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="ext"></param>
-    /// <param name="p1"></param>
-    /// <returns></returns>
-    public static bool IsAllTheSame<T>(T ext, IList<T> p1)
-    {
-        for (int i = 0; i < p1.Count; i++)
-        {
-            if (!EqualityComparer<T>.Default.Equals(p1[i], ext))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    
     /// <summary>
     /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
     /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
