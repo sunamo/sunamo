@@ -42,16 +42,34 @@ public class AppData : AppDataAbstractBase<string, string>
 
         return sunamo2;
     }
+
     public override string GetFile(AppFolders af, string file)
     {
-        string slozka2 = FS.Combine(RootFolder, af.ToString());
-        string soubor = FS.Combine(slozka2, file);
-        return soubor;
+        string slozka2, soubor;
+
+        if (Exc.aspnet)
+        {
+            slozka2 = FS.Combine(basePath, af.ToString());
+            soubor = FS.Combine(slozka2, file);
+            return soubor;
+        }
+        else
+        {
+            slozka2 = FS.Combine(RootFolder, af.ToString());
+            soubor = FS.Combine(slozka2, file);
+            return soubor;
+        }
     }
 
     public override string GetFolder(AppFolders af)
     {
-        string vr = FS.Combine(RootFolder, af.ToString());
+        var f = RootFolder;
+        if (Exc.aspnet)
+        {
+            f = basePath;
+        }
+
+        string vr = FS.Combine(f, af.ToString());
         FS.WithEndSlash(ref vr);
         return vr;
     }

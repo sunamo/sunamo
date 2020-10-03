@@ -1,5 +1,6 @@
 ﻿using desktop;
 using desktop.AwesomeFont;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +18,24 @@ Je zde ta věc že
 
         StringBuilder sb = new StringBuilder();
 
-        foreach (var item in sp.Children)
+        WpfApp.cd.Invoke(() =>
         {
-            //if (item is StackPanel)
-            //{
-                var sp2 = (TextBlock)item;
-                if (AwesomeFontControls.IsFamilyFontFontAwesome(sp2.FontFamily))
-                {
-                continue;
-                }
-            sb.Append(sp2.Text);
-            //}
-        }
+            
+
+
+            foreach (var item in sp.Children)
+            {
+                //if (item is StackPanel)
+                //{
+                    var sp2 = (TextBlock)item;
+                    if (AwesomeFontControls.IsFamilyFontFontAwesome(sp2.FontFamily))
+                    {
+                    continue;
+                    }
+                sb.Append(sp2.Text);
+                //}
+            }
+        }, System.Windows.Threading.DispatcherPriority.ContextIdle);
         return sb.ToString();
     }
 

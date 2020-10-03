@@ -98,21 +98,37 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataB
         return _fileFolderWithAppsFiles;
     }
 
-public void CreateAppFoldersIfDontExists()
-    {
-        if (!string.IsNullOrEmpty(ThisApp.Name))
-        {
-            RootFolder = Abstract.GetRootFolder();
+    public string basePath = null;
 
+public void CreateAppFoldersIfDontExists(string basePath = null)
+    {
+        if (Exc.aspnet)
+        {
+            this.basePath = basePath;
             foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
             {
                 //FS.CreateFoldersPsysicallyUnlessThere(GetFolder(item));
-                FS.CreateDirectory(Abstract.GetFolder(item));
+                var p = FS.Combine(basePath, item.ToString());
+                FS.CreateDirectory(p);
             }
+
         }
         else
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nen\u00ED vypln\u011Bno n\u00E1zev aplikace.");
+            if (!string.IsNullOrEmpty(ThisApp.Name))
+            {
+                RootFolder = Abstract.GetRootFolder();
+
+                foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
+                {
+                    //FS.CreateFoldersPsysicallyUnlessThere(GetFolder(item));
+                    FS.CreateDirectory(Abstract.GetFolder(item));
+                }
+            }
+            else
+            {
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Nen\u00ED vypln\u011Bno n\u00E1zev aplikace.");
+            }
         }
     }
 }
