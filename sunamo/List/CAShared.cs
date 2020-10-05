@@ -1608,6 +1608,8 @@ public static partial class CA
     /// <param name="mySites"></param>
     public static List<string> RemoveStartingWith(string start, List<string> mySites, bool _trimBeforeFinding = false)
     {
+        bool negate = SH.IsNegation(ref start);
+
         for (int i = mySites.Count - 1; i >= 0; i--)
         {
             var val = mySites[i];
@@ -1615,9 +1617,20 @@ public static partial class CA
             {
                 val = val.Trim();
             }
-            if (val.StartsWith(start))
+
+            if (negate)
             {
-                mySites.RemoveAt(i);
+                if (!val.StartsWith(start))
+                {
+                    mySites.RemoveAt(i);
+                }
+            }
+            else
+            {
+                if (val.StartsWith(start))
+                {
+                    mySites.RemoveAt(i);
+                }
             }
         }
         return mySites;

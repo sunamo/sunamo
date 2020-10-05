@@ -19,7 +19,17 @@ public abstract class PpkOnDriveBase<T> : List<T>
 
     public  void RemoveAll()
     {
+        Clear();
         TF.WriteAllText(a.file, string.Empty);
+    }
+
+    public new void Remove(T t)
+    {
+        base.Remove(t);
+        if (a.save)
+        {
+            Save();
+        }
     }
 
     public abstract void Load();
