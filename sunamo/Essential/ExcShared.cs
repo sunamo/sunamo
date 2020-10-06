@@ -70,6 +70,7 @@ public class Exc
         var r = string.Empty;
         lock (lockObject)
         {
+            ;
             r = sb.ToString();
         }
         return r;

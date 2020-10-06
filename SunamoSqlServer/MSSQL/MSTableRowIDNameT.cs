@@ -59,7 +59,7 @@ public abstract class MSTableRowIDNameT<T> where T : struct //: MSBaseRowTable//
 
     public T InsertToTable2()
     {
-        ID = (T)(dynamic)MSStoredProceduresI.ci.Insert2(TableName, ColumnNamesWeb.ID, typeof(T), "ID", Name);
+        ID = (T)(dynamic)MSStoredProceduresI.ci.Insert2(TableName, ColumnNamesWeb.ID, typeof(T),  Name);
         return ID;
     }
 

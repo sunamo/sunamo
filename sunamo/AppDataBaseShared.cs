@@ -100,7 +100,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataB
 
     public string basePath = null;
 
-public void CreateAppFoldersIfDontExists(string basePath = null)
+    public void CreateAppFoldersIfDontExists(string basePath = null)
     {
         if (Exc.aspnet)
         {
