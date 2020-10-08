@@ -242,6 +242,28 @@ public class RH
         return values;
     }
 
+    public static Dictionary<string, string> GetValuesOfConsts(Type t, params string[] onlyNames)
+    {
+        var props = RH.GetConsts(t);
+        Dictionary<string, string> values = new Dictionary<string, string>(props.Count);
+
+        foreach (var item in props)
+        {
+            if (onlyNames.Length > 0)
+            {
+                if (!onlyNames.Contains(item.Name))
+                {
+                    continue;
+                }
+            }
+
+            var o = GetValueOfField(item.Name, t, null, false);
+            values.Add(item.Name, o.ToString());
+        }
+
+        return values;
+    }
+
     public static List<string> GetValuesOfField(object o, params string[] onlyNames)
     {
         var t = o.GetType();

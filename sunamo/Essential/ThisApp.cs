@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace sunamo.Essential
 {
     public class ThisApp
     {
+        public static Dispatcher cd = null;
+        public static DispatcherPriority cdp = DispatcherPriority.Normal;
+
         public static TypedLoggerBase NopeOrDebugTyped()
         {
 #if DEBUG
@@ -19,7 +23,6 @@ namespace sunamo.Essential
 #endif
             return TypedDummyLogger.Instance;
         }
-
 
         public static bool check = false;
         public static Langs l = Langs.en;

@@ -13842,6 +13842,14 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Show from location</target>
         </trans-unit>
+        <trans-unit id="Notice" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Notice</target>
+        </trans-unit>
+        <trans-unit id="EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Every Windows is different. If app won't be running under admin account, try non-admin and viceversa</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -2177,4 +2177,16 @@ public static string FindOutLongestItem(List<string> list, params string[] delim
         }
         return nejdelsi;
     }
+
+    internal static bool IsOdd(params List<int>[] bold)
+    {
+        foreach (var item in bold)
+        {
+            if (item.Count % 2 == 1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

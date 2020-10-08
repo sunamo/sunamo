@@ -155,7 +155,12 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Constants\HtmlEndingTags.cs" />
+    <Compile Include="Constants\HtmlStartingTags.cs" />
     <Compile Include="ConvertersSimple\MultilineAsOneLine.cs" />
+    <Compile Include="FormatInPlainText.cs" />
+    <Compile Include="List\KeyValuePairIEnumerable.cs" />
+    <Compile Include="List\KeyValuePairIEnumerableShared.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

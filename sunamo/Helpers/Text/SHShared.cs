@@ -41,6 +41,18 @@ public static partial class SH
         return formatted;
     }
 
+    internal static void RemoveWhichHaveWhitespaceAtBothSides(string s, List<int> bold)
+    {
+        for (int i = bold.Count - 1; i >= 0; i--)
+        {
+            if (char.IsWhiteSpace(s[bold[i] -1]) && char.IsWhiteSpace(s[bold[i] + 1]))
+            {
+                bold.RemoveAt(i);
+            }
+        }
+
+    }
+
     public static bool ContainsOnly(string floorS, List<char> numericChars)
     {
         foreach (var item in floorS)
@@ -264,6 +276,11 @@ public static partial class SH
         d.Leading(before);
         d.Reverse();
         return d;
+    }
+
+    public static List<int> IndexesOfChars(string input, params char[] ch)
+    {
+        return IndexesOfChars(input, CA.ToList<char>(ch));
     }
 
     /// <summary>
@@ -2182,6 +2199,7 @@ public static partial class SH
         {
             vr += " ... ";
         }
+        vr = vr.Replace(AllStrings.bs, string.Empty);
         return vr;
     }
 

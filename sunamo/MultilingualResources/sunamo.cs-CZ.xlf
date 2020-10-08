@@ -4899,6 +4899,17 @@
           <source></source>
           <target state="translated">Zobrazit z umístění</target>
         </trans-unit>
+        <trans-unit id="Notice" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Oznámení</target>
+        </trans-unit>
+        <trans-unit id="EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Každý Windows je jiný. Pokud aplikace nebude spuštěna pod účtem typu admin, zkuste ne-admin účet a naopak</target>
+        </trans-unit>
+        <trans-unit id="Statistics">
+          <target>Statistika</target>
+        </trans-unit>
       </group>
     </body>
   </file>

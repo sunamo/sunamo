@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Essential;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -56,7 +57,14 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
         }
 
         item.PropertyChanged += Item_PropertyChanged;
-        l.Add(item);
+        //
+        //WpfApp.
+        ThisApp.cd.Invoke((Action)delegate // <--- HERE
+        {
+            //_matchObsCollection.Add(match);
+            l.Add(item);
+        });
+        
         if (onAdd)
         {
             OnCollectionChanged(ListOperation.Add, item);

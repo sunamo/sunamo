@@ -62,9 +62,18 @@ public partial class ThrowExceptions
             qsDict, remains));
     }
 
-    public static void IsOdd(string stacktrace, object type, string methodName, string colName, IEnumerable col)
+    /// <summary>
+    /// return true if exception was thrown
+    /// </summary>
+    /// <param name="stacktrace"></param>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="colName"></param>
+    /// <param name="col"></param>
+    /// <returns></returns>
+    public static bool IsOdd(string stacktrace, object type, string methodName, string colName, IEnumerable col)
     {
-        ThrowIsNotNull(stacktrace, Exceptions.IsOdd(FullNameOfExecutedCode(type, methodName), colName, col));
+       return  ThrowIsNotNull(stacktrace, Exceptions.IsOdd(FullNameOfExecutedCode(type, methodName), colName, col));
     }
     public static void DifferentCountInLists(string stacktrace, object type, string methodName, string namefc, int countfc, string namesc, int countsc)
     {

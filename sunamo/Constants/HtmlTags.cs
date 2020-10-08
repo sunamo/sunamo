@@ -11,7 +11,6 @@ public class HtmlTags
     public const string img = "img";
     public const string span = "span";
     public const string title = "title";
-
     public const string div = "div";
     public const string style = "style";
     public const string link = "link";

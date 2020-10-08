@@ -26,10 +26,15 @@ public abstract class PpkOnDriveBase<T> : List<T>
     public new void Remove(T t)
     {
         base.Remove(t);
-        if (a.save)
-        {
+        
             Save();
-        }
+        
+    }
+
+    public new void Clear()
+    {
+        base.Clear();
+        Save();
     }
 
     public abstract void Load();
@@ -70,11 +75,9 @@ public abstract class PpkOnDriveBase<T> : List<T>
             // keep on false
         }
 
-        if (a.save)
-        {
-
+        
             Save();
-        }
+        
 
         return b;
     }
@@ -126,16 +129,20 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// </summary>
     public void Save()
     {
-        isSaving = true;
-        if (FS.ExistsFile(a.file))
+        if (a.save)
         {
-            File.Delete(a.file);
+
+            isSaving = true;
+            if (FS.ExistsFile(a.file))
+            {
+                File.Delete(a.file);
+            }
+            string obsah;
+            obsah = ReturnContent();
+            //TextovySoubor.ts.UlozSoubor(obsah, soubor);
+            File.WriteAllText(a.file, obsah);
+            isSaving = false;
         }
-        string obsah;
-        obsah = ReturnContent();
-        //TextovySoubor.ts.UlozSoubor(obsah, soubor);
-        File.WriteAllText(a.file, obsah);
-        isSaving = false;
     }
 
     /// <summary>
