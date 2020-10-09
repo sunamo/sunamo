@@ -6,18 +6,12 @@ using System.Linq;
 public partial class HtmlHelperSunamoCz{
     static Type type = typeof(HtmlHelperSunamoCz);
 
-public static string ConvertTextToHtmlWithAnchors(string p)
+public static string ConvertTextToHtmlWithAnchors(string p, ref string error)
     {
-
-
         p = HtmlHelper.ConvertTextToHtml(p);
-        
-        
         
         p = p.Replace("<", " <");
         var d = SH.SplitAndKeepDelimiters(p, CA.ToList<char>( AllChars.space, AllChars.lt, AllChars.gt));
-
-        
 
         for (int i = 0; i < d.Length(); i++)
         {
@@ -46,26 +40,26 @@ public static string ConvertTextToHtmlWithAnchors(string p)
         {
             var exc = Exc.GetStackTrace();
             var cm = Exc.CallingMethod();
-            var b2 = ThrowExceptions.IsOdd(exc, type, cm, "bold", bold);
-            var i2 = ThrowExceptions.IsOdd(exc, type, cm, "italic", italic);
-            var s2 = ThrowExceptions.IsOdd(exc, type, cm, "strike", strike);
+            var b2 = Exceptions.IsOdd(string.Empty, "bold", bold);
+            var i2 = Exceptions.IsOdd(string.Empty, "italic", italic);
+            var s2 = Exceptions.IsOdd(string.Empty, "strike", strike);
 
             List<string> ls = new List<string>();
-            if (b2)
+            if (b2 != null)
             {
                 ls.Add("bold");
             }
-            if (i2)
+            if (i2 != null)
             {
                 ls.Add("italic");
             }
-            if (s2)
+            if (s2 != null)
             {
                 ls.Add("strike");
             }
 
-            var t = SH.Join(",", ls) + " was odd count of elements. ";
-            return HtmlAgilityHelper.WrapIntoTagIfNot(t, "b") + p;
+            error = StatusHelperSunamo.info + SH.Join(",", ls) + " was odd count of elements. ";
+            return p; //HtmlAgilityHelper.WrapIntoTagIfNot(t, "b") + p;
         }
 
         Dictionary<int, string> bold2 = new Dictionary<int, string>();
