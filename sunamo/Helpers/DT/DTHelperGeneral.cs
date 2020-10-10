@@ -139,11 +139,11 @@ public partial class DTHelperGeneral
         return new DateTime(1, int.Parse(month), int.Parse(day), int.Parse(hour), int.Parse(minute), 0);
     }
 
-    public static DateTime CreateTime(string v1, string v2)
+    public static DateTime CreateTime(string hour, string minutes)
     {
         DateTime today = DateTime.MinValue;
-        today = today.AddHours(double.Parse(v1));
-        today = today.AddHours(double.Parse(v2));
+        today = today.AddHours(double.Parse(hour));
+        today = today.AddMinutes(double.Parse(minutes));
         return today;
     } 
     #endregion

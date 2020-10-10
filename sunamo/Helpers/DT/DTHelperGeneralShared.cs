@@ -55,6 +55,11 @@ public partial class DTHelperGeneral
         return new DateTime(time.Year, time.Month, time.Day);
     }
 
+    public static DateTime WithoutDate(DateTime dt)
+    {
+        return new DateTime(1,1,1, dt.Hour, dt.Minute, dt.Second);
+    }
+
     public static string TimeInMsToSeconds(Stopwatch p)
     {
         p.Stop();

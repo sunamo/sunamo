@@ -39,6 +39,33 @@ public partial class DTHelperMulti
         }
     }
 
+
+    public static string TimeToString(DateTime d, Langs l, DateTime dtMinVal)
+    {
+        if (d == dtMinVal)
+        {
+            if (l == Langs.cs)
+            {
+                return SunamoPageHelperSunamo.i18n(XlfKeys.ItWasNotMentioned);
+            }
+            else
+            {
+                return SunamoPageHelperSunamo.i18n(XlfKeys.NotIndicated);
+            }
+        }
+
+        if (l == Langs.cs)
+        {
+            // 21.6.1989 11:22 (fill zero)
+            return  NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+        }
+        else
+        {
+            // 6/21/1989 11:22 (fill zero)
+            return NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+        }
+    }
+
     /// <summary>
     /// 21.6.1989 / 6/21/1989
     /// </summary>

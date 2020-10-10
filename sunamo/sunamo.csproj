@@ -158,9 +158,13 @@
     <Compile Include="Constants\HtmlEndingTags.cs" />
     <Compile Include="Constants\HtmlStartingTags.cs" />
     <Compile Include="ConvertersSimple\MultilineAsOneLine.cs" />
+    <Compile Include="ConvertersSimple\UnixDateConverter.cs" />
+    <Compile Include="Data\FromToT.cs" />
+    <Compile Include="Enums\FromToUse.cs" />
     <Compile Include="FormatInPlainText.cs" />
     <Compile Include="List\KeyValuePairIEnumerable.cs" />
     <Compile Include="List\KeyValuePairIEnumerableShared.cs" />
+    <Compile Include="Values\CultureInfos.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

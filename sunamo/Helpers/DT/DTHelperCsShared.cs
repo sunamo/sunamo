@@ -20,7 +20,7 @@ public partial class DTHelperCs
     /// 11:22 dont fill up with zero
     /// </summary>
     /// <param name="from"></param>
-    public static string ToShortTimeFromSeconds(int from)
+    public static string ToShortTimeFromSeconds(long from)
     {
         var dt = DateTime.MinValue;
         dt = dt.AddSeconds(from);

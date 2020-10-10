@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 public partial class DTHelperCs
@@ -38,7 +39,13 @@ public partial class DTHelperCs
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
     {
         return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
-    } 
+    }
+
+    public static DateTime ParseDateTimeCzech(string s)
+    {
+        var dt = DateTime.Parse(s, CultureInfos.cz);
+        return dt;
+    }
     #endregion
     #endregion
 

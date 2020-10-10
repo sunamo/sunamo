@@ -8,6 +8,9 @@ public partial class HtmlHelperSunamoCz{
 
 public static string ConvertTextToHtmlWithAnchors(string p, ref string error)
     {
+        const string li = "li";
+        p = p.Replace(AllStrings.dash + li, AllStrings.space + li) ;
+
         p = HtmlHelper.ConvertTextToHtml(p);
         
         p = p.Replace("<", " <");

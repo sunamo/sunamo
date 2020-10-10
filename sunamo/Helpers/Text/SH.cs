@@ -131,8 +131,8 @@ public static partial class SH
                 {
                     return content;
                 }
-                int startDx = equalRanges.First().from;
-                int endDx = equalRanges.Last().to;
+                int startDx = (int)equalRanges.First().FromL;
+                int endDx = (int)equalRanges.Last().ToL;
                 // všechny elementy z contentOneSpace namapované na content kde v něm začínají. 
                 // index z nt odkazuje na content
                 // proto musím vzít první a poslední index z equalRanges a k poslednímu přičíst contentOneSpace[last].Length

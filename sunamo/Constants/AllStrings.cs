@@ -60,7 +60,8 @@ public class AllStrings
 
     public const string space = " ";
     public const string dash = "-";
-    
+
+    public const string emDash = "—";
 
     /// <summary>
     /// ORDINAL BRACKET

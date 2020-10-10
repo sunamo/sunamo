@@ -3613,8 +3613,8 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
         //}
         int actualChar = 0;
         int processed = 0;
-        int from = actualFormatData.fromTo.from;
-        int remains = actualFormatData.fromTo.to;
+        long from = actualFormatData.fromTo.FromL;
+        long remains = actualFormatData.fromTo.ToL;
         int tfdCountM1 = tfd.Count - 1;
 
         while (true)

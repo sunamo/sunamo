@@ -373,7 +373,7 @@ public static partial class CA
                 else
                 {
                     int dx2 = (int)dx;
-                    result.Add(new FromTo(dx2 - r.Count + 1, dx2, false));
+                    result.Add(new FromTo(dx2 - r.Count + 1, dx2, FromToUse.None));
                     dx = null;
                 }
             }
@@ -578,10 +578,10 @@ public static partial class CA
     /// </summary>
     public static List<string> RemoveStringsByScopeKeepAtLeastOne(List<string> mySites, FromTo fromTo, int keepLines)
     {
-        mySites.RemoveRange(fromTo.from, fromTo.to - fromTo.from + 1);
-        for (int i = fromTo.from; i < fromTo.from - 1 + keepLines; i++)
+        mySites.RemoveRange((int)fromTo.FromL, (int)fromTo.ToL - (int)fromTo.FromL + 1);
+        for (long i = fromTo.FromL; i < fromTo.FromL - 1 + keepLines; i++)
         {
-            mySites.Insert(i, "");
+            mySites.Insert((int)i, "");
         }
         return mySites;
     }

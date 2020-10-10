@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 public partial class StatusHelperSunamo{ 
-public static TypeOfMessage IsStatusMessage(string resp)
+    public static TypeOfMessage IsStatusMessage(string resp)
     {
         var r = resp;
         return IsStatusMessage(ref r);
     }
-/// <summary>
+
+    /// <summary>
     /// If dont start with none, return Ordinal
     /// </summary>
     /// <param name = "resp"></param>
