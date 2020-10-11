@@ -97,7 +97,7 @@ using System.Threading.Tasks;
         return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper) + ".";
     }
 
-    internal static string HasNotKeyDictionary<Key, Value>(string v, string nameDict, IDictionary<Key, Value> qsDict,  Key remains)
+    public static string HasNotKeyDictionary<Key, Value>(string v, string nameDict, IDictionary<Key, Value> qsDict,  Key remains)
     {
         if (!qsDict.ContainsKey(remains))
         {
@@ -129,7 +129,7 @@ using System.Threading.Tasks;
         return null;
     }
 
-    internal static string NotInt(string before, string what, object value)
+    public static string NotInt(string before, string what, object value)
     {
         if (!BTS.IsInt(value.ToString()))
         {

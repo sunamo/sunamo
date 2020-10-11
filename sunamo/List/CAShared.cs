@@ -2178,7 +2178,7 @@ public static string FindOutLongestItem(List<string> list, params string[] delim
         return nejdelsi;
     }
 
-    internal static bool IsOdd(params List<int>[] bold)
+    public static bool IsOdd(params List<int>[] bold)
     {
         foreach (var item in bold)
         {

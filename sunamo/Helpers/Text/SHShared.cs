@@ -41,7 +41,7 @@ public static partial class SH
         return formatted;
     }
 
-    internal static void RemoveWhichHaveWhitespaceAtBothSides(string s, List<int> bold)
+    public static void RemoveWhichHaveWhitespaceAtBothSides(string s, List<int> bold)
     {
         for (int i = bold.Count - 1; i >= 0; i--)
         {
@@ -181,7 +181,7 @@ public static partial class SH
         return SH.JoinNL(l);
     }
 
-    internal static bool IsAllLower(string ext)
+    public static bool IsAllLower(string ext)
     {
         return IsAllLower(ext, char.IsLower);
     }
@@ -198,7 +198,7 @@ public static partial class SH
         return true;
     }
 
-    internal static bool IsAllUpper(string ext)
+    public static bool IsAllUpper(string ext)
     {
         return IsAllLower(ext, char.IsUpper);
     }
@@ -555,7 +555,7 @@ public static partial class SH
         
     }
 
-    internal static string ReplaceAllWhitecharsForSpace(string c)
+    public static string ReplaceAllWhitecharsForSpace(string c)
     {
         foreach (var item in AllChars.whiteSpacesChars)
         {

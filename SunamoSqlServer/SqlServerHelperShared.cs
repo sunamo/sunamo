@@ -9,7 +9,7 @@ public partial class SqlServerHelper
 {
     static Type type = typeof(SqlServerHelper);
 
-    internal static T EmptyNonSigned<T>() where T : struct
+    public static T EmptyNonSigned<T>() where T : struct
     {
         var t = typeof(T);
 

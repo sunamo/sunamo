@@ -67,7 +67,7 @@ namespace AllProjectsSearch
         public int countOfImages = 0;
 
         public bool InVsFolder = false;
-        internal Repository repository;
+        public Repository repository;
 
         public override string ToString()
         {
