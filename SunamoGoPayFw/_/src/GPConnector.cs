@@ -22,7 +22,7 @@ namespace GoPay
     {
         private string APIUrl { get; set; }
         public AccessToken AccessToken { get; set; }
-        internal static RestClient Client { get; private set; }
+        public static RestClient Client { get; private set; }
         private string ClientID;
         private string ClientSecret;
 
@@ -477,12 +477,12 @@ namespace GoPay
 
         public struct ServerHandlerData
         {
-            public long ContentLength { get; internal set; }
-            public HttpStatusCode HttpStatusCode { get; internal set; }
-            public byte[] Body { get; internal set; }
-            public string StatusDescription { get; internal set; }
-            public string ContentEncoding { get; internal set; }
-            public string ContentType { get; internal set; }
+            public long ContentLength { get;  set; }
+            public HttpStatusCode HttpStatusCode { get;  set; }
+            public byte[] Body { get;  set; }
+            public string StatusDescription { get;  set; }
+            public string ContentEncoding { get;  set; }
+            public string ContentType { get;  set; }
         }
 
         public ServerHandlerData ResponseToSHD(IRestResponse response)
