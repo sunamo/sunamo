@@ -4,7 +4,7 @@ using System.Text;
 
 public class RemoveFromXlfWhichHaveEmptyTargetOrSourceArgs
 {
-    internal static RemoveFromXlfWhichHaveEmptyTargetOrSourceArgs Default = new RemoveFromXlfWhichHaveEmptyTargetOrSourceArgs();
+    public static RemoveFromXlfWhichHaveEmptyTargetOrSourceArgs Default = new RemoveFromXlfWhichHaveEmptyTargetOrSourceArgs();
     /// <summary>
     /// default var
     /// </summary>

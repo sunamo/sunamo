@@ -28,6 +28,6 @@ namespace GoPay.Payments
             return string.Format("PaymentResult[Id={0},Result={1},Description={2}]", Id, Result, Description);
         }
 
-        internal bool Error { get { return false; } }
+        public bool Error { get { return false; } }
     }
 }

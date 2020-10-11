@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public partial class KeyValuePairIEnumerable
 {
-    internal static object Keys<T,U>(IOrderedEnumerable<KeyValuePair<T,U>> ie)
+    public static object Keys<T,U>(IOrderedEnumerable<KeyValuePair<T,U>> ie)
     {
         return null;
     }
