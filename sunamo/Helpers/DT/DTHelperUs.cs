@@ -175,7 +175,8 @@ namespace sunamo.Helpers.DT
         public static DateTime? FileNameToDateTime(string fnwoe)
         {
             var sp = SH.Split(fnwoe, AllStrings.lowbar);
-            var dd = CA.ToInt(sp, 6);
+            // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
+            var dd = CA.ToInt(sp, 5);
             if (dd == null)
             {
                 return null;

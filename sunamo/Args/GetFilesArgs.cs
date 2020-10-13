@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 public class GetFilesArgs
 {
+    public bool _trimExt = false;
     public bool _trimA1 = false;
     public List<string> excludeFromLocationsCOntains = null;
     public bool dontIncludeNewest = false;

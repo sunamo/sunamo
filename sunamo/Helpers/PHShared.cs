@@ -24,6 +24,19 @@ public partial class PH
         
     }
 
+    public static void Start(string p, string arguments)
+    {
+        try
+        {
+            Process.Start(p, arguments);
+        }
+        catch (Exception ex)
+        {
+            DebugLogger.Instance.WriteLine(Exceptions.TextOfExceptions(ex));
+        }
+
+    }
+
     public static void StartHidden(string p, string k)
     {
         try

@@ -3399,7 +3399,7 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     }
 
 /// <summary>
-    /// 
+    /// Remove with char
     /// </summary>
     /// <param name="us"></param>
     /// <param name="nameSolution"></param>

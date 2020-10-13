@@ -37,6 +37,11 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
         this.onPropertyChanged = onPropertyChanged;
     }
 
+    /// <summary>
+    /// Into args you can insert sth like this, new ObservableCollection<NotifyPropertyChangedWrapper<CheckBox>>()
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="c"></param>
     public NotifyChangesCollection(object sender, Collection<T> c)
     {
         _sender = sender;

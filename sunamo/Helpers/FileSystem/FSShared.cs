@@ -47,6 +47,7 @@ public partial class FS
         {
             getFilesArgs = new GetFilesArgs();
         }
+
         var folders = SH.Split(folder2, AllStrings.sc);
         CA.PostfixIfNotEnding(AllStrings.bs, folders);
 
@@ -113,6 +114,15 @@ public partial class FS
             foreach (var folder in folders)
             {
                 list = CA.ChangeContent(null,list, d => d = d.Replace(folder, ""));
+            }
+
+        }
+
+        if (getFilesArgs._trimExt)
+        {
+            foreach (var folder in folders)
+            {
+                list = CA.ChangeContent(null, list, d => d = SH.RemoveAfterLast(AllChars.dot, d));
             }
 
         }

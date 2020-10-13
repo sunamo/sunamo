@@ -16,7 +16,7 @@ public class CmdBootStrap
     /// <param name="runInDebug"></param>
     /// <param name="AddGroupOfActions"></param>
     /// <param name="allActions"></param>
-    public static void Run(string appName, IClipboardHelper clipboardHelperWin, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions)
+    public static void Run(string appName, IClipboardHelper clipboardHelperWin, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions,bool askUserIfRelease)
     {
         ThisApp.Name = appName;
         AppData.ci.CreateAppFoldersIfDontExists();
@@ -40,7 +40,7 @@ public class CmdBootStrap
         string arg = string.Empty;
 
 #if !DEBUG
-            askUser = true;
+            askUser = askUserIfRelease;
 #elif DEBUG
         runInDebug();
 #endif

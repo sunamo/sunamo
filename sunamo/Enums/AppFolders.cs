@@ -1,15 +1,20 @@
 ﻿public enum AppFolders
 {
-    Input,
+    #region Not backuped
+    Logs,
     Output,
+    Cache,
+    Temp,
+    #endregion
+
+    #region Backuped
+    Input,
     Settings,
     Data,
-    Logs,
     Other,
     Controls,
-    Cache,
     Local,
     Roaming,
-    Temp,
-    Crypted
+    Crypted 
+    #endregion
 }
