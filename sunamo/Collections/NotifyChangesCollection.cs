@@ -56,10 +56,10 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
 
     public void Add(T item)
     {
-        if (item.ToString().Contains("<b>"+SunamoPageHelperSunamo.i18n(XlfKeys.AllYourPhotosEvenPrivate)+":</b>"))
-        {
+        //if (item.ToString().Contains("<b>"+SunamoPageHelperSunamo.i18n(XlfKeys.AllYourPhotosEvenPrivate)+":</b>"))
+        //{
 
-        }
+        //}
 
         item.PropertyChanged += Item_PropertyChanged;
         //

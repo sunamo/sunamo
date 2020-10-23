@@ -123,8 +123,6 @@ public class FromToT<T> : IParser where T : struct
 
     public override string ToString()
     {
-
-
         if (empty)
         {
             return string.Empty;

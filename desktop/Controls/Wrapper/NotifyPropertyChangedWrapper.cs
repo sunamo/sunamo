@@ -141,13 +141,6 @@ public class NotifyPropertyChangedWrapper<T> : INotifyPropertyChanged where T : 
 		}
 	}
 
-	//public static explicit operator NotifyPropertyChangedWrapper<CheckBox>(NotifyPropertyChangedWrapper<T> v) 
-	//{
-	//	CheckBox chb = (CheckBox) v.o;
-
-	//	return new NotifyPropertyChangedWrapper<CheckBox>()
-	//}
-
 	void OnPropertyChanged(string propName)
 	{
 		PropertyChanged(this, new PropertyChangedEventArgs(propName));

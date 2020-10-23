@@ -32,9 +32,9 @@ namespace sunamo
         /// </summary>
         /// <param name="appendCity"></param>
         /// <returns></returns>
-        public static string CreateForGoogleMyMapsFromAddressRow(string appendCity)
+        public static string CreateForGoogleMyMapsFromAddressRow(string appendCity, bool allowEmptyCity = false)
         {
-            return CreateForGoogleMyMapsFromAddressRow(appendCity, ClipboardHelper.GetText());
+            return CreateForGoogleMyMapsFromAddressRow(appendCity, ClipboardHelper.GetText(), allowEmptyCity);
         }
 
         /// <summary>
@@ -43,12 +43,15 @@ namespace sunamo
         /// </summary>
         /// <param name="appendCity"></param>
         /// <param name="input"></param>
-        public static string CreateForGoogleMyMapsFromAddressRow(string appendCity, string input = null)
+        public static string CreateForGoogleMyMapsFromAddressRow(string appendCity, string input, bool allowEmptyCity = false)
         {
             if (string.IsNullOrEmpty(input))
             {
-                //input = CL.LoadFromClipboardOrConsole("2 rows from sheets");
-                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), input);
+                if (!allowEmptyCity)
+                {
+                    //input = CL.LoadFromClipboardOrConsole("2 rows from sheets");
+                    ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), input);
+                }
             }
 
             List<ABS> abs = new List<ABS>();

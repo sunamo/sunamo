@@ -126,7 +126,9 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         WpfApp.cd = Dispatcher;
 
         // Important to shut down app
-        WpfApp.mp = this;
+        WpfApp.mp = this;WpfApp.htt = this; // delete htt when is not derived, its was mass replaced due to shutdown app after hide to tray
+        // Must be due to shutdown after hide to tray
+        WpfApp.htt = this;
 
         WriterEventLog.CreateMainAppLog(ThisApp.Name);
 
@@ -273,7 +275,11 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
             Topmost = topMost.Value;
         }
 
-        miAlwaysOnTop.IsChecked = Topmost;
+        if(miAlwaysOnTop != null) 
+{
+//  miAlwaysOnTop is null when is calling from OnClosing / Closing
+miAlwaysOnTop.IsChecked = Topmost;
+}
     }
 
     protected override void OnSourceInitialized(EventArgs e)

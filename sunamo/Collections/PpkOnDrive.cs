@@ -31,7 +31,6 @@ public class PpkOnDrive : PpkOnDriveBase<string>
     {
         if (FS.ExistsFile(a.file))
         {
-            this.Clear();
             this.AddRange(TF.ReadAllLines(a.file));
 
             CA.RemoveStringsEmpty2(this);

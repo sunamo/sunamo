@@ -25,7 +25,7 @@ public partial class WpfApp
     public static void Shutdown(object o, EventArgs eh)
     {
         WpfApp.htt.SetCancelClosing(false);
-        Application.Current.MainWindow.Close();
+        WpfApp.window.Close();
     }
 
     public static void Restart()

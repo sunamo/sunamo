@@ -18,6 +18,11 @@ using System.Text.RegularExpressions;
     {
         private static Type type = typeof(HtmlHelperText);
 
+    public static string RemoveHtmlTags(string ClipboardS2)
+    {
+        return SH.ReplaceAll(HtmlHelper.RemoveAllTags(ClipboardS2), AllStrings.space, AllStrings.doubleSpace);
+    }
+
     public static string RemoveAspxComments(string c)
     {
         c = Regex.Replace(c, AspxConsts.startAspxComment + ".*?" + AspxConsts.endAspxComment, String.Empty, RegexOptions.Singleline);

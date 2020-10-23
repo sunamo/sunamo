@@ -20,26 +20,27 @@ Je zde ta věc že
 
         WpfApp.cd.Invoke(() =>
         {
-            
-
-
             foreach (var item in sp.Children)
             {
                 //if (item is StackPanel)
                 //{
-                    var sp2 = (TextBlock)item;
+                    var sp2 = item as TextBlock;
+                if (sp2 != null)
+                {
                     if (AwesomeFontControls.IsFamilyFontFontAwesome(sp2.FontFamily))
                     {
-                    continue;
+                        continue;
                     }
-                sb.Append(sp2.Text);
+                    sb.Append(sp2.Text);
+                }
+                
                 //}
             }
         }, System.Windows.Threading.DispatcherPriority.ContextIdle);
         return sb.ToString();
     }
 
-public static StackPanel GetContent(ControlInitData d)
+    public static StackPanel GetContent(ControlInitData d)
     {
         var img = d.imagePath;
         var text = d.text;
