@@ -17,6 +17,14 @@ public static class ListExtensions
         }
     }
 
+    public static void RemoveMany<T>(this IList<T> list, List<T> l)
+    {
+        foreach (var item in l)
+        {
+            list.Remove(item);
+        }
+    }
+
     /// <summary>
     /// Nepoužívat toto na přidávání js, vloží se v špatném pořadí, pak to dělá function is not defined!
     /// </summary>
