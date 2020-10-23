@@ -720,7 +720,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             conn.Open();
             comm.Connection = conn;
 
+#if DEBUG
             PrintDebugParameters(comm);
+#endif
 
             var result = comm.ExecuteNonQuery();
             conn.Close();

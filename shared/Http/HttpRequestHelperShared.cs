@@ -338,14 +338,11 @@ public static Stream GetResponseStream(string address, HttpMethod method)
     /// <param name="Request"></param>
     public static string GetUserIPString(HttpRequest Request)
     {
-        string vr =  Request.ServerVariables["REMOTE_ADDR"];
-        if (vr == "::1")
-        {
-            vr = "127.0.0.1";
-        }
+        string vr = Request.ServerVariables["REMOTE_ADDR"];
+        vr = BeforeTestingIpAddress(vr);
         if (string.IsNullOrWhiteSpace(vr) || SH.OccurencesOfStringIn(vr, AllStrings.dot) != 3)
         {
-            string ipList =  Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
             if (!string.IsNullOrEmpty(ipList))
             {
@@ -361,5 +358,14 @@ public static Stream GetResponseStream(string address, HttpMethod method)
         return vr;
     }
 
-    
+    public static string BeforeTestingIpAddress(string vr)
+    {
+        if (vr == "::1")
+        {
+            vr = "127.0.0.1";
+        }
+
+        return vr;
+    }
+
 }
