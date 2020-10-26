@@ -10,6 +10,7 @@ namespace sunamo.Constants
 
         public const string KeysXlf = @"e:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Enums\KeysXlf.cs";
         public const string capturedUris = @"C:\Users\Administrator\AppData\Roaming\sunamo\SunamoCzAdmin\Data\SubsSignalR\CapturedUris.txt";
+        public const string capturedUris_backup = @"C:\Users\Administrator\AppData\Roaming\sunamo\SunamoCzAdmin\Data\SubsSignalR\CapturedUris_backup.txt";
         public const string DllSunamo = @"e:\Documents\Visual Studio 2017\Projects\sunamo\dll\";
         public const string rootVideos0Kb = @"d:\Documents\Videos0kb\";
         public static string Documents = @"d:\Documents\";

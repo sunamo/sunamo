@@ -279,7 +279,7 @@ namespace desktop.Controls.Collections
         }
 
 
-        private void AddCheckbox(NotifyPropertyChangedWrapper<CheckBox> n)
+        public void AddCheckbox(NotifyPropertyChangedWrapper<CheckBox> n)
         {
             var chb = n.o;
 

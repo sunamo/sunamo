@@ -376,6 +376,16 @@ namespace sunamo.Html
         #endregion
 
         #region 3 NodeWithAttr
+        /// <summary>
+        /// Return null if not found
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="recursive"></param>
+        /// <param name="tag"></param>
+        /// <param name="attr"></param>
+        /// <param name="attrValue"></param>
+        /// <param name="contains"></param>
+        /// <returns></returns>
         public static HtmlNode NodeWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool contains = false)
         {
             return NodesWithAttrWorker(node, recursive, tag, attr, attrValue, contains).FirstOrDefault();

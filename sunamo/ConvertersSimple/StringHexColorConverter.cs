@@ -13,7 +13,7 @@ public static partial class StringHexColorConverter //: ISimpleConverter<string,
     /// Tato metoda je nějaká divná asi, kdyby nefungovala, použij místo ní třídu BrushConverter a metodu ConvertFrom
     /// </summary>
     /// <param name = "t"></param>
-    public static Color ConvertFrom(string t)
+    public static Color? ConvertFrom(string t)
     {
         //Color vr = new Color();
         t = t.TrimStart('#');
@@ -25,8 +25,8 @@ public static partial class StringHexColorConverter //: ISimpleConverter<string,
         {
             return Color.FromArgb(GetGroup(0, t), GetGroup(1, t), GetGroup(2, t));
         }
-
-        return Color.Black;
+        // earlier time Color.Black
+        return null;
     }
 
     private static byte GetGroup(int p, string t)

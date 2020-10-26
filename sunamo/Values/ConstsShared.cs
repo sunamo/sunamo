@@ -23,6 +23,8 @@ using System.Text;
     /// </summary>
     public static readonly DateTime DateTimeMinVal = new DateTime(1900, 1, 1);
     public static readonly DateTime DateTimeMaxVal = new DateTime(2079, 6, 6);
+    public static string localhostIpV6 = "fe80:";
+    public static string localhostIp = "127.0.0.1";
     public const string appscs = "appscs";
     public const string ChytreAplikace = "chytre-aplikace.cz";
     public const string Nope = XlfKeys.Nope;

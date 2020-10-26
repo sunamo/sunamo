@@ -362,7 +362,7 @@ public static Stream GetResponseStream(string address, HttpMethod method)
     {
         if (vr == "::1")
         {
-            vr = "127.0.0.1";
+            vr = Consts.localhostIp;
         }
 
         return vr;

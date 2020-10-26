@@ -3597,6 +3597,13 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
             r = r.Trim();
         }
 
+        long tfdOverallLength = 0;
+
+        foreach (var item in tfd)
+        {
+            tfdOverallLength += (item.fromTo.to - item.fromTo.from) +1;
+        }
+
         int partsCount = tfd.Count;
 
         int actualCharFormatData = 0;
@@ -3621,6 +3628,7 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
         {
             bool canBeAnyChar = CA.IsEmptyOrNull(actualFormatData.mustBe);
             bool isRightChar = false;
+
             if (canBeAnyChar)
             {
                 isRightChar = true;
@@ -3656,6 +3664,7 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
                 {
                     return false;
                 }
+
                 if (isRightChar && !canBeAnyChar)
                 {
                     actualCharFormatData++;
@@ -3683,6 +3692,17 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
                 }
             }
 
+            if (actualChar == tfdOverallLength)
+            {
+                if (actualChar == r.Length)
+                {
+                    //break;
+                    return true;
+                }
+
+                
+            }
+
             if (remains == 0)
             {
                 ++actualCharFormatData;
@@ -3703,11 +3723,6 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
                 processed = 0;
                 remains = actualFormatData.fromTo.to;
             }
-
-            //if (actualCharFormatData == tfdCountM1 && isRightChar && actualChar )
-            //{
-            //    break;
-            //}
         }
     }
 
