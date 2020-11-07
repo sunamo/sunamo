@@ -4,14 +4,14 @@ public class SunamoDictionarySort<T, U> : Dictionary<T, U>
     private DictionarySort<T, U> _ss = new DictionarySort<T, U>();
 
     /// <summary>
-    /// sezareno a->z, lomítko první, pak čísla, pak písmena - vše standardně. Porovnává se tak bez volání Reverse
+    /// Sorting a-z. Slash as first, then numbers, then letters - all in standard. 
+    /// No Reserve() calling
     /// </summary>
     /// <param name="sl"></param>
     public void SortByKeysDesc()
     {
         Dictionary<T, U> sl = DictionaryHelper.ReturnsCopy<T, U>(this);
         List<T> klice = _ss.ReturnKeys(sl);
-        //List<U> hodnoty = VratHodnoty(sl);
         klice.Sort();
         this.Clear();
         foreach (T item in klice)
@@ -25,12 +25,10 @@ public class SunamoDictionarySort<T, U> : Dictionary<T, U>
     /// </summary>
     public void SortByValuesDesc()
     {
-        // Vytvořím kopii sl
         Dictionary<T, U> sl = DictionaryHelper.ReturnsCopy<T, U>(this);
         List<T> klice = _ss.ReturnKeys(sl);
         List<U> hodnoty = _ss.ReturnValues(sl);
         hodnoty.Sort();
-        // Vyčistím this, abych do něj mohl zapisovat
         this.Clear();
 
         List<T> pridane = new List<T>();
@@ -48,10 +46,8 @@ public class SunamoDictionarySort<T, U> : Dictionary<T, U>
         return this;
     }
 
-
-
     /// <summary>
-    /// sezareno z->a, pak čísla od největších k nejmenším, lomítka až poté. Volá se reverse
+    /// z-a, then numbers 9-0, then slash. Call Reverse()
     /// </summary>
     /// <param name="sl"></param>
     public void SortByKeyAsc()
@@ -70,17 +66,15 @@ public class SunamoDictionarySort<T, U> : Dictionary<T, U>
     }
 
     /// <summary>
-    /// sezareno z->a, pak čísla od největších k nejmenším, lomítka až poté. Volá se reverse
+    /// z-a, then numbers 9-0, then slash. Call Reverse()
     /// </summary>
     public void SortByValuesAsc()
     {
-        // Vytvořím kopii sl
         Dictionary<T, U> sl = DictionaryHelper.ReturnsCopy<T, U>(this);
         List<T> klice = _ss.ReturnKeys(sl);
         List<U> hodnoty = _ss.ReturnValues(sl);
         hodnoty.Sort();
         hodnoty.Reverse();
-        // Vyčistím this, abych do něj mohl zapisovat
         this.Clear();
 
         foreach (U item in hodnoty)
@@ -88,7 +82,6 @@ public class SunamoDictionarySort<T, U> : Dictionary<T, U>
             T t = _ss.KeyFromValue(this.Count, sl, item);
             // Přidám do this místo do vr
             this.Add(t, item);
-            //vr.Add(t, item);
         }
     }
 

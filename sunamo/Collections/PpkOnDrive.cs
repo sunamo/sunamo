@@ -24,9 +24,6 @@ public class PpkOnDrive : PpkOnDriveBase<string>
         }
     }
 
-    /// <summary>
-    /// Nacte soubory.
-    /// </summary>
     public override void Load()
     {
         if (FS.ExistsFile(a.file))

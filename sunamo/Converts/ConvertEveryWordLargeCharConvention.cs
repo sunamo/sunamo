@@ -15,8 +15,6 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
     }
 
     /// <summary>
-    /// Převede na pascalskou konvenci, to znamená že tam budou pouze velké a malé písmena a 
-    /// písmena za odebranými znaky budou velké.
     /// hello world => Hello World
     /// Hello world => Hello World
     /// helloWorld => Hello World

@@ -11,13 +11,11 @@ namespace shared.Crypting
     /// use the .Text property to set/get a string representation 
     /// use the .Hex property to set/get a string-based Hexadecimal representation 
     /// use the .Base64 to set/get a string-based Base64 representation 
-    /// Trida ktera uchovava bajty a prevede je mezi ruznymi formaty.
+    /// 
+    /// Is use in classes Assymmetric,Symmetric,Hash
     /// </summary>
     public class DataCrypt
     {
-        /// <summary>
-        /// Obsahuje bajty.
-        /// </summary>
         private byte[] _b;
         private int _MaxBytes = 0;
         private int _MinBytes = 0;
@@ -26,34 +24,23 @@ namespace shared.Crypting
 
         /// <summary>
         /// Determines the default text encoding across ALL DataCrypt instances
-        /// Vychozi ekodovani
         /// </summary>
         public static System.Text.Encoding DefaultEncoding = System.Text.Encoding.GetEncoding(sess.i18n(XlfKeys.Windows1252));
         /// <summary>
-        /// Determines the default text encoding for this DataCrypt instance
-        /// Kodovani pro ziskavani stringu a bajtu
+        /// Determines the default text encoding for this DataCrypt instance (get & set)
         /// </summary>
         public System.Text.Encoding Encoding = DefaultEncoding;
 
-        /// <summary>
-        /// IK
-        /// Creates new, empty encryption data
-        /// </summary>
         public DataCrypt()
         {
         }
 
-        /// <summary>
-        /// EK, OOP
-        /// Creates new encryption data with the specified byte array
-        /// </summary>
         public DataCrypt(byte[] b)
         {
             _b = b;
         }
 
         /// <summary>
-        /// EK, OOP.
         /// Creates new encryption data with the specified string; 
         /// will be converted to byte array using default encoding
         /// </summary>
@@ -65,7 +52,7 @@ namespace shared.Crypting
         /// <summary>
         /// Creates new encryption data using the specified string and the 
         /// specified encoding to convert the string to a byte array.
-        /// Pokud je A1 v jinem kodovani nez cp1250, pouzij tento konstruktor
+        /// If A1 is in other encoding than cp1250, use these ctor.
         /// </summary>
         public DataCrypt(string s, System.Text.Encoding encoding)
         {
@@ -75,7 +62,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// returns true if no data is present
-        /// G zda je _b N nebo L0
+        /// get whether is _b N nebo L0
         /// </summary>
         public bool IsEmpty
         {

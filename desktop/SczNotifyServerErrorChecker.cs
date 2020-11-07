@@ -30,7 +30,7 @@ public class SczNotifyServerErrorChecker
             if (p.Count == 0)
             {
                 //ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), "SczNotifyServerError is not running, starting it");
-                Process.Start(@"D:\pa\_sunamo\SczNotifyServerError\SczNotifyServerError.exe");
+                PH.Start(@"D:\pa\_sunamo\SczNotifyServerError\SczNotifyServerError.exe");
            }
         
     }

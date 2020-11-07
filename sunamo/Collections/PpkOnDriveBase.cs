@@ -4,13 +4,7 @@ using System.Text;
 using System.IO;
 using System;
 using sunamo;
-/// <summary>
-/// Checking whether string is already contained.
-/// Kolekce na retezce.
-///  V kazdem programu doporucuji pouzivat jen jedinou instanci protoze jinak jinak se mohou ukoncoval nelogicky.
-/// Tuto PPk uzivej jen na nacteni nebo uulozeni, ale nikdy ne soucasne.
-/// Musi to byt duplikovane, protoze string nededi od IParser a bez ni nemam jak pridat nove metody :-(
-/// </summary>
+
 public abstract class PpkOnDriveBase<T> : List<T>
 {
     #region DPP
@@ -112,26 +106,18 @@ public abstract class PpkOnDriveBase<T> : List<T>
     }
     #endregion
 
-    /// <summary>
-    /// Dle A1 ihned nacte
-    /// </summary>
-    /// <param name="nacist"></param>
-    private void Load(bool nacist)
+    private void Load(bool loadImmediately)
     {
-        if (nacist)
+        if (loadImmediately)
         {
             Load();
         }
     }
 
-    /// <summary>
-    /// Ulozi oubor do std. nazvu souboru aplikace.
-    /// </summary>
     public void Save()
     {
         if (a.save)
         {
-
             isSaving = true;
             if (FS.ExistsFile(a.file))
             {
@@ -139,7 +125,6 @@ public abstract class PpkOnDriveBase<T> : List<T>
             }
             string obsah;
             obsah = ReturnContent();
-            //TextovySoubor.ts.UlozSoubor(obsah, soubor);
             File.WriteAllText(a.file, obsah);
             isSaving = false;
         }

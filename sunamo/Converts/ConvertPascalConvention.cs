@@ -21,8 +21,6 @@ public class ConvertPascalConvention //: IConvertConvention
 
     /// <summary>
     /// Wont include numbers
-    /// Převede na pascalskou konvenci, to znamená že tam budou pouze velké a malé písmena a 
-    /// písmena za odebranými znaky budou velké.
     /// hello world = helloWorld
     /// Hello world = HelloWorld
     /// helloWorld = helloWorld
@@ -105,8 +103,6 @@ public class ConvertPascalConventionWithNumbers //: IConvertConvention
 
     /// <summary>
     /// Will include numbers
-    /// Převede na pascalskou konvenci, to znamená že tam budou pouze velké a malé písmena a 
-    /// písmena za odebranými znaky budou velké.
     /// hello world = helloWorld
     /// Hello world = HelloWorld
     /// helloWorld = helloWorld

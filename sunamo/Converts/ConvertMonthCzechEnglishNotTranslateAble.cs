@@ -31,7 +31,6 @@
             default:
                 break;
         }
-        //return "Byl zadán špatný název anglického názvu měsíce";
         return null;
     }
 
@@ -64,7 +63,6 @@
             case "Prosinec":
                 return "December";
         }
-        //return "Byl zadán špatný název českého názvu měsíce";
         return null;
     }
 }

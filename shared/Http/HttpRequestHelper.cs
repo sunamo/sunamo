@@ -34,6 +34,8 @@ public static partial class HttpRequestHelper
         return HttpResponseHelper.SomeError(r);
     }
 
+    static Type type = typeof(HttpRequestHelper);
+
     /// <summary>
     /// A2 can be null (if dont have duplicated extension, set null)
     /// </summary>
@@ -42,17 +44,42 @@ public static partial class HttpRequestHelper
     /// <param name="folder2"></param>
     /// <param name="co"></param>
     /// <param name="ext"></param>
-    public static void DownloadAll(List< string> hrefs, BoolString DontHaveAllowedExtension, string folder2, FileMoveCollisionOption co, string ext = null)
+    public static int DownloadAll(List< string> hrefs, BoolString DontHaveAllowedExtension, string folder2, FileMoveCollisionOption co, string ext = "")
     {
+        int reallyDownloaded = 0;
+
         foreach (var item in hrefs)
         {
             var tempPath = FS.GetTempFilePath();
 
+            var to = FS.Combine(folder2, UH.GetFileName(item) + ext);
+
+            switch (co)
+            {
+                case FileMoveCollisionOption.AddSerie:
+                case FileMoveCollisionOption.AddFileSize:
+                case FileMoveCollisionOption.Overwrite:
+                case FileMoveCollisionOption.DiscardFrom:
+                case FileMoveCollisionOption.LeaveLarger:
+                    break;
+                case FileMoveCollisionOption.DontManipulate:
+                    if (FS.ExistsFile(to))
+                    {
+                        continue;
+                    }
+                    break;
+                default:
+                    ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), co);
+                    break;
+            }
+
             Download(item, DontHaveAllowedExtension, tempPath);
-            var to = FS.Combine(folder2, Path.GetFileName(item) + ext);
+            reallyDownloaded++;
 
             FS.MoveFile(tempPath, to, co);
         }
+
+        return reallyDownloaded;
     }
 
         /// <summary>

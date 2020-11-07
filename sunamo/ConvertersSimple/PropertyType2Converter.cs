@@ -26,7 +26,6 @@ namespace sunamo
             switch (t)
             {
                 case PropertyType2.ULong:
-
                     return "System.UInt64";
                 case PropertyType2.UInt:
                     return "System.UInt32";

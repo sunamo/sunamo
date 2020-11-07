@@ -5,11 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class MyClass 
-{
-
-}
-
 public class D<T, U> : ISunamoDictionary<T, U>, IEnumerable
 {
     public Action callWhenIsZeroElements;

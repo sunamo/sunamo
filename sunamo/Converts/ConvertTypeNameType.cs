@@ -2,8 +2,9 @@
 public class ConvertTypeNameType
 {
     /// <summary>
-    /// Pokud budeš porovnávat na získaný typ, porovnávej typeof(int, string, byte) ne typeof(Int32, String, Byte)
-    /// DO A1 musíš zadávat bez "System." - metoda to sama nenahradí
+    /// Throwing exc if won't be number
+    /// If you will be compared to obtained type, do comparing like typeof(int, string, byte) not typeof(Int32, String, Byte)
+    /// Into A1 must be without "System."
     /// </summary>
     /// <param name="idt"></param>
     public static Type ToType(string idt)

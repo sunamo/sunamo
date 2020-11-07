@@ -9,7 +9,7 @@ public class ConvertOnlyLowercase
 {
     /// <summary>
     /// % - HTTP Error 400. The request URL is invalid.
-    /// *  - potentionally dangerous
+    /// * - potentionally dangerous
     /// </summary>
     const char nextUpper = '$';
 
@@ -44,7 +44,6 @@ public class ConvertOnlyLowercase
                 sb.Append(char.ToUpper(item));
                 continue;
             }
-            
 
             if (item == nextUpper)
             {

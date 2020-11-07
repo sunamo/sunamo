@@ -9,12 +9,13 @@ public static partial class StringHexColorConverter //: ISimpleConverter<string,
 {
 
     /// <summary>
-    /// Může se zadávat jak s # tak bez - používá se metoda TrimStart
-    /// Tato metoda je nějaká divná asi, kdyby nefungovala, použij místo ní třídu BrushConverter a metodu ConvertFrom
+    /// Can be entered with or without # - is used TrimStart()
     /// </summary>
     /// <param name = "t"></param>
     public static Color? ConvertFrom(string t)
     {
+        //TODO: Write unit test for it - Tato metoda je nějaká divná asi, kdyby nefungovala, použij místo ní třídu BrushConverter a metodu ConvertFrom
+
         //Color vr = new Color();
         t = t.TrimStart('#');
         if (t.Length == 8)

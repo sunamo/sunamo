@@ -10,8 +10,8 @@ public class ConvertDateTimeToFileNamePostfix
     private static char s_delimiter = AllChars.lowbar;
 
     /// <summary>
-    /// Převede z data na název souboru bez přípony
-    /// Pokud A1 bude obsahovat delimiter(teď _), nebudou nahrazeny za mezeru. Je to na konci, stačí při parsování použít metodu SH.SplitToParts
+    /// Convert from date to filename without ext
+    /// If A1 will contains delimiter (now _), it won't be replaced by space. If its on end, its succifient while parsing use SH.SplitToParts
     /// </summary>
     public static string ToConvention(string postfix, DateTime dt, bool time)
     {
@@ -20,9 +20,7 @@ public class ConvertDateTimeToFileNamePostfix
     }
 
     /// <summary>
-    /// POUžívá se pokud nechceš zjistit postfix, pokud chceš, použij normálně metodu DTHelper.FileNameToDateTimePostfix
-    /// Převede z názvu souboru na datum
-    /// Automaticky rozpozná poslední čas z A1
+    /// It's used if you don't want to get postfix, if yes, use DTHelper.FileNameToDateTimePostfix
     /// </summary>
     /// <param name="fnwoe"></param>
     public static DateTime? FromConvention(string fnwoe, bool time)

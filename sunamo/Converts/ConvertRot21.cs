@@ -3,8 +3,8 @@ using System.Text;
 public static class ConvertRot21
 {
     /// <summary>
-    /// V klíči jsou všechny znaky které se mohou vyskytovat ve přezdívce
-    /// V hodnotě jsou ty samé znaky, akorát zpřeházené
+    /// In key is all chars which can occured in nick
+    /// Ïn value is the same chars, just swaped
     /// </summary>
     private static List<ABT<char, char>> s_abc = new List<ABT<char, char>>();
 

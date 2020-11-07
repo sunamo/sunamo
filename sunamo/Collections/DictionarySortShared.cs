@@ -16,21 +16,15 @@ public T KeyFromValue(Dictionary<T, U> sl, U item2)
         return default(T);
     }
 
-   
-    /// <summary>
-    /// A1 je index od kterého prohledávat
-    /// </summary>
-    /// <param name = "p"></param>
-    /// <param name = "sl"></param>
-    /// <param name = "item"></param>
-    public T KeyFromValue(int p, Dictionary<T, U> sl, object item2)
+  
+    public T KeyFromValue(int ïndexFromWhichSearch, Dictionary<T, U> sl, object item2)
     {
         int i = -1;
         List<KeyValuePair<T, U>> l = new List<KeyValuePair<T, U>>();
         foreach (KeyValuePair<T, U> item in sl)
         {
             i++;
-            if (i < p)
+            if (i < ïndexFromWhichSearch)
             {
                 l.Add(item);
                 continue;

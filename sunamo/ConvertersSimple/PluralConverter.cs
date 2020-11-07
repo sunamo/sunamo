@@ -12,6 +12,7 @@ namespace sunamo
     /// Tato třída není statická jako ostatní convertery z důvodu že by se zbytečně využívali prostředky při startu aplikace, i když tuto třídu bych nakonec vůbec nevyužil.
     /// Snaž se prosím tuto třídu vytvářet jen jednou
     /// 
+    /// 
     /// </summary>
     public sealed class PluralConverter : ISimpleConverter
     {

@@ -2,7 +2,7 @@
 public class ConvertMonthNumberString //: IConvertNumberString
 {
     /// <summary>
-    /// A1 je plný název měsíce v AJ
+    /// A1 is full name of month in EN
     /// </summary>
     /// <param name="s"></param>
     public static int ToNumber(string s)
@@ -40,10 +40,6 @@ public class ConvertMonthNumberString //: IConvertNumberString
 
     static Type type = typeof(ConvertMonthNumberString);
 
-    /// <summary>
-    /// Vrací anglický název měsíce
-    /// </summary>
-    /// <param name="number"></param>
     public static string ToString(int number)
     {
         switch (number)
@@ -76,7 +72,6 @@ public class ConvertMonthNumberString //: IConvertNumberString
             default:
                 break;
         }
-        //return "Neplatné číslo měsíce";
         return null;
     }
 }

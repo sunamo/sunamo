@@ -6,7 +6,7 @@ using System.Text;
 
 public class CryptHelperAdvanced
 {
-    #region Metody z Encryption
+    #region Methods from Encryption
     /// <summary>
     /// Přeskupí znaky v A1 podle A2 a G
     /// A2 i G mají vždy přesně 25 znaků
@@ -15,8 +15,7 @@ public class CryptHelperAdvanced
     /// <param name="MoveBase"></param>
     private static string InverseByBase(string st, int MoveBase)
     {
-        StringBuilder SB = new StringBuilder();
-        //st = ConvertToLetterDigit(st);
+        StringBuilder sb = new StringBuilder();
         int c;
         for (int i = 0; i < st.Length; i += MoveBase)
         {
@@ -24,13 +23,13 @@ public class CryptHelperAdvanced
                 c = st.Length - i;
             else
                 c = MoveBase;
-            SB.Append(InverseString(st.Substring(i, c)));
+            sb.Append(InverseString(st.Substring(i, c)));
         }
-        return SB.ToString();
+        return sb.ToString();
     }
 
     /// <summary>
-    /// Převrátím řetězec - první písmeno bude poslední atd.
+    /// First letter will be latest and viceversa.
     /// </summary>
     /// <param name="st"></param>
     private static string InverseString(string st)
@@ -44,7 +43,7 @@ public class CryptHelperAdvanced
     }
 
     /// <summary>
-    /// Procházím znaky v A1 a pokud to je znak nebo číslice, převedu ji na short a přidám jako číslo, jinak jako původní znak.
+    /// Process letters in A1 and if its digit or letter, transform it to short and add as number, otherwise as original char.
     /// </summary>
     /// <param name="st"></param>
     private static string ConvertToLetterDigit(string st)
@@ -61,15 +60,8 @@ public class CryptHelperAdvanced
     }
 
     /// <summary>
-    /// Přesune všechny znaky ve řetězci vložením jich na nový index
-    /// Procházím všechny znaky v A1
-    /// Skrze operátory % a * určím novou pozici znaku                
-    /// Odstraním z A1 řetězec na AI
-    /// Vložím ho do A1 na nové místo
     /// moving all characters in string insert then into new index
     /// </summary>
-    /// <param name="st">string to moving characters</param>
-    /// <returns>moved characters string</returns>
     private static string Boring(string st)
     {
         int NewPlace;
@@ -91,7 +83,7 @@ public class CryptHelperAdvanced
     }
 
     /// <summary>
-    /// Podle znaku v A1 tento znak převedu na int a přičtu/odečtu z něho 5 nebo hodnoty v A2
+    /// By letter in A1 this letter convert to int and plus/minus from its 5 or values in A2
     /// </summary>
     /// <param name="ch"></param>
     /// <param name="EnCode"></param>

@@ -20,17 +20,7 @@ public static Color? ConvertFrom2(string hex)
         return null;
     }
 
-//static ColorConverter cc = new ColorConverter();
-    ///// <summary>
-    ///// Fungující metoda, která narozdíl od metody ConvertFrom používá BCL třídu ColorConverter
-    ///// Nevýhoda je ta že se výsleedek musí přetypovat na typ Color a to trvá taky nějaký čas.
-    ///// </summary>
-    ///// <param name="t"></param>
-    ///// <returns></returns>
-    //public static Color ConvertFrom2(string t)
-    //{
-    //    return (Color)cc.ConvertFromString(t);
-    //} 
+
     public static string ConvertToWoAlpha(byte r, byte g, byte b)
     {
         //return SH.Format2("#{0:X2}{1:X2}{2:X2}", r, g,b);

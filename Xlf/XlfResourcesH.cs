@@ -132,7 +132,7 @@ public partial class XlfResourcesH
 
             var fn = "sunamo_cs_CZ";
 
-            if (PlatformInteropHelperXlf.IsSellingApp())
+            if (true) //PlatformInteropHelperXlf.IsSellingApp())
             {
                 fn += "_min";
             }
@@ -153,7 +153,7 @@ public partial class XlfResourcesH
 
             fn = "sunamo_en_US";
 
-            if (PlatformInteropHelperXlf.IsSellingApp())
+            if (true) //PlatformInteropHelperXlf.IsSellingApp())
             {
                 fn += "_min";
             }

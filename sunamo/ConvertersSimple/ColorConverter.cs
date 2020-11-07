@@ -5,9 +5,6 @@ using System.Text;
 
 namespace sunamo.ConvertersSimple
 {
-    /// <summary>
-    /// Může se využít například když chceš ukládat barvu na disk
-    /// </summary>
     public static class ColorConverter //: ISimpleConverter<Color, string>
     {
         public static Color ConvertTo(string u)

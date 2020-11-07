@@ -111,7 +111,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataB
                 var p = FS.Combine(basePath, item.ToString());
                 FS.CreateDirectory(p);
             }
-
         }
         else
         {

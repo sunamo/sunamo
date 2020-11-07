@@ -33,7 +33,6 @@ static Type type = typeof(ConvertMonthShortcutFullName);
             default:
                 break;
         }
-        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce";
         return null;
     }
     public static string ToShortcut(string fullName)
@@ -67,7 +66,6 @@ static Type type = typeof(ConvertMonthShortcutFullName);
             default:
                 break;
         }
-        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce";
         return null;
     }
 }

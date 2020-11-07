@@ -10,11 +10,11 @@ namespace sunamo.Collections
     /// Add one row with all columns
     /// Similar class with two dimension array is ValuesTableGrid<T>
     /// 
-    /// Může být:
-    /// Každý sloupec řádku unikátní
-    /// Každý řádek sloupce unikátní
-    /// Všechny sloupce jako celek odlišné
-    /// Všechny řádky jako celkem odlišné
+    /// Can be:
+    /// Every column of row unique
+    /// Ëvery row of column unique
+    /// Every column as whole different
+    /// Ëvery rows as whole different
     /// </summary>
     public class UniqueTableInWhole
     {
@@ -28,11 +28,6 @@ namespace sunamo.Collections
             _rows = new string[r, c];
         }
 
-        /// <summary>
-        /// Vrátí zda je každá hodnota v sloupci A1 unikátní
-        /// Nekontroluje zda je index A1 správný, musí to dělat volající metoda
-        /// </summary>
-        /// <param name="columnIndex"></param>
         public bool IsRowsInColumnUnique(int columnIndex)
         {
             return false;
@@ -61,8 +56,8 @@ namespace sunamo.Collections
         }
 
         /// <summary>
-        /// Pokud A1, musí být všechny sloupce jako celek zvlášť unikátní
-        /// Pokud A2, musí být všechny řádky jako celek zvlášť unikátní
+        /// If A1, must be all columns in all rows unique
+        /// Ïf A2, must be all rows in all columns unique
         /// </summary>
         /// <param name="columns"></param>
         /// <param name="rows"></param>

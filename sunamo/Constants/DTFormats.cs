@@ -5,7 +5,7 @@ using System.Text;
 namespace sunamo.Constants
 {
     /// <summary>
-    /// viz https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1
+    /// see https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1
     /// </summary>
     public class DTFormats
     {

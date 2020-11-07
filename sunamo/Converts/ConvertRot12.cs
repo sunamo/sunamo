@@ -4,8 +4,8 @@ using System.Text;
 public static class ConvertRot12
 {
     /// <summary>
-    /// V klíči jsou všechny znaky které se mohou vyskytovat ve přezdívce
-    /// V hodnotě jsou ty samé znaky, akorát zpřeházené
+    /// In key is all chars which can occured in nick
+    /// Ïn value is the same chars, just swaped
     /// </summary>
     private static List<ABT<char, char>> s_abc = new List<ABT<char, char>>();
 
@@ -48,7 +48,7 @@ public static class ConvertRot12
         s_abc.Add(new ABT<char, char>('x', 'A'));
         s_abc.Add(new ABT<char, char>('y', '5'));
         s_abc.Add(new ABT<char, char>('z', 'O'));
-        #region Tyto 3 znaky zde mohou být, metody UH.UrlEncode ani HttpUtility.HtmlEncode je neenkodují
+        #region These 3 letters here could be, UH.UrlEncode and HttpUtility.HtmlEncode not encode it
         s_abc.Add(new ABT<char, char>(AllChars.lowbar, 'b'));
         s_abc.Add(new ABT<char, char>(AllChars.dot, 'm'));
         s_abc.Add(new ABT<char, char>(AllChars.dash, AllChars.dash));
