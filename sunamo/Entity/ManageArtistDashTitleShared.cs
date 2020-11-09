@@ -83,7 +83,7 @@ public partial class ManageArtistDashTitle
     }
 
     /// <summary>
-    /// NSN
+    /// IUN
     /// </summary>
     /// <param name = "p"></param>
     /// <param name = "title"></param>

@@ -696,7 +696,8 @@ Template for which I will find, have to be in derivates the same:
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        return uri.Replace(chromeSearchstringReplacement, UH.UrlEncode( Uri.EscapeUriString(term)));
+        // Without inner Uri.EscapeUriString(
+        return uri.Replace(chromeSearchstringReplacement, UH.UrlEncode( term));
     }
 
     public static string TopRecepty(string what)

@@ -2026,8 +2026,15 @@ private static string GetSizeInAutoString(double size)
     }
 public static string GetSizeInAutoString(long value, ComputerSizeUnits b)
     {
-        return GetSizeInAutoString(value, b);
+        return GetSizeInAutoString((double)value, b);
     }
+
+    /// <summary>
+    /// A1 is input unit, not output
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
 public static string GetSizeInAutoString(double value, ComputerSizeUnits b)
     {
         if (b != ComputerSizeUnits.B)
