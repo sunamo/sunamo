@@ -1,0 +1,6 @@
+1 Idea Note 
+
+is showing on right side , showing after left shift => good but less intuitive 
+pin protected notes 
+nice ui 
+can images 

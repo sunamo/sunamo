@@ -3098,7 +3098,7 @@ public static string GetTextBetween(string p, string after, string before, bool 
     {
         string vr = null;
         int p2 = p.IndexOf(after);
-        int p3 = p.IndexOf(before);
+        int p3 = p.IndexOf(before, p2 + after.Length);
         bool b2 = p2 != -1;
         bool b3 = p3 != -1;
         if (b2 && b3)
@@ -3740,12 +3740,23 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
         return text + append;
     }
 
+    /// <summary>
+    /// Working - see unit tests
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
     public static string ReplaceAllDoubleSpaceToSingle(string text)
     {
         return ReplaceAllDoubleSpaceToSingle(text, false);
     }
 
-public static string ReplaceAllDoubleSpaceToSingle(string text, bool alsoHtml = false)
+    /// <summary>
+    /// Working - see unit tests
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="alsoHtml"></param>
+    /// <returns></returns>
+    public static string ReplaceAllDoubleSpaceToSingle(string text, bool alsoHtml = false)
     {
         text = SH.FromSpace160To32(ref text);
 

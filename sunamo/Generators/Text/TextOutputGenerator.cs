@@ -53,6 +53,14 @@ public class TextOutputGenerator
         sb.AppendLine(text);
         sb.AppendLine(hvezdicky);
     }
+
+    public void CountEvery<T>(IEnumerable<KeyValuePair<T, int>> eq)
+    {
+        foreach (var item in eq)
+        {
+            AppendLine(item.Key + AllStrings.cs + item.Value + "x");
+        }
+    }
     #endregion
 
     public void AppendLineFormat(string text, params object[] p)

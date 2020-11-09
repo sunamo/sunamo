@@ -472,7 +472,7 @@ using sunamo.Essential;
 
 		#region Další PlaceToCenter metody - Používají WF třídu Image kterou ihned ukládají na disk a nevrací
     /// <summary>
-    /// A2 = NSN
+    /// A2 = IUN
     /// </summary>
     /// <param name="img"></param>
     /// <param name="ext"></param>

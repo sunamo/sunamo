@@ -118,9 +118,16 @@ public partial class QSHelper
         return args;
     }
 
+    /// <summary>
+    /// Must get just qs without uri => use UH.GetQueryAsHttpRequest before
+    /// </summary>
+    /// <param name="qs"></param>
+    /// <returns></returns>
     public static Dictionary<string, string> ParseQs(string qs)
     {
         Dictionary<string, string> d = new Dictionary<string, string>();
+
+        qs = qs.TrimStart(AllChars.q);
 
         var parts = SH.Split(qs, "&", "=");
 

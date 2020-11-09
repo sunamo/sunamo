@@ -15,6 +15,11 @@ public partial class UriWebServices
 {
     static int opened = 0;
 
+    public static class ChromeSearchShortcut
+    {
+        public const string gp = "https://play.google.com/store/search?q=%s";
+    }
+
     public static class BatteryEshops
     {
         #region Specialize on batteries
@@ -696,7 +701,10 @@ Template for which I will find, have to be in derivates the same:
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        return uri.Replace(chromeSearchstringReplacement, UH.UrlEncode( Uri.EscapeUriString(term)));
+        // EscapeUriString is not needed
+        //term = Uri.EscapeUriString(term);
+        term = UH.UrlEncode(term);
+        return uri.Replace(chromeSearchstringReplacement, term);
     }
 
     public static string TopRecepty(string what)

@@ -510,7 +510,7 @@ Into A1 insert:
 
         /// <summary>
         /// Into A1 insert XlfResourcesH.PathToXlfSunamo
-        /// Completely NSN
+        /// Completely IUN
         /// Remove completely whole Trans-unit
         /// </summary>
         /// <param name="fn"></param>

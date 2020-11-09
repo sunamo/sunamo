@@ -82,7 +82,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// allowed step interval, in bytes, for this data; if 0, no limit
-        /// NSN, pouze se do ni jednou uklada
+        /// IUN, pouze se do ni jednou uklada
         /// </summary>
         public int StepBytes
         {
@@ -92,7 +92,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// allowed step interval, in bits, for this data; if 0, no limit
-        /// NSN, pouze se do ni jednou uklada
+        /// IUN, pouze se do ni jednou uklada
         /// </summary>
         public int StepBits
         {

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 public class ConvertPascalConvention //: IConvertConvention
 {
     /// <summary>
-    /// A2 NSN
+    /// A2 IUN
     /// </summary>
     /// <param name="p"></param>
     public static string FromConvention(string p, bool allLettersExceptFirstLower = true)

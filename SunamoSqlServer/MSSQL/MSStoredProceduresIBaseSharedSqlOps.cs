@@ -33,7 +33,7 @@
 //    }
 
 //    /// <summary>
-//    /// A1 NSN
+//    /// A1 IUN
 //    /// </summary>
 //    /// <param name="signed"></param>
 //    /// <param name="tabulka"></param>
