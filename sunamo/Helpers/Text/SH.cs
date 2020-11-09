@@ -850,6 +850,7 @@ public static partial class SH
         return false;
     }
     /// <summary>
+    /// Working - see unit tests
     /// Split by all whitespaces - remove also newline
     /// ReplaceAllDoubleSpaceToSingle not working correctly while copy from webpage
     /// Split and join again
@@ -1672,6 +1673,7 @@ public static partial class SH
         }
         return l.ToArray();
     }
+
     public static List<string> SplitBySpaceAndPunctuationChars(string s)
     {
         return SH.Split( s, spaceAndPuntactionChars);

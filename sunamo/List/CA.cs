@@ -1,4 +1,5 @@
-﻿using sunamo.Collections;
+﻿using HtmlAgilityPack;
+using sunamo.Collections;
 using sunamo.Data;
 using sunamo.Helpers.Number;
 using System;
@@ -189,6 +190,27 @@ public static partial class CA
             }
         }
         return duplicated.c;
+    }
+
+    public static bool MoreOrZero(List<HtmlNode> n, out bool? zeroOrMore)
+    {
+        zeroOrMore = null;
+        var c = n.Count;
+        var b = c == 0;
+        var bb = c > 1;
+        if (b || bb)
+        {
+            if (b)
+            {
+                zeroOrMore = true;
+            }
+            else
+            {
+                zeroOrMore = false;
+            }
+            return true;
+        }
+        return false;
     }
 
 

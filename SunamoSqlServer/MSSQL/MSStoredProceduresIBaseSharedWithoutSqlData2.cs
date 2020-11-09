@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +27,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
     /// <summary>
-    /// A1 NSN
+    /// A1 IUN
     /// </summary>
     /// <param name="signed"></param>
     /// <param name="tabulka"></param>

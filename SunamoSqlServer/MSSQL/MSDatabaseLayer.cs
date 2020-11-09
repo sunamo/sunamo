@@ -93,7 +93,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
     }
 
     /// <summary>
-    /// NSN
+    /// IUN
     /// </summary>
     /// <param name="p"></param>
     public static string ConvertObjectToDotNetType(object p)
@@ -237,7 +237,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
     }
 
     /// <summary>
-    /// NSN
+    /// IUN
     /// </summary>
     /// <param name="p"></param>
     public static string ConvertObjectToDotNetType(Type p)

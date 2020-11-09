@@ -112,6 +112,7 @@
     <Compile Include="JunctionPoint.cs" />
     <Compile Include="PHWin.cs" />
     <Compile Include="PInvoke\ByDll\User32.cs" />
+    <Compile Include="PInvoke\FileOperationAPIWrapper.cs" />
     <Compile Include="PInvoke\IconExtractor.cs" />
     <Compile Include="PInvoke\KeysCatcher.cs" />
     <Compile Include="PInvoke\KnownFoldersGuid.cs" />

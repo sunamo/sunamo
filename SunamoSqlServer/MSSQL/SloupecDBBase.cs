@@ -100,7 +100,7 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
     }
 
     /// <summary>
-    /// NSN, SQL Server to nepodporuje
+    /// IUN, SQL Server to nepodporuje
     /// </summary>
     public Signed IsSigned
     {
