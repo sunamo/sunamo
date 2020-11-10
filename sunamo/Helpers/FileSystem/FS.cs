@@ -588,6 +588,7 @@ public static void RenameNumberedSerieFiles(List<string> d, string p, int startF
         {
             size += FS.GetFileSize(item);
         }
+
         return GetSizeInAutoString(size);
     }
     public static string GetUpFolderWhichContainsExtension(string path, string fileExt)

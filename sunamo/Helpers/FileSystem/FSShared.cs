@@ -2000,29 +2000,31 @@ public static bool TryDeleteFile(string item, out string message)
 
 private static string GetSizeInAutoString(double size)
     {
+
+
         ComputerSizeUnits unit = ComputerSizeUnits.B;
-        if (size < Consts.kB)
+        if (size > Consts.kB)
         {
             unit = ComputerSizeUnits.KB;
             size /= Consts.kB;
         }
-        if (size < Consts.kB)
+        if (size > Consts.kB)
         {
             unit = ComputerSizeUnits.MB;
             size /= Consts.kB;
         }
-        if (size < Consts.kB)
+        if (size > Consts.kB)
         {
             unit = ComputerSizeUnits.GB;
             size /= Consts.kB;
         }
-        if (size < Consts.kB)
+        if (size > Consts.kB)
         {
             unit = ComputerSizeUnits.TB;
             size /= Consts.kB;
         }
 
-        return GetSizeInAutoString(size, unit);
+        return size + " " + unit.ToString();
     }
 public static string GetSizeInAutoString(long value, ComputerSizeUnits b)
     {
