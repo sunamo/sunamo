@@ -11,7 +11,7 @@ using System.Windows;
 /// Maybe will be desirable IWindowOpener
 /// </summary>
 public interface IUserControl //: IPanel
-    {
+{
     string Title { get; }
     void Init();
 
