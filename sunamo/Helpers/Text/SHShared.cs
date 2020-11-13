@@ -1199,7 +1199,12 @@ public static partial class SH
     /// <param name="forWhat"></param>
     public static string Replace(string t, string what, string forWhat)
     {
-        return t.Replace( what, forWhat);
+        if (t.Contains(AllStrings.verbar))
+        {
+
+        }
+        var r = t.Replace( what, forWhat);
+        return r;
     }
 
     public static string KeepAfterLast(string searchQuery, string after)
@@ -3077,7 +3082,7 @@ public static partial class SH
         return p;
     }
 
-/// <summary>
+    /// <summary>
     /// return whether A1 ends with anything with A2
     /// </summary>
     /// <param name="source"></param>
@@ -3094,24 +3099,31 @@ public static partial class SH
         return false;
     }
 
-public static string GetTextBetween(string p, string after, string before, bool throwExceptionIfNotContains = true)
+    public static string GetTextBetween(string p, string after, string before, bool throwExceptionIfNotContains = true)
+    {
+        int dxOfFounded = int.MinValue;
+        var t = GetTextBetween(p, after, before, out dxOfFounded, 0, throwExceptionIfNotContains);
+        return t;
+    }
+
+    public static string GetTextBetween(string p, string after, string before, out int dxOfFounded, int startSearchingAt, bool throwExceptionIfNotContains = true)
     {
         string vr = null;
-        int p2 = p.IndexOf(after);
-        int p3 = p.IndexOf(before, p2 + after.Length);
-        bool b2 = p2 != -1;
+        dxOfFounded = p.IndexOf(after, startSearchingAt);
+        int p3 = p.IndexOf(before, dxOfFounded + after.Length);
+        bool b2 = dxOfFounded != -1;
         bool b3 = p3 != -1;
         if (b2 && b3)
         {
-            p2 += after.Length;
+            dxOfFounded += after.Length;
             p3 -= 1;
             // When I return between ( ), there must be +1 
-            var length = p3 - p2 + 1;
+            var length = p3 - dxOfFounded + 1;
             if (length < 1)
             {
                 return p;
             }
-            vr = p.Substring(p2, length).Trim();
+            vr = p.Substring(dxOfFounded, length).Trim();
         }
         else
         {

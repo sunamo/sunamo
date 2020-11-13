@@ -116,6 +116,8 @@ public static partial class SF
         return PrepareToSerializationWorker(o, false, AllStrings.verbar);
     }
 
+    static Type type = typeof(SF);
+
     /// <summary>
     /// 
     /// DateTime is format with DTHelperEn.ToString
@@ -126,10 +128,14 @@ public static partial class SF
     private static string PrepareToSerializationWorker(IEnumerable<string> o, bool removeLast, string separator)
     {
         var list = o.ToList();
+        if (separator == replaceForSeparatorString)
+        {
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "replaceForSeparatorString is the same as separator");
+        }
         CA.Replace(list, separator, replaceForSeparatorString);
         CA.Replace(list, Environment.NewLine, AllStrings.space);
         CA.Trim(list);
-        string vr = SH.GetString(o, separator.ToString());
+        string vr = SH.GetString(list, separator.ToString());
 
         if (removeLast)
         {

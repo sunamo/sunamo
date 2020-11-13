@@ -33,4 +33,5 @@ public class HtmlTags
     public static string h4 = "h4";
     public static string h2 = "h2";
     public static string article = "article";
+    public static string svg = "svg";
 }

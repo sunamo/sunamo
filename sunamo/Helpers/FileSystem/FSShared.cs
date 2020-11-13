@@ -1130,7 +1130,10 @@ public partial class FS
             }
             else if (co == FileMoveCollisionOption.DontManipulate)
             {
-                return false;
+                if (FS.ExistsFile(fileTo))
+                {
+                    return false;
+                }
             }
         //}
 
