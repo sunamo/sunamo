@@ -153,6 +153,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RA.cs" />
     <Compile Include="StatusHelper.cs" />
+    <Compile Include="StreamUriWinRTResolver.cs" />
     <Compile Include="sunamo\PicturesShared.cs" />
     <Compile Include="Threading\Downloading\IInputDownload.cs" />
     <Compile Include="Threading\Downloading\InputDownload.cs" />

@@ -164,6 +164,7 @@
     <Compile Include="FormatInPlainText.cs" />
     <Compile Include="List\KeyValuePairIEnumerable.cs" />
     <Compile Include="List\KeyValuePairIEnumerableShared.cs" />
+    <Compile Include="UriToStreamResolverSunamo.cs" />
     <Compile Include="Values\CultureInfos.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
