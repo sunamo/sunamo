@@ -40,6 +40,14 @@ public partial class TF
         return string.Empty;
     }
 
+    public static List<string> ReadConfigLines(string syncLocations)
+    {
+        var l = TF.ReadAllLines(syncLocations);
+        CA.Trim(l);
+        CA.RemoveStartingWith(AllStrings.num, l);
+        return l;
+    }
+
     public static Encoding GetEncoding(string filename)
     {
         var file = new FileStream(filename, FileMode.Open, FileAccess.Read);

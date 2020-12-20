@@ -40,6 +40,27 @@ public partial class UriWebServices
 
     }
 
+    public static class FurnitureInOvaWithBestRating
+    {
+        //public const string wwwNabytekmodenCz = "https://www.nabytekmoden.cz/";
+        //public const string wwwJitonaCz = "http://www.jitona.cz/";
+        public const string wwwIntenaCz = "https://www.intena.cz/vyhledavani?search_query=%s&submit_search=&orderby=price&orderway=asc";
+
+        //public const string wwwJechCz = "https://www.jech.cz/hledat?query=%s";
+        public const string wwwIkeaCom = "https://www.ikea.com/cz/cs/search/products/?q=%s";
+    }
+    public static class FurnitureInOva
+        {
+            public const string wwwOrfaNabytekCz = "https://www.orfa-nabytek.cz/produkty/hledani?sor=pra&pfr=&pto=&send=Zobrazit&m=&q=%s&do=formProductsFilter-submit";
+        public const string wwwOkayCz = "https://www.okay.cz/hledani/?query=%s";
+        
+        public const string wwwScontoCz = "https://www.sconto.cz/hledani?q=%s";
+        public const string jyskCz = "https://jysk.cz/search?query=%s&search_category=typed_query&op=Hledat#meta=solr&start=0&sort=fts_field_minsingleprice%2Basc";
+        
+        public const string wwwMoebelixCz = "https://www.moebelix.cz/s/?s=%s";
+        //public const string wwwIdeaNabytekCz = "https://www.idea-nabytek.cz/ulozne-prostory/%se/?ordertype=asc&Ordering=ProductPriceWithVat";
+    }
+
     public static class RepairMobile
     {
         public static void SearchInAll(string what)
@@ -323,15 +344,17 @@ Template for which I will find, have to be in derivates the same:
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "https://moravskoslezsky-kraj.hyperinzerce.cz/%s/";
-        public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
-        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s" ;
+        public const string bazarCz = "https://www.bazar.cz/ostrava/hledat/%s/?a=25&p=70800&pid=6934";
+        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s/0-vsechny-kategorie/moravskoslezsky";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
         //public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%s" ;
         public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
-
         public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%" ;
 
-        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, aukroCz };
+        public static readonly List<string> All = new List<string> {bazosCz, hyperinzerceCz,
+ bazarCz, sBazarCz, avizoCz, aukroCz };
+
+        //Letadlová postel
 
         public static void SearchInAll(string what)
         {
@@ -400,13 +423,13 @@ Template for which I will find, have to be in derivates the same:
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s/";
-        public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&pid=6934";
-        public const string sBazarCz = "https://www.sbazar.cz/hledej/%" ;
+        public const string bazarCz = "https://www.bazar.cz/hledat/%s/";
+        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s" ;
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
-        public const string letGoCz = "https://www.letgo.cz/items/q-%" ;
-        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%" ;
+        //public const string letGoCz = "https://www.letgo.cz/items/q-%s";
+        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s" ;
 
-        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
+        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz,  aukroCz };
 
         public static void SearchInAll(string what)
         {
@@ -450,10 +473,10 @@ Template for which I will find, have to be in derivates the same:
             return FromChromeReplacement(avizoCz, what);
         }
 
-        public static string LetGoCz(string what)
-        {
-            return FromChromeReplacement(letGoCz, what);
-        }
+        //public static string LetGoCz(string what)
+        //{
+        //    return FromChromeReplacement(letGoCz, what);
+        //}
     }
 
     public static class SolarShops
@@ -701,9 +724,9 @@ Template for which I will find, have to be in derivates the same:
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        // EscapeUriString is not needed
-        //term = Uri.EscapeUriString(term);
-        term = UH.UrlEncode(term);
+        // UrlEncode is not needed because not encode space to %20
+        term = Uri.EscapeUriString(term);
+        //term = UH.UrlEncode(term);
         return uri.Replace(chromeSearchstringReplacement, term);
     }
 

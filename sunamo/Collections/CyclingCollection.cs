@@ -59,11 +59,6 @@ public class CyclingCollection<T> //: IStatusBroadcaster
     {
     }
 
-    /// <summary>
-    /// Prida A1 do this.t.
-    /// VU Zmena
-    /// </summary>
-    /// <param name="t"></param>
     public void Add(T t)
     {
         this.c.Add(t);
@@ -166,8 +161,7 @@ public class CyclingCollection<T> //: IStatusBroadcaster
     }
 
     /// <summary>
-    /// G O na akt. indexu. Pracuje s abs. hodnotou - pokud se nepodazi ziskat, zkusi prvek pred a vzad.
-    /// 
+    /// If can't be obtained, try to get element previous or next.
     /// </summary>
     public T GetIretation
     {
@@ -212,7 +206,7 @@ public class CyclingCollection<T> //: IStatusBroadcaster
         }
     }
 
-    #region Jednoduche posouvani o 1
+    #region Simply moving about 1
     public T Before()
     {
         back = true;
@@ -269,7 +263,7 @@ public class CyclingCollection<T> //: IStatusBroadcaster
     }
     #endregion
 
-    #region Posouvani o lib. mnozstvi
+    #region Moving about X elements
     public T Before(int pocet)
     {
         if (pocet > c.Count)

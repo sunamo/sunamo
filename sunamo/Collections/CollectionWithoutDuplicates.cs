@@ -94,7 +94,7 @@ public class CollectionWithoutDuplicates<T>
     }
 
     /// <summary>
-    /// If I want without chechink, use c.AddRange
+    /// If I want without checkink, use c.AddRange
     /// </summary>
     /// <param name="enumerable"></param>
     /// <param name="withoutChecking"></param>

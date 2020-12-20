@@ -16,6 +16,7 @@ public class GetFilesArgs
     /// </summary>
     public Action<List<string>> excludeWithMethod = null;
     public bool byDateOfLastModifiedAsc = false;
+    public Func<string, DateTime?> LastModifiedFromFn;
     /// <summary>
     /// 1-7-2020 changed to false, stil forget to mention and method is bad 
     /// </summary>

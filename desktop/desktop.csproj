@@ -172,6 +172,7 @@
     <Compile Include="Args\WindowWithUserControlArgs.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControlsShared.cs" />
+    <Compile Include="Collections\NotifyChangesCollection.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowHelper.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowInstance.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowSettings.cs" />

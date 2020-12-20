@@ -1750,6 +1750,18 @@ public static partial class SH
         return vr;
     }
 
+    internal static bool StartingWith(string val, string start, bool caseSensitive)
+    {
+        if (caseSensitive)
+        {
+            return val.StartsWith(start);
+        }
+        else
+        {
+            return val.ToLower().StartsWith(start.ToLower());
+        }
+    }
+
     /// <summary>
     /// Really return list, for string join value
     /// </summary>
@@ -3131,9 +3143,13 @@ public static partial class SH
             {
                 ThrowExceptions.NotContains(null, type, "GetTextBetween", p, after, before);
             }
+            else
+            {
+                vr = p;
+            }
         }
 
-        return vr;
+        return vr.Trim();
     }
 
 public static bool EndsWith(string input, string endsWith)
@@ -3602,7 +3618,7 @@ public static string PrefixIfNotStartedWith( string item, string http)
 
 
 
-public static bool HasTextRightFormat(string r, TextFormatData tfd)
+    public static bool HasTextRightFormat(string r, TextFormatData tfd)
     {
         if (tfd.trimBefore)
         {
@@ -3667,6 +3683,7 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
                 {
                     return false;
                 }
+
                 isRightChar = CA.IsEqualToAnyElement<char>(r[actualChar], followingFormatData.mustBe);
                 if (!isRightChar)
                 {

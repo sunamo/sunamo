@@ -867,8 +867,10 @@ public static partial class SH
         var p = SH.SplitByWhiteSpaces(text, true);
         return SH.Join(p, " ");
     }
+
     /// <summary>
     /// Pokud je A1 true, bere se z A2,3 menší počet prvků
+    /// Simply call HasTextRightFormat for every in A2
     /// </summary>
     /// <param name="canBeDifferentCount"></param>
     /// <param name="typeDynamics"></param>
@@ -892,6 +894,7 @@ public static partial class SH
         }
         return true;
     }
+
     public static bool HasCharRightFormat(char ch, CharFormatData cfd)
     {
         if (cfd.upper.HasValue)

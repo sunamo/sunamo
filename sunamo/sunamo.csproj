@@ -59,7 +59,8 @@
     <Reference Include="fmdev.XliffParser">
       <HintPath>..\dll\net45\fmdev.XliffParser.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
+    <Reference Include="HtmlAgilityPack, Version=1.11.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -155,6 +156,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Args\RemoveStartingWithArgs.cs" />
     <Compile Include="Constants\HtmlEndingTags.cs" />
     <Compile Include="Constants\HtmlStartingTags.cs" />
     <Compile Include="ConvertersSimple\MultilineAsOneLine.cs" />
@@ -164,6 +166,7 @@
     <Compile Include="FormatInPlainText.cs" />
     <Compile Include="List\KeyValuePairIEnumerable.cs" />
     <Compile Include="List\KeyValuePairIEnumerableShared.cs" />
+    <Compile Include="SheetsTable.cs" />
     <Compile Include="UriToStreamResolverSunamo.cs" />
     <Compile Include="Values\CultureInfos.cs" />
     <Compile Include="_ns.cs" />
@@ -212,7 +215,6 @@
     <Compile Include="Collections\L.cs" />
     <Compile Include="Collections\L2.cs" />
     <Compile Include="Collections\ListWithElements.cs" />
-    <Compile Include="Collections\NotifyChangesCollection.cs" />
     <Compile Include="Collections\PpkOnDrive.cs" />
     <Compile Include="Collections\PpkOnDriveBase.cs" />
     <Compile Include="Collections\PpkOnDriveT.cs" />

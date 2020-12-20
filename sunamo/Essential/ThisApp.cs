@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace sunamo.Essential
 {
     public class ThisApp
     {
-        public static Dispatcher cd = null;
-        public static DispatcherPriority cdp = DispatcherPriority.Normal;
+        // Everywhere is used just ThisApp.cd. 
+        //public static Dispatcher cd = null;
+        //public static DispatcherPriority cdp = DispatcherPriority.Normal;
 
         public static TypedLoggerBase NopeOrDebugTyped()
         {

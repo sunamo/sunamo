@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public class ConstsManager
+public class ConstsManager
     {
     /// <summary>
     /// XlfKeys.cs

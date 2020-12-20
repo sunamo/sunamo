@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+/// <summary>
+/// Alternatives: FormatOfString - allow as many as is chars in every match 
+/// 
+/// can check whether on position is expected char (letter, digit, etc.) but then not allow variable lenght of parsed
+/// </summary>
 public class TextFormatData : List<CharFormatData>
 {
     /// <summary>
@@ -17,8 +21,7 @@ public class TextFormatData : List<CharFormatData>
     public static class Templates
     {
     }
-
-    /// <summary>
+        /// <summary>
     /// Zadej do A2 -1 pokud text může mít jakoukoliv délku
     /// </summary>
     /// <param name="trimBefore"></param>

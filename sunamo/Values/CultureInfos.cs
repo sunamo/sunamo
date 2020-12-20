@@ -9,7 +9,7 @@ public class CultureInfos
 {
     public static CultureInfo cz = null;
 
-
+    public static IFormatProvider neutral { get; set; }
 
     public static void Init()
     {

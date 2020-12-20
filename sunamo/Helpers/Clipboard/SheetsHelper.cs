@@ -36,6 +36,39 @@ public class SheetsHelper
         return sb.ToString();
     }
 
+    public static List<string> ColumnsIds(int count)
+    {
+        List<string> result = new List<string>();
+
+        string prefixWith = "";
+
+        while (count != 0)
+        {
+            for (char i = 'A'; i <= 'Z'; i++)
+            {
+                count--;
+                result.Add(prefixWith + i);
+                if (count == 0)
+                {
+                    break;
+                }
+            }
+
+            if (prefixWith == "")
+            {
+                prefixWith = "A";
+            }
+            else
+            {
+                char ch = (char)prefixWith[0];
+                ch++;
+                prefixWith = ch.ToString();
+            }
+        }
+
+        return result;
+    }
+
     public static string CalculateMedianAverage(string input, bool mustBeAllNumbers = true)
     {
         var defDouble = -1;
