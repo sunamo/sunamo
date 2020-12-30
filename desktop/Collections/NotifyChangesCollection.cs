@@ -65,7 +65,7 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
         item.PropertyChanged += Item_PropertyChanged;
         //
         //WpfApp.
-        ThisApp.cd.Invoke((Action)delegate // <--- HERE
+        WpfApp.cd.Invoke((Action)delegate // <--- HERE
         {
             //_matchObsCollection.Add(match);
             l.Add(item);

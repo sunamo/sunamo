@@ -239,16 +239,8 @@ public partial class WpfApp
     static TextBlock tbLastOtherMessageSaved = null;
     static StackPanel lbLogsOthers = null;
     static StackPanel lbLogsErrors = null;
-    public static Dispatcher cd
-    {
-        get => ThisApp.cd;
-        set => ThisApp.cd = value;
-    }
-    public static DispatcherPriority cdp
-    {
-        get => ThisApp.cdp;
-        set => ThisApp.cdp = value;
-    }
+    public static Dispatcher cd = null;
+    public static DispatcherPriority cdp = DispatcherPriority.Normal;
     public static bool rememberStatuses;
     public static void SaveReferenceToLogsStackPanel(StackPanel _lbLogsOthers, StackPanel _lbLogsErrors)
     {
