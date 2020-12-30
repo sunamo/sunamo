@@ -46,6 +46,16 @@ static Type type = typeof(CSharpHelper);
         return null;
     }
 
+    public static string WrapWithRegion(string s, string v)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("#region ");
+        sb.AppendLine(v);
+        sb.AppendLine(s);
+        sb.AppendLine("#endregion");
+        return sb.ToString();
+    }
+
     /// <summary>
     /// call CsKeywords.Init before use
     /// </summary>

@@ -13,13 +13,18 @@ public class FromToT<T> : IParser where T : struct
 
     public FromToT()
     {
+        var t = typeof(T);
+        if (t == Types.tInt)
+        {
+            ftUse = FromToUse.None;
+        }
     }
 
     /// <summary>
     /// Use Empty contstant outside of class
     /// </summary>
     /// <param name="empty"></param>
-    private FromToT(bool empty)
+    private FromToT(bool empty) : this()
     {
         this.empty = empty;
     }
@@ -31,7 +36,7 @@ public class FromToT<T> : IParser where T : struct
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    public FromToT(T from, T to, FromToUse ftUse = FromToUse.DateTime)
+    public FromToT(T from, T to, FromToUse ftUse = FromToUse.DateTime) : this()
     {
         this.from = from;
         this.to = to;

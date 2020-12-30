@@ -156,7 +156,8 @@ public class SheetsHelper
         }
         else
         {
-            ThisApp.SetStatus(TypeOfMessage.Warning, "Bad data in clipboard");
+            //ThisApp.SetStatus(TypeOfMessage.Warning, "Bad data in clipboard");
+            vr.Add(input);
         }
         //var vr = SH.Split(input, AllStrings.tab);
         return vr;

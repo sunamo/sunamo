@@ -48,7 +48,6 @@ public class CmdBootStrap
         InitApp.Logger = ConsoleLogger.Instance;
         InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
         InitApp.TypedLogger = TypedConsoleLogger.Instance;
-
         //var typeResources = typeof(Resources.ResourcesDuo);
         //ResourcesHelper rm = ResourcesHelper.Create(typeResources.FullName, typeResources.Assembly);
 
