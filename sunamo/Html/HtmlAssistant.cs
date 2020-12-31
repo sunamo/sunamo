@@ -40,13 +40,7 @@ public partial class HtmlAssistant
         }
     }
 
-    public static string InnerTextDecodeTrim(HtmlNode n)
-    {
-        var r = n.InnerText.Trim();
-        r = HttpUtility.HtmlDecode(r);
-        r = SH.ReplaceAllDoubleSpaceToSingle(r);
-        return r;
-    }
+   
     public static List<string> SplitByTag(string input, string d)
     {
         var ih = input;

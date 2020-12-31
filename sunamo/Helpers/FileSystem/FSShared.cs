@@ -138,14 +138,26 @@ public partial class FS
 
         Dictionary<string, DateTime> dictLastModified = null;
 
-        if (getFilesArgs.dontIncludeNewest || getFilesArgs.byDateOfLastModifiedAsc)
+        bool isLastModifiedFromFn = getFilesArgs.LastModifiedFromFn != null;
+
+        if (getFilesArgs.dontIncludeNewest || (getFilesArgs.byDateOfLastModifiedAsc || isLastModifiedFromFn))
         {
             dictLastModified = new Dictionary<string, DateTime>();
             foreach (var item in list)
             {
-                DateTime dt = FS.LastModified(item);
+                DateTime? dt = null;
 
-                dictLastModified.Add(item, dt);
+                if (isLastModifiedFromFn)
+                {
+                    dt = getFilesArgs.LastModifiedFromFn(FS.GetFileNameWithoutExtension(item));
+                }
+
+                if (!dt.HasValue)
+                {
+                    dt = FS.LastModified(item);
+                }
+
+                dictLastModified.Add(item, dt.Value);
             }
             list = dictLastModified.OrderBy(t => t.Value).Select(r => r.Key).ToList();
         }
@@ -1080,8 +1092,10 @@ public partial class FS
         item = Consts.UncLongPath + item;
         MakeUncLongPath(ref fileTo);
         FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
-        //if (FS.ExistsFile(fileTo))
-        //{
+
+        // Toto tu je důležité, nevím který kokot to zakomentoval
+        if (FS.ExistsFile(fileTo))
+        {
             if (co == FileMoveCollisionOption.AddFileSize)
             {
                 var newFn = FS.InsertBetweenFileNameAndExtension(fileTo, AllStrings.space + FS.GetFileSize(item));
@@ -1135,7 +1149,7 @@ public partial class FS
                     return false;
                 }
             }
-        //}
+        }
 
         return true;
     }
@@ -1640,7 +1654,7 @@ public partial class FS
     /// <param name="co"></param>
     public static void MoveFile(string item, string fileTo, FileMoveCollisionOption co)
     {
-        if( CopyMoveFilePrepare(ref item, ref fileTo, co))
+        if(CopyMoveFilePrepare(ref item, ref fileTo, co))
         {
             try
             {
@@ -1649,7 +1663,6 @@ public partial class FS
             catch (Exception ex)
             {
                 ThisApp.SetStatus(TypeOfMessage.Error, item + " : " + ex.Message);
-                
             }
         }
     }

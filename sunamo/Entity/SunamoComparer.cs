@@ -9,6 +9,21 @@ using sunamo.Data;
 
 public partial class SunamoComparer
 {
+    public class Integer64 : ISunamoComparer<long>
+    {
+        public static Integer64 Instance = new Integer64();
+
+        public int Desc(long x, long y)
+        {
+            return x.CompareTo(y) * -1;
+        }
+
+        public int Asc(long x, long y)
+        {
+            return x.CompareTo(y);
+        }
+    }
+
     public class Integer : ISunamoComparer<int>
     {
         public static Integer Instance = new Integer();

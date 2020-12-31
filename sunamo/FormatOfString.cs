@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 /// <summary>
-/// Alternatives: TextFormatData
+/// Alternatives: TextFormatData - can check whether on position is expected char (letter, digit, etc.) but then not allow variable lenght of parsed
 /// </summary>
 public class FormatOfString
 {
@@ -34,23 +34,23 @@ public class FormatOfString
         return new List<string>();
     }
 
-    public static bool HasFormat(string v1, string v2)
+    public static bool HasFormat(string input, string format)
     {
         var vb = AllStrings.verbar;
 
-        var countOfVerbar = SH.OccurencesOfStringIn(v2, vb);
+        var countOfVerbar = SH.OccurencesOfStringIn(format, vb);
         //countOfVerbar++;
 
-        if (v2.StartsWith(vb))
-        {
-            countOfVerbar++;
-        }
-        if (v2.EndsWith(vb))
-        {
-            countOfVerbar++;
-        }
+        //if (format.StartsWith(vb))
+        //{
+        //    countOfVerbar++;
+        //}
+        //if (format.EndsWith(vb))
+        //{
+        //    countOfVerbar++;
+        //}
 
-        var p = GetParsedParts(v1, v2);
+        var p = GetParsedParts(input, format);
         return p.Count == countOfVerbar;
     }
 }

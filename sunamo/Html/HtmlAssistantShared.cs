@@ -9,6 +9,14 @@ using System.Web;
 public partial class HtmlAssistant
 {
     static Type type = typeof(HtmlAssistant);
+
+    public static string InnerTextDecodeTrim(HtmlNode n)
+    {
+        var r = n.InnerText.Trim();
+        r = HttpUtility.HtmlDecode(r);
+        r = SH.ReplaceAllDoubleSpaceToSingle(r);
+        return r;
+    }
     public static string InnerText(HtmlNode item, bool recursive, string tag)
     {
         var node = HtmlAgilityHelper.Node(item, recursive, tag);

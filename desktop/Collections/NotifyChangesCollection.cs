@@ -8,6 +8,7 @@ using System.Text;
 
 /// <summary>
 /// This is only one implement IList
+/// Must be in desktop - Use WpfApp.cd and Dispatcher is not in standard 
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChanged
@@ -64,7 +65,7 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
         item.PropertyChanged += Item_PropertyChanged;
         //
         //WpfApp.
-        ThisApp.cd.Invoke((Action)delegate // <--- HERE
+        WpfApp.cd.Invoke((Action)delegate // <--- HERE
         {
             //_matchObsCollection.Add(match);
             l.Add(item);

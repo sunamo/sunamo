@@ -167,6 +167,11 @@ public class TextOutputGenerator
         List(files1, header, true, false);
     }
 
+    public void AppendLine()
+    {
+        AppendLine(string.Empty);
+    }
+
     public void List<Header,Value>(IEnumerable<Value> files1, Header header, bool headerWrappedEmptyLines, bool insertCount) where Header : IEnumerable<char>
     {
         if (insertCount)

@@ -8,6 +8,26 @@ using System.Threading.Tasks;
 
 public class CmdBootStrap
 {
+    public static void AddToAllActions(string v, Dictionary<string, VoidVoid> actions, Dictionary<string, VoidVoid> allActions)
+    {
+        string key = null;
+
+        foreach (var item in actions)
+        {
+            key = v + AllStrings.swd + item.Key;
+
+            if (allActions.ContainsKey(key))
+            {
+                break;
+            }
+
+            if (item.Key != "None")
+            {
+                allActions.Add(key, item.Value);
+            }
+        }
+    }
+
     /// <summary>
     /// If user cannot select, A4,5 can be empty
     /// </summary>
@@ -28,7 +48,6 @@ public class CmdBootStrap
         InitApp.Logger = ConsoleLogger.Instance;
         InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
         InitApp.TypedLogger = TypedConsoleLogger.Instance;
-
         //var typeResources = typeof(Resources.ResourcesDuo);
         //ResourcesHelper rm = ResourcesHelper.Create(typeResources.FullName, typeResources.Assembly);
 

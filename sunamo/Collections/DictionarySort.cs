@@ -31,6 +31,7 @@ public partial class DictionarySort<T, U>
 
     /// <summary>
     /// sezareno a->z, lomítko první, pak čísla, pak písmena - vše standardně. Porovnává se tak bez volání Reverse
+    /// Sorted a->z, in 
     /// </summary>
     /// <param name = "sl"></param>
     public Dictionary<T, U> SortByKeysDesc(Dictionary<T, U> sl)

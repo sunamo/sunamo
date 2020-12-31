@@ -190,6 +190,7 @@ public class RH
         {
             vr.Add(SH.NullToStringOrDefault( item.GetValue(null)));
         }
+        CA.Trim(vr);
         return vr;
     }
 

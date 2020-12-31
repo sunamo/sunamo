@@ -1600,34 +1600,39 @@ public static partial class CA
         return false;
     }
 
-/// <summary>
+    /// <summary>
     /// Remove elements starting with A1
     /// Direct edit
     /// </summary>
     /// <param name="start"></param>
     /// <param name="mySites"></param>
-    public static List<string> RemoveStartingWith(string start, List<string> mySites, bool _trimBeforeFinding = false)
+    public static List<string> RemoveStartingWith(string start, List<string> mySites, RemoveStartingWithArgs a = null)
     {
+        if (a == null)
+        {
+            a = new RemoveStartingWithArgs();
+        }
+
         bool negate = SH.IsNegation(ref start);
 
         for (int i = mySites.Count - 1; i >= 0; i--)
         {
             var val = mySites[i];
-            if (_trimBeforeFinding)
+            if (a._trimBeforeFinding)
             {
                 val = val.Trim();
             }
 
             if (negate)
             {
-                if (!val.StartsWith(start))
+                if (!SH.StartingWith(val, start, a.caseSensitive))
                 {
                     mySites.RemoveAt(i);
                 }
             }
             else
             {
-                if (val.StartsWith(start))
+                if (SH.StartingWith(val, start, a.caseSensitive))
                 {
                     mySites.RemoveAt(i);
                 }

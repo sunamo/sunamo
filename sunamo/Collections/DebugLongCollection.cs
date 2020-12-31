@@ -20,8 +20,6 @@ public class DebugLongCollection : DebugCollection<long>
             }
 
             var s = NH.CalculateMedianAverage(l2);
-
-            ////////DebugLogger.Instance.WriteLine(s);
         }
 #endif
     }

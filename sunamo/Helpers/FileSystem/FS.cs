@@ -16,7 +16,6 @@ using sunamo;
 using System.Linq;
 using System.Threading;
 
-
 public partial class FS
 {
    
@@ -36,24 +35,49 @@ public partial class FS
         return vr;
     }
 
-public static void RenameNumberedSerieFiles(List<string> d, string p, int startFrom, string ext)
+    public static void RenameNumberedSerieFiles(List<string> d, string p, int startFrom, string ext)
     {
         var masc = FS.MascFromExtension(ext);
         var f = FS.GetFiles(p, masc, SearchOption.TopDirectoryOnly);
-        if (f.Count > 0)
+        RenameNumberedSerieFiles(d, f, startFrom, ext);
+    }
+
+    /// <summary>
+    /// A1 is new names of files without extension. Can use LinearHelper
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="p"></param>
+    /// <param name="startFrom"></param>
+    /// <param name="ext"></param>
+public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int startFrom, string ext)
+    {
+        var p = FS.GetDirectoryName(f[0]);
+        
+        if (f.Count >= d.Count)
         {
-            var r = f.First();
+            var fCountMinusONe = f.Count - 1;
+
+            //var r = f.First();
             for (int i = startFrom; ; i++)
             {
-                var t = p + i + ext;
-                if (!f.Contains(t))
+                if (fCountMinusONe < i )
                 {
                     break;
                 }
+                var r = f[i];
+                var t = p + i + ext;
+                if (f.Contains(t))
+                {
+                    //break;
+                    continue;
+                }
                 else
                 {
-                    FS.RenameFile(t, d[i-startFrom] + ext, FileMoveCollisionOption.AddSerie); 
+                    // AddSerie is useless coz file never will be exists
+                    //FS.RenameFile(t, d[i - startFrom] + ext, FileMoveCollisionOption.AddSerie);
+                    FS.RenameFile(r, t, FileMoveCollisionOption.AddSerie);
                 }
+                
             }
         }
     }
@@ -1125,7 +1149,7 @@ public static void RenameNumberedSerieFiles(List<string> d, string p, int startF
     public static void RenameFile(string oldFn, string newFn, FileMoveCollisionOption co)
     {
         var to = FS.ChangeFilename(oldFn, newFn, false);
-        FS.MoveFile(oldFn, to, co);
+                                                      FS.MoveFile(oldFn, to, co);
     }
     /// <summary>
     /// Může výhodit výjimku, proto je nutné používat v try-catch bloku
