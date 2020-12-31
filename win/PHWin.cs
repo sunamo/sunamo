@@ -36,7 +36,7 @@ public class PHWin
         }
     }
 
-    static void AddBrowser(Browsers prohlizec)
+    public static string AddBrowser(Browsers prohlizec)
     {
         string b = string.Empty;
         switch (prohlizec)
@@ -63,13 +63,17 @@ public class PHWin
             case Browsers.ChromeCanary:
                 b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Google\Chrome SxS", "chrome.exe");
                 break;
+            case Browsers.Seznam:
+                b = WindowsOSHelper.FileIn(UserFoldersWin.Roaming, @"Seznam Browser", "Seznam.cz.exe");
+                break;
             default:
-
                 //ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod());
                 break;
         }
 
         path.Add(prohlizec, b);
+
+        return b;
     }
 
     public static void OpenInBrowser(Browsers prohlizec, string s)
