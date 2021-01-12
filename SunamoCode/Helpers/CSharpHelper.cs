@@ -306,9 +306,9 @@ public static partial class CSharpHelper
     /// GetConsts - static readonly with value
     /// </summary>
     /// <param name="list"></param>
-    /// <param name="toCamelConvention"></param>
+    /// <param name="toCamelConventionFirstCharLower"></param>
     /// <returns></returns>
-    public static string GetConsts(List<string> names, List<string> list, bool toCamelConvention)
+    public static string GetConsts(List<string> names, List<string> list, bool toCamelConventionFirstCharLower)
     {
         if (names != null)
         {
@@ -326,9 +326,13 @@ public static partial class CSharpHelper
                 name = names[i];
             }
 
-            if (toCamelConvention)
+            if (toCamelConventionFirstCharLower)
             {
                 name = ConvertCamelConvention.ToConvention(name);
+            }
+            else
+            {
+                name = ConvertPascalConvention.ToConvention(name);
             }
             csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
         }

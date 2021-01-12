@@ -12,6 +12,7 @@ public partial class UriWebServices
         public const string gp = "https://play.google.com/store/search?q=%s";
     }
 
+
     public static class BatteryEshops
     {
         #region Specialize on batteries
@@ -30,6 +31,31 @@ public partial class UriWebServices
         public static readonly string wwwHuramobilCz = "www.huramobil.cz";
         #endregion
 
+    }
+
+    public static class FurnitureInOvaWithBestRating
+    {
+        public static Type type = typeof(FurnitureInOvaWithBestRating);
+
+        //public const string wwwNabytekmodenCz = "https://www.nabytekmoden.cz/";
+        //public const string wwwJitonaCz = "http://www.jitona.cz/";
+        public const string wwwIntenaCz = "https://www.intena.cz/vyhledavani?search_query=%s&submit_search=&orderby=price&orderway=asc";
+
+        //public const string wwwJechCz = "https://www.jech.cz/hledat?query=%s";
+        public const string wwwIkeaCom = "https://www.ikea.com/cz/cs/search/products/?q=%s";
+    }
+    public static class FurnitureInOva
+    {
+        public static Type type = typeof(FurnitureInOva);
+
+        public const string wwwOrfaNabytekCz = "https://www.orfa-nabytek.cz/produkty/hledani?sor=pra&pfr=&pto=&send=Zobrazit&m=&q=%s&do=formProductsFilter-submit";
+        public const string wwwOkayCz = "https://www.okay.cz/hledani/?query=%s";
+
+        public const string wwwScontoCz = "https://www.sconto.cz/hledani?q=%s";
+        public const string jyskCz = "https://jysk.cz/search?query=%s&search_category=typed_query&op=Hledat#meta=solr&start=0&sort=fts_field_minsingleprice%2Basc";
+
+        public const string wwwMoebelixCz = "https://www.moebelix.cz/s/?s=%s";
+        //public const string wwwIdeaNabytekCz = "https://www.idea-nabytek.cz/ulozne-prostory/%se/?ordertype=asc&Ordering=ProductPriceWithVat";
     }
 
     public static class RepairMobile
@@ -67,80 +93,102 @@ public partial class UriWebServices
         public static List<string> haveImages = CA.ToList<string>("thenextwebCom", "wwwEngadgetCom");
     }
 
-    public static class Business
+    /// <summary>
+    /// For phones, etc. is better repas sites as mp.cz
+    /// </summary>
+    public static class AdsWholeCR
     {
-        public const string wwwFirmoCz = "www.firmo.cz";
-        public const string rejstrikPenizeCz = "rejstrik.penize.cz";
-        public const string wwwFirmyCz = "www.firmy.cz";
-        public const string rejstrikFiremKurzyCz = "rejstrik-firem.kurzy.cz";
-        public const string wwwPodnikatelCz = "www.podnikatel.cz";
-        public const string rejstrikyFinanceCz = "rejstriky.finance.cz";
+        /*
+Template for which I will find, have to be in derivates the same:
 
+1) bazos.cz
+2) hyperinzerce.cz
+3) bazar.cz
+4) sbazar.cz
+5) avizo.cz
+6) letgo.cz
+7) aukro.cz
+ */
 
-        public static List<string> All = CA.ToListString(wwwFirmoCz, rejstrikPenizeCz, wwwFirmyCz, rejstrikFiremKurzyCz, wwwPodnikatelCz, rejstrikyFinanceCz);
-    }
+        public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
+        public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s/";
+        public const string bazarCz = "https://www.bazar.cz/hledat/%s/";
+        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
+        public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
+        //public const string letGoCz = "https://www.letgo.cz/items/q-%s";
+        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s";
 
-    public static class MyBlogs
-    {
-        public const string jpnAdminAllPosts = @"https://jepsano.net/wp-admin/edit.php?s=%s&post_status=all&post_type=post&action=-1&m=0&cat=0&seo_filter&readability_filter&paged=1&action2=-1";
-    }
+        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, aukroCz };
 
-    public static class AutomotiveSpareParts
-    {
-        public const string wwwAutokseftCz = "https://www.autokseft.cz/index.php?main_page=shop_search&keyword=%s";
-        public const string wwwAutodocCz = "https://www.autodoc.cz/search?keyword=%";
-        public const string wwwNahradniDilyZhCz = "https://www.nahradni-dily-zh.cz/search.asp?searchinput=%";
-        public const string wwwAutomobilovedilyCz = "https://www.automobilovedily24.cz/search?keyword=%";
-        public static List<string> All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
-    }
-
-    public static class UriShareService
-    {
-        public static List<string> domains = null;
-
-        static UriShareService()
+        public static void SearchInAll(string what)
         {
-            domains = CA.ToListString("mega.co", "uploading.com", "zippyshare.com", "box.com", "rapidshare.com", "dfiles.eu", "4shared.com", "mediafire.com", "dropbox.com", "bayfiles.com", "divxstage.eu", "hulkshare.com", "megashares", "files.fm", "wetransfer.com", "filehosting.org", "yourfilelink.com");
+            UriWebServices.SearchInAll(All, what);
         }
-    }
 
-    public static class CdnProviders
-    {
-        //
-        public const string cdnjs = "https://api.cdnjs.com/libraries?search=%";
         /// <summary>
-        /// Search for everything on npm
+        /// 70800 v okoli 25km
         /// </summary>
-        public const string unpkg = "https://www.npmjs.com/search?q=%";
-        //public const string cdnjs = "";
-        //public const string cdnjs = "";
-        //public const string cdnjs = "";
-        //public const string cdnjs = "";
-        //public const string cdnjs = "";
+        /// <param name="what"></param>
+        public static string BazosCz(string what)
+        {
+            return FromChromeReplacement(bazosCz, what);
+        }
 
-        public static readonly List<string> All = CA.ToListString(cdnjs, unpkg);
+        /// <summary>
+        /// MS kraj
+        /// </summary>
+        /// <param name="what"></param>
+        public static string HyperInzerceCz(string what)
+        {
+            return FromChromeReplacement(hyperinzerceCz, what);
+        }
+
+        /// <summary>
+        /// 70800 +25km
+        /// </summary>
+        /// <param name="what"></param>
+        public static string BazarCz(string what)
+        {
+            return FromChromeReplacement(bazarCz, what);
+        }
+        public static string FromChromeReplacement(string uri, string term)
+        {
+            return UriWebServices.FromChromeReplacement(uri, term);
+        }
+        public static string SBazarCz(string what)
+        {
+            return FromChromeReplacement(sBazarCz, what);
+        }
+
+        public static string AvizoCz(string what)
+        {
+            return FromChromeReplacement(avizoCz, what);
+        }
+
+        //public static string LetGoCz(string what)
+        //{
+        //    return FromChromeReplacement(letGoCz, what);
+        //}
     }
 
-    public static class RemoteJobs
+    public static class SolarShops
     {
-        public const string WwwFlexjobsCom = "https://www.flexjobs.com/search?search=%s&location=";
-        public const string AngelCo = "https://angel.co/jobs#find/f!%7B%22remote%22%3Atrue%2C%22keywords%22%3A%5B%22%s%22%5D%7D";
-        public const string TalentHubstaffCom = "https://talent.hubstaff.com/search/jobs?search%5Bkeywords%5D=%s&page=1&search%5Btype%5D=&search%5Blast_slider%5D=&search%5Bnewer_than%5D=&search%5Bnewer_than%5D=&search%5Bpayrate_start%5D=1&search%5Bpayrate_end%5D=100%2B&search%5Bpayrate_null%5D=0&search%5Bpayrate_null%5D=1&search%5Bbudget_start%5D=1&search%5Bbudget_end%5D=100000%2B&search%5Bbudget_null%5D=0&search%5Bbudget_null%5D=1&search%5Bexperience_level%5D=-1&search%5Bcountries%5D%5B%5D=&search%5Blanguages%5D%5B%5D=&search%5Bsort_by%5D=relevance";
-        // not fulltext, always search only for exact position https://pangian.com/job-travel-remote/
-        //public const string PangianCom = "";
-        public const string RemoteCom = "https://remote.com/jobs/browse?keyword=%";
-        // https://remote.co/search-results/?cx=009859377982936732048%3Awihm_nznrgm
-        public const string RemoteCo = "https://remote.co/remote-jobs/search/?search_keywords=%";
-        public const string WeworkremotelyCom = "https://weworkremotely.com/remote-jobs/search?utf8=%E2%9C%93&term=%s";
-        public const string JobspressoCo = "https://jobspresso.co/remote-work/#%s=1";
-        //https://remoteok.io/remote-virtual-assistant-jobs
-        public const string RemoteokIo = "https://remoteok.io/";
-        //https://www.workingnomads.co/jobs
-        public const string WwwWorkingnomadsCo = "https://www.workingnomads.co";
+        private static List<string> s_shops = new List<string>(CA.ToEnumerable("mulac.cz", "solar-eshop.cz", "karavan3nec.cz", "campi-shop.cz", "ges.cz", "dstechnik.cz", "emerx.cz", "vpcentrum.eu", "dexhal.cz"));
 
-        public const string StackoverflowCom = "https://stackoverflow.com/jobs?q=%";
+        public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%";
+        public const string solarEshop = @"https://www.solar-eshop.cz/vyhledavani/?w=%s&submit=";
 
-        public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
+        public const string karavan3nec = @"https://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
+        public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%";
+        public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%";
+        public const string dstechnikCz = @"https://www.dstechnik.cz/vyhledavani/?qkk=333af8f0cfef3cbbe82db1e238b1ba2d&hledej=%s&x=0&y=0";
+        public const string emerxCz = @"https://www.emerx.cz/hledani?s=%s&submit_=HLEDAT&do=searchForm-submit";
+        // not search term in uri
+        //public const string vpCentrumCz = @"https://www.vpcentrum.eu/index.php?route=product/search&filter_name=Hledat";
+        // not search term in uri
+        //public const string dexhalCz = @"https://dexhal.cz/search?controller=search&orderby=position&orderway=desc&search_query=s&submit_search=Hledat";
+
+        public static readonly List<string> All = CA.ToListString(mulacCz, solarEshop, karavan3nec, campiShopCz, gesCz, dstechnikCz, emerxCz);
     }
 
     public static class Lyrics
@@ -286,15 +334,17 @@ Template for which I will find, have to be in derivates the same:
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "https://moravskoslezsky-kraj.hyperinzerce.cz/%s/";
-        public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
-        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
+        public const string bazarCz = "https://www.bazar.cz/ostrava/hledat/%s/?a=25&p=70800&pid=6934";
+        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s/0-vsechny-kategorie/moravskoslezsky";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
         //public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%s" ;
         public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
-
         public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%";
 
-        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, aukroCz };
+        public static readonly List<string> All = new List<string> {bazosCz, hyperinzerceCz,
+ bazarCz, sBazarCz, avizoCz, aukroCz };
+
+        //Letadlová postel
 
         public static void SearchInAll(string what)
         {
@@ -309,6 +359,11 @@ Template for which I will find, have to be in derivates the same:
         {
             return FromChromeReplacement(bazosCz, what);
         }
+        public static string FromChromeReplacement(string uri, string term)
+        {
+            return UriWebServices.FromChromeReplacement(uri, term);
+        }
+
 
         /// <summary>
         /// MS kraj
@@ -327,117 +382,85 @@ Template for which I will find, have to be in derivates the same:
         {
             return FromChromeReplacement(bazarCz, what);
         }
-
-        public static string SBazarCz(string what)
-        {
-            return FromChromeReplacement(sBazarCz, what);
-        }
-
-        public static string AvizoCz(string what)
-        {
-            return FromChromeReplacement(avizoCz, what);
-        }
-
-        //public static string LetGoCz(string what)
-        //{
-        //    return FromChromeReplacement(letGoCz, what);
-        //}
     }
 
-    /// <summary>
-    /// For phones, etc. is better repas sites as mp.cz
-    /// </summary>
-    public static class AdsWholeCR
+    public static class Business
     {
-        /*
-Template for which I will find, have to be in derivates the same:
+        public const string wwwFirmoCz = "www.firmo.cz";
+        public const string rejstrikPenizeCz = "rejstrik.penize.cz";
+        public const string wwwFirmyCz = "www.firmy.cz";
+        public const string rejstrikFiremKurzyCz = "rejstrik-firem.kurzy.cz";
+        public const string wwwPodnikatelCz = "www.podnikatel.cz";
+        public const string rejstrikyFinanceCz = "rejstriky.finance.cz";
 
-1) bazos.cz
-2) hyperinzerce.cz
-3) bazar.cz
-4) sbazar.cz
-5) avizo.cz
-6) letgo.cz
-7) aukro.cz
- */
 
-        public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
-        public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s/";
-        public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&pid=6934";
-        public const string sBazarCz = "https://www.sbazar.cz/hledej/%";
-        public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
-        public const string letGoCz = "https://www.letgo.cz/items/q-%";
-        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%";
-
-        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
-
-        public static void SearchInAll(string what)
-        {
-            UriWebServices.SearchInAll(All, what);
-        }
-
-        /// <summary>
-        /// 70800 v okoli 25km
-        /// </summary>
-        /// <param name="what"></param>
-        public static string BazosCz(string what)
-        {
-            return FromChromeReplacement(bazosCz, what);
-        }
-
-        /// <summary>
-        /// MS kraj
-        /// </summary>
-        /// <param name="what"></param>
-        public static string HyperInzerceCz(string what)
-        {
-            return FromChromeReplacement(hyperinzerceCz, what);
-        }
-
-        /// <summary>
-        /// 70800 +25km
-        /// </summary>
-        /// <param name="what"></param>
-        public static string BazarCz(string what)
-        {
-            return FromChromeReplacement(bazarCz, what);
-        }
-
-        public static string SBazarCz(string what)
-        {
-            return FromChromeReplacement(sBazarCz, what);
-        }
-
-        public static string AvizoCz(string what)
-        {
-            return FromChromeReplacement(avizoCz, what);
-        }
-
-        public static string LetGoCz(string what)
-        {
-            return FromChromeReplacement(letGoCz, what);
-        }
+        public static List<string> All = CA.ToListString(wwwFirmoCz, rejstrikPenizeCz, wwwFirmyCz, rejstrikFiremKurzyCz, wwwPodnikatelCz, rejstrikyFinanceCz);
     }
 
-    public static class SolarShops
+    public static class MyBlogs
     {
-        private static List<string> s_shops = new List<string>(CA.ToEnumerable("mulac.cz", "solar-eshop.cz", "karavan3nec.cz", "campi-shop.cz", "ges.cz", "dstechnik.cz", "emerx.cz", "vpcentrum.eu", "dexhal.cz"));
-
-        public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%";
-        public const string solarEshop = @"https://www.solar-eshop.cz/vyhledavani/?w=%s&submit=";
-
-        public const string karavan3nec = @"https://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
-        public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%";
-        public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%";
-        public const string dstechnikCz = @"https://www.dstechnik.cz/vyhledavani/?qkk=333af8f0cfef3cbbe82db1e238b1ba2d&hledej=%s&x=0&y=0";
-        public const string emerxCz = @"https://www.emerx.cz/hledani?s=%s&submit_=HLEDAT&do=searchForm-submit";
-        // not search term in uri
-        //public const string vpCentrumCz = @"https://www.vpcentrum.eu/index.php?route=product/search&filter_name=Hledat";
-        // not search term in uri
-        //public const string dexhalCz = @"https://dexhal.cz/search?controller=search&orderby=position&orderway=desc&search_query=s&submit_search=Hledat";
-
-        public static readonly List<string> All = CA.ToListString(mulacCz, solarEshop, karavan3nec, campiShopCz, gesCz, dstechnikCz, emerxCz);
+        public const string jpnAdminAllPosts = @"https://jepsano.net/wp-admin/edit.php?s=%s&post_status=all&post_type=post&action=-1&m=0&cat=0&seo_filter&readability_filter&paged=1&action2=-1";
     }
+
+    public static class AutomotiveSpareParts
+    {
+        public const string wwwAutokseftCz = "https://www.autokseft.cz/index.php?main_page=shop_search&keyword=%s";
+        public const string wwwAutodocCz = "https://www.autodoc.cz/search?keyword=%";
+        public const string wwwNahradniDilyZhCz = "https://www.nahradni-dily-zh.cz/search.asp?searchinput=%";
+        public const string wwwAutomobilovedilyCz = "https://www.automobilovedily24.cz/search?keyword=%";
+        public static List<string> All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
+    }
+
+    public static class UriShareService
+    {
+        public static List<string> domains = null;
+
+        static UriShareService()
+        {
+            domains = CA.ToListString("mega.co", "uploading.com", "zippyshare.com", "box.com", "rapidshare.com", "dfiles.eu", "4shared.com", "mediafire.com", "dropbox.com", "bayfiles.com", "divxstage.eu", "hulkshare.com", "megashares", "files.fm", "wetransfer.com", "filehosting.org", "yourfilelink.com");
+        }
+    }
+
+    public static class CdnProviders
+    {
+        //
+        public const string cdnjs = "https://api.cdnjs.com/libraries?search=%";
+        /// <summary>
+        /// Search for everything on npm
+        /// </summary>
+        public const string unpkg = "https://www.npmjs.com/search?q=%";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+
+        public static readonly List<string> All = CA.ToListString(cdnjs, unpkg);
+    }
+
+    public static class RemoteJobs
+    {
+        public const string WwwFlexjobsCom = "https://www.flexjobs.com/search?search=%s&location=";
+        public const string AngelCo = "https://angel.co/jobs#find/f!%7B%22remote%22%3Atrue%2C%22keywords%22%3A%5B%22%s%22%5D%7D";
+        public const string TalentHubstaffCom = "https://talent.hubstaff.com/search/jobs?search%5Bkeywords%5D=%s&page=1&search%5Btype%5D=&search%5Blast_slider%5D=&search%5Bnewer_than%5D=&search%5Bnewer_than%5D=&search%5Bpayrate_start%5D=1&search%5Bpayrate_end%5D=100%2B&search%5Bpayrate_null%5D=0&search%5Bpayrate_null%5D=1&search%5Bbudget_start%5D=1&search%5Bbudget_end%5D=100000%2B&search%5Bbudget_null%5D=0&search%5Bbudget_null%5D=1&search%5Bexperience_level%5D=-1&search%5Bcountries%5D%5B%5D=&search%5Blanguages%5D%5B%5D=&search%5Bsort_by%5D=relevance";
+        // not fulltext, always search only for exact position https://pangian.com/job-travel-remote/
+        //public const string PangianCom = "";
+        public const string RemoteCom = "https://remote.com/jobs/browse?keyword=%";
+        // https://remote.co/search-results/?cx=009859377982936732048%3Awihm_nznrgm
+        public const string RemoteCo = "https://remote.co/remote-jobs/search/?search_keywords=%";
+        public const string WeworkremotelyCom = "https://weworkremotely.com/remote-jobs/search?utf8=%E2%9C%93&term=%s";
+        public const string JobspressoCo = "https://jobspresso.co/remote-work/#%s=1";
+        //https://remoteok.io/remote-virtual-assistant-jobs
+        public const string RemoteokIo = "https://remoteok.io/";
+        //https://www.workingnomads.co/jobs
+        public const string WwwWorkingnomadsCo = "https://www.workingnomads.co";
+
+        public const string StackoverflowCom = "https://stackoverflow.com/jobs?q=%";
+
+        public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
+    }
+
+  
 
     public static class Libraries
     {

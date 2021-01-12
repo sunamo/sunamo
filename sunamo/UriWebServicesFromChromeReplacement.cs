@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,14 @@ public partial class UriWebServices
     private static string GoogleMaps(string item)
     {
         return FromChromeReplacement("https://www.google.com/maps/place/%", item);
+    }
+
+    public static void GoogleMaps(List<string> list)
+    {
+        foreach (var item in list)
+        {
+            Process.Start(GoogleMaps(item));
+        }
     }
 
     public static string KmoAll(string item)

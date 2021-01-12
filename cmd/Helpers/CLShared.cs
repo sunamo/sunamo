@@ -180,9 +180,11 @@ public static partial class CL
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
+        int zadBefore = 0;
         int zad = 0;
         while (true)
         {
+            zadBefore = zad;
             zad = (int)Console.ReadKey().KeyChar;
             if (zad == 8)
             {
@@ -235,7 +237,19 @@ public static partial class CL
             TypedConsoleLogger.Instance.Information(sess.i18n(XlfKeys.AppLoadedFromClipboard) + " : " + z);
         }
 
-        return SH. ConvertTypedWhitespaceToString( z.Trim().Trim(AllChars.st).Trim());
+        if (zadBefore != 32)
+        {
+            z = z.Trim();
+        }
+
+        z = SH. ConvertTypedWhitespaceToString( z.Trim(AllChars.st));
+
+        if (zadBefore != 32)
+        {
+            z = z.Trim();
+        }
+
+        return z;
     }
 
     private static string AskForEnter(string whatOrTextWithoutEndingDot, bool append)

@@ -1207,6 +1207,16 @@ public static partial class SH
         return r;
     }
 
+    public static string KeepAfterFirst(string searchQuery, string after)
+    {
+        var dx = searchQuery.IndexOf(after);
+        if (dx != -1)
+        {
+            return SH.TrimStart(searchQuery.Substring(dx), after);
+        }
+        return searchQuery;
+    }
+
     public static string KeepAfterLast(string searchQuery, string after)
     {
         var dx = searchQuery.LastIndexOf(after);

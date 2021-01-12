@@ -18,6 +18,23 @@ using System.Text.RegularExpressions;
 using System.Windows;
 public static partial class SH
 {
+    public static string AddIfNotContains(string input, string s, string sLower = null)
+    {
+        
+
+        if (sLower != null)
+        {
+            s = sLower;
+            input = input.ToLower();
+        }
+
+        if (!input.Contains(s))
+        {
+            return input + AllStrings.space + s;
+        }
+        return input;
+    }
+
     public static string TrimNumbersAtEnd(string nameSolution)
     {
         for (int i = nameSolution.Length - 1; i >= 0; i--)

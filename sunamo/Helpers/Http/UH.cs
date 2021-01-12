@@ -298,4 +298,17 @@ public partial class UH
         
         
     }
+
+    public static bool IsWellFormedUriString(ref string uri, UriKind absolute)
+    {
+        uri = uri.Trim();
+        uri = uri.TrimEnd(AllChars.colon);
+
+        var v = Uri.IsWellFormedUriString(uri, absolute);
+        if (v)
+        {
+            uri = UH.AppendHttpIfNotExists(uri);
+        }
+        return v;
+    }
 }
