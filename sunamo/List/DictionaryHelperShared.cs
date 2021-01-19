@@ -45,8 +45,6 @@ public partial class DictionaryHelper
         return i;
     }
 
-    
-
     public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
     {
         ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "GetDictionary", "keys", keys.Count, "values", values.Count);

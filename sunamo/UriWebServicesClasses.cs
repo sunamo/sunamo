@@ -22,7 +22,6 @@ public partial class UriWebServices
         public static readonly string wwwPowerguyCz = "www.powerguy.cz";
         #endregion
 
-
         #region Have category for it
         public static readonly string wwwCeskyMobilCz = "www.cesky-mobil.cz";
         public static readonly string wwwDatartCz = "www.datart.cz";
@@ -30,7 +29,6 @@ public partial class UriWebServices
         public static readonly string wwwMobilprislusenstviCz = "www.mobilprislusenstvi.cz";
         public static readonly string wwwHuramobilCz = "www.huramobil.cz";
         #endregion
-
     }
 
     public static class FurnitureInOvaWithBestRating
@@ -42,7 +40,7 @@ public partial class UriWebServices
         public const string wwwIntenaCz = "https://www.intena.cz/vyhledavani?search_query=%s&submit_search=&orderby=price&orderway=asc";
 
         //public const string wwwJechCz = "https://www.jech.cz/hledat?query=%s";
-        public const string wwwIkeaCom = "https://www.ikea.com/cz/cs/search/products/?q=%s";
+        public const string wwwIkeaCom = "https://www.ikea.com/cz/cs/search/products/?q=%s&sort=PRICE_LOW_TO_HIGH";
     }
     public static class FurnitureInOva
     {
@@ -54,7 +52,7 @@ public partial class UriWebServices
         public const string wwwScontoCz = "https://www.sconto.cz/hledani?q=%s";
         public const string jyskCz = "https://jysk.cz/search?query=%s&search_category=typed_query&op=Hledat#meta=solr&start=0&sort=fts_field_minsingleprice%2Basc";
 
-        public const string wwwMoebelixCz = "https://www.moebelix.cz/s/?s=%s";
+        public const string wwwMoebelixCz = "https://www.moebelix.cz/s/?sort=priceAsc&s=%s";
         //public const string wwwIdeaNabytekCz = "https://www.idea-nabytek.cz/ulozne-prostory/%se/?ordertype=asc&Ordering=ProductPriceWithVat";
     }
 

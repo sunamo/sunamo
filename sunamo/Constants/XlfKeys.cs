@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa = "EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa"; 
+	public const string HidePassword = "HidePassword"; 
 
+	public const string EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa = "EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa"; 
 	public const string Notice = "Notice"; 
 	public const string ShowFromLocation = "ShowFromLocation"; 
 	public const string FillFromPredefined = "FillFromPredefined"; 

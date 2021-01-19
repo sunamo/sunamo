@@ -292,9 +292,6 @@
     <Compile Include="Controls\Text\MultiLineTextBlock.xaml.cs">
       <DependentUpon>MultiLineTextBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Text\SunamoPasswordBox.xaml.cs">
-      <DependentUpon>SunamoPasswordBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Text\TextBoxOnlyNumbers.xaml.cs">
       <DependentUpon>TextBoxOnlyNumbers.xaml</DependentUpon>
     </Compile>
@@ -505,7 +502,6 @@
     <Compile Include="UserControls\ErrorListing.xaml.cs">
       <DependentUpon>ErrorListing.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\LoginDialog.xaml.cs" />
     <Compile Include="UserControls\LoginUc.xaml.cs">
       <DependentUpon>LoginUc.xaml</DependentUpon>
     </Compile>
@@ -692,10 +688,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Text\SunamoPasswordBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\Text\SunamoPasswordBoxDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -757,10 +749,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ErrorListing.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\LoginDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

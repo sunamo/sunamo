@@ -15,7 +15,7 @@ using System.Windows.Controls.Primitives;
 public class ResourceDictionaryStyles
 {
     #region 10 for remembering default size
-    static double def = 10;
+    public static double def = 10;
     public static void Padding10(IEnumerable<Control> p)
     {
         Padding(def, p);
@@ -35,6 +35,8 @@ public class ResourceDictionaryStyles
     {
         Margin(def, p);
     }
+
+    
 
     public static void Margin10(IEnumerable<CheckBox> p)
     {
@@ -62,6 +64,8 @@ public class ResourceDictionaryStyles
             item.Margin = new Thickness(d);
         }
     }
+
+    
 
     /// <summary>
     /// TextBlock is not deriving from Control, has own Padding

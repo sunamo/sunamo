@@ -4910,6 +4910,10 @@
         <trans-unit id="Statistics">
           <target>Statistika</target>
         </trans-unit>
+        <trans-unit id="HidePassword" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Skrýt heslo</target>
+        </trans-unit>
       </group>
     </body>
   </file>
