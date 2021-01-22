@@ -718,6 +718,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         using (SqlConnection conn = new SqlConnection(Cs))
         {
             conn.Open();
+            comm.CommandTimeout = SqlConsts.timeout;
             comm.Connection = conn;
 
 #if DEBUG
@@ -758,10 +759,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
         conn.Open();
         comm.Connection = conn;
+        comm.CommandTimeout = SqlConsts.timeout;
         var result = comm.ExecuteReader(CommandBehavior.Default);
 
         return result;
-
     }
 
     /// <summary>
@@ -776,6 +777,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             conn.Open();
             //SqlDbType.SmallDateTime;
             comm.Connection = conn;
+            comm.CommandTimeout = SqlConsts.timeout;
             var result = comm.ExecuteScalar();
             conn.Close();
             return result;
