@@ -39,7 +39,7 @@ public static class HtmlGeneratorList
 
                 hg.WriteTag("li");
 
-                hg.WriteTagWithAttr("a", "href", to[i]);
+                hg.WriteTagWithAttr("a", "href", baseAnchor + to[i]);
                 //hg.ZapisTagSAtributem("a", "href", "ZobrazText.aspx?sid=" + s.id.ToString());
                 hg.WriteRaw(titles[i]);
                 hg.TerminateTag("a");
