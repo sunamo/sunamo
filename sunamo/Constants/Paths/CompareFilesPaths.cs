@@ -8,7 +8,7 @@ public class CompareFilesPaths
 {
     public static string GetFile(CompareExt c, int i)
     {
-        return @"d:\Documents\Visual Studio 2017\Projects\_tests\CompareTwoFiles\CompareTwoFiles\" + c + @"\" + i + "." + c;
+        return @"e:\Documents\Visual Studio 2017\Projects\_tests\CompareTwoFiles\CompareTwoFiles\" + c + @"\" + i + "." + c;
     }
 }
 

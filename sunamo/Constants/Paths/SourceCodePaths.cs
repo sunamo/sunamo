@@ -11,7 +11,7 @@ namespace sunamo.Constants
 
         public const string EaseUsRestored = @"c:\Users\n\";
         public const string DiskDrill = @"d:\_NewlyRecovered\";
-        // Must be as short as is possible - with classical d:\Documents\Visual Studio 2017\Projects\ some folders I can't get
+        // Must be as short as is possible - with classical e:\Documents\Visual Studio 2017\Projects\ some folders I can't get
         public const string Managed = @"e:\Documents\vs\";
         public const string GoodContent = @"d:\_\_GoodContent\";
 

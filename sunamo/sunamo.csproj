@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -156,21 +156,6 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Args\RemoveStartingWithArgs.cs" />
-    <Compile Include="Constants\HtmlEndingTags.cs" />
-    <Compile Include="Constants\HtmlStartingTags.cs" />
-    <Compile Include="ConvertersSimple\MultilineAsOneLine.cs" />
-    <Compile Include="ConvertersSimple\UnixDateConverter.cs" />
-    <Compile Include="Data\FromToT.cs" />
-    <Compile Include="Enums\FromToUse.cs" />
-    <Compile Include="FormatInPlainText.cs" />
-    <Compile Include="List\KeyValuePairIEnumerable.cs" />
-    <Compile Include="List\KeyValuePairIEnumerableShared.cs" />
-    <Compile Include="SheetsTable.cs" />
-    <Compile Include="UriToStreamResolverSunamo.cs" />
-    <Compile Include="UriWebServicesClasses.cs" />
-    <Compile Include="UriWebServicesFromChromeReplacement.cs" />
-    <Compile Include="Values\CultureInfos.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -185,6 +170,7 @@
     <Compile Include="Args\GetFilesArgs.cs" />
     <Compile Include="Args\GetMemberArgs.cs" />
     <Compile Include="Args\PpkOnDriveArgs.cs" />
+    <Compile Include="Args\RemoveStartingWithArgs.cs" />
     <Compile Include="Args\SubstringArgs.cs" />
     <Compile Include="AspNet.cs" />
     <Compile Include="AspNetShared.cs" />
@@ -244,6 +230,8 @@
     <Compile Include="Constants\HtmlAttrs.cs" />
     <Compile Include="Constants\HtmlAttrValue.cs" />
     <Compile Include="Constants\HtmlConsts.cs" />
+    <Compile Include="Constants\HtmlEndingTags.cs" />
+    <Compile Include="Constants\HtmlStartingTags.cs" />
     <Compile Include="Constants\HtmlTags.cs" />
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="Constants\HttpKnownHeaderValues.cs" />
@@ -266,9 +254,11 @@
     <Compile Include="ConvertBetweenTwoEnums.cs" />
     <Compile Include="ConvertersSimple\BlobConverter.cs" />
     <Compile Include="ConvertersSimple\ColorConverter.cs" />
+    <Compile Include="ConvertersSimple\MultilineAsOneLine.cs" />
     <Compile Include="ConvertersSimple\PluralConverter.cs" />
     <Compile Include="ConvertersSimple\PropertyType2Converter.cs" />
     <Compile Include="ConvertersSimple\StringHexColorConverter.cs" />
+    <Compile Include="ConvertersSimple\UnixDateConverter.cs" />
     <Compile Include="Converts\AppLangConverter.cs" />
     <Compile Include="Converts\BigEndianBitConverter.cs" />
     <Compile Include="Converts\ConvertBase64.cs" />
@@ -340,6 +330,7 @@
     <Compile Include="Data\FolderEntryDB.cs" />
     <Compile Include="Data\FoundedCodeElement.cs" />
     <Compile Include="Data\FromTo.cs" />
+    <Compile Include="Data\FromToT.cs" />
     <Compile Include="Data\GoogleMapsSearchResult.cs" />
     <Compile Include="Data\HttpRequestData.cs" />
     <Compile Include="Data\ImageWithSize.cs" />
@@ -436,6 +427,7 @@
     <Compile Include="Enums\FirstLast.cs" />
     <Compile Include="Enums\FirstSecondNothing.cs" />
     <Compile Include="Enums\FontWeight2.cs" />
+    <Compile Include="Enums\FromToUse.cs" />
     <Compile Include="Enums\GridSize.cs" />
     <Compile Include="Enums\HtmlTagSyntax.cs" />
     <Compile Include="Enums\HtmlTextWriterAttribute.cs" />
@@ -519,6 +511,7 @@
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="FileSystemWatchers.cs" />
+    <Compile Include="FormatInPlainText.cs" />
     <Compile Include="FormatOfString.cs" />
     <Compile Include="Generators\ControlNameGenerator.cs" />
     <Compile Include="Generators\ControlNameGeneratorShared.cs" />
@@ -548,7 +541,6 @@
     <Compile Include="Generators\XmlGeneratorSelective.cs" />
     <Compile Include="Generators\XmlTemplates.cs" />
     <Compile Include="GoogleMyMapsHelper.cs" />
-    <Compile Include="Helpers\Types\Base64Helpers.cs" />
     <Compile Include="Helpers\Clipboard\SheetsHelper.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\CSharpHelperSunamo.cs" />
@@ -629,6 +621,7 @@
     <Compile Include="Helpers\Text\SH.cs" />
     <Compile Include="Helpers\Text\SHNotTranslateAble.cs" />
     <Compile Include="Helpers\Text\SHShared.cs" />
+    <Compile Include="Helpers\Types\Base64Helpers.cs" />
     <Compile Include="Helpers\Types\BitHelper.cs" />
     <Compile Include="Helpers\Types\BitOperations.cs" />
     <Compile Include="Helpers\Types\BTS.cs" />
@@ -723,6 +716,8 @@
     <Compile Include="List\CAShared.cs" />
     <Compile Include="List\DictionaryHelper.cs" />
     <Compile Include="List\DictionaryHelperShared.cs" />
+    <Compile Include="List\KeyValuePairIEnumerable.cs" />
+    <Compile Include="List\KeyValuePairIEnumerableShared.cs" />
     <Compile Include="LoggerAbstract\LogMessageAbstract.cs" />
     <Compile Include="LoggerAbstract\LogServiceAbstract.cs" />
     <Compile Include="MimeTypes.cs" />
@@ -742,6 +737,7 @@
     <Compile Include="RL.cs" />
     <Compile Include="RL\ResourceLoaderRL.cs" />
     <Compile Include="sess.cs" />
+    <Compile Include="SheetsTable.cs" />
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="StringBuilderSlow.cs" />
     <Compile Include="Structs\PixelColor.cs" />
@@ -752,9 +748,12 @@
     <Compile Include="SunamoTimer.cs" />
     <Compile Include="TemplatesNotCompiled\MainWindowSunamo_Ctor.cs" />
     <Compile Include="Threating\IThreatPool.cs" />
+    <Compile Include="UriToStreamResolverSunamo.cs" />
     <Compile Include="UriWebServices.cs" />
     <Compile Include="UriWebServices2.cs" />
+    <Compile Include="UriWebServicesClasses.cs" />
     <Compile Include="UriWebServicesDontTranslate.cs" />
+    <Compile Include="UriWebServicesFromChromeReplacement.cs" />
     <Compile Include="Values\AllChars.cs" />
     <Compile Include="Values\AllExtensions.cs" />
     <Compile Include="Values\AllHtmlAttrs.cs" />
@@ -766,6 +765,7 @@
     <Compile Include="Values\CommonSettingsKeys.cs" />
     <Compile Include="Values\Consts.cs" />
     <Compile Include="Values\ConstsShared.cs" />
+    <Compile Include="Values\CultureInfos.cs" />
     <Compile Include="Values\Domains.cs" />
     <Compile Include="Values\Emoticons.cs" />
     <Compile Include="Values\GeoCzechRegion.cs" />

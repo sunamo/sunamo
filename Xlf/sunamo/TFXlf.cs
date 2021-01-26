@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 public class TFXlf
 {
+    #region For easy copy
     public static List<byte> bomUtf8 = CAXlf.ToList<byte>(239, 187, 191);
 
     public static void RemoveDoubleBomUtf8(string path)
     {
-        var b = File.ReadAllBytes(path).ToList() ;
+        var b = File.ReadAllBytes(path).ToList();
         var to = b.Count > 5 ? 6 : b.Count;
 
         var isUtf8TwoTimes = true;
@@ -29,8 +30,13 @@ public class TFXlf
         TFXlf.WriteAllBytes(path, b);
     }
 
+
+    #endregion
+
+    #region Only in *Xlf.cs
     public static void WriteAllBytes(string file, List<byte> b)
     {
         File.WriteAllBytes(file, b.ToArray());
     }
+    #endregion
 }

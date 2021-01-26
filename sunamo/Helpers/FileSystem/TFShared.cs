@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 public partial class TF
 {
     static Type type = typeof(TF);
-    public static List<byte> bomUtf8 = CA.ToList<byte>(239, 187, 191);
+    
 
     /// <summary>
     /// Return string.Empty when file won't exists
@@ -113,7 +113,7 @@ public partial class TF
         var content = TF.ReadFile(f).Trim();
         var content2 = transformHtmlToMetro4.Invoke(content);
 
-        if (f == @"d:\Documents\Visual Studio 2017\Projects\sunamo.cz\AppsX\PhotoCs.cs")
+        if (f == @"e:\Documents\Visual Studio 2017\Projects\sunamo.cz\AppsX\PhotoCs.cs")
         {
 
         }
@@ -242,7 +242,10 @@ public static void SaveLines(IList<string> list, string file)
         File.WriteAllLines( file, list);
     }
 
-public static void RemoveDoubleBomUtf8(string path)
+    #region For easy copy
+    public static List<byte> bomUtf8 = CA.ToList<byte>(239, 187, 191);
+
+    public static void RemoveDoubleBomUtf8(string path)
     {
         var b = TF.ReadAllBytes(path);
         var to = b.Count > 5 ? 6 : b.Count;
@@ -258,9 +261,10 @@ public static void RemoveDoubleBomUtf8(string path)
             }
         }
 
-         b = b.Skip(3).ToList();
+        b = b.Skip(3).ToList();
         TF.WriteAllBytes(path, b);
-    }
+    } 
+    #endregion
 
     public static string ReadAllText(string path)
     {

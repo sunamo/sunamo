@@ -9,6 +9,8 @@ namespace sunamo.Essential
 {
     public class ThisApp
     {
+        public static bool runInDebug = true;
+
         // Everywhere is used just ThisApp.cd. 
         //public static Dispatcher cd = null;
         //public static DispatcherPriority cdp = DispatcherPriority.Normal;

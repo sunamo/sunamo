@@ -17,12 +17,8 @@ namespace AllProjectsSearch
             _fullPathFolder = t._fullPathFolder;
             _nameSolution = t._nameSolution;
             projectFolder = t.projectFolder;
-            slnFullPath = t.slnFullPath;
-
-            
+            slnFullPath = t.slnFullPath;   
         }
-
-        
 
         /// <summary>
         /// C# Projects

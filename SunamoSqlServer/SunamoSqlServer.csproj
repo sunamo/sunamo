@@ -62,6 +62,7 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
     <Compile Include="MSSQL\MSTableRowIDNameShort.cs" />
     <Compile Include="MSSQL\MSTableRowIDNameT.cs" />
+    <Compile Include="SqlConsts.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
     <Compile Include="Attributtes\NoReturnSqlResultAttribute.cs" />

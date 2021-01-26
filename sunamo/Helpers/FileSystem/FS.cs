@@ -15,11 +15,10 @@ using System.Diagnostics;
 using sunamo;
 using System.Linq;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 public partial class FS
 {
-   
-
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
@@ -34,6 +33,42 @@ public partial class FS
         }
         return vr;
     }
+
+    #region For easy copy
+    public static string GetRelativePath(string relativeTo, string path)
+    {
+        bool addBs = false;
+        if (path[path.Length - 1] == AllChars.bs)
+        {
+            addBs = true;
+            path = path.Substring(0, path.Length - 1);
+        }
+
+        String pathSep = "\\";
+        String fromPath = Path.GetFullPath(path);
+        String baseDir = Path.GetFullPath(relativeTo);            // If folder contains upper folder references, they gets lost here. "c:\test\..\test2" => "c:\test2"
+
+        String[] p1 = Regex.Split(fromPath, "[\\\\/]").Where(x => x.Length != 0).ToArray();
+        String[] p2 = Regex.Split(baseDir, "[\\\\/]").Where(x => x.Length != 0).ToArray();
+        int i = 0;
+
+        for (; i < p1.Length && i < p2.Length; i++)
+            if (String.Compare(p1[i], p2[i], true) != 0)    // Case insensitive match
+                break;
+
+        if (i == 0)     // Cannot make relative path, for example if resides on different drive
+            return fromPath;
+
+        String r = String.Join(pathSep, Enumerable.Repeat("..", p2.Length - i).Concat(p1.Skip(i).Take(p1.Length - i)));
+
+        if (addBs)
+        {
+            r += AllStrings.bs;
+        }
+
+        return r;
+    } 
+    #endregion
 
     public static void RenameNumberedSerieFiles(List<string> d, string p, int startFrom, string ext)
     {
@@ -519,7 +554,7 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
     public static string ShrinkLongPath(string actualFilePath)
     {
         // .NET 4.7.1
-        // Originally - 265 chars, 254 also too long: d:\Documents\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2017\Projects\merge-obří temp\temp1\temp\Facebook.cs
+        // Originally - 265 chars, 254 also too long: e:\Documents\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2017\Projects\merge-obří temp\temp1\temp\Facebook.cs
         // 4+265 - OK: @"\\?\d:\_NewlyRecovered\Visual Studio 2020\Projects\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2017\Projects\merge-obří temp\temp1\temp\Facebook.cs"
         // 216 - OK: d:\Recovered data 03-23 12_11_44012345678901234567890123456\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2017\Projects\merge-obří temp\temp1\temp\
         // for many API is different limits: https://stackoverflow.com/questions/265769/maximum-filename-length-in-ntfs-windows-xp-and-windows-vista

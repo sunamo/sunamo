@@ -9,6 +9,7 @@ using Xlf;
 
 public class XmlLocalisationInterchangeFileFormatXlf
 {
+    #region Only in *Xlf.cs
     /// <summary>
     /// A1 can be full path
     /// </summary>
@@ -37,5 +38,6 @@ public class XmlLocalisationInterchangeFileFormatXlf
         }
 
         return Langs.en;
-    }
+    } 
+    #endregion
 }

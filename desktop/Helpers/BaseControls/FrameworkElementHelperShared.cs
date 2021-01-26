@@ -133,7 +133,7 @@ public static void CreateBitmapFromVisual(object o, RoutedEventArgs e)
 
 public static string PathToScreenshot(string fn, string appName, string projectName)
     {
-        fn = FS.Combine(@"d:\vs\" + appName, projectName, FolderConsts.screenshots, fn + ".png");
+        fn = FS.Combine(@"e:\vs\" + appName, projectName, FolderConsts.screenshots, fn + ".png");
         return fn;
     }
 }

@@ -32,10 +32,14 @@ public class FoldersWithSolutions
     /// A1 = d:\Documents
     /// This class should be instaniate only once and then call reload by needs
     /// </summary>
-    public FoldersWithSolutions(string documentsFolder, PpkOnDrive toSelling)
+    public FoldersWithSolutions(string documentsFolder, PpkOnDrive toSelling, bool addAlsoSolutions = true)
     {
         this.documentsFolder = documentsFolder;
-         Reload(documentsFolder, toSelling);
+        if (addAlsoSolutions)
+	{
+            Reload(documentsFolder, toSelling);
+        }
+         
 
     }
     #endregion
@@ -123,7 +127,7 @@ public class FoldersWithSolutions
                 projectTypes.Add(p, l);
             }
         }
-        projectTypes.Add(ProjectsTypes.Cs, sess.i18n(XlfKeys.Projects));
+        projectTypes.Add(ProjectsTypes.Cs, XlfKeys.Projects);
     }
 
     public static List<string> onlyRealLoadedSolutionsFolders = new List<string>();
@@ -143,11 +147,26 @@ public class FoldersWithSolutions
         return CreateSolutionFolder(null, solutionFolder.fullPathFolder, toSelling, projName);
     }
 
+    /// <summary>
+    /// toSelling can be null
+    /// </summary>
+    /// <param name="solutionFolder"></param>
+    /// <param name="toSelling"></param>
+    /// <param name="projName"></param>
+    /// <returns></returns>
     public static SolutionFolder CreateSolutionFolder(string solutionFolder, PpkOnDrive toSelling, string projName = null)
     {
         return CreateSolutionFolder(null, solutionFolder, toSelling,  projName);
     }
 
+    /// <summary>
+    /// toSelling can be null
+    /// </summary>
+    /// <param name="sfs"></param>
+    /// <param name="solutionFolder"></param>
+    /// <param name="toSelling"></param>
+    /// <param name="projName"></param>
+    /// <returns></returns>
     public static SolutionFolder CreateSolutionFolder(SolutionFolderSerialize sfs, string solutionFolder, PpkOnDrive toSelling, string projName = null)
     {
 
