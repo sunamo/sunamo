@@ -188,7 +188,8 @@ public partial class ThrowExceptions
     }
  
     /// <summary>
-    /// Return & throw exception whether directory NOT exists
+    /// Return & throw exception whether
+    /// directory NOT exists
     /// </summary>
     /// <param name="type"></param>
     /// <param name="methodName"></param>

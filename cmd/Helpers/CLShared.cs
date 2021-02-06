@@ -20,6 +20,40 @@ public static partial class CL
         PerformAction(actions, listOfActions);
     }
 
+    #region Progress bar
+    const char _block = '■';
+    const string _back = "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+    const string _twirl = "-\\|/";
+    /// <summary>
+    /// Usage:
+    /// WriteProgressBar(0);
+    /// WriteProgressBar(i, true);
+    /// </summary>
+    /// <param name="percent"></param>
+    /// <param name="update"></param>
+    private static void WriteProgressBar(int percent, bool update = false)
+    {
+        if (update)
+            Console.Write(_back);
+        Console.Write("[");
+        var p = (int)((percent / 10f) + .5f);
+        for (var i = 0; i < 10; ++i)
+        {
+            if (i >= p)
+                Console.Write(' ');
+            else
+                Console.Write(_block);
+        }
+        Console.Write("] {0,3:##0}%", percent);
+    }
+    public static void WriteProgress(int progress, bool update = false)
+    {
+        if (update)
+            Console.Write("\b");
+        Console.Write(_twirl[progress % _twirl.Length]);
+    }
+    #endregion
+
     private static void PerformAction(Dictionary<string, VoidVoid> actions, List<string> listOfActions)
     {
         int selected = SelectFromVariants(listOfActions, sess.i18n(XlfKeys.SelectActionToProceed));
