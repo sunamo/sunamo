@@ -14,7 +14,8 @@ public partial class VpsHelperSunamo
     {
         get
         {
-            return Directory.Exists(path);
+            var v = Directory.Exists(path);
+            return v;
         }
     }
     #endregion

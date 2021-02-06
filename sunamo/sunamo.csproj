@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -100,11 +100,6 @@
     <Compile Include="..\..\sunamo\sunamo\Args\CSharpGeneratorArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\PpkOnDriveArgs.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Collections\DebugCollection.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySortShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Constants\CsKeywords.cs" />
     <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
@@ -156,6 +151,37 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Collections\AutoIndexedObservableCollection.cs" />
+    <Compile Include="Collections\BadGoodCollection.cs" />
+    <Compile Include="Collections\CollectionToEnd.cs" />
+    <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
+    <Compile Include="Collections\CyclingCollection.cs" />
+    <Compile Include="Collections\D.cs" />
+    <Compile Include="Collections\DebugCollection.cs" />
+    <Compile Include="Collections\DebugLongCollection.cs" />
+    <Compile Include="Collections\DictionarySort.cs" />
+    <Compile Include="Collections\DictionarySortShared.cs" />
+    <Compile Include="Collections\DictionaryWithList.cs" />
+    <Compile Include="Collections\ExtensionSortedCollection.cs" />
+    <Compile Include="Collections\FsWatcherDictionary.cs" />
+    <Compile Include="Collections\Joiner.cs" />
+    <Compile Include="Collections\L.cs" />
+    <Compile Include="Collections\L2.cs" />
+    <Compile Include="Collections\ListWithElements.cs" />
+    <Compile Include="Collections\PpkOnDrive.cs" />
+    <Compile Include="Collections\PpkOnDriveBase.cs" />
+    <Compile Include="Collections\PpkOnDriveT.cs" />
+    <Compile Include="Collections\RefreshingList.cs" />
+    <Compile Include="Collections\ResolvedDictionary.cs" />
+    <Compile Include="Collections\SafeStringCollection.cs" />
+    <Compile Include="Collections\SunamoDictionary.cs" />
+    <Compile Include="Collections\SunamoDictionarySort.cs" />
+    <Compile Include="Collections\TextWriterList.cs" />
+    <Compile Include="Collections\TwoWayDictionary.cs" />
+    <Compile Include="Collections\UniqueTableInWhole.cs" />
+    <Compile Include="Collections\ValuesTableGrid.cs" />
+    <Compile Include="Data\StoreParsedApp.cs" />
+    <Compile Include="Helpers\Clipboard\SheetsGeneratorTemplate.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -187,34 +213,6 @@
     <Compile Include="AttributesHelper.cs" />
     <Compile Include="BitConverterBE.cs" />
     <Compile Include="BitConverterLE.cs" />
-    <Compile Include="Collections\AutoIndexedObservableCollection.cs" />
-    <Compile Include="Collections\BadGoodCollection.cs" />
-    <Compile Include="Collections\CollectionToEnd.cs" />
-    <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
-    <Compile Include="Collections\CyclingCollection.cs" />
-    <Compile Include="Collections\D.cs" />
-    <Compile Include="Collections\DebugCollection.cs" />
-    <Compile Include="Collections\DebugLongCollection.cs" />
-    <Compile Include="Collections\DictionarySort.cs" />
-    <Compile Include="Collections\DictionaryWithList.cs" />
-    <Compile Include="Collections\ExtensionSortedCollection.cs" />
-    <Compile Include="Collections\FsWatcherDictionary.cs" />
-    <Compile Include="Collections\Joiner.cs" />
-    <Compile Include="Collections\L.cs" />
-    <Compile Include="Collections\L2.cs" />
-    <Compile Include="Collections\ListWithElements.cs" />
-    <Compile Include="Collections\PpkOnDrive.cs" />
-    <Compile Include="Collections\PpkOnDriveBase.cs" />
-    <Compile Include="Collections\PpkOnDriveT.cs" />
-    <Compile Include="Collections\RefreshingList.cs" />
-    <Compile Include="Collections\ResolvedDictionary.cs" />
-    <Compile Include="Collections\SafeStringCollection.cs" />
-    <Compile Include="Collections\SunamoDictionary.cs" />
-    <Compile Include="Collections\SunamoDictionarySort.cs" />
-    <Compile Include="Collections\TextWriterList.cs" />
-    <Compile Include="Collections\TwoWayDictionary.cs" />
-    <Compile Include="Collections\UniqueTableInWhole.cs" />
-    <Compile Include="Collections\ValuesTableGrid.cs" />
     <Compile Include="ComparerRowsByColumn.cs" />
     <Compile Include="Constants\AllStrings.cs" />
     <Compile Include="Constants\CodeElementsConstants.cs" />

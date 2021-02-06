@@ -14,9 +14,7 @@ using System.Web;
 public partial class UriWebServices
 {
     static int opened = 0;
-
-    
-
+    public static string WikipediaEn = "https://en.wikipedia.org/w/index.php?search=%s";
     public const string karaokeTexty = "http://www.karaoketexty.cz/search?q=%s&sid=bbrpp&x=36&y=9";
     public const string chromeSearchstringReplacement = "%s";
     public const string instagramProfile = "https://www.instagram.com/{0}/";
