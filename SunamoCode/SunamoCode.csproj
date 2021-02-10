@@ -18,7 +18,7 @@
     <Folder Include="SolutionsIndexer\Data\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Core" Version="1.45.0" />
+    <PackageReference Include="Google.Apis.Core" Version="1.50.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
