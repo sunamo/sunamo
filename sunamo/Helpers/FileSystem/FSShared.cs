@@ -328,10 +328,9 @@ public partial class FS
 
         var item2 = MakeUncLongPath(item);
 
-      
-
         // FS.ExistsDirectory if pass SE or only start of Unc return false
-        return Directory.Exists(item2);
+        var result = Directory.Exists(item2);
+        return result;
     }
 
     public static string GetDirectoryName(string rp)

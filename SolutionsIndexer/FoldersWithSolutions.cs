@@ -247,6 +247,30 @@ public class FoldersWithSolutions
     }
 
     /// <summary>
+    /// A1 not have to be wildcard
+    /// </summary>
+    /// <param name="vs17"></param>
+    /// <param name="toFind"></param>
+    /// <returns></returns>
+    public IEnumerable<SolutionFolder> SolutionsWildcard(Repository r, string mayWildcard)
+    {
+        var result = Solutions(r);
+
+       
+            for (int i = result.Count - 1; i >= 0; i--)
+            {
+            var ns = result[i].nameSolution;
+                if (!SH.MatchWildcard(ns, mayWildcard))
+                {
+                    result.RemoveAt(i);
+                }
+            }
+        
+
+        return result;
+    }
+
+    /// <summary>
     /// Simple returns global variable solutions
     /// Exclude from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached
     /// A3 - can use wildcard
@@ -413,5 +437,5 @@ public class FoldersWithSolutions
         }
     }
 
-   
+    
 }

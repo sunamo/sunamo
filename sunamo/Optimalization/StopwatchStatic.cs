@@ -19,6 +19,11 @@ using System.Diagnostics;
         return sw.sw.ElapsedMilliseconds;
     }
 
+    /// <summary>
+    /// Write ElapsedMilliseconds
+    /// </summary>
+    /// <param name="operation"></param>
+    /// <returns></returns>
     public static long StopAndPrintElapsed(string operation)
     {
         return sw.StopAndPrintElapsed(operation);
@@ -37,6 +42,10 @@ using System.Diagnostics;
             }
         }
 
+    /// <summary>
+    /// Call Start() Aganin
+    /// </summary>
+    /// <param name="notTranslateAbleString"></param>
     public static void PrintElapsedAndContinue(string notTranslateAbleString)
     {
         StopAndPrintElapsed(notTranslateAbleString);

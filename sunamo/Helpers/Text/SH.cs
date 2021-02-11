@@ -71,8 +71,6 @@ public static partial class SH
         return false;
     }
 
-    
-
     public static int CountOf(string v1, char v2)
     {
         int c = 0;
@@ -86,6 +84,7 @@ public static partial class SH
 
         return c;
     }
+
     public static Dictionary<char, int> StatisticLetterChars(string between, StatisticLetterCharsStrategy s, params char[] charsToStrategy)
     {
         List<char> ignoreCompletely = null;
@@ -829,6 +828,7 @@ public static partial class SH
     {
         return p.Replace("\r", "").Replace("\n", "").Replace("\t", "");
     }
+
     public static List<string> GetTextsBetween(string p, string after, string before)
     {
         List<string> vr = new List<string>();
@@ -853,6 +853,7 @@ public static partial class SH
         }
         return vr;
     }
+
     public static string RemoveLastLetters(string v1, int v2)
     {
         if (v1.Length > v2)

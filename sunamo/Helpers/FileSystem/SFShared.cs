@@ -14,6 +14,28 @@ public static partial class SF
     public const string replaceForSeparatorString = AllStrings.lowbar;
     public static readonly char replaceForSeparatorChar = AllChars.lowbar;
 
+    public static Dictionary<T1, T2> ToDictionary<T1, T2>(List<List<string>> l)
+    {
+        object s1 = BTS.MethodForParse<T1>();
+        object s2 = BTS.MethodForParse<T2>();
+
+        Func<string, T1> p1 = (Func<string, T1>)s1;
+        Func<string, T2> p2 = (Func<string, T2>)s2;
+
+        Dictionary <T1, T2> dict = new Dictionary<T1, T2>();
+
+        T1 t1 = default(T1);
+        T2 t2 = default(T2);
+
+        foreach (var item in l)
+        {
+            t1 = p1.Invoke(item[0]);
+            t2 = p2.Invoke(item[1]);
+            dict.Add(t1, t2);
+        }
+
+        return dict;
+    }
 
     public static string separatorString
     {
@@ -41,6 +63,18 @@ public static partial class SF
         var o2 = CA.Trim(o3);
         string vr = SH.GetString(o, p1.ToString());
         return vr.Substring(0, vr.Length - 1);
+    }
+
+    public static List<List<string>> GetAllElementsFile(string file, char oddelovaciZnak = AllChars.verbar)
+    {
+        List<string> header = null;
+        var r = GetAllElementsFileAdvanced(file, out header, oddelovaciZnak);
+        if (header.Count > 0)
+        {
+            r.Insert(0, header);
+        }
+        
+        return r;
     }
 
     /// <summary>
@@ -78,6 +112,17 @@ public static partial class SF
         }
 
         return vr;
+    }
+
+    public static void Dictionary<T1, T2>(string file, Dictionary<T1, T2> artists)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in artists)
+        {
+            sb.AppendLine(PrepareToSerialization2(item.Key, item.Value));
+        }
+
+        TF.SaveFile(sb.ToString(), file);
     }
 
     /// <summary>

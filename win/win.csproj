@@ -108,6 +108,7 @@
     <Compile Include="Helpers\MimeHelper.cs" />
     <Compile Include="Helpers\Powershell\PowershellBuilder.cs" />
     <Compile Include="Helpers\Powershell\PowershellHelper.cs" />
+    <Compile Include="Helpers\Powershell\PowershellParser.cs" />
     <Compile Include="Helpers\Powershell\PowershellRunner.cs" />
     <Compile Include="JunctionPoint.cs" />
     <Compile Include="PHWin.cs" />

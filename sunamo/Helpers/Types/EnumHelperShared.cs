@@ -12,17 +12,18 @@ public static partial class EnumHelper
     /// Can be use only for int enums
     /// </summary>
     /// <typeparam name="T"></typeparam>
+    #region GetValues - unlike GetAllValues in EnumHelper.cs can exclude Nope,Shared, etc.
     public static List<T> GetValues<T>()
-            where T : struct
+       where T : struct
     {
-        return GetValues<T>( false, true);
+        return GetValues<T>(false, true);
     }
     /// <summary>
     /// Get all values expect of Nope/None
     /// </summary>
     /// <typeparam name = "T"></typeparam>
     /// <param name = "type"></param>
-    public static List<T> GetValues<T>( bool IncludeNope, bool IncludeShared)
+    public static List<T> GetValues<T>(bool IncludeNope, bool IncludeShared)
         where T : struct
     {
         var type = typeof(T);
@@ -60,7 +61,8 @@ public static partial class EnumHelper
         }
 
         return values;
-    }
+    } 
+    #endregion
 
     public static List<string> GetFlags<T>(T key) where T : Enum
     {

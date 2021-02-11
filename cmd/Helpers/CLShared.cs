@@ -20,10 +20,21 @@ public static partial class CL
         PerformAction(actions, listOfActions);
     }
 
+    static string s = null;
+    static StringBuilder sbToClear = new StringBuilder();
+    static StringBuilder sbToWrite = new StringBuilder();
+
     #region Progress bar
     const char _block = '■';
     const string _back = "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+    static int _backL = 0;
     const string _twirl = "-\\|/";
+
+    public static void WriteProgressBarInit()
+    {
+        _backL = _back.Length;
+    }
+
     /// <summary>
     /// Usage:
     /// WriteProgressBar(0);
@@ -31,10 +42,27 @@ public static partial class CL
     /// </summary>
     /// <param name="percent"></param>
     /// <param name="update"></param>
-    private static void WriteProgressBar(int percent, bool update = false)
+    public static void WriteProgressBar(int percent, WriteProgressBarArgs a = null)
     {
-        if (update)
-            Console.Write(_back);
+        if (a == null)
+        {
+            a = WriteProgressBarArgs.Default;
+        }
+
+        if (a.update)
+        {
+            sbToClear.Clear();
+
+            //sbToClear.Append( string.Empty.PadRight(s.Length, '\b'));
+
+            sbToClear.Append(_back);
+            sbToClear.Append(string.Empty.PadRight(s.Length - _backL, '\b'));
+
+            var ts = sbToClear.ToString();
+
+            Console.Write(ts);
+        }
+
         Console.Write("[");
         var p = (int)((percent / 10f) + .5f);
         for (var i = 0; i < 10; ++i)
@@ -44,14 +72,25 @@ public static partial class CL
             else
                 Console.Write(_block);
         }
-        Console.Write("] {0,3:##0}%", percent);
+
+        if (a.writePieces)
+        {
+            s = $"] {0,3:##0}% {a.actual} / {a.overall}";
+        }
+        else
+        {
+            s = "] {0,3:##0}%";
+        }
+
+        Console.Write(s, percent);
     }
-    public static void WriteProgress(int progress, bool update = false)
-    {
-        if (update)
-            Console.Write("\b");
-        Console.Write(_twirl[progress % _twirl.Length]);
-    }
+    //public static void WriteProgress(int progress, bool update = false)
+    //{
+    //    if (update)
+    //        Console.Write("\b");
+    //    Console.Write( _twirl[progress % _twirl.Length]);
+
+    //}
     #endregion
 
     private static void PerformAction(Dictionary<string, VoidVoid> actions, List<string> listOfActions)
@@ -440,11 +479,12 @@ public static void OperationWasStopped()
 
     /// <summary>
     /// Return None if !A1
+    /// If allActions will be null, will not automatically run action
     /// </summary>
     /// <param name="askUser"></param>
     /// <param name="AddGroupOfActions"></param>
     /// <param name="allActions"></param>
-public static string AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, string mode)
+    public static string AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, string mode)
     {
         if (askUser)
         {

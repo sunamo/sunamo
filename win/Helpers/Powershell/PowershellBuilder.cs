@@ -62,6 +62,13 @@ namespace win.Helpers.Powershell
             return sb.ToString();
         }
 
+        public void RemoveItem(string v)
+        {
+            
+            sb.AppendLine("Remove-Item " + v + " --Force");
+            sb.AppendLine();
+        }
+
         public void CmdC(string v)
         {
             sb.AppendLine("cmd /c " + v);

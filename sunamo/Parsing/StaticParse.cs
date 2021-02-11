@@ -112,8 +112,6 @@ public static class StaticParse
         return short.Parse(o[p]);
     }
 
-
-
     public static byte GetByte(List<string> o, int p)
     {
         return byte.Parse(o[p]);

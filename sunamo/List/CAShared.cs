@@ -998,7 +998,7 @@ public static partial class CA
     /// <param name="dirs"></param>
     public static List<string> PostfixIfNotEnding(string v, List<string> dirs)
     {
-        return ChangeContent(dirs, d => SH.PostfixIfNotEmpty(d, v));
+        return ChangeContent(new ChangeContentArgs() { }, dirs, SH.PostfixIfNotEmpty, v);
     }
 
    

@@ -17,7 +17,26 @@ using Diacritics.Extensions;
 
 public static partial class SH
 {
+    public static List<string> ValuesBetweenQuotes(string str, bool insertAgainToQm)
+    {
+        var reg = new Regex("\".*?\"");
+        var matches = reg.Matches(str);
+        List<string> result = new List<string>(matches.Count);
+        foreach (var item in matches)
+        {
+            if (insertAgainToQm)
+            {
+                result.Add(SH.WrapWithQm( item.ToString()));
+            }
+            else
+            {
+                result.Add(item.ToString());
+            }
+        }
+        return result;
+    }
 
+    
     public static string Format34(string c, params object[] innerMain)
     {
         string formatted = null;
@@ -102,6 +121,11 @@ public static partial class SH
     {
         var lineNumber = input.Take(pos).Count(c => c == '\n') + 1;
         return lineNumber - 1;
+    }
+
+    internal static char GetFirstChar(string arg)
+    {
+        return arg[0];
     }
 
     public static string ReplaceVariables(string innerHtml, List<List<string>> _dataBinding, int actualRow)

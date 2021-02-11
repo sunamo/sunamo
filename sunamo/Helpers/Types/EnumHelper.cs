@@ -76,6 +76,7 @@ public static partial class EnumHelper
         ).ToDictionary(r => r.Key, r => r.Value);
     }
 
+    #region GetAllValues - unlike GetValues in EnumHelperShared.cs not exclude anything. GetValues can exclude Nope,Shared, etc.
     /// <summary>
     /// If A1, will start from [1]. Otherwise from [0]
     /// Get all without zero and All.
@@ -104,6 +105,40 @@ public static partial class EnumHelper
         CheckForZero(result);
         return result;
     }
+
+    /// <summary>
+    /// If A1, will start from [1]. Otherwise from [0]
+    /// Enem values must be castable to int
+    /// Cant be use second generic parameter, due to difficult operations like ~v or |=
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="secondIsAll"></param>
+    /// <param name="def"></param>
+    /// <param name="valuesInverted"></param>
+    /// <param name="result"></param>
+    /// <param name="max"></param>
+    private static void GetValuesOfEnum<T>(bool secondIsAll, out int def, out int[] valuesInverted, out List<T> result, out int max)
+        where T : struct
+    {
+        def = 0;
+        if (secondIsAll)
+        {
+            def = 1;
+        }
+
+        if (typeof(T).BaseType != typeof(Enum))
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "  " + SunamoPageHelperSunamo.i18n(XlfKeys.mustBeAnEnumType));
+        var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
+        valuesInverted = values.Select(v => ~v).ToArray();
+        result = new List<T>();
+        max = def;
+        for (int i = def; i < values.Length; i++)
+        {
+            max |= values[i];
+        }
+    }
+
+    #endregion
 
     /// <summary>
     /// Get all without zero and All.
@@ -208,38 +243,7 @@ public static partial class EnumHelper
         }
     }
 
-    /// <summary>
-    /// If A1, will start from [1]. Otherwise from [0]
-    /// Enem values must be castable to int
-    /// Cant be use second generic parameter, due to difficult operations like ~v or |=
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="secondIsAll"></param>
-    /// <param name="def"></param>
-    /// <param name="valuesInverted"></param>
-    /// <param name="result"></param>
-    /// <param name="max"></param>
-    private static void GetValuesOfEnum<T>(bool secondIsAll, out int def, out int[] valuesInverted, out List<T> result, out int max)
-        where T : struct
-    {
-        def = 0;
-        if (secondIsAll)
-        {
-            def = 1;
-        }
-
-        if (typeof(T).BaseType != typeof(Enum))
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"  " + SunamoPageHelperSunamo.i18n(XlfKeys.mustBeAnEnumType));
-        var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
-        valuesInverted = values.Select(v => ~v).ToArray();
-        result = new List<T>();
-        max = def;
-        for (int i = def; i < values.Length; i++)
-        {
-            max |= values[i];
-        }
-    }
-
+    
     static Type type = typeof(EnumHelper);
 
     private static void GetValuesOfEnumByte<T>(bool secondIsAll, out byte def, out byte[] valuesInverted, out List<T> result, out byte max)

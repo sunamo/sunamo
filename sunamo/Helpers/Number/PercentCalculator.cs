@@ -5,12 +5,25 @@ using System.Text;
 
 namespace sunamo.Helpers.Number
 {
+    /// <summary>
+    /// Normálně se volá 100x DonePartially()
+    /// </summary>
     public class PercentCalculator
     {
         public double onePercent = 0;
         public double last = 0;
-        private double _overallSum;
+        public double _overallSum;
         private double _hundredPercent = 100d;
+
+        public void AddOnePercent()
+        {
+            last += onePercent;
+        }
+
+        public void AddOne()
+        {
+            last += 1;
+        }
 
         public PercentCalculator(double overallSum)
         {
@@ -26,8 +39,16 @@ namespace sunamo.Helpers.Number
         public void ResetComputedSum()
         {
             _sum = 0;
+
+            Func<string,short> d = short.Parse;
         }
 
+        /// <summary>
+        /// Was used for generating text output with inBothCount, files1Count, files2Count 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="last"></param>
+        /// <returns></returns>
         public int PercentFor(double value, bool last)
         {
             // cannot divide by zero
@@ -36,6 +57,8 @@ namespace sunamo.Helpers.Number
                 return 0;
             }
 
+            // value - 
+            // 
             double quocient = value / _overallSum;
 
             int result = (int)(_hundredPercent * quocient);

@@ -1742,9 +1742,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectDataTable(conn, comm);
         //return SelectDataTable(string.Format(sql, _params));
     }
+
     public DataTable SelectDataTable(SqlConnection conn, SqlCommand comm)
     {
-
         DataTable dt = new DataTable();
         comm.Connection = conn;
         SqlDataAdapter adapter = new SqlDataAdapter(comm);

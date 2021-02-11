@@ -182,6 +182,7 @@
     <Compile Include="Collections\ValuesTableGrid.cs" />
     <Compile Include="Data\StoreParsedApp.cs" />
     <Compile Include="Helpers\Clipboard\SheetsGeneratorTemplate.cs" />
+    <Compile Include="Helpers\Types\BTS2.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
