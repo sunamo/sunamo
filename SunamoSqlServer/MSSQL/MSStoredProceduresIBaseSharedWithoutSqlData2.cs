@@ -717,6 +717,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (SqlConnection conn = new SqlConnection(Cs))
         {
+            if (measureTime)
+            {
+                StopwatchStatic.Start();
+            }
+
             conn.Open();
             comm.CommandTimeout = SqlConsts.timeout;
             comm.Connection = conn;
@@ -727,6 +732,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             var result = comm.ExecuteNonQuery();
             conn.Close();
+
+            if (measureTime)
+            {
+                StopwatchStatic.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+            }
+
             return result;
         }
     }
@@ -755,6 +766,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="comm"></param>
     private SqlDataReader ExecuteReader(SqlCommand comm)
     {
+        if (measureTime)
+        {
+            StopwatchStatic.Start();
+        }
+
         var conn = new SqlConnection(Cs);
 
         conn.Open();
@@ -762,8 +778,15 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         comm.CommandTimeout = SqlConsts.timeout;
         var result = comm.ExecuteReader(CommandBehavior.Default);
 
+        if (measureTime)
+        {
+            StopwatchStatic.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+        }
+
         return result;
     }
+
+    bool measureTime = true;
 
     /// <summary>
     /// Automaticky doplní connection
@@ -773,6 +796,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
+            if (measureTime)
+            {
+                StopwatchStatic.Start();
+            }
+
+            
+
             //loggedCommands.Add(comm.CommandText);
             conn.Open();
             //SqlDbType.SmallDateTime;
@@ -780,6 +810,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             comm.CommandTimeout = SqlConsts.timeout;
             var result = comm.ExecuteScalar();
             conn.Close();
+
+            if (measureTime)
+            {
+                StopwatchStatic.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+            }
+
             return result;
         }
     }

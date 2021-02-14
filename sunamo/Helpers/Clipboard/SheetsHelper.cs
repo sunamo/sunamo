@@ -71,10 +71,19 @@ public class SheetsHelper
 
     public static string CalculateMedianAverage(string input, bool mustBeAllNumbers = true)
     {
-        var defDouble = -1;
-        var list = CA.ToNumber<double>(BTS.ParseDouble, SheetsHelper.SplitFromGoogleSheets(input), defDouble, false);
+        var ls = SheetsHelper.Rows(input);
 
-        return NH.CalculateMedianAverage(list);
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var item in ls)
+        {
+            var defDouble = -1;
+            var list = CA.ToNumber<double>(BTS.ParseDouble, SheetsHelper.SplitFromGoogleSheets(item), defDouble, false);
+
+            sb.AppendLine(NH.CalculateMedianAverage(list));
+        }
+
+        return sb.ToString();
     }
 
     public static string CalculateMedianFromTwoRows(string s)

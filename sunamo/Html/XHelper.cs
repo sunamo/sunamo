@@ -10,7 +10,8 @@ using System.Xml.Linq;
 using sunamo.Essential;
 
 /// <summary>
-/// Use System.Xml.Linq
+/// XH = XmlElement
+/// XHelper = XElement
 /// </summary>
 public partial class XHelper
 {

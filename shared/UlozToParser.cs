@@ -13,7 +13,7 @@ public class UlozTo
 {
     public async static Task<Uri> GetVideoUri(string niceUri)
     {
-        string html = HttpRequestHelper.GetResponseText(niceUri, HttpMethod.Get, new HttpRequestData());
+        string html = HttpClientHelper.GetResponseText(niceUri, HttpMethod.Get, new HttpRequestData());
 
         HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
         hd.LoadHtml(html);

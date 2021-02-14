@@ -59,6 +59,11 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
             return false;
         }
 
+        if (CA.StartWith(pathStarts, pathFile) != null) 
+        {
+            return false;
+        }
+
         //if (!CsFileFilter.AllowOnlyContains(pathFile, new CsFileFilter.ContainsArgs( false, false, false)))
         //{
         //    return false;

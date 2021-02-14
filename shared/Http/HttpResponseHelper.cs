@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -11,6 +12,20 @@ using System.Web;
 /// </summary>
 public class HttpResponseHelper
 {
+    public static bool SomeError(HttpResponseMessage r)
+    {
+        if (r == null)
+        {
+            return true;
+        }
+
+        switch (StatusCodeToHttpStatusCode(r.StatusCode))
+        {
+            case HttpStatusCode.OK:
+                return false;
+        }
+        return true;
+    }
 
     public static bool SomeError(HttpWebResponse r)
     {

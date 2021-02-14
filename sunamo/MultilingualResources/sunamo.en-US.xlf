@@ -13854,6 +13854,10 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Hide password</target>
         </trans-unit>
+        <trans-unit id="ResultCopiedToClipboard" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Result copied to clipboard</target>
+        </trans-unit>
       </group>
     </body>
   </file>

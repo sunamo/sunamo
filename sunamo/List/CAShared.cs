@@ -1641,13 +1641,19 @@ public static partial class CA
         return mySites;
     }
 
-public static string StartWith(List<string> suMethods, string line)
+    /// <summary>
+    /// Return A2 if start something in A1
+    /// </summary>
+    /// <param name="suMethods"></param>
+    /// <param name="line"></param>
+    /// <returns></returns>
+    public static string StartWith(List<string> suMethods, string line)
     {
         string element = null;
         return StartWith(suMethods, line, out element);
     }
 /// <summary>
-    /// Return A2 if start something with A1
+    /// Return A2 if start something in A1
     /// Really different method than string, List<string>
     /// </summary>
     /// <param name="suMethods"></param>

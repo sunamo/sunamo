@@ -35,6 +35,11 @@ public static partial class CL
         _backL = _back.Length;
     }
 
+    public static void WriteProgressBar(double percent, WriteProgressBarArgs a = null)
+    {
+        WriteProgressBar((int)percent, a);
+    }
+
     /// <summary>
     /// Usage:
     /// WriteProgressBar(0);

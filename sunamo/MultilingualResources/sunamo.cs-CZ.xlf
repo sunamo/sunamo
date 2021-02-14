@@ -4914,6 +4914,10 @@
           <source></source>
           <target state="translated">Skrýt heslo</target>
         </trans-unit>
+        <trans-unit id="ResultCopiedToClipboard" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výsledek zkopírován do schránky</target>
+        </trans-unit>
       </group>
     </body>
   </file>

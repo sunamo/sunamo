@@ -9,6 +9,7 @@ public class EnumItem
     public string Hex = "";
     public Dictionary<string, string> Attributes = null;
     public string Name = "";
+    public string Comment = string.Empty;
 
     ///// <summary>
     ///// Zadává se bez počátečního 0x

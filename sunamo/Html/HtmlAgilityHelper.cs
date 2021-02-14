@@ -133,7 +133,7 @@ namespace sunamo.Html
                 endsWith = false;
                 toTranslate = true;
 
-               
+
 
                 var html = item.InnerHtml.Trim();
                 // contains whole html comment
@@ -144,16 +144,16 @@ namespace sunamo.Html
                 {
                     toTranslate = false;
                 }
-                else if(true)
+                else if (true)
                 {
                     if (html == string.Empty)
                     {
                         continue;
                     }
 
-                     endsWith = html.Contains(AspxConsts.endAspxComment);
-                     startWith = html.Contains(AspxConsts.startAspxComment);
-                    if (startWith || endsWith )
+                    endsWith = html.Contains(AspxConsts.endAspxComment);
+                    startWith = html.Contains(AspxConsts.startAspxComment);
+                    if (startWith || endsWith)
                     {
                         if (startWith && endsWith)
                         {
@@ -162,7 +162,7 @@ namespace sunamo.Html
                         }
                         else
                         {
-                            
+
                         }
                     }
 
@@ -190,15 +190,15 @@ namespace sunamo.Html
                     //    continue;
                     //}
 
-                        vr.Add(item);
-                    
+                    vr.Add(item);
+
                 }
-               
+
             }
             return vr;
         }
 
-        
+
 
         /// <summary>
         /// Do A2 se může zadat *
@@ -234,7 +234,7 @@ namespace sunamo.Html
             return contains;
         }
 
-        
+
 
         /// <summary>
         /// A4 = if add one, return. Like Node vs Nodes
@@ -288,7 +288,7 @@ namespace sunamo.Html
             {
                 vr = TrimTexts(vr);
             }
-            
+
             return vr;
         }
 
@@ -301,14 +301,14 @@ namespace sunamo.Html
             {
                 vr = TrimTexts(vr);
             }
-            
+
             return vr;
         }
 
         public static HtmlDocument CreateHtmlDocument(CreateHtmlDocumentInitData d = null)
         {
             HtmlDocument hd = new HtmlDocument();
-            
+
             hd.OptionOutputOriginalCase = true;
             // false - i přesto mi tag ukončený na / převede na </Page>. Musí se ještě tagy jež nechci ukončovat vymazat z HtmlAgilityPack.HtmlNode.ElementsFlags.Remove("form"); před načetním XML https://html-agility-pack.net/knowledge-base/7104652/htmlagilitypack-close-form-tag-automatically
             hd.OptionAutoCloseOnEnd = false;
@@ -441,12 +441,12 @@ namespace sunamo.Html
             for (int i = textNodes.Count - 1; i >= 0; i--)
             {
                 var item = textNodes[i];
-                if (CA.IsEqualToAnyElement<string>( item.ParentNode.Name, "pre"))
+                if (CA.IsEqualToAnyElement<string>(item.ParentNode.Name, "pre"))
                 {
                     continue;
                 }
                 var d = SH.SplitByWhiteSpaces(item.InnerText);
-                bool changed = CA.ChangeContent(null,d, RegexHelper.IsUri, HtmlGenerator2.Anchor);
+                bool changed = CA.ChangeContent(null, d, RegexHelper.IsUri, HtmlGenerator2.Anchor);
 
                 item.InnerHtml = string.Empty;
                 InsertGroup(item, d);

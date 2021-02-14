@@ -23,6 +23,7 @@ public partial class SourceCodeIndexerRoslyn
     public List<string> endsOther = null;
     public List<string> containsOther = null;
     public PpkOnDrive fileNames = null;
+    public PpkOnDrive pathStarts = null;
 
     #region Working method
     public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions, bool fromFileSystemWatcher)
@@ -131,6 +132,7 @@ public partial class SourceCodeIndexerRoslyn
     }
 
     public static SourceCodeIndexerRoslyn Instance = new SourceCodeIndexerRoslyn();
+    public PpkOnDrive start;
 
     /// <summary>
     /// 15-6-20 Make it private & singleton

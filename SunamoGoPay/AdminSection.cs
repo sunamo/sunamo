@@ -1,4 +1,4 @@
-static void GenerateAvailablePaymentsMethods()
+﻿static void GenerateAvailablePaymentsMethods()
         {
             var c = TF.ReadFile(@"D:\Documents\Visual Studio 2017\Projects\_tests\CompareTwoFiles\CompareTwoFiles\html\1.html");
             var hd = HtmlAgilityHelper.CreateHtmlDocument();

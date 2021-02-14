@@ -23,10 +23,27 @@ namespace sunamo.Helpers
         {
         }
 
-        public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
+        public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd = null)
         {
-            HttpResponseMessage response =  GetResponse(address, method, hrd);
-            return  GetResponseText(response);
+            HttpResponseMessage response = null;
+            return GetResponseText(address, method, hrd, out response);
+        }
+        /// <summary>
+        /// Same url:
+        /// HttpClientHelper.GetResponseText - Exception: The remote server returned an error: (400) Bad Request., response is null
+        /// HttpClientHelper.GetResponseText - really xml, exists response
+        /// Pros: Better is HttpClientHelper because I can parse error
+        /// Cons: HttpClientHelper.GetResponseText not return HttpWebResponse object, only HttpResponseMessage
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="method"></param>
+        /// <param name="hrd"></param>
+        /// <returns></returns>
+        public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpResponseMessage response)
+        {
+            response = GetResponse(address, method, hrd);
+
+            return GetResponseText(response);
         }
 
         private  static  string GetResponseText(HttpResponseMessage response)
@@ -51,7 +68,14 @@ namespace sunamo.Helpers
             }
         }
 
-        public static HttpResponseMessage GetResponse( string address, HttpMethod method, HttpRequestData hrd)
+        /// <summary>
+        /// A3 can be null
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="method"></param>
+        /// <param name="hrd"></param>
+        /// <returns></returns>
+        public static HttpResponseMessage GetResponse( string address, HttpMethod method, HttpRequestData hrd = null)
         {
             if (hrd == null)
             {

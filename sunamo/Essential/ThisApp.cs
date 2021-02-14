@@ -88,8 +88,11 @@ namespace sunamo.Essential
 
         public static void StatusFromText(string v)
         {
-            var tom = StatusHelperSunamo.IsStatusMessage(ref v);
-            SetStatus(tom, v);
+            if (!string.IsNullOrEmpty(v))
+            {
+                var tom = StatusHelperSunamo.IsStatusMessage(ref v);
+                SetStatus(tom, v);
+            }
         }
 
         /// <summary>

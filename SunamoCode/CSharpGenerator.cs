@@ -816,10 +816,10 @@ public class CSharpGenerator : GeneratorCodeAbstract
         StartBrace(tabCount);
     }
 
-    public void EnumWithComments(AccessModifiers _public, string nameEnum, Dictionary<string, string> nameCommentEnums)
+    public void EnumWithComments(int tabCount, AccessModifiers _public, string nameEnum, Dictionary<string, string> nameCommentEnums)
     {
         WriteAccessModifiers(_public);
-        int tabCount = 1;
+        
         AddTab(tabCount);
         sb.AddItem((object)("enum " + nameEnum));
         StartBrace(tabCount);
@@ -831,12 +831,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         EndBrace(tabCount);
     }
 
-    private void XmlSummary(int tabCount, string summary)
-    {
-        this.AppendLine(tabCount, "/// <summary>");
-        this.AppendLine(tabCount, "/// " + summary);
-        this.AppendLine(tabCount, "/// </summary>");
-    }
+   
 
     private void AppendAttribute(int tabCount, string name, string inParentheses)
     {
@@ -940,6 +935,8 @@ public class CSharpGenerator : GeneratorCodeAbstract
         StartBrace(tabCount);
         foreach (var item in enumItems)
         {
+            XmlSummary(tabCount + 1, item.Comment);
+
             if (item.Attributes != null)
             {
                 foreach (var item2 in item.Attributes)
@@ -955,7 +952,18 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
             this.AppendLine(tabCount + 1, item.Name + hex + ",");
         }
+
         EndBrace(tabCount);
+    }
+
+    private void XmlSummary(int tabCount, string summary)
+    {
+        if (!string.IsNullOrEmpty(summary))
+        {
+            this.AppendLine(tabCount, "/// <summary>");
+            this.AppendLine(tabCount, "/// " + summary);
+            this.AppendLine(tabCount, "/// </summary>");
+        }
     }
 
     /// <summary>

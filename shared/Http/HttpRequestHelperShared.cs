@@ -126,12 +126,17 @@ public static partial class HttpRequestHelper{
     }
 
     /// <summary>
-    /// A3 can be null
+    /// Same url:
+    /// HttpClientHelper.GetResponseText - Exception: The remote server returned an error: (400) Bad Request., response is null
+    /// HttpClientHelper.GetResponseText - really xml, exists response
+    /// Pros: Better is HttpClientHelper because I can parse error
+    /// Cons: HttpClientHelper.GetResponseText not return HttpWebResponse object, only HttpResponseMessage
+
     /// </summary>
     /// <param name="address"></param>
     /// <param name="method"></param>
     /// <param name="hrd"></param>
-    public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
+    public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd = null)
     {
         HttpWebResponse response;
         return GetResponseText(address, method, hrd, out response);
@@ -253,9 +258,12 @@ public static Stream GetResponseStream(string address, HttpMethod method)
             }
         }
 
+        WebResponse wr = null;
+
         try
         {
-            response = (HttpWebResponse)request.GetResponse();
+            wr = request.GetResponse();
+            response = (HttpWebResponse)wr;
             
                 Encoding encoding = null;
                 if (response.CharacterSet == "")

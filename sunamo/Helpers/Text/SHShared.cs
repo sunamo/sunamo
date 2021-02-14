@@ -60,6 +60,13 @@ public static partial class SH
         return formatted;
     }
 
+    public static void SplitToParts2(string df, string deli, ref string before, ref string after)
+    {
+        var p = SH.Split(df, deli);
+        before = p[0];
+        after = p[1];
+    }
+
     public static void RemoveWhichHaveWhitespaceAtBothSides(string s, List<int> bold)
     {
         for (int i = bold.Count - 1; i >= 0; i--)

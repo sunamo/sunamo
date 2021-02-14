@@ -65,7 +65,7 @@ namespace win.Helpers.Powershell
         public void RemoveItem(string v)
         {
             
-            sb.AppendLine("Remove-Item " + v + " --Force");
+            sb.AppendLine("Remove-Item " + v + " -Force");
             sb.AppendLine();
         }
 

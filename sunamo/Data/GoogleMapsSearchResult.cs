@@ -15,5 +15,6 @@ namespace SunamoSmartTools.Data
         public string address;
         public string uri = "";
         public bool ReservationRequired = false;
+        public string OpeningHours;
     }
 }

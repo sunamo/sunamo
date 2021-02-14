@@ -7,6 +7,10 @@ using System.Xml.Linq;
 
 namespace sunamo.Xml
 {
+    /// <summary>
+    /// XH = XmlElement
+    /// XHelper = XElement
+    /// </summary>
     public partial class XH
     {
         public static void RemoveFirstElement(string xml, string elem)
@@ -150,10 +154,7 @@ namespace sunamo.Xml
             }
             return xd;
         }
-    }
 
-    public partial class XH
-    {
         public static string RemoveXmlDeclaration(string vstup)
         {
             vstup = Regex.Replace(vstup, @"<\?xml.*?\?>", "");

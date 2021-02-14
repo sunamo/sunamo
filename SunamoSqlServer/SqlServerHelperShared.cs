@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,6 +175,18 @@ public partial class SqlServerHelper
         }
 
         columns.Add(column);
+    }
+
+    public static string SqlCommandToTSQLText(SqlCommand cmd)
+    {
+        StringBuilder query = new StringBuilder(cmd.CommandText);
+
+        foreach (SqlParameter p in cmd.Parameters)
+        {
+            query = query.Replace(p.ParameterName, p.Value.ToString());
+        }
+
+        return query.ToString();
     }
 
     /// <summary>

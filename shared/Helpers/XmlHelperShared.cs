@@ -5,7 +5,7 @@ using System.Xml;
 /// Use System.Xml NS
 /// </summary>
 public static partial class XmlHelper{ 
-public static XmlNode GetAttributeWithName(XmlNode item, string p)
+    public static XmlNode GetAttributeWithName(XmlNode item, string p)
     {
         foreach (XmlAttribute item2 in item.Attributes)
         {
