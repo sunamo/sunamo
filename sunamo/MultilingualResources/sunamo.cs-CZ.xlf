@@ -4918,6 +4918,18 @@
           <source></source>
           <target state="translated">Výsledek zkopírován do schránky</target>
         </trans-unit>
+        <trans-unit id="EnteredTextIsNotExtension" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadaný text není příponou</target>
+        </trans-unit>
+        <trans-unit id="IndexableExtensions" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyměnitelná rozšíření</target>
+        </trans-unit>
+        <trans-unit id="Clear" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Průhledná</target>
+        </trans-unit>
       </group>
     </body>
   </file>

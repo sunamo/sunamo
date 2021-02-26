@@ -56,7 +56,7 @@ public partial class TF
         if (ac == null)
         {
             //result = enc.GetString(bytesArray);
-            return File.ReadAllText(s.ToString());
+            return TF.ReadAllText(s.ToString());
         }
         else
         {
@@ -263,10 +263,15 @@ public static void SaveLines(IList<string> list, string file)
 
         b = b.Skip(3).ToList();
         TF.WriteAllBytes(path, b);
-    } 
+    }
     #endregion
 
     public static string ReadAllText(string path)
+    {
+        return ReadAllText(path, null);
+    }
+
+    public static string ReadAllText(string path, Encoding enc)
     {
         if (isUsed != null)
         {
@@ -276,7 +281,13 @@ public static void SaveLines(IList<string> list, string file)
             }
         }
 
-
-        return File.ReadAllText(path);
+        if (enc == null)
+        {
+            return File.ReadAllText(path);
+        }
+        else
+        {
+            return File.ReadAllText(path, enc);
+        }
     }
 }

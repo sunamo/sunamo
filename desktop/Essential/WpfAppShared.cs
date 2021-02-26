@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,10 @@ public partial class WpfApp{
 #endif
         if (!initialized)
         {
-            #if MB
+            //CA.dCount = new Func<IEnumerable, int>(r => WpfApp.DispatcherAction<IEnumerable, int>(dCount, r));
+            //CA.dFirstOrNull = new Func<IEnumerable, object>(r => WpfApp.DispatcherAction<IEnumerable, object>(dFirstOrNull, r));
+
+#if MB
             //MessageBox.Show("inside if");
 #endif
             initialized = true;
@@ -53,6 +57,36 @@ public partial class WpfApp{
             }
         }
     }
+
+    #region MyRegion
+    //private static int dCount(IEnumerable arg)
+    //{
+    //    int i = 0;
+    //    foreach (var item in arg)
+    //    {
+    //        i++;
+    //    }
+
+    //    return i;
+    //}
+
+    //private static object dFirstOrNull(IEnumerable arg)
+    //{
+    //    int i = 0;
+    //    foreach (var item in arg)
+    //    {
+    //        return item;
+    //    }
+
+    //    return null;
+    //}
+
+    //private static T2 DispatcherAction<T1, T2>(Func<T1, T2> count, T1 t1)
+    //{
+    //    T2 result = WpfApp.cd.Invoke(() => count(t1));
+    //    return result;
+    //} 
+    #endregion
 
     private static void AttachHandlers()
     {

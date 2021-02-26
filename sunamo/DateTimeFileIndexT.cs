@@ -151,7 +151,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
         {
             string t = GetStorageFile(o);
             //File.Delete(t);
-            FS.DeleteFileIfExists(t);
+            FS.TryDeleteFile(t);
             files.Remove(o);
         }
         catch (Exception ex)

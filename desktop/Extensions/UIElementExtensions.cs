@@ -32,14 +32,14 @@ public static partial class UIElementExtensions
         {
             validatedInFull = true;
             var c = ui as SelectMoreFolders;
-            c.Validate(name, d);
+            c.Validate(name, ref d);
             return SelectMoreFolders.validated;
         }
         else if (t == SelectFolder.type)
         {
             validatedInFull = true;
             var c = ui as SelectFolder;
-            c.Validate(name, d);
+            c.Validate(name, ref d);
             return SelectFolder.validated;
         }
 

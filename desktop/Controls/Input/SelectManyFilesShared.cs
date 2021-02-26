@@ -13,7 +13,7 @@ namespace desktop.Controls.Input
     {
     public static Type type = typeof(SelectManyFiles);
 
-    public  void Validate(object tb, SelectManyFiles control, ValidateData d = null)
+    public  void Validate(object tb, SelectManyFiles control, ref ValidateData d)
         {
             if (d == null)
             {
@@ -21,13 +21,13 @@ namespace desktop.Controls.Input
             }
             foreach (SelectFile item in ControlFinder.StackPanel(this, "spFiles").Children)
         {
-            item.Validate(tb, d);
+            item.Validate(tb, ref d);
         }
     }
 
-    public void Validate(object tbFile, ValidateData d = null)
+    public void Validate(object tbFile, ref ValidateData d)
     {
-        Validate(tbFile, this, d);
+        Validate(tbFile, this, ref d);
     }
 
     public static bool validated

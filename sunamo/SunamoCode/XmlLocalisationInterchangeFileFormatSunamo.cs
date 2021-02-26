@@ -11,7 +11,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
     public static void ReplaceHtmlEntitiesWithEmpty()
     {
         var path = @"D:\a\sunamo.en-US.xlf";
-        var content = File.ReadAllText(path);
+        var content = TF.ReadAllText(path);
         #region 
         List<string> consts = new List<string>();
         AllLists.InitHtmlEntitiesFullNames();
@@ -54,7 +54,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         to.Reverse();
 
         var path = @"d:\a\sunamo.en-US.xlf";
-        var content = File.ReadAllText(path);
+        var content = TF.ReadAllText(path);
 
         for (i = from.Count - 1; i >= 0; i--)
         {

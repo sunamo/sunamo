@@ -17,6 +17,14 @@ public class ImageButtonsInit
 
     }
 
+    /// <summary>
+    /// all is object = can be true, false or new VoidString(ColButtons_Added) for example
+    /// </summary>
+    /// <param name="copyToClipboard"></param>
+    /// <param name="clear"></param>
+    /// <param name="add"></param>
+    /// <param name="selectAll"></param>
+    /// <param name="deselectAll"></param>
     public ImageButtonsInit(object copyToClipboard, object clear, object add, object selectAll, object deselectAll)
     {
         this.copyToClipboard = copyToClipboard;
@@ -32,4 +40,14 @@ public class ImageButtonsInit
     //public static ImageButtonsInit DefaultButtons = new ImageButtonsInit(false, false, new VoidString(ColButtons_Added), true, true);
     public static ImageButtonsInit HideAllButtons = new ImageButtonsInit(false, false, false, false, false);
     public static ImageButtonsInit OnlySelect = new ImageButtonsInit(false, false, false, true, true);
+
+    /// <summary>
+    /// A1 can be new VoidString(ColButtons_Added)
+    /// </summary>
+    /// <param name="vs"></param>
+    /// <returns></returns>
+    public static ImageButtonsInit ShowAllButtons(VoidString ColButtons_Added)
+    {
+        return new ImageButtonsInit(true, true, ColButtons_Added, true, true);
+    }
 }

@@ -14,5 +14,7 @@ public enum ListOperation
     /// Property in item
     /// like IsChecked of CheckBox
     /// </summary>
-    PropertyChanged
+    PropertyChanged,
+    Checked,
+    Unchecked
 }

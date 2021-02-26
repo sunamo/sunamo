@@ -156,6 +156,11 @@ public partial class FrameworkElementHelper
         }
     }
 
+    internal static void SetToolTip(Button btnCopyToClipboard, string xlfKeys)
+    {
+        btnCopyToClipboard.ToolTip = sess.i18n( xlfKeys);
+    }
+
     /// <summary>
     /// Dont use Aligment for stretch / fill all available size. 
     /// Width / Height = double.NaN work like a charm!

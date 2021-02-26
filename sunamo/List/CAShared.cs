@@ -13,31 +13,11 @@ using System.Text.RegularExpressions;
 
 public static partial class CA
 {
-    /// <summary>
-    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="ext"></param>
-    /// <param name="p1"></param>
-    /// <returns></returns>
-    public static bool IsAllTheSame<T>(T ext, IList<T> p1)
-    {
-        for (int i = 0; i < p1.Count; i++)
-        {
-            if (!EqualityComparer<T>.Default.Equals(p1[i], ext))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    public static Func<IEnumerable, int> dCount = null;
+    public static Func<IEnumerable, object> dFirstOrNull = null;
+    //dFirstOrNull
+
+    
 
     public static int Count(IEnumerable e)
     {
@@ -45,6 +25,13 @@ public static partial class CA
         {
             return 0;
         }
+
+        //var tName = e.GetType().Name;
+        //if (ThreadHelper.NeedDispatcher(tName))
+        //{
+        //    var result = CA.dCount(e);
+        //    return result;
+        //}
 
         if (e is IList)
         {
@@ -505,8 +492,14 @@ public static partial class CA
     /// <param name="f"></param>
     public static List<T> ToList<T>(params T[] f)
     {
+        #region 1
         IEnumerable enu = f;
         return ToList<T>(enu);
+        #endregion
+        // cant be ToList<T> - StackOverflowException!!!
+        #region 2
+        //return new List<T>(f); 
+        #endregion
     }
 
 
@@ -614,8 +607,9 @@ public static partial class CA
         {
             foreach (object item in enumerable2)
             {
+                var t = item.GetType();
                 // !(item is string)  - not working
-                if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(IEnumerable)))
+                if (RH.IsOrIsDeriveFromBaseClass(t, Types.tIEnumerable))
                 {
                     var enumerable = (IEnumerable)item;
                     var type = enumerable.GetType();
@@ -956,25 +950,7 @@ public static partial class CA
         CA.ChangeContent(null,files_in, SH.Replace, what, forWhat);
     }
 
-    /// <summary>
-    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="videoCodes"></param>
-    /// <param name="empty"></param>
-    /// <returns></returns>
-    public static List<int> IndexesWithValue<T>(List<T> videoCodes, T empty)
-    {
-        var result = videoCodes.Select((r, index) => new { dx = index, value = r }).Where(d => EqualityComparer<T>.Default.Equals( d.value,empty)).Select(d =>d.dx).ToList();
-        return result;
-    }
+    
 
     
    
@@ -1380,48 +1356,8 @@ public static partial class CA
         return where.Count;
     }
 
-    /// <summary>
-    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="p"></param>
-    /// <param name="list"></param>
-    public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
-    {
-        foreach (T item in list)
-        {
-            if (EqualityComparer<T>.Default.Equals(p, item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    /// <summary>
-    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    /// CA.IsEqualToAllElement - takes two generic list. return bool
-    /// CA.ContainsElement - at least one element must be equaled. generic. bool
-    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
-    /// CA.IsAllTheSame() - takes element and list.generic. bool
-    /// CA.IndexesWithValue() - element and list.generic. return list<int>
-    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="p"></param>
-    /// <param name="prvky"></param>
-    /// <returns></returns>
-    public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
-    {
-        return IsEqualToAnyElement(p, prvky.ToList());
-    }
+    
+    
 
     public static object[] JoinVariableAndArray(object p, IEnumerable sloupce)
     {
@@ -1464,48 +1400,9 @@ public static partial class CA
         return default(T);
     }
 
-    /// <summary>
-    /// ContainsAnyFromElement - return string elements of list which is contained
-    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
-    /// ContainsElement - at least one element must be equaled. generic
-    /// IsSomethingTheSame - only for string. 
-    /// ContainsElement - bool, generic, check for equal.
-    /// </summary>
-    /// <param name="s"></param>
-    /// <param name="list"></param>
-    /// <returns></returns>
-    public static List<int> ContainsAnyFromElement(string s, IEnumerable<string> list)
-    {
-        List<int> result = new List<int>();
+    
 
-        int i = 0;
-
-        foreach (var item in list)
-        {
-            if (s.Contains(item))
-            {
-                result.Add(i);
-            }
-            i++;
-        }
-
-        return result;
-    }
-
-    public static bool ContainsAnyFromElementBool(string s, IEnumerable<string> list)
-    {
-        List<int> result = new List<int>();
-
-        foreach (var item in list)
-        {
-            if (s.Contains(item))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    
 
     public static List<int> StartWithAnyInElement(string s, List<string> list, bool _trimBefore)
     {
@@ -1531,35 +1428,7 @@ public static partial class CA
         return result;
     }
 
-    /// <summary>
-    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int> 
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="list"></param>
-    /// <param name="t"></param>
-    public static bool ContainsElement<T>(IEnumerable<T> list, T t)
-    {
-        if (list.Count() == 0)
-        {
-            return false;
-        }
-        foreach (T item in list)
-        {
-            if (Comparer<T>.Equals(item, t))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    
 
     /// <summary>
     /// Direct edit
@@ -2111,64 +1980,7 @@ public static bool HasPostfix(string key, params string[] v1)
         return Prepend(v, toReplace.ToList());
     }
 
-    /// <summary>ContainsAnyFromElement - Contains string elements of list
-    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
-    /// ContainsElement - at least one element must be equaled. generic
-    /// IsSomethingTheSame - only for string. 
-    /// AnySpaces - split A2 by spaces and A1 must contains all parts
-    /// ExactlyName - ==
-    /// FixedSpace - simple contains
-    /// 
-    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="term"></param>
-    /// <param name="searchStrategy"></param>
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
-    {
-        List<int> result = new List<int>();
-        int i = 0;
-        foreach (var item in value)
-        {
-            if (SH.Contains(item, term, searchStrategy))
-            {
-                result.Add(i);
-            }
-            i++;
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    /// CA.IsEqualToAllElement - takes two generic list. return bool
-    /// CA.ContainsElement - at least one element must be equaled. generic. bool
-    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
-    /// CA.IsAllTheSame() - takes element and list.generic. bool
-    /// CA.IndexesWithValue() - element and list.generic. return list<int>
-    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <param name="parts"></param>
-    /// <param name="mustContains"></param>
-    /// <returns></returns>
-    public static IList<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
-    {
-        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
-        foreach (var item in mustContains)
-        {
-            result.AddRange(ReturnWhichContainsIndexes(parts, item));
-        }
-        return result.c;
-    }
-
+    
 public static string FindOutLongestItem(List<string> list, params string[] delimiters)
     {
         int delkaNejdelsiho = 0;

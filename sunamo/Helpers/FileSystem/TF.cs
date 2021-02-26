@@ -76,7 +76,7 @@ public partial class TF
 
         foreach (var item in files)
         {
-            string content = File.ReadAllText(item);
+            string content = TF.ReadAllText(item);
             if (!content.Contains(append))
             {
                 content = append + content;

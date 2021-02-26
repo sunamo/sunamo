@@ -19,6 +19,34 @@ using System.Text.RegularExpressions;
 
 public partial class FS
 {
+    public static List<string> GetFilesMoreMasc(string path, string v, SearchOption topDirectoryOnly)
+    {
+        var c = AllStrings.comma;
+        var sc = AllStrings.sc;
+        List<string> result = new List<string>();
+        List<string> masks = new List<string>();
+
+        if (v.Contains(c))
+        {
+            masks.AddRange(SH.Split(v, c));
+        }
+        else if (v.Contains(sc))
+        {
+            masks.AddRange(SH.Split(v, sc));
+        }
+        else
+        {
+            masks.Add(v);
+        }
+
+        foreach (var item in masks)
+        {
+            result.AddRange(Directory.GetFiles(path, item, topDirectoryOnly));
+        }
+
+        return result;
+    }
+
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
@@ -351,6 +379,7 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
             t.from = SH.ReplaceAllDoubleSpaceToSingle2(t.from);
             t.to = SH.ReplaceAllDoubleSpaceToSingle2(t.to);
         }
+
         if (t.pairLinesInFromAndTo)
         {
             var from2 = SH.Split(t.from, Environment.NewLine);
@@ -371,6 +400,8 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
         else
         {
             ReplaceInAllFiles(CA.ToListString(t.from), CA.ToListString(t.to), t.files, t.isMultilineWithVariousIndent, t.writeEveryReadedFileAsStatus, t.fasterMethodForReplacing);
+
+
         }
     }
 
@@ -422,8 +453,8 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
                     SunamoTemplateLogger.Instance.LoadedFromStorage(item);
                 }
 
-                // File.ReadAllText is 20x faster than TF.ReadFile
-                var content = File.ReadAllText(item);
+                // TF.ReadAllText is 20x faster than TF.ReadFile
+                var content = TF.ReadAllText(item);
                 var content2 = string.Empty;
 
                 if (fasterMethodForReplacing == null)
@@ -462,7 +493,7 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
         var files = FS.GetFiles(folder, mask, SearchOption.AllDirectories);
         foreach (string item in files)
         {
-            string df2 = File.ReadAllText(item, Encoding.Default);
+            string df2 = TF.ReadAllText(item, Encoding.Default);
             if (true) //SH.ContainsDiacritic(df2))
             {
                 TF.SaveFile(SH.TextWithoutDiacritic(df2), item);
@@ -988,19 +1019,41 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
             var files = FS.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (var item in files)
             {
-                File.Delete(item);
+                FS.TryDeleteFile(item);
             }
             var dirs = FS.GetFolders(p, AllStrings.asterisk, SearchOption.AllDirectories);
             for (int i = dirs.Length() - 1; i >= 0; i--)
             {
-                Directory.Delete(dirs[i], false);
+                FS.TryDeleteDirectory(dirs[i]);
             }
             if (rootDirectoryToo)
             {
-                Directory.Delete(p, false);
+                FS.TryDeleteDirectory(p);
             }
+            // Commented due to NI
+            //FS.DeleteFoldersWhichNotContains(@"e:\Documents\Visual Studio 2017\Projects\", "bin", CA.ToListString( "node_modules"));
         }
     }
+
+    public static void DeleteFoldersWhichNotContains(string v, string folder, IEnumerable<string> v2)
+    {
+        throw new NotImplementedException();
+
+        //var f = FS.GetFolders(v, folder, SearchOption.AllDirectories);
+        //for (int i = f.Count - 1; i >= 0; i--)
+        //{
+        //    if (CA.ReturnWhichContainsIndexes( f[i], v2).Count != 0)
+        //    {
+        //        f.RemoveAt(i);
+        //    }
+        //}
+        //ClipboardHelper.SetLines(f);
+        //foreach (var item in f)
+        //{
+        //    //FS.DeleteF
+        //}
+    }
+
     /// <summary>
     /// Vyhazuje výjimky, takže musíš volat v try-catch bloku
     /// </summary>
@@ -1009,6 +1062,7 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
     {
         DeleteAllRecursively(p, true);
     }
+
     public static List<string> OnlyExtensions(List<string> cesta)
     {
         List<string> vr = new List<string>( cesta.Count);

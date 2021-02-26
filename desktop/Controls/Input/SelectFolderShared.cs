@@ -14,9 +14,9 @@ namespace desktop.Controls
         public static Type type = typeof(SelectFolder);
         public static bool validated;
 
-        public void Validate(object tbFolder, ValidateData d = null)
+        public void Validate(object tbFolder, ref ValidateData d)
         {
-            SelectFolder.Validate(tbFolder, this, d);
+            SelectFolder.Validate(tbFolder, this, ref d);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace desktop.Controls
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
-        public static void Validate(object tb, SelectFolder control, ValidateData d = null)
+        public static void Validate(object tb, SelectFolder control, ref ValidateData d)
         {
             if (!validated)
             {

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
+
 public static partial class IEnumerableExtensions
 {
     public static int Length(this IEnumerable e)
@@ -20,10 +22,8 @@ public static partial class IEnumerableExtensions
     {
         if (e.Count() > 0)
         {
-            foreach (var item in e)
-            {
-                return item;
-            }
+            var c = CAThread.ToList(e);
+            return  c.FirstOrDefault();
         }
 
         return null;

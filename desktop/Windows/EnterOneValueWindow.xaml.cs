@@ -20,6 +20,22 @@ namespace desktop
     /// </summary>
     public partial class EnterOneValueWindow : Window
     {
+        public Func<string, bool> ValidatorBeforeAdding
+        {
+            set
+            {
+                enterOneValueUC.ValidatorBeforeAdding = value;
+            }
+        }
+
+        public string ValidatorBeforeAddingMessage
+        {
+            set
+            {
+                enterOneValueUC.ValidatorBeforeAddingMessage = value;
+            }
+        }
+
         /// <summary>
         /// access to everything via enterOneValueUC
         /// </summary>

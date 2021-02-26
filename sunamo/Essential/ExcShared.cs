@@ -16,21 +16,47 @@ public class Exc
     }
 
     #region For easy copy in SunamoException project
-
+    static bool first = true;
     static StringBuilder sb = new StringBuilder();
 
     /// <summary>
     /// Remove GetStackTrace (first line
     /// </summary>
     /// <returns></returns>
-    public static string GetStackTrace()
+    public static string GetStackTrace(bool stopAtFirstSystem = false)
     {
+        if (stopAtFirstSystem) 
+        {
+            if (first)
+            {
+                first = false;
+
+                ClipboardHelper.SetText(AllStrings.dash);
+            }
+        }
+
         StackTrace st = new StackTrace();
 
         var v = st.ToString();
         var l = GetLines(v);
         Trim(l);
         l.RemoveAt(0);
+
+        int i = 0;
+
+        for (; i < l.Count; i++)
+        {
+            if (l[i].StartsWith(CsConsts.atSystemDot))
+            {
+                l = l.Take(i).ToList();
+                l.Add(string.Empty);
+                l.Add(string.Empty);
+
+                break;
+            }
+
+            
+        }
 
         return JoinNL(l);
     }

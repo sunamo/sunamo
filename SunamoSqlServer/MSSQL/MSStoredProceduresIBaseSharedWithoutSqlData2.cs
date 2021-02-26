@@ -719,7 +719,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             if (measureTime)
             {
-                StopwatchStatic.Start();
+                StopwatchStaticSql.Start();
             }
 
             conn.Open();
@@ -735,7 +735,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             if (measureTime)
             {
-                StopwatchStatic.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+                StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
             }
 
             return result;
@@ -768,7 +768,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         if (measureTime)
         {
-            StopwatchStatic.Start();
+            StopwatchStaticSql.Start();
         }
 
         var conn = new SqlConnection(Cs);
@@ -780,7 +780,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
         if (measureTime)
         {
-            StopwatchStatic.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+            StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
         }
 
         return result;
@@ -798,7 +798,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             if (measureTime)
             {
-                StopwatchStatic.Start();
+                StopwatchStaticSql.Start();
             }
 
             
@@ -813,7 +813,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             if (measureTime)
             {
-                StopwatchStatic.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+                StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
             }
 
             return result;

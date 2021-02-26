@@ -12,6 +12,8 @@ public class Types
     
     public static readonly Type tStringBuilder = typeof(StringBuilder);
 
+    public static readonly Type tIEnumerable = typeof(IEnumerable);
+
     #region Same seria as in DefaultValueForTypeT
     public static readonly Type tString = typeof(string);
     public static readonly Type tBool = typeof(bool);

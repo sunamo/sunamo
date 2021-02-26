@@ -272,7 +272,7 @@ public class FoldersWithSolutions
 
     /// <summary>
     /// Simple returns global variable solutions
-    /// Exclude from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached
+    /// Exclude from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached and !A2
     /// A3 - can use wildcard
     /// </summary>
     public List<SolutionFolder> Solutions(Repository r, bool loadAll = true, IEnumerable<string> skipThese = null)

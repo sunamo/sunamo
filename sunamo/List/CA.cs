@@ -13,13 +13,29 @@ using System.Text;
 using System.Text.RegularExpressions;
 public static partial class CA
 {
+
+    //public static object FirstOrNull(IEnumerable e)
+    //{
+    //    if (e == null)
+    //    {
+    //        return null;
+    //    }
+
+    //    //var tName = e.GetType().Name;
+    //    //if (ThreadHelper.NeedDispatcher(tName))
+    //    //{
+    //    //    var result = CA.dFirstOrNull(e);
+    //    //    return result;
+    //    //}
+
+    //    return e.FirstOrNull();
+    //}
     public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
     {
         for (int i = 0; i < l.Count; i++)
         {
             l[i] = SH.RemoveAfterFirst(l[i], CharHelper.IsSpecial);
         }
-        
     }
 
     /// <summary>
@@ -192,54 +208,25 @@ public static partial class CA
         return duplicated.c;
     }
 
-    public static bool MoreOrZero(List<HtmlNode> n, out bool? zeroOrMore)
-    {
-        zeroOrMore = null;
-        var c = n.Count;
-        var b = c == 0;
-        var bb = c > 1;
-        if (b || bb)
-        {
-            if (b)
-            {
-                zeroOrMore = true;
-            }
-            else
-            {
-                zeroOrMore = false;
-            }
-            return true;
-        }
-        return false;
-    }
-
-
-
     /// <summary>
-    /// Return whether all of A1 are in A2
-    /// Not all from A2 must be A1ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
+    /// Direct edit
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="searchTerms"></param>
-    /// <param name="key"></param>
-    public static bool IsEqualToAllElement<T>(List<T> searchTerms, List<T> key)
+    /// <param name="v"></param>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public static List<string> StartingWith(string v, List<string> l)
     {
-        foreach (var item in searchTerms)
+        for (int i = l.Count - 1; i >= 0; i--)
         {
-            if (!CA.IsEqualToAnyElement<T>(item, key))
+            if (!l[i].StartsWith(v))
             {
-                return false;
+                l.RemoveAt(i);
             }
         }
-        return true;
+        return l;
     }
+
+    
 
     /// <summary>
     /// A2,3 can be null, then no header will be append
@@ -319,6 +306,7 @@ public static partial class CA
         }
         return count;
     }
+
     /// <summary>
     /// Direct edit
     /// </summary>
@@ -341,20 +329,7 @@ public static partial class CA
     {
         return Enumerable.Repeat<string>(string.Empty, count).ToList();
     }
-    private static IEnumerable<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, T value)
-    {
-        List<int> result = new List<int>();
-        int i = 0;
-        foreach (var item in parts)
-        {
-            if (EqualityComparer<T>.Default.Equals(item, value))
-            {
-                result.Add(i);
-            }
-            i++;
-        }
-        return result;
-    }
+    
     /// <summary>
     /// Return equal ranges of in A1  
     /// </summary>
@@ -447,17 +422,7 @@ public static partial class CA
     {
         return list.Any(d => SH.MatchWildcard(file, d));
     }
-    public static int IndexOfValue(List<int> allWidths, int width)
-    {
-        for (int i = 0; i < allWidths.Count; i++)
-        {
-            if (allWidths[i] == width)
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
+    
     public static bool HasFirstItemLength(List<string> notContains)
     {
         string t = "";
@@ -518,15 +483,7 @@ public static partial class CA
         }
         return folders;
     }
-    private static IList<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, IEnumerable<T> mustBeEqual)
-    {
-        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
-        foreach (var item in mustBeEqual)
-        {
-            result.AddRange(ReturnWhichAreEqualIndexes<T>(parts, item));
-        }
-        return result.c;
-    }
+    
     public static bool AnyElementEndsWith(string t, params string[] v)
     {
         return AnyElementEndsWith(t, v.ToList());
@@ -558,6 +515,7 @@ public static partial class CA
         }
         return new List<string>(p);
     }
+
     public static List<string> JoinArrayAndArrayString(IEnumerable<string> a, params string[] p)
     {
         return JoinArrayAndArrayString(a, p.ToList());
@@ -627,6 +585,7 @@ public static partial class CA
         }
         return vratit;
     }
+
     public static List<string> ContainsDiacritic(IEnumerable<string> nazvyReseni)
     {
         List<string> vr = new List<string>(nazvyReseni.Count());
@@ -639,48 +598,7 @@ public static partial class CA
         }
         return vr;
     }
-    /// <summary>
-    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///IsEqualToAllElement - takes two generic list. return bool
-    ///ContainsElement - at least one element must be equaled. generic. bool
-    ///IsSomethingTheSame - only for string. as List.Contains. bool
-    ///IsAllTheSame() - takes element and list.generic. bool
-    ///IndexesWithValue() - element and list.generic. return list<int>
-    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <param name="ext"></param>
-    /// <param name="p1"></param>
-    public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1)
-    {
-        string contained = null;
-        return IsSomethingTheSame(ext, p1, ref contained);
-    }
-    /// <summary>
-    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    /// CA.IsEqualToAllElement - takes two generic list. return bool
-    /// CA.ContainsElement - at least one element must be equaled. generic. bool
-    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
-    /// CA.IsAllTheSame() - takes element and list.generic. bool
-    /// CA.IndexesWithValue() - element and list.generic. return list<int>
-    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <param name="ext"></param>
-    /// <param name="p1"></param>
-    /// <param name="contained"></param>
-    public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1, ref string contained)
-    {
-        foreach (var item in p1)
-        {
-            if (item == ext)
-            {
-                contained = item;
-                return true;
-            }
-        }
-        return false;
-    }
+    
     public static T[,] OneDimensionArrayToTwoDirection<T>(T[] flatArray, int width)
     {
         int height = (int)Math.Ceiling(flatArray.Length / (double)width);
@@ -694,17 +612,7 @@ public static partial class CA
         }
         return result;
     }
-    public static int IndexOfValue<T>(List<T> allWidths, T width)
-    {
-        for (int i = 0; i < allWidths.Count; i++)
-        {
-            if (EqualityComparer<T>.Default.Equals(allWidths[i], width))
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
+    
     public static int CountOfValue<T>(T v, params T[] show)
     {
         int vr = 0;
@@ -753,31 +661,8 @@ public static partial class CA
         return null;
     }
     
-    /// <summary>
-    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    /// CA.IsEqualToAllElement - takes two generic list. return bool
-    /// CA.ContainsElement - at least one element must be equaled. generic. bool
-    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
-    /// CA.IsAllTheSame() - takes element and list.generic. bool
-    /// CA.IndexesWithValue() - element and list.generic. return list<int>
-    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="ext"></param>
-    /// <param name="p1"></param>
-    /// <returns></returns>
-    public static bool IsAllTheSame<T>(T ext, params T[] p1)
-    {
-        for (int i = 0; i < p1.Length; i++)
-        {
-            if (!EqualityComparer<T>.Default.Equals(p1[i], ext))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    
+
     /// <summary>
     /// V prvním indexu jsou řádky, v druhém sloupce
     /// </summary>
@@ -848,5 +733,24 @@ public static partial class CA
         return globallyInstalledTsDefinitions;
     }
 
-
+    public static bool MoreOrZero(List<HtmlNode> n, out bool? zeroOrMore)
+    {
+        zeroOrMore = null;
+        var c = n.Count;
+        var b = c == 0;
+        var bb = c > 1;
+        if (b || bb)
+        {
+            if (b)
+            {
+                zeroOrMore = true;
+            }
+            else
+            {
+                zeroOrMore = false;
+            }
+            return true;
+        }
+        return false;
+    }
 }

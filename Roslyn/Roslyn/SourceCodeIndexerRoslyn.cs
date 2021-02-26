@@ -184,13 +184,16 @@ public partial class SourceCodeIndexerRoslyn
         }
     }
 
-    public Dictionary<string, List<FoundedCodeElement>> SearchInContent(string term, bool includeEmpty, bool? inComments)
+    public Dictionary<string, List<FoundedCodeElement>> SearchInContent(List<string> loadExtensions, string term, bool includeEmpty, bool? inComments)
     {
         Dictionary<string, List<FoundedCodeElement>> result = new Dictionary<string, List<FoundedCodeElement>>();
         bool include = false;
         foreach (var item in linesWithContent)
         {
-            
+            if (!CA.EndsWith(item.Key, loadExtensions))
+            {
+                continue;
+            }
 #if DEBUG
             //if (FS.GetFileName( item.Key) == "MainWindow.cs")
             //{
@@ -259,7 +262,7 @@ public partial class SourceCodeIndexerRoslyn
     /// <param name = "type"></param>
     /// <param name = "classType"></param>
     /// <param name = "searchStrategy"></param>
-    public CodeElements FindNamespaceElement(string text, NamespaceCodeElementsType type, ClassCodeElementsType classType, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
+    public CodeElements FindNamespaceElement(List<string> loadExtensions, string text, NamespaceCodeElementsType type, ClassCodeElementsType classType, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         bool makeChecking = type != NamespaceCodeElementsType.All;
         Dictionary<string, NamespaceCodeElements> result = new Dictionary<string, NamespaceCodeElements>();
@@ -268,9 +271,13 @@ public partial class SourceCodeIndexerRoslyn
 
         if (type != NamespaceCodeElementsType.Nope)
         {
-
             foreach (var item in namespaceCodeElements)
             {
+                if (!CA.EndsWith(item.Key, loadExtensions))
+                {
+                    continue;
+                }
+
                 NamespaceCodeElements d = new NamespaceCodeElements();
                 foreach (var item2 in item.Value)
                 {

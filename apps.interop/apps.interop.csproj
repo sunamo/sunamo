@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBD30C90-E305-45EB-B25B-1792FA9CA75F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>apps.interop</RootNamespace>
+    <AssemblyName>apps.interop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\_Uap\apps\apps\Logger\LogMessage.cs">
+      <Link>Logger\LogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Uap\apps\apps\Logger\LogMessageAbstract.cs">
+      <Link>Logger\LogMessageAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Uap\apps\apps\Logger\LogMessagesComparer.cs">
+      <Link>Logger\LogMessagesComparer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Uap\apps\apps\Logger\LogService.cs">
+      <Link>Logger\LogService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Uap\apps\apps\Logger\LogServiceAbstract.cs">
+      <Link>Logger\LogServiceAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Uap\apps\apps\Logger\LogServiceData.cs">
+      <Link>Logger\LogServiceData.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\shared\shared.csproj">
+      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xlf\Xlf.csproj">
+      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
+      <Name>Xlf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -23,7 +23,6 @@ namespace desktop.Controls.Buttons
     /// </summary>
     public partial class ImageButtons : UserControl
     {
-
         static Type type = typeof(ImageButtons);
         List<Button> allButtons = null;
         public event VoidString Added;
@@ -57,6 +56,8 @@ namespace desktop.Controls.Buttons
         {
             eov = new EnterOneValueWindow("item to insert (one on line)");
             eov.enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
+            eov.ValidatorBeforeAdding = ValidatorBeforeAdding;
+            eov.ValidatorBeforeAddingMessage = ValidatorBeforeAddingMessage;
             eov.IsMultiline = true;
             eov.ShowDialog();
         }
@@ -81,7 +82,13 @@ namespace desktop.Controls.Buttons
 
             SetAwesomeIcons();
 
-            
+            Loaded += ImageButtons_Loaded;
+        }
+
+        private void ImageButtons_Loaded(object sender, RoutedEventArgs e)
+        {
+           
+
         }
 
         public double HeightOfFirstVisibleButton()
@@ -105,6 +112,12 @@ namespace desktop.Controls.Buttons
         /// <param name="clear"></param>
         public void Init(ImageButtonsInit i)
         {
+            SetToolTip(btnCopyToClipboard, XlfKeys.CopyTextToClipboard);
+            SetToolTip(btnClear, XlfKeys.Clear);
+            SetToolTip(btnAdd, XlfKeys.Add);
+            SetToolTip(btnSelectAll, XlfKeys.CheckAll);
+            SetToolTip(btnUnselectAll, XlfKeys.UncheckAll);
+
             SetVisibility(btnCopyToClipboard, i.copyToClipboard);
             SetVisibility(btnClear, i.clear);
             SetVisibility(btnAdd, i.add);
@@ -114,11 +127,18 @@ namespace desktop.Controls.Buttons
             allButtons = CA.ToList<Button>(btnCopyToClipboard, btnClear, btnAdd, btnSelectAll, btnUnselectAll);
             this.Visibility = this.IsAllCollapsed() ? Visibility.Collapsed : Visibility.Visible;
 
+            ResourceDictionaryStyles.Margin10(allButtons);
+
             foreach (var item in allButtons)
             {
                 item.HorizontalAlignment = HorizontalAlignment.Center;
                 item.VerticalAlignment = VerticalAlignment.Center;
             }
+        }
+
+        private void SetToolTip(Button btnCopyToClipboard, string copyTextToClipboard)
+        {
+            FrameworkElementHelper.SetToolTip(btnCopyToClipboard, copyTextToClipboard);
         }
 
         public bool IsAllCollapsed()
@@ -134,7 +154,8 @@ namespace desktop.Controls.Buttons
         }
 
         object data;
-        
+        public Func<string, bool> ValidatorBeforeAdding = null;
+        public string ValidatorBeforeAddingMessage = null;
 
         private void SetVisibility(Button btn, object copyToClipboard)
         {

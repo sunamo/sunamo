@@ -71,20 +71,32 @@ namespace desktop.Controls.Collections
         /// <summary>
         /// Args are: object sender, string operation, object data
         /// </summary>
-        public event Action<object, string, object> CollectionChanged;
+        public event Action<object, ListOperation, object> CollectionChanged;
         public NotifyChangesCollection<NotifyPropertyChangedWrapper<CheckBox>> l = null;
         /// <summary>
         /// Whether have raise CollectionChanged after check 
         /// </summary>
-        public bool? onCheck = true;
-        public bool onUnCheck = true;
+        
         public bool initialized = false;
 
-        public void EventOn(bool onCheck, bool onUnCheck, bool onAdd, bool onRemove, bool onClear, bool onPropertyChanged)
+        EventOnArgs eoa = null;
+
+        /// <summary>
+        /// Must be called after Init
+        /// </summary>
+        /// <param name="e"></param>
+        public void EventOn(EventOnArgs e)
         {
-            this.onCheck = onCheck;
-            this.onUnCheck = onUnCheck;
-            l.EventOn(onAdd, onRemove, onClear, onPropertyChanged);
+            this.eoa = e;
+            l.EventOn(e);
+
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    AddCheckbox(item, defChecked);
+                }
+            }
         }
 
         public CheckBoxListUC()
@@ -100,6 +112,9 @@ namespace desktop.Controls.Collections
             lb.ItemsSource = l.l;
         }
 
+        IList<string> list = null;
+        bool defChecked = false;
+
         /// <summary>
         /// A2 can be null
         /// Into A1.add can be CheckBoxListUC.ColButtons_Added
@@ -110,9 +125,11 @@ namespace desktop.Controls.Collections
         {
             if (!initialized)
             {
+                
+
                 initialized = true;
 
-                colButtons.MaxHeight = 16;
+                colButtons.MaxHeight = 16 + 2 * 10;
 
                 if (i != null)
                 {
@@ -132,13 +149,9 @@ namespace desktop.Controls.Collections
                 //var iso = NotifyPropertyHelper.InnerObjectsOfNotifyPropertyChangedWrapper<CheckBox>(l.l); ;
                 lb.ItemsSource = l.l;
 
-                if (list != null)
-                {
-                    foreach (var item in list)
-                    {
-                        AddCheckbox(item, defChecked);
-                    }
-                }
+                this.list = list;
+                this.defChecked = defChecked;
+                
 
                 this.DataContext = this;
 
@@ -173,7 +186,8 @@ namespace desktop.Controls.Collections
 
         public static string ContentOfTextBlock(StackPanel key)
         {
-            var first = key.Children.FirstOrNull();
+            UIElementCollection children = PanelHelper.Children(key);
+            var first = children.FirstOrNull();
             var tb = first as TextBlock;
             return tb.Text;
         }
@@ -204,7 +218,7 @@ namespace desktop.Controls.Collections
         /// <param name="o"></param>
         /// <param name="operation"></param>
         /// <param name="data"></param>
-        private void L_CollectionChanged(object o, string operation, object data)
+        private void L_CollectionChanged(object o, ListOperation operation, object data)
         {
             if (CollectionChanged != null)
             {
@@ -292,7 +306,7 @@ namespace desktop.Controls.Collections
 
         int dexLastChecked = -1;
 
-        private void ColButtons_Added(string s)
+        public void ColButtons_Added(string s)
         {
             AddCheckbox(s, true);
         }
@@ -388,9 +402,9 @@ namespace desktop.Controls.Collections
             MultiCheck(sender);
             s(sender, true);
 
-            if (onCheck.HasValue && onCheck.Value)
+            if (eoa.onCheck)
             {
-                l.OnCollectionChanged(CheckBoxListOperations.Check, sender);
+                l.OnCollectionChanged(ListOperation.Checked, sender);
             }
         }
 
@@ -505,9 +519,9 @@ namespace desktop.Controls.Collections
         {
             MultiCheck(sender);
             s(sender, false);
-            if (onUnCheck)
+            if (eoa.onUnCheck)
             {
-                l.OnCollectionChanged(CheckBoxListOperations.UnCheck, sender);
+                l.OnCollectionChanged(ListOperation.Unchecked, sender);
             }
         }
 
@@ -611,11 +625,5 @@ Here its is not possible with set up visibility
         {
             return false;
         }
-    }
-
-    public class CheckBoxListOperations
-    {
-        public const string Check = XlfKeys.Check;
-        public const string UnCheck = "UnCheck";
     }
 }

@@ -125,9 +125,9 @@ public partial class ComboBoxHelper
     /// <param name="tb"></param>
     /// <param name="control"></param>
     /// <param name="trim"></param>
-    public static void Validate(object tb, ComboBox control, ValidateData d = null)
+    public static void Validate(object tb, ComboBox control, ref ValidateData d)
     {
-        control.Validate(tb, d);
+        control.Validate(tb, ref d);
     }
 
     public static bool validated

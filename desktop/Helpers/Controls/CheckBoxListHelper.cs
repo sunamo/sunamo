@@ -77,9 +77,9 @@ public class CheckBoxListHelper
     {
         //chbs[0].IsChecked = true;
         var indexes = chbs.Select((v, i) => new { v, i });
-        var where = indexes.Where(x => BTS.GetValueOfNullable(x.v.IsChecked));
+        var where = indexes.Where(x => CheckBoxHelper.IsChecked( x.v));
         
-        var sp = where.Select(d => d.v.Content).Cast<StackPanel>().ToList();
+        var sp = where.Select(d => ContentControlHelper.Content( d.v)).Cast<StackPanel>().ToList();
         List<string> result = new List<string>(sp.Count);
         foreach (var item in sp)
         {

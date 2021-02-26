@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 public partial class SolutionsIndexerHelper{ 
+
 public static SolutionFolder SolutionWithName(string name)
     {
         IEnumerable<SolutionFolder> wpf = null;
@@ -35,7 +36,7 @@ public static SolutionFolder SolutionWithName(string name)
         return null;
     }
 
-/// <summary>
+    /// <summary>
     /// not full path, only name of folder for more accurate deciding
     /// </summary>
     /// <param name = "nameOfFolder"></param>

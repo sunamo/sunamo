@@ -81,6 +81,11 @@ public static partial class SH
 
     public static bool ContainsOnly(string floorS, List<char> numericChars)
     {
+        if (floorS.Length == 0)
+        {
+            return false;
+        }
+
         foreach (var item in floorS)
         {
             if (!numericChars.Contains(item))
@@ -1846,8 +1851,8 @@ public static partial class SH
         {
             ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SunamoPageHelperSunamo.i18n(XlfKeys.NoDelimiterDetermined));   
         }
-
-        var deli3 = CA.ToListString( CA.OneElementCollectionToMulti(deli));
+        var ie = CA.OneElementCollectionToMulti(deli);
+        var deli3 = CA.ToListString(ie );
         var result = text.Split(deli3.ToArray(), stringSplitOptions).ToList();
         CA.Trim(result);
         if (stringSplitOptions == StringSplitOptions.RemoveEmptyEntries)

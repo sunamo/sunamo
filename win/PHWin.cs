@@ -42,7 +42,7 @@ public class PHWin
         switch (prohlizec)
         {
             case Browsers.Chrome:
-                b = @"c:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
+                b = @"c:\Program Files\Google\Chrome\Application\chrome.exe";
                 break;
             case Browsers.Firefox:
                 b = @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe";
@@ -80,14 +80,18 @@ public class PHWin
     {
         open++;
         string b = path[prohlizec];
-
-
         if (open % 10 == 0)
         {
             Debugger.Break();
         }
+        s = PH.NormalizeUri(s);
 
-        Process.Start(new ProcessStartInfo(b, PH.NormalizeUri(s)));
+        if (!UH.HasHttpProtocol(s))
+        {
+            s = SH.WrapWithQm(s);
+        }
+
+        Process.Start(new ProcessStartInfo(b, s));
     }
 
     static Dictionary<Browsers, string> path = new Dictionary<Browsers, string>();

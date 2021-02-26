@@ -69,7 +69,7 @@ namespace desktop.Controls.Collections
         /// Only check
         /// </summary>
         /// <param name="o"></param>
-        private void ChblAutoNo_CollectionChanged(object sender, string operation, object data)
+        private void ChblAutoNo_CollectionChanged(object sender, ListOperation operation, object data)
         {
             MoveCheckBox(sender, chblAutoNo, chblManuallyYes);
         }
@@ -77,7 +77,7 @@ namespace desktop.Controls.Collections
         /// <summary>
         /// Only check
         /// </summary>
-        private void ChblManuallyNo_CollectionChanged(object sender, string operation, object data)
+        private void ChblManuallyNo_CollectionChanged(object sender, ListOperation operation, object data)
         {
             MoveCheckBox(sender, chblManuallyNo, chblManuallyYes);
         }
@@ -85,7 +85,7 @@ namespace desktop.Controls.Collections
         /// <summary>
         /// Only uncheck
         /// </summary>
-        private void ChblManuallyYes_CollectionChanged(object sender, string operation, object data)
+        private void ChblManuallyYes_CollectionChanged(object sender, ListOperation operation, object data)
         {
             MoveCheckBox(sender, chblManuallyYes, chblManuallyNo);
         }
@@ -94,7 +94,7 @@ namespace desktop.Controls.Collections
         /// Only uncheck
         /// </summary>
         /// <param name="o"></param>
-        private void ChblAutoYes_CollectionChanged(object sender, string operation, object data)
+        private void ChblAutoYes_CollectionChanged(object sender, ListOperation operation, object data)
         {
             MoveCheckBox(sender, chblAutoYes, chblManuallyNo);
         }
@@ -214,10 +214,10 @@ namespace desktop.Controls.Collections
             chblAutoNo.Init(null, autoNo, false);
 
             #region Must init before to avoid raise breakpoints
-            chblAutoYes.EventOn(false, true, false, false, false, false);
-            chblManuallyYes.EventOn(false, true, false, false, false, false);
-            chblManuallyNo.EventOn(true, false, false, false, false, false);
-            chblAutoNo.EventOn(true, false, false, false, false, false);
+            chblAutoYes.EventOn(new EventOnArgs(false, true, false, false, false, false));
+            chblManuallyYes.EventOn(new EventOnArgs( false, true, false, false, false, false));
+            chblManuallyNo.EventOn(new EventOnArgs(true, false, false, false, false, false));
+            chblAutoNo.EventOn(new EventOnArgs(true, false, false, false, false, false));
             #endregion
 
             chblAutoYes.DefaultButtonsInit();

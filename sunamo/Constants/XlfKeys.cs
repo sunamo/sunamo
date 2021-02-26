@@ -6,8 +6,11 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string ResultCopiedToClipboard = "ResultCopiedToClipboard"; 
+	public const string Clear = "Clear"; 
 
+	public const string IndexableExtensions = "IndexableExtensions"; 
+	public const string EnteredTextIsNotExtension = "EnteredTextIsNotExtension"; 
+	public const string ResultCopiedToClipboard = "ResultCopiedToClipboard"; 
 	public const string HidePassword = "HidePassword"; 
 	public const string EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa = "EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa"; 
 	public const string Notice = "Notice"; 

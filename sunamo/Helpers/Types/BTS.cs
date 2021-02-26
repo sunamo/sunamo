@@ -3,6 +3,7 @@
 /// </summary>
 
 
+using sunamo.Essential;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -215,6 +216,7 @@ public static partial class BTS
     /// <param name="t"></param>
     public static bool GetValueOfNullable(bool? t)
     {
+        
         if (t.HasValue)
         {
             return t.Value;

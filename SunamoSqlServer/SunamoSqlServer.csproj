@@ -49,7 +49,6 @@
       <Link>ColumnNamesWeb.cs</Link>
     </Compile>
     <Compile Include="..\..\sunamo\SunamoSqlServer\Args\ConvertToVarcharArgs.cs" />
-    <Compile Include="..\..\sunamo\SunamoSqlServer\Attributtes\NoReturnSqlResultAttribute.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Data\SqlData.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Data\SqlResult.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\MSTableRowParse.cs" />
@@ -60,12 +59,13 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlResult\InstancesSqlResult.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelper.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
+    <Compile Include="Attributes\NoReturnSqlResultAttribute.cs" />
+    <Compile Include="Helpers\StopwatchStaticSql.cs" />
     <Compile Include="MSSQL\MSTableRowIDNameShort.cs" />
     <Compile Include="MSSQL\MSTableRowIDNameT.cs" />
     <Compile Include="SqlConsts.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
-    <Compile Include="Attributtes\NoReturnSqlResultAttribute.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
     <Compile Include="Data\SqlData.cs" />
     <Compile Include="Data\SqlResult.cs" />

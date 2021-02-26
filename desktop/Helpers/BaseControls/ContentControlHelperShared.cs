@@ -8,7 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-public partial class ContentControlHelper{ 
+public partial class ContentControlHelper{
+
+    public static string ExtractContent(object sp)
+    {
+        var sp2 = (StackPanel)sp;
+        var result = ExtractContent( sp2);
+        return result;
+    }
 
     public static string ExtractContent(StackPanel sp)
     {
@@ -73,6 +80,8 @@ Je zde ta věc že
 
         return sp;
     }
+
+
 
     /// <summary>
     /// Return height which 

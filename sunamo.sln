@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoGoPayFwShared", "Suna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoDebug", "SunamoDebug\SunamoDebug.csproj", "{77F8CA4E-74BC-47BC-A9BE-F6748E7507D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apps.interop", "apps.interop\apps.interop.csproj", "{FBD30C90-E305-45EB-B25B-1792FA9CA75F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -657,6 +659,18 @@ Global
 		{77F8CA4E-74BC-47BC-A9BE-F6748E7507D1}.Release|x64.Build.0 = Release|Any CPU
 		{77F8CA4E-74BC-47BC-A9BE-F6748E7507D1}.Release|x86.ActiveCfg = Release|Any CPU
 		{77F8CA4E-74BC-47BC-A9BE-F6748E7507D1}.Release|x86.Build.0 = Release|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Debug|x64.Build.0 = Debug|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Debug|x86.Build.0 = Debug|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|x64.ActiveCfg = Release|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|x64.Build.0 = Release|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|x86.ActiveCfg = Release|Any CPU
+		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,6 +24,8 @@ namespace desktop.Controls.Input
     /// </summary>
     public partial class EnterOneValueUC : UserControl, IControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {
+        public Func<string, bool> ValidatorBeforeAdding = null;
+        public string ValidatorBeforeAddingMessage = null;
         static Type type = typeof(EnterOneValueUC);
         public ValidateData validateData = null;
        
@@ -209,12 +211,24 @@ namespace desktop.Controls.Input
 
             bool allOk = true;
 
+            // in txtEnteredText is only txtEnteredText
             foreach (var item in txtEnteredText)
             {
                 // Always set to true
+                // Set up previous validate state
                 item.SetValidated(previousValidate.Value);
 
-                previousValidate = item.Validate2(ExtractName(item), validateData);
+                // 1. must ci 
+                validateData = new ValidateData();
+
+                // Coz there is only txtEnteredText, I can set up it here
+                // 2. must assign
+                validateData.validateMethod = ValidatorBeforeAdding;
+                validateData.messageWhenValidateMethodFails = ValidatorBeforeAddingMessage;
+
+                previousValidate = item.Validate2(ExtractName(item), ref validateData);
+
+                
 
                 if (previousValidate.HasValue)
                 {

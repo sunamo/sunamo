@@ -18,8 +18,14 @@ public class ValidateData
     public List<string> excludedStrings = new List<string>();
     public bool allowEmpty = false;
     public Func<string, bool> validateMethod;
-    public string messageWhenValidateMethodFails;
+    
+    public string messageWhenValidateMethodFails = null;
     public string messageToReallyShow;
+
+    public ValidateData()
+    {
+
+    }
 
     // https://stackoverflow.com/a/43707185
     //[MethodImpl(MethodImplOptions.NoInlining)]

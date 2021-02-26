@@ -14,11 +14,13 @@ using System.Linq;
 using static CsFileFilter;
 
 public partial class SourceCodeIndexerRoslyn{ 
+
 public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
         ProcessFile(file, NamespaceCodeElementsType.All, ClassCodeElementsType.All, false, fromFileSystemWatcher);
     }
-/// <summary>
+
+    /// <summary>
     /// True if file wasnt indexed yet
     /// False is file was already indexed
     /// </summary>
@@ -124,7 +126,7 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                 linesWithIndexes.Remove(pathFile);
             }
 
-            linesWithIndexes.Add(pathFile, FullFileIndex);
+             linesWithIndexes.AddIfNotExists(pathFile, FullFileIndex);
             foreach (var item in namespaceCodeElementsAll)
             {
                 if (namespaceCodeElementsType.HasFlag(item))

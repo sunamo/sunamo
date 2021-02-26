@@ -7,12 +7,6 @@ using System.Data.SqlClient;
 
 public partial class GeneratorMsSql
 {
-
-
-
-    
-
-
     /// <summary>
     /// Pokud nechceš řadit podle určitého sloupce, dej do parametru orderBy null
     /// </summary>

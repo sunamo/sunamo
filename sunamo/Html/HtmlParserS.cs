@@ -9,7 +9,7 @@ public static partial class HtmlDocumentS
     {
         HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
         //hd.Encoding = Encoding.UTF8;
-        s_html2 = File.ReadAllText(path);
+        s_html2 = TF.ReadAllText(path);
         s_html2 = WebUtility.HtmlDecode(s_html2);
         //string html =HtmlHelper.ToXml(); 
         hd.LoadHtml(s_html2);

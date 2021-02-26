@@ -9,7 +9,7 @@ public static partial class TextBoxExtensions{
     /// <param name = "tb"></param>
     /// <param name = "control"></param>
     /// <param name = "trim"></param>
-    public static void Validate(this TextBox control, object tb, ValidateData d = null)
+    public static void Validate(this TextBox control, object tb, ref ValidateData d)
     {
         if (!validated)
         {
@@ -32,7 +32,7 @@ public static partial class TextBoxExtensions{
         if (d.validateMethod != null)
         {
             // ContainsInvalidFileNameChars return true if fails, therefore here cant be!
-            if (d.validateMethod(text))
+            if (!d.validateMethod(text))
             {
                 if (d.messageWhenValidateMethodFails == null)
                 {

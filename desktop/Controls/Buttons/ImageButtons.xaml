@@ -14,11 +14,11 @@
             <Setter Property="MaxWidth" Value="16"></Setter>-->
         </Style>
     </UserControl.Resources>
-    
-    <StackPanel Orientation="Horizontal" x:Name="sp" x:FieldModifier="public" >
+    <!--x:FieldModifier="public"-->
+    <StackPanel Orientation="Horizontal" x:Name="sp">
         <!--Add new element always after last due to keep serie in ctor-->
-        <Button x:FieldModifier="public" x:Name="btnCopyToClipboard" Click="BtnCopyToClipboard_Click" Margin="5" FontSize="25"></Button>
-        <Button x:FieldModifier="public" x:Name="btnClear" Click="BtnClear_Click" Margin="5" FontSize="25"></Button>
+        <Button x:FieldModifier="public" x:Name="btnCopyToClipboard" Click="BtnCopyToClipboard_Click" Margin="5"></Button>
+        <Button x:FieldModifier="public" x:Name="btnClear" Click="BtnClear_Click" Margin="5" ></Button>
         <Button x:FieldModifier="public" x:Name="btnAdd" Click="BtnAdd_Click"></Button>
         <Button x:FieldModifier="public" x:Name="btnSelectAll" Click="BtnSelectAll_Click"></Button>
         <Button x:FieldModifier="public" x:Name="btnUnselectAll" Click="BtnUnselectAll_Click"></Button>

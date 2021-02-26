@@ -21,10 +21,11 @@ public static partial class UIElementExtensions{
 
     /// <summary>
     /// Must be be Validate2 due to different with Validate which is defi
+    /// From A3 removed = null & add ref => Validate2() is only one place which ci ValidateData
     /// </summary>
     /// <param name = "ui"></param>
     /// <param name = "name"></param>
-    public static bool? Validate2(this UIElement ui, string name, ValidateData d = null)
+    public static bool? Validate2(this UIElement ui, string name, ref ValidateData d)
     {
         if (Validate2FullDelegate != null)
         {
@@ -44,7 +45,7 @@ public static partial class UIElementExtensions{
         if (t == TypesControls.tTextBox)
         {
             var c = ui as TextBox;
-            c.Validate(name, d);
+            c.Validate(name, ref d);
             return TextBoxHelper.validated;
         }
         // ListBoxHelper
@@ -64,32 +65,32 @@ public static partial class UIElementExtensions{
         else if (t == TypesControls.tComboBox)
         {
             var c = ui as ComboBox;
-            c.Validate(name, d);
+            c.Validate(name, ref d);
             return ComboBoxHelper.validated;
         }
         else if (t == SelectFile.type)
         {
             var c = ui as SelectFile;
-            c.Validate(name, d);
+            c.Validate(name, ref d);
             return SelectFile.validated;
         }
        
         else if (t == SelectManyFiles.type)
         {
             var c = ui as SelectManyFiles;
-            c.Validate(name, d);
+            c.Validate(name, ref d);
             return SelectManyFiles.validated;
         }
         else if (t == TwoRadiosUC.type)
         {
             var c = ui as TwoRadiosUC;
-            c.Validate(name, d);
+            c.Validate(name, ref d);
             return TwoRadiosUC.validated;
         }
         else if (t == TypesControlsSunamo.tPathEditor)
         {
             IValidateControl td = (IValidateControl)ui;
-            return td.Validate(name, d);
+            return td.Validate(name, ref d);
         }
         else
         {

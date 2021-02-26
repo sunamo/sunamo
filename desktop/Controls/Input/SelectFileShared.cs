@@ -12,7 +12,7 @@ namespace desktop.Controls
     {
     public static Type type = typeof(SelectFile);
 
-    public void Validate(object tbNewPath, ValidateData d = null)
+    public void Validate(object tbNewPath, ref ValidateData d)
         {
             if (d == null)
             {

@@ -60,53 +60,56 @@ public partial class FS
             }
             else
             {
-                if (mask.Contains(AllStrings.sc))
-                {
-                    //list = new List<string>();
-                    var masces = SH.Split(mask, AllStrings.sc);
+                return FS.GetFilesMoreMasc(folder2, mask, searchOption);
+                //if (mask.Contains(AllStrings.sc))
+                //{
+                //    //list = new List<string>();
+                //    var masces = SH.Split(mask, AllStrings.sc);
 
-                    foreach (var item in masces)
-                    {
-                        var masc = item;
-                        if (getFilesArgs.useMascFromExtension)
-                        {
-                            masc = FS.MascFromExtension(item);
-                        }
-                        try
-                        {
-                            list.AddRange(Directory.GetFiles(folder, masc, searchOption));
-                        }
-                        catch (Exception ex)
-                        {
-                        }
+                //    foreach (var item in masces)
+                //    {
+                //        var masc = item;
+                //        if (getFilesArgs.useMascFromExtension)
+                //        {
+                //            masc = FS.MascFromExtension(item);
+                //        }
 
-                    }
-                }
-                else
-                {
+                //        try
+                //        {
+                //            list.AddRange(FS.GetFilesMoreMasc(folder, masc, searchOption));
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //        }
 
-                    try
-                    {
-                        var folder3 = FS.WithoutEndSlash(folder);
-                        DirectoryInfo di = new DirectoryInfo(folder3);
-                        var masc = mask;
-                        if (getFilesArgs.useMascFromExtension)
-                        {
-                            masc = FS.MascFromExtension(mask);
-                        }
+                //    }
+                //}
+                //else
+                //{
 
-                        var files = di.GetFiles(masc, searchOption);
-                        var files2 = files.Select(d => d.FullName);
+                //    try
+                //    {
+                //        var folder3 = FS.WithoutEndSlash(folder);
+                //        DirectoryInfo di = new DirectoryInfo(folder3);
+                //        var masc = mask;
+                //        if (getFilesArgs.useMascFromExtension)
+                //        {
+                //            masc = FS.MascFromExtension(mask);
+                //        }
 
-                        //list.AddRange(Directory.GetFiles(folder3, masc, searchOption));
-                        list.AddRange(files2);
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-                }
+                //        var files = di.GetFiles(masc, searchOption);
+                //        var files2 = files.Select(d => d.FullName);
+
+                //        //list.AddRange(Directory.GetFiles(folder3, masc, searchOption));
+                //        list.AddRange(files2);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //    }
+                //}
             }
         }
+
         CA.ChangeContent(null,list, d => SH.FirstCharLower(d));
 
         if (getFilesArgs._trimA1)
@@ -549,6 +552,7 @@ public partial class FS
         return result;
     }
 
+    
     public static bool IsExtension(string result)
     {
         if (!SH.ContainsOnly(result.Substring(1), RandomHelper.vsZnakyWithoutSpecial))
@@ -1457,10 +1461,6 @@ public partial class FS
 
     public static string MascFromExtension(string ext2 = AllStrings.asterisk)
     {
-        if (ext2.Length == 0)
-        {
-
-        }
         if (char.IsLetterOrDigit( ext2[0]))
         {
             // For wildcard, dot (simply non letters) include .
@@ -1623,7 +1623,8 @@ public partial class FS
         {
             try
             {
-                list.AddRange(Directory.GetFiles(item, mask, SearchOption.TopDirectoryOnly));
+                var d = FS.GetFiles(item, mask, SearchOption.TopDirectoryOnly);
+                list.AddRange(d);
             }
             catch (Exception ex)
             {

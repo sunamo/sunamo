@@ -18,7 +18,7 @@ namespace System.Windows.Controls
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
-        public static void Validate(this ListBox control, object tb, ValidateData d = null)
+        public static void Validate(this ListBox control, object tb, ref ValidateData d)
         {
             if (!validated)
             {

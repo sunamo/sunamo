@@ -168,6 +168,7 @@
     <Compile Include="..\..\sunamo\desktop\Windows\WindowWithUserControl.cs" />
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
+    <Compile Include="Args\EventOnArgs.cs" />
     <Compile Include="Args\FolderContentsTreeViewArgs.cs" />
     <Compile Include="Args\WindowWithUserControlArgs.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
@@ -513,6 +514,7 @@
     <Compile Include="Values\HeaderSize.cs" />
     <Compile Include="Values\TypesControls.cs" />
     <Compile Include="Values\TypesDesktop.cs" />
+    <Compile Include="Values\TypesEnumerable.cs" />
     <Compile Include="VisualTreeHelpers.cs" />
     <Compile Include="Windows\EnterOneValueWindow.xaml.cs">
       <DependentUpon>EnterOneValueWindow.xaml</DependentUpon>

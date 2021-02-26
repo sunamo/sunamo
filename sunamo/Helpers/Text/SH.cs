@@ -62,7 +62,7 @@ public static partial class SH
         item = item.Replace(cs, v + cs);
         if (File.Exists(item))
         {
-            var c = File.ReadAllText(item);
+            var c = TF.ReadAllText(item);
             if (c.Contains(mustContains))
             {
                 return true;

@@ -67,7 +67,7 @@ public class PanelHelper
     {
         vr.Add(f);
 
-        
+
         foreach (UIElement item in Childrens(f))
         {
             GetThisAndRecursiveAllSubUIElements(item, vr);
@@ -78,7 +78,7 @@ public class PanelHelper
     {
         // Cant compare with ==, but check for parent classes. 
         // In most cases I will search for UIElement, Control etc. and nothing will found
-        if (RH.IsOrIsDeriveFromBaseClass( f.GetType(), typeof(T)))
+        if (RH.IsOrIsDeriveFromBaseClass(f.GetType(), typeof(T)))
         {
             vr.Add(f as T);
         }
@@ -97,5 +97,13 @@ public class PanelHelper
             GetThisAndRecursiveAllSubUIElements<T>(item, vr);
         }
         return vr;
+    }
+
+    internal static UIElementCollection Children(StackPanel key)
+    {
+
+        var r = WpfApp.cd.Invoke(() => key.Children);
+        return r;
+
     }
 }

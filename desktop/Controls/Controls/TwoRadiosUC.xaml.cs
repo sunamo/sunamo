@@ -68,7 +68,7 @@ namespace desktop.Controls.Controls
             return false;
         }
 
-        public  bool Validate(object tb, TwoRadiosUC control, ValidateData d = null)
+        public  bool Validate(object tb, TwoRadiosUC control, ref ValidateData d)
         {
             if (d == null)
             {
@@ -78,9 +78,9 @@ namespace desktop.Controls.Controls
             return validated;
         }
 
-        public bool Validate(object tbFolder, ValidateData d = null)
+        public bool Validate(object tbFolder, ref ValidateData d)
         {
-            Validate(tbFolder, this, d);
+            Validate(tbFolder, this, ref d);
             return validated;
         }
     }

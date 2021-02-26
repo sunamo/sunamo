@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 /// <summary>
 /// This is only one implement IList
@@ -19,23 +22,18 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
     /// Its collection due to use also ObservableCollection and so
     /// </summary>
     public Collection<T> l = null;
-    public event Action<object, string, object> CollectionChanged;
+    public event Action<object, ListOperation, object> CollectionChanged;
     /// <summary>
     /// sender is chbl but in Tag are last clicked chb
     /// </summary>
     private object _sender;
 
-    public bool onAdd = false;
-    public bool onRemove = false;
-    public bool onClear = false;
-    public bool onPropertyChanged = false;
+    public EventOnArgs eoa = null;
+    public EventOnArgs eoaWasChanged = new EventOnArgs(false);
 
-    public void EventOn(bool onAdd, bool onRemove, bool onClear, bool onPropertyChanged)
+    public void EventOn(EventOnArgs e)
     {
-        this.onAdd = onAdd;
-        this.onRemove = onRemove;
-        this.onClear = onClear;
-        this.onPropertyChanged = onPropertyChanged;
+        this.eoa = e;
     }
 
     /// <summary>
@@ -71,7 +69,7 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
             l.Add(item);
         });
         
-        if (onAdd)
+        if (eoa.onAdd)
         {
             OnCollectionChanged(ListOperation.Add, item);
         }
@@ -79,17 +77,37 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
 
     private void Item_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (onPropertyChanged)
+        if (eoa.onPropertyChanged)
         {
             T t = (T)sender;
-            OnCollectionChanged(ListOperation.PropertyChanged, t);
+            if (e.PropertyName == "IsChecked")
+            {
+                var tb = (ToggleButton)sender;
+                bool? isChecked = (bool?)tb.GetValue(ToggleButton.IsCheckedProperty);
+
+                if (isChecked.GetValueOrDefault())
+                {
+                    OnCollectionChanged(ListOperation.Checked, t);
+                }
+                else
+                {
+                    OnCollectionChanged(ListOperation.Unchecked, t);
+                }
+            }
+            else
+            {
+                OnCollectionChanged(ListOperation.PropertyChanged, t);
+            }
+            
         }   
     }
+
+
 
     public void Clear()
     {
         l.Clear();
-        if (onClear)
+        if (eoa.onClear)
         {
             OnCollectionChanged(ListOperation.Clear, null);
         }
@@ -118,7 +136,7 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
     public void Insert(int index, T item)
     {
         l.Insert(index, item);
-        if (onAdd)
+        if (eoa.onAdd)
         {
             OnCollectionChanged(ListOperation.Insert, item);
         }
@@ -127,7 +145,7 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
     public bool Remove(T item)
     {
         bool vr = l.Remove(item);
-        if (onRemove)
+        if (eoa.onRemove)
         {
             OnCollectionChanged(ListOperation.Remove, item);
         }
@@ -145,18 +163,43 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
         return l.GetEnumerator();
     }
 
-    private void OnCollectionChanged(ListOperation op, object data)
+    
+    public void OnCollectionChanged(ListOperation op, object data)
     {
-        OnCollectionChanged(op.ToString(), data);
-    }
-
-    public void OnCollectionChanged(string op, object data)
-    {
-        // Cant be null if I dont want save changes to drive
         if (CollectionChanged != null)
         {
-            // sender is chbl but in Tag are last clicked chb
+            // must be _sender, not this
             CollectionChanged(_sender, op, data);
         }
+
+        switch (op)
+        {
+            case ListOperation.RemoveAt:
+            case ListOperation.Remove:
+                eoaWasChanged.onRemove = true;
+                break;
+            case ListOperation.Insert:
+            case ListOperation.Add:
+                eoaWasChanged.onAdd = true;
+                break;
+            case ListOperation.Clear:
+                eoaWasChanged.onClear = true;
+                break;
+            case ListOperation.Checked:
+                eoaWasChanged.onCheck = true;
+                break;
+            case ListOperation.Unchecked:
+                eoaWasChanged.onUnCheck = true;
+                break;
+
+            case ListOperation.PropertyChanged:
+                eoaWasChanged.onPropertyChanged = true;
+                break;
+            default:
+                break;
+        }
+        
     }
+
+    
 }

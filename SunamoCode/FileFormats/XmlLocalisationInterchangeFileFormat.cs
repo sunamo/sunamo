@@ -613,7 +613,7 @@ Into A1 insert:
         {
             Langs toL = XmlLocalisationInterchangeFileFormatSunamo.GetLangFromFilename(fn);
 
-            string enS = File.ReadAllText(fn);
+            string enS = TF.ReadAllText(fn);
             XlfData d = new XlfData();
 
             d.path = fn;

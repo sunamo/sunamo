@@ -139,7 +139,7 @@ public partial class CryptHelper2
     {
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(velikostKliče, VratCspParameters(false));
         rsa.PersistKeyInCsp = false;
-        rsa.FromXmlString(File.ReadAllText(xmlSouborKlíče));
+        rsa.FromXmlString(TF.ReadAllText(xmlSouborKlíče));
         //bool b = rsa.PublicOnly;
         if ((cipherTextBytes.Count % RSA_BLOCKSIZE) != 0)
         {

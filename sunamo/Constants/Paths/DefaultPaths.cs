@@ -14,6 +14,7 @@ namespace sunamo.Constants
         public const string DllSunamo = @"e:\Documents\Visual Studio 2017\Projects\sunamo\dll\";
         public const string rootVideos0Kb = @"d:\Documents\Videos0kb\";
         public static string Documents = @"d:\Documents\";
+        public static string eDocuments = @"e:\Documents\";
         public static string Docs = @"d:\Docs\";
         public static string Downloads = @"d:\Downloads\";
         public static string Music2 = @"d:\Music2\";

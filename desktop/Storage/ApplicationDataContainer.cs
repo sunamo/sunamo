@@ -188,13 +188,13 @@ static Type type = typeof(ApplicationDataContainer);
     } 
     #endregion
     
-    private void Chbl_CollectionChanged(object sender, string operation, object data)
+    private void Chbl_CollectionChanged(object sender, ListOperation operation, object data)
     {
         CheckBoxListUC chb = sender as CheckBoxListUC;
         InstantSB sb = new InstantSB(innerDelimiter);
         foreach (var item in chb.l.l)
         {
-            sb.AddItem(item.o.Content);
+            sb.AddItem(ContentControlHelper.ExtractContent( item.o.Content));
             sb.AddItem(BTS.BoolToInt(item.o.IsChecked.Value));
         }
         Set(sender, chbAdded, sb.ToString());

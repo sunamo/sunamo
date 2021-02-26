@@ -133,17 +133,17 @@ namespace desktop.Controls.Input
 
         
 
-        public static void Validate(object tb, SelectMoreFolders control, ValidateData d = null)
+        public static void Validate(object tb, SelectMoreFolders control, ref ValidateData d)
         {
             foreach (SelectFolder item in ControlFinder.StackPanel(control, "spFolders").Children)
             {
-                item.Validate(tb, d);
+                item.Validate(tb, ref d);
             }
         }
 
-        public void Validate(object tbFolder, ValidateData d = null)
+        public void Validate(object tbFolder, ref ValidateData d)
         {
-            Validate(tbFolder, this, d);
+            Validate(tbFolder, this, ref d);
         }
 
         private void btnSaveChangesToTemplate_Click(object sender, RoutedEventArgs e)

@@ -13858,6 +13858,18 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Result copied to clipboard</target>
         </trans-unit>
+        <trans-unit id="EnteredTextIsNotExtension" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Entered text is not extension</target>
+        </trans-unit>
+        <trans-unit id="IndexableExtensions" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Indexable extensions</target>
+        </trans-unit>
+        <trans-unit id="Clear" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Clear</target>
+        </trans-unit>
       </group>
     </body>
   </file>

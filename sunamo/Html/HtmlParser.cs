@@ -18,7 +18,7 @@ public class HtmlDocument2
     public void Load(string path)
     {
         //hd.Encoding = Encoding.UTF8;
-        _html = File.ReadAllText(path);
+        _html = TF.ReadAllText(path);
         _html = WebUtility.HtmlDecode(_html);
         //string html =HtmlHelper.ToXml(); 
         _hd.LoadHtml(_html);

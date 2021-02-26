@@ -18,6 +18,8 @@ public partial class FS{
         return ReplaceIncorrectCharactersFile(dt.ToString());
     }
 
+    
+
     /// <summary>
     /// Dont check for size
     /// Into A2 is good put true - when storage was fulled, all new files will be written with zero size. But then failing because HtmlNode as null - empty string as input
@@ -184,5 +186,11 @@ public partial class FS{
             return Path.GetDirectoryName(f);
         }
         return f;
+    }
+
+    public static string MaskFromExtensions(List<string> allExtensions)
+    {
+        CA.Prepend(AllStrings.asterisk, allExtensions);
+        return SH.Join(AllStrings.comma, allExtensions);
     }
 }
