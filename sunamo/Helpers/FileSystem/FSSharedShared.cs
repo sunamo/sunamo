@@ -18,7 +18,12 @@ public partial class FS{
         return ReplaceIncorrectCharactersFile(dt.ToString());
     }
 
-    
+    public static string ReadAllText(string f)
+    {
+        return TF.ReadAllText(f);
+    }
+
+
 
     /// <summary>
     /// Dont check for size
@@ -192,5 +197,10 @@ public partial class FS{
     {
         CA.Prepend(AllStrings.asterisk, allExtensions);
         return SH.Join(AllStrings.comma, allExtensions);
+    }
+
+    public static string ReadAllText(string v, Encoding uTF8)
+    {
+        return TF.ReadAllText(v, uTF8);
     }
 }

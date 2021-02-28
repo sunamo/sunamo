@@ -28,6 +28,7 @@ namespace sunamo.Helpers
             HttpResponseMessage response = null;
             return GetResponseText(address, method, hrd, out response);
         }
+
         /// <summary>
         /// Same url:
         /// HttpClientHelper.GetResponseText - Exception: The remote server returned an error: (400) Bad Request., response is null

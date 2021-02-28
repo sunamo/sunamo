@@ -1,6 +1,7 @@
 ﻿using sunamo.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace sunamo.Essential
 {
     public class ThisApp
     {
+        public static StreamWriter swSqlLog;
         public static bool runInDebug = true;
 
         // Everywhere is used just ThisApp.cd. 

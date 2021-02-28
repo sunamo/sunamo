@@ -181,10 +181,12 @@
     <Compile Include="Collections\TwoWayDictionary.cs" />
     <Compile Include="Collections\UniqueTableInWhole.cs" />
     <Compile Include="Collections\ValuesTableGrid.cs" />
+    <Compile Include="Constants\Lang\CsConstsShared.cs" />
     <Compile Include="Data\StoreParsedApp.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Helpers\Clipboard\SheetsGeneratorTemplate.cs" />
     <Compile Include="Helpers\Thread\CAThread.cs" />
+    <Compile Include="Helpers\Thread\CAThreadShared.cs" />
     <Compile Include="Helpers\Thread\ThreadHelper.cs" />
     <Compile Include="Helpers\Types\BTS2.cs" />
     <Compile Include="List\CAContainsElementsOrTheirParts.cs" />

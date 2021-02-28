@@ -12,7 +12,7 @@ public partial class VpsHelperSunamo
 
     public static string LocationOfSqlBackup(string s)
     {
-        var p = @"c:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Backup\"+s+".bak";
+        var p = @"c:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup\"+s+".bak";
         return p;
     }
 
