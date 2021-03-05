@@ -7,6 +7,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 /// <summary>
+/// TextWriterList - instance
+/// TextBuilder - instance
+/// TextOutputGenerator - instance
+/// TextGenerator - static
+/// 
 /// Similar: InstantSB,TextBuilder,HtmlSB
 /// </summary>
 public class TextOutputGenerator

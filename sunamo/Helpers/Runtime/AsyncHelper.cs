@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-
     public class AsyncHelper
     {
         public static AsyncHelper ci = new AsyncHelper();
@@ -16,12 +15,15 @@ using System.Threading.Tasks;
 
         }
 
-        /// <summary>
-        /// To all regions insert comments whats not and what working
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="task"></param>
-        public T GetResult<T>(Task<T> task)
+    /// <summary>
+    /// To all regions insert comments whats not and what working
+    /// 
+    /// Not working with FS.GetFilesMoreMascAsync - with use https://stackoverflow.com/a/34518914 OK
+    /// Task.Run<>(async () => await FunctionAsync()).Result;
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="task"></param>
+    public T GetResult<T>(Task<T> task)
         {
             T result = default(T);
 

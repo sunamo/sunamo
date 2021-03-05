@@ -6,8 +6,13 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string Clear = "Clear"; 
+	public const string MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter = "MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter"; 
 
+	public const string Indexing = "Indexing"; 
+	public const string FilesTree = "FilesTree"; 
+	public const string FoldersTree = "FoldersTree"; 
+	public const string TryAFewSecondsLaterAfterFullyInitialized = "TryAFewSecondsLaterAfterFullyInitialized"; 
+	public const string Clear = "Clear"; 
 	public const string IndexableExtensions = "IndexableExtensions"; 
 	public const string EnteredTextIsNotExtension = "EnteredTextIsNotExtension"; 
 	public const string ResultCopiedToClipboard = "ResultCopiedToClipboard"; 

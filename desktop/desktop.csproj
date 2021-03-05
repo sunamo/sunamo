@@ -319,6 +319,7 @@
     <Compile Include="Controls\Visualization\FolderContentsTreeView.xaml.cs">
       <DependentUpon>FolderContentsTreeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Visualization\ProgressBarWithLabel.cs" />
     <Compile Include="Controls\Visualization\TextBoxWithLabel.cs" />
     <Compile Include="Controls\Visualization\TwoWayTable.xaml.cs">
       <DependentUpon>TwoWayTable.xaml</DependentUpon>
@@ -420,6 +421,7 @@
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelperT.cs" />
     <Compile Include="Helpers\Controls\ParagraphBuilderTextBlock.cs" />
     <Compile Include="Helpers\Controls\ProgressBarHelper.cs" />
+    <Compile Include="Helpers\Controls\ProgressBarHelperTime.cs" />
     <Compile Include="Helpers\Controls\RTBH.cs" />
     <Compile Include="Helpers\Controls\ToolbarHelper.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />

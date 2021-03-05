@@ -13,7 +13,7 @@ namespace desktop
         {
             
             this.pb = pb;
-            this.ui = ui;
+            this.ui = pb;
             ui.Dispatcher.Invoke(IH.delegateUpdateProgressBarWpf, pb, 0d);
             ui.Dispatcher.Invoke(IH.delegateChangeVisibilityUIElementWpf, pb, System.Windows.Visibility.Visible);
             percentCalculator = new PercentCalculator(overall);

@@ -4930,6 +4930,26 @@
           <source></source>
           <target state="translated">Průhledná</target>
         </trans-unit>
+        <trans-unit id="TryAFewSecondsLaterAfterFullyInitialized" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zkuste to o několik sekund později po úplné inicializaci</target>
+        </trans-unit>
+        <trans-unit id="FoldersTree" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Strom složek</target>
+        </trans-unit>
+        <trans-unit id="FilesTree" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Strom souborů</target>
+        </trans-unit>
+        <trans-unit id="Indexing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Indexování</target>
+        </trans-unit>
+        <trans-unit id="MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Víceřádkový text lze načíst pouze ze schránky, protože konzolová aplikace rozpozná koncové mezery, jako je Enter</target>
+        </trans-unit>
       </group>
     </body>
   </file>

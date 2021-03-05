@@ -7,13 +7,27 @@ using System.Threading.Tasks;
 
 public partial class CAThread
 {
-    internal static List<object> ToList(IEnumerable e)
+    internal static List<object> ToList(IEnumerable e, System.Windows.Threading.Dispatcher d)
     {
         List<object> ls = new List<object>(e.Count());
-        foreach (var item in e)
+        if (d != null)
         {
-            ls.Add(item);
+            d.Invoke(() =>
+            {
+                foreach (var item in e)
+                {
+                    ls.Add(item);
+                }
+            }, System.Windows.Threading.DispatcherPriority.ContextIdle);
         }
+        else
+        {
+            foreach (var item in e)
+            {
+                ls.Add(item);
+            }
+        }
+        
         return ls;
     }
 }

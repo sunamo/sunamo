@@ -10,6 +10,10 @@ namespace sunamo.Essential
 {
     public class ThisApp
     {
+       
+
+        
+
         public static StreamWriter swSqlLog;
         public static bool runInDebug = true;
 

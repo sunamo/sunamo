@@ -18,12 +18,15 @@ public partial class SourceCodeIndexerRoslyn
     // Ve LoadAllFiles mi odstraní soubory jež nebyly ve selectMoreFolders
     // Z indexu odstraním ty z EndArgs aj. souvisejících v ProcessFile kde odjakživa se s tímto pracovalo
 
+    #region All 4 for which is checked
     public EndArgs endArgs = null;
     public ContainsArgs containsArgs = null;
+    public PpkOnDrive fileNames = null;
+    public PpkOnDrive pathStarts = null; 
+    #endregion
+
     public List<string> endsOther = null;
     public List<string> containsOther = null;
-    public PpkOnDrive fileNames = null;
-    public PpkOnDrive pathStarts = null;
 
     #region Working method
     public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions, bool fromFileSystemWatcher)
@@ -128,11 +131,12 @@ public partial class SourceCodeIndexerRoslyn
 
     public bool IsIndexed(string pathFile)
     {
-        return namespaceCodeElements.ContainsKey(pathFile);
+        return linesWithContent.ContainsKey(pathFile);
+        //return namespaceCodeElements.ContainsKey(pathFile) || classCodeElements.ContainsKey(pathFile);
     }
 
     public static SourceCodeIndexerRoslyn Instance = new SourceCodeIndexerRoslyn();
-    public PpkOnDrive start;
+    
 
     /// <summary>
     /// 15-6-20 Make it private & singleton

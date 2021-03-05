@@ -13870,6 +13870,26 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Clear</target>
         </trans-unit>
+        <trans-unit id="TryAFewSecondsLaterAfterFullyInitialized" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Try a few seconds later after fully initialized</target>
+        </trans-unit>
+        <trans-unit id="FoldersTree" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Folders Tree</target>
+        </trans-unit>
+        <trans-unit id="FilesTree" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Files Tree</target>
+        </trans-unit>
+        <trans-unit id="Indexing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Indexing</target>
+        </trans-unit>
+        <trans-unit id="MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Multi lines text can be loaded only from clipboard because console app recognize ending whitespaces like enter</target>
+        </trans-unit>
       </group>
     </body>
   </file>

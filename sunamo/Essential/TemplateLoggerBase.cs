@@ -19,6 +19,11 @@ static Type type = typeof(TemplateLoggerBase);
             WriteLine(TypeOfMessage.Success, SunamoPageHelperSunamo.i18n(XlfKeys.SavedToDrive)+": " + v);
         }
 
+        public void TryAFewSecondsLaterAfterFullyInitialized()
+        {
+            WriteLine(TypeOfMessage.Information, SunamoPageHelperSunamo.i18n(XlfKeys.TryAFewSecondsLaterAfterFullyInitialized));
+        }
+
         public void Finished(string nameOfOperation)
         {
             WriteLine(TypeOfMessage.Success, nameOfOperation + " - " + SunamoPageHelperSunamo.i18n(XlfKeys.Finished));

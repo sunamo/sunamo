@@ -186,8 +186,10 @@ namespace desktop.Controls.Collections
 
         public static string ContentOfTextBlock(StackPanel key)
         {
-            UIElementCollection children = PanelHelper.Children(key);
-            var first = children.FirstOrNull();
+            var d = Application.Current.Dispatcher;
+
+            UIElementCollection children = PanelHelper.Children(key, d);
+            var first = children.FirstOrNull(d);
             var tb = first as TextBlock;
             return tb.Text;
         }

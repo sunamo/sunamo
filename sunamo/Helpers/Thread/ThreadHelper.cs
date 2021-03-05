@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 public class ThreadHelper
 {
-    //public static bool NeedDispatcher(string tName)
-    //{
-    //    if (tName == "UIElementCollection")
-    //    {
-    //        return true;
-    //    }
-    //    return false;
-    //}
+    public static bool NeedDispatcher(string tName)
+    {
+#if DEBUG
+        DebugLogger.DebugWriteLine(tName);
+#endif
+
+        if (tName == "UIElementCollection")
+        {
+            return true;
+        }
+        return false;
+    }
 }

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class GetFilesArgs
+public class GetFilesArgs : GetFilesBaseArgs
 {
     public bool _trimExt = false;
-    public bool _trimA1 = false;
+    
     public List<string> excludeFromLocationsCOntains = null;
     public bool dontIncludeNewest = false;
     /// <summary>

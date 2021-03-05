@@ -7,6 +7,11 @@ using System.Text;
 namespace sunamo.Collections
 {
     /// <summary>
+    /// TextWriterList - instance
+    /// TextBuilder - instance
+    /// TextOutputGenerator - instance
+    /// TextGenerator - static
+    /// 
     /// Not working, tried with Microsoft.CodeAnalysis.SyntaxNode.WriteTo
     /// </summary>
     public class TextWriterList : TextWriter

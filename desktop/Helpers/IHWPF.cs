@@ -29,9 +29,11 @@ namespace desktop
     public delegate void setSelectedItemSelector(Selector s, object item);
     public delegate void updateLayoutOfUIElement(UIElement uie);
     //public delegate ListBoxItem getListBoxItemFromObject(ListBox lb, object )
+
     public partial class IH
     {
-static Type type = typeof(IH);
+        static Type type = typeof(IH);
+        public static Action<TextBlock, string> setTextTextBlock = setTextTextBlockW;
         public static changeVisibilityUIElementWpf delegateChangeVisibilityUIElementWpf = null;
         public static insertToListBoxWpf delegateInsertToListBoxWpf = null;
         public static updateContentOfLabel delegateUpdateContentOfLabel = null;
@@ -81,6 +83,12 @@ static Type type = typeof(IH);
             delegateSetSelectedItemSelector = new setSelectedItemSelector(setSelectedItemSelector);
             delegateUpdateLayoutOfUIElement = new updateLayoutOfUIElement(updateLayoutOfUIElement);
         }
+
+        static void setTextTextBlockW(TextBlock tb, string t)
+        {
+            tb.Text = t;
+        }
+
         public static void updateLayoutOfUIElement(UIElement uie)
         {
             uie.UpdateLayout();

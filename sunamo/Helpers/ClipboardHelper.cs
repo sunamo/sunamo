@@ -198,6 +198,12 @@ public class ClipboardHelper
         ClipboardHelper.SetText(t);
     }
 
+    public static void AppendStackTrace()
+    {
+        var st = Exc.GetStackTrace(true);
+        ClipboardHelper.AppendText(st);
+    }
+
     //public static string GetText()
     //{
     //    return Instance.GetText();

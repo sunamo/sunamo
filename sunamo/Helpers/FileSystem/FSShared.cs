@@ -8,38 +8,44 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
 public partial class FS
 {
-    public static List<string> GetFilesMoreMasc(string path, string v, SearchOption topDirectoryOnly)
-    {
-        var c = AllStrings.comma;
-        var sc = AllStrings.sc;
-        List<string> result = new List<string>();
-        List<string> masks = new List<string>();
+    #region GetFilesMoreMasc - in thread
+    //public static List<string> GetFilesMoreMasc(string path, string masc, SearchOption searchOption, GetFilesMoreMascArgs e = null)
+    //{
+    //    if (e == null)
+    //    {
+    //        e = new GetFilesMoreMascArgs();
+    //    }
 
-        if (v.Contains(c))
-        {
-            masks.AddRange(SH.Split(v, c));
-        }
-        else if (v.Contains(sc))
-        {
-            masks.AddRange(SH.Split(v, sc));
-        }
-        else
-        {
-            masks.Add(v);
-        }
+    //    e.path = path;
+    //    e.masc = masc;
+    //    e.searchOption = searchOption;
 
-        foreach (var item in masks)
-        {
-            result.AddRange(Directory.GetFiles(path, item, topDirectoryOnly));
-        }
+    //    return GetFilesMoreMasc(e);
+    //}
 
-        return result;
-    }
+    //public static List<string> GetFilesMoreMasc(GetFilesMoreMascArgs e = null)
+    //{
+    //    Thread t = new Thread(new ParameterizedThreadStart(GetFilesMoreMascWorker));
+
+
+    //    t.Start();
+
+    //}
+
+    //private static void GetFilesMoreMascWorker(object o)
+    //{
+    //var e = (GetFilesMoreMascArgs)o; 
+    #endregion
+
+
+
+    
 
     private static List<char> s_invalidPathChars = null;
     private static Type type = typeof(FS);
@@ -52,6 +58,60 @@ public partial class FS
     private static List<char> s_invalidCharsForMapPath = null;
     private static List<char> s_invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
+    public async static Task<List<string>> GetFilesMoreMascAsync(string path, string masc, SearchOption searchOption, GetFilesMoreMascArgs e = null)
+    {
+        if (e == null)
+        {
+            e = new GetFilesMoreMascArgs();
+        }
+
+#if DEBUG
+        var s = FS.ReplaceInvalidFileNameChars(SH.Join(path, masc, searchOption));
+        var d = AppData.ci.GetFile(AppFolders.Cache, "GetFilesMoreMasc" + s + ".txt");
+        if (e.LoadFromFileWhenDebug)
+        {
+            if (FS.ExistsFile(d))
+            {
+                return TF.ReadAllLines(path);
+            }
+        }
+#endif
+
+        var c = AllStrings.comma;
+        var sc = AllStrings.sc;
+        List<string> result = new List<string>();
+        List<string> masks = new List<string>();
+
+        if (masc.Contains(c))
+        {
+            masks.AddRange(SH.Split(masc, c));
+        }
+        else if (masc.Contains(sc))
+        {
+            masks.AddRange(SH.Split(masc, sc));
+        }
+        else
+        {
+            masks.Add(masc);
+        }
+
+        foreach (var item in masks)
+        {
+            result.AddRange(Directory.GetFiles(path, item, searchOption));
+        }
+
+#if DEBUG
+        if (e.LoadFromFileWhenDebug)
+        {
+            if (FS.ExistsFile(d))
+            {
+                TF.WriteAllLines(d, result);
+            }
+        }
+#endif
+
+        return result;
+    }
 
     /// <summary>
     /// 
@@ -88,7 +148,10 @@ public partial class FS
             }
             else
             {
-                return FS.GetFilesMoreMasc(folder2, mask, searchOption);
+                //Task.Run<>(async () => await FunctionAsync());
+                var r = Task.Run<List<string>>(async () => await FS.GetFilesMoreMascAsync(folder, mask, searchOption));
+                return r.Result;
+
                 //if (mask.Contains(AllStrings.sc))
                 //{
                 //    //list = new List<string>();
@@ -210,6 +273,115 @@ public partial class FS
     }
 
 
+    /// <summary>
+    /// 
+    /// When is occur Access denied exception, use GetFilesEveryFolder, which find files in every folder
+    /// A1 have to be with ending backslash
+    /// A4 must have underscore otherwise is suggested while I try type true
+    /// A2 can be delimited by semicolon. In case more extension use FS.GetFilesOfExtensions
+    /// </summary>
+    /// <param name="folder"></param>
+    /// <param name="mask"></param>
+    /// <param name="searchOption"></param>
+    public async static Task<List<string>> GetFilesAsync(string folder2, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
+    {
+        if (!FS.ExistsDirectory(folder2) && !folder2.Contains(";"))
+        {
+            ThisApp.SetStatus(TypeOfMessage.Warning, folder2 + "does not exists");
+            return new List<string>();
+        }
+
+        if (getFilesArgs == null)
+        {
+            getFilesArgs = new GetFilesArgs();
+        }
+
+        var folders = SH.Split(folder2, AllStrings.sc);
+        CA.PostfixIfNotEnding(AllStrings.bs, folders);
+
+        List<string> list = new List<string>();
+        foreach (var folder in folders)
+        {
+            if (!FS.ExistsDirectory(folder))
+            {
+
+            }
+            else
+            {
+                return await FS.GetFilesMoreMascAsync(folder, mask, searchOption);
+            }
+        }
+
+        CA.ChangeContent(null, list, d => SH.FirstCharLower(d));
+
+        if (getFilesArgs._trimA1)
+        {
+            foreach (var folder in folders)
+            {
+                list = CA.ChangeContent(null, list, d => d = d.Replace(folder, ""));
+            }
+
+        }
+
+        if (getFilesArgs._trimExt)
+        {
+            foreach (var folder in folders)
+            {
+                list = CA.ChangeContent(null, list, d => d = SH.RemoveAfterLast(AllChars.dot, d));
+            }
+
+        }
+
+        if (getFilesArgs.excludeFromLocationsCOntains != null)
+        {
+            // I want to find files recursively
+            foreach (var item in getFilesArgs.excludeFromLocationsCOntains)
+            {
+                CA.RemoveWhichContains(list, item, false);
+            }
+        }
+
+        Dictionary<string, DateTime> dictLastModified = null;
+
+        bool isLastModifiedFromFn = getFilesArgs.LastModifiedFromFn != null;
+
+        if (getFilesArgs.dontIncludeNewest || (getFilesArgs.byDateOfLastModifiedAsc || isLastModifiedFromFn))
+        {
+            dictLastModified = new Dictionary<string, DateTime>();
+            foreach (var item in list)
+            {
+                DateTime? dt = null;
+
+                if (isLastModifiedFromFn)
+                {
+                    dt = getFilesArgs.LastModifiedFromFn(FS.GetFileNameWithoutExtension(item));
+                }
+
+                if (!dt.HasValue)
+                {
+                    dt = FS.LastModified(item);
+                }
+
+                dictLastModified.Add(item, dt.Value);
+            }
+            list = dictLastModified.OrderBy(t => t.Value).Select(r => r.Key).ToList();
+        }
+
+        if (getFilesArgs.dontIncludeNewest)
+        {
+
+            list.RemoveAt(list.Count - 1);
+        }
+
+
+
+        if (getFilesArgs.excludeWithMethod != null)
+        {
+            getFilesArgs.excludeWithMethod.Invoke(list);
+        }
+
+        return list;
+    }
 
     public static List<string> GetFileNamesWoExtension(List<string> jpgcka)
     {
@@ -1588,7 +1760,7 @@ public partial class FS
 
         List<string> list = new List<string>();
 
-        GetFoldersEveryFolder(folder, mask, list);
+        GetFoldersEveryFolder(folder, list);
 
         if (a._trimA1)
         {
@@ -1604,6 +1776,37 @@ public partial class FS
         }
 
         return list;
+    }
+
+    private static void GetFoldersEveryFolder(string folder, List<string> list)
+    {
+        String[] folders = null;
+
+        try
+        {
+             folders = Directory.GetDirectories(folder);
+            
+        }
+        catch (Exception ex)
+        {
+            // Not throw exception, it's probably Access denied  on Documents and Settings etc
+            //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"GetFoldersEveryFolder with path: " + folder, ex);
+        }
+
+        if (folders != null)
+        {
+            list.AddRange(folders);
+
+            for (int i = 0; i < folders.Length; i++)
+            {
+                GetFoldersEveryFolder(folders[i], list);
+            }
+
+            //foreach (var item in folders)
+            //{
+                
+            //}
+        }
     }
 
     private static void GetFoldersEveryFolder(string folder, string mask, List<string> list)
@@ -1625,6 +1828,14 @@ public partial class FS
         }
     }
 
+    //public static List<string> GetFilesEveryFolder(string folder, string mask, SearchOption searchOption, bool _trimA1 = false)
+    //{
+
+
+    //    var d = Task.Run<List<string>>(async () => await GetFilesEveryFolderAsync(folder, mask, searchOption, new GetFilesEveryFolderArgs {_trimA1 =  _trimA1 })).Result;
+    //    return d;
+    //}
+
     /// <summary>
     /// In item1 is all directories, in Item2 all files
     /// </summary>
@@ -1632,40 +1843,125 @@ public partial class FS
     /// <param name="ask"></param>
     /// <param name="searchOption"></param>
     /// <param name="_trimA1"></param>
-    public static List<string> GetFilesEveryFolder(string folder, string mask, SearchOption searchOption, bool _trimA1 = false)
+    public async static Task<List<string>> GetFilesEveryFolderAsync(string folder, string mask, SearchOption searchOption, GetFilesEveryFolderArgs e = null)
     {
+        if (e == null)
+        {
+            e = new GetFilesEveryFolderArgs();
+        }
+
         List<string> list = new List<string>(); ;
         List<string> dirs = null;
 
-        try
+        StopwatchStatic.Start();
+
+        // There is not exc handle needed, its slowly then
+        //try
+        //{
+        if (e.usePbTime)
         {
+            var m = sess.i18n(XlfKeys.Loading) + AllStrings.space + sess.i18n(XlfKeys.FoldersTree) + Consts.dots3;
+
+            e.InsertPbTime(60);
+            e.UpdateTbPb(m);
+        }
+
             dirs = GetFoldersEveryFolder(folder, "*").ToList();
-        }
-        catch (Exception ex)
+
+#if DEBUG
+        int before = dirs.Count;
+#endif
+
+        if (e.FilterFoundedFolders != null)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SunamoPageHelperSunamo.i18n(XlfKeys.GetFilesWithPath)+": " + folder);
+            string si = null;
+
+            for (int i = dirs.Count - 1;  i >= 0;  i--)
+            {
+                si = dirs[i];
+                //if (si.Contains(@"\standard\.git"))
+                //{
+
+                //}
+
+                if (!e.FilterFoundedFolders.Invoke(si))
+                {
+                    dirs.RemoveAt(i);
+                }
+            }
         }
+
+        
+
+#if DEBUG
+        int after = dirs.Count;
+#endif 
+
+        //ClipboardHelper.SetLines(dirs);
+
+        //}
+        //catch (Exception ex)
+        //{
+        //    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SunamoPageHelperSunamo.i18n(XlfKeys.GetFilesWithPath)+": " + folder);
+        //}
+
+        StopwatchStatic.StopAndPrintElapsed("GetFoldersEveryFolder");
+
+        StopwatchStatic.Start();
+
+        if (e.usePb)
+        {
+            var m = sess.i18n(XlfKeys.Loading) + AllStrings.space + sess.i18n(XlfKeys.FilesTree) + Consts.dots3;
+
+            e.InsertPb(dirs.Count);
+            e.UpdateTbPb(m);
+        }
+
+        List<string> d = new List<string>();
 
         dirs.Insert(0, folder);
         foreach (var item in dirs)
         {
             try
             {
-                var d = FS.GetFiles(item, mask, SearchOption.TopDirectoryOnly);
-                list.AddRange(d);
+                d.Clear();
+
+                d.AddRange( FS.GetFiles(item, mask, SearchOption.TopDirectoryOnly));
+                
+
+
             }
             catch (Exception ex)
             {
                 // Not throw exception, it's probably Access denied on Documents and Settings etc
                 //ThrowExceptions.FileSystemException(Exc.GetStackTrace(),type, Exc.CallingMethod(), ex);
             }
+            if (e.usePb)
+            {
+                e.DoneOnePercent();
+            }
+
+            if (e.FilterFoundedFiles != null)
+            {
+                for (int i = d.Count - 1; i >= 0; i--)
+                {
+                    if (!e.FilterFoundedFiles(d[i]))
+                    {
+                        d.RemoveAt(i);
+                    }
+                }
+            }
+
+            list.AddRange(d);
         }
 
-        CA.ChangeContent(null,list, d => SH.FirstCharLower(d));
+        StopwatchStatic.StopAndPrintElapsed("GetFiles");
 
-        if (_trimA1)
+        CA.ChangeContent(null,list, d2 => SH.FirstCharLower(d2));
+
+        if (e._trimA1)
         {
-            list = CA.ChangeContent(null,list, d => d = d.Replace(folder, ""));
+            list = CA.ChangeContent(null,list, d3 => d3 = d3.Replace(folder, ""));
         }
         return list;
     }

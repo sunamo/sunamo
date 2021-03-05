@@ -18,11 +18,11 @@ public static partial class IEnumerableExtensions
         return source.Skip(Math.Max(0, source.Count() - N));
     }
 
-    public static object FirstOrNull(this IEnumerable e)
+    public static object FirstOrNull(this IEnumerable e, Dispatcher d = null)
     {
         if (e.Count() > 0)
         {
-            var c = CAThread.ToList(e);
+            var c = CAThread.ToList(e, d);
             return  c.FirstOrDefault();
         }
 

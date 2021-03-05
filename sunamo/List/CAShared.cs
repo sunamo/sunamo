@@ -26,12 +26,13 @@ public static partial class CA
             return 0;
         }
 
-        //var tName = e.GetType().Name;
-        //if (ThreadHelper.NeedDispatcher(tName))
-        //{
-        //    var result = CA.dCount(e);
-        //    return result;
-        //}
+        var t = e.GetType();
+        var tName = t.Name;
+        if (ThreadHelper.NeedDispatcher(tName))
+        {
+            var result = CA.dCount(e);
+            return result;
+        }
 
         if (e is IList)
         {

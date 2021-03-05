@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.Threading
+public class GetFilesBaseArgs
 {
-    public class ThreadPool
-    {
-    }
+    public bool _trimA1 = false;
 }

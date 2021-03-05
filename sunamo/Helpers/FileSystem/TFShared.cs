@@ -33,6 +33,9 @@ public partial class TF
     public static string ReadFile<StorageFolder, StorageFile>(StorageFile s, AbstractCatalog<StorageFolder, StorageFile> ac = null)
     {
         
+
+      
+        
         if (!File.Exists(s.ToString()))
         {
             return string.Empty;

@@ -36,7 +36,18 @@ public static partial class SH
         return result;
     }
 
-    
+    public static bool ContainsAtLeastOne(string p, List<string> aggregate)
+    {
+        foreach (var item in aggregate)
+        {
+            if (p.Contains(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static string Format34(string c, params object[] innerMain)
     {
         string formatted = null;

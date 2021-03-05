@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using desktop.Controls;
 using sunamo;
 
@@ -99,10 +100,11 @@ public class PanelHelper
         return vr;
     }
 
-    internal static UIElementCollection Children(StackPanel key)
+    internal static UIElementCollection Children(StackPanel key, Dispatcher d)
     {
+        //WpfApp.cd
 
-        var r = WpfApp.cd.Invoke(() => key.Children);
+        var r = d.Invoke(() => key.Children, DispatcherPriority.ContextIdle);
         return r;
 
     }

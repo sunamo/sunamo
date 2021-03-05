@@ -20,7 +20,68 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
         ProcessFile(file, NamespaceCodeElementsType.All, ClassCodeElementsType.All, false, fromFileSystemWatcher);
     }
 
+    public bool IsToIndexedFolder(string pathFile, bool alsoEnds)
+    {
+        var uf = UnindexableFiles.uf;
+        bool end2 = false;
+
+        if (pathFile.Contains(@"\_\"))
+        {
+
+        }
+
+        if (!CsFileFilter.AllowOnly(pathFile, endArgs, containsArgs, ref end2, alsoEnds))
+        {
+            if (end2)
+            {
+                uf.unindexablePathEndsFiles.Add(pathFile);
+            }
+            else
+            {
+                uf.unindexablePathPartsFiles.Add(pathFile);
+            }
+
+            return false;
+        }
+
+        if (CA.StartWith(pathStarts, pathFile) != null)
+        {
+            uf.unindexablePathStartsFiles.Add(pathFile);
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public bool IsToIndexed(string pathFile)
+    {
+        #region All 4 for which is checked
+        if (CA.ReturnWhichContainsIndexes(endsOther, pathFile, SearchStrategy.FixedSpace).Count > 0)
+        {
+            return false;
+        }
+
+        var uf = UnindexableFiles.uf;
+
+        var fn = FS.GetFileName(pathFile);
+        if (CA.ReturnWhichContainsIndexes(fileNames, fn, SearchStrategy.FixedSpace).Count > 0)
+        {
+            uf.unindexableFileNamesFiles.Add(pathFile);
+
+            return false;
+        }
+
+        #endregion
+
+        return IsToIndexedFolder(pathFile, true);
+    }
+
+    public bool isCallingIsToIndexed = false;
+
     /// <summary>
+    /// SourceCodeIndexerRoslyn.ProcessFile
+    /// 
     /// True if file wasnt indexed yet
     /// False is file was already indexed
     /// </summary>
@@ -35,36 +96,27 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
         tree = null;
         root = null;
 
-        if (!FS.ExistsFile(pathFile))
+        // A2 must be false otherwise read file twice
+        if (!FS.ExistsFile(pathFile, false))
         {
             return false;
         }
 
-        if (!CsFileFilter.AllowOnly(pathFile, endArgs, containsArgs))
+        if (!isCallingIsToIndexed)
         {
-            return false;
+            if (!IsToIndexed(pathFile))
+            {
+                return false;
+            }
         }
 
-        if (CA.ReturnWhichContainsIndexes(endsOther, pathFile, SearchStrategy.FixedSpace).Count > 0)
-        {
-            return false;
-        }
+        // is checking a little above
+        //if (CA.EndsWith(pathFile, endsOther))
+        //{
+        //    return false;
+        //}
 
-        var fn = FS.GetFileName(pathFile);
-        if (CA.ReturnWhichContainsIndexes(fileNames, fn, SearchStrategy.FixedSpace ).Count > 0)
-        {
-            return false;
-        }
 
-        if (CA.EndsWith(pathFile, endsOther))
-        {
-            return false;
-        }
-
-        if (CA.StartWith(pathStarts, pathFile) != null) 
-        {
-            return false;
-        }
 
         //if (!CsFileFilter.AllowOnlyContains(pathFile, new CsFileFilter.ContainsArgs( false, false, false)))
         //{

@@ -431,7 +431,7 @@
     <Compile Include="XamlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo.notmine\PathEditor\PathEditor.csproj">
+    <ProjectReference Include="..\..\sunamoWithDep.notmine\PathEditor\PathEditor.csproj">
       <Project>{ec822654-cde4-4ee2-b033-55125cd11b80}</Project>
       <Name>PathEditor</Name>
     </ProjectReference>
@@ -485,7 +485,7 @@
     <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" />
     <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" />
     <ReferencePath Include="C:\Program Files\Microsoft SDKs\Azure\.NET SDK\v2.9\bin\plugins\Diagnostics\Newtonsoft.Json.dll" />
-    <ReferencePath Include="D:\Documents\Visual Studio 2017\Projects\sunamo.notmine\PathEditor\bin\Debug\PathEditor.dll" />
+    <ReferencePath Include="D:\Documents\Visual Studio 2017\Projects\sunamoWithDep.notmine\PathEditor\bin\Debug\PathEditor.dll" />
     <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" />
     <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" />
     <ReferencePath Include="D:\Documents\Visual Studio 2017\Projects\sunamo\shared\bin\Debug\shared.dll" />
