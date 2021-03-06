@@ -18,16 +18,30 @@ public static partial class IEnumerableExtensions
         return source.Skip(Math.Max(0, source.Count() - N));
     }
 
-    public static object FirstOrNull(this IEnumerable e, Dispatcher d = null)
+    #region Must be two coz in some projects is not Dispatcher
+    public static object FirstOrNull(this IEnumerable e)
     {
         if (e.Count() > 0)
         {
-            var c = CAThread.ToList(e, d);
-            return  c.FirstOrDefault();
+            // Here cant call CA.ToList because in FirstOrNull is called in CA.ToList => StackOverflowException
+            var c = CAThread.ToList(e);
+            return c.FirstOrDefault();
         }
 
         return null;
     }
+
+    public static object dFirstOrNull(this IEnumerable e, Dispatcher d)
+    {
+        if (e.Count() > 0)
+        {
+            var c = CAThread.ToList(e, d);
+            return c.FirstOrDefault();
+        }
+
+        return null;
+    } 
+    #endregion
 
     public static IEnumerable<TSource> Where2<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
     {

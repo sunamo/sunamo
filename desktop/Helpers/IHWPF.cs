@@ -33,6 +33,7 @@ namespace desktop
     public partial class IH
     {
         static Type type = typeof(IH);
+        public static Func< string> getTextOfTextBlock = getTextOfTextBlockW;
         public static Action<TextBlock, string> setTextTextBlock = setTextTextBlockW;
         public static changeVisibilityUIElementWpf delegateChangeVisibilityUIElementWpf = null;
         public static insertToListBoxWpf delegateInsertToListBoxWpf = null;
@@ -84,6 +85,11 @@ namespace desktop
             delegateUpdateLayoutOfUIElement = new updateLayoutOfUIElement(updateLayoutOfUIElement);
         }
 
+        public static TextBlock tb = null;
+        static string getTextOfTextBlockW()
+        {
+            return tb.Text;
+        }
         static void setTextTextBlockW(TextBlock tb, string t)
         {
             tb.Text = t;

@@ -20,9 +20,21 @@ namespace sunamo.Essential
 
 #if DEBUG
             InitApp.Logger = DebugLogger.Instance;
-            InitApp.TemplateLogger = DebugTemplateLogger.Instance;
-            InitApp.TypedLogger = TypedDebugLogger.Instance;
+            
 #endif
+            InitApp.TemplateLogger =
+#if DEBUG2 && DEBUG
+                DebugTemplateLogger.Instance;
+#elif !DEBUG2 && DEBUG
+                null;
+#endif
+            InitApp.TypedLogger =
+#if DEBUG2 && DEBUG
+                TypedDebugLogger.Instance;
+#elif !DEBUG2 && DEBUG
+            null;
+#endif
+
         }
 
         #region Must be set during app initializing

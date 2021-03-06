@@ -80,15 +80,14 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
              * 4) Initialize helpers of app
              * 5) Set modes
              * 6) Attach handlers
-             */
-
+             */         
+        
         #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
         SunamoPageHelperSunamo.localizedString = SunamoPageHelper.LocalizedString_String;
         string appName = "";
         MainWindowSunamo_Ctor.FirstSection(appName, WpfApp.Init, ClipboardHelperWin.Instance, CheckIsAlreadyRunning);
 
         #endregion
-
         // All initialization must be after #region Initialize base properties of every app 
 
         #region 2) Initialize logging
@@ -123,7 +122,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 3) Initialize base properties of app
         Instance = this;
 
-        WpfApp.cd = Dispatcher;
+        // Not Dispatcher od DispatcherObject but Application.Current.Dispatcher - only then is working in all cases
+        WpfApp.cd = Application.Current.Dispatcher;
 
         // Important to shut down app
         WpfApp.mp = this;WpfApp.htt = this; // delete htt when is not derived, its was mass replaced due to shutdown app after hide to tray

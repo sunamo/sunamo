@@ -17,6 +17,13 @@ namespace sunamo.Essential
             _typedWriteLineDelegate = typedWriteLineDelegate;
         }
 
+#if !DEBUG2
+public TypedLoggerBase ()
+{
+
+}
+#endif
+
         /// <summary>
         /// Only due to Old sfw apps
         /// </summary>
@@ -28,7 +35,7 @@ namespace sunamo.Essential
             Ordinal(v1, name);
         }
 
-        #region 
+#region 
         public void Success(string text, params object[] p)
         {
             _typedWriteLineDelegate.Invoke(TypeOfMessage.Success, text, p);
@@ -86,6 +93,6 @@ namespace sunamo.Essential
             
             _typedWriteLineDelegate.Invoke(TypeOfMessage.Information, text, p);
         }
-        #endregion
+#endregion
     }
 }

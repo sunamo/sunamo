@@ -8,7 +8,28 @@ using System.Windows.Controls;
 public class ProgressBarWithLabel : UserControl
 {
     public ProgressBar pb = null;
+    
     public TextBlock tb = null;
+    public const string prefixWith = "   ";
+
+    public string TbText
+    {
+        get
+        {
+            return WpfApp.cd.Invoke<string>(() => tb.Text);
+        }
+        set
+        {
+            if (string.IsNullOrWhiteSpace(TbText))
+            {
+                tb.Text = string.Empty;
+            }
+            else
+            {
+                WpfApp.cd.Invoke(() => tb.Text = prefixWith + value);
+            }
+        }
+    }
 
     public ProgressBarWithLabel()
     {
@@ -20,6 +41,8 @@ public class ProgressBarWithLabel : UserControl
         //pb.Value = 100;
 
         sp.Children.Add(pb);
+
+        
 
         tb = new TextBlock();
         tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;

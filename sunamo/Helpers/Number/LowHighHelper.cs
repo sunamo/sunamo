@@ -22,9 +22,11 @@ public class LowHighHelper
         }
     }
 
+#if DEBUG2
     public void PrintDebug()
     {
         DebugLogger.Instance.WriteLine("Low: ", low);
         DebugLogger.Instance.WriteLine("High: ", max);
     }
+#endif
 }

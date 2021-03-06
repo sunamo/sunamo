@@ -8,11 +8,13 @@ namespace sunamo.Essential
 {
     public class TypedDebugLogger : TypedLoggerBase
     {
+#if DEBUG2
         public static TypedDebugLogger Instance = new TypedDebugLogger();
 
         private TypedDebugLogger() : base(DebugLogger.DebugWriteLine)
         {
         }
+#endif
     }
 }
 //#endif

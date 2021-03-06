@@ -152,7 +152,6 @@ namespace desktop.Controls.Collections
                 this.list = list;
                 this.defChecked = defChecked;
                 
-
                 this.DataContext = this;
 
                 SizeChanged += CheckBoxListUC_SizeChanged;
@@ -186,12 +185,14 @@ namespace desktop.Controls.Collections
 
         public static string ContentOfTextBlock(StackPanel key)
         {
-            var d = Application.Current.Dispatcher;
+            var d = WpfApp.cd;
 
             UIElementCollection children = PanelHelper.Children(key, d);
-            var first = children.FirstOrNull(d);
+            var first = children.dFirstOrNull(d);
             var tb = first as TextBlock;
-            return tb.Text;
+
+            IH.tb = tb;
+            return d.Invoke<string>(IH.getTextOfTextBlock);
         }
 
         private void CheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)

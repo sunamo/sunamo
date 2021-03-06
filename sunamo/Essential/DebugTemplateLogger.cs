@@ -6,6 +6,7 @@ using System.Text;
 //#if DEBUG
 namespace sunamo.Essential
 {
+#if DEBUG2
     public class DebugTemplateLogger : TemplateLoggerBase
     {
         static DebugTemplateLogger instance = null;
@@ -27,5 +28,6 @@ namespace sunamo.Essential
         {
         }
     }
+#endif
 }
 //#endif

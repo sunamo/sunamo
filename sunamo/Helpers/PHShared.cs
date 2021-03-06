@@ -19,7 +19,7 @@ public partial class PH
         }
         catch (Exception ex)
         {
-            DebugLogger.Instance.WriteLine(Exceptions.TextOfExceptions(ex));
+            ThrowExceptions.CustomWithStackTrace(ex);
         }
         
     }
@@ -32,7 +32,7 @@ public partial class PH
         }
         catch (Exception ex)
         {
-            DebugLogger.Instance.WriteLine(Exceptions.TextOfExceptions(ex));
+            ThrowExceptions.CustomWithStackTrace(ex);
         }
 
     }
@@ -52,7 +52,7 @@ public partial class PH
         }
         catch (Exception ex)
         {
-            DebugLogger.Instance.WriteLine(Exceptions.TextOfExceptions(ex));
+            ThrowExceptions.CustomWithStackTrace(ex);
         }
     }
 

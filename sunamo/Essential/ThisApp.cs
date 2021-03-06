@@ -23,9 +23,9 @@ namespace sunamo.Essential
 
         public static TypedLoggerBase NopeOrDebugTyped()
         {
-#if DEBUG
+#if DEBUG2
             return TypedDebugLogger.Instance;
-#elif !DEBUG
+#elif !DEBUG2
         // Is possible also use CmdApp.ConsoleOrDebugTyped
         //return TypedConsoleLogger.Instance;
 #endif

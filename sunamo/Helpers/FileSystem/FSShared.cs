@@ -1843,7 +1843,7 @@ public partial class FS
     /// <param name="ask"></param>
     /// <param name="searchOption"></param>
     /// <param name="_trimA1"></param>
-    public async static Task<List<string>> GetFilesEveryFolderAsync(string folder, string mask, SearchOption searchOption, GetFilesEveryFolderArgs e = null)
+    public  static List<string> GetFilesEveryFolder(string folder, string mask, SearchOption searchOption, GetFilesEveryFolderArgs e = null)
     {
         if (e == null)
         {
@@ -1869,7 +1869,7 @@ public partial class FS
             dirs = GetFoldersEveryFolder(folder, "*").ToList();
 
 #if DEBUG
-        int before = dirs.Count;
+        //int before = dirs.Count;
 #endif
 
         if (e.FilterFoundedFolders != null)
@@ -1894,16 +1894,18 @@ public partial class FS
         
 
 #if DEBUG
-        int after = dirs.Count;
-#endif 
+        //int after = dirs.Count;
+#endif
 
+        #region MyRegion
         //ClipboardHelper.SetLines(dirs);
 
         //}
         //catch (Exception ex)
         //{
         //    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SunamoPageHelperSunamo.i18n(XlfKeys.GetFilesWithPath)+": " + folder);
-        //}
+        //} 
+        #endregion
 
         StopwatchStatic.StopAndPrintElapsed("GetFoldersEveryFolder");
 
@@ -1927,19 +1929,20 @@ public partial class FS
                 d.Clear();
 
                 d.AddRange( FS.GetFiles(item, mask, SearchOption.TopDirectoryOnly));
-                
-
-
             }
             catch (Exception ex)
             {
                 // Not throw exception, it's probably Access denied on Documents and Settings etc
                 //ThrowExceptions.FileSystemException(Exc.GetStackTrace(),type, Exc.CallingMethod(), ex);
             }
+
             if (e.usePb)
             {
                 e.DoneOnePercent();
             }
+#if DEBUG
+            //before = d.Count;
+#endif
 
             if (e.FilterFoundedFiles != null)
             {
@@ -1951,6 +1954,15 @@ public partial class FS
                     }
                 }
             }
+
+#if DEBUG
+            //after = d.Count;
+
+            //if (before != 0 && after == 0)
+            //{
+
+            //}
+#endif
 
             list.AddRange(d);
         }

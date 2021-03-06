@@ -15,12 +15,17 @@ using System.Diagnostics;
 /// </summary>
 public class DebugLogger : LoggerBase
 {
-    public static DebugLogger Instance = new DebugLogger(DebugWriteLine);
+    public static DebugLogger Instance =
+#if DEBUG2
+        new DebugLogger(DebugWriteLine);
+#elif !DEBUG2
+        null;
+#endif
 
     public DebugLogger(VoidStringParamsObjects writeLineHandler) : base(writeLineHandler)
     {
     }
-
+#if DEBUG2
     public static void DebugWriteLine(TypeOfMessage tz, string text, params object[] args)
     {
         //DebugLogger.DebugWriteLine(tz.ToString() + AllStrings.cs2 + SH.Format2(text, args));
@@ -30,10 +35,10 @@ public class DebugLogger : LoggerBase
     {
         Debug.WriteLine(SH.Format2(text, args));
     }
+#endif
 
     public static void Break()
     {
         Debugger.Break();
     }
 }
-//#endif

@@ -9,7 +9,7 @@ public class ThreadHelper
     public static bool NeedDispatcher(string tName)
     {
 #if DEBUG
-        DebugLogger.DebugWriteLine(tName);
+        //DebugLogger.DebugWriteLine(tName);
 #endif
 
         if (tName == "UIElementCollection")
