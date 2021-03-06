@@ -91,7 +91,7 @@ using System.Threading.Tasks;
         {
             return CheckBefore(before) + message;
         }
-
+     
     public static object NotImplementedMethod(string before)
     {
         return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper) + ".";
