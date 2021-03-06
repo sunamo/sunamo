@@ -35,6 +35,12 @@ public class CsFileFilter //: FiltersNotTranslateAble
         }
     }
 
+    public static bool AllowOnly(string item, EndArgs end, ContainsArgs c)
+    {
+        bool end2 = false;
+        return AllowOnly(item, end, c, ref end2, true);
+    }
+
     /// <summary>
     /// A2 is also for master.designer.cs and aspx.designer.cs
     /// </summary>

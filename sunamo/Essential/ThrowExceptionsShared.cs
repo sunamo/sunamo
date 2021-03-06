@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 public partial class ThrowExceptions
 {
-
-
     #region For easy copy in SunamoException project
     /// <summary>
     /// A1 have to be Dictionary<T,U>, not IDictionary without generic
@@ -103,17 +101,14 @@ public partial class ThrowExceptions
         return string.Concat(typeFullName, dot, methodName);
     }
 
-
-
     /// <summary>
     /// true if everything is OK
     /// false if some error occured
     /// In console app is needed put in into try-catch error due to there is no globally handler of errors
     /// </summary>
     /// <param name="exception"></param>
-    public static bool ThrowIsNotNull(string stacktrace, string exception)
+    public static bool ThrowIsNotNull(string stacktrace, string exception, bool reallyThrow = true)
     {
-
         if (exception != null)
         {
             if (Exc.aspnet)
@@ -125,23 +120,29 @@ public partial class ThrowExceptions
                 //Debugger.Break();
                 // Will be written in globalasax error
                 writeServerError(stacktrace, exception);
-                throw new Exception(exception);
+                if (reallyThrow)
+                {
+                    throw new Exception(exception);
+                }
             }
             else
             {
-                #if MB
+#if MB
                 TranslateDictionary.ShowMb("Throw exc");
 #endif
 
-                throw new Exception(exception);
+                if (reallyThrow)
+                {
+                    throw new Exception(exception);
+                }
             }
         }
         return true;
     }
 
-    public static void Custom(string stacktrace, object type, string methodName, string message)
+    public static void Custom(string stacktrace, object type, string methodName, string message, bool reallyThrow = true)
     {
-        ThrowIsNotNull(stacktrace, Exceptions.Custom(FullNameOfExecutedCode(type, methodName, true), message));
+        ThrowIsNotNull(stacktrace, Exceptions.Custom(FullNameOfExecutedCode(type, methodName, true), message), reallyThrow);
     }
 
     /// <summary>

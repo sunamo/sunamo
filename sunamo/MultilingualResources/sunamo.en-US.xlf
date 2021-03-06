@@ -13890,6 +13890,10 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Multi lines text can be loaded only from clipboard because console app recognize ending whitespaces like enter</target>
         </trans-unit>
+        <trans-unit id="WasInformedAdministrator" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Was informed administrator</target>
+        </trans-unit>
       </group>
     </body>
   </file>

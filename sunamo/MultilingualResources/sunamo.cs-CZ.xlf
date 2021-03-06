@@ -4950,6 +4950,10 @@
           <source></source>
           <target state="translated">Víceřádkový text lze načíst pouze ze schránky, protože konzolová aplikace rozpozná koncové mezery, jako je Enter</target>
         </trans-unit>
+        <trans-unit id="WasInformedAdministrator" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Byl informován správce</target>
+        </trans-unit>
       </group>
     </body>
   </file>

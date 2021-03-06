@@ -87,7 +87,7 @@ using System.Threading.Tasks;
         return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, AllStrings.comma);
     }
 
-    public static object Custom(string before, string message)
+    public static string Custom(string before, string message)
         {
             return CheckBefore(before) + message;
         }

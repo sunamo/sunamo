@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;DEBUG2</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -186,7 +186,7 @@
     <Compile Include="Collections\ValuesTableGrid.cs" />
     <Compile Include="Constants\Lang\CsConstsShared.cs" />
     <Compile Include="Data\GetFilesEveryFolder.cs" />
-    <Compile Include="Data\GetFilesMoreMascArgs.cs" />
+    <Compile Include="Args\GetFilesMoreMascArgs.cs" />
     <Compile Include="Data\StoreParsedApp.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Generators\Text\TextGenerator.cs" />

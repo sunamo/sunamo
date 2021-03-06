@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter = "MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter"; 
+	public const string WasInformedAdministrator = "WasInformedAdministrator"; 
 
+	public const string MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter = "MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter"; 
 	public const string Indexing = "Indexing"; 
 	public const string FilesTree = "FilesTree"; 
 	public const string FoldersTree = "FoldersTree"; 

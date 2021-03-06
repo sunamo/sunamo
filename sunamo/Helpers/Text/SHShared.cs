@@ -615,6 +615,11 @@ public static partial class SH
         return c;
     }
 
+    public static string WrapWithSpace(string originalLogin)
+    {
+        return SH.WrapWith(originalLogin, AllChars.space);
+    }
+
     /// <summary>
     /// Method is useless
     /// ReplaceMany firstly split into two strings
