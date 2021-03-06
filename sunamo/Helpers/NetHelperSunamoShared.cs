@@ -24,7 +24,7 @@ public partial class NetHelperSunamo
             ) {
                 return true;
             };
-        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
         //client.ClientCredentials.ServiceCertificate.SslCertificateAuthentication =
         //new X509ServiceCertificateAuthentication()
