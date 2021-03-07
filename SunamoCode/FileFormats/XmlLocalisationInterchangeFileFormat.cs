@@ -187,10 +187,7 @@ TranslateEngine");
             return new Tuple<string, string>(id, target.Value);
         }
 
-        public static string Id(XElement item)
-        {
-            return XHelper.Attr(item, "id");
-        }
+        
 
         public static char? GetLastLetter(XElement item, out string id)
         {
@@ -236,52 +233,9 @@ TranslateEngine");
 
         #endregion
 
-        public static List<string> GetFilesCs(string path = null)
-        {
-            if (path == null)
-            {
-                path = DefaultPaths.vs;
-            }
-            return FS.GetFiles(path, "*.cs", System.IO.SearchOption.AllDirectories, new GetFilesArgs { excludeWithMethod = SunamoCodeHelper.RemoveTemporaryFilesVS });
-        }
+        
 
-        /// <summary>
-        /// Before mu
-        /// </summary>
-        /// <param name="path"></param>
-        public static void ReplaceForWithoutUnderscore(string folder)
-        {
-            Dictionary<string, string> withWithoutUnderscore = new Dictionary<string, string>();
-
-            var files = XmlLocalisationInterchangeFileFormat.GetFilesCs();
-
-            ReplaceStringKeysWithXlfKeys(files);
-
-            string key = null;
-
-            foreach (var item in files)
-            {
-                withWithoutUnderscore.Clear();
-
-                var content = TF.ReadFile(item);
-                var keys = GetKeysInCsWithRLDataEn(ref key, content);
-
-                if (keys.Count > 0)
-                {
-                    foreach (var k in keys)
-                    {
-                        DictionaryHelper.AddOrSet(withWithoutUnderscore, k, ReplacerXlf.Instance.WithoutUnderscore(k));
-                    }
-
-                    foreach (var item2 in withWithoutUnderscore)
-                    {
-                        content = content.Replace(item2.Key + AllChars.lsqb, item2.Value + AllChars.lsqb);
-                    }
-
-                    TF.SaveFile(content, item);
-                }
-            }
-        }
+        
 
         public static IList<string> GetKeysInCsWithoutRLDataEn(ref string key, string content)
         {
@@ -429,6 +383,56 @@ Into A1 insert:
             return tb.sb.ToString();
         }
 
+
+
+        #region Cant be in *.web - GetFilesCs
+        /// <summary>
+        /// Before mu
+        /// </summary>
+        /// <param name="path"></param>
+        public static void ReplaceForWithoutUnderscore(string folder)
+        {
+            Dictionary<string, string> withWithoutUnderscore = new Dictionary<string, string>();
+
+            var files = XmlLocalisationInterchangeFileFormat.GetFilesCs();
+
+            ReplaceStringKeysWithXlfKeys(files);
+
+            string key = null;
+
+            foreach (var item in files)
+            {
+                withWithoutUnderscore.Clear();
+
+                var content = TF.ReadFile(item);
+                var keys = GetKeysInCsWithRLDataEn(ref key, content);
+
+                if (keys.Count > 0)
+                {
+                    foreach (var k in keys)
+                    {
+                        DictionaryHelper.AddOrSet(withWithoutUnderscore, k, ReplacerXlf.Instance.WithoutUnderscore(k));
+                    }
+
+                    foreach (var item2 in withWithoutUnderscore)
+                    {
+                        content = content.Replace(item2.Key + AllChars.lsqb, item2.Value + AllChars.lsqb);
+                    }
+
+                    TF.SaveFile(content, item);
+                }
+            }
+        }
+
+        public static List<string> GetFilesCs(string path = null)
+        {
+            if (path == null)
+            {
+                path = DefaultPaths.vs;
+            }
+            return FS.GetFiles(path, "*.cs", System.IO.SearchOption.AllDirectories, new GetFilesArgs { excludeWithMethod = SunamoCodeHelper.RemoveTemporaryFilesVS });
+        }
+
         /// <summary>
         /// Is calling in XlfManager.WhichStartEndWithNonDigitNumber
         /// </summary>
@@ -461,7 +465,10 @@ Into A1 insert:
                 }
                 //break;
             }
-        }
+        } 
+        #endregion
+
+
 
         public static XlfData GetTransUnits(Langs en)
         {
@@ -802,7 +809,9 @@ Into A1 insert:
 
                     if (!removed)
                     {
+                        #if DEBUG
                         DebugLogger.Instance.WriteLine(idsEndingEnd[i]);
+#endif
                     }
 
                 }
@@ -1120,7 +1129,7 @@ sess.i18n(XlfKeys.IsNotInRange)");
         }
 
 
-        #endregion
+#endregion
 
         public static bool IsToBeInXlfKeys(string key)
         {

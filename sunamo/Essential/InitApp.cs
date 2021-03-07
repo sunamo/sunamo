@@ -31,7 +31,7 @@ namespace sunamo.Essential
             InitApp.TypedLogger =
 #if DEBUG2 && DEBUG
                 TypedDebugLogger.Instance;
-#elif !DEBUG2 && DEBUG
+#elif !DEBUG2 
             null;
 #endif
 

@@ -43,10 +43,6 @@ public partial class FS
     //var e = (GetFilesMoreMascArgs)o; 
     #endregion
 
-
-
-    
-
     private static List<char> s_invalidPathChars = null;
     private static Type type = typeof(FS);
     /// <summary>
