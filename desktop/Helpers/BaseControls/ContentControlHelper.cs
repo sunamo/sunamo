@@ -18,9 +18,5 @@ public partial class ContentControlHelper
 
     }
 
-    internal static object Content(CheckBox v)
-    {
-        var r = WpfApp.cd.Invoke(() => v.Content);
-        return r;
-    }
+    
 }

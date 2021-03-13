@@ -116,6 +116,11 @@ public partial class TextBlockHelper
         return dict[copyInt] * countDouble;
     }
 
+    public static void SetTextPostColonXlf(TextBlock lblStatusDownload, string xlf)
+    {
+        SetTextPostColonXlf(lblStatusDownload, sess.i18n(xlf));
+    }
+
     public static void SetTextPostColon(TextBlock lblStatusDownload, string status)
     {
         status = SH.PostfixIfNotEmpty(status, AllStrings.colon);

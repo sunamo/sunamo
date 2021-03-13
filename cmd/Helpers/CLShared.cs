@@ -30,17 +30,26 @@ public static partial class CL
     static int _backL = 0;
     const string _twirl = "-\\|/";
 
+    /// <summary>
+    /// 1
+    /// </summary>
     public static void WriteProgressBarInit()
     {
         _backL = _back.Length;
     }
 
+    /// <summary>
+    /// 2
+    /// </summary>
+    /// <param name="percent"></param>
+    /// <param name="a"></param>
     public static void WriteProgressBar(double percent, WriteProgressBarArgs a = null)
     {
         WriteProgressBar((int)percent, a);
     }
 
     /// <summary>
+    /// 3
     /// Usage:
     /// WriteProgressBar(0);
     /// WriteProgressBar(i, true);
@@ -80,22 +89,26 @@ public static partial class CL
 
         if (a.writePieces)
         {
-            s = $"] {0,3:##0}% {a.actual} / {a.overall}";
+            s = "] {0,3:##0}%" + $" {a.actual} / {a.overall}";
         }
         else
         {
             s = "] {0,3:##0}%";
         }
 
-        Console.Write(s, percent);
-    }
-    //public static void WriteProgress(int progress, bool update = false)
-    //{
-    //    if (update)
-    //        Console.Write("\b");
-    //    Console.Write( _twirl[progress % _twirl.Length]);
+        string fr = string.Format(s, percent);
 
-    //}
+        Console.Write(fr);
+    }
+
+    /// <summary>
+    /// 4
+    /// </summary>
+    public static void WriteProgressBarEnd()
+    {
+        CL.WriteProgressBar(100, new WriteProgressBarArgs(true));
+        Console.WriteLine();
+    }
     #endregion
 
     private static void PerformAction(Dictionary<string, VoidVoid> actions, List<string> listOfActions)
@@ -160,7 +173,9 @@ public static partial class CL
         return false;
     }
 
-/// <summary>
+    
+
+    /// <summary>
     /// Return names of actions passed from keys
     /// </summary>
     /// <param name = "actions"></param>

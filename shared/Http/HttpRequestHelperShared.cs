@@ -308,29 +308,44 @@ public static Stream GetResponseStream(string address, HttpMethod method)
         var request = (HttpWebRequest)WebRequest.Create(address);
         request.Method = method.Method;
         request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";
-        using (var response = (HttpWebResponse)request.GetResponse())
-        {
-            Encoding encoding = null;
-            if (response.CharacterSet == "")
-            {
-                encoding = Encoding.UTF8;
-            }
-            else
-            {
-                encoding = Encoding.GetEncoding(response.CharacterSet);
-            }
+        WebResponse r = null;
 
-            using (var responseStream = response.GetResponseStream())
+        int times = 5;
+        var timeoutInMs = 30000;
+
+        r = SharedAlgorithms.RepeatAfterTimeXTimes<WebResponse>(times, timeoutInMs, new Func<WebResponse>( request.GetResponse));
+        if (EqualityComparer<WebResponse>.Default.Equals(r, default(WebResponse)))
+        {
+             ThrowExceptions.RepeatAfterTimeXTimesFailed(Exc.GetStackTrace(), type, Exc.CallingMethod(), times, timeoutInMs, address);
+            return new byte[0];
+        }
+        else
+        {
+            HttpWebResponse response = (HttpWebResponse)r;
+            using (response)
             {
-                using (MemoryStream ms = new MemoryStream())
+                Encoding encoding = null;
+                if (response.CharacterSet == "")
                 {
-                    responseStream.CopyTo(ms);
-                    ms.Seek(0, SeekOrigin.Begin);
-                    using (var reader = new StreamReader(ms, encoding))
+                    encoding = Encoding.UTF8;
+                }
+                else
+                {
+                    encoding = Encoding.GetEncoding(response.CharacterSet);
+                }
+
+                using (var responseStream = response.GetResponseStream())
+                {
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        using (BinaryReader br = new BinaryReader(reader.BaseStream))
+                        responseStream.CopyTo(ms);
+                        ms.Seek(0, SeekOrigin.Begin);
+                        using (var reader = new StreamReader(ms, encoding))
                         {
-                            return br.ReadBytes((int)ms.Length);
+                            using (BinaryReader br = new BinaryReader(reader.BaseStream))
+                            {
+                                return br.ReadBytes((int)ms.Length);
+                            }
                         }
                     }
                 }

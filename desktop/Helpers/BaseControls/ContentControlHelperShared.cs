@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 
 public partial class ContentControlHelper{
-
+    internal static object Content(CheckBox v)
+    {
+        var r = WpfApp.cd.Invoke(() => v.Content);
+        return r;
+    }
     public static string ExtractContent(object sp)
     {
         var sp2 = (StackPanel)sp;

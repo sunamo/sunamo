@@ -4954,6 +4954,10 @@
           <source></source>
           <target state="translated">Byl informován správce</target>
         </trans-unit>
+        <trans-unit id="Filter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Filtr</target>
+        </trans-unit>
       </group>
     </body>
   </file>

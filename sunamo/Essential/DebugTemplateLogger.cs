@@ -6,7 +6,7 @@ using System.Text;
 //#if DEBUG
 namespace sunamo.Essential
 {
-#if DEBUG2
+#if DEBUG //2
     public class DebugTemplateLogger : TemplateLoggerBase
     {
         static DebugTemplateLogger instance = null;

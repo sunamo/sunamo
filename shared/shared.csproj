@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG2;DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -52,7 +52,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <OutputPath>bin\x64\Debug\</OutputPath>
     <CodeAnalysisRuleSet />
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG2;DEBUG;TRACE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -146,6 +146,12 @@
     <Compile Include="Http\HttpRequestHelper.cs" />
     <Compile Include="Http\HttpRequestHelperShared.cs" />
     <Compile Include="Http\HttpResponseHelper.cs" />
+    <Compile Include="Http\SunamoWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Http\SunamoWebClientShared.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IXml.cs" />
     <Compile Include="MailBox.cs" />

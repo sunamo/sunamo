@@ -67,9 +67,16 @@ public partial class FS
         }
 
         return r;
-    } 
+    }
     #endregion
 
+    /// <summary>
+    /// RenameNumberedSerieFiles - Rename files by linear names - 0,1,...,x
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="p"></param>
+    /// <param name="startFrom"></param>
+    /// <param name="ext"></param>
     public static void RenameNumberedSerieFiles(List<string> d, string p, int startFrom, string ext)
     {
         var masc = FS.MascFromExtension(ext);
@@ -923,6 +930,9 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
         DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
     }
     /// <summary>
+    /// Normally: 11,12,1,2,...
+    /// This: 1,2,...,11,12
+    /// 
     /// non direct edit
     ///  working with full paths or just filenames
     /// </summary>

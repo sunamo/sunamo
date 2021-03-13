@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 public partial class WebClientHelper{
-    static WebClient wc = new WebClient();
+    static SunamoWebClient wc = new SunamoWebClient();
 
 public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
     {
+        wc.hrd = hrd;
         return wc.DownloadString(address);
     }
 

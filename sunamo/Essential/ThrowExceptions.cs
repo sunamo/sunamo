@@ -192,7 +192,17 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, methodName, true), folders));
     }
- 
+
+    public static void RepeatAfterTimeXTimesFailed(string stacktrace, object type, string methodName, int times, int timeoutInMs, string address)
+    {
+        RepeatAfterTimeXTimesFailed(stacktrace, Exceptions.RepeatAfterTimeXTimesFailed(FullNameOfExecutedCode(type, methodName), times, timeoutInMs, address));
+    }
+
+    private static void RepeatAfterTimeXTimesFailed(string stacktrace, object p)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Return & throw exception whether
     /// directory NOT exists

@@ -40,6 +40,7 @@ namespace desktop
         private string _displayText = null;
         private string _row1 = string.Empty;
         private string _row2 = string.Empty;
+
         /// <summary>
         /// Create instance with CreateObjectFileNameWithDateTime<StorageFolder, StorageFile>
         /// Both can be SE, is used in dispalyText
@@ -53,6 +54,7 @@ namespace desktop
             _row2 = row2;
             this.ac = ac;
         }
+
         /// <summary>
         /// First row in SelectorHelperListViewUC
         /// </summary>

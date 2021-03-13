@@ -20,7 +20,10 @@ namespace sunamo.Helpers.Number
             last += onePercent;
         }
 
-        public void AddOne()
+        /// <summary>
+        /// Dont know when is AddOne more useful than AddOnePercent => private
+        /// </summary>
+        private void AddOne()
         {
             last += 1;
         }

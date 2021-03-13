@@ -35,7 +35,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG2;DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
@@ -151,10 +151,42 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="_ns.cs" />
+    <Compile Include="AppData.cs" />
+    <Compile Include="AppDataAbstractBase.cs" />
+    <Compile Include="AppDataAbstractBaseShared.cs" />
+    <Compile Include="AppDataAppsAbstractBase.cs" />
+    <Compile Include="AppDataAppsAbstractBaseShared.cs" />
+    <Compile Include="AppDataBase.cs" />
+    <Compile Include="AppDataBaseShared.cs" />
+    <Compile Include="AppPaths.cs" />
+    <Compile Include="Args\ChangeContentArgs.cs" />
+    <Compile Include="Args\CSharpGeneratorArgs.cs" />
+    <Compile Include="Args\GetFilesArgs.cs" />
     <Compile Include="Args\GetFilesBaseArgs.cs" />
     <Compile Include="Args\GetFilesEveryFolderArgs.cs" />
+    <Compile Include="Args\GetFilesMoreMascArgs.cs" />
+    <Compile Include="Args\GetMemberArgs.cs" />
+    <Compile Include="Args\PpkOnDriveArgs.cs" />
+    <Compile Include="Args\RemoveStartingWithArgs.cs" />
+    <Compile Include="Args\SubstringArgs.cs" />
+    <Compile Include="AspNet.cs" />
+    <Compile Include="AspNetShared.cs" />
+    <Compile Include="AspxHelper.cs" />
+    <Compile Include="Attributes\DataMemberAttribute.cs" />
+    <Compile Include="Attributes\IgnoreAttribute.cs" />
+    <Compile Include="Attributes\InnerObjectAttribute.cs" />
     <Compile Include="Attributes\MessageIfFailAttribute.cs" />
+    <Compile Include="Attributes\NotTranslateAttribute.cs" />
+    <Compile Include="Attributes\OuterObjectAttribute.cs" />
+    <Compile Include="Attributes\OuterObjectMapping.cs" />
+    <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
+    <Compile Include="Attributes\SerializableAttribute.cs" />
+    <Compile Include="Attributes\TypeOfExtensionAttribute.cs" />
+    <Compile Include="AttributesHelper.cs" />
     <Compile Include="BgWorkers\GetFilesEveryFolderBgWorker.cs" />
+    <Compile Include="BitConverterBE.cs" />
+    <Compile Include="BitConverterLE.cs" />
     <Compile Include="Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="Collections\BadGoodCollection.cs" />
     <Compile Include="Collections\CollectionToEnd.cs" />
@@ -184,52 +216,6 @@
     <Compile Include="Collections\TwoWayDictionary.cs" />
     <Compile Include="Collections\UniqueTableInWhole.cs" />
     <Compile Include="Collections\ValuesTableGrid.cs" />
-    <Compile Include="Constants\Lang\CsConstsShared.cs" />
-    <Compile Include="Data\GetFilesEveryFolder.cs" />
-    <Compile Include="Args\GetFilesMoreMascArgs.cs" />
-    <Compile Include="Data\StoreParsedApp.cs" />
-    <Compile Include="Extensions\IDictionaryExtensions.cs" />
-    <Compile Include="Generators\Text\TextGenerator.cs" />
-    <Compile Include="Helpers\Clipboard\SheetsGeneratorTemplate.cs" />
-    <Compile Include="Helpers\Thread\CAThread.cs" />
-    <Compile Include="Helpers\Thread\CAThreadShared.cs" />
-    <Compile Include="Helpers\Thread\ThreadHelper.cs" />
-    <Compile Include="Helpers\Types\BTS2.cs" />
-    <Compile Include="HtmlCmdLineArgs.cs" />
-    <Compile Include="List\CAContainsElementsOrTheirParts.cs" />
-    <Compile Include="List\CAContainsElementsOrTheirPartsShared.cs" />
-    <Compile Include="Xml\XmlAgilityHelper.cs" />
-    <Compile Include="_ns.cs" />
-    <Compile Include="AppData.cs" />
-    <Compile Include="AppDataAbstractBase.cs" />
-    <Compile Include="AppDataAbstractBaseShared.cs" />
-    <Compile Include="AppDataAppsAbstractBase.cs" />
-    <Compile Include="AppDataAppsAbstractBaseShared.cs" />
-    <Compile Include="AppDataBase.cs" />
-    <Compile Include="AppDataBaseShared.cs" />
-    <Compile Include="AppPaths.cs" />
-    <Compile Include="Args\ChangeContentArgs.cs" />
-    <Compile Include="Args\CSharpGeneratorArgs.cs" />
-    <Compile Include="Args\GetFilesArgs.cs" />
-    <Compile Include="Args\GetMemberArgs.cs" />
-    <Compile Include="Args\PpkOnDriveArgs.cs" />
-    <Compile Include="Args\RemoveStartingWithArgs.cs" />
-    <Compile Include="Args\SubstringArgs.cs" />
-    <Compile Include="AspNet.cs" />
-    <Compile Include="AspNetShared.cs" />
-    <Compile Include="AspxHelper.cs" />
-    <Compile Include="Attributes\DataMemberAttribute.cs" />
-    <Compile Include="Attributes\IgnoreAttribute.cs" />
-    <Compile Include="Attributes\InnerObjectAttribute.cs" />
-    <Compile Include="Attributes\NotTranslateAttribute.cs" />
-    <Compile Include="Attributes\OuterObjectAttribute.cs" />
-    <Compile Include="Attributes\OuterObjectMapping.cs" />
-    <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
-    <Compile Include="Attributes\SerializableAttribute.cs" />
-    <Compile Include="Attributes\TypeOfExtensionAttribute.cs" />
-    <Compile Include="AttributesHelper.cs" />
-    <Compile Include="BitConverterBE.cs" />
-    <Compile Include="BitConverterLE.cs" />
     <Compile Include="ComparerRowsByColumn.cs" />
     <Compile Include="Constants\AllStrings.cs" />
     <Compile Include="Constants\CodeElementsConstants.cs" />
@@ -251,6 +237,7 @@
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="Constants\HttpKnownHeaderValues.cs" />
     <Compile Include="Constants\Lang\CsConsts.cs" />
+    <Compile Include="Constants\Lang\CsConstsShared.cs" />
     <Compile Include="Constants\Lang\EnConsts.cs" />
     <Compile Include="Constants\Mails.cs" />
     <Compile Include="Constants\Messages.cs" />
@@ -346,6 +333,7 @@
     <Compile Include="Data\FoundedCodeElement.cs" />
     <Compile Include="Data\FromTo.cs" />
     <Compile Include="Data\FromToT.cs" />
+    <Compile Include="Data\GetFilesEveryFolder.cs" />
     <Compile Include="Data\GoogleMapsSearchResult.cs" />
     <Compile Include="Data\HttpRequestData.cs" />
     <Compile Include="Data\ImageWithSize.cs" />
@@ -373,6 +361,7 @@
     <Compile Include="Data\StateMessage.cs" />
     <Compile Include="Data\StorageFile.cs" />
     <Compile Include="Data\StorageFolder.cs" />
+    <Compile Include="Data\StoreParsedApp.cs" />
     <Compile Include="Data\StringInt.cs" />
     <Compile Include="Data\StringPaddingData.cs" />
     <Compile Include="Data\SunamoColor.cs" />
@@ -516,6 +505,7 @@
     <Compile Include="Extensions\AssertExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\HtmlNodeExtensions.cs" />
+    <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensionsShared.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
@@ -548,6 +538,7 @@
     <Compile Include="Generators\SpecialFoldersHelperShared.cs" />
     <Compile Include="Generators\Text\LoremIpsumGenerator.cs" />
     <Compile Include="Generators\Text\TextBuilder.cs" />
+    <Compile Include="Generators\Text\TextGenerator.cs" />
     <Compile Include="Generators\Text\TextOutputGenerator.cs" />
     <Compile Include="Generators\Text\TT.cs" />
     <Compile Include="Generators\XmlGenerator.cs" />
@@ -556,6 +547,7 @@
     <Compile Include="Generators\XmlGeneratorSelective.cs" />
     <Compile Include="Generators\XmlTemplates.cs" />
     <Compile Include="GoogleMyMapsHelper.cs" />
+    <Compile Include="Helpers\Clipboard\SheetsGeneratorTemplate.cs" />
     <Compile Include="Helpers\Clipboard\SheetsHelper.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\CSharpHelperSunamo.cs" />
@@ -636,10 +628,14 @@
     <Compile Include="Helpers\Text\SH.cs" />
     <Compile Include="Helpers\Text\SHNotTranslateAble.cs" />
     <Compile Include="Helpers\Text\SHShared.cs" />
+    <Compile Include="Helpers\Thread\CAThread.cs" />
+    <Compile Include="Helpers\Thread\CAThreadShared.cs" />
+    <Compile Include="Helpers\Thread\ThreadHelper.cs" />
     <Compile Include="Helpers\Types\Base64Helpers.cs" />
     <Compile Include="Helpers\Types\BitHelper.cs" />
     <Compile Include="Helpers\Types\BitOperations.cs" />
     <Compile Include="Helpers\Types\BTS.cs" />
+    <Compile Include="Helpers\Types\BTS2.cs" />
     <Compile Include="Helpers\Types\CharHelper.cs" />
     <Compile Include="Helpers\Types\CharHelperShared.cs" />
     <Compile Include="Helpers\Types\EnumHelper.cs" />
@@ -665,6 +661,7 @@
     <Compile Include="Html\SecurityHelper.cs" />
     <Compile Include="Html\XHelper.cs" />
     <Compile Include="Html\XHelperShared.cs" />
+    <Compile Include="HtmlCmdLineArgs.cs" />
     <Compile Include="IClipboardHelperApps.cs" />
     <Compile Include="ImageHelperBase.cs" />
     <Compile Include="ImageHelperBaseShared.cs" />
@@ -728,6 +725,8 @@
     <Compile Include="Lazy\LazyObject.cs" />
     <Compile Include="Lazy\LazyString.cs" />
     <Compile Include="List\CA.cs" />
+    <Compile Include="List\CAContainsElementsOrTheirParts.cs" />
+    <Compile Include="List\CAContainsElementsOrTheirPartsShared.cs" />
     <Compile Include="List\CAShared.cs" />
     <Compile Include="List\DictionaryHelper.cs" />
     <Compile Include="List\DictionaryHelperShared.cs" />
@@ -752,6 +751,8 @@
     <Compile Include="RL.cs" />
     <Compile Include="RL\ResourceLoaderRL.cs" />
     <Compile Include="sess.cs" />
+    <Compile Include="SharedAlgorithms.cs" />
+    <Compile Include="SharedAlgorithmsShared.cs" />
     <Compile Include="SheetsTable.cs" />
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="StringBuilderSlow.cs" />
@@ -797,6 +798,7 @@
     <Compile Include="Web\YouTubeShared.cs" />
     <Compile Include="XlfResourcesHSunamo.cs" />
     <Compile Include="Xml\XH.cs" />
+    <Compile Include="Xml\XmlAgilityHelper.cs" />
     <Compile Include="XmlNamespacesHolder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -831,7 +833,7 @@
       <Name>Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xlf\Xlf.csproj">
-      <Project>{00B76D22-B82F-43FD-AC48-4B1F56E6910F}</Project>
+      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
       <Name>Xlf</Name>
     </ProjectReference>
   </ItemGroup>

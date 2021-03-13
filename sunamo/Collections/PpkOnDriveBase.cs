@@ -119,13 +119,19 @@ public abstract class PpkOnDriveBase<T> : List<T>
         if (a.save)
         {
             isSaving = true;
+            bool removedOrNotExists = false;
             if (FS.ExistsFile(a.file))
             {
-                File.Delete(a.file);
+                removedOrNotExists = FS.TryDeleteFile(a.file);
             }
-            string obsah;
-            obsah = ReturnContent();
-            File.WriteAllText(a.file, obsah);
+
+            if (removedOrNotExists)
+            {
+                string obsah;
+                obsah = ReturnContent();
+                FS.WriteAllTextWithExc(a.file, obsah);
+                
+            }
             isSaving = false;
         }
     }

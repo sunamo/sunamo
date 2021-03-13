@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 public partial class FrameworkElementHelper{
+    internal static void SetToolTip(Button btnCopyToClipboard, string xlfKeys)
+    {
+        btnCopyToClipboard.ToolTip = sess.i18n(xlfKeys);
+    }
+
     private static string SaveScreenshot(Visual target, string fn)
     {
         string appName = ThisApp.Name;

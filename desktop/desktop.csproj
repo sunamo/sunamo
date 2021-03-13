@@ -394,6 +394,7 @@
     <Compile Include="Helpers\ColorThemeHelper.cs" />
     <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
+    <Compile Include="Helpers\ContainerControls\PanelHelperShared.cs" />
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
     <Compile Include="Helpers\Content\BitmapHelper.cs" />
     <Compile Include="Helpers\Content\Resources\BitmapImageHelper.cs" />

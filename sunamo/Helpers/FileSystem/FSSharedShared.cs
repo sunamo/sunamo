@@ -1,7 +1,7 @@
 ﻿using sunamo.Constants;
 using sunamo.Data;
 using sunamo.Enums;
-
+using sunamo.Essential;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -80,6 +80,18 @@ public partial class FS{
             }
         }
         return exists;
+    }
+
+    internal static void WriteAllTextWithExc(string file, string obsah)
+    {
+        try
+        {
+            TF.WriteAllText(file, obsah);
+        }
+        catch (Exception ex)
+        {
+            TypedSunamoLogger.Instance.Error(Exceptions.TextOfExceptions(ex));
+        }
     }
 
     /// <summary>

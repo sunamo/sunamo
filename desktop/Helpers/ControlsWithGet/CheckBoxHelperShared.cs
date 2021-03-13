@@ -10,7 +10,11 @@ using System.Windows.Controls;
 
 public partial class CheckBoxHelper{
 
-   
+    internal static bool IsChecked(CheckBox v)
+    {
+        var r = WpfApp.cd.Invoke(() => v.IsChecked);
+        return r.GetValueOrDefault();
+    }
 
     /// <summary>
     /// tag is not needed, value is obtained through []

@@ -1479,181 +1479,9 @@ public partial class FS
         }
     }
 
-    /// <summary>
-    /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
-    /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
-    /// Works for brackets, not dash 
-    /// </summary>
-    public static string GetNameWithoutSeries(string p, bool path)
-    {
-        int serie;
-        bool hasSerie = false;
-        return GetNameWithoutSeries(p, path, out hasSerie, SerieStyle.Brackets, out serie);
-    }
-    //public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
-    //{
-    //    int serie;
-    //    return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
-    //}
+    
 
-    public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
-    {
-        int serie;
-        return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
-    }
-    /// <summary>
-    /// 
-    /// Vrací vždy s příponou
-    /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
-    /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
-    /// When file has unknown extension, return SE
-    /// Default for A4 was bracket
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="path"></param>
-    /// <param name="hasSerie"></param>
-    public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle, out int serie)
-    {
-        serie = -1;
-        hasSerie = false;
-        string dd = FS.WithEndSlash(FS.GetDirectoryName(p));
-        StringBuilder sbExt = new StringBuilder();
-        string ext = FS.GetExtension(p);
-        p = SH.TrimEnd(p, ext);
-        sbExt.Append(ext);
-        int pocetSerii = 0;
-
-        while (true)
-        {
-            ext = FS.GetExtension(p);
-            if (ext == string.Empty)
-            {
-                break;
-            }
-
-            if (p.Contains(AllStrings.lowbar))
-            {
-                RemoveSerieUnderscore(ref serie, ref p, ref pocetSerii);
-            }
-
-            ext = FS.GetExtension(p);
-            if (ext == string.Empty)
-            {
-                break;
-            }
-
-            sbExt.Insert(0, ext);
-            p = SH.TrimEnd(p, ext);
-            // better than in cycle remove extensions - resistant to file with many extensions Image-2015-01-27-at-8.09.26-PM
-            if (AllExtensionsHelper.FindTypeWithDot(ext) == TypeOfExtension.other)
-            {
-                return "";
-            }
-        }
-        ext = sbExt.ToString();
-
-        string g = p;
-
-        if (dd.Length != 0)
-        {
-            g = g.Substring(dd.Length);
-        }
-
-        // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
-
-        if (serieStyle == SerieStyle.Brackets || serieStyle == SerieStyle.All)
-        {
-            while (true)
-            {
-                g = g.Trim();
-                int lb = g.LastIndexOf(AllChars.lb);
-                int rb = g.LastIndexOf(AllChars.rb);
-
-                if (lb != -1 && rb != -1)
-                {
-                    string between = SH.GetTextBetweenTwoChars(g, lb, rb);
-                    if (SH.IsNumber(between))
-                    {
-                        serie = int.Parse(between);
-                        pocetSerii++;
-                        // s - 4, on end (1) - 
-                        g = g.Substring(0, lb);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-
-        if (serieStyle == SerieStyle.Dash || serieStyle == SerieStyle.All)
-        {
-            int dex = g.IndexOf(AllChars.dash);
-
-            if (g[g.Length - 3] == AllChars.dash)
-            {
-                serie = int.Parse(g.Substring(g.Length - 2));
-                g = g.Substring(0, g.Length - 3);
-            }
-            else if (g[g.Length - 2] == AllChars.dash)
-            {
-                serie = int.Parse(g.Substring(g.Length - 1));
-                g = g.Substring(0, g.Length - 2);
-            }
-            // To true hasSerie
-            pocetSerii++;
-        }
-
-        if (serieStyle == SerieStyle.Underscore || serieStyle == SerieStyle.All)
-        {
-            RemoveSerieUnderscore(ref serie, ref g, ref pocetSerii);
-        }
-
-        if (pocetSerii != 0)
-        {
-            hasSerie = true;
-        }
-        g = g.Trim();
-        if (path)
-        {
-            return dd + g + ext;
-        }
-        return g + ext;
-    }
-
-    public static string RemoveSerieUnderscore(string d)
-    {
-        int serie = 0;
-        int pocetSerii = 0;
-        RemoveSerieUnderscore(ref serie, ref d, ref pocetSerii);
-        return d;
-    }
-    private static void RemoveSerieUnderscore(ref int serie, ref string g, ref int pocetSerii)
-    {
-        while (true)
-        {
-            int dex = g.LastIndexOf(AllChars.lowbar);
-            if (dex != -1)
-            {
-                string serieS = g.Substring(dex + 1);
-                g = g.Substring(0, dex);
-
-                if (int.TryParse(serieS, out serie))
-                {
-                    pocetSerii++;
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
+    
 
     public static string MascFromExtension(string ext2 = AllStrings.asterisk)
     {
@@ -1849,7 +1677,12 @@ public partial class FS
         List<string> list = new List<string>(); ;
         List<string> dirs = null;
 
-        StopwatchStatic.Start();
+        bool measureTime = false;
+
+        if (measureTime)
+        {
+            StopwatchStatic.Start();
+        }
 
         // There is not exc handle needed, its slowly then
         //try
@@ -1887,7 +1720,7 @@ public partial class FS
             }
         }
 
-        
+
 
 #if DEBUG
         //int after = dirs.Count;
@@ -1903,9 +1736,15 @@ public partial class FS
         //} 
         #endregion
 
-        StopwatchStatic.StopAndPrintElapsed("GetFoldersEveryFolder");
+        if (measureTime)
+        {
+            StopwatchStatic.StopAndPrintElapsed("GetFoldersEveryFolder");
+        }
 
-        StopwatchStatic.Start();
+        if (measureTime)
+        {
+            StopwatchStatic.Start();
+        }
 
         if (e.usePb)
         {
@@ -1963,7 +1802,10 @@ public partial class FS
             list.AddRange(d);
         }
 
-        StopwatchStatic.StopAndPrintElapsed("GetFiles");
+        if (measureTime)
+        {
+            StopwatchStatic.StopAndPrintElapsed("GetFiles");
+        }
 
         CA.ChangeContent(null,list, d2 => SH.FirstCharLower(d2));
 
@@ -2270,34 +2112,7 @@ private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, 
         }
     }
 
-/// <summary>
-    /// Get number higher by one from the number filenames with highest value (as 3.txt)
-    /// </summary>
-    /// <param name="slozka"></param>
-    /// <param name="fn"></param>
-    /// <param name="ext"></param>
-    public static string GetFileSeries(string slozka, string fn, string ext)
-    {
-        int dalsi = 0;
-        var soubory = FS.GetFiles(slozka);
-        foreach (string item in soubory)
-        {
-            int p;
-            string withoutFn = SH.ReplaceOnce(item, fn, "");
-            string withoutFnAndExt = SH.ReplaceOnce(withoutFn, ext, "");
-            if (int.TryParse(FS.GetFileNameWithoutExtension(withoutFnAndExt), out p))
-            {
-                if (p > dalsi)
-                {
-                    dalsi = p;
-                }
-            }
-        }
 
-        dalsi++;
-
-        return FS.Combine(slozka, fn + AllStrings.lowbar + dalsi + ext);
-    }
 
 public static bool TryDeleteDirectory(string v)
     {
@@ -2322,6 +2137,7 @@ public static bool TryDeleteDirectory(string v)
 
         try
         {
+            // If file won't exists, wont throw any exception
             File.Delete(item);
             return true;
         }
@@ -2331,6 +2147,7 @@ public static bool TryDeleteDirectory(string v)
             return false;
         }
     }
+
 public static bool TryDeleteFile(string item, out string message)
     {
         message = null;
@@ -2651,4 +2468,213 @@ public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageF
         string fn = FS.GetFileName(fileName);
         return FS.Combine(changeFolderTo, fn);
     }
+
+    /// <summary>
+    /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
+    /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
+    /// Works for brackets, not dash 
+    /// </summary>
+    public static string GetNameWithoutSeries(string p, bool path)
+    {
+        int serie;
+        bool hasSerie = false;
+        return GetNameWithoutSeries(p, path, out hasSerie, SerieStyle.Brackets, out serie);
+    }
+    //public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
+    //{
+    //    int serie;
+    //    return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
+    //}
+
+    public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
+    {
+        int serie;
+        return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
+    }
+    /// <summary>
+    /// 
+    /// Vrací vždy s příponou
+    /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
+    /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
+    /// When file has unknown extension, return SE
+    /// Default for A4 was bracket
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="path"></param>
+    /// <param name="hasSerie"></param>
+    public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle, out int serie)
+    {
+        serie = -1;
+        hasSerie = false;
+        string dd = FS.WithEndSlash(FS.GetDirectoryName(p));
+        StringBuilder sbExt = new StringBuilder();
+        string ext = FS.GetExtension(p);
+        p = SH.TrimEnd(p, ext);
+        sbExt.Append(ext);
+        int pocetSerii = 0;
+
+        while (true)
+        {
+            ext = FS.GetExtension(p);
+            if (ext == string.Empty)
+            {
+                break;
+            }
+
+            if (p.Contains(AllStrings.lowbar))
+            {
+                RemoveSerieUnderscore(ref serie, ref p, ref pocetSerii);
+            }
+
+            ext = FS.GetExtension(p);
+            if (ext == string.Empty)
+            {
+                break;
+            }
+
+            sbExt.Insert(0, ext);
+            p = SH.TrimEnd(p, ext);
+            // better than in cycle remove extensions - resistant to file with many extensions Image-2015-01-27-at-8.09.26-PM
+            if (AllExtensionsHelper.FindTypeWithDot(ext) == TypeOfExtension.other)
+            {
+                return "";
+            }
+        }
+        ext = sbExt.ToString();
+
+        string g = p;
+
+        if (dd.Length != 0)
+        {
+            g = g.Substring(dd.Length);
+        }
+
+        // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
+
+        if (serieStyle == SerieStyle.Brackets || serieStyle == SerieStyle.All)
+        {
+            while (true)
+            {
+                g = g.Trim();
+                int lb = g.LastIndexOf(AllChars.lb);
+                int rb = g.LastIndexOf(AllChars.rb);
+
+                if (lb != -1 && rb != -1)
+                {
+                    string between = SH.GetTextBetweenTwoChars(g, lb, rb);
+                    if (SH.IsNumber(between))
+                    {
+                        serie = int.Parse(between);
+                        pocetSerii++;
+                        // s - 4, on end (1) - 
+                        g = g.Substring(0, lb);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        if (serieStyle == SerieStyle.Dash || serieStyle == SerieStyle.All)
+        {
+            int dex = g.IndexOf(AllChars.dash);
+
+            if (g[g.Length - 3] == AllChars.dash)
+            {
+                serie = int.Parse(g.Substring(g.Length - 2));
+                g = g.Substring(0, g.Length - 3);
+            }
+            else if (g[g.Length - 2] == AllChars.dash)
+            {
+                serie = int.Parse(g.Substring(g.Length - 1));
+                g = g.Substring(0, g.Length - 2);
+            }
+            if (serie != -1)
+            {
+                // To true hasSerie
+                pocetSerii++;
+            }
+        }
+
+        if (serieStyle == SerieStyle.Underscore || serieStyle == SerieStyle.All)
+        {
+            RemoveSerieUnderscore(ref serie, ref g, ref pocetSerii);
+        }
+
+        if (pocetSerii != 0)
+        {
+            hasSerie = true;
+        }
+        g = g.Trim();
+        if (path)
+        {
+            return dd + g + ext;
+        }
+        return g + ext;
+    }
+
+    public static string RemoveSerieUnderscore(string d)
+    {
+        int serie = 0;
+        int pocetSerii = 0;
+        RemoveSerieUnderscore(ref serie, ref d, ref pocetSerii);
+        return d;
+    }
+    private static void RemoveSerieUnderscore(ref int serie, ref string g, ref int pocetSerii)
+    {
+        while (true)
+        {
+            int dex = g.LastIndexOf(AllChars.lowbar);
+            if (dex != -1)
+            {
+                string serieS = g.Substring(dex + 1);
+                g = g.Substring(0, dex);
+
+                if (int.TryParse(serieS, out serie))
+                {
+                    pocetSerii++;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Get number higher by one from the number filenames with highest value (as 3.txt)
+    /// </summary>
+    /// <param name="slozka"></param>
+    /// <param name="fn"></param>
+    /// <param name="ext"></param>
+    public static string GetFileSeries(string slozka, string fn, string ext)
+    {
+        int dalsi = 0;
+        var soubory = FS.GetFiles(slozka);
+        foreach (string item in soubory)
+        {
+            int p;
+            string withoutFn = SH.ReplaceOnce(item, fn, "");
+            string withoutFnAndExt = SH.ReplaceOnce(withoutFn, ext, "");
+            if (int.TryParse(FS.GetFileNameWithoutExtension(withoutFnAndExt), out p))
+            {
+                if (p > dalsi)
+                {
+                    dalsi = p;
+                }
+            }
+        }
+
+        dalsi++;
+
+        return FS.Combine(slozka, fn + AllStrings.lowbar + dalsi + ext);
+    }
+
 }

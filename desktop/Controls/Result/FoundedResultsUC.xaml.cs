@@ -30,6 +30,15 @@ namespace desktop.Controls.Result
         public FoundedResultsUC()
         {
             InitializeComponent();
+
+            Loaded += FoundedResultsUC_Loaded;
+        }
+
+        private void FoundedResultsUC_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlockHelper.SetTextPostColon(tbFilter, XlfKeys.Filter);
+
+            
         }
 
         /// <summary>

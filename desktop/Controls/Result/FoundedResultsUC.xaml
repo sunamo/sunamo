@@ -11,10 +11,19 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <StackPanel Orientation="Vertical">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="tbFilter" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="txtFilter"></TextBox>
+            </StackPanel>
+            
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="sv">
             <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
             </StackPanel>
         </ScrollViewer>
+
+        </StackPanel>
 
         <TextBlock FontSize="20" x:Name="tbNoResultsFound" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         

@@ -1259,12 +1259,18 @@ public static partial class SH
         return r;
     }
 
-    public static string KeepAfterFirst(string searchQuery, string after)
+
+
+    public static string KeepAfterFirst(string searchQuery, string after, bool keepDeli = false)
     {
         var dx = searchQuery.IndexOf(after);
         if (dx != -1)
         {
-            return SH.TrimStart(searchQuery.Substring(dx), after);
+            searchQuery = SH.TrimStart(searchQuery.Substring(dx), after);
+            if (keepDeli)
+            {
+                searchQuery = after + searchQuery;
+            }
         }
         return searchQuery;
     }

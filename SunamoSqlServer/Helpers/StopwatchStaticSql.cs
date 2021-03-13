@@ -13,10 +13,11 @@ public class StopwatchStaticSql
     internal static void StopAndPrintElapsed(string v)
     {
         sw.Stop();
-        // everything begin with select, update etc. so is no needed delimiter
-        ThisApp.swSqlLog.WriteLine(sw.ElapsedMilliseconds + v);
-        
-
+        if (VpsHelperSunamo.IsVps)
+        {
+            // everything begin with select, update etc. so is no needed delimiter
+            ThisApp.swSqlLog.WriteLine(sw.ElapsedMilliseconds + v);
+        }
     }
 
     internal static void Start()

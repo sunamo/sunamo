@@ -10,7 +10,7 @@ using System.Windows.Threading;
 using desktop.Controls;
 using sunamo;
 
-public class PanelHelper
+public partial class PanelHelper
 {
     public static List<UIElement> GetThisAndRecursiveAllSubUIElements(UIElement f)
     {
@@ -100,12 +100,5 @@ public class PanelHelper
         return vr;
     }
 
-    internal static UIElementCollection Children(StackPanel key, Dispatcher d)
-    {
-        //WpfApp.cd
-
-        var r = d.Invoke(() => key.Children, DispatcherPriority.ContextIdle);
-        return r;
-
-    }
+   
 }

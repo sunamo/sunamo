@@ -9,7 +9,8 @@ namespace sunamo.Indexing.FileSystem
     /// <summary>
     /// Připomíná práci s databází - k označení složek se používají čísla int
     /// 
-    /// 
+    /// Working with CheckBoxData
+    /// Use FolderItem, FileItem, 
     /// </summary>
     public class FileIndex
     {

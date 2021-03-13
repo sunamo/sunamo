@@ -137,5 +137,10 @@ using System.Threading.Tasks;
         }
         return null;
     }
+
+    internal static object RepeatAfterTimeXTimesFailed(string before, int times, int timeoutInMs, string address)
+    {
+        return before + $"Loading uri {address} failed {times} ({timeoutInMs} ms timeout)";
+    }
     #endregion
 }

@@ -8,6 +8,14 @@ namespace sunamo.Html
     {
     }
 }
+
+namespace desktop.Controls.Text
+{
+    public class _ns
+    {
+    }
+}
+
 namespace shared.Helpers
 {
     public class _ns

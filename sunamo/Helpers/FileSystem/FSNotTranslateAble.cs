@@ -9,6 +9,8 @@ public partial class FS
     #region Making problem in translate
     /// <summary>
     /// Delete whole folder A1. If fail, only "1" subdir
+    /// Use in RepairBlogContent but sample data is NA
+    /// Deleting old folder hiearchy and create new
     /// </summary>
     /// <param name="repairedBlogPostsFolder"></param>
     public static int DeleteSerieDirectoryOrCreateNew(string repairedBlogPostsFolder)
