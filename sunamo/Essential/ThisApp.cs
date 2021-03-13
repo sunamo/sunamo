@@ -10,10 +10,10 @@ namespace sunamo.Essential
 {
     public class ThisApp
     {
-       
 
-        
 
+
+        public static int writtenLines = 0;
         public static StreamWriter swSqlLog;
         public static bool runInDebug = true;
 
@@ -30,6 +30,17 @@ namespace sunamo.Essential
         //return TypedConsoleLogger.Instance;
 #endif
             return TypedDummyLogger.Instance;
+        }
+
+        public static event Action NeedNewFile;
+
+        public static void IncrementWrittenLines()
+        {
+            writtenLines++;
+            if (writtenLines > 5000)
+            {
+                NeedNewFile();
+            }
         }
 
         public static bool check = false;

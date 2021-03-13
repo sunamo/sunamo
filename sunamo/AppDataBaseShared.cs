@@ -105,6 +105,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataB
         if (Exc.aspnet)
         {
             this.basePath = basePath;
+            RootFolder = (StorageFolder)(dynamic)basePath;
             foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
             {
                 //FS.CreateFoldersPsysicallyUnlessThere(GetFolder(item));

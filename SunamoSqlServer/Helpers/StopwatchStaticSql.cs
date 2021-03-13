@@ -17,6 +17,7 @@ public class StopwatchStaticSql
         {
             // everything begin with select, update etc. so is no needed delimiter
             ThisApp.swSqlLog.WriteLine(sw.ElapsedMilliseconds + v);
+            ThisApp.IncrementWrittenLines();
         }
     }
 
