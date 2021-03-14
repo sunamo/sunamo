@@ -6,7 +6,7 @@ using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using sunamo;
-
+using System.Threading;
 
 /// <summary>
 /// 12-1-2019 refactoring:
@@ -789,8 +789,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <summary>
     /// false protože s tím byly problémy - seklo se mi to do té míry že nějaký web přestal odpovídat
     /// navíc to je relativně zbytečné, sám vidím jak se co rychle načítá
+    /// udělat to na SQLite - ne, zkusím zapisovat jen nad 1000ms
+    /// pokud by se opakovalo že některý web nepůjde načíst (nejpravděpodoněji lyr/app - mají nejvíce SQL dotazů), nastavit interval ještě vyšší
+    /// 
     /// </summary>
     public static bool measureTime = false;
+
+    public static int waitMs = 0;
 
     /// <summary>
     /// Automaticky doplní connection
@@ -805,7 +810,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 StopwatchStaticSql.Start();
             }
 
-            
+            if (waitMs != 0)
+            {
+                Thread.Sleep(waitMs);
+            }
 
             //loggedCommands.Add(comm.CommandText);
             conn.Open();

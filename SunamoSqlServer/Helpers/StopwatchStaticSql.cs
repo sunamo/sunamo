@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 public class StopwatchStaticSql
 {
     static Stopwatch sw = new Stopwatch();
+    public const int maxMs = 1000;
 
     internal static void StopAndPrintElapsed(string v)
     {
         sw.Stop();
-        if (sw.ElapsedMilliseconds > 1000)
+        if (sw.ElapsedMilliseconds > maxMs)
         {
             if (VpsHelperSunamo.IsVps)
             {
