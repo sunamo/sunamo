@@ -786,7 +786,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return result;
     }
 
-    bool measureTime = true;
+    /// <summary>
+    /// false protože s tím byly problémy - seklo se mi to do té míry že nějaký web přestal odpovídat
+    /// navíc to je relativně zbytečné, sám vidím jak se co rychle načítá
+    /// </summary>
+    public static bool measureTime = false;
 
     /// <summary>
     /// Automaticky doplní connection
