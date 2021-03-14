@@ -16,7 +16,7 @@ public class StopwatchStaticSql
         sw.Stop();
         if (sw.ElapsedMilliseconds > maxMs)
         {
-            if (VpsHelperSunamo.IsVps)
+            if (VpsHelperSunamo.IsVps || MSStoredProceduresI.forceIsVps)
             {
                 // everything begin with select, update etc. so is no needed delimiter
                 ThisApp.swSqlLog.WriteLine(sw.ElapsedMilliseconds + v);

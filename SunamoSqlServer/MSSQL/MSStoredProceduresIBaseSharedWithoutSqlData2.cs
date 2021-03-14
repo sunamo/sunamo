@@ -793,7 +793,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// pokud by se opakovalo že některý web nepůjde načíst (nejpravděpodoněji lyr/app - mají nejvíce SQL dotazů), nastavit interval ještě vyšší
     /// 
     /// </summary>
-    public static bool measureTime = false;
+    public static bool measureTime = true;
 
     public static int waitMs = 0;
 

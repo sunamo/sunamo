@@ -2661,9 +2661,10 @@ public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageF
         foreach (string item in soubory)
         {
             int p;
-            string withoutFn = SH.ReplaceOnce(item, fn, "");
+            string withoutFn = SH.ReplaceOnce(FS.GetFileName(item), fn, "");
             string withoutFnAndExt = SH.ReplaceOnce(withoutFn, ext, "");
-            if (int.TryParse(FS.GetFileNameWithoutExtension(withoutFnAndExt), out p))
+            withoutFnAndExt = withoutFnAndExt.TrimStart(AllChars.lowbar);
+            if (int.TryParse(withoutFnAndExt, out p))
             {
                 if (p > dalsi)
                 {

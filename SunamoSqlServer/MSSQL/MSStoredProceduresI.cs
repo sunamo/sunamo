@@ -34,6 +34,7 @@ public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProcedure
     }
 
     static MSStoredProceduresIBase _ci = new MSStoredProceduresIBase();
+    public static bool forceIsVps = false;
 
     public static MSStoredProceduresIBase ci
     {
