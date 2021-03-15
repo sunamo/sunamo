@@ -929,6 +929,7 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
     {
         DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
     }
+
     /// <summary>
     /// Normally: 11,12,1,2,...
     /// This: 1,2,...,11,12

@@ -791,7 +791,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// navíc to je relativně zbytečné, sám vidím jak se co rychle načítá
     /// udělat to na SQLite - ne, zkusím zapisovat jen nad 1000ms
     /// pokud by se opakovalo že některý web nepůjde načíst (nejpravděpodoněji lyr/app - mají nejvíce SQL dotazů), nastavit interval ještě vyšší
-    /// 
+    /// později to mohu snížit a tímto způsobem to více a více optimalizovat
     /// </summary>
     public static bool measureTime = true;
 
