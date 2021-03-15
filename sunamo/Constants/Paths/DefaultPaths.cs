@@ -39,6 +39,9 @@ namespace sunamo.Constants
         /// Solution, not project
         /// </summary>
         public static string sunamo = @"e:\Documents\Visual Studio 2017\Projects\sunamo\";
+        /// <summary>
+        /// Cant be used also VpsHelperSunamo.SunamoProject()
+        /// </summary>
         public static string sunamoProject = @"e:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\";
         /// <summary>
         /// e:\Documents\Visual Studio 2017\Projects\

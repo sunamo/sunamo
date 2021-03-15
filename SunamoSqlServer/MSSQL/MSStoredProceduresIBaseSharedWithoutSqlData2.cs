@@ -1798,10 +1798,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         SqlDataAdapter adapter = new SqlDataAdapter(comm);
         adapter.Fill(dt);
 
-
-
         return dt;
     }
+
     public bool SelectExistsTable(string p, SqlConnection conn)
     {
         DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));

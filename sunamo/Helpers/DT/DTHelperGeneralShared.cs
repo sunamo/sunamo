@@ -62,8 +62,9 @@ public partial class DTHelperGeneral
 
     public static string TimeInMsToSeconds(Stopwatch p)
     {
-        p.Stop();
-        string d = ((double)p.ElapsedMilliseconds / 1000).ToString();
+        var d2 = (double)p.ElapsedMilliseconds;
+        p.Reset();
+        string d = (d2 / 1000).ToString();
         if (d.Length > 4)
         {
             d = d.Substring(0, 4);

@@ -18,7 +18,7 @@ public class XlfResourcesHSunamo
     /// </summary>
     public static string SaveResouresToRLSunamo(string key)
     {
-        return XlfResourcesH.SaveResouresToRL<string, string>(key, DefaultPaths.sunamoProject, new ExistsDirectory(FS.ExistsDirectoryNull), AppData.ci);
+        return XlfResourcesH.SaveResouresToRL<string, string>(key, VpsHelperSunamo.SunamoProject(), new ExistsDirectory(FS.ExistsDirectoryNull), AppData.ci); ;
     }
 
     static XlfResourcesHSunamo()

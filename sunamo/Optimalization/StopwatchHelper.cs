@@ -51,13 +51,14 @@ public class StopwatchHelper
     /// <returns></returns>
     public long StopAndPrintElapsed(string operation, string p, params object[] parametry)
     {
-        sw.Stop();
+        var l = sw.ElapsedMilliseconds;
+        sw.Reset();
         string message = string.Format(operation + takes + sw.ElapsedMilliseconds + "ms" + p, parametry);
         ThisApp.SetStatus(TypeOfMessage.Information, message);;
 #if DEBUG
         DebugLogger.Instance.WriteLine(message);
 #endif 
-        return sw.ElapsedMilliseconds;
+        return l;
     }
 
     public  long ElapsedMS
@@ -80,7 +81,8 @@ public class StopwatchHelper
 
     public string Stop()
     {
-        sw.Stop();
-        return sw.ElapsedMilliseconds + "ms";
+        var r = sw.ElapsedMilliseconds + "ms";
+        sw.Reset();
+        return r;
     }
 }

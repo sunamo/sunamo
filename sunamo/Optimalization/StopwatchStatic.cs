@@ -15,8 +15,10 @@ using System.Diagnostics;
 
         public static long StopAndEllapsedMs()
     {
-        sw.sw.Stop();
-        return sw.sw.ElapsedMilliseconds;
+        
+        var l = sw.sw.ElapsedMilliseconds;
+        sw.sw.Reset();
+        return l;
     }
 
     /// <summary>
