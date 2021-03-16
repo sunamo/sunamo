@@ -15,6 +15,13 @@ public partial class DTHelperGeneral
 
     }
 
+    internal static string ShortYear(int year)
+    {
+        var s = year.ToString();
+        s = s.Substring(2, 2);
+        return s;
+    }
+
     #region Parse special
     /// <summary>
     /// Find four digit letter in any string
