@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 public class NormalizeDate
 {
-    public static DateTime From(string s)
+    public static DateTime From(short sh)
     {
+        var s = sh.ToString();
         bool december = false;
+        s = s.Trim();
 
         if (s.StartsWith(AllStrings.dash))
         {
@@ -20,10 +22,26 @@ public class NormalizeDate
         var m = s.Substring(2, 1);
         var d = s.Substring(3, 2);
 
-        var firstLetter = dp[0];
+        var firstLetter = int.Parse( d[0].ToString());
+        if (firstLetter > 3)
+        {
+            m = "1" + m;
+            var f = (firstLetter - 4).ToString()[0];
+            var s2 = d[1].ToString();
+            d = f + s2;
+        }
+        else if (m == "0")
+        {
+            m = "10";
+        }
+
+        var longYear = DTHelperGeneral.LongYear(y);
+
+        DateTime dt = new DateTime(int.Parse(longYear), int.Parse(m), int.Parse(d));
+        return dt;
     }
 
-    public static string To(DateTime dt)
+    public static short To(DateTime dt)
     {
         bool timesMinus1 = false;
         bool addFour = false;
@@ -46,6 +64,10 @@ public class NormalizeDate
                 ms2 = ms[1].ToString();
             }
         }
+        else if (m == 10)
+        {
+            ms2 = "0";
+        }
 
         /*
 Na prvním místě může být 0,1,2,3
@@ -60,17 +82,19 @@ Na prvním místě může být 0,1,2,3
         {
             sb.Append(AllChars.dash);
         }
+
         int firstChar2 = int.Parse(firstChar.ToString());
         if (addFour)
         {
             firstChar2 += 4;
         }
+
         sb.Append(y);
         sb.Append(ms2);
         sb.Append(firstChar2);
-        sb.AppendLine(d[1].ToString());
+        sb.Append(d[1].ToString());
 
         var result = sb.ToString();
-        return result;
+        return short.Parse( result);
     }
 }

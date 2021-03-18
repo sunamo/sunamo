@@ -5,6 +5,26 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
+    internal static string LongYear(string y)
+    {
+        var i = int.Parse(y);
+        if (i <= 79)
+        {
+            return "20" + i;
+        }
+        else
+        {
+            return "19" + i;
+        }
+    }
+
+    internal static string ShortYear(int year)
+    {
+        var s = year.ToString();
+        s = s.Substring(2, 2);
+        return s;
+    }
+
     public static int FullYear(byte b)
     {
         var bs = b.ToString().PadLeft(3, AllChars.zero);
@@ -48,6 +68,11 @@ public partial class DTHelperGeneral
         }
 
         return mal * DTConstants.secondsInDay;
+    }
+
+    public static DateTimeOrShort ShortToday()
+    {
+        return DateTimeOrShort.Sh( NormalizeDate.To(DateTime.Today));
     }
 
     public static DateTime WithoutTime(DateTime time)

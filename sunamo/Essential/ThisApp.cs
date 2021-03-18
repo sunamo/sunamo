@@ -11,7 +11,7 @@ namespace sunamo.Essential
     public class ThisApp
     {
 
-
+        public static bool useShortAsDt = true;
 
         public static int writtenLines = 0;
         public static StreamWriter swSqlLog;

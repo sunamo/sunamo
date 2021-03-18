@@ -1368,6 +1368,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
 
+
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, int limit, string sloupec, string idColumn, object idValue)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(" + limit + ") {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
@@ -3119,7 +3120,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
     /// <summary>
-    /// Nepužívat a smazat!!!
+    /// 
     /// </summary>
     public DataTable SelectDataTableAllRows(string table)
     {

@@ -69,6 +69,11 @@ public partial class TF
 
     private static void SaveFile(string obsah, string soubor, bool pripsat)
     {
+        if (soubor.Contains("PageVT.cs"))
+        {
+
+        }
+
         var dir = FS.GetDirectoryName(soubor);
 
         ThrowExceptions.DirectoryWasntFound(Exc.GetStackTrace(),type, "SaveFile", dir);

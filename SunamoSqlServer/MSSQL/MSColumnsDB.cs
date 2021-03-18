@@ -191,6 +191,12 @@ static Type type = typeof(MSColumnsDB);
         {
             return "";
         }
+
+        if (nazevTabulky.Contains("ageVT"))
+        {
+
+        }
+
         string nameCs = null;
         string cs = GetCsTableRow(signed, nazevTabulky, dbPrefix, out nameCs);
         string Path = FS.Combine(folderSaveToDirectoryName, "DontCopy2", nameCs + ".cs");

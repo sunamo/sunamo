@@ -15,12 +15,7 @@ public partial class DTHelperGeneral
 
     }
 
-    internal static string ShortYear(int year)
-    {
-        var s = year.ToString();
-        s = s.Substring(2, 2);
-        return s;
-    }
+    
 
     #region Parse special
     /// <summary>
@@ -41,10 +36,12 @@ public partial class DTHelperGeneral
         }
         return string.Empty;
     }
+
+    
     #endregion
 
     #region Set*
-    
+
 
     public static DateTime SetMinute(DateTime d, int v)
     {
