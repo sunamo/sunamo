@@ -528,8 +528,14 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
 
     public static string cs
     {
-        get => _cs; set
+        get { 
+            return _cs; 
+        }  set
         {
+            if (value == null)
+            {
+
+            }
             _cs = value;
         }
     }

@@ -166,7 +166,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
 #if DEBUG
         //3rd in debug show uc
-        SetMode(Mode.Empty);
+        SetMode("Dummy");
 #endif
         #endregion
 

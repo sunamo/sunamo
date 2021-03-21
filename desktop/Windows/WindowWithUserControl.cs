@@ -21,6 +21,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     IControlWithResult userControlWithResult = null;
     IControlWithResultDebug controlWithResultDebug = null;
+    
     bool isControlWithResultDebug = false;
     IControlWithResult controlWithResult = null;
     /// <summary>
@@ -34,6 +35,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         {
             if (ChangeDialogResult != null)
             {
+                
                 ChangeDialogResult(value);
             }
 
@@ -47,8 +49,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     public DialogButtons dialogButtons = null;
     Menu menu = null;
 
-
-
     private void WindowWithUserControl_SizeChanged(object sender, SizeChangedEventArgs e)
     {
         var hMenu = menu.ActualHeight();
@@ -57,6 +57,13 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
         var e2 = ControlHelper.ActualInnerSize(this).Height;
         var growingRow = e2 - hMenu - staturBarH - dialogButtonsH;
+
+        if (args.showInTitleSizeOfWindowAndContent)
+        {
+            var c = (FrameworkElement)Content;
+            Title = $"Window: {ActualWidth}x{ActualHeight} growingRow: {growingRow} Content: {c.ActualWidth}x{c.ActualHeight}";
+        }
+
         OnSizeChanged(new DesktopSize(ActualWidth, growingRow));
     }
 
@@ -91,6 +98,8 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         controlWithResultDebug = uc as IControlWithResultDebug;
         userControlWithSizeChange = uc as IUserControlWithSizeChange;
         controlWithResult = uc as IControlWithResult;
+
+        
 
         this.Closed += WindowWithUserControl_Closed;
         this.Closing += WindowWithUserControl_Closing;
@@ -155,8 +164,8 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         }
 
         this.ResizeMode = a.rm;
-        // Původně bylo WidthAndHeight
-        this.SizeToContent = System.Windows.SizeToContent.Manual;
+        // Původně bylo WidthAndHeight, pak Manual, pak opět WidthAndHeight - pokud zobrazuji LoginDialog např. chci aby to vypadalo profesionálně
+        this.SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
         //this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
         //this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight * 0.75d;
         this.Content = dock;
@@ -371,7 +380,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         {
             if (!args.useResultOfShowDialog)
             {
-
                 // IF USER CONTROL HAVE OWN ChangeDialogResult, MUST USE ALWAYS IT
                 // In CheckBoxListUC must handle whether at least one is selected
                 if (uc.GetType() != CheckBoxListUC.type)

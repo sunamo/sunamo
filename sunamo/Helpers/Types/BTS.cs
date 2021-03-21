@@ -20,7 +20,7 @@ public static partial class BTS
     /// </summary>
     /// <typeparam name="T1"></typeparam>
     /// <returns></returns>
-    internal static object MethodForParse<T1>()
+    public static object MethodForParse<T1>()
     {
         var t = typeof(T1);
         #region Same seria as in DefaultValueForTypeT

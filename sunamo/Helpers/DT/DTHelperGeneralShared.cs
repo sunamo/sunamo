@@ -5,7 +5,7 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
-    internal static string LongYear(string y)
+    public static string LongYear(string y)
     {
         var i = int.Parse(y);
         if (i <= 79)
@@ -18,7 +18,7 @@ public partial class DTHelperGeneral
         }
     }
 
-    internal static string ShortYear(int year)
+    public static string ShortYear(int year)
     {
         var s = year.ToString();
         s = s.Substring(2, 2);

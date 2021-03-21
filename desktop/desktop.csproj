@@ -234,6 +234,9 @@
     <Compile Include="Controls\Input\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SunamoLoginDialog.xaml.cs">
+      <DependentUpon>SunamoLoginDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\SelectFile.xaml.cs">
       <DependentUpon>SelectFile.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,9 @@
     </Compile>
     <Compile Include="Controls\Input\SelectTwoValuesUC.xaml.cs">
       <DependentUpon>SelectTwoValuesUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\SunamoPasswordBox.xaml.cs">
+      <DependentUpon>SunamoPasswordBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\UpDownNumeric.xaml.cs">
       <DependentUpon>UpDownNumeric.xaml</DependentUpon>
@@ -481,6 +487,7 @@
     <Compile Include="Registry\RegistryEntry.cs" />
     <Compile Include="Registry\RegistryHelper.cs" />
     <Compile Include="ResourceDictionaryStyles.cs" />
+    <Compile Include="ResourceDictionaryStylesShared.cs" />
     <Compile Include="SczNotifyServerErrorChecker.cs" />
     <Compile Include="SearchCodeElementsUCData.cs" />
     <Compile Include="SHWithControls.cs" />
@@ -629,6 +636,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Input\SunamoLoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Input\SelectFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -654,6 +665,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Input\SelectTwoValuesUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SunamoPasswordBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

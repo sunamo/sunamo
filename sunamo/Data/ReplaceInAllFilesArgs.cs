@@ -17,5 +17,5 @@ public class ReplaceInAllFilesArgs
     /// 
     /// </summary>
     public Func<StringBuilder, IList<string>, IList<string>, StringBuilder> fasterMethodForReplacing;
-    internal bool isNotReplaceInTemporaryFiles;
+    public bool isNotReplaceInTemporaryFiles;
 }

@@ -8,7 +8,7 @@ using System.Windows.Threading;
 
 public partial class PanelHelper
 {
-    internal static UIElementCollection Children(StackPanel key, Dispatcher d)
+    public static UIElementCollection Children(StackPanel key, Dispatcher d)
     {
         //WpfApp.cd
 

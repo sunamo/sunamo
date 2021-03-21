@@ -29,10 +29,14 @@ public partial class ThrowExceptions
         return ThrowIsNotNull(stacktrace, Exceptions.OutOfRange(FullNameOfExecutedCode(type, methodName), colName, col, indexName, index));
     }
 
-    internal static void CustomWithStackTrace(Exception ex)
+    public static void CustomWithStackTrace(Exception ex)
     {
         Custom( Exc.GetStackTrace(), type, Exc.CallingMethod(), Exceptions.TextOfExceptions(ex));
     }
+
+  
+
+
 
     /// <summary>
     /// Return & throw exception whether directory exists

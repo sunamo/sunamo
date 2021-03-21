@@ -603,6 +603,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
+    /// <summary>
+    /// Create table to which add none postfix
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="dictionary"></param>
     public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
         using (var conn = new SqlConnection(Cs))
@@ -653,6 +658,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
+    /// <summary>
+    /// Create table to which add postfix 2
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="dictionary"></param>
     public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
         var cs = MSDatabaseLayer.cs;

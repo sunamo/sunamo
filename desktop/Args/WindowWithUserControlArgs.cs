@@ -22,4 +22,5 @@ public class WindowWithUserControlArgs
     /// </summary>
     public string tag = null;
     public string hint = null;
+    public bool showInTitleSizeOfWindowAndContent = false;
 }

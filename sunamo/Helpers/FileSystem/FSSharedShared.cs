@@ -82,7 +82,7 @@ public partial class FS{
         return exists;
     }
 
-    internal static void WriteAllTextWithExc(string file, string obsah)
+    public static void WriteAllTextWithExc(string file, string obsah)
     {
         try
         {

@@ -146,7 +146,7 @@ public static partial class SH
         return lineNumber - 1;
     }
 
-    internal static char GetFirstChar(string arg)
+    public static char GetFirstChar(string arg)
     {
         return arg[0];
     }
@@ -1818,7 +1818,7 @@ public static partial class SH
         return vr;
     }
 
-    internal static bool StartingWith(string val, string start, bool caseSensitive)
+    public static bool StartingWith(string val, string start, bool caseSensitive)
     {
         if (caseSensitive)
         {

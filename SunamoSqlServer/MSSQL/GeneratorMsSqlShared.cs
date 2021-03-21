@@ -412,29 +412,40 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
     /// <param name="table"></param>
     /// <param name="sloupce"></param>
     /// <param name="p"></param>
-    public static string CreateTable(string table, object sloupce2,  bool dynamicTables, SqlConnection conn)
+    public static string CreateTable(string table, MSColumnsDB sloupce,  bool dynamicTables, SqlConnection conn)
     {
-        var sloupce = (MSColumnsDB)sloupce2;
-
-        StringBuilder sb = new StringBuilder();
+        //var sloupce = (MSColumnsDB)sloupce2;
         bool exists = MSStoredProceduresI.ci.SelectExistsTable(table, conn);
         if (!exists)
         {
-            sb.AppendFormat("CREATE TABLE {0}(", table);
-            foreach (MSSloupecDB var in sloupce)
-            {
-                sb.Append(GeneratorMsSql.Column(var, table, dynamicTables) + AllStrings.comma);
-            }
-            string dd = sb.ToString();
-            dd = dd.TrimEnd(AllChars.comma);
-            string vr = dd + AllStrings.rb;
-            //vr);
-            return vr;
+            return SqlForCreateTable(table, sloupce, dynamicTables);
         }
         return null;
     }
 
-/// <summary>
+    /// <summary>
+    /// A3 - whether is not desirable to create references to other tables. Good while test tables and apps, when I will it delete later.
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="sloupce"></param>
+    /// <param name="dynamicTables"></param>
+    /// <returns></returns>
+    public static string SqlForCreateTable(string table, MSColumnsDB sloupce, bool dynamicTables)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendFormat("CREATE TABLE {0}(", table);
+        foreach (MSSloupecDB var in sloupce)
+        {
+            sb.Append(GeneratorMsSql.Column(var, table, dynamicTables) + AllStrings.comma);
+        }
+        string dd = sb.ToString();
+        dd = dd.TrimEnd(AllChars.comma);
+        string vr = dd + AllStrings.rb;
+        //vr);
+        return vr;
+    }
+
+    /// <summary>
     /// A3 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
     /// </summary>
     /// <param name="var"></param>

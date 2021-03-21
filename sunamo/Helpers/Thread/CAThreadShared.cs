@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public partial class CAThread
 {
     #region ToList to avoid StackOverflowException
-    internal static List<object> ToList(IEnumerable e)
+    public static List<object> ToList(IEnumerable e)
     {
         List<object> ls = new List<object>(e.Count());
 
@@ -23,7 +23,7 @@ public partial class CAThread
     #endregion
 
     #region ToList to use in different threads
-    internal static List<object> ToList(IEnumerable e, System.Windows.Threading.Dispatcher d)
+    public static List<object> ToList(IEnumerable e, System.Windows.Threading.Dispatcher d)
     {
         List<object> ls = new List<object>(e.Count());
 

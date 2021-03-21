@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public partial class SunamoWebClient : WebClient
 {
-    internal HttpRequestData hrd = null;
+    public HttpRequestData hrd = null;
 
     public SunamoWebClient()
     {
