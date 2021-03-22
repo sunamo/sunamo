@@ -34,6 +34,11 @@ public class StopwatchHelper
         return sb.ToString();
     }
 
+    internal void Reset()
+    {
+        sw.Reset();
+    }
+
     public  void Start()
     {
         sw.Reset();

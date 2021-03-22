@@ -12,7 +12,12 @@ public class StopwatchStaticSql
     public const int maxMs = 1000;
     static long ms = 0;
 
-    internal static void StopAndPrintElapsed(string v)
+    public static bool AboveLimit()
+    {
+        return sw.ElapsedMilliseconds > maxMs;
+        }
+
+    public static void StopAndPrintElapsed(string v)
     {
         ms = sw.ElapsedMilliseconds;
         sw.Reset();
@@ -21,8 +26,8 @@ public class StopwatchStaticSql
             if (VpsHelperSunamo.IsVps || MSStoredProceduresI.forceIsVps)
             {
                 // everything begin with select, update etc. so is no needed delimiter
-                ThisApp.swSqlLog.WriteLine(ms + v);
-                ThisApp.IncrementWrittenLines();
+                SqlMeasureTimeWorker.swSqlLog.WriteLine(ms + v);
+                SqlMeasureTimeWorker.IncrementWrittenLines();
             }
         }
     }

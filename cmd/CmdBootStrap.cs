@@ -36,9 +36,19 @@ public class CmdBootStrap
     /// <param name="runInDebug"></param>
     /// <param name="AddGroupOfActions"></param>
     /// <param name="allActions"></param>
-    public static string Run(string appName, IClipboardHelper clipboardHelperWin, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions,bool askUserIfRelease)
+    public static string Run(string appName, IClipboardHelper clipboardHelperWin, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, bool askUserIfRelease, Action InitSqlMeasureTime)
     {
+    //}
+
+    //public static string Run(CmdBootStrapArgs a)
+    //{ 
         ThisApp.Name = appName;
+
+        if (InitSqlMeasureTime != null)
+        {
+            InitSqlMeasureTime();
+        }
+
         AppData.ci.CreateAppFoldersIfDontExists();
 
         CmdApp.Init();

@@ -745,7 +745,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             if (measureTime)
             {
-                StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+                if (StopwatchStaticSql.AboveLimit())
+                {
+                    StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+                }
             }
 
             return result;
@@ -790,7 +793,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
         if (measureTime)
         {
-            StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+            if (StopwatchStaticSql.AboveLimit())
+            {
+                StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+            }
         }
 
         return result;
@@ -825,7 +831,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 Thread.Sleep(waitMs);
             }
 
-            //loggedCommands.Add(comm.CommandText);
             conn.Open();
             //SqlDbType.SmallDateTime;
             comm.Connection = conn;
@@ -835,7 +840,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             if (measureTime)
             {
-                StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+                if (StopwatchStaticSql.AboveLimit())
+                {
+                    StopwatchStaticSql.StopAndPrintElapsed(SqlServerHelper.SqlCommandToTSQLText(comm));
+                }
             }
 
             return result;

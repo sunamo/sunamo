@@ -13,6 +13,11 @@ using System.Diagnostics;
         sw.Start();
         }
 
+    public static void Reset()
+    {
+        sw.Reset();
+    }
+
         public static long StopAndEllapsedMs()
     {
         

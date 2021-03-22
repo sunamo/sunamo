@@ -13,8 +13,7 @@ namespace sunamo.Essential
 
         public static bool useShortAsDt = true;
 
-        public static int writtenLines = 0;
-        public static StreamWriter swSqlLog;
+        
         public static bool runInDebug = true;
 
         // Everywhere is used just ThisApp.cd. 
@@ -32,17 +31,7 @@ namespace sunamo.Essential
             return TypedDummyLogger.Instance;
         }
 
-        public static event Action NeedNewFile;
-
-        public static void IncrementWrittenLines()
-        {
-            writtenLines++;
-            if (writtenLines > 5000)
-            {
-                NeedNewFile();
-            }
-        }
-
+        
         public static bool check = false;
         public static Langs l = Langs.en;
         public static ResourcesHelper Resources;

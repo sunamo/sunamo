@@ -45,16 +45,17 @@ public class SqlMeasureTimeHelper
                     pathSqlLog = PathSqlLog();
                 }
             }
-            ThisApp.swSqlLog = sw;
-            ThisApp.swSqlLog.AutoFlush = true;
-            ThisApp.writtenLines = 0;
+            SqlMeasureTimeWorker.swSqlLog = sw;
+            SqlMeasureTimeWorker.swSqlLog.AutoFlush = true;
+            SqlMeasureTimeWorker.writtenLines = 0;
         }
     }
 
     private  string PathSqlLog()
     {
         var dt = DateTime.Now;
-        return FS.GetFileSeries(AppData.ci.GetFolder(AppFolders.Logs), fn + $"{dt.Year}-{dt.Month}-{dt.Day}", ".txt");
+        string r  = FS.GetFileSeries(AppData.ci.GetFolder(AppFolders.Logs), fn + $"{dt.Year}-{dt.Month}-{dt.Day}", ".txt");
+        return r;
     }
 
     public void Before(bool measureTime, int waitMs, bool forceIsVps, string fn2 = "Sql.txt")
