@@ -57,6 +57,7 @@
     <Compile Include="..\..\sunamo\cmd\Helpers\CLShared.cs" />
     <Compile Include="Args\WriteProgressBarArgs.cs" />
     <Compile Include="CmdBootStrap.cs" />
+    <Compile Include="CmdBootStrapArgs.cs" />
     <Compile Include="Essential\CmdApp.cs" />
     <Compile Include="Essential\ConsoleLogger.cs" />
     <Compile Include="Essential\ConsoleTemplateLogger.cs" />

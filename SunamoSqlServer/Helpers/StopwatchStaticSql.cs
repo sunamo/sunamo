@@ -14,8 +14,12 @@ public class StopwatchStaticSql
 
     public static bool AboveLimit()
     {
-        return sw.ElapsedMilliseconds > maxMs;
+        if( sw.ElapsedMilliseconds > maxMs)
+        {
+            return true;
         }
+        return false;
+    }
 
     public static void StopAndPrintElapsed(string v)
     {
