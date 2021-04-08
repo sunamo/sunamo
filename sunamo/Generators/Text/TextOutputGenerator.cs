@@ -7,12 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 /// <summary>
-/// TextWriterList - instance
-/// TextBuilder - instance
-/// TextOutputGenerator - instance
-/// TextGenerator - static
-/// 
-/// Similar: InstantSB,TextBuilder,HtmlSB
+/// In Comparing
 /// </summary>
 public class TextOutputGenerator
 {
@@ -68,24 +63,13 @@ public class TextOutputGenerator
     }
     #endregion
 
-    public void AppendLineFormat(string text, params object[] p)
-    {
-        sb.AppendLine();
+    
+   
 
-        AppendLine(SH.Format2(text, p));
-    }
-
-    public void AppendFormat(string text, params object[] p)
+    #region AppendLine
+    public void AppendLine()
     {
-        AppendLine(SH.Format2(text, p));
-    }
-
-    public void Dictionary(Dictionary<string, int> charEntity, string delimiter)
-    {
-        foreach (var item in charEntity)
-        {
-            sb.AppendLine(item.Key + delimiter + item.Value);
-        }
+        AppendLine(string.Empty);
     }
 
     public void AppendLine(StringBuilder text)
@@ -99,11 +83,21 @@ public class TextOutputGenerator
         sb.AppendLine(text);
     }
 
-    public override string ToString()
+    public void AppendLineFormat(string text, params object[] p)
     {
-        return sb.ToString();
+        sb.AppendLine();
+
+        AppendLine(SH.Format2(text, p));
     }
 
+    public void AppendFormat(string text, params object[] p)
+    {
+        AppendLine(SH.Format2(text, p));
+    }
+    #endregion
+
+
+    #region Other adding methods
     public void Header(string v)
     {
         sb.AppendLine();
@@ -111,9 +105,32 @@ public class TextOutputGenerator
         sb.AppendLine();
     }
 
+    public void SingleCharLine(char paddingChar, int v)
+    {
+        sb.AppendLine(string.Empty.PadLeft(v, paddingChar));
+    } 
+    #endregion
+
+    public override string ToString()
+    {
+        return sb.ToString();
+    }
+
+    
+
+    #region List
     public void ListObject(IEnumerable files1)
     {
-         List(CA.ToListString( files1));
+        List(CA.ToListString(files1));
+    }
+
+    /// <summary>
+    /// If you have StringBuilder, use Paragraph()
+    /// </summary>
+    /// <param name="files1"></param>
+    public void List(IEnumerable<string> files1)
+    {
+        List<string>(files1);
     }
 
     public void List<Value>(IEnumerable<Value> files1)
@@ -132,15 +149,37 @@ public class TextOutputGenerator
         }
     }
 
-    /// <summary>
-    /// If you have StringBuilder, use Paragraph()
-    /// </summary>
-    /// <param name="files1"></param>
-    public void List(IEnumerable<string> files1)
+    public void List<Header, Value>(IEnumerable<Value> files1, Header header) where Header : IEnumerable<char>
     {
-        List<string>(files1);
+        List<Header, Value>(files1, header, true, false);
     }
 
+    public void List(IEnumerable<string> files1, string header)
+    {
+        List(files1, header, true, false);
+    }
+
+
+    public void List<Header, Value>(IEnumerable<Value> files1, Header header, bool headerWrappedEmptyLines, bool insertCount) where Header : IEnumerable<char>
+    {
+        if (insertCount)
+        {
+            header = (Header)((IEnumerable<char>)CA.JoinIEnumerable<char>(header, " (" + files1.Count() + AllStrings.rb));
+        }
+        if (headerWrappedEmptyLines)
+        {
+            sb.AppendLine();
+        }
+        sb.AppendLine(header + AllStrings.colon);
+        if (headerWrappedEmptyLines)
+        {
+            sb.AppendLine();
+        }
+        List(files1);
+    }
+    #endregion
+
+    #region Paragraph
     public void Paragraph(StringBuilder wrongNumberOfParts, string header)
     {
         string text = wrongNumberOfParts.ToString().Trim();
@@ -160,51 +199,25 @@ public class TextOutputGenerator
             sb.AppendLine(text);
             sb.AppendLine();
         }
-    }
+    } 
+    #endregion
 
-    public void List<Header,Value>(IEnumerable<Value> files1,  Header header) where Header : IEnumerable<char>
-    {
-        List<Header, Value>(files1, header, true, false);
-    }
+    
 
-    public void List(IEnumerable<string> files1, string header)
-    {
-        List(files1, header, true, false);
-    }
-
-    public void AppendLine()
-    {
-        AppendLine(string.Empty);
-    }
-
-    public void List<Header,Value>(IEnumerable<Value> files1, Header header, bool headerWrappedEmptyLines, bool insertCount) where Header : IEnumerable<char>
-    {
-        if (insertCount)
-        {
-            header = (Header)((IEnumerable<char>)CA.JoinIEnumerable<char>(header, " (" + files1.Count() + AllStrings.rb));
-        }
-        if (headerWrappedEmptyLines)
-        {
-            sb.AppendLine();
-        }
-        sb.AppendLine(header + AllStrings.colon);
-        if (headerWrappedEmptyLines)
-        {
-            sb.AppendLine();
-        }
-        List(files1);
-    }
-
-
-
-    public void SingleCharLine(char paddingChar, int v)
-    {
-        sb.AppendLine(string.Empty.PadLeft(v, paddingChar));
-    }
+    
 
     public void Undo()
     {
         sb.Undo();
+    }
+
+    #region Dictionary
+    public void Dictionary(Dictionary<string, int> charEntity, string delimiter)
+    {
+        foreach (var item in charEntity)
+        {
+            sb.AppendLine(item.Key + delimiter + item.Value);
+        }
     }
 
     public void Dictionary(Dictionary<string, List<string>> ls)
@@ -215,7 +228,7 @@ public class TextOutputGenerator
         }
     }
 
-    public void Dictionary<Header,Value>(Dictionary<Header, List<Value>> ls) where Header : IEnumerable<char>
+    public void Dictionary<Header, Value>(Dictionary<Header, List<Value>> ls) where Header : IEnumerable<char>
     {
         foreach (var item in ls)
         {
@@ -230,7 +243,7 @@ public class TextOutputGenerator
             sb.AppendLine(SF.PrepareToSerialization(item.Key, item.Value));
         }
 
-        
+
     }
 
     public void Dictionary<T1, T2>(Dictionary<T2, T2> d)
@@ -238,8 +251,9 @@ public class TextOutputGenerator
         //StringBuilder sb = new StringBuilder();
         foreach (var item in d)
         {
-            sb.AppendLine(SF.PrepareToSerializationExplicit(CA.ToList<object>( item.Key, item.Value)));
+            sb.AppendLine(SF.PrepareToSerializationExplicit(CA.ToList<object>(item.Key, item.Value)));
         }
-        
-    }
+
+    } 
+    #endregion
 }

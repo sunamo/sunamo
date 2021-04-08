@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public partial class LinearHelper
 {
@@ -9,13 +10,26 @@ public partial class LinearHelper
     /// <param name = "to"></param>
     public static List<string> GetStringListFromTo(int from, int to)
     {
-        List<string> vr = new List<string>();
+        return CA.ToListString( GetListFromTo(from ,to));
+    }
+
+    public static List<int> GetListFromTo(int from, int to)
+    {
+        List<int> vr = new List<int>();
         to++;
         for (; from < to; from++)
         {
-            vr.Add(from.ToString());
+            vr.Add(from);
         }
 
         return vr;
+    }
+
+    public static List<T> GetListFromTo<T>(int from, int to)
+    {
+        var s = GetStringListFromTo(from, to);
+        Func<string, T> parse = (Func<string, T>)BTS.MethodForParse<T>();
+        var r = CA.ToNumber<T>(parse, s);
+        return r;
     }
 }

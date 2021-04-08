@@ -143,6 +143,13 @@ public static partial class RandomHelper
         return ppk[nt].ToString();
     }
 
+    public static T RandomEnum<T>() where T  : struct
+    {
+        var v = EnumHelper.GetValues<T>();
+        var s = RandomElementOfCollectionT<T>(v);
+        return s;
+    }
+
     /// <summary>
     /// Vrac� ��slo od A1 do A2-1
     /// </summary>

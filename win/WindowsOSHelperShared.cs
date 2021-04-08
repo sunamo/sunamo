@@ -5,14 +5,18 @@ public partial class WindowsOSHelper{
 public static string FileIn(UserFoldersWin local, string appName, string exe)
     {
         var folder = FS.Combine(PathOfAppDataFolder(local), appName);
+        return FileIn( folder, exe);
+    }
 
+    public static string FileIn(string folder, string exe)
+    {
         var masc = string.Empty; //FS.MascFromExtension(exe);
         masc = exe;
 
         return FS.GetFiles(folder, masc, SearchOption.AllDirectories).FirstOrDefault();
     }
 
-/// <summary>
+    /// <summary>
     /// All
     /// </summary>
     /// <param name = "af"></param>

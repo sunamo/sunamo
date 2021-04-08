@@ -5,15 +5,7 @@ using System.Text;
 namespace sunamo.Generators.Text
 {
     /// <summary>
-    /// TextWriterList - instance
-    /// TextBuilder - instance
-    /// TextOutputGenerator - instance
-    /// TextGenerator - static
-    /// 
-    /// Similar: InstantSB(can specify own delimiter, check whether dont exists)
-    /// TextBuilder(implements Undo, save to Sb or List)
-    /// HtmlSB(Same as InstantSB, use br)
-    /// 
+    /// In Comparing
     /// </summary>
     public class TextBuilder
     {

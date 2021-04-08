@@ -3,5 +3,6 @@
     WrongRange,
     Empty,
     NotFound,
-    AllOk
+    AllOk,
+    Undefined
 }

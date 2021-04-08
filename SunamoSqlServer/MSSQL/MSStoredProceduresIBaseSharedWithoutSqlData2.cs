@@ -923,6 +923,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return Convert.ToInt32(o);
     }
 
+    /// <summary>
+    /// Return -1 or int.MaxValue if failed
+    /// </summary>
+    /// <param name="signed"></param>
+    /// <param name="comm"></param>
+    /// <returns></returns>
     private int ExecuteScalarInt(bool signed, SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
@@ -2821,7 +2827,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
     /// <summary>
-    /// G -1 když se žádný takový řádek nepodaří najít
+    /// G -1 or int.Max když se žádný takový řádek nepodaří najít
     /// </summary>
     /// <param name="table"></param>
     /// <param name="vracenySloupec"></param>

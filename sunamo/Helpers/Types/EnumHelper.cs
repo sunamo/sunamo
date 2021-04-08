@@ -76,7 +76,7 @@ public static partial class EnumHelper
         ).ToDictionary(r => r.Key, r => r.Value);
     }
 
-    #region GetAllValues - unlike GetValues in EnumHelperShared.cs not exclude anything. GetValues can exclude Nope,Shared, etc.
+    #region GetAllValues - unlike GetValues in EnumHelperShared.cs not exclude anything. GetValues can exclude Nope,Shared,etc.
     /// <summary>
     /// If A1, will start from [1]. Otherwise from [0]
     /// Get all without zero and All.

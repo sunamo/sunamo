@@ -137,13 +137,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         data = new ApplicationDataContainer();
         Name = ThisApp.Name;
 
-        #region Must be after set up ThisApp.Name
-        if (MSStoredProceduresI.measureTime)
-        {
-            mt.NewSw();
-            ThisApp.NeedNewFile += ThisApp_NeedNewFile;
-        }
-        #endregion
+        
 
         data.Add(this);
 

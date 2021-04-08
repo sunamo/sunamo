@@ -13,6 +13,7 @@ public static partial class EnumHelper
     /// </summary>
     /// <typeparam name="T"></typeparam>
     #region GetValues - unlike GetAllValues in EnumHelper.cs can exclude Nope,Shared, etc.
+    ///
     public static List<T> GetValues<T>()
        where T : struct
     {

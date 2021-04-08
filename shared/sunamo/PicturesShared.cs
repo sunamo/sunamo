@@ -336,6 +336,7 @@ using sunamo.Essential;
               
 		public static void saveJpeg(string path, Image img, long quality)
 		{
+        path = FS.ChangeExtension(path, AllExtensions.jpg, false);
 			try
 			{
 				// Encoder parameter for image quality

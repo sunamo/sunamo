@@ -12,6 +12,7 @@ using System.Windows.Threading;
 
 public partial class WpfApp
 {
+    
     static WpfApp()
     {
         EnableDesktopLogging(true);

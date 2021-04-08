@@ -64,6 +64,7 @@
     <Compile Include="MSSQL\MSTableRowIDNameShort.cs" />
     <Compile Include="MSSQL\MSTableRowIDNameT.cs" />
     <Compile Include="SqlConsts.cs" />
+    <Compile Include="SqlDebug.cs" />
     <Compile Include="SqlMeasureTimeWorker.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />

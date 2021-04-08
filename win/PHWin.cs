@@ -31,7 +31,10 @@ public class PHWin
             var all = EnumHelper.GetValues<Browsers>();
             foreach (var item in all)
             {
-                AddBrowser(item);
+                if (item != Browsers.None)
+                {
+                    AddBrowser(item);
+                }
             }
         }
     }
@@ -46,29 +49,63 @@ public class PHWin
                 break;
             case Browsers.Firefox:
                 b = @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-                break;
-            case Browsers.InternetExplorer:
-                b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
-                break;
-            case Browsers.Opera:
-                // Opera has version also when is installing to PF, it cant be changed
-                b = @"C:\Program Files\Opera\65.0.3467.78\opera.exe";
+                if (!FS.ExistsFile(b))
+                {
+                    b = @"c:\Program Files\Mozilla Firefox\firefox.exe";
+                }
                 break;
             case Browsers.Edge:
                 b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
                 break;
-            case Browsers.Vivaldi:
-                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, XlfKeys.Vivaldi, "vivaldi.exe");
+            case Browsers.Opera:
+                // Opera has version also when is installing to PF, it cant be changed
+                //b = @"C:\Program Files\Opera\65.0.3467.78\opera.exe";
+                b = WindowsOSHelper.FileIn(@"C:\Program Files\Opera\", "opera.exe");
+                if (!FS.ExistsFile(b))
+                {
+                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Programs\Opera", "opera.exe");
+                }
                 break;
-            case Browsers.ChromeCanary:
-                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Google\Chrome SxS", "chrome.exe");
+            case Browsers.Vivaldi:
+                //
+                b = @"C:\Program Files\Vivaldi\Application\vivaldi.exe";
+                if (!FS.ExistsFile(b))
+                {
+                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, XlfKeys.Vivaldi, "vivaldi.exe");
+                }
+                break;
+            //case Browsers.InternetExplorer:
+            //    b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
+            //    break;
+            case Browsers.Maxthon:
+                b = @"C:\Program Files (x86)\Maxthon5\Bin\Maxthon.exe";
                 break;
             case Browsers.Seznam:
                 b = WindowsOSHelper.FileIn(UserFoldersWin.Roaming, @"Seznam Browser", "Seznam.cz.exe");
                 break;
-            default:
-                //ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod());
+            case Browsers.Chromium:
+                b = @"d:\paSync\_browsers\Chromium\chrome.exe";
                 break;
+            case Browsers.ChromeCanary:
+                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Google\Chrome SxS", "chrome.exe");
+                break;
+            case Browsers.Tor:
+                b = @"d:\Desktop\Tor Browser\Browser\firefox.exe";
+                break;
+            case Browsers.Bravebrowser:
+                b = @"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe";
+                break;
+            case Browsers.Torch:
+                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Torch\Application", "chrome.exe");
+                break;
+            default:
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod(), prohlizec);
+                break;
+        }
+
+        if (b == null)
+        {
+            b = string.Empty;
         }
 
         path.Add(prohlizec, b);
@@ -94,10 +131,47 @@ public class PHWin
         Process.Start(new ProcessStartInfo(b, s));
     }
 
+    /// <summary>
+    /// Not contains Other
+    /// </summary>
     static Dictionary<Browsers, string> path = new Dictionary<Browsers, string>();
     public static void OpenInBrowser(string uri)
     {
         OpenInBrowser(Browsers.Chrome, uri);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public static List<string> BrowsersWhichDontHaveExeInDefinedPath()
+    {
+        List<string> doesntExists = new List<string>();
+
+        AddBrowsers();
+        foreach (var item in path)
+        {
+            if (!FS.ExistsFile( item.Value))
+            {
+                if (item.Value == null)
+                {
+
+                }
+
+                doesntExists.Add(item.Value);
+            }
+        }
+
+        return doesntExists;
+    }
+
+    public static void OpenInAllBrowsers(string uri)
+    {
+        AddBrowsers();
+        foreach (var item in path)
+        {
+            OpenInBrowser(item.Key, uri);
+        }
     }
 
 }

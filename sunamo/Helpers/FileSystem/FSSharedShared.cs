@@ -23,6 +23,11 @@ public partial class FS{
         return TF.ReadAllText(f);
     }
 
+    public static object ChangeDirectory(string item, object xnConvert)
+    {
+        throw new NotImplementedException();
+    }
+
 
 
     /// <summary>

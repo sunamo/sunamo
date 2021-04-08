@@ -127,6 +127,7 @@
     <Compile Include="Extensions\SystemDrawingColorExtensions.cs" />
     <Compile Include="Extensions\SystemDrawingSizeExtension.cs" />
     <Compile Include="Extensions\SystemDrawingSizeFExtension.cs" />
+    <Compile Include="Extensions\SystemWindowsMediaBrushExtensions.cs" />
     <Compile Include="Extensions\SystemWindowsMediaColorExtensions.cs" />
     <Compile Include="Extensions\SystemWindowsSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />

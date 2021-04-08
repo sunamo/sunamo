@@ -30,13 +30,14 @@ public class CmdBootStrap
 
     /// <summary>
     /// If user cannot select, A4,5 can be empty
+    /// askUserIfRelease = null - ask user even in debug
     /// </summary>
     /// <param name="appName"></param>
     /// <param name="clipboardHelperWin"></param>
     /// <param name="runInDebug"></param>
     /// <param name="AddGroupOfActions"></param>
     /// <param name="allActions"></param>
-    public static string Run(string appName, IClipboardHelper clipboardHelperWin, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, bool askUserIfRelease, Action InitSqlMeasureTime)
+    public static string Run(string appName, IClipboardHelper clipboardHelperWin, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, bool? askUserIfRelease, Action InitSqlMeasureTime)
     {
     //}
 
@@ -68,8 +69,13 @@ public class CmdBootStrap
 
         string arg = string.Empty;
 
+        if (!askUserIfRelease.HasValue)
+        {
+            askUser = true;
+        }
+
 #if !DEBUG
-            askUser = askUserIfRelease;
+            askUser = askUserIfRelease.Value;
 #elif DEBUG
         runInDebug();
 #endif

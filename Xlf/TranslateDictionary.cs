@@ -20,7 +20,17 @@ public class TranslateDictionary : IDictionary<string, string>
     }
 
     public static Func<string,  string> ReloadIfKeyWontBeFound;
-    public static Action<string> ShowMb;
+    public static Action<string> ShowMb
+    {
+        get
+        {
+            return PD.delShowMb;
+        }
+        set
+        {
+            PD.delShowMb = value;
+        }
+    }
 
     public static bool returnXlfKey = false;
 

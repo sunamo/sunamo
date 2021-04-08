@@ -808,6 +808,7 @@
     <Content Include="git.txt" />
     <Content Include="HTMLPage1.html" />
     <Content Include="plain.txt" />
+    <Content Include="_\Comparing\TextWriterList,TextBuilder,TextOutputGenerator,TextGenerator,InstantSB,HtmlSB.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Fonts\FontAwesome.otf" />

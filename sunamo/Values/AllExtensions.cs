@@ -725,4 +725,5 @@ public class AllExtensions
     public static string wmf = ".wmf";
     public static string emf = ".emf";
     public static string exif = ".exif";
+    public static string webp = ".webp";
 }

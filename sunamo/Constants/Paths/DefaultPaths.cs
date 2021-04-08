@@ -68,7 +68,7 @@ namespace sunamo.Constants
         public const string SyncArchivedDrive = @"d:\SyncArchived\Drive\";
 
         public static List<string> All = new List<string> { Documents, Docs, Downloads, Music2 };
-
+        public static string XnConvert = @"d:\Pictures\XnConvert\";
         public const string PhotosScz = @"d:\Pictures\photos.sunamo.cz\";
     }
 }

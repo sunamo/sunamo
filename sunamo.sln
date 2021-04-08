@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoDebug", "SunamoDebug\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apps.interop", "apps.interop\apps.interop.csproj", "{FBD30C90-E305-45EB-B25B-1792FA9CA75F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoCommandLineParser", "SunamoCommandLineParser\SunamoCommandLineParser.csproj", "{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -657,6 +659,18 @@ Global
 		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|x64.Build.0 = Release|Any CPU
 		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|x86.ActiveCfg = Release|Any CPU
 		{FBD30C90-E305-45EB-B25B-1792FA9CA75F}.Release|x86.Build.0 = Release|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Debug|x64.Build.0 = Debug|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Debug|x86.Build.0 = Debug|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Release|x64.ActiveCfg = Release|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Release|x64.Build.0 = Release|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Release|x86.ActiveCfg = Release|Any CPU
+		{6BCC0349-F09A-419D-9A64-40C5FCEDBC3E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

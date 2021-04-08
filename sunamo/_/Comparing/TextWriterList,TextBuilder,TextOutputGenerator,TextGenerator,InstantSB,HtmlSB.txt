@@ -1,0 +1,6 @@
+﻿TextWriterList - instance, derive from TextWriter, override WriteLine and add everything to list
+TextBuilder - instance, derive from object, implements Undo, save to Sb or List
+TextOutputGenerator - instance, has methods AppendLine, List, Paragraph, Dictionary, derive from TextBuilder
+TextGenerator - static
+InstantSB(can specify own delimiter, check whether dont exists)
+HtmlSB(Same as InstantSB, use br)
