@@ -31,8 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hqub.Lastfm, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hqub.Last.fm.2.1.0\lib\net45\Hqub.Lastfm.dll</HintPath>
+    <Reference Include="Hqub.Lastfm, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\sunamo.cz\packages\Hqub.Last.fm.1.0.2\lib\net45\Hqub.Lastfm.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.HttpUtility, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\sunamo.cz\packages\Mono.HttpUtility.1.0.0.1\lib\net40\Mono.HttpUtility.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,12 +55,27 @@
     <Compile Include="Enums\LyricsImageSize.cs" />
     <Compile Include="LastFm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="SunamoLastFmConsts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="_.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo.web\shared.web\shared.web.csproj">
+      <Project>{c30f4751-4d06-48ff-9020-da6297b8cb7d}</Project>
+      <Name>shared.web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
+      <Project>{bbb4128f-3fd5-42f3-90d1-b9b1a1e65d6e}</Project>
+      <Name>sunamo.web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo.web\Xlf.web\Xlf.web.csproj">
+      <Project>{de285bbe-8a5d-4a0b-98ee-501ca804275d}</Project>
+      <Name>Xlf.web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

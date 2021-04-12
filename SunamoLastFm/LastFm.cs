@@ -291,7 +291,7 @@ public class LastFm //: IMusicWebService<LastFmArtist, LastFmAlbum, LastFmArtist
                         xml = e.ToString() + space + artistName + space + xml ;
                     }
 
-                    WriterEventLog.WriteToMainAppLog(xml, EventLogEntryType.Error, Exc.CallingMethod());
+                    //WriterEventLog.WriteToMainAppLog(xml, EventLogEntryType.Error, Exc.CallingMethod());
                 }
 
                 return new List<string>();
