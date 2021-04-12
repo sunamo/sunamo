@@ -91,8 +91,6 @@
     <Compile Include="..\..\sunamo\win\GitHelper.cs" />
     <Compile Include="..\..\sunamo\win\Helpers\ClipboardHelperWin.cs" />
     <Compile Include="..\..\sunamo\win\Helpers\DWShared.cs" />
-    <Compile Include="..\..\sunamo\win\Helpers\Powershell\PowershellBuilder.cs" />
-    <Compile Include="..\..\sunamo\win\Helpers\Powershell\PowershellRunner.cs" />
     <Compile Include="..\..\sunamo\win\PHWin.cs" />
     <Compile Include="..\..\sunamo\win\PInvoke\ByDll\User32.cs" />
     <Compile Include="..\..\sunamo\win\PInvoke\SHFILEINFO.cs" />

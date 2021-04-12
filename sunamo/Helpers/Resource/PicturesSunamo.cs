@@ -9,11 +9,6 @@ using System.Threading.Tasks;
 
 public partial class PicturesSunamo
 {
-    public static bool GetExtensionByMagicNumberBytes(List<byte> b)
-    {
-        return false;
-    }
-
     public static List<string> GetPicturesFiles(string path)
     {
         var masc = SH.Join(AllStrings.semi, AllLists.BasicImageExtensions);

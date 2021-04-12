@@ -94,7 +94,16 @@ namespace AllProjectsSearch
 
         public string ExeToRelease(SolutionFolder sln, string projectDistinction)
         {
-            return FS.Combine(sln.fullPathFolder, sln.nameSolution+projectDistinction, @"bin\Release\" + sln.nameSolution + projectDistinction + ".exe");
+            var net = FS.Combine(sln.fullPathFolder, sln.nameSolution+projectDistinction, @"bin\Release\");
+            var net5 = FS.Combine(net, "net5.0\\");
+
+            if (FS.ExistsDirectory(net5))
+            {
+                net = net5;
+            }
+            var net4 = net + sln.nameSolution + projectDistinction + ".exe";
+
+            return net4;
         }
 
         /// <summary>

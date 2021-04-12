@@ -16,6 +16,7 @@ public class HtmlAttrValue
     public const string textarea = "textarea";
     public static string checkbox = "checkbox";
     public static string Switch = "switch";
+    internal static string textJavascript = "text/javascript";
     public const string cells = "cells";
     public const string colspan = "colspan";
 }

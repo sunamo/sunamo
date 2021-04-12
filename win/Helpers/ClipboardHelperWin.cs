@@ -15,6 +15,7 @@ using win;
 using sunamo.Clipboard;
 using System.Collections;
 using System.Windows;
+using sunamo.Essential;
 //using System.Windows;
 
 /// <summary>
@@ -35,9 +36,26 @@ public class ClipboardHelperWin : IClipboardHelper
 
     private ClipboardHelperWin()
     {
-        clipboardMonitor = ClipboardMonitor.Instance;
+        if (ThisApp.Name != null)
+        {
+            if (ThisApp.Name != "ConsoleApp1")
+            {
+                clipboardMonitor = ClipboardMonitor.Instance;
+            }
+        }
+        
     }
-     
+
+    public static IClipboardHelper CreateInstance()
+    {
+        if (Instance == null)
+        {
+            Instance = new ClipboardHelperWin();
+        }
+        
+        return Instance;
+    }
+
     #region Get,Set
     /// <summary>
     /// Use here only managed method! I could avoid reinstall Windows (RepairJpn). Use only managed also for working with formats.

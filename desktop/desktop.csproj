@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -234,9 +234,6 @@
     <Compile Include="Controls\Input\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Input\SunamoLoginDialog.xaml.cs">
-      <DependentUpon>SunamoLoginDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Input\SelectFile.xaml.cs">
       <DependentUpon>SelectFile.xaml</DependentUpon>
     </Compile>
@@ -261,6 +258,9 @@
     </Compile>
     <Compile Include="Controls\Input\SelectTwoValuesUC.xaml.cs">
       <DependentUpon>SelectTwoValuesUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\SunamoLoginDialog.xaml.cs">
+      <DependentUpon>SunamoLoginDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\SunamoPasswordBox.xaml.cs">
       <DependentUpon>SunamoPasswordBox.xaml</DependentUpon>
@@ -636,10 +636,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Input\SunamoLoginDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\Input\SelectFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -665,6 +661,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Input\SelectTwoValuesUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SunamoLoginDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

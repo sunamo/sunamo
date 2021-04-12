@@ -7,11 +7,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using GoPay;
-using GoPay.Common;
 using GoPay.Model.Payment;
 using GoPay.Model.Payments;
 using SunamoPayments;
-using static GoPay.Model.Payments.Target;
 
 public partial class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState>
 {

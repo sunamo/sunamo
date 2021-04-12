@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Interop;
 
+#if !NET5
 namespace sunamo.Clipboard
 {
     /// <summary>
@@ -107,7 +108,6 @@ namespace sunamo.Clipboard
             //{
             //    // Will be add all lines again if wont check for permanently block
             //    //ClipboardContentChanged();
-
             //}
 
             // Something copied to clipboard but still have Empty
@@ -120,8 +120,6 @@ namespace sunamo.Clipboard
 
 
         Action<string> actionWithString;
-        //Action<string> action;
-
         /// <summary>
         /// Must be method instead of event
         /// When I was attaching event more times in different UC, handler method would be calling times as registered in one UC
@@ -138,3 +136,4 @@ namespace sunamo.Clipboard
         //}
     }
 }
+#endif 

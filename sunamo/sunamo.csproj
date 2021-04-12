@@ -151,9 +151,8 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Data\DateTimeOrShort.cs" />
-    <Compile Include="Helpers\Number\NormalizeDate.cs" />
-    <Compile Include="ProgressState.cs" />
+    <Compile Include="Args\BoilerplateMiddleArgs.cs" />
+    <Compile Include="Args\BoilerplateStartArgs.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -321,6 +320,7 @@
     <Compile Include="Data\CreateHtmlDocumentInitData.cs" />
     <Compile Include="Data\CryptData.cs" />
     <Compile Include="Data\Date.cs" />
+    <Compile Include="Data\DateTimeOrShort.cs" />
     <Compile Include="Data\DirectoriesToDelete.cs" />
     <Compile Include="Data\Distance2.cs" />
     <Compile Include="Data\ExternalLoginResult.cs" />
@@ -606,6 +606,7 @@
     <Compile Include="Helpers\Number\MH.cs" />
     <Compile Include="Helpers\Number\NH.cs" />
     <Compile Include="Helpers\Number\NHShared.cs" />
+    <Compile Include="Helpers\Number\NormalizeDate.cs" />
     <Compile Include="Helpers\Number\NormalizeNumbers.cs" />
     <Compile Include="Helpers\Number\NormalizeNumbersShared.cs" />
     <Compile Include="Helpers\Number\PercentCalculator.cs" />
@@ -749,6 +750,7 @@
     <Compile Include="PlatformUwpInterop\AbstractCatalog.cs" />
     <Compile Include="PlatformUwpInterop\FSAbstract.cs" />
     <Compile Include="PlatformUwpInterop\TFAbstract.cs" />
+    <Compile Include="ProgressState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RH.cs" />
     <Compile Include="RL.cs" />
@@ -805,10 +807,10 @@
     <Compile Include="XmlNamespacesHolder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="_\Comparing\TextWriterList,TextBuilder,TextOutputGenerator,TextGenerator,InstantSB,HtmlSB.txt" />
     <Content Include="git.txt" />
     <Content Include="HTMLPage1.html" />
     <Content Include="plain.txt" />
-    <Content Include="_\Comparing\TextWriterList,TextBuilder,TextOutputGenerator,TextGenerator,InstantSB,HtmlSB.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Fonts\FontAwesome.otf" />

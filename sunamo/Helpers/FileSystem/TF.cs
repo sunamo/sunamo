@@ -48,6 +48,11 @@ public partial class TF
         return l;
     }
 
+    public static byte[] ReadAllBytesBytes(string item)
+    {
+        return File.ReadAllBytes(item);
+    }
+
     public static Encoding GetEncoding(string filename)
     {
         var file = new FileStream(filename, FileMode.Open, FileAccess.Read);

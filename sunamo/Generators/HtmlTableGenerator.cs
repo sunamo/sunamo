@@ -4,24 +4,30 @@ using System.Text;
 
 namespace sunamo.Generators
 {
-    public class HtmlTableGenerator : HtmlGenerator
+    public class HtmlTableGenerator : HtmlGeneratorExtended
     {
         static Type type = typeof(HtmlTableGenerator);
-        public HtmlGeneratorExtended extended = new HtmlGeneratorExtended();
+        //public HtmlGeneratorExtended g = new HtmlGeneratorExtended();
 
-        public void StartTable(object p)
+        public void StartTable()
         {
-            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+            WriteTag(HtmlTags.table);
         }
+
+        public void EndTable()
+        {
+            TerminateTag(HtmlTags.table);
+        }
+
 
         public void EndTr()
         {
-            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+            TerminateTag(HtmlTags.tr);
         }
 
         public void WriteRow(string additionalQuestionCssClass, List<string> possibleAnswersAll)
         {
-            WriteTagWithAttr(HtmlTags.tr, HtmlAttrs.c, additionalQuestionCssClass, true);
+            WriteTagWithAttr(HtmlTags.tr, HtmlAttrs.c, additionalQuestionCssClass, false);
             foreach (var item in possibleAnswersAll)
             {
                 WriteTd(item);
@@ -48,17 +54,17 @@ namespace sunamo.Generators
 
         public void EndTd()
         {
-            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+            TerminateTag(HtmlTags.td);
         }
 
         public void StartTr(string mainQuestionsCssClass)
         {
-            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+            WriteTag(HtmlTags.tr);
         }
 
         public void StartTd(object p)
         {
-            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+            WriteTag(HtmlTags.td);
         }
     }
 }

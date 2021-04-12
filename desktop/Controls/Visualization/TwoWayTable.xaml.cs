@@ -405,13 +405,12 @@ namespace desktop.Controls.Visualization
 
                 if (i % 2 == 1)
                 {
-                    
-                    Control fw = item as Control;
-                    DebugLogger.Instance.WriteLine(item.GetType().Name);
-                    if (fw != null)
-                    {
-                        //fw.Background = Brushes.LightGray;
-                    }
+                    //Control fw = item as Control;
+                    //DebugLogger.Instance.WriteLine(item.GetType().Name);
+                    //if (fw != null)
+                    //{
+                    //    //fw.Background = Brushes.LightGray;
+                    //}
 
                 }
 

@@ -23,13 +23,6 @@ public partial class FS{
         return TF.ReadAllText(f);
     }
 
-    public static object ChangeDirectory(string item, object xnConvert)
-    {
-        throw new NotImplementedException();
-    }
-
-
-
     /// <summary>
     /// Dont check for size
     /// Into A2 is good put true - when storage was fulled, all new files will be written with zero size. But then failing because HtmlNode as null - empty string as input

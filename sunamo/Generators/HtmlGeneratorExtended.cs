@@ -63,29 +63,58 @@ public class HtmlGeneratorExtended : HtmlGenerator
         }
     }
 
-    public void BoilerplateStart(string css, bool directInject)
+    public void BoilerplateStart( BoilerplateStartArgs a)
     {
         WriteRaw(ResourcesDuo.Html5BoilerplateStart);
-        if (directInject)
+        string css = a.css;
+        if (a.directInject)
         {
-            WriteTagWithAttr(HtmlTags.style, HtmlAttrs.type, HtmlAttrValue.textCss);
-            WriteRaw(TF.ReadFile(css));
-            TerminateTag(HtmlTags.style);
+            if (!string.IsNullOrEmpty(css))
+            {
+                WriteTagWithAttr(HtmlTags.style, HtmlAttrs.type, HtmlAttrValue.textCss);
+                if (FS.ExistsFile(css))
+                {
+                    WriteRaw(TF.ReadFile(css));
+                }
+                else
+                {
+                    WriteRaw(css);
+                }
+                TerminateTag(HtmlTags.style);
+            }
         }
         else
         {
             WriteTagWith2Attrs(HtmlTags.link, HtmlAttrs.rel, HtmlAttrValue.stylesheet, HtmlAttrs.href, css);
         }
+
+        if (!string.IsNullOrEmpty(a.js))
+        {
+            WriteTagWithAttr(HtmlTags.script, HtmlAttrs.type, HtmlAttrValue.textJavascript);
+            WriteRaw(a.js);
+            TerminateTag(HtmlTags.script);
+        }
     }
 
-    public void BoilerplateMiddle()
+    public void BoilerplateMiddle(BoilerplateMiddleArgs a = null)
     {
-        //WriteRaw(Resources.)
-        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+        string gt = "<body";
+
+        var html = Resources.ResourcesDuo.Html5BoilerplateMiddle;
+        if (a != null)
+        {
+            if (!string.IsNullOrEmpty(a.onload))
+            {
+                html = html.Replace(gt, gt + " onload=\"" + a.onload + "\"");
+            }
+        }
+        WriteRaw(html);
+        //ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
     }
 
     public void BoilerplateEnd()
     {
-        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+        WriteRaw(Resources.ResourcesDuo.Html5BoilerplateEnd);
+        //ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
     }
 }
