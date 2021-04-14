@@ -21,6 +21,14 @@ public class ProgressState
     public event Action<int> OverallSongs;
     public event Action WriteProgressBarEnd;
 
+    public int n = 0;
+
+    public void OnAnotherSong()
+    {
+        n++;
+        OnAnotherSong(n);
+    }
+
     public void OnAnotherSong(int n)
     {
        AnotherSong(n);
@@ -28,6 +36,7 @@ public class ProgressState
 
     public void OnOverallSongs(int n)
     {
+        n = 0;
         OverallSongs(n);
     }
 

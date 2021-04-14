@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 
     public class CLProgressBar : ProgressState
-    {
+{
     
 
     public void Init()
     {
-        base.Init(LyricsHelper_OverallSongs, LyricsHelper_AnotherSong, delegate { CL.WriteProgressBarEnd(); });
+        Init(LyricsHelper_OverallSongs, LyricsHelper_AnotherSong, LyricsHelper_WriteProgressBarEnd);
     }
-    private void LyricsHelper_WriteProgressBarEnd()
+    public void LyricsHelper_WriteProgressBarEnd()
     {
         CL.WriteProgressBarEnd();
     }
@@ -23,9 +23,15 @@ using System.Threading.Tasks;
 
     public void LyricsHelper_OverallSongs(int obj)
     {
-
+        n = 0;
         pc = new PercentCalculator(obj);
         CL.WriteProgressBar(0);
+    }
+
+    public void LyricsHelper_AnotherSong()
+    {
+        n++;
+        LyricsHelper_AnotherSong(n);
     }
 
     public void LyricsHelper_AnotherSong(int i)
