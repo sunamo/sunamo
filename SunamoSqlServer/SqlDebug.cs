@@ -15,7 +15,10 @@ public class SqlDebug
         Dictionary<string, int> l = new Dictionary<string, int>();
         foreach (var item in dt)
         {
-            l.Add(item, (int)MSStoredProceduresI.ci.SelectCount(item));
+            if (MSStoredProceduresI.ci.SelectExistsTable(item))
+            {
+                l.Add(item, (int)MSStoredProceduresI.ci.SelectCount(item));
+            }
         }
 
         TextOutputGenerator tog = new TextOutputGenerator();
