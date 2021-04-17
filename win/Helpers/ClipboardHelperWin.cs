@@ -72,6 +72,48 @@ public class ClipboardHelperWin : IClipboardHelper
         SetText2(v);
     }
 
+    public static string GetTextW32()
+    {
+        if (!W32.IsClipboardFormatAvailable(CF_UNICODETEXT))
+            return null;
+
+        try
+        {
+            if (!W32.OpenClipboard(IntPtr.Zero))
+                return null;
+
+            IntPtr handle = W32.GetClipboardData(CF_UNICODETEXT);
+            if (handle == IntPtr.Zero)
+                return null;
+
+            IntPtr pointer = IntPtr.Zero;
+
+            try
+            {
+                pointer = W32.GlobalLock(handle);
+                if (pointer == IntPtr.Zero)
+                    return null;
+
+                UIntPtr size2 = W32.GlobalSize(handle);
+                int size = (int)size2;
+                byte[] buff = new byte[size];
+
+                Marshal.Copy(pointer, buff, 0, size);
+
+                return Encoding.Unicode.GetString(buff).TrimEnd('\0');
+            }
+            finally
+            {
+                if (pointer != IntPtr.Zero)
+                    W32.GlobalUnlock(handle);
+            }
+        }
+        finally
+        {
+            W32.CloseClipboard();
+        }
+    }
+
     /// <summary>
     /// Use here only managed method! I could avoid reinstall Windows (RepairJpn). Use only managed also for working with formats.
     /// </summary>
@@ -84,10 +126,11 @@ public class ClipboardHelperWin : IClipboardHelper
         #endregion
 
         string result = "";
-        //result = GetTextW32();
+        //
         try
         {
-            result = Clipboard.GetText();
+            result = GetTextW32();
+            //result = Clipboard.GetText();
         }
         catch (Exception ex)
         {
@@ -103,12 +146,26 @@ public class ClipboardHelperWin : IClipboardHelper
             {
                 try
                 {
-                    Clipboard.SetText(v);
+                    //Clipboard.SetText(v);
+
+                    #region Funguje dobře ale třeba VS má svou schránku. Když jsem vložil zkopírovaný text do VSCode, byl tam
+                    // Další možnosti:
+                    // https://github.com/CopyText/TextCopy
+                    // E:\Documents\Visual Studio 2017\Projects\ConsoleNetFw\ConsoleNetFw\Clippy.cs
+                    W32.OpenClipboard(IntPtr.Zero);
+                    var ptr = Marshal.StringToHGlobalUni(v);
+                    W32.SetClipboardData(13, ptr);
+                    W32.CloseClipboard();
+                    Marshal.FreeHGlobal(ptr); 
+                    #endregion
+
                     return;
                 }
                 catch { }
                 System.Threading.Thread.Sleep(10);
             }
+
+
         }
     }
 

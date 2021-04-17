@@ -48,7 +48,7 @@ public partial class TF
         return l;
     }
 
-    public static byte[] ReadAllBytesBytes(string item)
+    public static byte[] ReadAllBytesArray(string item)
     {
         return File.ReadAllBytes(item);
     }

@@ -187,6 +187,11 @@ public partial class XlfResourcesH
     #endregion
     #endregion
 
+    public static string SaveResouresToRL(string VpsHelperSunamo_SunamoProject)
+    {
+        return XlfResourcesH.SaveResouresToRL<string, string>(null, VpsHelperSunamo_SunamoProject, FS.ExistsDirectoryNull);
+    }
+
     public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, ExistsDirectory existsDirectory)
     {
         return SaveResouresToRL<StorageFolder, StorageFile>(key, basePath, existsDirectory, null);

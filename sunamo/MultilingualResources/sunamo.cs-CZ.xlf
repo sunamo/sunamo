@@ -2027,6 +2027,9 @@
           
           <target state="translated">Nebyly zadány žádné přihlašovací údaje nebo e-maily. Zadejte jednu z nich na &lt;a href="Login.aspx"&gt;Login.aspx&lt;/a&gt; a klikněte na Generate New Password</target>
         </trans-unit>
+        <trans-unit id="GenerateNewPassword">
+          <target>Generovat nové heslo</target>
+        </trans-unit>
         <trans-unit id="HereYouCanRestoreYourAccountAccessIfYouForgetYourPassword" translate="no" xml:space="preserve">
           
           <target state="translated">Zde můžete obnovit přístup k účtu, pokud zapomenete heslo</target>
