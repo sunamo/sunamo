@@ -170,4 +170,3 @@ public class InlineBuilder : InlineBuilderBase, IInlineBuilder
         DivideStringToRows(fa, text, maxSize);
     }
 }
-

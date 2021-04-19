@@ -228,4 +228,3 @@ public partial class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Sess
     
     #endregion
 }
-

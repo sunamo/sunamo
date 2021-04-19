@@ -13898,6 +13898,14 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Filter</target>
         </trans-unit>
+        <trans-unit id="BadCombinationLoginAndPasswordDoYouWantTo" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Bad combination login and password. Do you want to</target>
+        </trans-unit>
+        <trans-unit id="register" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">register</target>
+        </trans-unit>
       </group>
     </body>
   </file>

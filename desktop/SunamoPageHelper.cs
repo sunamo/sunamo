@@ -29,7 +29,7 @@ public static partial class SunamoPageHelper
         {
             if (l == Langs.en)
             {
-                return RLData.en[key];
+                return sess.i18n(key);
             }
             else if (l == Langs.cs)
             {
@@ -37,7 +37,7 @@ public static partial class SunamoPageHelper
                 {
                     return RLData.cs[key];
                 }
-                return RLData.en[key];
+                return sess.i18n(key);
             }
             else
             {
@@ -47,7 +47,7 @@ public static partial class SunamoPageHelper
         }
         else
         {
-            return RLData.en[key];
+            return sess.i18n(key);
         }
     }
 }

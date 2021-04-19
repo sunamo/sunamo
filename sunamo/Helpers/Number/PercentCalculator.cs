@@ -15,8 +15,11 @@ namespace sunamo.Helpers.Number
         public double _overallSum;
         private double _hundredPercent = 100d;
 
+        int added = 0;
+
         public void AddOnePercent()
         {
+            added++;
             last += onePercent;
         }
 
@@ -28,8 +31,15 @@ namespace sunamo.Helpers.Number
             last += 1;
         }
 
+        public static Type type = typeof(PercentCalculator);
+
         public PercentCalculator(double overallSum)
         {
+            if (overallSum ==0)
+            {
+                ThrowExceptions.DivideByZero(Exc.GetStackTrace(), type, Exc.CallingMethod());
+            }
+
             onePercent = _hundredPercent / overallSum;
             _overallSum = overallSum;
         }

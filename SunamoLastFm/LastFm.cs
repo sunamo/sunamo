@@ -61,11 +61,11 @@ public class LastFm //: IMusicWebService<LastFmArtist, LastFmAlbum, LastFmArtist
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains(RLData.en[XlfKeys.TrackNotFound]))
+                if (ex.Message.Contains(sess.i18n(XlfKeys.TrackNotFound)))
                 {
 
                 }
-                else if (ex.Message.Contains(RLData.en[XlfKeys.ArtistNotFound]))
+                else if (ex.Message.Contains(sess.i18n(XlfKeys.ArtistNotFound)))
                 {
 
                 }

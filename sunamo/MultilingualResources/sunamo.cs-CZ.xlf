@@ -1773,7 +1773,7 @@
         </trans-unit>
         <trans-unit id="LoginOrEmail" translate="no" xml:space="preserve">
           
-          <target state="translated">Přihlášení (nebo e-mail</target>
+          <target state="translated">Login (nebo e-mail</target>
         </trans-unit>
         <trans-unit id="inFormatMDYMinAge18" translate="no" xml:space="preserve">
           
@@ -4960,6 +4960,17 @@
         <trans-unit id="Filter" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Filtr</target>
+        </trans-unit>
+        <trans-unit id="BadCombinationLoginAndPasswordDoYouWantTo" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Špatná kombinace přihlašovacího jména a hesla. chceš</target>
+        </trans-unit>
+        <trans-unit id="register" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">se registrovat</target>
+        </trans-unit>
+        <trans-unit id="LoginWillBePernamentUntilYouSignedOut">
+          <target>Přihlášení bude stálé, dokud se neodhlásíte</target>
         </trans-unit>
       </group>
     </body>

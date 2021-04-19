@@ -19,6 +19,12 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
+
+    internal static void DivideByZero(string stacktrace, object type, string methodName)
+    {
+        ThrowIsNotNull(stacktrace, Exceptions.DivideByZero(FullNameOfExecutedCode(type, methodName, true)));
+    }
+
     public static void UseRlc(string stacktrace, object type, string methodName)
     {
         ThrowIsNotNull(stacktrace, Exceptions.UseRlc(FullNameOfExecutedCode(type, methodName, true)));

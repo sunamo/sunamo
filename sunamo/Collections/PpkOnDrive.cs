@@ -24,6 +24,12 @@ public class PpkOnDrive : PpkOnDriveBase<string>
         }
     }
 
+    public void Load(string file)
+    {
+        a.file = file;
+        Load();
+    }
+
     public override void Load()
     {
         if (FS.ExistsFile(a.file))

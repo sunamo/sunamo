@@ -37,7 +37,7 @@ public class CmdBootStrap
     /// <param name="runInDebug"></param>
     /// <param name="AddGroupOfActions"></param>
     /// <param name="allActions"></param>
-    public static string Run(string appName, Func<IClipboardHelper> createInstanceClipboardHelper, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, bool? askUserIfRelease, Action InitSqlMeasureTime)
+    public static string Run(string appName, Func<IClipboardHelper> createInstanceClipboardHelper, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, bool? askUserIfRelease, Action InitSqlMeasureTime, Action customInit)
     {
     //}
 
@@ -59,6 +59,7 @@ public class CmdBootStrap
         InitApp.Logger = ConsoleLogger.Instance;
         InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
         InitApp.TypedLogger = TypedConsoleLogger.Instance;
+
         //var typeResources = typeof(Resources.ResourcesDuo);
         //ResourcesHelper rm = ResourcesHelper.Create(typeResources.FullName, typeResources.Assembly);
 
@@ -72,6 +73,11 @@ public class CmdBootStrap
         if (!askUserIfRelease.HasValue)
         {
             askUser = true;
+        }
+
+        if (customInit != null)
+        {
+            customInit();
         }
 
 #if !DEBUG

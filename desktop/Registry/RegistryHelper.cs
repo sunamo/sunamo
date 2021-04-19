@@ -244,4 +244,3 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
          SH.GetPartsByLocation(out hkey, out key, p, AllChars.bs);
     }
 }
-

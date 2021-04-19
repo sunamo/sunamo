@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class ProgressState
 {
-    public  bool isRegistered = false;
+    public bool isRegistered { get; set; } = false;
 
     public void Init(Action<int> OverallSongs, Action<int> AnotherSong,  Action WriteProgressBarEnd)
     {
@@ -34,10 +34,10 @@ public class ProgressState
        AnotherSong(n);
     }
 
-    public void OnOverallSongs(int n)
+    public void OnOverallSongs(int n2)
     {
         n = 0;
-        OverallSongs(n);
+        OverallSongs(n2);
     }
 
     public void OnWriteProgressBarEnd()

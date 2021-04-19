@@ -25,11 +25,6 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
         var uf = UnindexableFiles.uf;
         bool end2 = false;
 
-        if (pathFile.Contains(@"\_\"))
-        {
-
-        }
-
         if (!CsFileFilter.AllowOnly(pathFile, endArgs, containsArgs, ref end2, alsoEnds))
         {
             if (end2)

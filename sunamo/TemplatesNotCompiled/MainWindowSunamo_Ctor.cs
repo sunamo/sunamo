@@ -24,4 +24,3 @@ public  class MainWindowSunamo_Ctor
         XlfResourcesHSunamo.SaveResouresToRLSunamo();
     }
 }
-

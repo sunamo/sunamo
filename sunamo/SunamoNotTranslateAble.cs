@@ -8,6 +8,7 @@ public class SunamoNotTranslateAble
 {
     public const string From = " - From";
     public const string SessI18n = "SunamoPageHelperSunamo.i18n(";
+    public const string SessI18nShort = "sess.i18n(";
     public const string RLDataEn = "RLData.en[";
     public const string RLDataCs = "RLData.cs[";
     public const string RLDataEn2 = "RLDataEn[";

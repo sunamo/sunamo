@@ -35,6 +35,12 @@ using System.Threading.Tasks;
 
         return CheckBefore(before) + paramName + " " + message;
     }
+
+    internal static string DivideByZero(string before)
+    {
+        return CheckBefore(before) + " is dividing by zero.";
+    }
+
     public static string IsNull(string before, string variableName, object variable)
     {
         if (variable == null)

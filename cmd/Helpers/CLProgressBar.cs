@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public class CLProgressBar : ProgressState
+public class CLProgressBar : ProgressState, IProgressBar
 {
-    
+
 
     public void Init()
     {
@@ -20,6 +20,7 @@ using System.Threading.Tasks;
     }
 
     PercentCalculator pc = null;
+
 
     public void LyricsHelper_OverallSongs(int obj)
     {
@@ -41,4 +42,3 @@ using System.Threading.Tasks;
     }
 
 }
-
