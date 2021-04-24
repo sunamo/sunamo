@@ -67,7 +67,7 @@ public class SqlMeasureTimeHelper
         fn = fn2;
 
         MSStoredProceduresI.measureTime = true;
-        MSStoredProceduresI.waitMs = StopwatchStaticSql.maxMs + 100;
+        MSStoredProceduresI.waitMs = 0; //StopwatchStaticSql.maxMs + 100;
         MSStoredProceduresI.forceIsVps = true;
 
         NewSw();

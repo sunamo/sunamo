@@ -114,15 +114,9 @@ public partial class XlfResourcesH
 
         var exists = false;
 
-        if (VpsHelperIsVpsWinSec.IsVps)
-        {
-            exists = true;
-        }
-        else
-        {
-            exists = WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName);
-        }
-        
+        exists = MyPc.Instance.IsMyComputerOrVps();
+
+
         if (appData == null)
         {
             // Is web app

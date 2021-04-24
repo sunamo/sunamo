@@ -58,8 +58,8 @@ public class StopwatchHelper
     {
         var l = sw.ElapsedMilliseconds;
         sw.Reset();
-        string message = string.Format(operation + takes + sw.ElapsedMilliseconds + "ms" + p, parametry);
-        ThisApp.SetStatus(TypeOfMessage.Information, message);;
+        string message = string.Format(operation + takes + l + "ms" + p, parametry);
+        ThisApp.SetStatus(TypeOfMessage.Information, message);
 #if DEBUG
         DebugLogger.Instance.WriteLine(message);
 #endif 
