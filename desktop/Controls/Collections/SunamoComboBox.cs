@@ -48,14 +48,15 @@ namespace desktop.Controls.Collections
             string nameChild = "PART_EditableTextBox";
             //var d = GetTemplateChild(nameChild);
             var d = Template.FindName(nameChild, this);
-            
+            if (d != null)
+            {
                 string type = d.GetType().FullName;
                 var myTextBox = d as TextBox;
                 if (myTextBox != null)
                 {
                     this.editableTextBox = myTextBox;
                 }
-         
+            }
         }
 
         private void SunamoComboBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)

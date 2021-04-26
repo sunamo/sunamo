@@ -25,7 +25,6 @@ public static partial class HtmlHelper
         MatchCollection mc = Regex.Matches(vstup, RegexHelper.rNonPairXmlTagsUnvalid.ToString());
         List<string> col = new List<string>(AllLists.HtmlNonPairTags);
 
-
         foreach (Match item in mc)
         {
             string d = item.Value.Replace(" >", AllStrings.gt);
@@ -38,6 +37,7 @@ public static partial class HtmlHelper
             {
                 tag = d.Replace(AllStrings.slash, "").Replace(AllStrings.gt, "");
             }
+
             tag = tag.TrimStart(AllChars.lt).Trim().ToLower();
             if (col.Contains(tag))
             {

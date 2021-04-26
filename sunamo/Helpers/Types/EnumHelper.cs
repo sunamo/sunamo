@@ -70,6 +70,7 @@ public static partial class EnumHelper
         return Enum.GetValues(enumType).Cast<T>().Select(t => new
         {
             Key = t,
+            // Must be lower due to EveryLine and e2sNamespaceCodeElements
             Value = t.ToString().ToLower()
         }
 

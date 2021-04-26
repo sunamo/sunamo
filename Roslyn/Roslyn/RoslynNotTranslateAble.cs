@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 public class RoslynNotTranslateAble
 {
     public const string CsCs = "Cs cs";

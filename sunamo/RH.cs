@@ -506,6 +506,22 @@ public class RH
         var types = assembly.GetTypes();
         return types.Where(t => String.Equals(t.Namespace, nameSpace, StringComparison.Ordinal));
     }
+
+    /// <summary>
+    /// Pokud mám chybu Could not load file or assembly System.Reflection.Metadata, Version=1.4.5.0
+    /// program volám z AllProjectsSearchConsole tuto sunamo assembly,
+    /// musím přidat System.Reflection.Metadata do obou. Ověřeno.
+    /// 
+    /// Better than load assembly directly from running is use Assembly.LoadFrom
+    /// </summary>
+    /// <param name="assembly"></param>
+    /// <param name="contains"></param>
+    /// <returns></returns>
+    public static IEnumerable<Type> GetTypesInAssembly(Assembly assembly, string contains)
+    {
+        var types = assembly.GetTypes();
+        return types.Where(t => t.Name.Contains(contains));
+    }
     #endregion
 
     #region Get types of class
@@ -573,8 +589,6 @@ public class RH
 
         return name + Environment.NewLine + dump;
     }
-
-
 
     public static string DumpListAsString(string name, IEnumerable o)
     {

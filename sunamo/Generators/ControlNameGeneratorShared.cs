@@ -13,10 +13,6 @@ public static partial class ControlNameGenerator{
 
         s_actual.Add(t, 0);
         var r= t.Name + "0";
-        if (r == "CheckBox3")
-        {
-            return r;
-        }
         return r;
     }
 }

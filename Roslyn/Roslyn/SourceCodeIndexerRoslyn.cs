@@ -109,6 +109,7 @@ public partial class SourceCodeIndexerRoslyn
     /// Type of NamespaceCodeElementsType
     /// </summary>
     static Type namespaceCodeElementsType2 = typeof(NamespaceCodeElementsType);
+    static Type classCodeElementsType2 = typeof(ClassCodeElementsType);
     /// <summary>
     /// In key are full file path, in value parsed code elements
     /// </summary>
@@ -126,7 +127,8 @@ public partial class SourceCodeIndexerRoslyn
     /// Map NamespaceCodeElementsType to keywords used in C#
     /// </summary>
     public static Dictionary<NamespaceCodeElementsType, string> e2sNamespaceCodeElements = EnumHelper.EnumToString<NamespaceCodeElementsType>(namespaceCodeElementsType2);
-    
+    public static Dictionary<ClassCodeElementsType, string> e2sClassCodeElements = EnumHelper.EnumToString<ClassCodeElementsType>(classCodeElementsType2);
+
     public FileSystemWatchers watchers = null;
 
     public bool IsIndexed(string pathFile)

@@ -19,6 +19,10 @@ using System.Text.RegularExpressions;
 
 namespace Roslyn
 {
+    /// <summary>
+    /// RoslynParser - use roslyn classes
+    /// RoslynParserText - no use roslyn classes, only text or indexer
+    /// </summary>
     public class RoslynParser
     {
         // TODO: take also usings
@@ -56,61 +60,9 @@ namespace Roslyn
             return (MethodDeclarationSyntax)childNodes.First();
         }
 
-        public void FindPageMethod(string sczRootPath)
-        {
-            StringBuilder sb = new StringBuilder();
+        
 
-            List<string> project = new List<string>();
-
-            var folders = FS.GetFolders(sczRootPath, SearchOption.TopDirectoryOnly);
-            foreach (var item in folders)
-            {
-                string nameProject = FS.GetFileName(item);
-                if (nameProject.EndsWith("X"))
-                {
-                    string project2 = nameProject.Substring(0, nameProject.Length - 1);
-                    // General files is in Nope. GeneralX is only for pages in General folder
-                    if (project2 != XlfKeys.General)
-                    {
-                        project.Add(project2);
-                    }
-
-                    var files = FS.GetFiles(item, FS.MascFromExtension(AllExtensions.cs), SearchOption.TopDirectoryOnly);
-                    AddPageMethods(sb, files);
-                }
-            }
-
-            foreach (var item in project)
-            {
-                string path = FS.Combine(sczRootPath, item);
-                var pages = FS.GetFiles(path, "*Page*.cs", SearchOption.TopDirectoryOnly);
-                AddPageMethods(sb, pages);
-            }
-
-            ClipboardHelper.SetText(sb);
-        }
-
-        private static void AddPageMethods(StringBuilder sb, List<string> files)
-        {
-            SourceCodeIndexerRoslyn Instance = SourceCodeIndexerRoslyn.Instance;
-
-            foreach (var file in files)
-            {
-                Instance.ProcessFile(file, NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method, false, false);
-            }
-
-            foreach (var file2 in Instance.classCodeElements)
-            {
-                sb.AppendLine(file2.Key);
-                foreach (var method in file2.Value)
-                {
-                    if (method.Name.StartsWith("On") || method.Name.StartsWith(sess.i18n(XlfKeys.Page) + "_"))
-                    {
-                        sb.AppendLine(method.Name);
-                    }
-                }
-            }
-        }
+        
 
         /// <summary>
         /// Úplně nevím k čemu toto mělo sloužit. 
@@ -192,7 +144,7 @@ namespace Roslyn
         public static ABC GetVariablesInCsharp(SyntaxNode root, List<string> lines, out CollectionWithoutDuplicates<string> usings)
         {
             ABC result = new ABC();
-            usings = Usings(lines);
+            usings = RoslynParserText.Usings(lines);
 
             ClassDeclarationSyntax helloWorldDeclaration = null;
             helloWorldDeclaration = RoslynHelper.GetClass(root);
@@ -217,37 +169,7 @@ namespace Roslyn
             return result;
         }
 
-        public static CollectionWithoutDuplicates<string> Usings(List<string> lines, bool remove = false)
-        {
-            CollectionWithoutDuplicates<string> usings = new CollectionWithoutDuplicates<string>();
-            List<int> removeLines = new List<int>();
-
-            int i = -1;
-            foreach (var item in lines)
-            {
-                i++;
-                var line = item.Trim();
-                if (line != string.Empty)
-                {
-                    if (line.StartsWith("using "))
-                    {
-                        removeLines.Add(i);
-                        usings.Add(line);
-                    }
-                    else if (line.Contains(AllStrings.lcub))
-                    {
-                        break;
-                    }
-                }
-            }
-
-            if (remove)
-            {
-                CA.RemoveLines(lines, removeLines);
-            }
-
-            return usings;
-        }
+        
 
         public static string GetAccessModifiers(SyntaxTokenList modifiers )
         {
@@ -269,6 +191,75 @@ namespace Roslyn
             return string.Empty;
         }
 
-        
+        /// <summary>
+        /// return declaredVariables, assignedVariables
+        /// A1 can be string or CompilationUnitSyntax
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static Tuple<List<string>, List<string>> ParseVariables(object code)
+        {
+            SyntaxNode root = null;
+            string code2 = null;
+
+            //MethodDeclarationSyntax;
+
+            root =  SyntaxNodeFromObjectOrString(code);
+
+            var variableDeclarations = root.DescendantNodes().OfType<VariableDeclarationSyntax>();
+            var variableAssignments = root.DescendantNodes().OfType<AssignmentExpressionSyntax>();
+
+            List<string> declaredVariables = new List<string>(variableDeclarations.Count());
+            List<string> assignedVariables = new List<string>(variableAssignments.Count());
+
+            foreach (var variableDeclaration in variableDeclarations)
+                declaredVariables.Add(variableDeclaration.Variables.First().Identifier.Value.ToString());
+
+            foreach (var variableAssignment in variableAssignments)
+                assignedVariables.Add(variableAssignment.Left.ToString());
+
+            return new Tuple<List<string>, List<string>>(declaredVariables, assignedVariables);
+        }
+
+        public static SyntaxNode SyntaxNodeFromObjectOrString(object code)
+        {
+            SyntaxNode root = null;
+
+            if (code is SyntaxNode)
+            {
+                root = (SyntaxNode)code;
+            }
+            else if (code is string)
+            {
+                SyntaxTree tree = CSharpSyntaxTree.ParseText(code.ToString());
+                root = (SyntaxNode)tree.GetRoot();
+            }
+            else
+            {
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), "else");
+            }
+
+            return root;
+        }
+
+        public static Dictionary<string, List<string>> GetVariablesInEveryMethod(string s)
+        {
+            Dictionary<string, List<string>> m = new Dictionary<string, List<string>>();
+
+            var tree = CSharpSyntaxTree.ParseText(s);
+            var root = tree.GetRoot();
+
+            IEnumerable<MethodDeclarationSyntax> methods = root
+              .DescendantNodes()
+              .OfType<MethodDeclarationSyntax>().ToList();
+
+            foreach (var method in methods)
+            {
+                var v = RoslynParser.ParseVariables(method);
+                m.Add(method.Identifier.Text, v.Item2);
+            }
+
+            return m;
+        }
     }
 }

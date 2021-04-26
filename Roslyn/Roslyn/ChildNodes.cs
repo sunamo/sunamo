@@ -9,9 +9,45 @@ namespace Roslyn
 {
     public class ChildNodes
     {
+        /// <summary>
+        /// If will not working, try MethodsDescendant()
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public static IEnumerable<MethodDeclarationSyntax> Methods(SyntaxNode n)
         {
             return n.ChildNodes().OfType<MethodDeclarationSyntax>();
+        }
+
+        /// <summary>
+        /// If will not working, try Methods()
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static IEnumerable<MethodDeclarationSyntax> MethodsDescendant(SyntaxNode n)
+        {
+            return n.DescendantNodes().OfType<MethodDeclarationSyntax>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static IEnumerable<FieldDeclarationSyntax> FieldsDescendant(SyntaxNode n)
+        {
+            return n.DescendantNodes().OfType<FieldDeclarationSyntax>();
+        }
+
+        /// <summary>
+        /// VariablesDescendant - only int a1.
+        /// FieldsDescendant - whole public int a1. when I want to add xml comment like to have be
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static IEnumerable<VariableDeclarationSyntax> VariablesDescendant(SyntaxNode n)
+        {
+            return n.DescendantNodes().OfType<VariableDeclarationSyntax>();
         }
 
         public static MethodDeclarationSyntax Method(ClassDeclarationSyntax cl, string item)

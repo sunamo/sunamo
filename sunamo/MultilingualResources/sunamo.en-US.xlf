@@ -13906,6 +13906,14 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">register</target>
         </trans-unit>
+        <trans-unit id="GenerateListOfNamespaceElements" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate list of namespace elements</target>
+        </trans-unit>
+        <trans-unit id="GenerateListOfClassElements" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate list of class elements</target>
+        </trans-unit>
       </group>
     </body>
   </file>

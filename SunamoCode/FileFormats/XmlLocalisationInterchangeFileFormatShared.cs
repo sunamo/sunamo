@@ -61,6 +61,11 @@ sess.i18n(XlfKeys.IsNotInRange)");
         //    return RemoveSessI18nIfLineContainsWorker(c, removeSessI18nIfLineContains.ToArray());
         //}
 
+        public static string RemoveSessI18nIfLineContains(string c)
+        {
+            return RemoveSessI18nIfLineContains(c, removeSessI18nIfLineContains);
+        }
+
         /// <summary>
         /// Was earlier in sunamo, now in SunamoCode
         /// </summary>

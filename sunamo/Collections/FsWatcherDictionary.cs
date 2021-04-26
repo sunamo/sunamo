@@ -65,7 +65,7 @@ public class FsWatcherDictionary<T, U> : IDictionary<T, U>
 
     public void CopyTo(KeyValuePair<T, U>[] array, int arrayIndex)
     {
-        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
+        DictionaryHelper.CopyTo<T, U>(d, array, arrayIndex);
     }
 
     public IEnumerator<KeyValuePair<T, U>> GetEnumerator()

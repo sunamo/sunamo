@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 /// <summary>
@@ -6,8 +6,10 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string register = "register"; 
+	public const string GenerateListOfClassElements = "GenerateListOfClassElements"; 
 
+	public const string GenerateListOfNamespaceElements = "GenerateListOfNamespaceElements"; 
+	public const string register = "register"; 
 	public const string BadCombinationLoginAndPasswordDoYouWantTo = "BadCombinationLoginAndPasswordDoYouWantTo"; 
 	public const string Filter = "Filter"; 
 	public const string WasInformedAdministrator = "WasInformedAdministrator"; 

@@ -4972,6 +4972,14 @@
         <trans-unit id="LoginWillBePernamentUntilYouSignedOut">
           <target>Přihlášení bude stálé, dokud se neodhlásíte</target>
         </trans-unit>
+        <trans-unit id="GenerateListOfNamespaceElements" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generovat seznam prvků oboru názvů</target>
+        </trans-unit>
+        <trans-unit id="GenerateListOfClassElements" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generovat seznam prvků třídy</target>
+        </trans-unit>
       </group>
     </body>
   </file>

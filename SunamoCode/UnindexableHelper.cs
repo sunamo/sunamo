@@ -11,6 +11,10 @@ public class UnindexableHelper
     public static PpkOnDrive unindexablePathEnds => unindexable.unindexablePathEnds;
     public static PpkOnDrive unindexablePathStarts => unindexable.unindexablePathStarts;
 
+    /// <summary>
+    /// Into A1 insert SearchCodeElementsUC .ufp
+    /// </summary>
+    /// <param name="f"></param>
     public static void Load(UnindexableFilesPaths f)
     {
         unindexable = new Unindexable();

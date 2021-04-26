@@ -4,28 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:desktop.Controls.Result"
+             xmlns:desktopControlsText="clr-namespace:desktop.Controls.Text"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical">
+        <desktopControlsText:SearchInUC x:FieldModifier="public" x:Name="txtFilter"></desktopControlsText:SearchInUC>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="tbFilter" VerticalAlignment="Center"></TextBlock>
-                <TextBox x:Name="txtFilter"></TextBox>
-            </StackPanel>
-            
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="sv">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="sv">
             <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
             </StackPanel>
         </ScrollViewer>
 
-        </StackPanel>
-
-        <TextBlock FontSize="20" x:Name="tbNoResultsFound" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="1" FontSize="20" x:Name="tbNoResultsFound" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         
     </Grid>
 </UserControl>

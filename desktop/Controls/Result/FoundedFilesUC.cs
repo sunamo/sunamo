@@ -49,5 +49,34 @@ namespace desktop.Controls.Result
             selectedItem = s;
             OnSelected(s);
         }
+
+        public void Filter(string text)
+        {
+            if (sp.Children.Count != 0)
+            {
+                bool cancel = string.IsNullOrWhiteSpace(text);
+                if (cancel)
+                {
+                    foreach (FoundedFileUC item in sp.Children)
+                    {
+                        item.Visibility = System.Windows.Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    foreach (FoundedFileUC item in sp.Children)
+                    {
+                        if (item.Contains(text))
+                        {
+                            item.Visibility = System.Windows.Visibility.Visible;
+                        }
+                        else
+                        {
+                            item.Visibility = System.Windows.Visibility.Collapsed;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

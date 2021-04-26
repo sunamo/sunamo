@@ -9,9 +9,6 @@ using System.Threading.Tasks;
     {
     public override string ToString()
     {
-        //if (base.Type == ClassCodeElementsType.Method)
-        //{
-        return base.ToString();
-        //}
+        return SourceCodeIndexerRoslyn.e2sClassCodeElements[Type] + AllStrings.space + Name;
     }
 }

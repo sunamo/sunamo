@@ -93,6 +93,7 @@
     <Compile Include="RLData.cs" />
     <Compile Include="sunamo\CAXlf.cs" />
     <Compile Include="sunamo\FSXlf.cs" />
+    <Compile Include="sunamo\List\DictionaryHelper.cs" />
     <Compile Include="sunamo\PlatformInteropHelperXlf.cs" />
     <Compile Include="sunamo\ResourcesHelperXlf.cs" />
     <Compile Include="sunamo\RHXlf.cs" />

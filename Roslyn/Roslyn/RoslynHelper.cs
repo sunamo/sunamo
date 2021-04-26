@@ -20,12 +20,186 @@ using Microsoft.CodeAnalysis.Options;
 using Microsoft.CodeAnalysis.Formatting;
 
 using Microsoft.CodeAnalysis.CSharp;
+using System.Reflection;
 
 namespace Roslyn
 {
     public class RoslynHelper
     {
         static Type type = typeof(RoslynHelper);
+
+        public static void a()
+        {
+            var ass = typeof(ClassDeclarationSyntax).Assembly;
+
+            var types = GetTypesInAssembly(ass, "DeclarationSyntax");
+            var s = types.Select(d => d.Name);
+            ClipboardHelper.SetLines(s);
+        }
+
+        public static IEnumerable<Type> GetTypesInAssembly(Assembly assembly, string contains)
+        {
+            var types = assembly.GetTypes();
+            return types.Where(t => t.Name.Contains(contains));
+        }
+
+        public static string AddWhereIsUsedVariablesInMethods(object o)
+        {
+            SyntaxNode root = RoslynParser.SyntaxNodeFromObjectOrString(o);
+            var methods = ChildNodes.MethodsDescendant(root);
+            var fields = ChildNodes.FieldsDescendant(root);
+
+            string before = null;
+            string after = null;
+            int i = 0;
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(root.ToFullString());
+
+            Tuple<List<string>, List<string>> ls = null;
+
+            Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+            string methodName = null;
+
+            foreach (MethodDeclarationSyntax oldMethodNode in methods)
+            {
+                ls = RoslynParser.ParseVariables(oldMethodNode);
+
+                methodName = oldMethodNode.Identifier.Text;
+
+                foreach (var item in ls.Item2)
+                {
+                    DictionaryHelper.AddOrCreate<string, string>(dict, item, methodName);
+                }
+
+                #region MyRegion
+                //        var testDocumentation = SyntaxFactory.DocumentationCommentTrivia(
+                //        SyntaxKind.SingleLineDocumentationCommentTrivia,
+                //        SyntaxFactory.List<XmlNodeSyntax>(
+                //            new XmlNodeSyntax[]{
+                //    SyntaxFactory.XmlText()
+                //    .WithTextTokens(
+                //        SyntaxFactory.TokenList(
+                //            SyntaxFactory.XmlTextLiteral(
+                //                SyntaxFactory.TriviaList(
+                //                    SyntaxFactory.DocumentationCommentExterior("///")),
+                //                " ",
+                //                " ",
+                //                SyntaxFactory.TriviaList()))),
+                //    SyntaxFactory.XmlElement(
+                //        SyntaxFactory.XmlElementStartTag(
+                //            SyntaxFactory.XmlName(
+                //                SyntaxFactory.Identifier("summary"))),
+                //        SyntaxFactory.XmlElementEndTag(
+                //            SyntaxFactory.XmlName(
+                //                SyntaxFactory.Identifier("summary"))))
+                //    .WithContent(
+                //        SyntaxFactory.SingletonList<XmlNodeSyntax>(
+                //            SyntaxFactory.XmlText()
+                //            .WithTextTokens(
+                //                SyntaxFactory.TokenList(
+                //                    SyntaxFactory.XmlTextLiteral(
+                //                        SyntaxFactory.TriviaList(),
+                //                        "test",
+                //                        "test",
+                //                        SyntaxFactory.TriviaList()))))),
+                //    SyntaxFactory.XmlText()
+                //    .WithTextTokens(
+                //        SyntaxFactory.TokenList(
+                //            SyntaxFactory.XmlTextNewLine(
+                //                SyntaxFactory.TriviaList(),
+                //                "\n",
+                //                "\n",
+                //                SyntaxFactory.TriviaList())))}));
+
+                //        var newMethodNode = oldMethodNode.WithModifiers(
+                //SyntaxFactory.TokenList(
+                //    new[]{
+                //    SyntaxFactory.Token(
+                //        SyntaxFactory.TriviaList(
+                //            SyntaxFactory.Trivia(testDocumentation)), // xmldoc
+                //            SyntaxKind.PublicKeyword, // original 1st token
+                //            SyntaxFactory.TriviaList())
+                //        //SyntaxFactory.Token(SyntaxKind.StaticKeyword)
+                //    })); 
+
+                //var leadingTrivia = oldMethodNode.GetLeadingTrivia();
+                //for (i = leadingTrivia.Count - 1; i >= 0; i--)
+                //{
+                //    leadingTrivia.RemoveAt(i);
+                //}
+                #endregion
+
+                
+            }
+
+            string variableName = null;
+            List<string> usedIn = null;
+
+            foreach (var oldMethodNode in fields)
+            {
+                variableName = oldMethodNode.Declaration.Variables.First().Identifier.Text;
+
+                if (dict.ContainsKey(variableName))
+                {
+                    usedIn = dict[variableName];
+                }
+                else
+                {
+                    continue;
+                }
+
+                CA.Prepend("/// ", usedIn);
+
+                var doc = @"
+/// <summary>
+"+ SH.JoinNL(usedIn) +@"
+/// </summary>
+";
+                var p = oldMethodNode.Parent;
+
+                if (RoslynHelper.IsGlobalVariable(oldMethodNode))
+                {
+                    var lt = SyntaxFactory.Comment(doc);
+                    var oldMethodNode2 = oldMethodNode.WithLeadingTrivia(SyntaxTriviaList.Create(lt));
+
+                    
+
+                    before = oldMethodNode.ToFullString();
+                    //root = root.ReplaceNode(oldMethodNode, oldMethodNode2);
+                    after = oldMethodNode2.ToFullString();
+
+                    sb = sb.Replace(before, after);
+                }
+            }
+
+            var result = sb.ToString(); // root.ToFullString();
+            return result;
+        }
+
+        /// <summary>
+        /// VariableDeclarationSyntax->CSharpSyntaxNode
+        /// FieldDeclarationSyntax->BaseFieldDeclarationSyntax->MemberDeclarationSyntax->CSharpSyntaxNode
+        /// </summary>
+        /// <param name="oldMethodNode"></param>
+        /// <returns></returns>
+        private static bool IsGlobalVariable(CSharpSyntaxNode oldMethodNode)
+        {
+            var parent = oldMethodNode.Parent;
+            while (parent != null)
+            {
+                if (parent is BlockSyntax)
+                {
+                    return false;
+                }
+                else if (parent is ClassDeclarationSyntax)
+                {
+                    return true;
+                }
+                parent = parent.Parent;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Return also referenced projects (sunamo return also duo and Resources, although is not in sunamo)
@@ -57,8 +231,6 @@ namespace Roslyn
             //}
             return solution.Projects.ToList();
         }
-
-        
 
         public static string WrapIntoClass(string code)
         {
@@ -166,7 +338,6 @@ namespace Roslyn
 
             // Parent if token or itself if node2
             SyntaxNode node = null;
-
 
             List<SyntaxNode> syntaxNodes2 = new List<SyntaxNode>();
 
@@ -289,8 +460,6 @@ namespace Roslyn
             int dx;
             return FindNode(parent, child, onlyDirectSub, out dx);
         }
-
-        
 
         /// <summary>
         /// Because of searching is very unreliable
@@ -499,7 +668,7 @@ namespace Roslyn
             }
 
             lines = SH.GetLines(text);
-            return RoslynParser.Usings(lines).c;
+            return RoslynParserText.Usings(lines).c;
         }
 
         /// <summary>
@@ -662,8 +831,6 @@ namespace Roslyn
             string r = SH.RemoveLastLetters( sb.ToString(), 2);
             return r;
         }
-
-
 
         public static bool IsStatic(SyntaxTokenList modifiers)
         {

@@ -64,6 +64,11 @@ namespace desktop.Controls.Result
         /// </summary>
         public string file = null;
 
+        public bool Contains(string t)
+        {
+            return fileFullPath.Contains(t);
+        }
+
         /// <summary>
         /// A2 is require but is available through foundedResultsUC.DefaultBrush
         /// </summary>

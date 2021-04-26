@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using SunamoExceptions;
+using Xlf;
 
 public class TranslateDictionary : IDictionary<string, string>
 {
@@ -113,8 +114,6 @@ public class TranslateDictionary : IDictionary<string, string>
 
     public bool ContainsKey(string key)
     {
-      
-
         return _d.ContainsKey(key);
     }
 
@@ -125,25 +124,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <param name="arrayIndex"></param>
     public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex)
     {
-        array = new KeyValuePair<string, string>[Count - arrayIndex + 1];
-
-        int i = 0;
-        bool add = false;
-        foreach (var item in _d)
-        {
-            if (i == arrayIndex && !add)
-            {
-                add = true;
-                i = 0;
-            }
-
-            if (add)
-            {
-                array[i] = new KeyValuePair<string, string>(item.Key, item.Value);
-            }
-
-            i++;
-        }
+        DictionaryHelper.CopyTo<string, string>(_d, array, arrayIndex);
     }
 
     public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
