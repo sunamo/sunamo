@@ -40,13 +40,7 @@ public static partial class CL{
         TypedConsoleLogger.Instance.Success(v);
     }
 
-    public static void ClearCurrentConsoleLine()
-    {
-        int currentLineCursor = Console.CursorTop;
-        Console.SetCursorPosition(0, Console.CursorTop);
-        Console.Write(new string(AllChars.space, Console.WindowWidth));
-        Console.SetCursorPosition(0, currentLineCursor);
-    }
+
 
     public static void Information(string v)
     {

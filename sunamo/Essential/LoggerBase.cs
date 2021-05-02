@@ -103,6 +103,14 @@ public partial class LoggerBase
         }
     }
 
+    public void WriteLineNull(string text, params object[] args)
+    {
+        if (IsActive)
+        {
+            _writeLineDelegate.Invoke(SH.NullToStringOrDefault( text), args);
+        }
+    }
+
     /// <summary>
     /// for compatibility with Console.WriteLine 
     /// </summary>

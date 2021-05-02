@@ -1832,6 +1832,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return dt.Rows.Count != 0;
     }
 
+
+
     /// <summary>
     /// Pokud chceš použít OrderBy, je tu metoda SelectDataTableLimitLastRows nebo SelectDataTableLimitLastRowsInnerJoin
     /// Conn nastaví automaticky

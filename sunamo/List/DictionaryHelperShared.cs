@@ -94,6 +94,18 @@ public partial class DictionaryHelper
         }
     }
 
+    public static void AddOrNoSet<T1, T2>(IDictionary<T1, T2> qs, T1 k, T2 v)
+    {
+        if (qs.ContainsKey(k))
+        {
+            //qs[k] = v;
+        }
+        else
+        {
+            qs.Add(k, v);
+        }
+    }
+
     public static T2 AddOrGet<T1, T2>(IDictionary<T1, T2> qs, T1 k, Func<T1, T2> i)
     {
         if (qs.ContainsKey(k))

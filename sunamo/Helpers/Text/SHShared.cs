@@ -1243,23 +1243,33 @@ public static partial class SH
         return sb;
     }
 
+    public static string Replace(string t, string what, string forWhat)
+    {
+        return Replace(t, what, forWhat, false);
+    }
+
     /// <summary>
     /// Use simple c# replace
     /// </summary>
     /// <param name="t"></param>
     /// <param name="what"></param>
     /// <param name="forWhat"></param>
-    public static string Replace(string t, string what, string forWhat)
+    public static string Replace(string t, string what, string forWhat, bool a2CanBeAsA3 = false)
     {
-        if (t.Contains(AllStrings.verbar))
+        if (what == forWhat)
         {
-
+            if (a2CanBeAsA3)
+            {
+                return t;
+            }
+            else
+            {
+                ThrowExceptions.IsTheSame(Exc.GetStackTrace(), type, Exc.CallingMethod(), "what", "forWhat");
+            }
         }
         var r = t.Replace( what, forWhat);
         return r;
     }
-
-
 
     public static string KeepAfterFirst(string searchQuery, string after, bool keepDeli = false)
     {

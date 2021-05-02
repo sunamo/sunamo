@@ -36,7 +36,7 @@ namespace desktop.Controls.Result
 
         private void FoundedResultsUC_Loaded(object sender, RoutedEventArgs e)
         {
-            txtFilter.BorderBrush = Brushes.Yellow;
+            txtFilter.BorderBrush = Brushes.Tomato;
             TextBlockHelper.SetTextPostColon(txtFilter.tb, XlfKeys.Filter);
             
         }

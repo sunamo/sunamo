@@ -23,8 +23,8 @@ public static class MSTableRowParse
 2-2147483546 Let It Die Live At The Palace -32727
 0-2147483546 Let It Die Live At The Palace -32727
          */
-        //Console.WriteLine(SH.JoinSpace( CA.ToListString( o)));
-        //Console.WriteLine(p);
+        //CL.WriteLine(SH.JoinSpace( CA.ToListString( o)));
+        //CL.WriteLine(p);
 
         var value = o[p];
         if (SqlServerHelper.IsNull(value))

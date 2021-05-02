@@ -8,6 +8,7 @@ using System.Text;
 /// </summary>
     public static partial class Consts
     {
+    public const string Test_ = "Test_";
     public const int defaultPortIfCannotBeParsed = 587;
     public const string slashLocalhost = AllStrings.slash + Consts.localhost;
     public const string slashScz = AllStrings.slash + Consts.Cz;

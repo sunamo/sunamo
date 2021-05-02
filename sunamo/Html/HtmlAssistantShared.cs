@@ -13,6 +13,7 @@ public partial class HtmlAssistant
     public static string InnerTextDecodeTrim(HtmlNode n)
     {
         var r = n.InnerText.Trim();
+        r = SH.ReplaceWhiteSpacesWithoutSpaces(r, AllStrings.space);
         r = HttpUtility.HtmlDecode(r);
         r = SH.ReplaceAllDoubleSpaceToSingle(r);
         return r;

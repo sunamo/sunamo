@@ -148,5 +148,10 @@ using System.Threading.Tasks;
     {
         return before + $"Loading uri {address} failed {times} ({timeoutInMs} ms timeout)";
     }
+
+    internal static string IsTheSame(string before, string fst, string sec)
+    {
+        return before + $"{fst} and {sec} has the same value";
+    }
     #endregion
 }

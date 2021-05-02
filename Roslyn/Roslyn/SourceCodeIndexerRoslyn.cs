@@ -287,10 +287,6 @@ public partial class SourceCodeIndexerRoslyn
                 NamespaceCodeElements d = new NamespaceCodeElements();
                 foreach (var item2 in item.Value)
                 {
-                    if (item.Key.Contains("ItemWithCount"))
-                    {
-                    }
-
                     if (makeChecking)
                     {
                         add = false;

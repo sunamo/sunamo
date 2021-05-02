@@ -563,7 +563,7 @@ public static partial class SH
         return ReplaceWhiteSpaces(p).Trim();
     }
     /// <summary>
-    /// By empty string
+    /// Replace every whitespace with empty string
     /// </summary>
     /// <param name="p"></param>
     public static string ReplaceWhiteSpaces(string p)
@@ -572,12 +572,14 @@ public static partial class SH
     }
     /// <summary>
     /// Replace all whitespaces except of space and then A1 with space
+    /// In other words, in finale, replace every whitespace with space - A2 is for better customizing
+    /// A2 can be also space
     /// </summary>
     /// <param name="p"></param>
     /// <param name="v"></param>
     public static string ReplaceWhiteSpaces(string p, string v)
     {
-        return SH.Replace(ReplaceWhiteSpacesWithoutSpaces(p, v), v, AllStrings.space);
+        return SH.Replace(ReplaceWhiteSpacesWithoutSpaces(p, v), v, AllStrings.space, true);
     }
     public static List<string> AddSpaceAfterFirstLetterForEveryAndSort(List<string> input)
     {

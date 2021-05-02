@@ -43,6 +43,11 @@ namespace Roslyn
             return types.Where(t => t.Name.Contains(contains));
         }
 
+        /// <summary>
+        /// A1 can be SyntaxNode or string
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public static string AddWhereIsUsedVariablesInMethods(object o)
         {
             SyntaxNode root = RoslynParser.SyntaxNodeFromObjectOrString(o);

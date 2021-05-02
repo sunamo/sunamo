@@ -96,7 +96,7 @@ public class CmdBootStrap
                 //var processToDie = TF.ReadFile(AppData.ci.GetFile(AppFolders.Data, "processToDieContains.txt"));
                 //TerminateProcessesWithNameContains(processToDie);
 
-                Console.WriteLine("App finished its running");
+                CL.WriteLine("App finished its running");
                 Console.ReadLine();
             }
         }

@@ -37,8 +37,6 @@ namespace desktop.Controls.Result
         {
             HideTbNoResultsFound();
 
-         
-
             FoundedFileUC foundedFile = new FoundedFileUC(item, p, i++);
             foundedFile.Selected += FoundedFile_Selected;
             sp.Children.Add(foundedFile);
@@ -50,10 +48,8 @@ namespace desktop.Controls.Result
             OnSelected(s);
         }
 
-        public void Filter(string text)
+        public bool? Filter(string text)
         {
-            if (sp.Children.Count != 0)
-            {
                 bool cancel = string.IsNullOrWhiteSpace(text);
                 if (cancel)
                 {
@@ -64,10 +60,12 @@ namespace desktop.Controls.Result
                 }
                 else
                 {
+                bool someVisible = false;
                     foreach (FoundedFileUC item in sp.Children)
                     {
                         if (item.Contains(text))
                         {
+                        someVisible = true;
                             item.Visibility = System.Windows.Visibility.Visible;
                         }
                         else
@@ -75,8 +73,14 @@ namespace desktop.Controls.Result
                             item.Visibility = System.Windows.Visibility.Collapsed;
                         }
                     }
+
+                if (!someVisible)
+                {
+                    OnSelected(null);
                 }
-            }
+                }
+                return cancel;
+       
         }
     }
 }

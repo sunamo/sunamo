@@ -19,7 +19,21 @@ using System.Windows.Controls;
     /// In key full path to file, in value lines
     /// </summary>
         public Dictionary<string, List<FoundedCodeElement>> founded;
-        public string file = null;
+    string _file = null;
+        public string file
+    {
+        get
+        {
+            return _file;
+        }
+        set
+        {
+            _file = value;
+#if DEBUG
+            //DebugLogger.Instance.WriteLineNull(value);
+#endif
+        }
+    }
 
         public List<FoundedCodeElement> actualFileSearchOccurences
         {

@@ -191,6 +191,11 @@ public partial class ThrowExceptions
         ThrowIsNotNull(stacktrace, Exceptions.WasNotKeysHandler(FullNameOfExecutedCode(type, methodName), name, keysHandler));
     }
 
+    public static void IsTheSame(string stacktrace, object type, string methodName, string fst, string sec)
+    {
+        ThrowIsNotNull(stacktrace, Exceptions.IsTheSame(FullNameOfExecutedCode(type, methodName), fst, sec));
+    }
+
     #region Helpers
 
     public static void IsEmpty(string stacktrace, object type, string methodName, IEnumerable folders, string colName, string additionalMessage)

@@ -484,7 +484,21 @@ public static partial class BTS
 
     #region Is*
     public static int lastInt = -1;
+    public static float lastFloat = -1;
     public static DateTime lastDateTime = DateTime.MinValue;
+
+    public static bool IsFloat(string id)
+    {
+        if (id == null)
+        {
+            return false;
+        }
+        if( float.TryParse(id.Replace(AllStrings.comma, AllStrings.dot), out lastFloat))
+        {
+            return true;
+        }
+        return false;
+    }
 
     public static bool IsInt(string id)
     {
@@ -849,6 +863,8 @@ public static partial class BTS
         string day = SH.MakeUpToXChars(dateTime.Day, 2);
         return day + AllStrings.dot + month + AllStrings.dot + year; // +AllStrings.space + hour + AllStrings.colon + minutes + AllStrings.colon + seconds;// +AllStrings.colon + miliseconds;
     }
+
+    
 
     public static string SameLenghtAllTimes(DateTime dateTime)
     {

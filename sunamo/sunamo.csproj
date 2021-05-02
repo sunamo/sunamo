@@ -151,6 +151,8 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Converts\ConvertCamelConventionWithNumbers.cs" />
+    <Compile Include="Converts\ConvertPascalConventionWithNumbers.cs" />
     <Compile Include="Interfaces\IProgressBar.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />

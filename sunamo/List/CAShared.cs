@@ -305,7 +305,7 @@ public static partial class CA
         CA.RemoveDuplicitiesList(list);
         if (list2.Count != list.Count)
         {
-            //Console.WriteLine( Exceptions.DifferentCountInLists(string.Empty, "list2", list2.Count, "list", list.Count));
+            //CL.WriteLine( Exceptions.DifferentCountInLists(string.Empty, "list2", list2.Count, "list", list.Count));
             return true;
         }
         return false;
@@ -951,10 +951,6 @@ public static partial class CA
         CA.ChangeContent(null,files_in, SH.Replace, what, forWhat);
     }
 
-    
-
-    
-   
     public static List<T> JoinIEnumerable<T>(params IEnumerable<T>[] enumerable)
     {
         List<T> t = new List<T>();

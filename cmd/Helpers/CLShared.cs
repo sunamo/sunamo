@@ -14,6 +14,14 @@ public static partial class CL
 {
     public static bool perform = true;
 
+    public static void ClearCurrentConsoleLine()
+    {
+        Console.SetCursorPosition(0, Console.CursorTop - 1);
+        int currentLineCursor = Console.CursorTop;
+        Console.SetCursorPosition(0, Console.CursorTop);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, currentLineCursor);
+    }
     public static void PerformAction(Dictionary<string, VoidVoid> actions)
     {
         List<string> listOfActions = actions.Keys.ToList();
@@ -107,7 +115,7 @@ public static partial class CL
     public static void WriteProgressBarEnd()
     {
         CL.WriteProgressBar(100, new WriteProgressBarArgs(true));
-        Console.WriteLine();
+        CL.WriteLine();
     }
     #endregion
 
@@ -199,16 +207,21 @@ public static partial class CL
     /// <param name = "what"></param>
     public static int SelectFromVariants(List<string> variants, string what)
     {
-        Console.WriteLine();
+        CL.WriteLine();
         for (int i = 0; i < variants.Count; i++)
         {
-            Console.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "  " + variants[i]);
+            CL.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "  " + variants[i]);
         }
 
         return UserMustTypeNumber(what, variants.Count - 1);
     }
 
-/// <summary>
+    public static void WriteLine()
+    {
+        Console.WriteLine();
+    }
+
+    /// <summary>
     /// 
     /// </summary>
     /// <param name = "actions"></param>
@@ -219,7 +232,7 @@ public static partial class CL
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
-            Console.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "  " + kvp.Key);
+            CL.WriteLine(AllStrings.lsqb + i + AllStrings.rsqb + "  " + kvp.Key);
             i++;
         }
 
@@ -270,8 +283,8 @@ public static partial class CL
     {
         string z = "";
         whatOrTextWithoutEndingDot = AskForEnter(whatOrTextWithoutEndingDot, append);
-        Console.WriteLine();
-        Console.WriteLine(whatOrTextWithoutEndingDot);
+        CL.WriteLine();
+        CL.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
         int zadBefore = 0;
         int zad = 0;
@@ -489,12 +502,17 @@ public static void OperationWasStopped()
         else
         {
             CL.AskForEnter(what, true);
-            Console.WriteLine(sess.i18n(XlfKeys.PressEnterWhenDataWillBeInClipboard));
+            CL.WriteLine(sess.i18n(XlfKeys.PressEnterWhenDataWillBeInClipboard));
             Console.ReadLine();
             imageFile = ClipboardHelper.GetText();
         }
 
         return imageFile;
+    }
+
+    public static void WriteLine(string v)
+    {
+        Console.WriteLine(v);
     }
 
     /// <summary>
@@ -516,7 +534,7 @@ public static void OperationWasStopped()
 
             CmdApp.loadFromClipboard = loadFromClipboard.Value;
 
-            Console.WriteLine(loadFromClipboard.Value);
+            //CL.WriteLine(loadFromClipboard.Value);
 
             if (loadFromClipboard.HasValue)
             {

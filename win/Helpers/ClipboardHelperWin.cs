@@ -178,7 +178,7 @@ public class ClipboardHelperWin : IClipboardHelper
 
     public void GetFirstWordOfList()
     {
-        Console.WriteLine(sess.i18n(XlfKeys.CopyTextToClipboard) + ".");
+        TypedSunamoLogger.Instance.Information(sess.i18n(XlfKeys.CopyTextToClipboard) + ".");
         Console.ReadLine();
 
         StringBuilder sb = new StringBuilder();

@@ -102,7 +102,7 @@ public static partial class WriterEventLog{
             mainEventLogOfApplication.Source = name;
         }
 
-        Console.WriteLine(text);
+        TypedSunamoLogger.Instance.Information(text);
         mainEventLogOfApplication.WriteEntry(text, type);
     }
 

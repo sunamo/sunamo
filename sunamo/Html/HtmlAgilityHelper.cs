@@ -214,23 +214,43 @@ namespace sunamo.Html
             return hn.Name == tag;
         }
 
-        private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
+        private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute, bool searchAsSingleString)
         {
             if (hodnotaAtributu == AllStrings.asterisk)
             {
                 return true;
             }
+
             bool contains = false;
             var attrValue = HtmlHelper.GetValueOfAttribute(atribut, item);
 
             if (enoughIsContainsAttribute)
             {
-                contains = attrValue.Contains(hodnotaAtributu);
+                if (searchAsSingleString)
+                {
+                    contains = attrValue.Contains(hodnotaAtributu);
+                }
+                else
+                {
+                    bool cont = true;
+                    var p = SH.Split(hodnotaAtributu, AllStrings.space);
+                    foreach (var item2 in p)
+                    {
+                        if (!attrValue.Contains(item2))
+                        {
+                            cont = false;
+                            break;
+                        }
+                    }
+
+                    contains = cont;
+                }
             }
             else
             {
                 contains = attrValue == hodnotaAtributu;
             }
+
             return contains;
         }
 
@@ -292,11 +312,11 @@ namespace sunamo.Html
             return vr;
         }
 
-        public static List<HtmlNode> NodesWithAttrWorker(HtmlNode node, bool recursive, string tag, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
+        public static List<HtmlNode> NodesWithAttrWorker(HtmlNode node, bool recursive, string tag, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute, bool searchAsSingleString = true)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
 
-            RecursiveReturnTagsWithContainsAttr(vr, node, recursive, tag, atribut, hodnotaAtributu, enoughIsContainsAttribute);
+            RecursiveReturnTagsWithContainsAttr(vr, node, recursive, tag, atribut, hodnotaAtributu, enoughIsContainsAttribute, searchAsSingleString);
             if (tag != textNode)
             {
                 vr = TrimTexts(vr);
@@ -327,7 +347,7 @@ namespace sunamo.Html
         /// <param name="p"></param>
         /// <param name="atribut"></param>
         /// <param name="hodnotaAtributu"></param>
-        public static void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode htmlNode, bool recursively, string p, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
+        public static void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode htmlNode, bool recursively, string p, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute, bool searchAsSingleString = true)
         {
             if (htmlNode == null)
             {
@@ -340,21 +360,21 @@ namespace sunamo.Html
 
                 if (HasTagName(item, p))
                 {
-                    if (HasTagAttr(item, atribut, hodnotaAtributu, enoughIsContainsAttribute))
+                    if (HasTagAttr(item, atribut, hodnotaAtributu, enoughIsContainsAttribute, searchAsSingleString))
                     {
                         vr.Add(item);
                     }
 
                     if (recursively)
                     {
-                        RecursiveReturnTagsWithContainsAttr(vr, item, recursively, p, atribut, hodnotaAtributu, enoughIsContainsAttribute);
+                        RecursiveReturnTagsWithContainsAttr(vr, item, recursively, p, atribut, hodnotaAtributu, enoughIsContainsAttribute, searchAsSingleString);
                     }
                 }
                 else
                 {
                     if (recursively)
                     {
-                        RecursiveReturnTagsWithContainsAttr(vr, item, recursively, p, atribut, hodnotaAtributu, enoughIsContainsAttribute);
+                        RecursiveReturnTagsWithContainsAttr(vr, item, recursively, p, atribut, hodnotaAtributu, enoughIsContainsAttribute, searchAsSingleString);
                     }
                 }
             }
@@ -409,9 +429,9 @@ namespace sunamo.Html
         /// <param name="attr"></param>
         /// <param name="attrValue"></param>
         /// <param name="contains"></param>
-        public static List<HtmlNode> NodesWhichContainsInAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue)
+        public static List<HtmlNode> NodesWhichContainsInAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool searchAsSingleString = true)
         {
-            return NodesWithAttrWorker(node, recursive, tag, attr, attrValue, true);
+            return NodesWithAttrWorker(node, recursive, tag, attr, attrValue, true, searchAsSingleString);
         }
         #endregion
 
