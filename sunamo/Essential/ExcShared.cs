@@ -61,6 +61,8 @@ public class Exc
         return JoinNL(l);
     }
 
+    public static bool _trimTestOnEnd = true;
+
     /// <summary>
     /// Print name of calling method, not GetCurrentMethod
     /// If is on end Test, will trim
@@ -70,7 +72,10 @@ public class Exc
         StackTrace stackTrace = new StackTrace();
         MethodBase methodBase = stackTrace.GetFrame(v).GetMethod();
         var methodName = methodBase.Name;
-        methodName = TrimEnd(methodName, XlfKeys.Test);
+        if (_trimTestOnEnd)
+        {
+            methodName = TrimEnd(methodName, XlfKeys.Test);
+        }
         return methodName;
     }
 

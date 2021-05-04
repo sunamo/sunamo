@@ -36,7 +36,16 @@ using System.Diagnostics;
         return sw.StopAndPrintElapsed(operation);
     }
 
-        public static long StopAndPrintElapsed(string operation, string p, params object[] parametry)
+    public static string lastMessage => sw.lastMessage;
+
+    /// <summary>
+    /// Write ElapsedMilliseconds to debug, TSL. For more return long
+    /// </summary>
+    /// <param name="operation"></param>
+    /// <param name="p"></param>
+    /// <param name="parametry"></param>
+    /// <returns></returns>
+    public static long StopAndPrintElapsed(string operation, string p, params object[] parametry)
         {
             return sw.StopAndPrintElapsed(operation, p, parametry);
         }

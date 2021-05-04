@@ -603,6 +603,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
+    
+
     /// <summary>
     /// Create table to which add none postfix
     /// </summary>

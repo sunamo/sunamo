@@ -47,8 +47,10 @@ public class StopwatchHelper
 
     public const string takes = " takes ";
 
+    public string lastMessage = null;
+
     /// <summary>
-    /// Write ElapsedMilliseconds
+    /// Write ElapsedMilliseconds to debug, TSL. For more return long
     /// </summary>
     /// <param name="operation"></param>
     /// <param name="p"></param>
@@ -58,10 +60,10 @@ public class StopwatchHelper
     {
         var l = sw.ElapsedMilliseconds;
         sw.Reset();
-        string message = string.Format(operation + takes + l + "ms" + p, parametry);
-        ThisApp.SetStatus(TypeOfMessage.Information, message);
+        lastMessage = string.Format(operation + takes + l + "ms" + p, parametry);
+        ThisApp.SetStatus(TypeOfMessage.Information, lastMessage);
 #if DEBUG
-        DebugLogger.Instance.WriteLine(message);
+        DebugLogger.Instance.WriteLine(lastMessage);
 #endif 
         return l;
     }
