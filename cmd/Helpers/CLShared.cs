@@ -149,9 +149,6 @@ public static partial class CL
         eh.Invoke(sender, EventArgs.Empty);
     }
 
-
-
-
 /// <summary>
     /// Pokud uz. zada Y,GT.
     /// When N, return false.

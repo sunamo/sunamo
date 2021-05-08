@@ -148,6 +148,23 @@ public static partial class CA
         }
         return result.c;
     }
+
+    public static void Remove(List<string> l, List<string> ig)
+    {
+        int dx = -1;
+
+        foreach (var item in ig)
+        {
+            dx = l.IndexOf(item);
+
+            if (dx != -1)
+            {
+                l.RemoveAt(dx);
+            }
+        }
+
+        
+    }
     #endregion
 
     #region 10) IndexOfValue

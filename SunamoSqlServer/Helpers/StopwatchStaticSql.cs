@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 public class StopwatchStaticSql
 {
     static Stopwatch sw = new Stopwatch();
-    public const int maxMs = 1000;
+    public const int maxMs = 500;
     static long ms = 0;
 
     /// <summary>

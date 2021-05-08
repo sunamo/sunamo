@@ -521,7 +521,9 @@ public static string GetValuesDirect(int i2, int to)
     {
         to += i2;
         StringBuilder sb = new StringBuilder();
-        
+
+        sb.Append(AllStrings.lb);
+
         for (int i = i2; i < to; i++)
         {
             sb.Append("@p" + (i).ToString() + AllStrings.comma);

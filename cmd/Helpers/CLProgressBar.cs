@@ -68,6 +68,7 @@ public class CLProgressBar : ProgressState, IProgressBar
 
     public void LyricsHelper_AnotherSong(int i)
     {
+        
         if (isWriteOnlyDividableBy)
         {
             if (i % writeOnlyDividableBy == 0)
@@ -84,9 +85,14 @@ public class CLProgressBar : ProgressState, IProgressBar
         
     }
 
-    public bool IsDividable()
+    /// <summary>
+    /// private coz should be called only in this class
+    /// </summary>
+    /// <returns></returns>
+    private
+        bool IsDividable()
     {
-        if (writeOnlyDividableBy != 0)
+        if (isWriteOnlyDividableBy)
         {
             return n % writeOnlyDividableBy == 0;
 

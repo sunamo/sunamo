@@ -23,13 +23,13 @@ public class ProgressState
 
     public int n = 0;
 
-    public void OnAnotherSong()
+    protected void OnAnotherSong()
     {
         n++;
         OnAnotherSong(n);
     }
 
-    public void OnAnotherSong(int n)
+    protected void OnAnotherSong(int n)
     {
        AnotherSong(n);
     }
@@ -40,7 +40,7 @@ public class ProgressState
         OverallSongs(n2);
     }
 
-    public void OnWriteProgressBarEnd()
+    protected void OnWriteProgressBarEnd()
     {
         WriteProgressBarEnd();
     }

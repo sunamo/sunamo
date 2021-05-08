@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 public class SqlConsts
 {
     public const int timeout = 950;
+    public const string dbo = "dbo";
 }
 
 public class SqlMeasureTimeHelper
