@@ -1600,7 +1600,7 @@ public static partial class CA
         return result;
     }
 
-public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
+    public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
     {
         for (int i = input.Count - 1; i >= 0; i--)
         {

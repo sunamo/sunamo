@@ -757,6 +757,42 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
+    public int ExecuteNonQueryRename(SqlCommand comm)
+    {
+        using (SqlConnection conn = new SqlConnection(Cs))
+        {
+            conn.Open();
+            comm.CommandTimeout = SqlConsts.timeout;
+            comm.Connection = conn;
+
+            int result = -1;
+
+            try
+            {
+                result = comm.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                var toe = Exceptions.TextOfExceptions(ex);
+                // Althrought result was ok, I always get these error
+                //No item by the name of 'dbo.Test_PageNew3' could be found in the current database 'LearnTransactSql', given that @itemtype was input as '(null)'.'
+                // Another error was when I put 'object' on end sp_prefixes
+                //Either the parameter @objname is ambiguous or the claimed @objtype (OBJECT) is wrong.'
+
+                if (!toe.StartsWith("No item by the name of "))
+                {
+                    throw;
+                }
+
+                
+            }
+
+            conn.Close();
+
+            return result;
+        }
+    }
+
     private void PrintDebugParameters(SqlCommand comm)
     {
         //foreach (SqlParameter item in comm.Parameters)
@@ -1747,11 +1783,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// Vymže tabulku A1 a přejmenuje tabulku A1+"2" na A1
     /// </summary>
     /// <param name="table"></param>
-    public void sp_rename(string table)
+    public void sp_rename(string db, string schema, string table)
     {
-        DropTableIfExists(table);
-        SqlCommand comm = new SqlCommand("EXEC sp_rename 'dbo." + table + "2', '" + table + "'");
-        ExecuteNonQuery(comm);
+        DropTableIfExists(table+ "2");
+        //dbo. nesmí být v žádné protože pak mám dbo.dbo.
+        //dbo.
+        SqlCommand comm = new SqlCommand("EXEC sp_rename '["+db+"].["+schema+"].[" + table + "]', '" + table + "2'");
+        ExecuteNonQueryRename(comm);
     }
 
     /// <summary>
@@ -1804,7 +1842,23 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
 
             conn.Close();
-            return dt.Rows.Count != 0;
+            List<string> o = null;
+
+            foreach (DataRow item in dt.Rows)
+            {
+                foreach (var item2 in item.ItemArray)
+                {
+                    if (!SqlServerHelper.IsNullOrEmpty(item2))
+                    {
+                        if (item2.ToString() == p)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;// dt.Rows.Count != 0;
         }
     }
     private DataTable SelectDataTable(SqlConnection conn, string sql, params object[] _params)

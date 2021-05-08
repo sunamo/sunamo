@@ -102,6 +102,9 @@ public static partial class BTS
 
         return null;
     }
+
+    
+
     public static string ToString<T>(T t)
     {
         return t.ToString();
@@ -483,6 +486,7 @@ public static partial class BTS
     #endregion
 
     #region Is*
+    public static byte lastByte = 255;
     public static int lastInt = -1;
     public static float lastFloat = -1;
     public static DateTime lastDateTime = DateTime.MinValue;
@@ -498,6 +502,15 @@ public static partial class BTS
             return true;
         }
         return false;
+    }
+
+    public static bool IsByte(string f)
+    {
+        if (f == null)
+        {
+            return false;
+        }
+        return byte.TryParse(f, out lastByte);
     }
 
     public static bool IsInt(string id)
