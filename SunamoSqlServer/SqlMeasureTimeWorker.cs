@@ -26,7 +26,6 @@ public class SqlMeasureTimeWorker
 
     public static SqlMeasureTimeHelper mt = new SqlMeasureTimeHelper();
 
-
     public static void Init()
     {
         #region Must be after set up ThisApp.Name
