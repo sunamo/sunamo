@@ -36,7 +36,7 @@ public partial class WindowHelper{
         //dump = YamlHelper.DumpAsYaml(e);
         //dump = SunamoJsonHelper.SerializeObject(e, true);
         //dump = JsonParser.Serialize<>
-        dump = RH.DumpAsString(string.Empty, e, DumpProvider.Reflection);
+        dump = RH.DumpAsString(new DumpAsStringArgs { o = e, d = DumpProvider.Reflection });
         ShowTextResult result = new ShowTextResult(methodName + dump);
         result.ChangeDialogResult += Result_ChangeDialogResult;
         var mw = Application.Current.MainWindow;

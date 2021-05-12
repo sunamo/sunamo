@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-/// <summary>
-/// Name is Consts because all there must be consts, not static readonly etc.
-/// </summary>
+    /// <summary>
+    /// Name is Consts because all there must be consts, not static readonly etc.
+    /// </summary>
     public static partial class Consts
     {
     public const string Test_ = "Test_";
@@ -27,6 +26,10 @@ using System.Text;
     public static string localhostIpV6 = "fe80:";
     public static string localhostIp = "127.0.0.1";
     public static string dots3 = "...";
+    public static DateTime nDateTimeMinVal= new DateTime(2010, 1, 1, 0, 0, 0);
+    public static DateTime nDateTimeMaxVal= new DateTime(2032, 12, 31, 23, 59, 59);
+    public static short nDtMinVal = 10101;
+    public static short nDtMaxVal = 32271;
     public const string appscs = "appscs";
     public const string ChytreAplikace = "chytre-aplikace.cz";
     public const string Nope = XlfKeys.Nope;

@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 public class NormalizeDate
 {
     public static DateTime From(short sh)
     {
         var s = sh.ToString();
-        bool december = false;
         s = s.Trim();
 
         if (s.StartsWith(AllStrings.dash))
         {
-            december = true;
             s = s.TrimStart(AllChars.dash);
         }
 
@@ -50,6 +45,7 @@ public class NormalizeDate
         // months never start with zero
         var m = dt.Month;
         var ms2 = m.ToString();
+
         if (m > 10)
         {
             var ms = NH.MakeUpTo2NumbersToZero(m);
@@ -70,9 +66,9 @@ public class NormalizeDate
         }
 
         /*
-Na prvním místě může být 0,1,2,3
-        listopad = 4,5,6,7
-        prosinec = -4,5,6,7
+        In first place can be 0,1,2,3
+        november = 4,5,6,7
+        december = -4,5,6,7
          */
         var d = NH.MakeUpTo2NumbersToZero(dt.Day);
         var firstChar = d[0];

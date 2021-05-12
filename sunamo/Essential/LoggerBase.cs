@@ -3,6 +3,7 @@ using sunamo.Essential;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 public partial class LoggerBase
@@ -18,7 +19,7 @@ public partial class LoggerBase
      //public static event VoidString ShowMessageBox;
     public void DumpObject(string name, object o, DumpProvider d, params string[] onlyNames)
     {
-        var dump = RH.DumpAsString(name, o, d, onlyNames);
+        var dump = RH.DumpAsString(new DumpAsStringArgs { name = name, o = o, d = d, onlyNames = onlyNames.ToList() });//  , o, d, onlyNames);
         WriteLine(dump);
         WriteLine(AllStrings.space);
     }

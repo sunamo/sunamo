@@ -10,10 +10,14 @@ public static string FileIn(UserFoldersWin local, string appName, string exe)
 
     public static string FileIn(string folder, string exe)
     {
-        var masc = string.Empty; //FS.MascFromExtension(exe);
-        masc = exe;
+        if (FS.ExistsDirectory(folder))
+        {
+            var masc = string.Empty; //FS.MascFromExtension(exe);
+            masc = exe;
 
-        return FS.GetFiles(folder, masc, SearchOption.AllDirectories).FirstOrDefault();
+            return FS.GetFiles(folder, masc, SearchOption.AllDirectories).FirstOrDefault();
+        }
+        return string.Empty;
     }
 
     /// <summary>

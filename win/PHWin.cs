@@ -42,6 +42,7 @@ public class PHWin
     public static string AddBrowser(Browsers prohlizec)
     {
         string b = string.Empty;
+
         switch (prohlizec)
         {
             case Browsers.Chrome:
@@ -56,6 +57,11 @@ public class PHWin
                 break;
             case Browsers.Edge:
                 b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
+                if (!FS.ExistsFile(b))
+                {
+                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe", "MicrosoftEdge.exe");
+                }
+
                 break;
             case Browsers.Opera:
                 // Opera has version also when is installing to PF, it cant be changed
@@ -67,7 +73,6 @@ public class PHWin
                 }
                 break;
             case Browsers.Vivaldi:
-                //
                 b = @"C:\Program Files\Vivaldi\Application\vivaldi.exe";
                 if (!FS.ExistsFile(b))
                 {
@@ -96,7 +101,7 @@ public class PHWin
                 b = @"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe";
                 break;
             case Browsers.Torch:
-                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Torch\Application", "chrome.exe");
+                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Torch\Application", "torch.exe");
                 break;
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod(), prohlizec);
@@ -126,7 +131,7 @@ public class PHWin
         if (!UH.HasHttpProtocol(s))
         {
             s = SH.WrapWithQm(s);
-        }
+        }; ;
 
         Process.Start(new ProcessStartInfo(b, s));
     }

@@ -7,6 +7,17 @@ public partial class DictionaryHelper
 {
     private static Type type = typeof(DictionaryHelper);
 
+    public static void AddOrPlus<T>(Dictionary<T, int> sl, T key, int p)
+    {
+        if (sl.ContainsKey(key))
+        {
+            sl[key] += p;
+        }
+        else
+        {
+            sl.Add(key, p);
+        }
+    }
     public static void IncrementOrCreate<T>(Dictionary<T, int> sl, T baseNazevTabulky)
     {
         if (sl.ContainsKey(baseNazevTabulky))
@@ -118,6 +129,16 @@ public partial class DictionaryHelper
             qs.Add(k, v);
             return v;
         }
+    }
+
+    public static Dictionary<IDItemType, T1> ChangeTypeOfKey<IDItemType, T1>(Dictionary<int, T1> toAdd)
+    {
+        Dictionary<IDItemType, T1> r = new Dictionary<IDItemType, T1>(toAdd.Count);
+        foreach (var item in toAdd)
+        {
+            r.Add((IDItemType)(dynamic)item.Key, item.Value);
+        }
+        return r;
     }
 
     public static Dictionary<T, T> GetDictionaryByKeyValueInString<T>(List<T> p)

@@ -110,6 +110,31 @@ public class RH
         return null;
     }
 
+    public static string DumpListAsString(DumpAsStringArgs a, bool removeNull = false)
+    {
+        StringBuilder sb = new StringBuilder();
+        var f = CA.ToList<object> ((IEnumerable)a.o);
+
+        if (removeNull)
+        {
+            f.RemoveAll(d => d == null);
+        }
+
+        if (f.Count > 0)
+        {
+            sb.AppendLine(RH.NameOfFieldsFromDump(f.First()));
+
+            foreach (var item in f)
+            {
+                a.o = item;
+                sb.AppendLine(DumpAsString(a));
+            }
+        }
+        return sb.ToString();
+    }
+
+    
+
     public static bool ExistsClass(string className)
     {
         var type2 = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
@@ -135,9 +160,15 @@ public class RH
         return value;
     }
 
-    public static string DumpAsString(string v, object device)
+    /// <summary>
+    /// Delimited by NL
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="device"></param>
+    /// <returns></returns>
+    public static string DumpAsString2(string v, object device)
     {
-        return DumpAsString(v, device, DumpProvider.Yaml);
+        return DumpAsString( new DumpAsStringArgs { name = v, o = device, d = DumpProvider.Yaml });
     }
 
     #region Copy object
@@ -287,7 +318,7 @@ public class RH
         return values;
     }
 
-    public static List<string> GetValuesOfProperty2(object obj, params string[] onlyNames)
+    public static List<string> GetValuesOfProperty2(object obj, List<string> onlyNames, bool onlyValues)
     {
         var onlyNames2 = onlyNames.ToList();
         List<string> values = new List<string>();
@@ -308,7 +339,7 @@ public class RH
             if (add)
             {
                 object value = descriptor.GetValue(obj);
-                AddValue(values, name, value);
+                AddValue(values, name, value, onlyValues);
             }
         }
 
@@ -360,16 +391,25 @@ public class RH
                 }
 
                 name = name.Replace("get_", string.Empty);
-                AddValue(values, name, value);
+                AddValue(values, name, value, false);
             }
         }
 
         return values;
     }
 
-    private static void AddValue(List<string> values, string name, object value)
+    private static void AddValue(List<string> values, string name, object value, bool onlyValue)
     {
-        values.Add($"{name}: {SH.ListToString(value)}");
+        var v = SH.ListToString(value);
+        if (onlyValue)
+        {
+            values.Add(v);
+        }
+        else
+        {
+            values.Add($"{name}: {v}");
+        }
+        
     }
 
     /// <summary>
@@ -569,25 +609,38 @@ public class RH
     /// </summary>
     /// <param name="name"></param>
     /// <param name="o"></param>
-    public static string DumpAsString(string name, object o, DumpProvider d, params string[] onlyNames)
+    public static string DumpAsString(DumpAsStringArgs a)
     {
         // When I was serializing ISymbol, execution takes unlimited time here
         //return o.DumpToString(name);
         string dump = null;
-        switch (d)
+        switch (a.d)
         {
             case DumpProvider.Yaml:
             case DumpProvider.Json:
             case DumpProvider.ObjectDumper:
             case DumpProvider.Reflection:
-                dump = SH.Join(Environment.NewLine,RH.GetValuesOfProperty2(o, onlyNames));
+                dump = SH.Join(a.onlyValues ? AllStrings.swd : Environment.NewLine,RH.GetValuesOfProperty2(a.o, a.onlyNames, a.onlyValues));
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "DumpAsString", d);
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "DumpAsString", a.d);
                 break;
         }
 
-        return name + Environment.NewLine + dump;
+        return a.name + Environment.NewLine + dump;
+    }
+
+    private static string NameOfFieldsFromDump(object obj)
+    {
+        var properties = TypeDescriptor.GetProperties(obj);
+        List<string> ls = new List<string>();
+
+        foreach (PropertyDescriptor descriptor in properties)
+        {
+            ls.Add(descriptor.Name);
+        }
+
+        return SH.Join(AllStrings.swd, ls);
     }
 
     public static string DumpListAsString(string name, IEnumerable o)
@@ -597,7 +650,7 @@ public class RH
         int i = 0;
         foreach (var item in o)
         {
-            sb.AppendLine(DumpAsString(name + "#" + i, item));
+            sb.AppendLine(DumpAsString2( name + "#" + i, item));
             i++;
         }
 

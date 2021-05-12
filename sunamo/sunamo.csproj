@@ -151,6 +151,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Args\DumpAsStringArgs.cs" />
     <Compile Include="Converts\ConvertCamelConventionWithNumbers.cs" />
     <Compile Include="Converts\ConvertPascalConventionWithNumbers.cs" />
     <Compile Include="Interfaces\IProgressBar.cs" />
@@ -810,6 +811,7 @@
     <Compile Include="XmlNamespacesHolder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="_\Comparing\Text Editors Boxes.txt" />
     <Content Include="_\Comparing\TextWriterList,TextBuilder,TextOutputGenerator,TextGenerator,InstantSB,HtmlSB.txt" />
     <Content Include="git.txt" />
     <Content Include="HTMLPage1.html" />
