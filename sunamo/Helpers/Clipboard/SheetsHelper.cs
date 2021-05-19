@@ -134,6 +134,10 @@ public class SheetsHelper
     /// <returns></returns>
     public static List<string> SplitFromGoogleSheetsRow(string input, bool removeEmptyElements )
     {
+        if (input == null)
+        {
+            input = ClipboardHelper.GetText();
+        }
         var r =SplitFromGoogleSheets(input);
         if (removeEmptyElements)
         {

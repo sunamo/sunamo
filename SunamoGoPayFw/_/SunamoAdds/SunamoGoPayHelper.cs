@@ -46,7 +46,7 @@ public partial class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Sess
         }
         catch (GPClientException e)
         {
-            return RH.DumpAsString("e", e, DumpProvider.Reflection);
+            return RH.DumpAsString(new DumpAsStringArgs { name = "e", o = e, d = DumpProvider.Reflection });
         }
     }
 

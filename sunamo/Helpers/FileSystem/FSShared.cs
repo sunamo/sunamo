@@ -54,7 +54,10 @@ public partial class FS
     private static List<char> s_invalidCharsForMapPath = null;
     private static List<char> s_invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
+
+
     public async static Task<List<string>> GetFilesMoreMascAsync(string path, string masc, SearchOption searchOption, GetFilesMoreMascArgs e = null)
+
     {
         if (e == null)
         {
@@ -62,10 +65,13 @@ public partial class FS
         }
 
 #if DEBUG
-        var s = FS.ReplaceInvalidFileNameChars(SH.Join(path, masc, searchOption));
-        var d = AppData.ci.GetFile(AppFolders.Cache, "GetFilesMoreMasc" + s + ".txt");
+        string d = null;
+
         if (e.LoadFromFileWhenDebug)
         {
+            var s = FS.ReplaceInvalidFileNameChars(SH.Join(path, masc, searchOption));
+             d = AppData.ci.GetFile(AppFolders.Cache, "GetFilesMoreMasc" + s + ".txt");
+        
             if (FS.ExistsFile(d))
             {
                 return TF.ReadAllLines(path);
@@ -91,9 +97,30 @@ public partial class FS
             masks.Add(masc);
         }
 
-        foreach (var item in masks)
+        if (e.deleteFromDriveWhenCannotBeResolved)
         {
-            result.AddRange(Directory.GetFiles(path, item, searchOption));
+            foreach (var item in masks)
+            {
+                try
+                {
+                    result.AddRange(Directory.GetFiles(path, item, searchOption));
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.StartsWith(NetFxExceptionsNotTranslateAble.TheNameOfTheFileCannotBeResolvedByTheSystem))
+                    {
+                        FS.TryDeleteDirectoryOrFile(path);
+                    }
+                }
+                
+            }
+        }
+        else
+        {
+            foreach (var item in masks)
+            {
+                result.AddRange(Directory.GetFiles(path, item, searchOption));
+            }
         }
 
 #if DEBUG

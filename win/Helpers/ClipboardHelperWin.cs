@@ -79,12 +79,29 @@ public class ClipboardHelperWin : IClipboardHelper
 
         try
         {
-            if (!W32.OpenClipboard(IntPtr.Zero))
-                return null;
+            try
+            {
+                if (!W32.OpenClipboard(IntPtr.Zero))
+                    return null;
+            }
+            catch (Exception ex)
+            {
+            }
 
-            IntPtr handle = W32.GetClipboardData(CF_UNICODETEXT);
-            if (handle == IntPtr.Zero)
+            IntPtr handle = IntPtr.Zero;
+
+            try
+            {
+                 handle = W32.GetClipboardData(CF_UNICODETEXT);
+                if (handle == IntPtr.Zero)
+                    return null;
+            }
+            catch (Exception ex)
+            {
                 return null;
+            }
+
+            
 
             IntPtr pointer = IntPtr.Zero;
 
@@ -101,6 +118,11 @@ public class ClipboardHelperWin : IClipboardHelper
                 Marshal.Copy(pointer, buff, 0, size);
 
                 return Encoding.Unicode.GetString(buff).TrimEnd('\0');
+            }
+            catch (Exception ex)
+            {
+                return null;
+
             }
             finally
             {

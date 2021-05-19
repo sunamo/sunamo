@@ -11,7 +11,7 @@ public class CLProgressBar : ProgressState, IProgressBar
 {
     int _writeOnlyDividableBy;
     bool isWriteOnlyDividableBy = false;
-
+    public bool isNotUt = false;
     public int writeOnlyDividableBy
     {
         get
@@ -27,19 +27,26 @@ public class CLProgressBar : ProgressState, IProgressBar
 
     public void Init()
     {
-        Init(LyricsHelper_OverallSongs, LyricsHelper_AnotherSong, LyricsHelper_WriteProgressBarEnd);
+        if (isNotUt)
+        {
+            Init(LyricsHelper_OverallSongs, LyricsHelper_AnotherSong, LyricsHelper_WriteProgressBarEnd);
+        }
+        
     }
 
     public void LyricsHelper_WriteProgressBarEnd()
     {
-        if (isWriteOnlyDividableBy)
+        if (isNotUt)
         {
-            CL.ClearCurrentConsoleLine();
-            CL.WriteLine(n + " Finished");
-        }
-        else
-        {
-            CL.WriteProgressBarEnd();
+            if (isWriteOnlyDividableBy)
+            {
+                CL.ClearCurrentConsoleLine();
+                CL.WriteLine(n + " Finished");
+            }
+            else
+            {
+                CL.WriteProgressBarEnd();
+            }
         }
     }
 
@@ -47,56 +54,65 @@ public class CLProgressBar : ProgressState, IProgressBar
 
     public void LyricsHelper_OverallSongs(int obj)
     {
-        n = 0;
-        if (isWriteOnlyDividableBy)
+        if (isNotUt)
         {
-            CL.WriteLine("Starting...");
+            n = 0;
+            if (isWriteOnlyDividableBy)
+            {
+                CL.WriteLine("Starting...");
+            }
+            else
+            {
+                pc = new PercentCalculator(obj);
+                CL.WriteProgressBar(0);
+            }
         }
-        else
-        { 
-            pc = new PercentCalculator(obj);
-            CL.WriteProgressBar(0);
-        }
-        
     }
 
     public void LyricsHelper_AnotherSong()
     {
-        n++;
-        LyricsHelper_AnotherSong(n);
+        if (isNotUt)
+        {
+            n++;
+            LyricsHelper_AnotherSong(n);
+        }
     }
 
     public void LyricsHelper_AnotherSong(int i)
     {
-        
-        if (isWriteOnlyDividableBy)
+        if (isNotUt)
         {
-            if (i % writeOnlyDividableBy == 0)
+            if (isWriteOnlyDividableBy)
             {
-                CL.ClearCurrentConsoleLine();
-                TypedSunamoLogger.Instance.Information(i.ToString());
+                if (i % writeOnlyDividableBy == 0)
+                {
+                    CL.ClearCurrentConsoleLine();
+                    TypedSunamoLogger.Instance.Information(i.ToString());
+                }
+            }
+            else
+            {
+                pc.AddOnePercent();
+                CL.WriteProgressBar((int)pc.last, new WriteProgressBarArgs(true, i, pc._overallSum));
             }
         }
-        else
-        {
-            pc.AddOnePercent();
-            CL.WriteProgressBar((int)pc.last, new WriteProgressBarArgs(true, i, pc._overallSum));
-        }
-        
     }
 
     /// <summary>
     /// private coz should be called only in this class
     /// </summary>
     /// <returns></returns>
-    private
-        bool IsDividable()
+    private bool IsDividable()
     {
-        if (isWriteOnlyDividableBy)
+        if (isNotUt)
         {
-            return n % writeOnlyDividableBy == 0;
+            if (isWriteOnlyDividableBy)
+            {
+                return n % writeOnlyDividableBy == 0;
 
+            }
         }
+        { }
         return true;
     }
 }

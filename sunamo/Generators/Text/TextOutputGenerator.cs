@@ -228,11 +228,23 @@ public class TextOutputGenerator
         }
     }
 
-    public void Dictionary<Header, Value>(Dictionary<Header, List<Value>> ls) where Header : IEnumerable<char>
+    public void Dictionary<Header, Value>(Dictionary<Header, List<Value>> ls, bool onlyCountInValue = false) where Header : IEnumerable<char>
     {
-        foreach (var item in ls)
+        if (onlyCountInValue)
         {
-            List<Header, Value>(item.Value, item.Key);
+            List<string> d = new List<string>(ls.Count);
+            foreach (var item in ls)
+            {
+                d.Add(item.Key + AllStrings.space + item.Value.Count());
+            }
+            List(d);
+        }
+        else
+        {
+            foreach (var item in ls)
+            {
+                List<Header, Value>(item.Value, item.Key);
+            }
         }
     }
 

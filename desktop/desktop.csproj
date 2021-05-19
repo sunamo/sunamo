@@ -174,6 +174,7 @@
     <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControlsShared.cs" />
     <Compile Include="Collections\NotifyChangesCollection.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowHelper.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowInstance.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowSettings.cs" />
@@ -217,6 +218,7 @@
     </Compile>
     <Compile Include="Controls\Collections\SunamoComboBox.cs" />
     <Compile Include="Controls\Controls\CommandBindingManager.cs" />
+    <Compile Include="Controls\Controls\DropDownButton.cs" />
     <Compile Include="Controls\Controls\SearchingInLBWPF.cs" />
     <Compile Include="Controls\Controls\TwoRadiosUC.xaml.cs">
       <DependentUpon>TwoRadiosUC.xaml</DependentUpon>
@@ -284,6 +286,7 @@
     <Compile Include="Controls\Result\FoundedResultUC.xaml.cs">
       <DependentUpon>FoundedResultUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Result\FoundedResultViewModel.cs" />
     <Compile Include="Controls\Result\NoResultsFound.xaml.cs">
       <DependentUpon>NoResultsFound.xaml</DependentUpon>
     </Compile>
@@ -359,6 +362,7 @@
     <Compile Include="Data\TextBlockData.cs" />
     <Compile Include="DataTableHelper.cs" />
     <Compile Include="DesktopNotTranslateAble.cs" />
+    <Compile Include="Enums\FoundedResultActions.cs" />
     <Compile Include="Essential\WpfApp.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="Extensions\CheckBoxExtensions.cs" />
@@ -616,6 +620,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Collections\RadioButtonsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Controls\DropDownButtonDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

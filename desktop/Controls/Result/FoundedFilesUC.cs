@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace desktop.Controls.Result
@@ -61,11 +62,21 @@ namespace desktop.Controls.Result
                 else
                 {
                 bool someVisible = false;
+
+                Regex r = null;
+
+                if (SH.IsWildcard(text))
+                {
+                    text = Wildcard.WildcardToRegex(text);
+                    r = new Regex(text);
+                }
+                
+
                     foreach (FoundedFileUC item in sp.Children)
                     {
-                        if (item.Contains(text))
+                        if (item.Contains(r,text))
                         {
-                        someVisible = true;
+                            someVisible = true;
                             item.Visibility = System.Windows.Visibility.Visible;
                         }
                         else

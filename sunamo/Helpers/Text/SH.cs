@@ -20,8 +20,6 @@ public static partial class SH
 {
     public static string AddIfNotContains(string input, string s, string sLower = null)
     {
-        
-
         if (sLower != null)
         {
             s = sLower;
@@ -49,6 +47,7 @@ public static partial class SH
                     break;
                 }
             }
+
             if (!replace)
             {
                 return nameSolution;
@@ -1452,7 +1451,7 @@ public static partial class SH
     }
     public static bool IsWildcard(string text)
     {
-        return SH.ContainsAny(text, false, CA.ToEnumerable(AllStrings.q, AllStrings.asterisk)).Count > 1;
+        return SH.ContainsAny(text, false, CA.ToEnumerable(AllStrings.q, AllStrings.asterisk)).Count > 0;
     }
     public static string DeleteCharsOutOfAscii(string s)
     {

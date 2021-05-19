@@ -61,6 +61,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="NuGet.LibraryModel" Version="5.9.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="ResourcesDuo.Designer.cs">

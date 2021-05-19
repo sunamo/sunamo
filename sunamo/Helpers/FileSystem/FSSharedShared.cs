@@ -23,6 +23,15 @@ public partial class FS{
         return TF.ReadAllText(f);
     }
 
+    public static bool TryDeleteDirectoryOrFile(string v)
+    {
+        if(!FS.TryDeleteDirectory(v))
+        {
+            return FS.TryDeleteFile(v);
+        }
+        return true;
+    }
+
     /// <summary>
     /// Dont check for size
     /// Into A2 is good put true - when storage was fulled, all new files will be written with zero size. But then failing because HtmlNode as null - empty string as input
@@ -42,6 +51,7 @@ public partial class FS{
         {
             if (!exists)
             {
+                ;
                 return false;
             }
             else 

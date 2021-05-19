@@ -57,8 +57,10 @@ public class PHWin
                 break;
             case Browsers.Edge:
                 b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
+                
                 if (!FS.ExistsFile(b))
                 {
+                    //c:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe
                     b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe", "MicrosoftEdge.exe");
                 }
 
@@ -113,6 +115,11 @@ public class PHWin
             b = string.Empty;
         }
 
+        if (b == string.Empty)
+        {
+
+        }
+
         path.Add(prohlizec, b);
 
         return b;
@@ -158,10 +165,6 @@ public class PHWin
         {
             if (!FS.ExistsFile( item.Value))
             {
-                if (item.Value == null)
-                {
-
-                }
 
                 doesntExists.Add(item.Value);
             }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -67,6 +68,16 @@ namespace desktop.Controls.Result
         public bool Contains(string t)
         {
             return fileFullPath.Contains(t);
+        }
+
+        internal bool Contains(Regex r, string text)
+        {
+            if (r != null)
+            {
+                return r.IsMatch(fileFullPath);
+            }
+            
+            return fileFullPath.Contains(text);
         }
 
         /// <summary>

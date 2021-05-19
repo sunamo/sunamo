@@ -11,4 +11,5 @@ public class GetFilesMoreMascArgs
     public string path;
     public string masc = "*";
     public SearchOption searchOption = SearchOption.TopDirectoryOnly;
+    public bool deleteFromDriveWhenCannotBeResolved = false;
 }

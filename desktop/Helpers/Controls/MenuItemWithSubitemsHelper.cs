@@ -209,8 +209,8 @@ static Type type = typeof(MenuItemWithSubitemsHelper);
             int i = 0;
             foreach (object item in o)
             {
-            MenuItem tsmi = AddMenuItem(item, item.ToString());
-            tsmi.Command = eh;
+                MenuItem tsmi = AddMenuItem(item, item.ToString());
+                tsmi.Command = eh;
                 tsmi.CommandParameter = item;
                 
                 i++;

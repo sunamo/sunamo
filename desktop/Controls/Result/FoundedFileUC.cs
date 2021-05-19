@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
@@ -25,4 +26,6 @@ public class FoundedFileUC : FoundedResultUC
         get { return base.file; }
         set { base.file = value; }
     }
+
+    
 }

@@ -151,10 +151,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Args\DumpAsStringArgs.cs" />
-    <Compile Include="Converts\ConvertCamelConventionWithNumbers.cs" />
-    <Compile Include="Converts\ConvertPascalConventionWithNumbers.cs" />
-    <Compile Include="Interfaces\IProgressBar.cs" />
+    <Compile Include="Constants\NetFxExceptionsNotTranslateAble.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -168,6 +165,7 @@
     <Compile Include="Args\BoilerplateStartArgs.cs" />
     <Compile Include="Args\ChangeContentArgs.cs" />
     <Compile Include="Args\CSharpGeneratorArgs.cs" />
+    <Compile Include="Args\DumpAsStringArgs.cs" />
     <Compile Include="Args\GetFilesArgs.cs" />
     <Compile Include="Args\GetFilesBaseArgs.cs" />
     <Compile Include="Args\GetFilesEveryFolderArgs.cs" />
@@ -271,6 +269,7 @@
     <Compile Include="Converts\BigEndianBitConverter.cs" />
     <Compile Include="Converts\ConvertBase64.cs" />
     <Compile Include="Converts\ConvertCamelConvention.cs" />
+    <Compile Include="Converts\ConvertCamelConventionWithNumbers.cs" />
     <Compile Include="Converts\ConvertDateTimeToFileNamePostfix.cs" />
     <Compile Include="Converts\ConvertDateTimeToFileNamePrefix.cs" />
     <Compile Include="Converts\ConvertDayShortcutFullName.cs" />
@@ -282,6 +281,7 @@
     <Compile Include="Converts\ConvertMonthShortcutNumber.cs" />
     <Compile Include="Converts\ConvertOnlyLowercase.cs" />
     <Compile Include="Converts\ConvertPascalConvention.cs" />
+    <Compile Include="Converts\ConvertPascalConventionWithNumbers.cs" />
     <Compile Include="Converts\ConvertRot12.cs" />
     <Compile Include="Converts\ConvertRot21.cs" />
     <Compile Include="Converts\ConvertTypeNameType.cs" />
@@ -705,6 +705,7 @@
     <Compile Include="Interfaces\IParserO.cs" />
     <Compile Include="Interfaces\IParserT.cs" />
     <Compile Include="Interfaces\IPath.cs" />
+    <Compile Include="Interfaces\IProgressBar.cs" />
     <Compile Include="Interfaces\IRandom.cs" />
     <Compile Include="Interfaces\IRegistry.cs" />
     <Compile Include="Interfaces\IResult.cs" />

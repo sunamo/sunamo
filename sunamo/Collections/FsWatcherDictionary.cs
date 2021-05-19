@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 public class FsWatcherDictionary<T, U> : IDictionary<T, U>
 {
     static Type type = typeof(FsWatcherDictionary<T, U>);

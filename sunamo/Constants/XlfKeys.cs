@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string CopyToClipboardFounded = "CopyToClipboardFounded"; 
+	public const string alsoWildcard = "alsoWildcard"; 
 	public const string GenerateListOfClassElements = "GenerateListOfClassElements"; 
-
 	public const string GenerateListOfNamespaceElements = "GenerateListOfNamespaceElements"; 
 	public const string register = "register"; 
 	public const string BadCombinationLoginAndPasswordDoYouWantTo = "BadCombinationLoginAndPasswordDoYouWantTo"; 

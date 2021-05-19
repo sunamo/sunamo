@@ -22,6 +22,7 @@ namespace desktop.Controls.Result
     /// </summary>
     public partial class FoundedResultsUC : UserControl, ISelectedT<string>
     {
+        public static Type type = typeof(FoundedResultsUC);
         public event VoidString Selected;
         protected string selectedItem = null;
         public string SelectedItem => selectedItem;
@@ -36,9 +37,34 @@ namespace desktop.Controls.Result
 
         private void FoundedResultsUC_Loaded(object sender, RoutedEventArgs e)
         {
+            DataContext = new FoundedResultViewModel();
+
             txtFilter.BorderBrush = Brushes.Tomato;
-            TextBlockHelper.SetTextPostColon(txtFilter.tb, XlfKeys.Filter);
-            
+            txtFilter.tb.Text = sess.i18n(XlfKeys.Filter) + " (" + sess.i18n(XlfKeys.alsoWildcard) + "): ";
+
+            miCopyToClipboardFounded.Header = sess.i18n(XlfKeys.CopyToClipboardFounded);
+
+            FoundedResultViewModel.Do += FoundedResultViewModel_Do;
+        }
+
+        private void FoundedResultViewModel_Do(FoundedResultActions obj)
+        {
+            if (obj == FoundedResultActions.CopyToClipboardFounded)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (FoundedFileUC item in sp.Children)
+                {
+                    if (item.Visibility == Visibility.Visible)
+                    {
+                        sb.AppendLine(item.fileFullPath);
+                    }
+                }
+                ClipboardHelper.SetText(sb.ToString());
+            }
+            else
+            {
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), obj);
+            }
         }
 
         /// <summary>
