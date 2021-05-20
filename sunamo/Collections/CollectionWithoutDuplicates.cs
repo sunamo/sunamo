@@ -8,9 +8,22 @@ public class CollectionWithoutDuplicates<T>
 {
     
     public List<T> c = null;
+    public List<string> sr = null;
     public bool allowNull = false;
     public static bool br = false;
-    
+
+    bool _compareWithString = false;
+
+    public bool compareWithString
+    {
+        get => _compareWithString;
+        set 
+        {
+            _compareWithString = value;
+            sr = new List<string>(count);
+        }
+    }
+    int count = 10000;
 
     public CollectionWithoutDuplicates()
     {
@@ -19,10 +32,12 @@ public class CollectionWithoutDuplicates<T>
             System.Diagnostics.Debugger.Break();
         }
         c = new List<T>();
+        sr = new List<string>();
     }
 
     public CollectionWithoutDuplicates(int count)
     {
+        this.count = count;
         c = new List<T>(count);
     }
 
