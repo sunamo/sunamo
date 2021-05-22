@@ -49,6 +49,31 @@ public static partial class CA
 
         return false;
     }
+
+    public static bool IsAllTheSameString<T>(IList<T> l, IList<T> l2)
+    {
+        var c1 = l.Count();
+        var c2 = l2.Count();
+        if (c1 != c2)
+        {
+            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(), type, Exc.CallingMethod(), "l", l, "l2", l2);
+        }
+
+        string s1;
+        string s2;
+
+        for (int i = 0; i < c1; i++)
+        {
+            s1 = l[i].ToString();
+            s2 = l2[i].ToString();
+            if (s1 != s2)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
     #endregion
 
     #region 2) IsEqualToAnyElement

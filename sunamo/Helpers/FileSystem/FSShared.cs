@@ -50,7 +50,6 @@ public partial class FS
     /// </summary>
     public static string s_invalidFileNameCharsString = null;
     public static List<char> s_invalidFileNameChars = null;
-    
     private static List<char> s_invalidCharsForMapPath = null;
     private static List<char> s_invalidFileNameCharsWithoutDelimiterOfFolders = null;
 

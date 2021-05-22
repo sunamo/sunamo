@@ -13,6 +13,7 @@ public static partial class SF
 
     public const string replaceForSeparatorString = AllStrings.lowbar;
     public static readonly char replaceForSeparatorChar = AllChars.lowbar;
+    public static string dDeli = "|";
 
     public static Dictionary<T1, T2> ToDictionary<T1, T2>(List<List<string>> l)
     {
@@ -147,9 +148,9 @@ public static partial class SF
     /// </summary>
     /// <param name="o"></param>
     /// <param name="separator"></param>
-    public static string PrepareToSerialization(IEnumerable<string> o, string separator = AllStrings.verbar)
+    public static string PrepareToSerialization3(IEnumerable<string> o)
     {
-        return PrepareToSerializationWorker(o, false, separator);
+        return PrepareToSerializationWorker(o, false, dDeli);
     }
     /// <summary>
     /// Return with last |
@@ -158,7 +159,7 @@ public static partial class SF
     /// <param name="o"></param>
     public static string PrepareToSerialization(params string[] o)
     {
-        return PrepareToSerializationWorker(o, false, AllStrings.verbar);
+        return PrepareToSerializationWorker(o, false, dDeli);
     }
 
     static Type type = typeof(SF);
@@ -204,6 +205,7 @@ public static partial class SF
         var ts = CA.ToListString(pr);
         return PrepareToSerializationWorker(ts, true, separatorString);
     }
+
 /// <summary>
     /// Return without last
     /// If need to combine string and IEnumerable, lets use CA.Join

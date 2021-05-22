@@ -13,6 +13,7 @@ using System.Web;
 /// </summary>
 public partial class UriWebServices
 {
+    public static Action<IEnumerable, string> SearchInAll;
     static int opened = 0;
     public static string WikipediaEn = "https://en.wikipedia.org/w/index.php?search=%s";
     public const string karaokeTexty = "http://www.karaoketexty.cz/search?q=%s&sid=bbrpp&x=36&y=9";
@@ -74,24 +75,7 @@ public partial class UriWebServices
 
     
 
-    /// <summary>
-    /// A1 is chrome replacement
-    /// </summary>
-    /// <param name="array"></param>
-    /// <param name="what"></param>
-    public static void SearchInAll(IEnumerable array, string what)
-    {
-        foreach (var item in array)
-        {
-            opened++;
-            string uri = UriWebServices.FromChromeReplacement(item.ToString(), what);
-            Process.Start(uri);
-            if (opened % 10 == 0)
-            {
-                Debugger.Break();
-            }
-        }
-    }
+    
 
     public static string TwitterProfile(string nick)
     {

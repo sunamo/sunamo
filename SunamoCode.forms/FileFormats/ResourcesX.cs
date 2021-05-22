@@ -48,7 +48,7 @@ namespace SunamoCode
                     else
                     {
                         //..\sunamo\multilingualresources\sunamo.cs-cz.xlf
-                        // D:\Documents\Visual Studio 2017\Projects\sunamo.Tests\SunamoCode.forms.Tests\bin\sunamo\multilingualresources\sunamo.cs-cz.xlf
+                        // E:\Documents\Visual Studio 2017\Projects\sunamo.Tests\SunamoCode.forms.Tests\bin\sunamo\multilingualresources\sunamo.cs-cz.xlf
                         val = ((ResXDataNode)d.Value).GetValue(typeres).ToString();
                         resourceEntries.Add(d.Key.ToString(), val);
 

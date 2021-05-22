@@ -1116,6 +1116,13 @@ public static partial class CA
         return outArr;
     }
 
+    /// <summary>
+    /// Simply calling SequenceEqual
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="sloupce"></param>
+    /// <param name="sloupce2"></param>
+    /// <returns></returns>
     public static bool IsTheSame<T>(IEnumerable<T> sloupce, IEnumerable<T> sloupce2)
     {
         return sloupce.SequenceEqual(sloupce2);

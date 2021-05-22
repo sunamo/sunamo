@@ -135,6 +135,12 @@ TranslateEngine");
             return XHelper.GetElementOfName(item, "target");
         }
 
+        /// <summary>
+        /// 0 - Source
+        /// 1 - Target
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         static Tuple<XElement, XElement> SourceTarget(XElement item)
         {
             XElement source = XHelper.GetElementOfName(item, "source");
@@ -456,6 +462,8 @@ Into A1 insert:
 
             var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
+
+            //string source = 
 
             for (int i = d.trans_units.Count() - 1; i >= 0; i--)
             {

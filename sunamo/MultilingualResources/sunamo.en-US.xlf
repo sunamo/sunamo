@@ -1,4 +1,5 @@
-﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -15,27 +16,27 @@
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
         <trans-unit id="UsefulApps" translate="no" xml:space="preserve">
           
-          <target state="translated">Useful apps</target>
+          <target>Useful apps</target>
         </trans-unit>
         <trans-unit id="forYourNeeds" translate="no" xml:space="preserve">
           
-          <target state="translated">for your needs</target>
+          <target>for your needs</target>
         </trans-unit>
         <trans-unit id="AddANewApp" translate="no" xml:space="preserve">
           
-          <target state="translated">Add a new app</target>
+          <target>Add a new app</target>
         </trans-unit>
         <trans-unit id="appsCloud" translate="no" xml:space="preserve">
           
-          <target state="translated">apps cloud</target>
+          <target>apps cloud</target>
         </trans-unit>
         <trans-unit id="tiles4" translate="no" xml:space="preserve">
           
-          <target state="translated">tiles</target>
+          <target>tiles</target>
         </trans-unit>
         <trans-unit id="notShowing" translate="no" xml:space="preserve">
           
-          <target state="translated">not showing</target>
+          <target>not showing</target>
         </trans-unit>
         <trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters">
           <target>Describe something you remember well (what you love, but other people don't know about it 1-1000 characters</target>
@@ -10789,3138 +10790,3138 @@ A fraternal form of manifestation is the bliss</target>
         </trans-unit>
         <trans-unit id="TheRecommendedVersionHasNotBeenUploadedYet" translate="no" xml:space="preserve">
           
-          <target state="translated">The recommended version has not been uploaded yet.</target>
+          <target>The recommended version has not been uploaded yet.</target>
         </trans-unit>
         <trans-unit id="License" translate="no" xml:space="preserve">
           
-          <target state="translated">License</target>
+          <target>License</target>
         </trans-unit>
         <trans-unit id="CopyImageLinkIntoTheClipboard" translate="no" xml:space="preserve">
           
-          <target state="translated">Copy image link into the clipboard</target>
+          <target>Copy image link into the clipboard</target>
         </trans-unit>
         <trans-unit id="NotLogined" translate="no" xml:space="preserve">
           
-          <target state="translated">Not logined</target>
+          <target>Not logined</target>
         </trans-unit>
         <trans-unit id="PleaseLogInToBuyMyApp" translate="no" xml:space="preserve">
           
-          <target state="translated">Please, log in to buy my app</target>
+          <target>Please, log in to buy my app</target>
         </trans-unit>
         <trans-unit id="Screenshots" translate="no" xml:space="preserve">
           
-          <target state="translated">Screenshots</target>
+          <target>Screenshots</target>
         </trans-unit>
         <trans-unit id="DependsOn" translate="no" xml:space="preserve">
           
-          <target state="translated">Depends on</target>
+          <target>Depends on</target>
         </trans-unit>
         <trans-unit id="AreYouInterested" translate="no" xml:space="preserve">
           
-          <target state="translated">Are you interested?</target>
+          <target>Are you interested?</target>
         </trans-unit>
         <trans-unit id="PriceIsWithAllTaxes" translate="no" xml:space="preserve">
           
-          <target state="translated">Price is with all taxes</target>
+          <target>Price is with all taxes</target>
         </trans-unit>
         <trans-unit id="BuyNow" translate="no" xml:space="preserve">
           
-          <target state="translated">Buy now</target>
+          <target>Buy now</target>
         </trans-unit>
         <trans-unit id="ViewsToday" translate="no" xml:space="preserve">
           
-          <target state="translated">Views today</target>
+          <target>Views today</target>
         </trans-unit>
         <trans-unit id="AppHaveNoDependecies" translate="no" xml:space="preserve">
           
-          <target state="translated">App have no dependecies</target>
+          <target>App have no dependecies</target>
         </trans-unit>
         <trans-unit id="SomethingAbout" translate="no" xml:space="preserve">
           
-          <target state="translated">Something about</target>
+          <target>Something about</target>
         </trans-unit>
         <trans-unit id="me" translate="no" xml:space="preserve">
           
-          <target state="translated">me</target>
+          <target>me</target>
         </trans-unit>
         <trans-unit id="MyFirstLineOfCodeIWroteOn2009NowadaysIStudyInformaticsOnVSBTechnicalUniversityOfOstravaIMTargetingOnMicrosoftAndNETPlatformAndTryingToDoTheUsefulestApps" translate="no" xml:space="preserve">
           
-          <target state="translated">My first line of code I wrote on 2009. Nowadays, I study Informatics on VSB - Technical University of Ostrava. I'm targeting on Microsoft and .NET platform and trying to do the usefulest apps.</target>
+          <target>My first line of code I wrote on 2009. Nowadays, I study Informatics on VSB - Technical University of Ostrava. I'm targeting on Microsoft and .NET platform and trying to do the usefulest apps.</target>
         </trans-unit>
         <trans-unit id="Purchased" translate="no" xml:space="preserve">
           
-          <target state="translated">Purchased</target>
+          <target>Purchased</target>
         </trans-unit>
         <trans-unit id="modules" translate="no" xml:space="preserve">
           
-          <target state="translated">modules</target>
+          <target>modules</target>
         </trans-unit>
         <trans-unit id="PaymentMethodChosen" translate="no" xml:space="preserve">
           
-          <target state="translated">Method chosen</target>
+          <target>Method chosen</target>
         </trans-unit>
         <trans-unit id="Paid" translate="no" xml:space="preserve">
           
-          <target state="translated">Paid</target>
+          <target>Paid</target>
         </trans-unit>
         <trans-unit id="Authorized" translate="no" xml:space="preserve">
           
-          <target state="translated">Authorized</target>
+          <target>Authorized</target>
         </trans-unit>
         <trans-unit id="Canceled" translate="no" xml:space="preserve">
           
-          <target state="translated">Canceled</target>
+          <target>Canceled</target>
         </trans-unit>
         <trans-unit id="Timeouted" translate="no" xml:space="preserve">
           
-          <target state="translated">Timeouted</target>
+          <target>Timeouted</target>
         </trans-unit>
         <trans-unit id="Refunded" translate="no" xml:space="preserve">
           
-          <target state="translated">Refunded</target>
+          <target>Refunded</target>
         </trans-unit>
         <trans-unit id="PartiallyRefunded" translate="no" xml:space="preserve">
           
-          <target state="translated">Partially Refunded</target>
+          <target>Partially Refunded</target>
         </trans-unit>
         <trans-unit id="ShowSelected" translate="no" xml:space="preserve">
           
-          <target state="translated">Show selected</target>
+          <target>Show selected</target>
         </trans-unit>
         <trans-unit id="ofApp" translate="no" xml:space="preserve">
           
-          <target state="translated">of app</target>
+          <target>of app</target>
         </trans-unit>
         <trans-unit id="TermsOfUse" translate="no" xml:space="preserve">
           
-          <target state="translated">Terms of use</target>
+          <target>Terms of use</target>
         </trans-unit>
         <trans-unit id="Prepaid" translate="no" xml:space="preserve">
           
-          <target state="translated">Prepaid</target>
+          <target>Prepaid</target>
         </trans-unit>
         <trans-unit id="Prepay" translate="no" xml:space="preserve">
           
-          <target state="translated">Prepay</target>
+          <target>Prepay</target>
         </trans-unit>
         <trans-unit id="RequiredMonthsYouWillEnterIn2Step" translate="no" xml:space="preserve">
           
-          <target state="translated">Required months you will enter in 2. step</target>
+          <target>Required months you will enter in 2. step</target>
         </trans-unit>
         <trans-unit id="CheapAndQualityHostingServices" translate="no" xml:space="preserve">
           
-          <target state="translated">Cheap and quality hosting services</target>
+          <target>Cheap and quality hosting services</target>
         </trans-unit>
         <trans-unit id="MyFreeGeoCachingAppForPlanningYourAdventures" translate="no" xml:space="preserve">
           
-          <target state="translated">My free GeoCaching app for planning your adventures</target>
+          <target>My free GeoCaching app for planning your adventures</target>
         </trans-unit>
         <trans-unit id="MeasureYourIQ" translate="no" xml:space="preserve">
           
-          <target state="translated">Measure your IQ</target>
+          <target>Measure your IQ</target>
         </trans-unit>
         <trans-unit id="ResearchForTheBookExperimentalAtlasOfMen" translate="no" xml:space="preserve">
           
-          <target state="translated">Research for the book Experimental Atlas of Men</target>
+          <target>Research for the book Experimental Atlas of Men</target>
         </trans-unit>
         <trans-unit id="ThisWebUseToServiceOfTheServicePersonalizationAndAnalysisOfVisits" translate="no" xml:space="preserve">
           
-          <target state="translated">This web use to service of the service, personalization and analysis of visits</target>
+          <target>This web use to service of the service, personalization and analysis of visits</target>
         </trans-unit>
         <trans-unit id="PrivacyPolicy" translate="no" xml:space="preserve">
           
-          <target state="translated">Privacy policy</target>
+          <target>Privacy policy</target>
         </trans-unit>
         <trans-unit id="ByUsingThisWebsiteYouAgreeToThis" translate="no" xml:space="preserve">
           
-          <target state="translated">By using this website, you agree to this</target>
+          <target>By using this website, you agree to this</target>
         </trans-unit>
         <trans-unit id="Feedback" translate="no" xml:space="preserve">
           
-          <target state="translated">Feedback</target>
+          <target>Feedback</target>
         </trans-unit>
         <trans-unit id="Help" translate="no" xml:space="preserve">
           
-          <target state="translated">Help</target>
+          <target>Help</target>
         </trans-unit>
         <trans-unit id="ShowGraphOfViewsForLast7Days" translate="no" xml:space="preserve">
           
-          <target state="translated">Show graph of views for last 7 days</target>
+          <target>Show graph of views for last 7 days</target>
         </trans-unit>
         <trans-unit id="AppWasFoundButNoHelpForIt" translate="no" xml:space="preserve">
           
-          <target state="translated">App was found but wasn't created help for it</target>
+          <target>App was found but wasn't created help for it</target>
         </trans-unit>
         <trans-unit id="Type" translate="no" xml:space="preserve">
           
-          <target state="translated">Type</target>
+          <target>Type</target>
         </trans-unit>
         <trans-unit id="Attachment" translate="no" xml:space="preserve">
           
-          <target state="translated">Attachment</target>
+          <target>Attachment</target>
         </trans-unit>
         <trans-unit id="DescriptionMax4000Letters" translate="no" xml:space="preserve">
           
-          <target state="translated">Description (max 4000 letters)</target>
+          <target>Description (max 4000 letters)</target>
         </trans-unit>
         <trans-unit id="Send" translate="no" xml:space="preserve">
           
-          <target state="translated">Send</target>
+          <target>Send</target>
         </trans-unit>
         <trans-unit id="NotRegisteredYet" translate="no" xml:space="preserve">
           
-          <target state="translated">Not registered yet</target>
+          <target>Not registered yet</target>
         </trans-unit>
         <trans-unit id="LoginOrEmail" translate="no" xml:space="preserve">
           
-          <target state="translated">Login (or email</target>
+          <target>Login (or email</target>
         </trans-unit>
         <trans-unit id="inFormatMDYMinAge18" translate="no" xml:space="preserve">
           
-          <target state="translated">in format m/d/y, min. age 18</target>
+          <target>in format m/d/y, min. age 18</target>
         </trans-unit>
         <trans-unit id="DoItNow" translate="no" xml:space="preserve">
           
-          <target state="translated">Do it now</target>
+          <target>Do it now</target>
         </trans-unit>
         <trans-unit id="generateRandomLogin" translate="no" xml:space="preserve">
           
-          <target state="translated">generate random login</target>
+          <target>generate random login</target>
         </trans-unit>
         <trans-unit id="ResetPassword" translate="no" xml:space="preserve">
           
-          <target state="translated">Reset password</target>
+          <target>Reset password</target>
         </trans-unit>
         <trans-unit id="Country" translate="no" xml:space="preserve">
           
-          <target state="translated">Country</target>
+          <target>Country</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustBeCharactersLong" translate="no" xml:space="preserve">
           
-          <target state="translated">The password must be between 10-20 characters long</target>
+          <target>The password must be between 10-20 characters long</target>
         </trans-unit>
         <trans-unit id="By" translate="no" xml:space="preserve">
           
-          <target state="translated">By</target>
+          <target>By</target>
         </trans-unit>
         <trans-unit id="ArtistGigiDagostino" translate="no" xml:space="preserve">
           
-          <target state="translated">Artist Gigi D'Agostino</target>
+          <target>Artist Gigi D'Agostino</target>
         </trans-unit>
         <trans-unit id="UsedCarComparing" translate="no" xml:space="preserve">
           
-          <target state="translated">Used car comparing</target>
+          <target>Used car comparing</target>
         </trans-unit>
         <trans-unit id="AppCanTRunUnderAdminAccountDueToWebBrowserComponentAppWillBeShutdownNow" translate="no" xml:space="preserve">
           
-          <target state="translated">App can't run under admin account (due to web browser component). App will be shutdown now</target>
+          <target>App can't run under admin account (due to web browser component). App will be shutdown now</target>
         </trans-unit>
         <trans-unit id="RuntimeTrouble" translate="no" xml:space="preserve">
           
-          <target state="translated">Runtime trouble</target>
+          <target>Runtime trouble</target>
         </trans-unit>
         <trans-unit id="Tachometr" translate="no" xml:space="preserve">
           
-          <target state="translated">Tachometr</target>
+          <target>Tachometr</target>
         </trans-unit>
         <trans-unit id="Fuel" translate="no" xml:space="preserve">
           
-          <target state="translated">Fuel</target>
+          <target>Fuel</target>
         </trans-unit>
         <trans-unit id="Volume" translate="no" xml:space="preserve">
           
-          <target state="translated">Volume</target>
+          <target>Volume</target>
         </trans-unit>
         <trans-unit id="Transmission" translate="no" xml:space="preserve">
           
-          <target state="translated">Transmission</target>
+          <target>Transmission</target>
         </trans-unit>
         <trans-unit id="AirConditioning" translate="no" xml:space="preserve">
           
-          <target state="translated">Air conditioning</target>
+          <target>Air conditioning</target>
         </trans-unit>
         <trans-unit id="MoreInformationAboutTheCar" translate="no" xml:space="preserve">
           
-          <target state="translated">More information about the car</target>
+          <target>More information about the car</target>
         </trans-unit>
         <trans-unit id="Engine" translate="no" xml:space="preserve">
           
-          <target state="translated">Engine</target>
+          <target>Engine</target>
         </trans-unit>
         <trans-unit id="Performance" translate="no" xml:space="preserve">
           
-          <target state="translated">Performance</target>
+          <target>Performance</target>
         </trans-unit>
         <trans-unit id="HistoryAndDocuments" translate="no" xml:space="preserve">
           
-          <target state="translated">History and documents</target>
+          <target>History and documents</target>
         </trans-unit>
         <trans-unit id="TheFirstOwner" translate="no" xml:space="preserve">
           
-          <target state="translated">The first owner</target>
+          <target>The first owner</target>
         </trans-unit>
         <trans-unit id="ServiceBook" translate="no" xml:space="preserve">
           
-          <target state="translated">Service book</target>
+          <target>Service book</target>
         </trans-unit>
         <trans-unit id="CountryOfOrigin" translate="no" xml:space="preserve">
           
-          <target state="translated">Country of origin</target>
+          <target>Country of origin</target>
         </trans-unit>
         <trans-unit id="SpecifikaceVozu" translate="no" xml:space="preserve">
           
-          <target state="translated">Specifikace vozu</target>
+          <target>Specifikace vozu</target>
         </trans-unit>
         <trans-unit id="NumberOfAirbags" translate="no" xml:space="preserve">
           
-          <target state="translated">Number of airbags</target>
+          <target>Number of airbags</target>
         </trans-unit>
         <trans-unit id="Body" translate="no" xml:space="preserve">
           
-          <target state="translated">Body</target>
+          <target>Body</target>
         </trans-unit>
         <trans-unit id="NumberOfDoors" translate="no" xml:space="preserve">
           
-          <target state="translated">Number of doors</target>
+          <target>Number of doors</target>
         </trans-unit>
         <trans-unit id="NumberOfPlaces" translate="no" xml:space="preserve">
           
-          <target state="translated">Number of places</target>
+          <target>Number of places</target>
         </trans-unit>
         <trans-unit id="YearOfManufacture" translate="no" xml:space="preserve">
           
-          <target state="translated">Year of manufacture</target>
+          <target>Year of manufacture</target>
         </trans-unit>
         <trans-unit id="EcologicalTaxPaid" translate="no" xml:space="preserve">
           
-          <target state="translated">Ecological tax paid</target>
+          <target>Ecological tax paid</target>
         </trans-unit>
         <trans-unit id="AverageConsumption" translate="no" xml:space="preserve">
           
-          <target state="translated">Average consumption</target>
+          <target>Average consumption</target>
         </trans-unit>
         <trans-unit id="MeetsTheEURO" translate="no" xml:space="preserve">
           
-          <target state="translated">Meets the EURO</target>
+          <target>Meets the EURO</target>
         </trans-unit>
         <trans-unit id="PriceNote" translate="no" xml:space="preserve">
           
-          <target state="translated">Price note</target>
+          <target>Price note</target>
         </trans-unit>
         <trans-unit id="CrashedInThePast" translate="no" xml:space="preserve">
           
-          <target state="translated">Crashed in the past</target>
+          <target>Crashed in the past</target>
         </trans-unit>
         <trans-unit id="CenaNaLeasing" translate="no" xml:space="preserve">
           
-          <target state="translated">Cena na leasing</target>
+          <target>Cena na leasing</target>
         </trans-unit>
         <trans-unit id="YearOfManufactureAsANumber" translate="no" xml:space="preserve">
           
-          <target state="translated">Year of manufacture as a number</target>
+          <target>Year of manufacture as a number</target>
         </trans-unit>
         <trans-unit id="PriceAsANumber" translate="no" xml:space="preserve">
           
-          <target state="translated">Price as a number</target>
+          <target>Price as a number</target>
         </trans-unit>
         <trans-unit id="TachometerAsANumber" translate="no" xml:space="preserve">
           
-          <target state="translated">Tachometer as a number</target>
+          <target>Tachometer as a number</target>
         </trans-unit>
         <trans-unit id="Copyright2020" translate="no" xml:space="preserve">
           
-          <target state="translated">Copyright ©  2020</target>
+          <target>Copyright ©  2020</target>
         </trans-unit>
         <trans-unit id="AppWasSuccessfullyStarted" translate="no" xml:space="preserve">
           
-          <target state="translated">App was successfully started</target>
+          <target>App was successfully started</target>
         </trans-unit>
         <trans-unit id="ClosestMHD" translate="no" xml:space="preserve">
           
-          <target state="translated">Closest MHD</target>
+          <target>Closest MHD</target>
         </trans-unit>
         <trans-unit id="Other" translate="no" xml:space="preserve">
           
-          <target state="translated">Other</target>
+          <target>Other</target>
         </trans-unit>
         <trans-unit id="NearStation" translate="no" xml:space="preserve">
           
-          <target state="translated">Near station</target>
+          <target>Near station</target>
         </trans-unit>
         <trans-unit id="OpeningTime" translate="no" xml:space="preserve">
           
-          <target state="translated">Opening time</target>
+          <target>Opening time</target>
         </trans-unit>
         <trans-unit id="Telefon" translate="no" xml:space="preserve">
           
-          <target state="translated">Telefon</target>
+          <target>Telefon</target>
         </trans-unit>
         <trans-unit id="ProcessedByApp" translate="no" xml:space="preserve">
           
-          <target state="translated">Processed by app</target>
+          <target>Processed by app</target>
         </trans-unit>
         <trans-unit id="Telephone" translate="no" xml:space="preserve">
           
-          <target state="translated">Telephone</target>
+          <target>Telephone</target>
         </trans-unit>
         <trans-unit id="UnderSameTitleAnotherWithOtherValue" translate="no" xml:space="preserve">
           
-          <target state="translated">Under same title another with other value</target>
+          <target>Under same title another with other value</target>
         </trans-unit>
         <trans-unit id="Tacho" translate="no" xml:space="preserve">
           
-          <target state="translated">Tacho</target>
+          <target>Tacho</target>
         </trans-unit>
         <trans-unit id="TodayOpen" translate="no" xml:space="preserve">
           
-          <target state="translated">Today open</target>
+          <target>Today open</target>
         </trans-unit>
         <trans-unit id="PrivateSeller" translate="no" xml:space="preserve">
           
-          <target state="translated">Private seller</target>
+          <target>Private seller</target>
         </trans-unit>
         <trans-unit id="NameOfSet" translate="no" xml:space="preserve">
           
-          <target state="translated">Name of set</target>
+          <target>Name of set</target>
         </trans-unit>
         <trans-unit id="NameContainsUnallowedChars" translate="no" xml:space="preserve">
           
-          <target state="translated">Name contains unallowed chars</target>
+          <target>Name contains unallowed chars</target>
         </trans-unit>
         <trans-unit id="DownloadCars" translate="no" xml:space="preserve">
           
-          <target state="translated">Download cars</target>
+          <target>Download cars</target>
         </trans-unit>
         <trans-unit id="DownloadPhotos" translate="no" xml:space="preserve">
           
-          <target state="translated">Download photos</target>
+          <target>Download photos</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardGoogleSheetCompare" translate="no" xml:space="preserve">
           
-          <target state="translated">Copy to clipboard Google Sheet compare</target>
+          <target>Copy to clipboard Google Sheet compare</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardForGoogleMyMaps" translate="no" xml:space="preserve">
           
-          <target state="translated">Copy to clipboard for Google My Maps</target>
+          <target>Copy to clipboard for Google My Maps</target>
         </trans-unit>
         <trans-unit id="OpenFolderOnDrive" translate="no" xml:space="preserve">
           
-          <target state="translated">Open folder on drive</target>
+          <target>Open folder on drive</target>
         </trans-unit>
         <trans-unit id="RefreshSetsFromDrive" translate="no" xml:space="preserve">
           
-          <target state="translated">Refresh sets from drive</target>
+          <target>Refresh sets from drive</target>
         </trans-unit>
         <trans-unit id="PasteFromClipoardIntoGoogleSheets" translate="no" xml:space="preserve">
           
-          <target state="translated">Paste from clipoard into Google Sheets</target>
+          <target>Paste from clipoard into Google Sheets</target>
         </trans-unit>
         <trans-unit id="Init" translate="no" xml:space="preserve">
           
-          <target state="translated">Init</target>
+          <target>Init</target>
         </trans-unit>
         <trans-unit id="PleaseUseAppInTray" translate="no" xml:space="preserve">
           
-          <target state="translated">Please use app in tray</target>
+          <target>Please use app in tray</target>
         </trans-unit>
         <trans-unit id="FeedBack" translate="no" xml:space="preserve">
           
-          <target state="translated">Feed back</target>
+          <target>Feed back</target>
         </trans-unit>
         <trans-unit id="GenerateScreenshot" translate="no" xml:space="preserve">
           
-          <target state="translated">Generate screenshot</target>
+          <target>Generate screenshot</target>
         </trans-unit>
         <trans-unit id="ShowLoginedUser" translate="no" xml:space="preserve">
           
-          <target state="translated">Show logined user</target>
+          <target>Show logined user</target>
         </trans-unit>
         <trans-unit id="Mode" translate="no" xml:space="preserve">
           
-          <target state="translated">Mode</target>
+          <target>Mode</target>
         </trans-unit>
         <trans-unit id="YouReLoginedButYouHavenTPurchasedSubscriptionAppWillOpenPageWhereYouCanMakePurchase" translate="no" xml:space="preserve">
           
-          <target state="translated">You're logined but you haven't purchased subscription. App will open page where you can make purchase</target>
+          <target>You're logined but you haven't purchased subscription. App will open page where you can make purchase</target>
         </trans-unit>
         <trans-unit id="YouHaveToLogInBeforeUseApp" translate="no" xml:space="preserve">
           
-          <target state="translated">You have to log in before use app</target>
+          <target>You have to log in before use app</target>
         </trans-unit>
         <trans-unit id="FirstItem" translate="no" xml:space="preserve">
           
-          <target state="translated">First Item</target>
+          <target>First Item</target>
         </trans-unit>
         <trans-unit id="AlwaysOnTop" translate="no" xml:space="preserve">
           
-          <target state="translated">Always on top</target>
+          <target>Always on top</target>
         </trans-unit>
         <trans-unit id="logs" translate="no" xml:space="preserve">
           
-          <target state="translated">logs</target>
+          <target>logs</target>
         </trans-unit>
         <trans-unit id="UriFrom" translate="no" xml:space="preserve">
           
-          <target state="translated">Uri from</target>
+          <target>Uri from</target>
         </trans-unit>
         <trans-unit id="Like" translate="no" xml:space="preserve">
           
-          <target state="translated">Like</target>
+          <target>Like</target>
         </trans-unit>
         <trans-unit id="SetOfCars" translate="no" xml:space="preserve">
           
-          <target state="translated">Set of cars</target>
+          <target>Set of cars</target>
         </trans-unit>
         <trans-unit id="AddNewSetOfCars" translate="no" xml:space="preserve">
           
-          <target state="translated">Add new set of cars</target>
+          <target>Add new set of cars</target>
         </trans-unit>
         <trans-unit id="andPressEnter" translate="no" xml:space="preserve">
           
-          <target state="translated">and press enter</target>
+          <target>and press enter</target>
         </trans-unit>
         <trans-unit id="EnteringData" translate="no" xml:space="preserve">
           
-          <target state="translated">Entering data</target>
+          <target>Entering data</target>
         </trans-unit>
         <trans-unit id="ToEnter" translate="no" xml:space="preserve">
           
-          <target state="translated">Enter</target>
+          <target>Enter</target>
         </trans-unit>
         <trans-unit id="RememberLogin" translate="no" xml:space="preserve">
           
-          <target state="translated">Remember login</target>
+          <target>Remember login</target>
         </trans-unit>
         <trans-unit id="AutoLogin" translate="no" xml:space="preserve">
           
-          <target state="translated">Auto login</target>
+          <target>Auto login</target>
         </trans-unit>
         <trans-unit id="andCreateComparingTable" translate="no" xml:space="preserve">
           
-          <target state="translated">and create comparing table</target>
+          <target>and create comparing table</target>
         </trans-unit>
         <trans-unit id="optional" translate="no" xml:space="preserve">
           
-          <target state="translated">optional</target>
+          <target>optional</target>
         </trans-unit>
         <trans-unit id="photos" translate="no" xml:space="preserve">
           
-          <target state="translated">photos</target>
+          <target>photos</target>
         </trans-unit>
         <trans-unit id="photos2" translate="no" xml:space="preserve">
           
-          <target state="translated">photos</target>
+          <target>photos</target>
         </trans-unit>
         <trans-unit id="successfullyDownloaded" translate="no" xml:space="preserve">
           
-          <target state="translated">successfully downloaded</target>
+          <target>successfully downloaded</target>
         </trans-unit>
         <trans-unit id="cars" translate="no" xml:space="preserve">
           
-          <target state="translated">cars</target>
+          <target>cars</target>
         </trans-unit>
         <trans-unit id="OutputWasSavedTo" translate="no" xml:space="preserve">
           
-          <target state="translated">Output was saved to</target>
+          <target>Output was saved to</target>
         </trans-unit>
         <trans-unit id="ScrolledToLine" translate="no" xml:space="preserve">
           
-          <target state="translated">Scrolled to line</target>
+          <target>Scrolled to line</target>
         </trans-unit>
         <trans-unit id="HowToUse" translate="no" xml:space="preserve">
           
-          <target state="translated">How to use</target>
+          <target>How to use</target>
         </trans-unit>
         <trans-unit id="FeedbackWasSavedDeveloperWillBeContactingYouBackSoon" translate="no" xml:space="preserve">
           
-          <target state="translated">Feedback was saved. Developer will be contacting you back soon</target>
+          <target>Feedback was saved. Developer will be contacting you back soon</target>
         </trans-unit>
         <trans-unit id="feedback" translate="no" xml:space="preserve">
           
-          <target state="translated">feedback</target>
+          <target>feedback</target>
         </trans-unit>
         <trans-unit id="ReadOurTermsOfUseBeforeBuy" translate="no" xml:space="preserve">
           
-          <target state="translated">Read our Terms of use before buy</target>
+          <target>Read our Terms of use before buy</target>
         </trans-unit>
         <trans-unit id="OriginalPrice" translate="no" xml:space="preserve">
           
-          <target state="translated">Original price</target>
+          <target>Original price</target>
         </trans-unit>
         <trans-unit id="IntroductoryPrice" translate="no" xml:space="preserve">
           
-          <target state="translated">Introductory price</target>
+          <target>Introductory price</target>
         </trans-unit>
         <trans-unit id="appFocusing" translate="no" xml:space="preserve">
           
-          <target state="translated">app focusing</target>
+          <target>app focusing</target>
         </trans-unit>
         <trans-unit id="DummyUC" translate="no" xml:space="preserve">
           
-          <target state="translated">Dummy UC</target>
+          <target>Dummy UC</target>
         </trans-unit>
         <trans-unit id="Web" translate="no" xml:space="preserve">
           
-          <target state="translated">Web</target>
+          <target>Web</target>
         </trans-unit>
         <trans-unit id="Google" translate="no" xml:space="preserve">
           
-          <target state="translated">Google</target>
+          <target>Google</target>
         </trans-unit>
         <trans-unit id="CheckUpdatedVersion" translate="no" xml:space="preserve">
           
-          <target state="translated">Check updated version</target>
+          <target>Check updated version</target>
         </trans-unit>
         <trans-unit id="YouHaveLastPublishedVersion" translate="no" xml:space="preserve">
           
-          <target state="translated">You have last published version</target>
+          <target>You have last published version</target>
         </trans-unit>
         <trans-unit id="TheSourceCodeIsWrittenIn" translate="no" xml:space="preserve">
           
-          <target state="translated">The source code is written in</target>
+          <target>The source code is written in</target>
         </trans-unit>
         <trans-unit id="CannotReturnNull" translate="no" xml:space="preserve">
           
-          <target state="translated">Cannot return null</target>
+          <target>Cannot return null</target>
         </trans-unit>
         <trans-unit id="SaveToDrive" translate="no" xml:space="preserve">
           
-          <target state="translated">Save to drive</target>
+          <target>Save to drive</target>
         </trans-unit>
         <trans-unit id="Decline" translate="no" xml:space="preserve">
           
-          <target state="translated">Decline</target>
+          <target>Decline</target>
         </trans-unit>
         <trans-unit id="NotImplementedValidateForControl" translate="no" xml:space="preserve">
           
-          <target state="translated">Not implemented Validate for control</target>
+          <target>Not implemented Validate for control</target>
         </trans-unit>
         <trans-unit id="InputTwoColumns" translate="no" xml:space="preserve">
           
-          <target state="translated">Input two columns</target>
+          <target>Input two columns</target>
         </trans-unit>
         <trans-unit id="SelectOneValue" translate="no" xml:space="preserve">
           
-          <target state="translated">Select one value</target>
+          <target>Select one value</target>
         </trans-unit>
         <trans-unit id="SelectTwoValues" translate="no" xml:space="preserve">
           
-          <target state="translated">Select two values</target>
+          <target>Select two values</target>
         </trans-unit>
         <trans-unit id="ShowResult" translate="no" xml:space="preserve">
           
-          <target state="translated">Show result</target>
+          <target>Show result</target>
         </trans-unit>
         <trans-unit id="Result" translate="no" xml:space="preserve">
           
-          <target state="translated">Result</target>
+          <target>Result</target>
         </trans-unit>
         <trans-unit id="SegoeUI" translate="no" xml:space="preserve">
           
-          <target state="translated">Segoe UI</target>
+          <target>Segoe UI</target>
         </trans-unit>
         <trans-unit id="Appearance" translate="no" xml:space="preserve">
           
-          <target state="translated">Appearance</target>
+          <target>Appearance</target>
         </trans-unit>
         <trans-unit id="TheDropShadowColor" translate="no" xml:space="preserve">
           
-          <target state="translated">The drop shadow color</target>
+          <target>The drop shadow color</target>
         </trans-unit>
         <trans-unit id="TheDropShadowOpacity" translate="no" xml:space="preserve">
           
-          <target state="translated">The drop shadow opacity</target>
+          <target>The drop shadow opacity</target>
         </trans-unit>
         <trans-unit id="CommonProperties" translate="no" xml:space="preserve">
           
-          <target state="translated">Common Properties</target>
+          <target>Common Properties</target>
         </trans-unit>
         <trans-unit id="TheTextContent" translate="no" xml:space="preserve">
           
-          <target state="translated">The text content</target>
+          <target>The text content</target>
         </trans-unit>
         <trans-unit id="TheTextDecorations" translate="no" xml:space="preserve">
           
-          <target state="translated">The text decorations</target>
+          <target>The text decorations</target>
         </trans-unit>
         <trans-unit id="WhetherTheTextWraps" translate="no" xml:space="preserve">
           
-          <target state="translated">Whether the text wraps</target>
+          <target>Whether the text wraps</target>
         </trans-unit>
         <trans-unit id="TheDropShadowDistance" translate="no" xml:space="preserve">
           
-          <target state="translated">The drop shadow distance</target>
+          <target>The drop shadow distance</target>
         </trans-unit>
         <trans-unit id="TheDropShadowAngle" translate="no" xml:space="preserve">
           
-          <target state="translated">The drop shadow angle</target>
+          <target>The drop shadow angle</target>
         </trans-unit>
         <trans-unit id="Normal" translate="no" xml:space="preserve">
           
-          <target state="translated">Normal</target>
+          <target>Normal</target>
         </trans-unit>
         <trans-unit id="Dragging" translate="no" xml:space="preserve">
           
-          <target state="translated">Dragging</target>
+          <target>Dragging</target>
         </trans-unit>
         <trans-unit id="Unchecked" translate="no" xml:space="preserve">
           
-          <target state="translated">Unchecked</target>
+          <target>Unchecked</target>
         </trans-unit>
         <trans-unit id="Focused" translate="no" xml:space="preserve">
           
-          <target state="translated">Focused</target>
+          <target>Focused</target>
         </trans-unit>
         <trans-unit id="Unfocused" translate="no" xml:space="preserve">
           
-          <target state="translated">Unfocused</target>
+          <target>Unfocused</target>
         </trans-unit>
         <trans-unit id="TheTemplateAppliedToTheCheckedAndUncheckedContentProperties" translate="no" xml:space="preserve">
           
-          <target state="translated">The template applied to the Checked and Unchecked content properties</target>
+          <target>The template applied to the Checked and Unchecked content properties</target>
         </trans-unit>
         <trans-unit id="TheContentShownOnTheCheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
           
-          <target state="translated">The content shown on the checked side of the toggle switch</target>
+          <target>The content shown on the checked side of the toggle switch</target>
         </trans-unit>
         <trans-unit id="TheBrushUsedForTheForegroundOfTheCheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
           
-          <target state="translated">The brush used for the foreground of the checked side of the toggle switch</target>
+          <target>The brush used for the foreground of the checked side of the toggle switch</target>
         </trans-unit>
         <trans-unit id="TheBrushUsedForTheBackgroundOfTheCheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
           
-          <target state="translated">The brush used for the background of the checked side of the toggle switch</target>
+          <target>The brush used for the background of the checked side of the toggle switch</target>
         </trans-unit>
         <trans-unit id="TheContentShownOnTheUncheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
           
-          <target state="translated">The content shown on the unchecked side of the toggle switch</target>
+          <target>The content shown on the unchecked side of the toggle switch</target>
         </trans-unit>
         <trans-unit id="TheBrushUsedForTheForegroundOfTheUncheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
           
-          <target state="translated">The brush used for the foreground of the Unchecked side of the toggle switch</target>
+          <target>The brush used for the foreground of the Unchecked side of the toggle switch</target>
         </trans-unit>
         <trans-unit id="TheBrushUsedForTheBackgroundOfTheUncheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
           
-          <target state="translated">The brush used for the background of the Unchecked side of the toggle switch</target>
+          <target>The brush used for the background of the Unchecked side of the toggle switch</target>
         </trans-unit>
         <trans-unit id="Elasticity" translate="no" xml:space="preserve">
           
-          <target state="translated">Elasticity</target>
+          <target>Elasticity</target>
         </trans-unit>
         <trans-unit id="DeterminesThePercentageOfTheWayTheThumbMustBeDraggedBeforeTheSwitchChangesItSIsCheckedState" translate="no" xml:space="preserve">
           
-          <target state="translated">Determines the percentage of the way the thumb must be dragged before the switch changes it's IsChecked state</target>
+          <target>Determines the percentage of the way the thumb must be dragged before the switch changes it's IsChecked state</target>
         </trans-unit>
         <trans-unit id="TheThumbSControlTemplate" translate="no" xml:space="preserve">
           
-          <target state="translated">The thumb's control template</target>
+          <target>The thumb's control template</target>
         </trans-unit>
         <trans-unit id="TheBrushUsedToFillTheThumb" translate="no" xml:space="preserve">
           
-          <target state="translated">The brush used to fill the thumb</target>
+          <target>The brush used to fill the thumb</target>
         </trans-unit>
         <trans-unit id="TheSizeOfTheToggleSwitchSThumb" translate="no" xml:space="preserve">
           
-          <target state="translated">The size of the toggle switch's thumb</target>
+          <target>The size of the toggle switch's thumb</target>
         </trans-unit>
         <trans-unit id="GetsOrSetsWhetherTheControlIsInTheCheckedState" translate="no" xml:space="preserve">
           
-          <target state="translated">Gets or sets whether the control is in the checked state</target>
+          <target>Gets or sets whether the control is in the checked state</target>
         </trans-unit>
         <trans-unit id="SetsTheCornerRadiusOnTheBorder" translate="no" xml:space="preserve">
           
-          <target state="translated">Sets the corner radius on the border</target>
+          <target>Sets the corner radius on the border</target>
         </trans-unit>
         <trans-unit id="SetsWhetherTheContentIsClippedOrNot" translate="no" xml:space="preserve">
           
-          <target state="translated">Sets whether the content is clipped or not</target>
+          <target>Sets whether the content is clipped or not</target>
         </trans-unit>
         <trans-unit id="Set0ForBehindTheShadow1ForInFront" translate="no" xml:space="preserve">
           
-          <target state="translated">Set 0 for behind the shadow, 1 for in front</target>
+          <target>Set 0 for behind the shadow, 1 for in front</target>
         </trans-unit>
         <trans-unit id="TheInnerGlowOpacity" translate="no" xml:space="preserve">
           
-          <target state="translated">The inner glow opacity</target>
+          <target>The inner glow opacity</target>
         </trans-unit>
         <trans-unit id="TheInnerGlowColor" translate="no" xml:space="preserve">
           
-          <target state="translated">The inner glow color</target>
+          <target>The inner glow color</target>
         </trans-unit>
         <trans-unit id="TheInnerGlowSize" translate="no" xml:space="preserve">
           
-          <target state="translated">The inner glow size</target>
+          <target>The inner glow size</target>
         </trans-unit>
         <trans-unit id="TheOuterGlowOpacity" translate="no" xml:space="preserve">
           
-          <target state="translated">The outer glow opacity</target>
+          <target>The outer glow opacity</target>
         </trans-unit>
         <trans-unit id="TheOuterGlowSize" translate="no" xml:space="preserve">
           
-          <target state="translated">The outer glow size</target>
+          <target>The outer glow size</target>
         </trans-unit>
         <trans-unit id="TheOuterGlowColor" translate="no" xml:space="preserve">
           
-          <target state="translated">The outer glow color</target>
+          <target>The outer glow color</target>
         </trans-unit>
         <trans-unit id="CannotConvertBack" translate="no" xml:space="preserve">
           
-          <target state="translated">Cannot convert back</target>
+          <target>Cannot convert back</target>
         </trans-unit>
         <trans-unit id="SomethingIsNullProbablyWpfAppCdIntoClipboardWasCopiedStacktrace" translate="no" xml:space="preserve">
           
-          <target state="translated">Something is null (probably WpfApp.cd). Into clipboard was copied stacktrace</target>
+          <target>Something is null (probably WpfApp.cd). Into clipboard was copied stacktrace</target>
         </trans-unit>
         <trans-unit id="Validated" translate="no" xml:space="preserve">
           
-          <target state="translated">Validated</target>
+          <target>Validated</target>
         </trans-unit>
         <trans-unit id="WatcherInfoObjectCannotBeNull" translate="no" xml:space="preserve">
           
-          <target state="translated">WatcherInfo object cannot be null</target>
+          <target>WatcherInfo object cannot be null</target>
         </trans-unit>
         <trans-unit id="NISizeOfPaperGetPaperSize" translate="no" xml:space="preserve">
           
-          <target state="translated">NI SizeOfPaper.GetPaperSize</target>
+          <target>NI SizeOfPaper.GetPaperSize</target>
         </trans-unit>
         <trans-unit id="Line" translate="no" xml:space="preserve">
           
-          <target state="translated">Line</target>
+          <target>Line</target>
         </trans-unit>
         <trans-unit id="customControlIsNotContentControlOrPanel" translate="no" xml:space="preserve">
           
-          <target state="translated">customControl is not ContentControl or Panel</target>
+          <target>customControl is not ContentControl or Panel</target>
         </trans-unit>
         <trans-unit id="MainWindowMustBeIWindowOpenerDueToShowExceptions" translate="no" xml:space="preserve">
           
-          <target state="translated">MainWindow must be IWindowOpener due to show exceptions</target>
+          <target>MainWindow must be IWindowOpener due to show exceptions</target>
         </trans-unit>
         <trans-unit id="AvailableShortcuts" translate="no" xml:space="preserve">
           
-          <target state="translated">Available shortcuts</target>
+          <target>Available shortcuts</target>
         </trans-unit>
         <trans-unit id="ParameterDefValInMenuItemWithSubitemsHelperAddValuesOfEnumAsItemsWasNotTypeOfEnum" translate="no" xml:space="preserve">
           
-          <target state="translated">Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum</target>
+          <target>Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum</target>
         </trans-unit>
         <trans-unit id="Copyright2015" translate="no" xml:space="preserve">
           
-          <target state="translated">Copyright ©  2015</target>
+          <target>Copyright ©  2015</target>
         </trans-unit>
         <trans-unit id="TryToAdjustThePPIfYouHaveItSetInBulk" translate="no" xml:space="preserve">
           
-          <target state="translated">Try to adjust the PP if you have it set in bulk</target>
+          <target>Try to adjust the PP if you have it set in bulk</target>
         </trans-unit>
         <trans-unit id="YouGotThroughTheCollectionIndex" translate="no" xml:space="preserve">
           
-          <target state="translated">You got through the collection index</target>
+          <target>You got through the collection index</target>
         </trans-unit>
         <trans-unit id="FailedToGetTheItemFromTheRegistry" translate="no" xml:space="preserve">
           
-          <target state="translated">Failed to get the item from the registry</target>
+          <target>Failed to get the item from the registry</target>
         </trans-unit>
         <trans-unit id="MustNotBeEnteredWithA2True" translate="no" xml:space="preserve">
           
-          <target state="translated">Must not be entered with A2 true</target>
+          <target>Must not be entered with A2 true</target>
         </trans-unit>
         <trans-unit id="Cred" translate="no" xml:space="preserve">
           
-          <target state="translated">Cred</target>
+          <target>Cred</target>
         </trans-unit>
         <trans-unit id="SavingSettingsToAppConfigOrWebConfigIsNotYetSupported" translate="no" xml:space="preserve">
           
-          <target state="translated">Saving settings to app.config or web.config is not yet supported</target>
+          <target>Saving settings to app.config or web.config is not yet supported</target>
         </trans-unit>
         <trans-unit id="Logs" translate="no" xml:space="preserve">
           
-          <target state="translated">Logs</target>
+          <target>Logs</target>
         </trans-unit>
         <trans-unit id="EnterForFastClosing" translate="no" xml:space="preserve">
           
-          <target state="translated">Enter for fast closing</target>
+          <target>Enter for fast closing</target>
         </trans-unit>
         <trans-unit id="Server" translate="no" xml:space="preserve">
           
-          <target state="translated">Server</target>
+          <target>Server</target>
         </trans-unit>
         <trans-unit id="Part1" translate="no" xml:space="preserve">
           
-          <target state="translated">Part1</target>
+          <target>Part1</target>
         </trans-unit>
         <trans-unit id="Part2" translate="no" xml:space="preserve">
           
-          <target state="translated">Part2</target>
+          <target>Part2</target>
         </trans-unit>
         <trans-unit id="Part3" translate="no" xml:space="preserve">
           
-          <target state="translated">Part3</target>
+          <target>Part3</target>
         </trans-unit>
         <trans-unit id="Character" translate="no" xml:space="preserve">
           
-          <target state="translated">Character</target>
+          <target>Character</target>
         </trans-unit>
         <trans-unit id="Template" translate="no" xml:space="preserve">
           
-          <target state="translated">Template</target>
+          <target>Template</target>
         </trans-unit>
         <trans-unit id="Modulus" translate="no" xml:space="preserve">
           
-          <target state="translated">Modulus</target>
+          <target>Modulus</target>
         </trans-unit>
         <trans-unit id="Exponent" translate="no" xml:space="preserve">
           
-          <target state="translated">Exponent</target>
+          <target>Exponent</target>
         </trans-unit>
         <trans-unit id="PublicKeyClass" translate="no" xml:space="preserve">
           
-          <target state="translated">PublicKey class</target>
+          <target>PublicKey class</target>
         </trans-unit>
         <trans-unit id="PrivateKeyClass" translate="no" xml:space="preserve">
           
-          <target state="translated">PrivateKey class</target>
+          <target>PrivateKey class</target>
         </trans-unit>
         <trans-unit id="TheMethodOrOperationIsNotImplemented" translate="no" xml:space="preserve">
           
-          <target state="translated">The method or operation is not implemented</target>
+          <target>The method or operation is not implemented</target>
         </trans-unit>
         <trans-unit id="YourDataIsTooLargeRSAEncryptionIsDesignedToEncryptRelativelySmallAmountsOfDataTheExactByteLimitDependsOnTheKeySizeToEncryptMoreDataUseSymmetricEncryptionAndThenEncryptThatSymmetricKeyWithAsymmetricRSAEncryption" translate="no" xml:space="preserve">
           
-          <target state="translated">Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption</target>
+          <target>Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption</target>
         </trans-unit>
         <trans-unit id="TheProvided0EncryptionKeyXMLDoesNotAppearToBeValid" translate="no" xml:space="preserve">
           
-          <target state="translated">The provided {0} encryption key XML does not appear to be valid</target>
+          <target>The provided {0} encryption key XML does not appear to be valid</target>
         </trans-unit>
         <trans-unit id="UnableToObtainCryptographicServiceProvider" translate="no" xml:space="preserve">
           
-          <target state="translated">Unable to obtain Cryptographic Service Provider</target>
+          <target>Unable to obtain Cryptographic Service Provider</target>
         </trans-unit>
         <trans-unit id="EitherThePermissionsAreIncorrectOnThe" translate="no" xml:space="preserve">
           
-          <target state="translated">Either the permissions are incorrect on the</target>
+          <target>Either the permissions are incorrect on the</target>
         </trans-unit>
         <trans-unit id="CouldNotFind" translate="no" xml:space="preserve">
           
-          <target state="translated">Could not find</target>
+          <target>Could not find</target>
         </trans-unit>
         <trans-unit id="inProvidedPublicKeyXML" translate="no" xml:space="preserve">
           
-          <target state="translated">in provided Public Key XML</target>
+          <target>in provided Public Key XML</target>
         </trans-unit>
         <trans-unit id="NotImplementedCaseInColorHelperAppsRandomBrush" translate="no" xml:space="preserve">
           
-          <target state="translated">Not implemented case in ColorHelperApps.RandomBrush</target>
+          <target>Not implemented case in ColorHelperApps.RandomBrush</target>
         </trans-unit>
         <trans-unit id="StartOfListingWholeTable" translate="no" xml:space="preserve">
           
-          <target state="translated">Start of listing whole table</target>
+          <target>Start of listing whole table</target>
         </trans-unit>
         <trans-unit id="EndOfListingWholeTable" translate="no" xml:space="preserve">
           
-          <target state="translated">End of listing whole table</target>
+          <target>End of listing whole table</target>
         </trans-unit>
         <trans-unit id="NonSupportedHttpMethodInHttpMethodGetResponseText" translate="no" xml:space="preserve">
           
-          <target state="translated">Non supported http method in HttpMethod.GetResponseText</target>
+          <target>Non supported http method in HttpMethod.GetResponseText</target>
         </trans-unit>
         <trans-unit id="Worker" translate="no" xml:space="preserve">
           
-          <target state="translated">Worker</target>
+          <target>Worker</target>
         </trans-unit>
         <trans-unit id="ThisPoolInstanceIsInTheProcessOfBeingDisposedCanTAddAnymore" translate="no" xml:space="preserve">
           
-          <target state="translated">This Pool instance is in the process of being disposed, can't add anymore</target>
+          <target>This Pool instance is in the process of being disposed, can't add anymore</target>
         </trans-unit>
         <trans-unit id="ThisPoolInstanceHasAlreadyBeenDisposed" translate="no" xml:space="preserve">
           
-          <target state="translated">This Pool instance has already been disposed</target>
+          <target>This Pool instance has already been disposed</target>
         </trans-unit>
         <trans-unit id="LookDirectIntoIsRootFolderNull" translate="no" xml:space="preserve">
           
-          <target state="translated">Look direct into IsRootFolderNull</target>
+          <target>Look direct into IsRootFolderNull</target>
         </trans-unit>
         <trans-unit id="EncryptedTextIsAnInvalidLength" translate="no" xml:space="preserve">
           
-          <target state="translated">Encrypted text is an invalid length</target>
+          <target>Encrypted text is an invalid length</target>
         </trans-unit>
         <trans-unit id="NotSupportedStrategyOfSavingFiles" translate="no" xml:space="preserve">
           
-          <target state="translated">Not supported strategy of saving files</target>
+          <target>Not supported strategy of saving files</target>
         </trans-unit>
         <trans-unit id="Address" translate="no" xml:space="preserve">
           
-          <target state="translated">Address</target>
+          <target>Address</target>
         </trans-unit>
         <trans-unit id="ItIsRecommendedThatImplementationsAlsoRecognizeTheMediaType" translate="no" xml:space="preserve">
           
-          <target state="translated">It is recommended that implementations also recognize the media type</target>
+          <target>It is recommended that implementations also recognize the media type</target>
         </trans-unit>
         <trans-unit id="TheTypeMustBeSerializable" translate="no" xml:space="preserve">
           
-          <target state="translated">The type must be serializable</target>
+          <target>The type must be serializable</target>
         </trans-unit>
         <trans-unit id="InDesktopAppDontPassLangs" translate="no" xml:space="preserve">
           
-          <target state="translated">In desktop app dont pass Langs</target>
+          <target>In desktop app dont pass Langs</target>
         </trans-unit>
         <trans-unit id="Orient" translate="no" xml:space="preserve">
           
-          <target state="translated">Orient</target>
+          <target>Orient</target>
         </trans-unit>
         <trans-unit id="Drago" translate="no" xml:space="preserve">
           
-          <target state="translated">Drago</target>
+          <target>Drago</target>
         </trans-unit>
         <trans-unit id="UnableToLoadElementAddSomeAndTryAgain" translate="no" xml:space="preserve">
           
-          <target state="translated">Unable to load element, add some and try again</target>
+          <target>Unable to load element, add some and try again</target>
         </trans-unit>
         <trans-unit id="BothColumnAndRowArgumentsInUniqueTableInWholeIsUniqueAsRowOrColumnWasFalse" translate="no" xml:space="preserve">
           
-          <target state="translated">Both column and row arguments in UniqueTableInWhole.IsUniqueAsRowOrColumn() was false</target>
+          <target>Both column and row arguments in UniqueTableInWhole.IsUniqueAsRowOrColumn() was false</target>
         </trans-unit>
         <trans-unit id="DifferentCountInputElementsOfArrayInUniqueTableInWholeAddCells" translate="no" xml:space="preserve">
           
-          <target state="translated">Different count input elements of array in UniqueTableInWhole.AddCells</target>
+          <target>Different count input elements of array in UniqueTableInWhole.AddCells</target>
         </trans-unit>
         <trans-unit id="ParameterZmenaOOfMethodColumnSizeHelperCalculateWidthOfColumnsAgainHasValue" translate="no" xml:space="preserve">
           
-          <target state="translated">Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value</target>
+          <target>Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value</target>
         </trans-unit>
         <trans-unit id="Bedouin" translate="no" xml:space="preserve">
           
-          <target state="translated">Bedouin</target>
+          <target>Bedouin</target>
         </trans-unit>
         <trans-unit id="January" translate="no" xml:space="preserve">
           
-          <target state="translated">January</target>
+          <target>January</target>
         </trans-unit>
         <trans-unit id="February" translate="no" xml:space="preserve">
           
-          <target state="translated">February</target>
+          <target>February</target>
         </trans-unit>
         <trans-unit id="March" translate="no" xml:space="preserve">
           
-          <target state="translated">March</target>
+          <target>March</target>
         </trans-unit>
         <trans-unit id="April" translate="no" xml:space="preserve">
           
-          <target state="translated">April</target>
+          <target>April</target>
         </trans-unit>
         <trans-unit id="Duben" translate="no" xml:space="preserve">
           
-          <target state="translated">Duben</target>
+          <target>Duben</target>
         </trans-unit>
         <trans-unit id="June" translate="no" xml:space="preserve">
           
-          <target state="translated">June</target>
+          <target>June</target>
         </trans-unit>
         <trans-unit id="July" translate="no" xml:space="preserve">
           
-          <target state="translated">July</target>
+          <target>July</target>
         </trans-unit>
         <trans-unit id="August" translate="no" xml:space="preserve">
           
-          <target state="translated">August</target>
+          <target>August</target>
         </trans-unit>
         <trans-unit id="Srpen" translate="no" xml:space="preserve">
           
-          <target state="translated">Srpen</target>
+          <target>Srpen</target>
         </trans-unit>
         <trans-unit id="September" translate="no" xml:space="preserve">
           
-          <target state="translated">September</target>
+          <target>September</target>
         </trans-unit>
         <trans-unit id="October" translate="no" xml:space="preserve">
           
-          <target state="translated">October</target>
+          <target>October</target>
         </trans-unit>
         <trans-unit id="November" translate="no" xml:space="preserve">
           
-          <target state="translated">November</target>
+          <target>November</target>
         </trans-unit>
         <trans-unit id="December" translate="no" xml:space="preserve">
           
-          <target state="translated">December</target>
+          <target>December</target>
         </trans-unit>
         <trans-unit id="Boolean" translate="no" xml:space="preserve">
           
-          <target state="translated">Boolean</target>
+          <target>Boolean</target>
         </trans-unit>
         <trans-unit id="Windows1252" translate="no" xml:space="preserve">
           
-          <target state="translated">Windows-1252</target>
+          <target>Windows-1252</target>
         </trans-unit>
         <trans-unit id="CRC32HashAlgorithm" translate="no" xml:space="preserve">
           
-          <target state="translated">CRC32 HashAlgorithm</target>
+          <target>CRC32 HashAlgorithm</target>
         </trans-unit>
         <trans-unit id="NoKeyWasProvidedForTheDecryptionOperation" translate="no" xml:space="preserve">
           
-          <target state="translated">No key was provided for the decryption operation</target>
+          <target>No key was provided for the decryption operation</target>
         </trans-unit>
         <trans-unit id="NoInitializationVectorWasProvidedForTheDecryptionOperation" translate="no" xml:space="preserve">
           
-          <target state="translated">No initialization vector was provided for the decryption operation</target>
+          <target>No initialization vector was provided for the decryption operation</target>
         </trans-unit>
         <trans-unit id="UnableToDecryptDataTheProvidedKeyMayBeInvalid" translate="no" xml:space="preserve">
           
-          <target state="translated">Unable to decrypt data. The provided key may be invalid</target>
+          <target>Unable to decrypt data. The provided key may be invalid</target>
         </trans-unit>
         <trans-unit id="TheProvidedStringDoesNotAppearToBeBase64Encoded" translate="no" xml:space="preserve">
           
-          <target state="translated">The provided string does not appear to be Base64 encoded</target>
+          <target>The provided string does not appear to be Base64 encoded</target>
         </trans-unit>
         <trans-unit id="Managed" translate="no" xml:space="preserve">
           
-          <target state="translated">Managed</target>
+          <target>Managed</target>
         </trans-unit>
         <trans-unit id="Restored" translate="no" xml:space="preserve">
           
-          <target state="translated">Restored</target>
+          <target>Restored</target>
         </trans-unit>
         <trans-unit id="Founded" translate="no" xml:space="preserve">
           
-          <target state="translated">Founded</target>
+          <target>Founded</target>
         </trans-unit>
         <trans-unit id="Feat" translate="no" xml:space="preserve">
           
-          <target state="translated">Feat</target>
+          <target>Feat</target>
         </trans-unit>
         <trans-unit id="DonTImplementUseMethodsInRlc" translate="no" xml:space="preserve">
           
-          <target state="translated">Don't implement, use methods in rlc</target>
+          <target>Don't implement, use methods in rlc</target>
         </trans-unit>
         <trans-unit id="ArrayShouldHave0Or1ElementsHave2" translate="no" xml:space="preserve">
           
-          <target state="translated">Array should have {0} or {1} elements, have {2</target>
+          <target>Array should have {0} or {1} elements, have {2</target>
         </trans-unit>
         <trans-unit id="DoesnTExists" translate="no" xml:space="preserve">
           
-          <target state="translated">Doesn't exists</target>
+          <target>Doesn't exists</target>
         </trans-unit>
         <trans-unit id="doesntHaveSettedName" translate="no" xml:space="preserve">
           
-          <target state="translated">doesnt have setted Name</target>
+          <target>doesnt have setted Name</target>
         </trans-unit>
         <trans-unit id="DoesnTHaveRequiredType" translate="no" xml:space="preserve">
           
-          <target state="translated">Doesn't have required type</target>
+          <target>Doesn't have required type</target>
         </trans-unit>
         <trans-unit id="isNotInWindowsPathFormat" translate="no" xml:space="preserve">
           
-          <target state="translated">is not in Windows path format</target>
+          <target>is not in Windows path format</target>
         </trans-unit>
         <trans-unit id="StringHasNotBeenInPathFormat" translate="no" xml:space="preserve">
           
-          <target state="translated">String has not been in path format</target>
+          <target>String has not been in path format</target>
         </trans-unit>
         <trans-unit id="NotSupported" translate="no" xml:space="preserve">
           
-          <target state="translated">Not supported</target>
+          <target>Not supported</target>
         </trans-unit>
         <trans-unit id="DifferentCountElementsInCollection" translate="no" xml:space="preserve">
           
-          <target state="translated">Different count elements in collection</target>
+          <target>Different count elements in collection</target>
         </trans-unit>
         <trans-unit id="ElementOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Element of</target>
+          <target>Element of</target>
         </trans-unit>
         <trans-unit id="wasNotIKeysHandler" translate="no" xml:space="preserve">
           
-          <target state="translated">was not IKeysHandler</target>
+          <target>was not IKeysHandler</target>
         </trans-unit>
         <trans-unit id="CanTDeleteFolder" translate="no" xml:space="preserve">
           
-          <target state="translated">Can't delete folder</target>
+          <target>Can't delete folder</target>
         </trans-unit>
         <trans-unit id="ElementWasntRemovedDuring" translate="no" xml:space="preserve">
           
-          <target state="translated">Element wasnt removed during</target>
+          <target>Element wasnt removed during</target>
         </trans-unit>
         <trans-unit id="NoPassedFolderInto" translate="no" xml:space="preserve">
           
-          <target state="translated">No passed folder into</target>
+          <target>No passed folder into</target>
         </trans-unit>
         <trans-unit id="Directory" translate="no" xml:space="preserve">
           
-          <target state="translated">Directory</target>
+          <target>Directory</target>
         </trans-unit>
         <trans-unit id="Under" translate="no" xml:space="preserve">
           
-          <target state="translated">Under</target>
+          <target>Under</target>
         </trans-unit>
         <trans-unit id="isNotExistsInDictionary" translate="no" xml:space="preserve">
           
-          <target state="translated">is not exists in Dictionary</target>
+          <target>is not exists in Dictionary</target>
         </trans-unit>
         <trans-unit id="NotImplementedCase" translate="no" xml:space="preserve">
           
-          <target state="translated">Not implemented case</target>
+          <target>Not implemented case</target>
         </trans-unit>
         <trans-unit id="publicProgramErrorPleaseContactDeveloper" translate="no" xml:space="preserve">
           
-          <target state="translated">public program error. Please contact developer</target>
+          <target>public program error. Please contact developer</target>
         </trans-unit>
         <trans-unit id="NotImplementedCasePublicProgramErrorPleaseContactDeveloper" translate="no" xml:space="preserve">
           
-          <target state="translated">Not implemented case. public program error. Please contact developer</target>
+          <target>Not implemented case. public program error. Please contact developer</target>
         </trans-unit>
         <trans-unit id="BadFormatOfElement" translate="no" xml:space="preserve">
           
-          <target state="translated">Bad format of element</target>
+          <target>Bad format of element</target>
         </trans-unit>
         <trans-unit id="Test" translate="no" xml:space="preserve">
           
-          <target state="translated">Test</target>
+          <target>Test</target>
         </trans-unit>
         <trans-unit id="SavedToDrive" translate="no" xml:space="preserve">
           
-          <target state="translated">Saved to drive</target>
+          <target>Saved to drive</target>
         </trans-unit>
         <trans-unit id="Finished" translate="no" xml:space="preserve">
           
-          <target state="translated">Finished</target>
+          <target>Finished</target>
         </trans-unit>
         <trans-unit id="SomeErrorsOccuredSeeLog" translate="no" xml:space="preserve">
           
-          <target state="translated">Some errors occured, see log</target>
+          <target>Some errors occured, see log</target>
         </trans-unit>
         <trans-unit id="Folder" translate="no" xml:space="preserve">
           
-          <target state="translated">Folder</target>
+          <target>Folder</target>
         </trans-unit>
         <trans-unit id="LoadedFromStorage" translate="no" xml:space="preserve">
           
-          <target state="translated">Loaded from storage</target>
+          <target>Loaded from storage</target>
         </trans-unit>
         <trans-unit id="InsertAsIndexesZeroBased" translate="no" xml:space="preserve">
           
-          <target state="translated">Insert as indexes (zero based</target>
+          <target>Insert as indexes (zero based</target>
         </trans-unit>
         <trans-unit id="UnfortunatelyBadFormatPleaseTryAgain" translate="no" xml:space="preserve">
           
-          <target state="translated">Unfortunately bad format. Please try again</target>
+          <target>Unfortunately bad format. Please try again</target>
         </trans-unit>
         <trans-unit id="OperationWasStopped" translate="no" xml:space="preserve">
           
-          <target state="translated">Operation was stopped</target>
+          <target>Operation was stopped</target>
         </trans-unit>
         <trans-unit id="PleaseEnterRightInputData" translate="no" xml:space="preserve">
           
-          <target state="translated">Please enter right input data</target>
+          <target>Please enter right input data</target>
         </trans-unit>
         <trans-unit id="SuccessfullyResizedTo" translate="no" xml:space="preserve">
           
-          <target state="translated">Successfully resized to</target>
+          <target>Successfully resized to</target>
         </trans-unit>
         <trans-unit id="CountInAAndBIsNotEqual" translate="no" xml:space="preserve">
           
-          <target state="translated">Count in a and b is not equal</target>
+          <target>Count in a and b is not equal</target>
         </trans-unit>
         <trans-unit id="InTheseFilesTheFollowingErrorsOccurred" translate="no" xml:space="preserve">
           
-          <target state="translated">In these files the following errors occurred</target>
+          <target>In these files the following errors occurred</target>
         </trans-unit>
         <trans-unit id="IfYouThinkThatThisIsApplicationErrorPleaseSendMeAnEmailAtTheAddressThatIsListedInTheAboutApp" translate="no" xml:space="preserve">
           
-          <target state="translated">If you think that this is application error, please send me an email at the address that is listed in the About app</target>
+          <target>If you think that this is application error, please send me an email at the address that is listed in the About app</target>
         </trans-unit>
         <trans-unit id="FileNotFound" translate="no" xml:space="preserve">
           
-          <target state="translated">File not found</target>
+          <target>File not found</target>
         </trans-unit>
         <trans-unit id="TheProgramDoesNotHaveAccessToTheFile" translate="no" xml:space="preserve">
           
-          <target state="translated">The program does not have access to the file</target>
+          <target>The program does not have access to the file</target>
         </trans-unit>
         <trans-unit id="UnknownOrGeneralError" translate="no" xml:space="preserve">
           
-          <target state="translated">Unknown or general error</target>
+          <target>Unknown or general error</target>
         </trans-unit>
         <trans-unit id="MetodaHtmlGenerator2TopListWithImagesOdkazyPhoto" translate="no" xml:space="preserve">
           
-          <target state="translated">Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto</target>
+          <target>Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto</target>
         </trans-unit>
         <trans-unit id="Undo" translate="no" xml:space="preserve">
           
-          <target state="translated">Undo</target>
+          <target>Undo</target>
         </trans-unit>
         <trans-unit id="TheSystemCannotFindTheFileSpecified" translate="no" xml:space="preserve">
           
-          <target state="translated">The system cannot find the file specified</target>
+          <target>The system cannot find the file specified</target>
         </trans-unit>
         <trans-unit id="NoProcessIsAssociatedWithThisObject" translate="no" xml:space="preserve">
           
-          <target state="translated">No process is associated with this object</target>
+          <target>No process is associated with this object</target>
         </trans-unit>
         <trans-unit id="PleaseAddHandle64ExeToPATH" translate="no" xml:space="preserve">
           
-          <target state="translated">Please add handle64.exe to PATH</target>
+          <target>Please add handle64.exe to PATH</target>
         </trans-unit>
         <trans-unit id="NoKnownPeriod" translate="no" xml:space="preserve">
           
-          <target state="translated">No known period</target>
+          <target>No known period</target>
         </trans-unit>
         <trans-unit id="ItWasNotMentioned" translate="no" xml:space="preserve">
           
-          <target state="translated">It was not mentioned</target>
+          <target>It was not mentioned</target>
         </trans-unit>
         <trans-unit id="NotIndicated" translate="no" xml:space="preserve">
           
-          <target state="translated">Not indicated</target>
+          <target>Not indicated</target>
         </trans-unit>
         <trans-unit id="ContentOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Content of</target>
+          <target>Content of</target>
         </trans-unit>
         <trans-unit id="UseMethodsInFSApps" translate="no" xml:space="preserve">
           
-          <target state="translated">use methods in FSApps</target>
+          <target>use methods in FSApps</target>
         </trans-unit>
         <trans-unit id="NIUwpSeeMethodForStacktrace" translate="no" xml:space="preserve">
           
-          <target state="translated">NI uwp - see method for stacktrace</target>
+          <target>NI uwp - see method for stacktrace</target>
         </trans-unit>
         <trans-unit id="GetFilesWithPath" translate="no" xml:space="preserve">
           
-          <target state="translated">GetFiles with path</target>
+          <target>GetFiles with path</target>
         </trans-unit>
         <trans-unit id="madam" translate="no" xml:space="preserve">
           
-          <target state="translated">madam</target>
+          <target>madam</target>
         </trans-unit>
         <trans-unit id="sir" translate="no" xml:space="preserve">
-          <target state="translated">sir</target>
+          <target>sir</target>
         </trans-unit>
         <trans-unit id="WeCannotSendToOurSameThread" translate="no" xml:space="preserve">
           
-          <target state="translated">We cannot send to our same thread</target>
+          <target>We cannot send to our same thread</target>
         </trans-unit>
         <trans-unit id="AsyncHelpersRunMethodThrewAnException" translate="no" xml:space="preserve">
           
-          <target state="translated">AsyncHelpers.Run method threw an exception</target>
+          <target>AsyncHelpers.Run method threw an exception</target>
         </trans-unit>
         <trans-unit id="ChangeDialogResultHasAlredyRegisteredHandler" translate="no" xml:space="preserve">
           
-          <target state="translated">ChangeDialogResult has alredy registered handler</target>
+          <target>ChangeDialogResult has alredy registered handler</target>
         </trans-unit>
         <trans-unit id="ThisParagraphIsLongerThan500Characters" translate="no" xml:space="preserve">
           
-          <target state="translated">This paragraph is longer than 500 characters</target>
+          <target>This paragraph is longer than 500 characters</target>
         </trans-unit>
         <trans-unit id="MismatchCountInInputArraysOfSHAllHaveRightFormat" translate="no" xml:space="preserve">
           
-          <target state="translated">Mismatch count in input arrays of SH.AllHaveRightFormat</target>
+          <target>Mismatch count in input arrays of SH.AllHaveRightFormat</target>
         </trans-unit>
         <trans-unit id="NumbersOfLetters" translate="no" xml:space="preserve">
           
-          <target state="translated">Numbers of letters</target>
+          <target>Numbers of letters</target>
         </trans-unit>
         <trans-unit id="ProbablyWasCalledWithSwithechDelimiterAndParts" translate="no" xml:space="preserve">
           
-          <target state="translated">Probably was called with swithech delimiter and parts</target>
+          <target>Probably was called with swithech delimiter and parts</target>
         </trans-unit>
         <trans-unit id="mustBeAnEnumType" translate="no" xml:space="preserve">
           
-          <target state="translated">must be an Enum type</target>
+          <target>must be an Enum type</target>
         </trans-unit>
         <trans-unit id="ChangesSavedToFile" translate="no" xml:space="preserve">
           
-          <target state="translated">Changes saved to file</target>
+          <target>Changes saved to file</target>
         </trans-unit>
         <trans-unit id="ChangesSavedToClipboard" translate="no" xml:space="preserve">
           
-          <target state="translated">Changes saved to clipboard</target>
+          <target>Changes saved to clipboard</target>
         </trans-unit>
         <trans-unit id="InvalidRowIndexInMethodCAGetRowOfTwoDimensionalArray" translate="no" xml:space="preserve">
           
-          <target state="translated">Invalid row index in method CA.GetRowOfTwoDimensionalArray</target>
+          <target>Invalid row index in method CA.GetRowOfTwoDimensionalArray</target>
         </trans-unit>
         <trans-unit id="Prepend" translate="no" xml:space="preserve">
           
-          <target state="translated">Prepend</target>
+          <target>Prepend</target>
         </trans-unit>
         <trans-unit id="Parse" translate="no" xml:space="preserve">
           
-          <target state="translated">Parse</target>
+          <target>Parse</target>
         </trans-unit>
         <trans-unit id="Featuring" translate="no" xml:space="preserve">
           
-          <target state="translated">Featuring</target>
+          <target>Featuring</target>
         </trans-unit>
         <trans-unit id="Poincareplane" translate="no" xml:space="preserve">
           
-          <target state="translated">Poincareplane</target>
+          <target>Poincareplane</target>
         </trans-unit>
         <trans-unit id="Dashv" translate="no" xml:space="preserve">
           
-          <target state="translated">Dashv</target>
+          <target>Dashv</target>
         </trans-unit>
         <trans-unit id="Vdashl" translate="no" xml:space="preserve">
           
-          <target state="translated">Vdashl</target>
+          <target>Vdashl</target>
         </trans-unit>
         <trans-unit id="Vbar" translate="no" xml:space="preserve">
           
-          <target state="translated">Vbar</target>
+          <target>Vbar</target>
         </trans-unit>
         <trans-unit id="Prague" translate="no" xml:space="preserve">
           
-          <target state="translated">Prague</target>
+          <target>Prague</target>
         </trans-unit>
         <trans-unit id="Carlsbad" translate="no" xml:space="preserve">
           
-          <target state="translated">Carlsbad</target>
+          <target>Carlsbad</target>
         </trans-unit>
         <trans-unit id="Liberec" translate="no" xml:space="preserve">
           
-          <target state="translated">Liberec</target>
+          <target>Liberec</target>
         </trans-unit>
         <trans-unit id="Pardubice" translate="no" xml:space="preserve">
           
-          <target state="translated">Pardubice</target>
+          <target>Pardubice</target>
         </trans-unit>
         <trans-unit id="Olomouc" translate="no" xml:space="preserve">
           
-          <target state="translated">Olomouc</target>
+          <target>Olomouc</target>
         </trans-unit>
         <trans-unit id="Ostrava" translate="no" xml:space="preserve">
           
-          <target state="translated">Ostrava</target>
+          <target>Ostrava</target>
         </trans-unit>
         <trans-unit id="Brno" translate="no" xml:space="preserve">
           
-          <target state="translated">Brno</target>
+          <target>Brno</target>
         </trans-unit>
         <trans-unit id="Jihlava" translate="no" xml:space="preserve">
           
-          <target state="translated">Jihlava</target>
+          <target>Jihlava</target>
         </trans-unit>
         <trans-unit id="Andorra" translate="no" xml:space="preserve">
           
-          <target state="translated">Andorra</target>
+          <target>Andorra</target>
         </trans-unit>
         <trans-unit id="UnitedArabEmirates" translate="no" xml:space="preserve">
           
-          <target state="translated">United Arab Emirates</target>
+          <target>United Arab Emirates</target>
         </trans-unit>
         <trans-unit id="Afghanistan" translate="no" xml:space="preserve">
           
-          <target state="translated">Afghanistan</target>
+          <target>Afghanistan</target>
         </trans-unit>
         <trans-unit id="AntiguaAndBarbuda" translate="no" xml:space="preserve">
           
-          <target state="translated">Antigua and Barbuda</target>
+          <target>Antigua and Barbuda</target>
         </trans-unit>
         <trans-unit id="Anguilla" translate="no" xml:space="preserve">
           
-          <target state="translated">Anguilla</target>
+          <target>Anguilla</target>
         </trans-unit>
         <trans-unit id="Albania" translate="no" xml:space="preserve">
           
-          <target state="translated">Albania</target>
+          <target>Albania</target>
         </trans-unit>
         <trans-unit id="Armenia" translate="no" xml:space="preserve">
           
-          <target state="translated">Armenia</target>
+          <target>Armenia</target>
         </trans-unit>
         <trans-unit id="Angola" translate="no" xml:space="preserve">
           
-          <target state="translated">Angola</target>
+          <target>Angola</target>
         </trans-unit>
         <trans-unit id="Antarctica" translate="no" xml:space="preserve">
           
-          <target state="translated">Antarctica</target>
+          <target>Antarctica</target>
         </trans-unit>
         <trans-unit id="Argentina" translate="no" xml:space="preserve">
           
-          <target state="translated">Argentina</target>
+          <target>Argentina</target>
         </trans-unit>
         <trans-unit id="AmericanSamoa" translate="no" xml:space="preserve">
           
-          <target state="translated">American Samoa</target>
+          <target>American Samoa</target>
         </trans-unit>
         <trans-unit id="Austria" translate="no" xml:space="preserve">
           
-          <target state="translated">Austria</target>
+          <target>Austria</target>
         </trans-unit>
         <trans-unit id="Australia" translate="no" xml:space="preserve">
           
-          <target state="translated">Australia</target>
+          <target>Australia</target>
         </trans-unit>
         <trans-unit id="Aruba" translate="no" xml:space="preserve">
           
-          <target state="translated">Aruba</target>
+          <target>Aruba</target>
         </trans-unit>
         <trans-unit id="Azerbaijan" translate="no" xml:space="preserve">
           
-          <target state="translated">Azerbaijan</target>
+          <target>Azerbaijan</target>
         </trans-unit>
         <trans-unit id="BosniaAndHerzegovina" translate="no" xml:space="preserve">
           
-          <target state="translated">Bosnia and Herzegovina</target>
+          <target>Bosnia and Herzegovina</target>
         </trans-unit>
         <trans-unit id="Barbados" translate="no" xml:space="preserve">
           
-          <target state="translated">Barbados</target>
+          <target>Barbados</target>
         </trans-unit>
         <trans-unit id="Bangladesh" translate="no" xml:space="preserve">
           
-          <target state="translated">Bangladesh</target>
+          <target>Bangladesh</target>
         </trans-unit>
         <trans-unit id="Belgium" translate="no" xml:space="preserve">
           
-          <target state="translated">Belgium</target>
+          <target>Belgium</target>
         </trans-unit>
         <trans-unit id="BurkinaFaso" translate="no" xml:space="preserve">
           
-          <target state="translated">Burkina Faso</target>
+          <target>Burkina Faso</target>
         </trans-unit>
         <trans-unit id="Bulgaria" translate="no" xml:space="preserve">
           
-          <target state="translated">Bulgaria</target>
+          <target>Bulgaria</target>
         </trans-unit>
         <trans-unit id="Bahrain" translate="no" xml:space="preserve">
           
-          <target state="translated">Bahrain</target>
+          <target>Bahrain</target>
         </trans-unit>
         <trans-unit id="Burundi" translate="no" xml:space="preserve">
           
-          <target state="translated">Burundi</target>
+          <target>Burundi</target>
         </trans-unit>
         <trans-unit id="Benin" translate="no" xml:space="preserve">
           
-          <target state="translated">Benin</target>
+          <target>Benin</target>
         </trans-unit>
         <trans-unit id="Bermuda" translate="no" xml:space="preserve">
           
-          <target state="translated">Bermuda</target>
+          <target>Bermuda</target>
         </trans-unit>
         <trans-unit id="BruneiDarussalam" translate="no" xml:space="preserve">
           
-          <target state="translated">Brunei Darussalam</target>
+          <target>Brunei Darussalam</target>
         </trans-unit>
         <trans-unit id="BoliviaPlurinationalStateOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Bolivia, Plurinational State of</target>
+          <target>Bolivia, Plurinational State of</target>
         </trans-unit>
         <trans-unit id="BonaireSintEustatiusAndSaba" translate="no" xml:space="preserve">
           
-          <target state="translated">Bonaire, Sint Eustatius and Saba</target>
+          <target>Bonaire, Sint Eustatius and Saba</target>
         </trans-unit>
         <trans-unit id="Brazil" translate="no" xml:space="preserve">
           
-          <target state="translated">Brazil</target>
+          <target>Brazil</target>
         </trans-unit>
         <trans-unit id="Bahamas" translate="no" xml:space="preserve">
           
-          <target state="translated">Bahamas</target>
+          <target>Bahamas</target>
         </trans-unit>
         <trans-unit id="Bhutan" translate="no" xml:space="preserve">
           
-          <target state="translated">Bhutan</target>
+          <target>Bhutan</target>
         </trans-unit>
         <trans-unit id="BouvetIsland" translate="no" xml:space="preserve">
           
-          <target state="translated">Bouvet Island</target>
+          <target>Bouvet Island</target>
         </trans-unit>
         <trans-unit id="Botswana" translate="no" xml:space="preserve">
           
-          <target state="translated">Botswana</target>
+          <target>Botswana</target>
         </trans-unit>
         <trans-unit id="Belarus" translate="no" xml:space="preserve">
           
-          <target state="translated">Belarus</target>
+          <target>Belarus</target>
         </trans-unit>
         <trans-unit id="Belize" translate="no" xml:space="preserve">
           
-          <target state="translated">Belize</target>
+          <target>Belize</target>
         </trans-unit>
         <trans-unit id="Canada" translate="no" xml:space="preserve">
           
-          <target state="translated">Canada</target>
+          <target>Canada</target>
         </trans-unit>
         <trans-unit id="CocosKeelingIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Cocos (Keeling) Islands</target>
+          <target>Cocos (Keeling) Islands</target>
         </trans-unit>
         <trans-unit id="CongoTheDemocraticRepublicOfThe" translate="no" xml:space="preserve">
           
-          <target state="translated">Congo, the Democratic Republic of the</target>
+          <target>Congo, the Democratic Republic of the</target>
         </trans-unit>
         <trans-unit id="CentralAfricanRepublic" translate="no" xml:space="preserve">
           
-          <target state="translated">Central African Republic</target>
+          <target>Central African Republic</target>
         </trans-unit>
         <trans-unit id="Congo" translate="no" xml:space="preserve">
           
-          <target state="translated">Congo</target>
+          <target>Congo</target>
         </trans-unit>
         <trans-unit id="Switzerland" translate="no" xml:space="preserve">
           
-          <target state="translated">Switzerland</target>
+          <target>Switzerland</target>
         </trans-unit>
         <trans-unit id="CookIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Cook Islands</target>
+          <target>Cook Islands</target>
         </trans-unit>
         <trans-unit id="Chile" translate="no" xml:space="preserve">
           
-          <target state="translated">Chile</target>
+          <target>Chile</target>
         </trans-unit>
         <trans-unit id="Cameroon" translate="no" xml:space="preserve">
           
-          <target state="translated">Cameroon</target>
+          <target>Cameroon</target>
         </trans-unit>
         <trans-unit id="China" translate="no" xml:space="preserve">
           
-          <target state="translated">China</target>
+          <target>China</target>
         </trans-unit>
         <trans-unit id="Colombia" translate="no" xml:space="preserve">
           
-          <target state="translated">Colombia</target>
+          <target>Colombia</target>
         </trans-unit>
         <trans-unit id="CostaRica" translate="no" xml:space="preserve">
           
-          <target state="translated">Costa Rica</target>
+          <target>Costa Rica</target>
         </trans-unit>
         <trans-unit id="Cuba" translate="no" xml:space="preserve">
           
-          <target state="translated">Cuba</target>
+          <target>Cuba</target>
         </trans-unit>
         <trans-unit id="CaboVerde" translate="no" xml:space="preserve">
           
-          <target state="translated">Cabo Verde</target>
+          <target>Cabo Verde</target>
         </trans-unit>
         <trans-unit id="ChristmasIsland" translate="no" xml:space="preserve">
           
-          <target state="translated">Christmas Island</target>
+          <target>Christmas Island</target>
         </trans-unit>
         <trans-unit id="Cyprus" translate="no" xml:space="preserve">
           
-          <target state="translated">Cyprus</target>
+          <target>Cyprus</target>
         </trans-unit>
         <trans-unit id="Germany" translate="no" xml:space="preserve">
           
-          <target state="translated">Germany</target>
+          <target>Germany</target>
         </trans-unit>
         <trans-unit id="Djibouti" translate="no" xml:space="preserve">
           
-          <target state="translated">Djibouti</target>
+          <target>Djibouti</target>
         </trans-unit>
         <trans-unit id="Denmark" translate="no" xml:space="preserve">
           
-          <target state="translated">Denmark</target>
+          <target>Denmark</target>
         </trans-unit>
         <trans-unit id="Dominica" translate="no" xml:space="preserve">
           
-          <target state="translated">Dominica</target>
+          <target>Dominica</target>
         </trans-unit>
         <trans-unit id="DominicanRepublic" translate="no" xml:space="preserve">
           
-          <target state="translated">Dominican Republic</target>
+          <target>Dominican Republic</target>
         </trans-unit>
         <trans-unit id="Algeria" translate="no" xml:space="preserve">
           
-          <target state="translated">Algeria</target>
+          <target>Algeria</target>
         </trans-unit>
         <trans-unit id="Ecuador" translate="no" xml:space="preserve">
           
-          <target state="translated">Ecuador</target>
+          <target>Ecuador</target>
         </trans-unit>
         <trans-unit id="Estonia" translate="no" xml:space="preserve">
           
-          <target state="translated">Estonia</target>
+          <target>Estonia</target>
         </trans-unit>
         <trans-unit id="Egypt" translate="no" xml:space="preserve">
           
-          <target state="translated">Egypt</target>
+          <target>Egypt</target>
         </trans-unit>
         <trans-unit id="WesternSahara" translate="no" xml:space="preserve">
           
-          <target state="translated">Western Sahara</target>
+          <target>Western Sahara</target>
         </trans-unit>
         <trans-unit id="Eritrea" translate="no" xml:space="preserve">
           
-          <target state="translated">Eritrea</target>
+          <target>Eritrea</target>
         </trans-unit>
         <trans-unit id="Spain" translate="no" xml:space="preserve">
           
-          <target state="translated">Spain</target>
+          <target>Spain</target>
         </trans-unit>
         <trans-unit id="Ethiopia" translate="no" xml:space="preserve">
           
-          <target state="translated">Ethiopia</target>
+          <target>Ethiopia</target>
         </trans-unit>
         <trans-unit id="Finland" translate="no" xml:space="preserve">
           
-          <target state="translated">Finland</target>
+          <target>Finland</target>
         </trans-unit>
         <trans-unit id="Fiji" translate="no" xml:space="preserve">
           
-          <target state="translated">Fiji</target>
+          <target>Fiji</target>
         </trans-unit>
         <trans-unit id="FalklandIslandsMalvinas" translate="no" xml:space="preserve">
           
-          <target state="translated">Falkland Islands (Malvinas</target>
+          <target>Falkland Islands (Malvinas</target>
         </trans-unit>
         <trans-unit id="MicronesiaFederatedStatesOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Micronesia, Federated States of</target>
+          <target>Micronesia, Federated States of</target>
         </trans-unit>
         <trans-unit id="FaroeIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Faroe Islands</target>
+          <target>Faroe Islands</target>
         </trans-unit>
         <trans-unit id="France" translate="no" xml:space="preserve">
           
-          <target state="translated">France</target>
+          <target>France</target>
         </trans-unit>
         <trans-unit id="Gabon" translate="no" xml:space="preserve">
           
-          <target state="translated">Gabon</target>
+          <target>Gabon</target>
         </trans-unit>
         <trans-unit id="UnitedKingdomOfGreatBritainAndNorthernIreland" translate="no" xml:space="preserve">
           
-          <target state="translated">United Kingdom of Great Britain and Northern Ireland</target>
+          <target>United Kingdom of Great Britain and Northern Ireland</target>
         </trans-unit>
         <trans-unit id="Grenada" translate="no" xml:space="preserve">
           
-          <target state="translated">Grenada</target>
+          <target>Grenada</target>
         </trans-unit>
         <trans-unit id="Georgia" translate="no" xml:space="preserve">
           
-          <target state="translated">Georgia</target>
+          <target>Georgia</target>
         </trans-unit>
         <trans-unit id="FrenchGuiana" translate="no" xml:space="preserve">
           
-          <target state="translated">French Guiana</target>
+          <target>French Guiana</target>
         </trans-unit>
         <trans-unit id="Guernsey" translate="no" xml:space="preserve">
           
-          <target state="translated">Guernsey</target>
+          <target>Guernsey</target>
         </trans-unit>
         <trans-unit id="Ghana" translate="no" xml:space="preserve">
           
-          <target state="translated">Ghana</target>
+          <target>Ghana</target>
         </trans-unit>
         <trans-unit id="Gibraltar" translate="no" xml:space="preserve">
           
-          <target state="translated">Gibraltar</target>
+          <target>Gibraltar</target>
         </trans-unit>
         <trans-unit id="Greenland" translate="no" xml:space="preserve">
           
-          <target state="translated">Greenland</target>
+          <target>Greenland</target>
         </trans-unit>
         <trans-unit id="Gambia" translate="no" xml:space="preserve">
           
-          <target state="translated">Gambia</target>
+          <target>Gambia</target>
         </trans-unit>
         <trans-unit id="Guinea" translate="no" xml:space="preserve">
           
-          <target state="translated">Guinea</target>
+          <target>Guinea</target>
         </trans-unit>
         <trans-unit id="Guadeloupe" translate="no" xml:space="preserve">
           
-          <target state="translated">Guadeloupe</target>
+          <target>Guadeloupe</target>
         </trans-unit>
         <trans-unit id="EquatorialGuinea" translate="no" xml:space="preserve">
           
-          <target state="translated">Equatorial Guinea</target>
+          <target>Equatorial Guinea</target>
         </trans-unit>
         <trans-unit id="Greece" translate="no" xml:space="preserve">
           
-          <target state="translated">Greece</target>
+          <target>Greece</target>
         </trans-unit>
         <trans-unit id="SouthGeorgiaAndTheSouthSandwichIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">South Georgia and the South Sandwich Islands</target>
+          <target>South Georgia and the South Sandwich Islands</target>
         </trans-unit>
         <trans-unit id="Guatemala" translate="no" xml:space="preserve">
           
-          <target state="translated">Guatemala</target>
+          <target>Guatemala</target>
         </trans-unit>
         <trans-unit id="Guam" translate="no" xml:space="preserve">
           
-          <target state="translated">Guam</target>
+          <target>Guam</target>
         </trans-unit>
         <trans-unit id="Guyana" translate="no" xml:space="preserve">
           
-          <target state="translated">Guyana</target>
+          <target>Guyana</target>
         </trans-unit>
         <trans-unit id="HongKong" translate="no" xml:space="preserve">
           
-          <target state="translated">Hong Kong</target>
+          <target>Hong Kong</target>
         </trans-unit>
         <trans-unit id="HeardIslandAndMcDonaldIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Heard Island and McDonald Islands</target>
+          <target>Heard Island and McDonald Islands</target>
         </trans-unit>
         <trans-unit id="Honduras" translate="no" xml:space="preserve">
           
-          <target state="translated">Honduras</target>
+          <target>Honduras</target>
         </trans-unit>
         <trans-unit id="Croatia" translate="no" xml:space="preserve">
           
-          <target state="translated">Croatia</target>
+          <target>Croatia</target>
         </trans-unit>
         <trans-unit id="Haiti" translate="no" xml:space="preserve">
           
-          <target state="translated">Haiti</target>
+          <target>Haiti</target>
         </trans-unit>
         <trans-unit id="Hungary" translate="no" xml:space="preserve">
           
-          <target state="translated">Hungary</target>
+          <target>Hungary</target>
         </trans-unit>
         <trans-unit id="Indonesia" translate="no" xml:space="preserve">
           
-          <target state="translated">Indonesia</target>
+          <target>Indonesia</target>
         </trans-unit>
         <trans-unit id="Ireland" translate="no" xml:space="preserve">
           
-          <target state="translated">Ireland</target>
+          <target>Ireland</target>
         </trans-unit>
         <trans-unit id="Israel" translate="no" xml:space="preserve">
           
-          <target state="translated">Israel</target>
+          <target>Israel</target>
         </trans-unit>
         <trans-unit id="IsleOfMan" translate="no" xml:space="preserve">
           
-          <target state="translated">Isle of Man</target>
+          <target>Isle of Man</target>
         </trans-unit>
         <trans-unit id="India" translate="no" xml:space="preserve">
           
-          <target state="translated">India</target>
+          <target>India</target>
         </trans-unit>
         <trans-unit id="BritishIndianOceanTerritory" translate="no" xml:space="preserve">
           
-          <target state="translated">British Indian Ocean Territory</target>
+          <target>British Indian Ocean Territory</target>
         </trans-unit>
         <trans-unit id="Iraq" translate="no" xml:space="preserve">
           
-          <target state="translated">Iraq</target>
+          <target>Iraq</target>
         </trans-unit>
         <trans-unit id="IranIslamicRepublicOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Iran, Islamic Republic of</target>
+          <target>Iran, Islamic Republic of</target>
         </trans-unit>
         <trans-unit id="Iceland" translate="no" xml:space="preserve">
           
-          <target state="translated">Iceland</target>
+          <target>Iceland</target>
         </trans-unit>
         <trans-unit id="Italy" translate="no" xml:space="preserve">
           
-          <target state="translated">Italy</target>
+          <target>Italy</target>
         </trans-unit>
         <trans-unit id="Jersey" translate="no" xml:space="preserve">
           
-          <target state="translated">Jersey</target>
+          <target>Jersey</target>
         </trans-unit>
         <trans-unit id="Jamaica" translate="no" xml:space="preserve">
           
-          <target state="translated">Jamaica</target>
+          <target>Jamaica</target>
         </trans-unit>
         <trans-unit id="Jordan" translate="no" xml:space="preserve">
           
-          <target state="translated">Jordan</target>
+          <target>Jordan</target>
         </trans-unit>
         <trans-unit id="Japan" translate="no" xml:space="preserve">
           
-          <target state="translated">Japan</target>
+          <target>Japan</target>
         </trans-unit>
         <trans-unit id="Kenya" translate="no" xml:space="preserve">
           
-          <target state="translated">Kenya</target>
+          <target>Kenya</target>
         </trans-unit>
         <trans-unit id="Kyrgyzstan" translate="no" xml:space="preserve">
           
-          <target state="translated">Kyrgyzstan</target>
+          <target>Kyrgyzstan</target>
         </trans-unit>
         <trans-unit id="Cambodia" translate="no" xml:space="preserve">
           
-          <target state="translated">Cambodia</target>
+          <target>Cambodia</target>
         </trans-unit>
         <trans-unit id="Kiribati" translate="no" xml:space="preserve">
           
-          <target state="translated">Kiribati</target>
+          <target>Kiribati</target>
         </trans-unit>
         <trans-unit id="Comoros" translate="no" xml:space="preserve">
           
-          <target state="translated">Comoros</target>
+          <target>Comoros</target>
         </trans-unit>
         <trans-unit id="SaintKittsAndNevis" translate="no" xml:space="preserve">
           
-          <target state="translated">Saint Kitts and Nevis</target>
+          <target>Saint Kitts and Nevis</target>
         </trans-unit>
         <trans-unit id="KoreaDemocraticPeopleSRepublicOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Korea, Democratic People's Republic of</target>
+          <target>Korea, Democratic People's Republic of</target>
         </trans-unit>
         <trans-unit id="KoreaRepublicOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Korea, Republic of</target>
+          <target>Korea, Republic of</target>
         </trans-unit>
         <trans-unit id="Kuwait" translate="no" xml:space="preserve">
           
-          <target state="translated">Kuwait</target>
+          <target>Kuwait</target>
         </trans-unit>
         <trans-unit id="CaymanIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Cayman Islands</target>
+          <target>Cayman Islands</target>
         </trans-unit>
         <trans-unit id="Kazakhstan" translate="no" xml:space="preserve">
           
-          <target state="translated">Kazakhstan</target>
+          <target>Kazakhstan</target>
         </trans-unit>
         <trans-unit id="LaoPeopleSDemocraticRepublic" translate="no" xml:space="preserve">
           
-          <target state="translated">Lao People's Democratic Republic</target>
+          <target>Lao People's Democratic Republic</target>
         </trans-unit>
         <trans-unit id="Lebanon" translate="no" xml:space="preserve">
           
-          <target state="translated">Lebanon</target>
+          <target>Lebanon</target>
         </trans-unit>
         <trans-unit id="SaintLucia" translate="no" xml:space="preserve">
           
-          <target state="translated">Saint Lucia</target>
+          <target>Saint Lucia</target>
         </trans-unit>
         <trans-unit id="Liechtenstein" translate="no" xml:space="preserve">
           
-          <target state="translated">Liechtenstein</target>
+          <target>Liechtenstein</target>
         </trans-unit>
         <trans-unit id="SriLanka" translate="no" xml:space="preserve">
           
-          <target state="translated">Sri Lanka</target>
+          <target>Sri Lanka</target>
         </trans-unit>
         <trans-unit id="Liberia" translate="no" xml:space="preserve">
           
-          <target state="translated">Liberia</target>
+          <target>Liberia</target>
         </trans-unit>
         <trans-unit id="Lesotho" translate="no" xml:space="preserve">
           
-          <target state="translated">Lesotho</target>
+          <target>Lesotho</target>
         </trans-unit>
         <trans-unit id="Lithuania" translate="no" xml:space="preserve">
           
-          <target state="translated">Lithuania</target>
+          <target>Lithuania</target>
         </trans-unit>
         <trans-unit id="Luxembourg" translate="no" xml:space="preserve">
           
-          <target state="translated">Luxembourg</target>
+          <target>Luxembourg</target>
         </trans-unit>
         <trans-unit id="Latvia" translate="no" xml:space="preserve">
           
-          <target state="translated">Latvia</target>
+          <target>Latvia</target>
         </trans-unit>
         <trans-unit id="Libya" translate="no" xml:space="preserve">
           
-          <target state="translated">Libya</target>
+          <target>Libya</target>
         </trans-unit>
         <trans-unit id="Morocco" translate="no" xml:space="preserve">
           
-          <target state="translated">Morocco</target>
+          <target>Morocco</target>
         </trans-unit>
         <trans-unit id="Monaco" translate="no" xml:space="preserve">
           
-          <target state="translated">Monaco</target>
+          <target>Monaco</target>
         </trans-unit>
         <trans-unit id="MoldovaRepublicOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Moldova, Republic of</target>
+          <target>Moldova, Republic of</target>
         </trans-unit>
         <trans-unit id="Montenegro" translate="no" xml:space="preserve">
           
-          <target state="translated">Montenegro</target>
+          <target>Montenegro</target>
         </trans-unit>
         <trans-unit id="SaintMartinFrenchPart" translate="no" xml:space="preserve">
           
-          <target state="translated">Saint Martin (French part</target>
+          <target>Saint Martin (French part</target>
         </trans-unit>
         <trans-unit id="Madagascar" translate="no" xml:space="preserve">
           
-          <target state="translated">Madagascar</target>
+          <target>Madagascar</target>
         </trans-unit>
         <trans-unit id="MarshallIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Marshall Islands</target>
+          <target>Marshall Islands</target>
         </trans-unit>
         <trans-unit id="MacedoniaTheFormerYugoslavRepublicOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Macedonia, the former Yugoslav Republic of</target>
+          <target>Macedonia, the former Yugoslav Republic of</target>
         </trans-unit>
         <trans-unit id="Mali" translate="no" xml:space="preserve">
           
-          <target state="translated">Mali</target>
+          <target>Mali</target>
         </trans-unit>
         <trans-unit id="Myanmar" translate="no" xml:space="preserve">
           
-          <target state="translated">Myanmar</target>
+          <target>Myanmar</target>
         </trans-unit>
         <trans-unit id="Mongolia" translate="no" xml:space="preserve">
           
-          <target state="translated">Mongolia</target>
+          <target>Mongolia</target>
         </trans-unit>
         <trans-unit id="Macao" translate="no" xml:space="preserve">
           
-          <target state="translated">Macao</target>
+          <target>Macao</target>
         </trans-unit>
         <trans-unit id="NorthernMarianaIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Northern Mariana Islands</target>
+          <target>Northern Mariana Islands</target>
         </trans-unit>
         <trans-unit id="Martinique" translate="no" xml:space="preserve">
           
-          <target state="translated">Martinique</target>
+          <target>Martinique</target>
         </trans-unit>
         <trans-unit id="Mauritania" translate="no" xml:space="preserve">
           
-          <target state="translated">Mauritania</target>
+          <target>Mauritania</target>
         </trans-unit>
         <trans-unit id="Montserrat" translate="no" xml:space="preserve">
           
-          <target state="translated">Montserrat</target>
+          <target>Montserrat</target>
         </trans-unit>
         <trans-unit id="Malta" translate="no" xml:space="preserve">
           
-          <target state="translated">Malta</target>
+          <target>Malta</target>
         </trans-unit>
         <trans-unit id="Mauritius" translate="no" xml:space="preserve">
           
-          <target state="translated">Mauritius</target>
+          <target>Mauritius</target>
         </trans-unit>
         <trans-unit id="Maldives" translate="no" xml:space="preserve">
           
-          <target state="translated">Maldives</target>
+          <target>Maldives</target>
         </trans-unit>
         <trans-unit id="Malawi" translate="no" xml:space="preserve">
           
-          <target state="translated">Malawi</target>
+          <target>Malawi</target>
         </trans-unit>
         <trans-unit id="Mexico" translate="no" xml:space="preserve">
           
-          <target state="translated">Mexico</target>
+          <target>Mexico</target>
         </trans-unit>
         <trans-unit id="Malaysia" translate="no" xml:space="preserve">
           
-          <target state="translated">Malaysia</target>
+          <target>Malaysia</target>
         </trans-unit>
         <trans-unit id="Mozambique" translate="no" xml:space="preserve">
           
-          <target state="translated">Mozambique</target>
+          <target>Mozambique</target>
         </trans-unit>
         <trans-unit id="Namibia" translate="no" xml:space="preserve">
           
-          <target state="translated">Namibia</target>
+          <target>Namibia</target>
         </trans-unit>
         <trans-unit id="NewCaledonia" translate="no" xml:space="preserve">
           
-          <target state="translated">New Caledonia</target>
+          <target>New Caledonia</target>
         </trans-unit>
         <trans-unit id="Niger" translate="no" xml:space="preserve">
           
-          <target state="translated">Niger</target>
+          <target>Niger</target>
         </trans-unit>
         <trans-unit id="NorfolkIsland" translate="no" xml:space="preserve">
           
-          <target state="translated">Norfolk Island</target>
+          <target>Norfolk Island</target>
         </trans-unit>
         <trans-unit id="Nigeria" translate="no" xml:space="preserve">
           
-          <target state="translated">Nigeria</target>
+          <target>Nigeria</target>
         </trans-unit>
         <trans-unit id="Nicaragua" translate="no" xml:space="preserve">
           
-          <target state="translated">Nicaragua</target>
+          <target>Nicaragua</target>
         </trans-unit>
         <trans-unit id="Netherlands" translate="no" xml:space="preserve">
           
-          <target state="translated">Netherlands</target>
+          <target>Netherlands</target>
         </trans-unit>
         <trans-unit id="Norway" translate="no" xml:space="preserve">
           
-          <target state="translated">Norway</target>
+          <target>Norway</target>
         </trans-unit>
         <trans-unit id="Nepal" translate="no" xml:space="preserve">
           
-          <target state="translated">Nepal</target>
+          <target>Nepal</target>
         </trans-unit>
         <trans-unit id="Nauru" translate="no" xml:space="preserve">
           
-          <target state="translated">Nauru</target>
+          <target>Nauru</target>
         </trans-unit>
         <trans-unit id="Niue" translate="no" xml:space="preserve">
           
-          <target state="translated">Niue</target>
+          <target>Niue</target>
         </trans-unit>
         <trans-unit id="NewZealand" translate="no" xml:space="preserve">
           
-          <target state="translated">New Zealand</target>
+          <target>New Zealand</target>
         </trans-unit>
         <trans-unit id="Oman" translate="no" xml:space="preserve">
           
-          <target state="translated">Oman</target>
+          <target>Oman</target>
         </trans-unit>
         <trans-unit id="Panama" translate="no" xml:space="preserve">
           
-          <target state="translated">Panama</target>
+          <target>Panama</target>
         </trans-unit>
         <trans-unit id="Peru" translate="no" xml:space="preserve">
           
-          <target state="translated">Peru</target>
+          <target>Peru</target>
         </trans-unit>
         <trans-unit id="FrenchPolynesia" translate="no" xml:space="preserve">
           
-          <target state="translated">French Polynesia</target>
+          <target>French Polynesia</target>
         </trans-unit>
         <trans-unit id="PapuaNewGuinea" translate="no" xml:space="preserve">
           
-          <target state="translated">Papua New Guinea</target>
+          <target>Papua New Guinea</target>
         </trans-unit>
         <trans-unit id="Philippines" translate="no" xml:space="preserve">
           
-          <target state="translated">Philippines</target>
+          <target>Philippines</target>
         </trans-unit>
         <trans-unit id="Pakistan" translate="no" xml:space="preserve">
           
-          <target state="translated">Pakistan</target>
+          <target>Pakistan</target>
         </trans-unit>
         <trans-unit id="Poland" translate="no" xml:space="preserve">
           
-          <target state="translated">Poland</target>
+          <target>Poland</target>
         </trans-unit>
         <trans-unit id="SaintPierreAndMiquelon" translate="no" xml:space="preserve">
           
-          <target state="translated">Saint Pierre and Miquelon</target>
+          <target>Saint Pierre and Miquelon</target>
         </trans-unit>
         <trans-unit id="Pitcairn" translate="no" xml:space="preserve">
           
-          <target state="translated">Pitcairn</target>
+          <target>Pitcairn</target>
         </trans-unit>
         <trans-unit id="PuertoRico" translate="no" xml:space="preserve">
           
-          <target state="translated">Puerto Rico</target>
+          <target>Puerto Rico</target>
         </trans-unit>
         <trans-unit id="PalestineStateOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Palestine, State of</target>
+          <target>Palestine, State of</target>
         </trans-unit>
         <trans-unit id="Portugal" translate="no" xml:space="preserve">
           
-          <target state="translated">Portugal</target>
+          <target>Portugal</target>
         </trans-unit>
         <trans-unit id="Palau" translate="no" xml:space="preserve">
           
-          <target state="translated">Palau</target>
+          <target>Palau</target>
         </trans-unit>
         <trans-unit id="Paraguay" translate="no" xml:space="preserve">
           
-          <target state="translated">Paraguay</target>
+          <target>Paraguay</target>
         </trans-unit>
         <trans-unit id="Qatar" translate="no" xml:space="preserve">
           
-          <target state="translated">Qatar</target>
+          <target>Qatar</target>
         </trans-unit>
         <trans-unit id="Romania" translate="no" xml:space="preserve">
           
-          <target state="translated">Romania</target>
+          <target>Romania</target>
         </trans-unit>
         <trans-unit id="Serbia" translate="no" xml:space="preserve">
           
-          <target state="translated">Serbia</target>
+          <target>Serbia</target>
         </trans-unit>
         <trans-unit id="RussianFederation" translate="no" xml:space="preserve">
           
-          <target state="translated">Russian Federation</target>
+          <target>Russian Federation</target>
         </trans-unit>
         <trans-unit id="Rwanda" translate="no" xml:space="preserve">
           
-          <target state="translated">Rwanda</target>
+          <target>Rwanda</target>
         </trans-unit>
         <trans-unit id="SaudiArabia" translate="no" xml:space="preserve">
           
-          <target state="translated">Saudi Arabia</target>
+          <target>Saudi Arabia</target>
         </trans-unit>
         <trans-unit id="SolomonIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Solomon Islands</target>
+          <target>Solomon Islands</target>
         </trans-unit>
         <trans-unit id="Seychelles" translate="no" xml:space="preserve">
           
-          <target state="translated">Seychelles</target>
+          <target>Seychelles</target>
         </trans-unit>
         <trans-unit id="Sudan" translate="no" xml:space="preserve">
           
-          <target state="translated">Sudan</target>
+          <target>Sudan</target>
         </trans-unit>
         <trans-unit id="Sweden" translate="no" xml:space="preserve">
           
-          <target state="translated">Sweden</target>
+          <target>Sweden</target>
         </trans-unit>
         <trans-unit id="Singapore" translate="no" xml:space="preserve">
           
-          <target state="translated">Singapore</target>
+          <target>Singapore</target>
         </trans-unit>
         <trans-unit id="SaintHelenaAscensionAndTristanDaCunha" translate="no" xml:space="preserve">
           
-          <target state="translated">Saint Helena, Ascension and Tristan da Cunha</target>
+          <target>Saint Helena, Ascension and Tristan da Cunha</target>
         </trans-unit>
         <trans-unit id="Slovenia" translate="no" xml:space="preserve">
           
-          <target state="translated">Slovenia</target>
+          <target>Slovenia</target>
         </trans-unit>
         <trans-unit id="SvalbardAndJanMayen" translate="no" xml:space="preserve">
           
-          <target state="translated">Svalbard and Jan Mayen</target>
+          <target>Svalbard and Jan Mayen</target>
         </trans-unit>
         <trans-unit id="Slovakia" translate="no" xml:space="preserve">
           
-          <target state="translated">Slovakia</target>
+          <target>Slovakia</target>
         </trans-unit>
         <trans-unit id="SierraLeone" translate="no" xml:space="preserve">
           
-          <target state="translated">Sierra Leone</target>
+          <target>Sierra Leone</target>
         </trans-unit>
         <trans-unit id="SanMarino" translate="no" xml:space="preserve">
           
-          <target state="translated">San Marino</target>
+          <target>San Marino</target>
         </trans-unit>
         <trans-unit id="Senegal" translate="no" xml:space="preserve">
           
-          <target state="translated">Senegal</target>
+          <target>Senegal</target>
         </trans-unit>
         <trans-unit id="Somalia" translate="no" xml:space="preserve">
           
-          <target state="translated">Somalia</target>
+          <target>Somalia</target>
         </trans-unit>
         <trans-unit id="Suriname" translate="no" xml:space="preserve">
           
-          <target state="translated">Suriname</target>
+          <target>Suriname</target>
         </trans-unit>
         <trans-unit id="SouthSudan" translate="no" xml:space="preserve">
           
-          <target state="translated">South Sudan</target>
+          <target>South Sudan</target>
         </trans-unit>
         <trans-unit id="SaoTomeAndPrincipe" translate="no" xml:space="preserve">
           
-          <target state="translated">Sao Tome and Principe</target>
+          <target>Sao Tome and Principe</target>
         </trans-unit>
         <trans-unit id="ElSalvador" translate="no" xml:space="preserve">
           
-          <target state="translated">El Salvador</target>
+          <target>El Salvador</target>
         </trans-unit>
         <trans-unit id="SintMaartenDutchPart" translate="no" xml:space="preserve">
           
-          <target state="translated">Sint Maarten (Dutch part</target>
+          <target>Sint Maarten (Dutch part</target>
         </trans-unit>
         <trans-unit id="SyrianArabRepublic" translate="no" xml:space="preserve">
           
-          <target state="translated">Syrian Arab Republic</target>
+          <target>Syrian Arab Republic</target>
         </trans-unit>
         <trans-unit id="Swaziland" translate="no" xml:space="preserve">
           
-          <target state="translated">Swaziland</target>
+          <target>Swaziland</target>
         </trans-unit>
         <trans-unit id="TurksAndCaicosIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">Turks and Caicos Islands</target>
+          <target>Turks and Caicos Islands</target>
         </trans-unit>
         <trans-unit id="Chad" translate="no" xml:space="preserve">
           
-          <target state="translated">Chad</target>
+          <target>Chad</target>
         </trans-unit>
         <trans-unit id="FrenchSouthernTerritories" translate="no" xml:space="preserve">
           
-          <target state="translated">French Southern Territories</target>
+          <target>French Southern Territories</target>
         </trans-unit>
         <trans-unit id="Togo" translate="no" xml:space="preserve">
           
-          <target state="translated">Togo</target>
+          <target>Togo</target>
         </trans-unit>
         <trans-unit id="Thailand" translate="no" xml:space="preserve">
           
-          <target state="translated">Thailand</target>
+          <target>Thailand</target>
         </trans-unit>
         <trans-unit id="Tajikistan" translate="no" xml:space="preserve">
           
-          <target state="translated">Tajikistan</target>
+          <target>Tajikistan</target>
         </trans-unit>
         <trans-unit id="Tokelau" translate="no" xml:space="preserve">
           
-          <target state="translated">Tokelau</target>
+          <target>Tokelau</target>
         </trans-unit>
         <trans-unit id="Turkmenistan" translate="no" xml:space="preserve">
           
-          <target state="translated">Turkmenistan</target>
+          <target>Turkmenistan</target>
         </trans-unit>
         <trans-unit id="Tunisia" translate="no" xml:space="preserve">
           
-          <target state="translated">Tunisia</target>
+          <target>Tunisia</target>
         </trans-unit>
         <trans-unit id="Tonga" translate="no" xml:space="preserve">
           
-          <target state="translated">Tonga</target>
+          <target>Tonga</target>
         </trans-unit>
         <trans-unit id="Turkey" translate="no" xml:space="preserve">
           
-          <target state="translated">Turkey</target>
+          <target>Turkey</target>
         </trans-unit>
         <trans-unit id="TrinidadAndTobago" translate="no" xml:space="preserve">
           
-          <target state="translated">Trinidad and Tobago</target>
+          <target>Trinidad and Tobago</target>
         </trans-unit>
         <trans-unit id="Tuvalu" translate="no" xml:space="preserve">
           
-          <target state="translated">Tuvalu</target>
+          <target>Tuvalu</target>
         </trans-unit>
         <trans-unit id="TaiwanProvinceOfChina" translate="no" xml:space="preserve">
           
-          <target state="translated">Taiwan, Province of China</target>
+          <target>Taiwan, Province of China</target>
         </trans-unit>
         <trans-unit id="TanzaniaUnitedRepublicOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Tanzania, United Republic of</target>
+          <target>Tanzania, United Republic of</target>
         </trans-unit>
         <trans-unit id="Ukraine" translate="no" xml:space="preserve">
           
-          <target state="translated">Ukraine</target>
+          <target>Ukraine</target>
         </trans-unit>
         <trans-unit id="Uganda" translate="no" xml:space="preserve">
           
-          <target state="translated">Uganda</target>
+          <target>Uganda</target>
         </trans-unit>
         <trans-unit id="UnitedStatesMinorOutlyingIslands" translate="no" xml:space="preserve">
           
-          <target state="translated">United States Minor Outlying Islands</target>
+          <target>United States Minor Outlying Islands</target>
         </trans-unit>
         <trans-unit id="UnitedStatesOfAmerica" translate="no" xml:space="preserve">
           
-          <target state="translated">United States of America</target>
+          <target>United States of America</target>
         </trans-unit>
         <trans-unit id="Uruguay" translate="no" xml:space="preserve">
           
-          <target state="translated">Uruguay</target>
+          <target>Uruguay</target>
         </trans-unit>
         <trans-unit id="Uzbekistan" translate="no" xml:space="preserve">
           
-          <target state="translated">Uzbekistan</target>
+          <target>Uzbekistan</target>
         </trans-unit>
         <trans-unit id="HolySee" translate="no" xml:space="preserve">
           
-          <target state="translated">Holy See</target>
+          <target>Holy See</target>
         </trans-unit>
         <trans-unit id="SaintVincentAndTheGrenadines" translate="no" xml:space="preserve">
           
-          <target state="translated">Saint Vincent and the Grenadines</target>
+          <target>Saint Vincent and the Grenadines</target>
         </trans-unit>
         <trans-unit id="VenezuelaBolivarianRepublicOf" translate="no" xml:space="preserve">
           
-          <target state="translated">Venezuela, Bolivarian Republic of</target>
+          <target>Venezuela, Bolivarian Republic of</target>
         </trans-unit>
         <trans-unit id="VirginIslandsBritish" translate="no" xml:space="preserve">
           
-          <target state="translated">Virgin Islands, British</target>
+          <target>Virgin Islands, British</target>
         </trans-unit>
         <trans-unit id="VirginIslandsUS" translate="no" xml:space="preserve">
           
-          <target state="translated">Virgin Islands, U.S</target>
+          <target>Virgin Islands, U.S</target>
         </trans-unit>
         <trans-unit id="VietNam" translate="no" xml:space="preserve">
           
-          <target state="translated">Viet Nam</target>
+          <target>Viet Nam</target>
         </trans-unit>
         <trans-unit id="Vanuatu" translate="no" xml:space="preserve">
           
-          <target state="translated">Vanuatu</target>
+          <target>Vanuatu</target>
         </trans-unit>
         <trans-unit id="WallisAndFutuna" translate="no" xml:space="preserve">
           
-          <target state="translated">Wallis and Futuna</target>
+          <target>Wallis and Futuna</target>
         </trans-unit>
         <trans-unit id="Samoa" translate="no" xml:space="preserve">
           
-          <target state="translated">Samoa</target>
+          <target>Samoa</target>
         </trans-unit>
         <trans-unit id="Yemen" translate="no" xml:space="preserve">
           
-          <target state="translated">Yemen</target>
+          <target>Yemen</target>
         </trans-unit>
         <trans-unit id="Mayotte" translate="no" xml:space="preserve">
           
-          <target state="translated">Mayotte</target>
+          <target>Mayotte</target>
         </trans-unit>
         <trans-unit id="SouthAfrica" translate="no" xml:space="preserve">
           
-          <target state="translated">South Africa</target>
+          <target>South Africa</target>
         </trans-unit>
         <trans-unit id="Zambia" translate="no" xml:space="preserve">
           
-          <target state="translated">Zambia</target>
+          <target>Zambia</target>
         </trans-unit>
         <trans-unit id="Zimbabwe" translate="no" xml:space="preserve">
           
-          <target state="translated">Zimbabwe</target>
+          <target>Zimbabwe</target>
         </trans-unit>
         <trans-unit id="AtributteXmlIsNull" translate="no" xml:space="preserve">
           
-          <target state="translated">Atributte xml is null</target>
+          <target>Atributte xml is null</target>
         </trans-unit>
         <trans-unit id="CouldNotBeginRestartSessionUnableToDetermineFileLocker" translate="no" xml:space="preserve">
           
-          <target state="translated">Could not begin restart session.  Unable to determine file locker</target>
+          <target>Could not begin restart session.  Unable to determine file locker</target>
         </trans-unit>
         <trans-unit id="CouldNotRegisterResource" translate="no" xml:space="preserve">
           
-          <target state="translated">Could not register resource</target>
+          <target>Could not register resource</target>
         </trans-unit>
         <trans-unit id="CouldNotListProcessesLockingResource" translate="no" xml:space="preserve">
           
-          <target state="translated">Could not list processes locking resource</target>
+          <target>Could not list processes locking resource</target>
         </trans-unit>
         <trans-unit id="CouldNotListProcessesLockingResourceFailedToGetSizeOfResult" translate="no" xml:space="preserve">
           
-          <target state="translated">Could not list processes locking resource. Failed to get size of result</target>
+          <target>Could not list processes locking resource. Failed to get size of result</target>
         </trans-unit>
         <trans-unit id="Vivaldi" translate="no" xml:space="preserve">
           
-          <target state="translated">Vivaldi</target>
+          <target>Vivaldi</target>
         </trans-unit>
         <trans-unit id="FailedToRetrieveParsePoint" translate="no" xml:space="preserve">
           
-          <target state="translated">Failed to retrieve parse point</target>
+          <target>Failed to retrieve parse point</target>
         </trans-unit>
         <trans-unit id="TargetStringTooShort" translate="no" xml:space="preserve">
           
-          <target state="translated">Target string too short</target>
+          <target>Target string too short</target>
         </trans-unit>
         <trans-unit id="MalformedSubsString" translate="no" xml:space="preserve">
           
-          <target state="translated">Malformed subsString</target>
+          <target>Malformed subsString</target>
         </trans-unit>
         <trans-unit id="RelativeJunctionPoint" translate="no" xml:space="preserve">
           
-          <target state="translated">Relative junction point</target>
+          <target>Relative junction point</target>
         </trans-unit>
         <trans-unit id="CopyTextToClipboard" translate="no" xml:space="preserve">
           
-          <target state="translated">Copy text to clipboard</target>
+          <target>Copy text to clipboard</target>
         </trans-unit>
         <trans-unit id="PreferredDropEffect" translate="no" xml:space="preserve">
           
-          <target state="translated">Preferred DropEffect</target>
+          <target>Preferred DropEffect</target>
         </trans-unit>
         <trans-unit id="SelectAFileToSaveTo" translate="no" xml:space="preserve">
           
-          <target state="translated">Select a file to save to</target>
+          <target>Select a file to save to</target>
         </trans-unit>
         <trans-unit id="SelectTheFolder" translate="no" xml:space="preserve">
           
-          <target state="translated">Select the folder</target>
+          <target>Select the folder</target>
         </trans-unit>
         <trans-unit id="AllFiles" translate="no" xml:space="preserve">
           
-          <target state="translated">All Files</target>
+          <target>All Files</target>
         </trans-unit>
         <trans-unit id="UnvalidFile" translate="no" xml:space="preserve">
           
-          <target state="translated">Unvalid file</target>
+          <target>Unvalid file</target>
         </trans-unit>
         <trans-unit id="SystemWebScriptingSerializationJavaScriptSerializerIsNotSupportedInWindowsStoreApps" translate="no" xml:space="preserve">
           
-          <target state="translated">System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps</target>
+          <target>System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps</target>
         </trans-unit>
         <trans-unit id="ElseIfWithEnumValue" translate="no" xml:space="preserve">
           
-          <target state="translated">Else if with enum value</target>
+          <target>Else if with enum value</target>
         </trans-unit>
         <trans-unit id="inJavascriptSerialization" translate="no" xml:space="preserve">
           
-          <target state="translated">in JavascriptSerialization</target>
+          <target>in JavascriptSerialization</target>
         </trans-unit>
         <trans-unit id="Serialize" translate="no" xml:space="preserve">
           
-          <target state="translated">Serialize</target>
+          <target>Serialize</target>
         </trans-unit>
         <trans-unit id="Deserialize" translate="no" xml:space="preserve">
           
-          <target state="translated">Deserialize</target>
+          <target>Deserialize</target>
         </trans-unit>
         <trans-unit id="doesNotSupportSerialize" translate="no" xml:space="preserve">
           
-          <target state="translated">does not support Serialize</target>
+          <target>does not support Serialize</target>
         </trans-unit>
         <trans-unit id="doesNotSupportDeserialize" translate="no" xml:space="preserve">
           
-          <target state="translated">does not support Deserialize</target>
+          <target>does not support Deserialize</target>
         </trans-unit>
         <trans-unit id="Elements" translate="no" xml:space="preserve">
           
-          <target state="translated">Elements</target>
+          <target>Elements</target>
         </trans-unit>
         <trans-unit id="isNotInRange" translate="no" xml:space="preserve">
           
-          <target state="translated">is not in range</target>
+          <target>is not in range</target>
         </trans-unit>
         <trans-unit id="IsNotInRange" translate="no" xml:space="preserve">
           
-          <target state="translated">Is not in range</target>
+          <target>Is not in range</target>
         </trans-unit>
         <trans-unit id="AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion" translate="no" xml:space="preserve">
           
-          <target state="translated">App can sometimes seem to be frozen. Please be patient, async operation will be implemented in upcoming version</target>
+          <target>App can sometimes seem to be frozen. Please be patient, async operation will be implemented in upcoming version</target>
         </trans-unit>
         <trans-unit id="ThankYouForYourPurchase" translate="no" xml:space="preserve">
           
-          <target state="translated">Thank you for your purchase</target>
+          <target>Thank you for your purchase</target>
         </trans-unit>
         <trans-unit id="InAttachmentIsJoinedActualTermsOfUse" translate="no" xml:space="preserve">
           
-          <target state="translated">In attachment is joined actual Terms of use</target>
+          <target>In attachment is joined actual Terms of use</target>
         </trans-unit>
         <trans-unit id="monthlySubscription" translate="no" xml:space="preserve">
           
-          <target state="translated">monthly subscription</target>
+          <target>monthly subscription</target>
         </trans-unit>
         <trans-unit id="" translate="no" xml:space="preserve">
           
-          <target state="translated"></target>
+          <target></target>
         </trans-unit>
         <trans-unit id="forApplication" translate="no" xml:space="preserve">
           
-          <target state="translated">for application</target>
+          <target>for application</target>
         </trans-unit>
         <trans-unit id="CodeSearch" translate="no" xml:space="preserve">
           
-          <target state="translated">Code Search</target>
+          <target>Code Search</target>
         </trans-unit>
         <trans-unit id="EveryLine" translate="no" xml:space="preserve">
           
-          <target state="translated">Every line</target>
+          <target>Every line</target>
         </trans-unit>
         <trans-unit id="AppWillBeYourInOneMinute" translate="no" xml:space="preserve">
           
-          <target state="translated">App will be your in one minute</target>
+          <target>App will be your in one minute</target>
         </trans-unit>
         <trans-unit id="HassleFreeOneClickBuy" translate="no" xml:space="preserve">
           
-          <target state="translated">Hassle-free One-Click buy</target>
+          <target>Hassle-free One-Click buy</target>
         </trans-unit>
         <trans-unit id="ShowPassword" translate="no" xml:space="preserve">
           
-          <target state="translated">Show password</target>
+          <target>Show password</target>
         </trans-unit>
         <trans-unit id="showPassword" translate="no" xml:space="preserve">
           
-          <target state="translated">show password</target>
+          <target>show password</target>
         </trans-unit>
         <trans-unit id="lowercaseLettersNumbersAndCharactersAreAllowed" translate="no" xml:space="preserve">
           
-          <target state="translated">lowercase letters, numbers, and ./-/_ characters are allowed</target>
+          <target>lowercase letters, numbers, and ./-/_ characters are allowed</target>
         </trans-unit>
         <trans-unit id="minAge18" translate="no" xml:space="preserve">
           
-          <target state="translated">min age 18</target>
+          <target>min age 18</target>
         </trans-unit>
         <trans-unit id="with" translate="no" xml:space="preserve">
           
-          <target state="translated">with</target>
+          <target>with</target>
         </trans-unit>
         <trans-unit id="with2" translate="no" xml:space="preserve">
           
-          <target state="translated">with</target>
+          <target>with</target>
         </trans-unit>
         <trans-unit id="RedForPathFilenamePart" translate="no" xml:space="preserve">
           
-          <target state="translated">Red for path/filename part</target>
+          <target>Red for path/filename part</target>
         </trans-unit>
         <trans-unit id="GreenForPathFilenamePart" translate="no" xml:space="preserve">
           
-          <target state="translated">Green for path/filename part</target>
+          <target>Green for path/filename part</target>
         </trans-unit>
         <trans-unit id="FoldersToIndexing" translate="no" xml:space="preserve">
           
-          <target state="translated">Folders to indexing</target>
+          <target>Folders to indexing</target>
         </trans-unit>
         <trans-unit id="unindexablePathParts" translate="no" xml:space="preserve">
           
-          <target state="translated">unindexable path parts</target>
+          <target>unindexable path parts</target>
         </trans-unit>
         <trans-unit id="UnindexablePathParts" translate="no" xml:space="preserve">
           
-          <target state="translated">Unindexable path parts</target>
+          <target>Unindexable path parts</target>
         </trans-unit>
         <trans-unit id="UnindexableFileNames" translate="no" xml:space="preserve">
           
-          <target state="translated">Unindexable file names</target>
+          <target>Unindexable file names</target>
         </trans-unit>
         <trans-unit id="UnindexablePathEnds" translate="no" xml:space="preserve">
           
-          <target state="translated">Unindexable paths ends</target>
+          <target>Unindexable paths ends</target>
         </trans-unit>
         <trans-unit id="UnindexableExtensions" translate="no" xml:space="preserve">
           
-          <target state="translated">Unindexable extensions</target>
+          <target>Unindexable extensions</target>
         </trans-unit>
         <trans-unit id="Open" translate="no" xml:space="preserve">
           
-          <target state="translated">Open</target>
+          <target>Open</target>
         </trans-unit>
         <trans-unit id="PrefixWithForIgnoring" translate="no" xml:space="preserve">
           
-          <target state="translated">Prefix with # for ignoring</target>
+          <target>Prefix with # for ignoring</target>
         </trans-unit>
         <trans-unit id="CopiedToClipboard" translate="no" xml:space="preserve">
           
-          <target state="translated">Copied to clipboard</target>
+          <target>Copied to clipboard</target>
         </trans-unit>
         <trans-unit id="SearchCodeElements" translate="no" xml:space="preserve">
           
-          <target state="translated">Search code elements</target>
+          <target>Search code elements</target>
         </trans-unit>
         <trans-unit id="CodeElementsNamesQ" translate="no" xml:space="preserve">
           
-          <target state="translated">Code elements names (q</target>
+          <target>Code elements names (q</target>
         </trans-unit>
         <trans-unit id="ContentW" translate="no" xml:space="preserve">
           
-          <target state="translated">Content (w</target>
+          <target>Content (w</target>
         </trans-unit>
         <trans-unit id="PathE" translate="no" xml:space="preserve">
           
-          <target state="translated">Path (e</target>
+          <target>Path (e</target>
         </trans-unit>
         <trans-unit id="FileDatabaseWasReloadedWith" translate="no" xml:space="preserve">
           
-          <target state="translated">File database was reloaded with</target>
+          <target>File database was reloaded with</target>
         </trans-unit>
         <trans-unit id="SaveFile" translate="no" xml:space="preserve">
           
-          <target state="translated">Save file</target>
+          <target>Save file</target>
         </trans-unit>
         <trans-unit id="SearchInCodeElementsName" translate="no" xml:space="preserve">
           
-          <target state="translated">Search in code elements name</target>
+          <target>Search in code elements name</target>
         </trans-unit>
         <trans-unit id="SearchInContent" translate="no" xml:space="preserve">
           
-          <target state="translated">Search in content</target>
+          <target>Search in content</target>
         </trans-unit>
         <trans-unit id="SearchInPath" translate="no" xml:space="preserve">
           
-          <target state="translated">Search in path</target>
+          <target>Search in path</target>
         </trans-unit>
         <trans-unit id="MoveToNextSearchOccurence" translate="no" xml:space="preserve">
           
-          <target state="translated">Move to next search occurence</target>
+          <target>Move to next search occurence</target>
         </trans-unit>
         <trans-unit id="Reload" translate="no" xml:space="preserve">
           
-          <target state="translated">Reload</target>
+          <target>Reload</target>
         </trans-unit>
         <trans-unit id="KeyboardShortcut" translate="no" xml:space="preserve">
           
-          <target state="translated">Keyboard shortcut</target>
+          <target>Keyboard shortcut</target>
         </trans-unit>
         <trans-unit id="PathSettedToClipboard" translate="no" xml:space="preserve">
           
-          <target state="translated">Path setted to clipboard</target>
+          <target>Path setted to clipboard</target>
         </trans-unit>
         <trans-unit id="ElementsOfSourceFilesInFolder" translate="no" xml:space="preserve">
           
-          <target state="translated">Elements of source files in folder</target>
+          <target>Elements of source files in folder</target>
         </trans-unit>
         <trans-unit id="ElementsOfSourceFile" translate="no" xml:space="preserve">
           
-          <target state="translated">Elements of source file</target>
+          <target>Elements of source file</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardNamesOfAllDuplicatedMethods" translate="no" xml:space="preserve">
           
-          <target state="translated">Copy to clipboard names of all duplicated methods</target>
+          <target>Copy to clipboard names of all duplicated methods</target>
         </trans-unit>
         <trans-unit id="IndexOfCachedFiles" translate="no" xml:space="preserve">
           
-          <target state="translated">Index of cached files</target>
+          <target>Index of cached files</target>
         </trans-unit>
         <trans-unit id="IsIncludedAlsoPolymorfismMethods" translate="no" xml:space="preserve">
           
-          <target state="translated">Is included also polymorfism methods</target>
+          <target>Is included also polymorfism methods</target>
         </trans-unit>
         <trans-unit id="ToOpen" translate="no" xml:space="preserve">
           
-          <target state="translated">To open</target>
+          <target>To open</target>
         </trans-unit>
         <trans-unit id="New" translate="no" xml:space="preserve">
           
-          <target state="translated">New</target>
+          <target>New</target>
         </trans-unit>
         <trans-unit id="New2" translate="no" xml:space="preserve">
           
-          <target state="translated">New</target>
+          <target>New</target>
         </trans-unit>
         <trans-unit id="SaveSetAsTemplate" translate="no" xml:space="preserve">
           
-          <target state="translated">Save set as template</target>
+          <target>Save set as template</target>
         </trans-unit>
         <trans-unit id="PressEnterWhenDataWillBeInClipboard" translate="no" xml:space="preserve">
           
-          <target state="translated">Press enter when data will be in clipboard</target>
+          <target>Press enter when data will be in clipboard</target>
         </trans-unit>
         <trans-unit id="DoYouWantLoadDataOnlyFromClipboard" translate="no" xml:space="preserve">
           
-          <target state="translated">Do you want load data only from clipboard</target>
+          <target>Do you want load data only from clipboard</target>
         </trans-unit>
         <trans-unit id="NoActionWasFound" translate="no" xml:space="preserve">
           
-          <target state="translated">No action was found</target>
+          <target>No action was found</target>
         </trans-unit>
         <trans-unit id="MinimumAndMaximumValuesAreNotSupported" translate="no" xml:space="preserve">
           
-          <target state="translated">Minimum and maximum values are not supported</target>
+          <target>Minimum and maximum values are not supported</target>
         </trans-unit>
         <trans-unit id="SelectBrowserToOpenOAuth" translate="no" xml:space="preserve">
           
-          <target state="translated">Select browser to open OAuth</target>
+          <target>Select browser to open OAuth</target>
         </trans-unit>
         <trans-unit id="PasteGivenAccessToken" translate="no" xml:space="preserve">
           
-          <target state="translated">Paste given access token</target>
+          <target>Paste given access token</target>
         </trans-unit>
         <trans-unit id="MusiteZiskatAccessToken" translate="no" xml:space="preserve">
           
-          <target state="translated">Musite ziskat AccessToken</target>
+          <target>Musite ziskat AccessToken</target>
         </trans-unit>
         <trans-unit id="MicrosoftSansSerif" translate="no" xml:space="preserve">
           
-          <target state="translated">Microsoft Sans Serif</target>
+          <target>Microsoft Sans Serif</target>
         </trans-unit>
         <trans-unit id="WhatDoYouWantProceed" translate="no" xml:space="preserve">
           
-          <target state="translated">What do you want proceed</target>
+          <target>What do you want proceed</target>
         </trans-unit>
         <trans-unit id="KeepRight" translate="no" xml:space="preserve">
           
-          <target state="translated">Keep right</target>
+          <target>Keep right</target>
         </trans-unit>
         <trans-unit id="KeepLeft" translate="no" xml:space="preserve">
           
-          <target state="translated">Keep left</target>
+          <target>Keep left</target>
         </trans-unit>
         <trans-unit id="Merge" translate="no" xml:space="preserve">
           
-          <target state="translated">Merge</target>
+          <target>Merge</target>
         </trans-unit>
         <trans-unit id="EnterAValueAndPressEnter" translate="no" xml:space="preserve">
           
-          <target state="translated">Enter a value and press. enter</target>
+          <target>Enter a value and press. enter</target>
         </trans-unit>
         <trans-unit id="TypeValuesForReplacing" translate="no" xml:space="preserve">
           
-          <target state="translated">Type values for replacing</target>
+          <target>Type values for replacing</target>
         </trans-unit>
         <trans-unit id="OldValue" translate="no" xml:space="preserve">
           
-          <target state="translated">Old value</target>
+          <target>Old value</target>
         </trans-unit>
         <trans-unit id="NewValue" translate="no" xml:space="preserve">
           
-          <target state="translated">New value</target>
+          <target>New value</target>
         </trans-unit>
         <trans-unit id="Replace" translate="no" xml:space="preserve">
           
-          <target state="translated">Replace</target>
+          <target>Replace</target>
         </trans-unit>
         <trans-unit id="ValuesAreEquals" translate="no" xml:space="preserve">
           
-          <target state="translated">Values are equals</target>
+          <target>Values are equals</target>
         </trans-unit>
         <trans-unit id="TheValueForTheProgressBarCannotBeGreaterThan100" translate="no" xml:space="preserve">
           
-          <target state="translated">The value for the ProgressBar cannot be greater than 100</target>
+          <target>The value for the ProgressBar cannot be greater than 100</target>
         </trans-unit>
         <trans-unit id="Format" translate="no" xml:space="preserve">
           
-          <target state="translated">Format</target>
+          <target>Format</target>
         </trans-unit>
         <trans-unit id="CantProcessTokenAndSyntaxNodeOutputCouldBeDuplicated" translate="no" xml:space="preserve">
           
-          <target state="translated">Cant process token and SyntaxNode - output could be duplicated</target>
+          <target>Cant process token and SyntaxNode - output could be duplicated</target>
         </trans-unit>
         <trans-unit id="Parent" translate="no" xml:space="preserve">
           
-          <target state="translated">Parent</target>
+          <target>Parent</target>
         </trans-unit>
         <trans-unit id="Child" translate="no" xml:space="preserve">
           
-          <target state="translated">Child</target>
+          <target>Child</target>
         </trans-unit>
         <trans-unit id="System" translate="no" xml:space="preserve">
           
-          <target state="translated">System</target>
+          <target>System</target>
         </trans-unit>
         <trans-unit id="CanTAssignToEnumTypeOfFolder" translate="no" xml:space="preserve">
           
-          <target state="translated">Can't assign to enum type of folder</target>
+          <target>Can't assign to enum type of folder</target>
         </trans-unit>
         <trans-unit id="Projects" translate="no" xml:space="preserve">
           
-          <target state="translated">Projects</target>
+          <target>Projects</target>
         </trans-unit>
         <trans-unit id="VisualStudio" translate="no" xml:space="preserve">
           
-          <target state="translated">Visual Studio</target>
+          <target>Visual Studio</target>
         </trans-unit>
         <trans-unit id="FromVPS" translate="no" xml:space="preserve">
           
-          <target state="translated">From VPS</target>
+          <target>From VPS</target>
         </trans-unit>
         <trans-unit id="BeforePublishingToVPS" translate="no" xml:space="preserve">
           
-          <target state="translated">Before publishing to VPS</target>
+          <target>Before publishing to VPS</target>
         </trans-unit>
         <trans-unit id="SearchIn" translate="no" xml:space="preserve">
           
-          <target state="translated">Search in</target>
+          <target>Search in</target>
         </trans-unit>
         <trans-unit id="NamespaceElements" translate="no" xml:space="preserve">
           
-          <target state="translated">Namespace elements</target>
+          <target>Namespace elements</target>
         </trans-unit>
         <trans-unit id="ClassElements" translate="no" xml:space="preserve">
           
-          <target state="translated">Class elements</target>
+          <target>Class elements</target>
         </trans-unit>
         <trans-unit id="InComments" translate="no" xml:space="preserve">
           
-          <target state="translated">In comments</target>
+          <target>In comments</target>
         </trans-unit>
         <trans-unit id="StopSearch" translate="no" xml:space="preserve">
           
-          <target state="translated">Stop search</target>
+          <target>Stop search</target>
         </trans-unit>
         <trans-unit id="AllRight" translate="no" xml:space="preserve">
           
-          <target state="translated">All right</target>
+          <target>All right</target>
         </trans-unit>
         <trans-unit id="SavedFoldersSets" translate="no" xml:space="preserve">
           
-          <target state="translated">Saved folders sets</target>
+          <target>Saved folders sets</target>
         </trans-unit>
         <trans-unit id="Folders" translate="no" xml:space="preserve">
           
-          <target state="translated">Folders</target>
+          <target>Folders</target>
         </trans-unit>
         <trans-unit id="nameOfSet" translate="no" xml:space="preserve">
           
-          <target state="translated">name of set</target>
+          <target>name of set</target>
         </trans-unit>
         <trans-unit id="withName" translate="no" xml:space="preserve">
           
-          <target state="translated">with name</target>
+          <target>with name</target>
         </trans-unit>
         <trans-unit id="alreadyExists" translate="no" xml:space="preserve">
           
-          <target state="translated">already exists</target>
+          <target>already exists</target>
         </trans-unit>
         <trans-unit id="UnindexableEntriesCount" translate="no" xml:space="preserve">
           
-          <target state="translated">Unindexable entries count</target>
+          <target>Unindexable entries count</target>
         </trans-unit>
         <trans-unit id="WholePath" translate="no" xml:space="preserve">
           
-          <target state="translated">Whole path</target>
+          <target>Whole path</target>
         </trans-unit>
         <trans-unit id="PathEnding" translate="no" xml:space="preserve">
           
-          <target state="translated">Path ending</target>
+          <target>Path ending</target>
         </trans-unit>
         <trans-unit id="files7" translate="no" xml:space="preserve">
           
-          <target state="translated">files</target>
+          <target>files</target>
         </trans-unit>
         <trans-unit id="KeyboardShortcuts" translate="no" xml:space="preserve">
           
-          <target state="translated">Keyboard shortcuts</target>
+          <target>Keyboard shortcuts</target>
         </trans-unit>
         <trans-unit id="filesFounded" translate="no" xml:space="preserve">
           
-          <target state="translated">files founded</target>
+          <target>files founded</target>
         </trans-unit>
         <trans-unit id="Quit" translate="no" xml:space="preserve">
           
-          <target state="translated">Quit</target>
+          <target>Quit</target>
         </trans-unit>
         <trans-unit id="GeoCaching" translate="no" xml:space="preserve">
           
-          <target state="translated">GeoCaching</target>
+          <target>GeoCaching</target>
         </trans-unit>
         <trans-unit id="PurchasedApps" translate="no" xml:space="preserve">
           
-          <target state="translated">Purchased apps</target>
+          <target>Purchased apps</target>
         </trans-unit>
         <trans-unit id="DoYouThinkSomethingCouldBeHereAndIsnT" translate="no" xml:space="preserve">
           
-          <target state="translated">Do you think something could be here and isn't</target>
+          <target>Do you think something could be here and isn't</target>
         </trans-unit>
         <trans-unit id="WriteMeAboutItTo" translate="no" xml:space="preserve">
           
-          <target state="translated">Write me about it to</target>
+          <target>Write me about it to</target>
         </trans-unit>
         <trans-unit id="FolderWithHtmlOfMRAResults" translate="no" xml:space="preserve">
           
-          <target state="translated">Folder with html of MRA results</target>
+          <target>Folder with html of MRA results</target>
         </trans-unit>
         <trans-unit id="SetUpItInSettings" translate="no" xml:space="preserve">
           
-          <target state="translated">Set up it in settings</target>
+          <target>Set up it in settings</target>
         </trans-unit>
         <trans-unit id="wasNotEntered" translate="no" xml:space="preserve">
           
-          <target state="translated">was not entered</target>
+          <target>was not entered</target>
         </trans-unit>
         <trans-unit id="WasOpened" translate="no" xml:space="preserve">
           
-          <target state="translated">Was opened</target>
+          <target>Was opened</target>
         </trans-unit>
         <trans-unit id="pages" translate="no" xml:space="preserve">
           
-          <target state="translated">pages</target>
+          <target>pages</target>
         </trans-unit>
         <trans-unit id="ExportForGoogleMyMaps" translate="no" xml:space="preserve">
           
-          <target state="translated">Export for Google My maps</target>
+          <target>Export for Google My maps</target>
         </trans-unit>
         <trans-unit id="CheckYourData" translate="no" xml:space="preserve">
           
-          <target state="translated">Check your data</target>
+          <target>Check your data</target>
         </trans-unit>
         <trans-unit id="PaymentGateway" translate="no" xml:space="preserve">
           
-          <target state="translated">Payment gateway</target>
+          <target>Payment gateway</target>
         </trans-unit>
         <trans-unit id="TransactionFinished" translate="no" xml:space="preserve">
           
-          <target state="translated">Transaction finished</target>
+          <target>Transaction finished</target>
         </trans-unit>
         <trans-unit id="CheckAll" translate="no" xml:space="preserve">
           
-          <target state="translated">Check all</target>
+          <target>Check all</target>
         </trans-unit>
         <trans-unit id="UncheckAll" translate="no" xml:space="preserve">
           
-          <target state="translated">Uncheck all</target>
+          <target>Uncheck all</target>
         </trans-unit>
         <trans-unit id="Prolong" translate="no" xml:space="preserve">
           
-          <target state="translated">Prolong</target>
+          <target>Prolong</target>
         </trans-unit>
         <trans-unit id="OrderID" translate="no" xml:space="preserve">
           
-          <target state="translated">Order ID</target>
+          <target>Order ID</target>
         </trans-unit>
         <trans-unit id="Module" translate="no" xml:space="preserve">
           
-          <target state="translated">Module</target>
+          <target>Module</target>
         </trans-unit>
         <trans-unit id="ValidTo" translate="no" xml:space="preserve">
           
-          <target state="translated">Valid to</target>
+          <target>Valid to</target>
         </trans-unit>
         <trans-unit id="Prolongation" translate="no" xml:space="preserve">
           
-          <target state="translated">Prolongation</target>
+          <target>Prolongation</target>
         </trans-unit>
         <trans-unit id="YourLicences" translate="no" xml:space="preserve">
           
-          <target state="translated">Your licences</target>
+          <target>Your licences</target>
         </trans-unit>
         <trans-unit id="ValidLicenses" translate="no" xml:space="preserve">
           
-          <target state="translated">Valid Licenses</target>
+          <target>Valid Licenses</target>
         </trans-unit>
         <trans-unit id="InvalidLicenses" translate="no" xml:space="preserve">
           
-          <target state="translated">Invalid Licenses</target>
+          <target>Invalid Licenses</target>
         </trans-unit>
         <trans-unit id="YouRe" translate="no" xml:space="preserve">
           
-          <target state="translated">You're</target>
+          <target>You're</target>
         </trans-unit>
         <trans-unit id="welcome" translate="no" xml:space="preserve">
           
-          <target state="translated">welcome</target>
+          <target>welcome</target>
         </trans-unit>
         <trans-unit id="Saved" translate="no" xml:space="preserve">
           
-          <target state="translated">Saved</target>
+          <target>Saved</target>
         </trans-unit>
         <trans-unit id="Updated" translate="no" xml:space="preserve">
           
-          <target state="translated">Updated</target>
+          <target>Updated</target>
         </trans-unit>
         <trans-unit id="ForgetPassword" translate="no" xml:space="preserve">
           
-          <target state="translated">Forget password</target>
+          <target>Forget password</target>
         </trans-unit>
         <trans-unit id="ForgetLoginAndPassword" translate="no" xml:space="preserve">
           
-          <target state="translated">Forget login and password</target>
+          <target>Forget login and password</target>
         </trans-unit>
         <trans-unit id="SavedSmtp" translate="no" xml:space="preserve">
           
-          <target state="translated">Saved smtp</target>
+          <target>Saved smtp</target>
         </trans-unit>
         <trans-unit id="NewsFromPopularITSites" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">News from popular IT sites</target>
+          
+          <target>News from popular IT sites</target>
         </trans-unit>
         <trans-unit id="SMTPData" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">SMTP data</target>
+          
+          <target>SMTP data</target>
         </trans-unit>
         <trans-unit id="MassMailSender" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Mass mail sender</target>
+          
+          <target>Mass mail sender</target>
         </trans-unit>
         <trans-unit id="GoodDay" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Good day</target>
+          
+          <target>Good day</target>
         </trans-unit>
         <trans-unit id="BatteryZTEBladeA52019" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Battery ZTE Blade A5 2019</target>
+          
+          <target>Battery ZTE Blade A5 2019</target>
         </trans-unit>
         <trans-unit id="YouMustSetUpAndSetAsDefaultOneSmtpServer" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">You must set up and set as default one smtp server</target>
+          
+          <target>You must set up and set as default one smtp server</target>
         </trans-unit>
         <trans-unit id="SetAsDefault" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Set as default</target>
+          
+          <target>Set as default</target>
         </trans-unit>
         <trans-unit id="Delete" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Delete</target>
+          
+          <target>Delete</target>
         </trans-unit>
         <trans-unit id="OpenSMTPServerSettings" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Open SMTP server settings</target>
+          
+          <target>Open SMTP server settings</target>
         </trans-unit>
         <trans-unit id="Subject" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Subject</target>
+          
+          <target>Subject</target>
         </trans-unit>
         <trans-unit id="Attachments" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Attachments</target>
+          
+          <target>Attachments</target>
         </trans-unit>
         <trans-unit id="SendingMailsFrom" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Sending mails from</target>
+          
+          <target>Sending mails from</target>
         </trans-unit>
         <trans-unit id="previewOfAutoPrefixingYouWillApproveBeforeSending" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">preview of auto prefixing you will approve before sending</target>
+          
+          <target>preview of auto prefixing you will approve before sending</target>
         </trans-unit>
         <trans-unit id="SalutationEnterJustNameWithoutAnyWhitespacesInEachDearMadamEtc" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Salutation (enter just name, without any whitespaces in each, Dear, Madam etc</target>
+          
+          <target>Salutation (enter just name, without any whitespaces in each, Dear, Madam etc</target>
         </trans-unit>
         <trans-unit id="ToDelimitedByAnyWhitespaceCouldBeCopiedFromGoogleSheets" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">To (delimited by any whitespace, could be copied from Google Sheets</target>
+          
+          <target>To (delimited by any whitespace, could be copied from Google Sheets</target>
         </trans-unit>
         <trans-unit id="SelectFile" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Select file</target>
+          
+          <target>Select file</target>
         </trans-unit>
         <trans-unit id="FillFromPredefined" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Fill from predefined</target>
+          
+          <target>Fill from predefined</target>
         </trans-unit>
         <trans-unit id="ShowFromLocation" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Show from location</target>
+          
+          <target>Show from location</target>
         </trans-unit>
         <trans-unit id="Notice" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Notice</target>
+          
+          <target>Notice</target>
         </trans-unit>
         <trans-unit id="EveryWindowsIsDifferentIfAppWonTBeRunningUnderAdminAccountTryNonAdminAndViceversa" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Every Windows is different. If app won't be running under admin account, try non-admin and viceversa</target>
+          
+          <target>Every Windows is different. If app won't be running under admin account, try non-admin and viceversa</target>
         </trans-unit>
         <trans-unit id="HidePassword" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Hide password</target>
+          
+          <target>Hide password</target>
         </trans-unit>
         <trans-unit id="ResultCopiedToClipboard" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Result copied to clipboard</target>
+          
+          <target>Result copied to clipboard</target>
         </trans-unit>
         <trans-unit id="EnteredTextIsNotExtension" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Entered text is not extension</target>
+          
+          <target>Entered text is not extension</target>
         </trans-unit>
         <trans-unit id="IndexableExtensions" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Indexable extensions</target>
+          
+          <target>Indexable extensions</target>
         </trans-unit>
         <trans-unit id="Clear" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Clear</target>
+          
+          <target>Clear</target>
         </trans-unit>
         <trans-unit id="TryAFewSecondsLaterAfterFullyInitialized" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Try a few seconds later after fully initialized</target>
+          
+          <target>Try a few seconds later after fully initialized</target>
         </trans-unit>
         <trans-unit id="FoldersTree" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Folders Tree</target>
+          
+          <target>Folders Tree</target>
         </trans-unit>
         <trans-unit id="FilesTree" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Files Tree</target>
+          
+          <target>Files Tree</target>
         </trans-unit>
         <trans-unit id="Indexing" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Indexing</target>
+          
+          <target>Indexing</target>
         </trans-unit>
         <trans-unit id="MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Multi lines text can be loaded only from clipboard because console app recognize ending whitespaces like enter</target>
+          
+          <target>Multi lines text can be loaded only from clipboard because console app recognize ending whitespaces like enter</target>
         </trans-unit>
         <trans-unit id="WasInformedAdministrator" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Was informed administrator</target>
+          
+          <target>Was informed administrator</target>
         </trans-unit>
         <trans-unit id="Filter" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Filter</target>
+          
+          <target>Filter</target>
         </trans-unit>
         <trans-unit id="BadCombinationLoginAndPasswordDoYouWantTo" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Bad combination login and password. Do you want to</target>
+          
+          <target>Bad combination login and password. Do you want to</target>
         </trans-unit>
         <trans-unit id="register" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">register</target>
+          
+          <target>register</target>
         </trans-unit>
         <trans-unit id="GenerateListOfNamespaceElements" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Generate list of namespace elements</target>
+          
+          <target>Generate list of namespace elements</target>
         </trans-unit>
         <trans-unit id="GenerateListOfClassElements" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Generate list of class elements</target>
+          
+          <target>Generate list of class elements</target>
         </trans-unit>
         <trans-unit id="alsoWildcard" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">alsoWildcard</target>
+          
+          <target>alsoWildcard</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardFounded" translate="no" xml:space="preserve">
-          <source></source>
-          <target state="translated">Copy to clipboard founded</target>
+          
+          <target>Copy to clipboard founded</target>
         </trans-unit>
       </group>
     </body>

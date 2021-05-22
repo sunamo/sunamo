@@ -42,17 +42,26 @@ public partial class UriWebServices
         //public const string wwwJechCz = "https://www.jech.cz/hledat?query=%s";
         public const string wwwIkeaCom = "https://www.ikea.com/cz/cs/search/products/?q=%s&sort=PRICE_LOW_TO_HIGH";
     }
-    public static class FurnitureInOva
+    public static class FurnitureInOvaPreffered
+    {
+        public static Type type = typeof(FurnitureInOvaPreffered);
+
+        public const string wwwOrfaNabytekCz = "https://www.orfa-nabytek.cz/produkty/hledani?sor=pra&pfr=&pto=&send=Zobrazit&m=&q=%s&do=formProductsFilter-submit";
+        public const string wwwScontoCz = "https://www.sconto.cz/hledani?q=%s";
+        public const string wwwMoebelixCz = "https://www.moebelix.cz/s/?sort=priceAsc&s=%s";
+    }
+
+        public static class FurnitureInOva
     {
         public static Type type = typeof(FurnitureInOva);
 
         public const string wwwOrfaNabytekCz = "https://www.orfa-nabytek.cz/produkty/hledani?sor=pra&pfr=&pto=&send=Zobrazit&m=&q=%s&do=formProductsFilter-submit";
+        public const string wwwScontoCz = "https://www.sconto.cz/hledani?q=%s";
+        public const string wwwMoebelixCz = "https://www.moebelix.cz/s/?sort=priceAsc&s=%s";
+
+        public const string jyskCz = "https://jysk.cz/search?query=%s&search_category=typed_query&op=Hledat#meta=solr&start=0&sort=fts_field_minsingleprice%2Basc";
         public const string wwwOkayCz = "https://www.okay.cz/hledani/?query=%s";
 
-        public const string wwwScontoCz = "https://www.sconto.cz/hledani?q=%s";
-        public const string jyskCz = "https://jysk.cz/search?query=%s&search_category=typed_query&op=Hledat#meta=solr&start=0&sort=fts_field_minsingleprice%2Basc";
-
-        public const string wwwMoebelixCz = "https://www.moebelix.cz/s/?sort=priceAsc&s=%s";
         //public const string wwwIdeaNabytekCz = "https://www.idea-nabytek.cz/ulozne-prostory/%se/?ordertype=asc&Ordering=ProductPriceWithVat";
     }
 
@@ -318,6 +327,8 @@ Template for which I will find, have to be in derivates the same:
     /// </summary>
     public static class AdsMsRegion
     {
+        public static Type type = typeof(AdsMsRegion);
+
         /*
 Template for which I will find, have to be in derivates the same:
 
@@ -336,11 +347,11 @@ Template for which I will find, have to be in derivates the same:
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%s/0-vsechny-kategorie/moravskoslezsky";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
         //public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%s" ;
-        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
-        public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%";
+        //public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
+        //public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%";
 
         public static readonly List<string> All = new List<string> {bazosCz, hyperinzerceCz,
- bazarCz, sBazarCz, avizoCz, aukroCz };
+ bazarCz, sBazarCz, avizoCz };
 
         //Letadlová postel
 

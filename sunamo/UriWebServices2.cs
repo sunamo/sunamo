@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 public partial class UriWebServices
 {
+    public static Action<IEnumerable, string> SearchInAll;
     public static class RepasNbPriceAfterSold
     {
         public const string wwwIncomputerCz = "www.incomputer.cz";

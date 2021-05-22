@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -22,7 +23,28 @@ public class PHWin
         return FileUtil.WhoIsLocking(fullPath).Count > 0;
     }
 
-    static int open = 0;
+    static int opened = 0;
+
+   
+
+    /// <summary>
+    /// A1 is chrome replacement
+    /// </summary>
+    /// <param name="array"></param>
+    /// <param name="what"></param>
+    public static void SearchInAll(IEnumerable array, string what)
+    {
+        foreach (var item in array)
+        {
+            opened++;
+            string uri = UriWebServices.FromChromeReplacement(item.ToString(), what);
+            PHWin.OpenInBrowser(uri);
+            if (opened % 10 == 0)
+            {
+                Debugger.Break();
+            }
+        }
+    }
 
     public static void AddBrowsers()
     {
@@ -86,6 +108,10 @@ public class PHWin
             //    break;
             case Browsers.Maxthon:
                 b = @"C:\Program Files (x86)\Maxthon5\Bin\Maxthon.exe";
+                if (!FS.ExistsFile(b))
+                {
+                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Maxthon\Application", "Maxthon.exe");
+                }
                 break;
             case Browsers.Seznam:
                 b = WindowsOSHelper.FileIn(UserFoldersWin.Roaming, @"Seznam Browser", "Seznam.cz.exe");
@@ -127,9 +153,9 @@ public class PHWin
 
     public static void OpenInBrowser(Browsers prohlizec, string s)
     {
-        open++;
+        opened++;
         string b = path[prohlizec];
-        if (open % 10 == 0)
+        if (opened % 10 == 0)
         {
             Debugger.Break();
         }

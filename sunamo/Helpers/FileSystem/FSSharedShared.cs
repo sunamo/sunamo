@@ -20,6 +20,7 @@ public partial class FS{
 
     public static string ReadAllText(string f)
     {
+        
         return TF.ReadAllText(f);
     }
 
