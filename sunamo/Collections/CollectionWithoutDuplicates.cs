@@ -63,7 +63,7 @@ public class CollectionWithoutDuplicates<T>
         var con = Contains(t2);
         if (con.HasValue)
         {
-            if (con.Value)
+            if (!con.Value)
             {
                 c.Add(t2);
                 return true;
