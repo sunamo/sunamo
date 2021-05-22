@@ -620,7 +620,7 @@ public class RH
             case DumpProvider.Json:
             case DumpProvider.ObjectDumper:
             case DumpProvider.Reflection:
-                dump = SH.Join(a.onlyValues ? AllStrings.swd : Environment.NewLine,RH.GetValuesOfProperty2(a.o, a.onlyNames, a.onlyValues));
+                dump = SH.Join(a.onlyValues ? a.deli : Environment.NewLine,RH.GetValuesOfProperty2(a.o, a.onlyNames, a.onlyValues));
                 break;
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "DumpAsString", a.d);
@@ -655,5 +655,17 @@ public class RH
         }
 
         return sb.ToString();
+    }
+
+    /// <summary>
+    /// NoneDelimiter
+    /// Mainly for fast comparing objects
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="tableRowPageNew"></param>
+    /// <returns></returns>
+    public static string DumpAsString3(object tableRowPageNew)
+    {
+        return DumpAsString(new DumpAsStringArgs { o = tableRowPageNew, deli = string.Empty });
     }
 }

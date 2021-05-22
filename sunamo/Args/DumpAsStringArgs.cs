@@ -14,4 +14,5 @@ public class DumpAsStringArgs
     /// Good for fast comparing objects
     /// </summary>
     public bool onlyValues;
+    public string deli = AllStrings.swd;
 }

@@ -1,28 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 
 
 public class CollectionWithoutDuplicates<T>
 {
-    
+    /// <summary>
+    /// 
+    /// </summary>
     public List<T> c = null;
     public List<string> sr = null;
-    public bool allowNull = false;
+    bool? _allowNull = false;
+    /// <summary>
+    /// true = compareWithString
+    /// false = !compareWithString
+    /// null = allow null (can't compareWithString)
+    /// </summary>
+    public bool? allowNull
+    {
+        get => _allowNull;
+        set
+        {
+            _allowNull = value;
+            if (value.HasValue && value.Value)
+            {
+                sr = new List<string>(count);
+            }
+        }
+    }
+
     public static bool br = false;
 
     bool _compareWithString = false;
 
-    public bool compareWithString
-    {
-        get => _compareWithString;
-        set 
-        {
-            _compareWithString = value;
-            sr = new List<string>(count);
-        }
-    }
+    
     int count = 10000;
 
     public CollectionWithoutDuplicates()
@@ -32,7 +45,6 @@ public class CollectionWithoutDuplicates<T>
             System.Diagnostics.Debugger.Break();
         }
         c = new List<T>();
-        sr = new List<string>();
     }
 
     public CollectionWithoutDuplicates(int count)
@@ -59,7 +71,7 @@ public class CollectionWithoutDuplicates<T>
         }
         else
         {
-            if (allowNull)
+            if (!allowNull.HasValue)
             {
                 c.Add(t2);
                 return true;
@@ -68,26 +80,50 @@ public class CollectionWithoutDuplicates<T>
         return false;
     }
 
+    bool IsComparingByString()
+    {
+        return allowNull.HasValue && allowNull.Value;
+    }
 
     public bool? Contains(T t2)
     {
-        if (!c.Contains(t2))
+        if (IsComparingByString())
         {
-            if (EqualityComparer<T>.Default.Equals(t2, default(T)))
+            return sr.Contains(t2.ToString());
+        }
+        else
+        {
+            if (!c.Contains(t2))
             {
-                return null;
+                if (EqualityComparer<T>.Default.Equals(t2, default(T)))
+                {
+                    return null;
+                }
+                else
+                {
+
+                }
+
+                return true;
             }
-            else
-            {
-                
-            }
-            return true;
         }
         return false;
     }
 
     public int AddWithIndex(T t2)
     {
+        if (IsComparingByString())
+        {
+            if (Contains(t2).GetValueOrDefault())
+            {
+                // Will checkout below
+            }
+            else
+            {
+                Add(t2);
+                return c.Count - 1;
+            }
+        }
         int vr = c.IndexOf(t2);
         if (vr == -1)
         {
@@ -99,6 +135,11 @@ public class CollectionWithoutDuplicates<T>
 
     public int IndexOf(T path)
     {
+        if (IsComparingByString())
+        {
+            return sr.IndexOf(path.ToString());
+        }
+        
         int vr = c.IndexOf(path);
         if (vr == -1)
         {
