@@ -9,7 +9,7 @@ namespace sunamo.Essential
 { }
 public partial class ThrowExceptions
 {
-    static Type type = typeof(ThrowExceptions);
+    
     #region Must be as first - newly created method fall into this
     public static void BadMappedXaml(string stacktrace, object type, string methodName, string nameControl, string additionalInfo)
     {
@@ -20,10 +20,7 @@ public partial class ThrowExceptions
         ThrowIsNotNull(stacktrace, Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
-    internal static void DivideByZero(string stacktrace, object type, string methodName)
-    {
-        ThrowIsNotNull(stacktrace, Exceptions.DivideByZero(FullNameOfExecutedCode(type, methodName, true)));
-    }
+    
 
     public static void UseRlc(string stacktrace, object type, string methodName)
     {
@@ -161,15 +158,9 @@ public partial class ThrowExceptions
         ThrowIsNotNull(stacktrace, Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName, true), nameCollection, element));
     }
     //IsNotWindowsPathFormat
-    public static void IsNotWindowsPathFormat(string stacktrace, object type, string methodName, string argName, string argValue)
-    {
-        ThrowIsNotNull(stacktrace, Exceptions.IsNotWindowsPathFormat(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
-    }
+    
 
-    public static void IsNullOrEmpty(string stacktrace, object type, string methodName, string argName, string argValue)
-    {
-        ThrowIsNotNull(stacktrace, Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
-    }
+    
 
     #endregion
     #region Without parameters
@@ -191,11 +182,7 @@ public partial class ThrowExceptions
         ThrowIsNotNull(stacktrace, Exceptions.WasNotKeysHandler(FullNameOfExecutedCode(type, methodName), name, keysHandler));
     }
 
-    public static void IsTheSame(string stacktrace, object type, string methodName, string fst, string sec)
-    {
-        ThrowIsNotNull(stacktrace, Exceptions.IsTheSame(FullNameOfExecutedCode(type, methodName), fst, sec));
-    }
-
+    
     #region Helpers
 
     public static void IsEmpty(string stacktrace, object type, string methodName, IEnumerable folders, string colName, string additionalMessage)
@@ -218,17 +205,7 @@ public partial class ThrowExceptions
         throw new NotImplementedException();
     }
 
-    /// <summary>
-    /// Return & throw exception whether
-    /// directory NOT exists
-    /// </summary>
-    /// <param name="type"></param>
-    /// <param name="methodName"></param>
-    /// <param name="folder1"></param>
-    public static void DirectoryWasntFound(string stacktrace, object type, string methodName, string folder1)
-    {
-        ThrowIsNotNull(stacktrace, Exceptions.DirectoryWasntFound(FullNameOfExecutedCode(type, methodName, true), folder1));
-    }
+    
     
     /// <summary>
     /// Throw exc A4,5 is same count of elements

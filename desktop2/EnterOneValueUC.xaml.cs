@@ -1,4 +1,5 @@
-﻿using System;
+﻿using desktop2.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using desktop.Helpers;
 
-namespace desktop.Controls.Input
+namespace desktop2.Controls.Input
 {
     /// <summary>
     /// Use for variable name always longer, enterOneValue instead of eov
@@ -28,10 +23,7 @@ namespace desktop.Controls.Input
         public string ValidatorBeforeAddingMessage = null;
         static Type type = typeof(EnterOneValueUC);
         public ValidateData validateData = null;
-       
-        
-            
-        //
+
         #region ctor
         /// <summary>
         /// Has button so dialogButtons is not needed to add
@@ -40,11 +32,11 @@ namespace desktop.Controls.Input
         {
             InitializeComponent();
 
-            dynLayout = new DynLayout(gridGrowable);
+            //dynLayout = new DynLayout(gridGrowable);
 
-            fwElemements = CA.ToList<FrameworkElement>(txtEnteredText);
+            //fwElemements = CA.ToList<FrameworkElement>(txtEnteredText);
 
-            Loaded += uc_Loaded;
+            //Loaded += uc_Loaded;
         }
 
         public EnterOneValueUC(string whatEnter, Size size) : this()
@@ -69,7 +61,7 @@ namespace desktop.Controls.Input
             txtEnteredText.AcceptsReturn = true;
 
             Loaded += EnterOneValueUC_Loaded;
-        } 
+        }
         #endregion
 
         public bool IsMultiline
@@ -108,7 +100,7 @@ namespace desktop.Controls.Input
             btnEnter.Content = sess.i18n(XlfKeys.Enter);
         }
 
-        
+
 
         /// <summary>
         /// TextBlock.Text is take from Tag, which can be TWithName<object>
@@ -166,14 +158,14 @@ namespace desktop.Controls.Input
             return name;
         }
 
-        
 
-        
+
+
 
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)
         {
             ButtonBase bb;
-            
+
             if (AfterEnteredValue(fwElemements))
             {
                 DialogResult = true;
@@ -228,7 +220,7 @@ namespace desktop.Controls.Input
 
                 previousValidate = item.Validate2(ExtractName(item), ref validateData);
 
-                
+
 
                 if (previousValidate.HasValue)
                 {
@@ -255,7 +247,7 @@ namespace desktop.Controls.Input
                 else
                 {
                     allOk = false;
-                    ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, sess.i18n(XlfKeys.NotImplementedValidateForControl)+" " + item.GetType().FullName);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, methodName, sess.i18n(XlfKeys.NotImplementedValidateForControl) + " " + item.GetType().FullName);
                 }
             }
             //txtEnteredText.Text = txtEnteredText.Text.Trim();
@@ -306,7 +298,7 @@ namespace desktop.Controls.Input
         public void Accept(object input)
         {
             txtEnteredText.Text = input.ToString();
-            ButtonHelper.PerformClick(btnEnter);
+            ButtonHelperDesktop2.PerformClick(btnEnter);
             // Cant be, window must be already showned as dialog
             //DialogResult = true;
         }
@@ -321,7 +313,7 @@ namespace desktop.Controls.Input
 
         public void Init()
         {
-            
+
         }
 
         public int CountOfHandlersChangeDialogResult()
@@ -347,4 +339,90 @@ namespace desktop.Controls.Input
 
         public event VoidBoolNullable ChangeDialogResult;
     }
+
+
+
+
+
+
+    //    public List<MenuItem> menuItems = new List<MenuItem>();
+    //    public TextBox txtEnteredText = new TextBox();
+    //    private string v = string.Empty;
+
+    //    public EnterOneValueUC()
+    //    {
+    //    }
+
+    //    public EnterOneValueUC(string v)
+    //    {
+    //        this.v = v;
+    //    }
+
+    //    public bool? DialogResult { set { } }
+
+    //    public string Title => "";
+
+    //    public event VoidBoolNullable ChangeDialogResult;
+
+    //    public void Accept(object input)
+    //    {
+
+    //    }
+
+    //    public void AttachChangeDialogResult(VoidBoolNullable a, bool throwException = true)
+    //    {
+
+    //    }
+
+    //    public int CountOfHandlersChangeDialogResult()
+    //    {
+    //        return 0;
+    //    }
+
+    //    public void FocusOnMainElement()
+    //    {
+
+    //    }
+
+    //    public void Init(List<FrameworkElement> fwElements)
+    //    {
+
+    //    }
+
+    //    public List<MenuItem> MenuItems()
+    //    {
+    //        return new List<MenuItem>();
+    //    }
+
+    //    public void Init()
+    //    {
+
+    //    }
+
+    //    internal void Init(string whatEnter)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public List<FrameworkElement> fwElemements = new List<FrameworkElement>();
+    //    internal string ValidatorBeforeAddingMessage = string.Empty;
+
+    //    public bool IsMultiline { get; set; } = true;
+    //    public Func<string, bool> ValidatorBeforeAdding { get; internal set; }
+
+    //    public object this[int i]
+    //    {
+    //        get
+    //        {
+    //            return new Control();
+    //        }
+    //    }
+    //}
+
+
+
+
+
+
+
 }

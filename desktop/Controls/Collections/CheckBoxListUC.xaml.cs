@@ -81,20 +81,26 @@ namespace desktop.Controls.Collections
 
         EventOnArgs eoa = null;
 
+        bool eventOn = false;
+
         /// <summary>
         /// Must be called after Init
         /// </summary>
         /// <param name="e"></param>
         public void EventOn(EventOnArgs e)
         {
-            this.eoa = e;
-            l.EventOn(e);
-
-            if (list != null)
+            if (!eventOn)
             {
-                foreach (var item in list)
+                eventOn = true;
+                this.eoa = e;
+                l.EventOn(e);
+
+                if (list != null)
                 {
-                    AddCheckbox(item, defChecked);
+                    foreach (var item in list)
+                    {
+                        AddCheckbox(item, defChecked);
+                    }
                 }
             }
         }
@@ -121,7 +127,7 @@ namespace desktop.Controls.Collections
         /// A1 can be null but then is needed to call () which contains Buttons in name like DefaultButtonsInit,HideAllButtons, etc.
         /// </summary>
         /// <param name="list"></param>
-        public void Init(ImageButtonsInit i, IList<string> list = null, bool defChecked = false)
+        public void Init(ImageButtonsInit i, IList<string> list = null, EventOnArgs e = null, bool defChecked = false)
         {
             if (!initialized)
             {
@@ -156,6 +162,8 @@ namespace desktop.Controls.Collections
 
                 SizeChanged += CheckBoxListUC_SizeChanged;
             }
+
+            EventOn(e);
         }
 
         public  List<string> AllContentString()
@@ -560,7 +568,7 @@ namespace desktop.Controls.Collections
         /// <param name="i"></param>
         public void Init()
         {
-            Init(null, null, false);
+            Init(null, null, EventOnArgs.allFalseOnlyCheckOn, false);
         }
 
         public int CountOfHandlersChangeDialogResult()

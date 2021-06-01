@@ -16,7 +16,7 @@ namespace sunamo.ConvertersSimple
 
         public static string ConvertFrom(Color t)
         {
-            return SF.PrepareToSerialization(CA.ToListString(t.A, t.R, t.G, t.B));
+            return SF.PrepareToSerialization3(CA.ToListString(t.A, t.R, t.G, t.B));
         }
     }
 }

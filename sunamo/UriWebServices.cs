@@ -14,6 +14,7 @@ using System.Web;
 public partial class UriWebServices
 {
     public static Action<IEnumerable, string> SearchInAll;
+
     static int opened = 0;
     public static string WikipediaEn = "https://en.wikipedia.org/w/index.php?search=%s";
     public const string karaokeTexty = "http://www.karaoketexty.cz/search?q=%s&sid=bbrpp&x=36&y=9";
@@ -54,6 +55,11 @@ public partial class UriWebServices
         }
     }
 
+    public static void AssignSearchInAll(Action<IEnumerable, string> assignSearchInAll)
+    {
+        SearchInAll = assignSearchInAll;
+    }
+
     public static void GoogleSearch(List<string> list)
     {
         foreach (var item in list)
@@ -62,20 +68,12 @@ public partial class UriWebServices
         }
     }
 
-   
-
-    
-
     public static string SpritMonitor(string car)
     {
         // https://www.spritmonitor.de/en/overview/45-Skoda/1289-Citigo.html?fueltype=4
         string d = "cng overview -\"/detail/\"" + car;
         return GoogleSearchSite("spritmonitor.de", d);
     }
-
-    
-
-    
 
     public static string TwitterProfile(string nick)
     {

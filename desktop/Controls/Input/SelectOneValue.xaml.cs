@@ -140,7 +140,7 @@ namespace desktop.Controls.Input
         public void Accept(object input)
         {
             cbEntered.Text = input.ToString();
-            ButtonHelper.PerformClick(btnEnter);
+            ButtonHelperDesktop2.PerformClick(btnEnter);
             // Cant be, window must be already showned as dialog
             //DialogResult = true;
         }

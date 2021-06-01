@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cmd.Helpers
+public interface IDumpAsString
 {
-    class Class1
-    {
-    }
+    string DumpAsString(string operation, DumpAsStringHeaderArgs a);
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 public class EventOnArgs
 {
-    public static EventOnArgs allFalse = new EventOnArgs(false);
+    public static EventOnArgs allFalse= new EventOnArgs(false);
+    public static EventOnArgs allFalseOnlyCheckOn= new EventOnArgs(true, true, false, false, false, false);
 
     public EventOnArgs()
     {
@@ -16,7 +17,6 @@ public class EventOnArgs
     public EventOnArgs(bool a)
     {
         SetAllFor(a);
-
     }
 
     public void SetAllFor(bool a)

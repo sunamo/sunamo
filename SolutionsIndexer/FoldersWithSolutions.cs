@@ -67,7 +67,7 @@ public class FoldersWithSolutions
         PairProjectFolderWithEnum();
 
         // Get all projects in A1(Visual Studio Projects *) and GitHub folder
-        List<string> solutionFolders = ReturnAllProjectFolders(documentsFolder, FS.Combine(documentsFolder, SolutionsIndexerStrings.GitHubMy));
+        List<string> solutionFolders = ReturnAllProjectFolders(documentsFolder /*, FS.Combine(documentsFolder, SolutionsIndexerStrings.GitHubMy)*/);
 
         List<string> projOnlyNames = new List<string>(solutionFolders.Count);
         projOnlyNames.AddRange(FS.OnlyNames(solutionFolders.ToArray()));
@@ -118,7 +118,7 @@ public class FoldersWithSolutions
                         p = EnumHelper.Parse<ProjectsTypes>(l2, ProjectsTypes.None);
                         break;
                 }
-
+                
                 if (p == ProjectsTypes.None)
                 {
                     ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.CanTAssignToEnumTypeOfFolder)+" " + item);
@@ -359,7 +359,7 @@ public class FoldersWithSolutions
                     continue;
                 }
 
-                slozkySJazykyOutsideVs17.Leading(FS.Combine(folderWithVisualStudioFolders, SolutionsIndexerConsts.BitBucket));
+                slozkySJazykyOutsideVs17.Leading(FS.Combine(folderWithVisualStudioFolders.Replace("e:\\", "d:\\"), SolutionsIndexerConsts.BitBucket));
 
                 foreach (var item2 in slozkySJazyky)
                 {

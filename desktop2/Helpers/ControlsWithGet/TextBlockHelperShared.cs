@@ -1,6 +1,6 @@
 ﻿using desktop;
 
-using desktop.Helpers;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +44,7 @@ public partial class TextBlockHelper{
         if (lblStatusDownload != null)
         {
             // Must be invoke because after that I immediately load it on ListBox
-            WpfApp.cd.Invoke(() =>
+            lblStatusDownload.Dispatcher.Invoke(() =>
             {
                 lblStatusDownload.Text = status;
             }

@@ -12,6 +12,9 @@ using System.Linq;
 
 public static partial class CL{
     readonly static string charOfHeader = AllStrings.asterisk;
+    
+
+
     static CL()
     {
     }

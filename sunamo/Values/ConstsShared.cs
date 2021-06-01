@@ -7,6 +7,7 @@ using System.Text;
     /// </summary>
     public static partial class Consts
     {
+    public const string _3Asterisks = "_3Asterisks";
     public const string Test_ = "Test_";
     public const int defaultPortIfCannotBeParsed = 587;
     public const string slashLocalhost = AllStrings.slash + Consts.localhost;
@@ -55,8 +56,6 @@ using System.Text;
 
    
     public const string spaces4 = "    ";
-        
-
 
         public const string nulled = "(null)";
 

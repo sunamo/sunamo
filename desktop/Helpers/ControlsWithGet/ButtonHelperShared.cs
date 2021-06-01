@@ -5,10 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 public static partial class ButtonHelper{ 
-public static void PerformClick(ButtonBase someButton)
-    {
-        someButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-    }
+
 
 /// <summary>
     /// tag is not needed, value is obtained through []

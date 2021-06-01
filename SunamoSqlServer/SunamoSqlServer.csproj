@@ -60,11 +60,17 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
     <Compile Include="Attributes\NoReturnSqlResultAttribute.cs" />
     <Compile Include="Helpers\StopwatchStaticSql.cs" />
+    <Compile Include="MSSQL\GeneratorMsSqlShared64.cs" />
+    <Compile Include="MSSQL\MSColumnsDBShared64.cs" />
+    <Compile Include="MSSQL\MSDatabaseLayerShared64.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIShared64.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBaseShared64.cs" />
     <Compile Include="MSSQL\MSTableRowIDNameShort.cs" />
     <Compile Include="MSSQL\MSTableRowIDNameT.cs" />
     <Compile Include="SqlConsts.cs" />
     <Compile Include="SqlDebug.cs" />
     <Compile Include="SqlMeasureTimeWorker.cs" />
+    <Compile Include="SqlServerHelperShared64.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
@@ -93,7 +99,6 @@
     <Compile Include="MSSQL\MSStoredProceduresI.cs" />
     <Compile Include="MSSQL\MSStoredProceduresI_BeforeSqlOps.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBaseSharedSqlOps.cs" />
     <None Include="MSSQL\MSStoredProceduresIBaseSharedWithoutSqlData.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBaseSharedWithoutSqlData2.cs" />

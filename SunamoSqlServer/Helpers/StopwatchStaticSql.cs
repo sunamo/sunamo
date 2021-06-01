@@ -47,6 +47,8 @@ public class StopwatchStaticSql
         
     }
 
+    public static bool forceIsVps = false;
+
     /// <summary>
     /// Must if (MSStoredProceduresI.measureTime) before calling
     /// </summary>

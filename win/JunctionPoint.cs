@@ -24,6 +24,11 @@ public static class JunctionPoint
     /// <param name="target"></param>
     public static List<string> MklinkH(string source, string target)
     {
+        if (!FS.ExistsFile(target))
+        {
+            ThrowExceptions.DirectoryExists(Exc.GetStackTrace(), type, Exc.CallingMethod(), target);
+        }
+
         string command = "cmd /c mklink /H " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
         List<string> output = PowershellRunner.InvokeSingle(command);
         return output;
@@ -57,6 +62,11 @@ public static class JunctionPoint
     /// <param name="target"></param>
     public static List<string> MklinkJ(string source, string target)
     {
+        if (!FS.ExistsDirectory(target))
+        {
+            ThrowExceptions.DirectoryExists(Exc.GetStackTrace(), type, Exc.CallingMethod(), target);
+        }
+
         string command = "cmd /c mklink /J " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
         List<string> output = PowershellRunner.InvokeSingle(command);
         return output;
@@ -69,6 +79,11 @@ public static class JunctionPoint
     /// <param name="target"></param>
     public static List<string> MklinkD(string source, string target)
     {
+        if (!FS.ExistsDirectory(target))
+        {
+            ThrowExceptions.DirectoryExists(Exc.GetStackTrace(), type, Exc.CallingMethod(), target);
+        }
+
         string command = "cmd /c mklink /D " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
         List<string> output = PowershellRunner.InvokeSingle(command);
         return output;

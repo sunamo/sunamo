@@ -3,6 +3,7 @@ using desktop.Controls;
 using desktop.Controls.Collections;
 
 using desktop.Helpers;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -99,8 +100,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         userControlWithSizeChange = uc as IUserControlWithSizeChange;
         controlWithResult = uc as IControlWithResult;
 
-        
-
         this.Closed += WindowWithUserControl_Closed;
         this.Closing += WindowWithUserControl_Closing;
 
@@ -179,6 +178,10 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         Loaded += WindowWithUserControl_Loaded;
         SizeChanged += WindowWithUserControl_SizeChanged;
         PreviewKeyDown += WindowWithUserControl_PreviewKeyDown;
+    }
+
+    public WindowWithUserControl()
+    {
     }
 
     private void ControlWithResult_ChangeDialogResult(bool? b)
@@ -344,7 +347,35 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        //
+        var before = ActualHeight;
+
+        if (args.sizeWindow != Size.Empty)
+        {
+            WpfApp.cd.Invoke(() =>
+           {
+               //Application.Current.MainWindow = this;
+               //Application.Current.MainWindow.Width = args.sizeWindow.Width;
+               //Application.Current.MainWindow.Height = args.sizeWindow.Height;
+
+               var w = args.sizeWindow.Width;
+               var h = args.sizeWindow.Height;
+
+               if (w != 0)
+               {
+                   this.Width = w;
+               }
+               
+               if (h != 0)
+               {
+                   this.Height = h;
+               }
+               
+           }, System.Windows.Threading.DispatcherPriority.ContextIdle);
+        }
+
+        var after = ActualHeight;
+
+        int i = 0;
     }
 
     private void AddUC()

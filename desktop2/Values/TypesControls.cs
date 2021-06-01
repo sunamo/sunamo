@@ -1,4 +1,4 @@
-﻿using desktop.Controls.Controls;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +25,6 @@ public class TypesControls
     public static readonly Type tUserControl = typeof(UserControl);
     public static readonly Type tWindow = typeof(Window);
     public static readonly Type tGrid = typeof(Grid);
-
-    
 
     //public static readonly Type tControl = typeof(Control);
 

@@ -57,13 +57,6 @@
     <None Include="..\sunamo\MultilingualResources\sunamo.en-US.min.xlf" Link="sunamo.en-us.min.xlf" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="NuGet.LibraryModel" Version="5.9.1" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="ResourcesDuo.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -76,6 +69,14 @@
       <LastGenOutput>ResourcesDuo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NuGet.LibraryModel" Version="5.9.1" />
+  </ItemGroup>
+
   <PropertyGroup>
     <ProjectTypeGuids>9a19103f-16f7-4668-be54-9a1e7a4f7556</ProjectTypeGuids>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>

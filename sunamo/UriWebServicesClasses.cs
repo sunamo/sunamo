@@ -342,7 +342,7 @@ Template for which I will find, have to be in derivates the same:
          */
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
-        public const string hyperinzerceCz = "https://moravskoslezsky-kraj.hyperinzerce.cz/%s/";
+        public const string hyperinzerceCz = "https://hyperinzerce.cz/inzeraty/Index?query=%s&priceFrom=0&priceTo=99000000&distanceSearch=False&regionIds=HKK";
         public const string bazarCz = "https://www.bazar.cz/ostrava/hledat/%s/?a=25&p=70800&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%s/0-vsechny-kategorie/moravskoslezsky";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";

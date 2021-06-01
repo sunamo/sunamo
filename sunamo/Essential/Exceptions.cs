@@ -13,7 +13,7 @@ using System.Text;
 /// </summary>
 public partial class Exceptions
 {
-    public static bool RaiseIsNotWindowsPathFormat;
+    
     
     //
 
@@ -189,59 +189,10 @@ public partial class Exceptions
         return variableName + SunamoPageHelperSunamo.i18n(XlfKeys.DoesnTHaveRequiredType) + ".";
     }
 
-    public static string IsNullOrEmpty(string before, string argName, string argValue)
-    {
-        string addParams = null;
+    
 
-        if (argValue == null)
-        {
-            addParams = AddParams();
-            return CheckBefore(before) + argName + " is null" + addParams;
-        }
-        else if (argValue == string.Empty)
-        {
-            addParams = AddParams();
-            return CheckBefore(before) + argName + " is empty (without trim)" + addParams;
-        }
-        else if (argValue.Trim() == string.Empty)
-        {
-            addParams = AddParams();
-            return CheckBefore(before) + argName + " is empty (with trim)" + addParams;
-        }
-
-        return null;
-    }
-
-    private static string AddParams()
-    {
-        sbAdditionalInfo.Insert(0, Environment.NewLine);
-        sbAdditionalInfo.Insert(0, "Outer:");
-        sbAdditionalInfo.Insert(0, Environment.NewLine);
-
-        sbAdditionalInfoInner.Insert(0, Environment.NewLine);
-        sbAdditionalInfoInner.Insert(0, "Inner:");
-        sbAdditionalInfoInner.Insert(0, Environment.NewLine);
-
-        var addParams = sbAdditionalInfo.ToString();
-        var addParamsInner = sbAdditionalInfoInner.ToString();
-        return  addParams + addParamsInner;
-    }
-
-    public static object IsNotWindowsPathFormat(string before, string argName, string argValue)
-    {
-        if (RaiseIsNotWindowsPathFormat)
-        {
-            var badFormat = !FS.IsWindowsPathFormat(argValue);
-
-            if (badFormat)
-            {
-                return CheckBefore(before) + " " + argName + " "+SunamoPageHelperSunamo.i18n(XlfKeys.isNotInWindowsPathFormat);
-            }
-        }
-
-        return null;
-    }
-
+ 
+    
 
     #endregion
 
@@ -282,12 +233,7 @@ public partial class Exceptions
 
 
 
-    #region Called from TemplateLoggerBase
-    public static string NotEvenNumberOfElements(string before, string nameOfCollection)
-    {
-        return CheckBefore(before) + nameOfCollection + " have odd elements count";
-    }
-    #endregion
+    
 
     public static string DifferentCountInLists(string before, string namefc, int countfc, string namesc, int countsc)
     {
@@ -299,12 +245,9 @@ public partial class Exceptions
         return null;
     }
 
-    public static string AnyElementIsNullOrEmpty(string before, string nameOfCollection, List<int> nulled)
-    {
-        return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " with null value";
-    }
-
     
+
+
 
     public static object IsNotNull(string before, string variableName, object variable)
     {
@@ -384,15 +327,7 @@ public partial class Exceptions
         return null;
     }
 
-    public static string DirectoryWasntFound(string before, string directory)
-    {
-        if (!FS.ExistsDirectory(directory))
-        {
-            return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.Directory) + " " + directory + " wasn't found.";
-        }
-
-        return null;
-    }
+    
 
     public static object FuncionalityDenied(string before, string description)
     {

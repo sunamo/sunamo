@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:desktop2ControlsInput="clr-namespace:desktop2.Controls.Input;assembly=desktop2"
              mc:Ignorable="d" 
-        xmlns:desktopControlsInput="clr-namespace:desktop.Controls.Input"
+        
         SizeToContent="WidthAndHeight"
              d:DesignHeight="150" d:DesignWidth="400" Width="400" Height="150">
-    <desktopControlsInput:EnterOneValueUC x:Name="enterOneValueUC" x:FieldModifier="public"></desktopControlsInput:EnterOneValueUC>
+    <desktop2ControlsInput:EnterOneValueUC x:Name="enterOneValueUC" x:FieldModifier="public"></desktop2ControlsInput:EnterOneValueUC>
 </Window>

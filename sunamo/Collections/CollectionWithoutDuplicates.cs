@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 
 
-public class CollectionWithoutDuplicates<T>
+public class CollectionWithoutDuplicates<T> : IDumpAsString
 {
     /// <summary>
     /// 
@@ -60,13 +60,17 @@ public class CollectionWithoutDuplicates<T>
 
     public bool Add(T t2)
     {
+        bool result = false;
+
         var con = Contains(t2);
         if (con.HasValue)
         {
             if (!con.Value)
             {
                 c.Add(t2);
-                return true;
+                result = true;
+
+
             }
         }
         else
@@ -74,10 +78,19 @@ public class CollectionWithoutDuplicates<T>
             if (!allowNull.HasValue)
             {
                 c.Add(t2);
-                return true;
+                result = true;
             }
         }
-        return false;
+
+        if (result)
+        {
+            if (IsComparingByString())
+            {
+                sr.Add(ts);
+            }
+        }
+
+        return result;
     }
 
     bool IsComparingByString()
@@ -85,11 +98,14 @@ public class CollectionWithoutDuplicates<T>
         return allowNull.HasValue && allowNull.Value;
     }
 
-    public bool? Contains(T t2)
+    string ts = null;
+
+    public bool? Contains(T t2 )
     {
         if (IsComparingByString())
         {
-            return sr.Contains(t2.ToString());
+            ts = t2.ToString();
+            return sr.Contains(ts);
         }
         else
         {
@@ -160,5 +176,10 @@ public class CollectionWithoutDuplicates<T>
         {
             Add(item);
         }
+    }
+
+    public string DumpAsString(string operation, DumpAsStringHeaderArgs a)
+    {
+        return c.DumpAsString(operation, a);
     }
 }

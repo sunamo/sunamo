@@ -36,6 +36,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -114,14 +115,12 @@
     <Compile Include="..\..\sunamo\desktop\Controls\Buttons\ActionButton.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Collections\Compare3InCheckBoxListUC.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Controls\TwoStatesToggleButtonShared.cs" />
-    <Compile Include="..\..\sunamo\desktop\Controls\Input\EnterOneValueUC.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFileShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolder.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolderShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectManyFilesShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Panels\SunamoGrid.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Wrapper\NotifyPropertyChangedWrapper.cs" />
-    <Compile Include="..\..\sunamo\desktop\Data\ControlInitData.cs" />
     <Compile Include="..\..\sunamo\desktop\Essential\WpfApp.cs" />
     <Compile Include="..\..\sunamo\desktop\Essential\WpfAppShared.cs" />
     <Compile Include="..\..\sunamo\desktop\EventArgs\ValueChangedRoutedEventArgs.cs" />
@@ -131,8 +130,6 @@
     <Compile Include="..\..\sunamo\desktop\Extensions\ListViewExtensions.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\TextBoxExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ToggleButtonExtensionShared.cs" />
-    <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensions.cs" />
-    <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\UserControlExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\ContentControlHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\ControlHelperShared.cs" />
@@ -141,19 +138,16 @@
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\UIElementHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\CheckBoxDataHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\CheckBoxDataHelperShared.cs" />
-    <Compile Include="..\..\sunamo\desktop\Helpers\ContainerControls\GridHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\ContainerControls\WindowHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Content\Resources\BitmapImageHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Content\Resources\ImageHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\ControlFinder.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ListViewColumnHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ToolbarHelper.cs" />
-    <Compile Include="..\..\sunamo\desktop\Helpers\ControlsWithGet\TextBlockHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\KeyboardHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Hotkey.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IKeysHandler.cs" />
-    <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControl.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlBackground.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlClosing.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlShared.cs" />
@@ -164,10 +158,9 @@
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataConsts.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainerList.cs" />
-    <Compile Include="..\..\sunamo\desktop\Values\TypesControls.cs" />
     <Compile Include="..\..\sunamo\desktop\Windows\WindowWithUserControl.cs" />
-    <Compile Include="Animation\AutoIncrementNumber.cs" />
-    <Compile Include="Animation\LimitedTimer.cs" />
+    <Compile Include="_\Animation\AutoIncrementNumber.cs" />
+    <Compile Include="_\Animation\LimitedTimer.cs" />
     <Compile Include="Args\EventOnArgs.cs" />
     <Compile Include="Args\FolderContentsTreeViewArgs.cs" />
     <Compile Include="Args\WindowWithUserControlArgs.cs" />
@@ -230,9 +223,6 @@
     <Compile Include="Controls\Input\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Input\EnterOneValueUC.xaml.cs">
-      <DependentUpon>EnterOneValueUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Input\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
@@ -273,7 +263,6 @@
     <Compile Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml.cs">
       <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Panels\DynLayout.cs" />
     <Compile Include="Controls\Panels\FrugalContainer.cs" />
     <Compile Include="Controls\Panels\StackPanelUC.cs" />
     <Compile Include="Controls\Panels\SunamoVariableSizedWrapGrid.cs" />
@@ -344,7 +333,6 @@
     <Compile Include="Converters\VisibilityBooleanConverter.cs" />
     <Compile Include="Data\BitmapImageWithPath.cs" />
     <Compile Include="Data\BorderData.cs" />
-    <Compile Include="Data\ControlInitData.cs" />
     <Compile Include="Data\Delegates\CodeFile1.cs" />
     <Compile Include="Data\DesktopSize.cs" />
     <Compile Include="Data\FontArgs.cs" />
@@ -387,6 +375,7 @@
     <Compile Include="Extensions\TextBoxExtensions.cs" />
     <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="Extensions\UIElementExtensions.cs" />
+    <Compile Include="Extensions\UIElementExtensionsShared.cs" />
     <Compile Include="Extensions\UserControlExtensions.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="GuesslangHelper.cs" />
@@ -405,7 +394,6 @@
     <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\ColorThemeHelper.cs" />
-    <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelperShared.cs" />
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
@@ -455,8 +443,6 @@
     <Compile Include="Helpers\ControlsWithGet\MenuItemHelper.cs" />
     <Compile Include="Helpers\ControlsWithGet\MenuItemHelperShared.cs" />
     <Compile Include="Helpers\ControlsWithGet\RadioButtonHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\TextBlockHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\TextBlockHelperShared.cs" />
     <Compile Include="Helpers\ControlsWithGet\TextBoxHelper.cs" />
     <Compile Include="Helpers\DisplayHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
@@ -476,13 +462,11 @@
     <Compile Include="Interfaces\IKeysHandler.cs" />
     <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
     <Compile Include="Interfaces\IShowSearchResults.cs" />
-    <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlBackground.cs" />
     <Compile Include="Interfaces\IUserControlClosing.cs" />
     <Compile Include="Interfaces\IUserControlShared.cs" />
     <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />
     <Compile Include="Interfaces\IUserControlStateChanging.cs" />
-    <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />
     <Compile Include="Interfaces\IUserControlWithSizeChange.cs" />
     <Compile Include="Interfaces\IWindowOpener.cs" />
@@ -529,7 +513,6 @@
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
     <Compile Include="Values\HeaderSize.cs" />
-    <Compile Include="Values\TypesControls.cs" />
     <Compile Include="Values\TypesDesktop.cs" />
     <Compile Include="Values\TypesEnumerable.cs" />
     <Compile Include="VisualTreeHelpers.cs" />
@@ -556,6 +539,10 @@
     <ProjectReference Include="..\..\sunamoWithoutDep\SunamoJson\SunamoJson.csproj">
       <Project>{ff853416-55b9-47ba-a80e-04e3d545c9a1}</Project>
       <Name>SunamoJson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\desktop2\desktop2.csproj">
+      <Project>{427cdc93-2cd4-41a5-9db9-dbcb6d456350}</Project>
+      <Name>desktop2</Name>
     </ProjectReference>
     <ProjectReference Include="..\duo\duo.csproj">
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
@@ -638,10 +625,6 @@
     <Page Include="Controls\Input\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Input\EnterOneValueUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Input\InputTwoColumnsUC.xaml">
       <SubType>Designer</SubType>
@@ -740,10 +723,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ToggleSwitch\Assets\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ToggleSwitch\Assets\ToggleSwitchStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

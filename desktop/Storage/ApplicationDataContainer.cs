@@ -219,7 +219,7 @@ static Type type = typeof(ApplicationDataContainer);
     {
         SelectMoreFolders chb = sender as SelectMoreFolders;
         // bcoz every line has strictly structure - name|type|data. Never be | in data
-        Set( sender,SelectedFolders, SF.PrepareToSerialization(selectedFolders, innerDelimiter));
+        Set( sender,SelectedFolders, SF.PrepareToSerialization2(selectedFolders, innerDelimiter));
         
         SaveControl(chb);
     }

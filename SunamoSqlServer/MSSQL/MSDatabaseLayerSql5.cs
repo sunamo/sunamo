@@ -32,7 +32,8 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayerBase
         {
             cs += ";Database=" + database;
         }
-        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
+        //;TransparentNetworkIPResolution=False is not supported in .NET5
+        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";Max Pool Size=50000;Pooling=True;";
         //_conn = new SqlConnection(cs);
 
         //OpenWhenIsNotOpen();

@@ -12,6 +12,7 @@ public interface IClipboardHelper : IClipboardHelperBase<string, List<string>, b
 
 public interface IClipboardHelperBase<String, ListString, Bool>
 {
+    
     String GetText();
     ListString GetLines();
     Bool ContainsText();

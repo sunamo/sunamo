@@ -123,9 +123,11 @@ namespace desktop.Controls.Input
     {
         enterNameOfSet = new EnterOneValueWindow(sess.i18n( XlfKeys.nameOfSet));
 
-        enterNameOfSet.enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
-        //enterNameOfSet.enterOneValueUC.Accept("Websites");
-        enterNameOfSet.ShowDialog();
+
+            // TODO Replaced during repair 0xc0000374
+            //enterNameOfSet.enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
+            //enterNameOfSet.enterOneValueUC.Accept("Websites");
+            enterNameOfSet.ShowDialog();
         //SF.PrepareToSerialization()
     }
 }

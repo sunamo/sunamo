@@ -1629,15 +1629,7 @@ public static partial class SH
     {
         return SplitSpecial(StringSplitOptions.None, text, deli);
     }
-    public static string FirstCharUpper(string nazevPP)
-    {
-        if (nazevPP.Length == 1)
-        {
-            return nazevPP.ToUpper();
-        }
-        string sb = nazevPP.Substring(1);
-        return nazevPP[0].ToString().ToUpper() + sb;
-    }
+
     public static string StripFunctationsAndSymbols(string p)
     {
         StringBuilder sb = new StringBuilder();
@@ -1813,22 +1805,7 @@ public static partial class SH
 
 
 
-    /// <summary>
-    /// Will be delete after final refactoring
-    /// Automaticky ořeže poslední znad A1
-    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
-    /// </summary>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    private static string Join(IEnumerable parts, object delimiter)
-    {
-        if (delimiter is string)
-        {
-            return Join(delimiter, parts);
-        }
-        // TODO: Delete after all app working, has flipped A1 and A2
-        return Join(delimiter, parts);
-    }
+    
     // refaktorovat to tady, nemuzu zavolat params z IEnum . Teprve ve working method zkontroluji co je za typ a pripadne pretypuji
     /// <summary>
     /// If element will be number, wont wrap with qm.

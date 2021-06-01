@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
     public partial class Exceptions
     {
-    public static StringBuilder sbAdditionalInfoInner = new StringBuilder();
-    public static StringBuilder sbAdditionalInfo = new StringBuilder();
+    
 
     #region For easy copy in SunamoException project
 
@@ -21,53 +20,12 @@ using System.Threading.Tasks;
         }
         return null;
     }
-    public static string ArgumentOutOfRangeException(string before, string paramName, string message)
-    {
-        if (paramName == null)
-        {
-            paramName = string.Empty;
-        }
+  
 
-        if (message == null)
-        {
-            message = string.Empty;
-        }
+    
 
-        return CheckBefore(before) + paramName + " " + message;
-    }
-
-    internal static string DivideByZero(string before)
-    {
-        return CheckBefore(before) + " is dividing by zero.";
-    }
-
-    public static string IsNull(string before, string variableName, object variable)
-    {
-        if (variable == null)
-        {
-            return CheckBefore(before) + variable + " is null.";
-        }
-
-        return null;
-    }
-    public static string NotImplementedCase(string before, object niCase)
-    {
-        string fr = string.Empty;
-        if (niCase != null)
-        {
-            fr = " for ";
-            if (niCase.GetType() == typeof(Type))
-            {
-                fr += ((Type)niCase).FullName;
-            }
-            else
-            {
-                fr += niCase.ToString();
-            }
-        }
-
-        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedCase) + fr + ". "+SunamoPageHelperSunamo.i18n(XlfKeys.publicProgramErrorPleaseContactDeveloper) + ".";
-    }
+    
+    
 
     /// <summary>
     /// Verify whether A2 contains A3
@@ -93,15 +51,9 @@ using System.Threading.Tasks;
         return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, AllStrings.comma);
     }
 
-    public static string Custom(string before, string message)
-        {
-            return CheckBefore(before) + message;
-        }
+   
      
-    public static object NotImplementedMethod(string before)
-    {
-        return CheckBefore(before) + SunamoPageHelperSunamo.i18n(XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper) + ".";
-    }
+  
 
     public static string HasNotKeyDictionary<Key, Value>(string v, string nameDict, IDictionary<Key, Value> qsDict,  Key remains)
     {
@@ -112,14 +64,7 @@ using System.Threading.Tasks;
         return null;
     }
 
-    private static string CheckBefore(string before)
-        {
-            if (string.IsNullOrWhiteSpace(before))
-            {
-                return "";
-            }
-            return before + ": ";
-        }
+    
 
     public static string BadFormatOfElementInList(string before, object elVal, string listName)
     {
@@ -149,9 +94,6 @@ using System.Threading.Tasks;
         return before + $"Loading uri {address} failed {times} ({timeoutInMs} ms timeout)";
     }
 
-    internal static string IsTheSame(string before, string fst, string sec)
-    {
-        return before + $"{fst} and {sec} has the same value";
-    }
+    
     #endregion
 }

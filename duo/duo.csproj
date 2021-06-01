@@ -16,7 +16,4 @@
   <PropertyGroup>
     <ProjectTypeGuids>9a19103f-16f7-4668-be54-9a1e7a4f7556</ProjectTypeGuids>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\..\sunamo\duo\ValidateData.cs" />
-  </ItemGroup>
 </Project>

@@ -19,6 +19,119 @@ using System.Text.RegularExpressions;
 
 public partial class FS
 {
+    public static string GetActualDateTime()
+    {
+        DateTime dt = DateTime.Now;
+        return ReplaceIncorrectCharactersFile(dt.ToString());
+    }
+
+    
+
+    
+    
+
+    
+    
+
+    public static List<string> FilesWhichContainsAll(object sunamo, string masc, params string[] mustContains)
+    {
+        return FilesWhichContainsAll(sunamo, masc, mustContains);
+    }
+
+    public static List<string> FilesWhichContainsAll(object sunamo, string masc, IEnumerable<string> mustContains)
+    {
+        var mcl = mustContains.Count();
+
+        List<string> ls = new List<string>();
+        IEnumerable<string> f = null;
+
+        if (sunamo is IEnumerable<string>)
+        {
+            f = (IEnumerable<string>)sunamo;
+        }
+        else
+        {
+            f = FS.GetFiles(sunamo.ToString(), masc, true);
+        }
+
+        foreach (var item in f)
+        {
+            var c = TF.ReadAllText(item);
+            if (CA.ContainsAnyFromElement(c, mustContains).Count == mcl)
+            {
+                ls.Add(item);
+            }
+        }
+
+        return ls;
+    }
+
+    public static bool IsException(string ext)
+    {
+        if (string.IsNullOrWhiteSpace(ext))
+        {
+            return false;
+        }
+        ext = ext.TrimStart(AllChars.dot);
+        return SH.ContainsOnly(ext, RandomHelper.vsZnakyWithoutSpecial);
+    }
+
+    public static string PathSpecialAndLevel(string basePath, string item, int v)
+    {
+        basePath = basePath.Trim(AllChars.bs);
+
+        item = item.Trim(AllChars.bs);
+
+        item = item.Replace(basePath, string.Empty);
+        var pBasePath = SH.Split(basePath, AllStrings.bs);
+        var basePathC = pBasePath.Count;
+
+        var p = SH.Split(item, AllStrings.bs);
+        int i = 0;
+        for (; i < p.Count; i++)
+        {
+            if (p[i].StartsWith(AllStrings.lowbar))
+            {
+                pBasePath.Add(p[i]);
+            }
+            else
+            {
+                //i--;
+                break;
+            }
+        }
+        for (int y = 0; y < i; y++)
+        {
+            p.RemoveAt(0);
+        }
+
+        var h = p.Count - i + basePathC;
+        var to = Math.Min(v, h);
+        i = 0;
+        for (; i < to; i++)
+        {
+            pBasePath.Add(p[i]);
+        }
+
+        return SH.Join(AllStrings.bs, pBasePath);
+    }
+
+    public static string GetDirectoryNameIfIsFile(string f)
+    {
+        if (File.Exists(f))
+        {
+            return Path.GetDirectoryName(f);
+        }
+        return f;
+    }
+
+    public static string MaskFromExtensions(List<string> allExtensions)
+    {
+        CA.Prepend(AllStrings.asterisk, allExtensions);
+        return SH.Join(AllStrings.comma, allExtensions);
+    }
+
+   
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
@@ -253,6 +366,7 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
 
     public static List<StorageFile> GetFilesOfExtensionCaseInsensitiveRecursively<StorageFolder, StorageFile>(StorageFolder sf, string ext, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
+
         if (ac != null)
         {
             return ac.fs.getFilesOfExtensionCaseInsensitiveRecursively.Invoke(sf, ext);
@@ -506,20 +620,8 @@ public static void RenameNumberedSerieFiles(List<string> d, List<string> f, int 
         FS.FirstCharLower(ref result);
         return result;
     }
-    public static void WriteAllText(string path, string content)
-    {
-        WriteAllText<string, string>(path, content, null);
-    }
-    /// <summary>
-    /// Create folder hiearchy and write
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="content"></param>
-    public static void WriteAllText<StorageFolder, StorageFile>(StorageFile path, string content, AbstractCatalog<StorageFolder, StorageFile> ac)
-    {
-        FS.CreateUpfoldersPsysicallyUnlessThere(path, ac);
-        TF.WriteAllText<StorageFolder, StorageFile>(path, content, ac);
-    }
+    
+    
     public static string MakeFromLastPartFile(string fullPath, string ext)
     {
         FS.WithoutEndSlash(ref fullPath);

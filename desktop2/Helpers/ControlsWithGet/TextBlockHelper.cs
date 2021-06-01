@@ -1,7 +1,5 @@
 ﻿
 using desktop;
-
-using desktop.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +25,7 @@ public partial class TextBlockHelper
         {
             txtTest = new TextBlock();
             txtTest.Text = i.ToString();
-            txtTest.Measure(ControlHelper.SizePositiveInfinity);
+            txtTest.Measure(ControlsHelperValues.SizePositiveInfinity);
             txtTest.Arrange(new Rect(0, 0, txtTest.DesiredSize.Width, txtTest.DesiredSize.Height));
             txtTest.UpdateLayout();
             charWidth.Add(i, txtTest.ActualWidth);
@@ -68,7 +66,7 @@ public partial class TextBlockHelper
             p.Children.Add(txtTest);
             txtTest.Text = "1";
             txtTest.FontSize = i;
-            txtTest.Measure(ControlHelper.SizePositiveInfinity);
+            txtTest.Measure(ControlsHelperValues.SizePositiveInfinity);
             averageNumberWidthOnFontSize.Add(i, txtTest.DesiredSize.Width);
             p.Children.Remove(txtTest);
         }

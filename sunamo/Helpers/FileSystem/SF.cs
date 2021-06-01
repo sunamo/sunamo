@@ -17,9 +17,6 @@ using sunamo.Constants;
 /// </summary>
 public static partial class SF
 {
-    
-
-
 public static int keyCodeSeparator
     {
         get
@@ -192,7 +189,7 @@ public static int keyCodeSeparator
         StringBuilder sb = new StringBuilder();
         foreach (List<string> item in p)
         {
-            sb.AppendLine(PrepareToSerialization(item));
+            sb.AppendLine(PrepareToSerialization3(item));
         }
 
         File.WriteAllText(VybranySouborLogu, sb.ToString());
@@ -203,7 +200,7 @@ public static int keyCodeSeparator
         StringBuilder sb = new StringBuilder();
         foreach (var item in p)
         {
-            sb.AppendLine(PrepareToSerialization(item));
+            sb.AppendLine(PrepareToSerialization3(item));
         }
 
         File.WriteAllText(VybranySouborLogu, sb.ToString());

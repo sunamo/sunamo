@@ -37,8 +37,13 @@ public class CmdBootStrap
     /// <param name="runInDebug"></param>
     /// <param name="AddGroupOfActions"></param>
     /// <param name="allActions"></param>
-    public static string Run(string appName, Func<IClipboardHelper> createInstanceClipboardHelper, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, bool? askUserIfRelease, Action InitSqlMeasureTime, Action customInit)
+    public static string Run(string appName, Func<IClipboardHelper> createInstanceClipboardHelper, Action runInDebug, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, bool? askUserIfRelease, Action InitSqlMeasureTime, Action customInit, Action assingSearchInAll)
     {
+        if (assingSearchInAll != null)
+        {
+            
+            assingSearchInAll();
+        }
     //}
 
     //public static string Run(CmdBootStrapArgs a)
@@ -55,7 +60,10 @@ public class CmdBootStrap
         CmdApp.Init();
         CmdApp.EnableConsoleLogging(true);
 
-        InitApp.Clipboard = createInstanceClipboardHelper();
+        if (createInstanceClipboardHelper != null)
+        {
+            InitApp.Clipboard = createInstanceClipboardHelper();
+        }
         InitApp.Logger = ConsoleLogger.Instance;
         InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
         InitApp.TypedLogger = TypedConsoleLogger.Instance;

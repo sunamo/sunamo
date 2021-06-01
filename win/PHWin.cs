@@ -25,8 +25,6 @@ public class PHWin
 
     static int opened = 0;
 
-   
-
     /// <summary>
     /// A1 is chrome replacement
     /// </summary>
@@ -59,6 +57,12 @@ public class PHWin
                 }
             }
         }
+    }
+
+    public static void AssignSearchInAll()
+    {
+        AddBrowsers();
+        UriWebServices.AssignSearchInAll(PHWin.SearchInAll);
     }
 
     public static string AddBrowser(Browsers prohlizec)

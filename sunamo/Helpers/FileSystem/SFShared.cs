@@ -11,9 +11,6 @@ public static partial class SF
 {
     private static SerializeContentArgs s_contentArgs = new SerializeContentArgs();
 
-    public const string replaceForSeparatorString = AllStrings.lowbar;
-    public static readonly char replaceForSeparatorChar = AllChars.lowbar;
-    public static string dDeli = "|";
 
     public static Dictionary<T1, T2> ToDictionary<T1, T2>(List<List<string>> l)
     {
@@ -126,19 +123,7 @@ public static partial class SF
         TF.SaveFile(sb.ToString(), file);
     }
 
-    /// <summary>
-    /// Get all elements from A1
-    /// </summary>
-    /// <param name = "var"></param>
-    public static List<string> GetAllElementsLine(string var, object oddelovaciZnak = null)
-    {
-        if (oddelovaciZnak == null)
-        {
-            oddelovaciZnak = AllChars.verbar;
-        }
-        // Musí tu být none, protože pak když někde nic nebylo, tak mi to je nevrátilo a progran vyhodil IndexOutOfRangeException
-        return SH.SplitNone(var, oddelovaciZnak);
-    }
+
 
     
 
@@ -152,49 +137,10 @@ public static partial class SF
     {
         return PrepareToSerializationWorker(o, false, dDeli);
     }
-    /// <summary>
-    /// Return with last |
-    /// DateTime is format with DTHelperEn.ToString
-    /// </summary>
-    /// <param name="o"></param>
-    public static string PrepareToSerialization(params string[] o)
-    {
-        return PrepareToSerializationWorker(o, false, dDeli);
-    }
 
-    static Type type = typeof(SF);
+    
 
     /// <summary>
-    /// 
-    /// DateTime is format with DTHelperEn.ToString
-    /// </summary>
-    /// <param name="o"></param>
-    /// <param name="removeLast"></param>
-    /// <param name="separator"></param>
-    private static string PrepareToSerializationWorker(IEnumerable<string> o, bool removeLast, string separator)
-    {
-        var list = o.ToList();
-        if (separator == replaceForSeparatorString)
-        {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "replaceForSeparatorString is the same as separator");
-        }
-        CA.Replace(list, separator, replaceForSeparatorString);
-        CA.Replace(list, Environment.NewLine, AllStrings.space);
-        CA.Trim(list);
-        string vr = SH.GetString(list, separator.ToString());
-
-        if (removeLast)
-        {
-            if (vr.Length > 0)
-            {
-                return vr.Substring(0, vr.Length - 1);
-            }
-        }
-
-        return vr;
-    }
-
-/// <summary>
     /// Return without last
     /// DateTime is serialize always in english format
     /// Opposite method: DTHelperEn.ToString<>DTHelperEn.ParseDateTimeUSA
@@ -206,7 +152,9 @@ public static partial class SF
         return PrepareToSerializationWorker(ts, true, separatorString);
     }
 
-/// <summary>
+    
+
+    /// <summary>
     /// Return without last
     /// If need to combine string and IEnumerable, lets use CA.Join
     /// </summary>
@@ -215,4 +163,9 @@ public static partial class SF
     {
         return PrepareToSerializationWorker(o, true, separator);
     }
+
+    
+
+
+
 }

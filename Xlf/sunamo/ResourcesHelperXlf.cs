@@ -33,6 +33,7 @@ public class ResourcesHelperXlf
     {
         return _rm.GetString(name);
     }
+
     public string GetByteArrayAsString(string name)
     {
         var ba = _rm.GetObject(name);

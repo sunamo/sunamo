@@ -84,6 +84,8 @@ public class AppData : AppDataAbstractBase<string, string>
         return FS.ExistsDirectory(rootFolder);
     }
 
+
+
     public List<string> ReadFileOfSettingsList(string path)
     {
         return SH.GetLines(ReadFileOfSettingsOther(path));

@@ -36,6 +36,8 @@ namespace desktop
             }
         }
 
+        
+
         /// <summary>
         /// access to everything via enterOneValueUC
         /// </summary>
@@ -44,7 +46,8 @@ namespace desktop
         {
             InitializeComponent();
             enterOneValueUC.Init(whatEnter);
-            enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
+            // TODO Replaced during repair 0xc0000374
+            //enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
         }
 
         public bool IsMultiline

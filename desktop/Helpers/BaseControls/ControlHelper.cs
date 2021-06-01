@@ -8,9 +8,11 @@ using sunamo.Values;
 
 public partial class ControlHelper
 {
+
+
     public static Size GetMinimumHeightMinimumWidth(UIElement uie)
     {
-        return GetMinimumHeightMinimumWidth(uie, SizePositiveInfinity);
+        return GetMinimumHeightMinimumWidth(uie, ControlsHelperValues.SizePositiveInfinity);
     }
 
     public static Size GetMinimumHeightMinimumWidth(UIElement uie, Size windowSize)

@@ -78,7 +78,6 @@ public class AllStrings
     public const string dot = ".";
     public const string asterisk = "*";
 
-
     /// <summary>
     /// semicolon
     /// </summary>
@@ -118,7 +117,4 @@ public class AllStrings
     public const string ra = "’";
     public const string st = "\0";
     public static string DoubleSpace32160 { get => doubleSpace32160; set => doubleSpace32160 = value; }
-
-   
-
 }

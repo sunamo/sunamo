@@ -15,21 +15,9 @@ public partial class SqlServerHelper
     public static readonly DateTime DateTimeMinVal = new DateTime(1900, 1, 1);
     public static readonly DateTime DateTimeMaxVal = new DateTime(2079, 6, 6);
 
-    static SqlServerHelper()
-    {
-        s_availableCharsInVarCharWithoutDiacriticLetters = new List<char>(new char[] { AllChars.colon, AllChars.space, AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.excl, AllChars.bs, AllChars.lb, AllChars.rb, AllChars.rsqb, AllChars.lsqb, AllChars.lcub, AllChars.rcub, AllChars.plus, AllChars.percnt, AllChars.lowbar, AllChars.slash, AllChars.bs, AllChars.lt, AllChars.gt, AllChars.apostrophe });
-        s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(AllChars.lowerChars);
-        s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(AllChars.upperChars);
-        s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(AllChars.numericChars);
-        s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(new char[] { '\u2013', '\u2014', '\u2026', '\u201E', '\u201C', '\u201A', '\u2018', '\u00BB', '\u00AB', '\u2019', '\u201D', '\u00B0', '\u02C7', '\u00A8', '\u00A4', '\u00F7', '\u00D7', '\u02DD' });
-        s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(new char[] { '~', '@', '#', '$', '^', '&', '=', '|' });
-
-
-        s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(allowedInPassword);
-        CA.RemoveDuplicitiesList<char>(s_availableCharsInVarCharWithoutDiacriticLetters);
-    }
-    public static List<char> s_availableCharsInVarCharWithoutDiacriticLetters = null;
-    public static List<char> allowedInPassword = CA.ToList<char>('!', '@', '#', '$', '%', '^', '&', '*', '?', '_', '~');
+    
+    
+    
 
     public static string ConvertToVarCharPathOrFileName(string maybeUnicode)
     {

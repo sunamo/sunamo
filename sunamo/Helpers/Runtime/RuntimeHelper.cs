@@ -29,40 +29,16 @@ public partial class RuntimeHelper
         return Environment.UserInteractive;
     }
 
-    private static bool? _console_present;
-
-    public static bool IsConsole2()
-    {
-        if (_console_present == null)
-        {
-            _console_present = true;
-            try { int window_height = Console.WindowHeight; }
-            catch { _console_present = false; }
-        }
-        return _console_present.Value;
-    }
+   
 
     public static bool HasEventHandler(Delegate e)
     {
         return GetInvocationList(e).Count() > 0;
     }
 
-    public static void EmptyDummyMethod()
-    {
-    }
+    
 
-    public static void EmptyDummyMethod(string s, params object[] o)
-    {
-    }
-
-    public static void EmptyDummyMethod(TypeOfMessage t, string s, params object[] o)
-    {
-    }
-
-    public static T CastToGeneric<T>(object o)
-    {
-        return (T)o;
-    }
+    
 
     /// <summary>
     /// Default is true for automatically avoiding errors

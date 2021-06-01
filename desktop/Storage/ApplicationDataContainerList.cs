@@ -307,7 +307,7 @@ public class ApplicationDataContainerList : IEnumerable
             {
                 AB ab = AB.Get(typeName, value);
                 data.Add(key, ab);
-                string zapsatDoSouboru = SF.PrepareToSerialization(CA.ToListString( key, typeName, SH.ListToString( value)));
+                string zapsatDoSouboru = SF.PrepareToSerialization3(CA.ToListString(key, typeName, SH.ListToString(value)));
                 TF.AppendToFile(zapsatDoSouboru, path);
             }
         }
@@ -327,7 +327,7 @@ public class ApplicationDataContainerList : IEnumerable
             
                 value = SH.ListToString(value, AllStrings.comma);
             
-            sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, value)));
+            sb.Append(SF.PrepareToSerialization3(CA.ToListString( item.Key, item.Value.A, value)));
         }
         TF.SaveFile(sb.ToString(), path);
     }

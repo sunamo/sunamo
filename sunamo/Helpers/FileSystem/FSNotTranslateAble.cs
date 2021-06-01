@@ -62,6 +62,11 @@ public partial class FS
         return resultSerie;
     }
 
+    public static void WriteAllText(string path, string content)
+    {
+        TF.WriteAllText(path, content);
+    }
+
     public static bool IsAllInSameFolder(List<string> c)
     {
         if (c.Count > 0)

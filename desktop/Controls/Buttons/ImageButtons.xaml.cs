@@ -55,7 +55,9 @@ namespace desktop.Controls.Buttons
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             eov = new EnterOneValueWindow("item to insert (one on line)");
-            eov.enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
+
+            // TODO Replaced during repair 0xc0000374
+            //eov.enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
             eov.ValidatorBeforeAdding = ValidatorBeforeAdding;
             eov.ValidatorBeforeAddingMessage = ValidatorBeforeAddingMessage;
             eov.IsMultiline = true;

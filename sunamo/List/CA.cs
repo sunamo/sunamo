@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 public static partial class CA
 {
 
+
     //public static object FirstOrNull(IEnumerable e)
     //{
     //    if (e == null)
@@ -279,13 +280,7 @@ public static partial class CA
         return result;
     }
 
-    public static void InitFillWith<T>(List<T> arr, int columns)
-    {
-        for (int i = 0; i < columns; i++)
-        {
-            arr.Add(default(T));
-        }
-    }
+    
     public static List<string> PaddingByEmptyString(List<string> list, int columns)
     {
         for (int i = list.Count - 1; i < columns - 1; i++)

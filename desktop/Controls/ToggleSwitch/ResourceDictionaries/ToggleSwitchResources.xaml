@@ -4,7 +4,7 @@
     <!--Start ToggleSwitch-->
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/desktop;component/Controls/ToggleSwitch/Assets/Styles.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/desktop;component/Controls/ToggleSwitch/Assets/ToggleSwitchStyles.xaml"/>
+        <!--<ResourceDictionary Source="pack://application:,,,/desktop;component/Controls/ToggleSwitch/Assets/ToggleSwitchStyles.xaml"/>-->
     </ResourceDictionary.MergedDictionaries>
 
     <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>

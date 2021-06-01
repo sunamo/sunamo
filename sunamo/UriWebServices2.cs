@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 public partial class UriWebServices
 {
-    public static Action<IEnumerable, string> SearchInAll;
+    // Zakomentoval jsem, kdyžtak odkomentovat a udělat to naopak ve UriWebServices.cs
+    //public static Action<IEnumerable, string> SearchInAll;
     public static class RepasNbPriceAfterSold
     {
         public const string wwwIncomputerCz = "www.incomputer.cz";

@@ -104,11 +104,11 @@ namespace desktop.Controls.Collections
             {
                 item.HideAllButtons();
             }
-
+            
             // First must call Init due to create instance of NotifyChangesCollection
-            chblAutoYes.Init(null, left,false);
-            chblManuallyYes.Init(null, right);
-            chblManuallyNo.Init(null, both);
+            chblAutoYes.Init(null, left, EventOnArgs.allFalseOnlyCheckOn, false);
+            chblManuallyYes.Init(null, right, EventOnArgs.allFalseOnlyCheckOn);
+            chblManuallyNo.Init(null, both, EventOnArgs.allFalseOnlyCheckOn);
             
 
             #region Must init before to avoid raise breakpoints

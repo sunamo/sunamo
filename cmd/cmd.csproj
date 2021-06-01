@@ -63,10 +63,9 @@
     <Compile Include="Essential\ConsoleTemplateLogger.cs" />
     <Compile Include="Essential\TypedConsoleLogger.cs" />
     <Compile Include="Helpers\CL.cs" />
-    <Compile Include="Helpers\Class1.cs" />
-    <Compile Include="Helpers\Class2.cs" />
     <Compile Include="Helpers\CLProgressBar.cs" />
     <Compile Include="Helpers\CLShared.cs" />
+    <Compile Include="Helpers\CLShared64.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\CmdTable.cs" />
     <Compile Include="Tables\TableParser.cs" />

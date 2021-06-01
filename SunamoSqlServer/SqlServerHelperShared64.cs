@@ -4,6 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Class2
+public partial class SqlServerHelper
 {
 }

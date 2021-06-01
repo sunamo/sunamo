@@ -34,6 +34,7 @@ public partial class WpfApp{
             //MessageBox.Show("inside if");
 #endif
             initialized = true;
+           
             Application.Current.ShutdownMode = ShutdownMode.OnLastWindowClose;
 
 #if MB

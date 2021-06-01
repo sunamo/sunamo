@@ -42,7 +42,7 @@ namespace desktop.Controls.Result
             txtFilter.BorderBrush = Brushes.Tomato;
             txtFilter.tb.Text = sess.i18n(XlfKeys.Filter) + " (" + sess.i18n(XlfKeys.alsoWildcard) + "): ";
 
-            miCopyToClipboardFounded.Header = sess.i18n(XlfKeys.CopyToClipboardFounded);
+            //miCopyToClipboardFounded.Header = sess.i18n(XlfKeys.CopyToClipboardFounded);
 
             FoundedResultViewModel.Do += FoundedResultViewModel_Do;
         }

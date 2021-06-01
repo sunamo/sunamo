@@ -80,6 +80,8 @@ public class Exc
     }
 
     #region MyRegion
+
+
     public static string TrimEnd(string name, string ext)
     {
         while (name.EndsWith(ext))

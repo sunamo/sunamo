@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows;
 
 
-
+[ComVisible(true)]
+[InterfaceType(ComInterfaceType.InterfaceIsDual)]
 public interface IControlWithResultDebug : IControlWithResult
 {
     int CountOfHandlersChangeDialogResult();
     void AttachChangeDialogResult(VoidBoolNullable a, bool throwException = true);
 }
-
+[ComVisible(true)]
+[InterfaceType(ComInterfaceType.InterfaceIsDual)]
 /// <summary>
 /// 
 /// Is the same as IControlWithResult

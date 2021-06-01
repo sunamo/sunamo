@@ -23,7 +23,7 @@
             
         <desktopControlsText:SearchInUC x:FieldModifier="public" x:Name="txtFilter"></desktopControlsText:SearchInUC>
 
-            <desktopControlsControls:DropDownButton Margin="0,4" Grid.Column="2"
+            <!--<desktopControlsControls:DropDownButton Margin="0,4" Grid.Column="2"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Style="{StaticResource EllipseToggleButtonStyle}">
@@ -37,7 +37,7 @@
 
                     </ContextMenu>
                 </desktopControlsControls:DropDownButton.Menu>
-            </desktopControlsControls:DropDownButton>
+            </desktopControlsControls:DropDownButton>-->
 
         </Grid>
 

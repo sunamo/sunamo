@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Web;
 
-public partial class MSDatabaseLayer :MSDatabaseLayerBase
+public partial class MSDatabaseLayer //:MSDatabaseLayerBase
 {
     #region Not dependent on Connection
     /// <summary>
@@ -553,31 +553,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
     } 
     #endregion
 
-
     
-    public static bool LoadNewConnection(string cs)
-    {
-        MSDatabaseLayer.cs = cs;
-
-        //conn = new SqlConnection(cs);
-        //try
-        //{
-        //    conn.Open();
-        //    //conn.Close();
-        //    //conn.Dispose();
-        //}
-        //catch (Exception ex)
-        //{
-        //    return false;
-        //}
-        return true;
-        //if (!string.IsNullOrEmpty(_conn.ConnectionString))
-        //{
-        //    //OpenWhenIsNotOpen();
-        //    conn.Open();
-        //}
-
-    }
 
     /// <summary>
     /// Používá se ve desktopových aplikacích
@@ -593,10 +569,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
         return vr;
     }
 
-    /// <summary>
-    /// Cant be in MSDatabaseLayerBase because it was shared between MSDatabaseLayer and MSDatabaseLayerSql5
-    /// </summary>
-    public static SqlConnection conn = null;
+    
     /// <summary>
     /// Cant be in MSDatabaseLayerBase because it was shared between MSDatabaseLayer and MSDatabaseLayerSql5
     /// </summary>
@@ -620,7 +593,8 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
         {
             cs += ";Database=" + database;
         }
-        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
+        //;TransparentNetworkIPResolution=False is not supported in .NET5
+        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";Max Pool Size=50000;Pooling=True;";
         //_conn = new SqlConnection(cs);
 
         //OpenWhenIsNotOpen();

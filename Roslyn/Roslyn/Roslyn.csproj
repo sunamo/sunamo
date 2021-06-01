@@ -47,7 +47,6 @@
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Credentials\Scz\Scz.csproj" />
     <ProjectReference Include="..\..\shared\shared.csproj" />
     <ProjectReference Include="..\..\SunamoCode\SunamoCode.csproj" />
     <ProjectReference Include="..\..\sunamo\sunamo.csproj" />

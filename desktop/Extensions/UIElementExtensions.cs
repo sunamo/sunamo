@@ -19,8 +19,18 @@ public static partial class UIElementExtensions
 
     static UIElementExtensions()
     {
+        desktop2.Extensions.UIElementExtensions2.SetValidatedDelegate = SetValidated;
+        desktop2.Extensions.UIElementExtensions2.Validate2Delegate = Validate2;
+        desktop2.Extensions.UIElementExtensions2.GetContentDelegate = GetContent;
+
         UIElementExtensions.SetValidatedFullDelegate = SetValidatedFull;
         UIElementExtensions.Validate2FullDelegate = Validate2Full;
+    }
+
+    public static Tuple< bool?, ValidateData> Validate2(this UIElement ui, string name,  ValidateData d)
+    {
+        var b = Validate2(ui, name, ref d);
+        return new Tuple<bool?, ValidateData>(b, d);
     }
 
     public static bool? Validate2Full(this UIElement ui, string name,  ValidateData d = null)

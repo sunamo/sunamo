@@ -208,10 +208,10 @@ namespace desktop.Controls.Collections
             }
 
             // First must call Init due to create instance of NotifyChangesCollection
-            chblAutoYes.Init(null, autoYes, true);
-            chblManuallyYes.Init(null, manuallyYes);
-            chblManuallyNo.Init(null, manuallyNo);
-            chblAutoNo.Init(null, autoNo, false);
+            chblAutoYes.Init(null, autoYes, EventOnArgs.allFalseOnlyCheckOn, true);
+            chblManuallyYes.Init(null, manuallyYes, EventOnArgs.allFalseOnlyCheckOn);
+            chblManuallyNo.Init(null, manuallyNo, EventOnArgs.allFalseOnlyCheckOn);
+            chblAutoNo.Init(null, autoNo, EventOnArgs.allFalseOnlyCheckOn, false);
 
             #region Must init before to avoid raise breakpoints
             chblAutoYes.EventOn(new EventOnArgs(false, true, false, false, false, false));
