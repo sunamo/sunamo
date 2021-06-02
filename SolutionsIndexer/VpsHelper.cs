@@ -79,7 +79,7 @@ public class VpsHelper
         if (IsVps)
         {
             var gitBashBuilder = new GitBashBuilder();
-
+             
             var folders = FS.GetFolders(path, SearchOption.TopDirectoryOnly);
             foreach (var item in folders)
             {

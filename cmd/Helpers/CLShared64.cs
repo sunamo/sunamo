@@ -61,8 +61,12 @@ public static partial class CL
             //repair, I have 168-0-143-16 but always bad format
             //168-0-143-16
 
+
             bool? loadFromClipboard = false;
-            loadFromClipboard = CL.UserMustTypeYesNo(sess.i18n(XlfKeys.DoYouWantLoadDataOnlyFromClipboard) + " " + sess.i18n(XlfKeys.MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter));
+            if (ThisApp.Name != "AllProjectsSearch")
+            {
+                loadFromClipboard = CL.UserMustTypeYesNo(sess.i18n(XlfKeys.DoYouWantLoadDataOnlyFromClipboard) + " " + sess.i18n(XlfKeys.MultiLinesTextCanBeLoadedOnlyFromClipboardBecauseConsoleAppRecognizeEndingWhitespacesLikeEnter));
+            }
 
             CmdApp.loadFromClipboard = loadFromClipboard.Value;
 
