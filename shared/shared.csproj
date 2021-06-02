@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -120,6 +120,7 @@
     <Compile Include="Data\SmtpServerData.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="DependencyReflection.cs" />
+    <Compile Include="Enums\GitTypesOfMessages.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\SunamoColorExtensions.cs" />
     <Compile Include="Extensions\SunamoPointExtensions.cs" />
@@ -180,7 +181,6 @@
     <Compile Include="WriterEventLogShared.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_ToNetStd16\" />
     <Folder Include="Collections\Converters\" />
     <Folder Include="Converts\" />
     <Folder Include="Database\" />
@@ -190,6 +190,7 @@
     <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
     <Folder Include="SunamoCode\" />
+    <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">

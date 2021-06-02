@@ -268,6 +268,26 @@ public static partial class CL
         return z;
     }
 
+    public static string UserMustTypeMultiLine(string v)
+    {
+        string line = null;
+        TypedConsoleLogger.Instance.Information( AskForEnter(v, true));
+        StringBuilder sb = new StringBuilder();
+        //string lastAdd = null;
+        while ((line = Console.ReadLine()) != null)
+        {
+            if (line == "-1")
+            {
+                break;
+            }
+            sb.AppendLine(line);
+            //lastAdd = line;
+        }
+        //sb.AppendLine(line);
+        var s2 = sb.ToString();
+        return s2;
+    }
+
     private static string AskForEnter(string whatOrTextWithoutEndingDot, bool append)
     {
         if (append)
@@ -405,5 +425,7 @@ public static partial class CL
         CL.WriteProgressBar(100, new WriteProgressBarArgs(true));
         CL.WriteLine();
     }
+
+    
     #endregion
 }
