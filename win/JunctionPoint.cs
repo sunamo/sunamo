@@ -62,8 +62,10 @@ public static class JunctionPoint
     /// <param name="target"></param>
     public static List<string> MklinkJ(string source, string target)
     {
+
         if (!FS.ExistsDirectory(target))
         {
+            var f = FS.ExistsFile(FS.Combine( target, "_.txt"));
             ThrowExceptions.DirectoryExists(Exc.GetStackTrace(), type, Exc.CallingMethod(), target);
         }
 
@@ -381,7 +383,7 @@ public static class JunctionPoint
 
                 try
                 {
-                    Directory.Delete(junctionPoint);
+                    FS.TryDeleteDirectory(junctionPoint);
                 }
                 catch (IOException ex)
                 {

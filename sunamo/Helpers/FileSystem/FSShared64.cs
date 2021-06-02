@@ -359,17 +359,25 @@ public partial class FS
         }
     }
 
+    public static Func<string, List<string>> InvokePs;
+
     public static bool TryDeleteDirectory(string v)
     {
         try
         {
+
             Directory.Delete(v, true);
             return true;
         }
         catch (Exception ex)
         {
-            return false;
+             var result = InvokePs(v);
+            if (result.Count > 0)
+            {
+                return false;
+            }
         }
+        return true;
     }
 
     /// <summary>
@@ -998,6 +1006,7 @@ public partial class FS
             // V ASP.net mi vrátilo u každé directory.exists false. Byl jsem pod ApplicationPoolIdentity v IIS a bylo nastaveno Full Control pro IIS AppPool\DefaultAppPool
 #if !ASPNET
             //  asp.net / vps nefunguje, ve windows store apps taktéž, NECHAT TO TRVALE ZAKOMENTOVANÉ
+            // v asp.net toto způsobí akorát zacyklení, IIS začne vyhazovat 0xc00000fd, pak už nejde načíst jediná stránka
             //path = Consts.UncLongPath + path;
 #endif
         }

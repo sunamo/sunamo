@@ -10,6 +10,11 @@ namespace win.Helpers.Powershell
 {
 	public class PowershellRunner
 	{
+        public PowershellRunner()
+        {
+            FS.InvokePs = Invoke;
+        }
+
     /// <summary>
     /// If in A1 will be full path specified = 'The system cannot find the file specified'
     /// A1 if dont contains extension, append exe
@@ -86,13 +91,23 @@ namespace win.Helpers.Powershell
 
         }
 
+        public static List<string> Invoke(string commands)
+        {
+            return Invoke(CA.ToListString( commands), false)[0];
+        }
+
+        public static List<List<string>> Invoke(IEnumerable<string> commands)
+        {
+            return Invoke(commands, false);
+        }
+
     /// <summary>
     /// Tested, working
     /// For every command return at least one entry in result
     /// When return no elements, try InvokeProcess
     /// </summary>
     /// <param name="commands"></param>
-    public static List<List<string>> Invoke(IEnumerable<string> commands, bool immediatelyToStatus = false)
+        public static List<List<string>> Invoke(IEnumerable<string> commands, bool immediatelyToStatus = false)
     {
         var result = InvokeAsync(commands);
         result.Wait();

@@ -92,6 +92,7 @@ public class CmdBootStrap
             askUser = askUserIfRelease.Value;
 #elif DEBUG
         runInDebug();
+        askUser = true;
 #endif
         if (AddGroupOfActions != null && allActions != null)
         {

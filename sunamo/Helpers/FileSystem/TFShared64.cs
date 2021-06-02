@@ -102,7 +102,8 @@ public partial class TF
     public static void WriteAllText<StorageFolder, StorageFile>(StorageFile path, string content, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
         FS.CreateUpfoldersPsysicallyUnlessThere(path, ac);
-        TF.WriteAllText<StorageFolder, StorageFile>(path, content, ac);
+        
+        TF.WriteAllText<StorageFolder, StorageFile>(path, content, Encoding.UTF8, ac);
     }
 
     public static void SaveFile(string obsah, string soubor)
