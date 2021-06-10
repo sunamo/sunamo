@@ -52,7 +52,7 @@ public partial class ThrowExceptions
 
 
 
-    internal static void DivideByZero(string stacktrace, object type, string methodName)
+    public static void DivideByZero(string stacktrace, object type, string methodName)
     {
         ThrowIsNotNull(stacktrace, Exceptions.DivideByZero(FullNameOfExecutedCode(type, methodName, true)));
     }

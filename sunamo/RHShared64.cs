@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,7 +48,7 @@ public partial class RH
         return sb.ToString();
     }
 
-    internal static string DumpListAsStringOneLine(string operation, IEnumerable o, DumpAsStringHeaderArgs a)
+    public static string DumpListAsStringOneLine(string operation, IEnumerable o, DumpAsStringHeaderArgs a)
     {
         if (o.Count() > 0)
         {
@@ -60,7 +61,7 @@ public partial class RH
             int i = 0;
             foreach (var item in o)
             {
-                sb.AppendLine(DumpAsString(new DumpAsStringArgs { d = DumpProvider.Reflection, deli = AllStrings.swd, o = item, onlyValues = true }));
+                sb.AppendLine(DumpAsString(new DumpAsStringArgs { d = DumpProvider.Reflection, deli = AllStrings.swd, o = item, onlyValues = true,onlyNames = a.onlyNames }));
                 i++;
             }
 
@@ -94,7 +95,37 @@ public partial class RH
         {
             a = new DumpAsStringHeaderArgs();
         }
-        return DumpAsString(new DumpAsStringArgs { o = tableRowPageNew, deli = AllStrings.swd, onlyValues = true, onlyNames = a.onlyNames});
+        var dasa = new DumpAsStringArgs { o = tableRowPageNew, deli = AllStrings.swd, onlyValues = true, onlyNames = a.onlyNames };
+        return DumpAsString(dasa);
+    }
+
+    public static List<string> GetValuesOfField(object o, params string[] onlyNames)
+    {
+        return GetValuesOfField(o, onlyNames);
+    }
+
+    public static List<string> GetValuesOfField(object o, IList<string> onlyNames, bool onlyValues)
+    {
+        var t = o.GetType();
+        var props = t.GetFields();
+        List<string> values = new List<string>(props.Length);
+
+        foreach (var item in props)
+        {
+            if (onlyNames.Count > 0)
+            {
+                if (!onlyNames.Contains(item.Name))
+                {
+                    continue;
+                }
+            }
+
+            //values.Add(item.Name + AllStrings.cs2 + SH.ListToString(GetValueOfField(item.Name, t, o, false)));
+
+            AddValue(values, item.Name, SH.ListToString(GetValueOfField(item.Name, t, o, false)), onlyValues);
+        }
+
+        return values;
     }
 
     public static List<string> GetValuesOfProperty2(object obj, List<string> onlyNames, bool onlyValues)
@@ -104,8 +135,18 @@ public partial class RH
         bool add = false;
 
         string name = null;
+        var props = TypeDescriptor.GetProperties(obj);
 
-        foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(obj))
+        bool isAllNeg = true;
+        foreach (var item in onlyNames)
+        {
+            if (!item.StartsWith(AllStrings.excl))
+            {
+                isAllNeg = false;
+            }
+        }
+
+        foreach (PropertyDescriptor descriptor in props)
         {
             add = true;
             name = descriptor.Name;
@@ -117,9 +158,20 @@ public partial class RH
 
             if (onlyNames2.Count > 0)
             {
-                if (!onlyNames2.Contains(name))
+                
+                if (isAllNeg)
                 {
-                    add = false;
+                    if (onlyNames2.Contains(AllStrings.excl + name))
+                    {
+                        add = false;
+                    }
+                }
+                else
+                {
+                    if (!onlyNames2.Contains(name))
+                    {
+                        add = false;
+                    }
                 }
             }
 
@@ -132,6 +184,78 @@ public partial class RH
 
         return values;
     }
+
+    #region Get value
+
+    #endregion
+
+    public static object GetValueOfField(string name, Type type, object instance, bool ignoreCase)
+    {
+        FieldInfo[] pis = type.GetFields();
+
+        return GetValue(name, type, instance, pis, ignoreCase, null);
+    }
+
+    private static object GetValue(object instance, MemberInfo[] property, object v)
+    {
+        var val = property[0];
+        if (val is PropertyInfo)
+        {
+            var pi = (PropertyInfo)val;
+            return pi.GetValue(instance);
+        }
+        else if (val is FieldInfo)
+        {
+            var pi = (FieldInfo)val;
+            return pi.GetValue(instance);
+        }
+        return null;
+    }
+
+
+    public static object GetValue(string name, Type type, object instance, IEnumerable pis, bool ignoreCase, object v)
+    {
+        return GetOrSetValue(name, type, instance, pis, ignoreCase, GetValue, v);
+    }
+
+    public static object GetOrSetValue(string name, Type type, object instance, IEnumerable pis, bool ignoreCase, Func<object, MemberInfo[], object, object> getOrSet, object v)
+    {
+        if (ignoreCase)
+        {
+            name = name.ToLower();
+            foreach (MemberInfo item in pis)
+            {
+                if (item.Name.ToLower() == name)
+                {
+                    var property = type.GetMember(name);
+                    if (property != null)
+                    {
+                        return getOrSet(instance, property, v);
+                        //return GetValue(instance, property);
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (MemberInfo item in pis)
+            {
+                if (item.Name == name)
+                {
+                    var property = type.GetMember(name);
+                    if (property != null)
+                    {
+                        return getOrSet(instance, property, v);
+                        //return GetValue(instance, property);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+
+    
 
     private static void AddValue(List<string> values, string name, object value, bool onlyValue)
     {
@@ -261,10 +385,11 @@ public partial class RH
             }
         }
 
-        return sb.ToString();
+        var vr = sb.ToString();
+        return vr;
     }
 
-    public static string DumpAsString3Dictionary<T, T1>(string operation, Dictionary<T, List<T1>> grouped)
+    public static string DumpAsString3Dictionary2<T, T1>(string operation, Dictionary<T, List<T1>> grouped)
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendLine(operation);
@@ -280,6 +405,7 @@ public partial class RH
                 sb.AppendLine();
         }
 
-        return sb.ToString();
+        var vr = sb.ToString();
+        return vr;
     }
 }

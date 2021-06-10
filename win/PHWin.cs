@@ -212,4 +212,8 @@ public class PHWin
         }
     }
 
+    public static void OpenFolder(string folder)
+    {
+        Process.Start(Environment.GetEnvironmentVariable("WINDIR") + @"\explorer.exe", folder);
+    }
 }

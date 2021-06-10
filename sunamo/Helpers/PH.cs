@@ -23,6 +23,7 @@ public partial class PH
         tool.StartInfo.Arguments = fileName + " /accepteula";
         tool.StartInfo.UseShellExecute = false;
         tool.StartInfo.RedirectStandardOutput = true;
+        tool.StartInfo.WorkingDirectory = @"";
         try
         {
             tool.Start();

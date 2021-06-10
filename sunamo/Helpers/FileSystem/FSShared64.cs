@@ -95,12 +95,19 @@ public partial class FS
         {
             try
             {
+                item = FS.MakeUncLongPath(item);
+                fileTo = FS.MakeUncLongPath(fileTo);
+
                 File.Move(item, fileTo);
             }
             catch (Exception ex)
             {
                 ThisApp.SetStatus(TypeOfMessage.Error, item + " : " + ex.Message);
             }
+        }
+        else
+        {
+
         }
     }
 
@@ -970,7 +977,7 @@ public partial class FS
         {
             if (result)
             {
-                var f = FS.GetFiles(item, "*", true).Count;
+                var f = FS.GetFiles(item, "*", SearchOption.AllDirectories).Count;
                 result = f > 0;
             }
         }

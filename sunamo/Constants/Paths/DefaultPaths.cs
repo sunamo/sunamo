@@ -6,8 +6,9 @@ namespace sunamo.Constants
 {
     public class DefaultPaths
     {
-        public const string BackupSunamosAppData = @"d:\Sync\Develop of Future\Backups\";
-
+        public const string BackupSunamosAppData = @"e:\Sync\Develop of Future\Backups\";
+        public const string pathPa = @"d:\pa\";
+        public const string pathPaSync = @"d:\paSync\";
         public const string KeysXlf = @"e:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Enums\KeysXlf.cs";
         public const string capturedUris = @"C:\Users\Administrator\AppData\Roaming\sunamo\SunamoCzAdmin\Data\SubsSignalR\CapturedUris.txt";
         public const string capturedUris_backup = @"C:\Users\Administrator\AppData\Roaming\sunamo\SunamoCzAdmin\Data\SubsSignalR\CapturedUris_backup.txt";
@@ -63,9 +64,9 @@ namespace sunamo.Constants
 
         public static List<string> AllPathsToProjects = CA.ToListString(Test_MoveClassElementIntoSharedFileUC, vs, vsDocuments, vs17 + ProjectsFolderNameSlash, vs17Documents + ProjectsFolderNameSlash, NormalizePathToFolder);
 
-        public const string SyncArchived = @"d:\SyncArchived\";
-        public const string SyncArchivedText = @"d:\SyncArchived\Text\";
-        public const string SyncArchivedDrive = @"d:\SyncArchived\Drive\";
+        public const string SyncArchived = @"e:\SyncArchived\";
+        public const string SyncArchivedText = @"e:\SyncArchived\Text\";
+        public const string SyncArchivedDrive = @"e:\SyncArchived\Drive\";
 
         public static List<string> All = new List<string> { Documents, Docs, Downloads, Music2 };
         public static string XnConvert = @"d:\Pictures\XnConvert\";

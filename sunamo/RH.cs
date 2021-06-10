@@ -47,68 +47,14 @@ public partial class RH
         return null;
     }
 
-    private static object GetValue(object instance, MemberInfo[] property, object v)
-    {
-        var val = property[0];
-        if (val is PropertyInfo)
-        {
-            var pi = (PropertyInfo)val;
-            return pi.GetValue(instance);
-        }
-        else if (val is FieldInfo)
-        {
-            var pi = (FieldInfo)val;
-            return pi.GetValue(instance);
-        }
-        return null;
-    }
 
-    public static object GetValue(string name, Type type, object instance, IEnumerable pis, bool ignoreCase, object v)
-    {
-        return GetOrSetValue(name, type, instance, pis, ignoreCase, GetValue,v);
-    }
 
     public static object SetValue(string name, Type type, object instance, IEnumerable pis, bool ignoreCase, object v)
     {
         return GetOrSetValue(name, type, instance, pis, ignoreCase, SetValue,v);
     }
 
-    public static object GetOrSetValue(string name, Type type, object instance, IEnumerable pis, bool ignoreCase, Func<object, MemberInfo[], object,object> getOrSet, object v)
-    {
-        if (ignoreCase)
-        {
-            name = name.ToLower();
-            foreach (MemberInfo item in pis)
-            {
-                if (item.Name.ToLower() == name)
-                {
-                    var property = type.GetMember(name);
-                    if (property != null)
-                    {
-                        return getOrSet(instance, property, v);
-                        //return GetValue(instance, property);
-                    }
-                }
-            }
-        }
-        else
-        {
-            foreach (MemberInfo item in pis)
-            {
-                if (item.Name == name)
-                {
-                    var property = type.GetMember(name);
-                    if (property != null)
-                    {
-                        return getOrSet(instance, property, v);
-                        //return GetValue(instance, property);
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
+    
     
 
     
@@ -265,27 +211,7 @@ public partial class RH
         return values;
     }
 
-    public static List<string> GetValuesOfField(object o, params string[] onlyNames)
-    {
-        var t = o.GetType();
-        var props = t.GetFields();
-        List<string> values = new List<string>(props.Length);
-
-        foreach (var item in props)
-        {
-            if (onlyNames.Length > 0)
-            {
-                if (!onlyNames.Contains(item.Name))
-                {
-                    continue;
-                }
-            }
-
-            values.Add(item.Name + AllStrings.cs2 + SH.ListToString( GetValueOfField(item.Name, t, o, false)));
-        }
-
-        return values;
-    }
+    
 
     
 
@@ -391,23 +317,7 @@ public partial class RH
     }
     #endregion
 
-    #region Get value
-    
 
-    public static object GetValueOfField(string name, Type type, object instance, bool ignoreCase)
-    {
-        FieldInfo[] pis = type.GetFields();
-
-        return GetValue(name, type, instance, pis, ignoreCase, null);
-    }
-
-    
-
-    
-
-    
-
-    #endregion
 
     #region FullName
     public static string FullNameOfMethod(MethodInfo mi)

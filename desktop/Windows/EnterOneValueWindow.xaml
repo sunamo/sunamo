@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:desktop2ControlsInput="clr-namespace:desktop2.Controls.Input;assembly=desktop2"
+        xmlns:desktop2ControlsInput="clr-namespace:desktop.Controls.Input"
              mc:Ignorable="d" 
         
         SizeToContent="WidthAndHeight"

@@ -48,15 +48,15 @@ public static partial class NH
         var t = typeof(T);
         if (t == Types.tDouble)
         {
-            return Consts.zeroDouble;
+            return NumConsts.zeroDouble;
         }
         else if (t == Types.tInt)
         {
-            return Consts.zeroInt;
+            return NumConsts.zeroInt;
         }
         else if (t == Types.tFloat)
         {
-            return Consts.zeroFloat;
+            return NumConsts.zeroFloat;
         }
         ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, "ReturnZero", t.FullName);
         return null;

@@ -5,7 +5,7 @@ using System.Text;
 
 public static partial class RandomHelper
 {
-    private static Random s_rnd = new Random();
+    
     private static float s_lightColorBase = (float)(256 - 229);
 
     /// <summary>
@@ -96,15 +96,7 @@ public static partial class RandomHelper
         return RandomFloat(1, 1, 0);
     }
 
-    public static T RandomElementOfCollectionT<T>(IList<T> ppk)
-    {
-        if (ppk.Count == 0)
-        {
-            return default(T);
-        }
-        int nt = RandomInt(ppk.Count);
-        return ppk[nt];
-    }
+    
 
     /// <summary>
     /// better is take keys from dict and RandomElementOfCollection
@@ -117,14 +109,7 @@ public static partial class RandomHelper
         return default(Key);
     }
 
-    /// <summary>
-    /// Vr�t� ��slo mezi 0 a A1-1
-    /// </summary>
-    /// <param name="to"></param>
-    public static int RandomInt(int to)
-    {
-        return s_rnd.Next(0, to);
-    }
+    
 
     public static T RandomElementOfCollectionT<T>(IEnumerable<T> ppk)
     {
@@ -137,11 +122,17 @@ public static partial class RandomHelper
         return RandomElementOfCollectionT<T>(col);
     }
 
-    public static string RandomElementOfCollection(IList ppk)
+    public static T RandomElementOfCollectionT<T>(IList<T> ppk)
     {
+        if (ppk.Count == 0)
+        {
+            return default(T);
+        }
         int nt = RandomInt(ppk.Count);
-        return ppk[nt].ToString();
+        return ppk[nt];
     }
+
+    
 
     public static T RandomEnum<T>() where T  : struct
     {
@@ -236,16 +227,7 @@ public static partial class RandomHelper
 
  
 
-    public static string RandomString(int delka)
-    {
-        delka--;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i != delka; i++)
-        {
-            sb.Append(RandomChar());
-        }
-        return sb.ToString();
-    }
+    
     public static string RandomString(int delka, bool upper, bool lower, bool numeric, bool special)
     {
         List<char> ch = new List<char>();
@@ -294,10 +276,7 @@ public static partial class RandomHelper
         return b;
     }
 
-    public static char RandomChar()
-    {
-        return RandomElementOfCollection(vsZnaky)[0];
-    }
+    
 
     /// <summary>
     /// Vr�t� ��slo mezi 0 a A1-1

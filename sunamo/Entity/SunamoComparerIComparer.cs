@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 
 public partial class SunamoComparerICompare
 {
-
-
     public class IEnumerableCharCountAsc<T> : IComparer<T> where T : IEnumerable<char>
     {
         public int Compare(T x, T y)
@@ -20,7 +18,6 @@ public partial class SunamoComparerICompare
             {
                 a++;
             }
-
 
             foreach (var item in y)
             {

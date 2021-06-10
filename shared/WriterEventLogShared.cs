@@ -134,6 +134,7 @@ public static partial class WriterEventLog{
 
         if (!existsSource)
         {
+            //EventLog.Delete("SunamoAdmin");
             // Zkoušel jsme zadávat do metody CreateEventSource argumenty source, logName s hodnotami name, logName ale s těmi to taky nefungovalo
             EventLog.CreateEventSource(new EventSourceCreationData(name, name));
         }

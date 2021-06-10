@@ -60,7 +60,7 @@ public partial class ControlHelper
         if (c != null)
         {
             var b = c.BorderThickness;
-            if (!CA.IsAllTheSame<double>(Consts.zeroDouble, b.Bottom, b.Left, b.Right, b.Top))
+            if (!CA.IsAllTheSame<double>(NumConsts.zeroDouble, b.Bottom, b.Left, b.Right, b.Top))
             {
                 bd = BorderData.None;
             }

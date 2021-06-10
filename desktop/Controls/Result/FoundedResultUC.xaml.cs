@@ -70,7 +70,7 @@ namespace desktop.Controls.Result
             return fileFullPath.Contains(t);
         }
 
-        internal bool Contains(Regex r, string text)
+        public bool Contains(Regex r, string text)
         {
             if (r != null)
             {

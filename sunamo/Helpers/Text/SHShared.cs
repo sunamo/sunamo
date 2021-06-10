@@ -2091,10 +2091,7 @@ public static partial class SH
         return null;
     }
 
-    public static string Substring(string sql, int indexFrom, int indexTo, bool returnInputIfInputIsShorterThanA3 = false)
-    {
-        return Substring(sql, indexFrom, indexTo, new SubstringArgs { returnInputIfInputIsShorterThanA3 = returnInputIfInputIsShorterThanA3 });
-    }
+    
 
     
     public static List<string> RemoveDuplicatesNone(string p1, string delimiter)

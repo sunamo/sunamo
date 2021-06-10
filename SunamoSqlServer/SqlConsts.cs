@@ -59,11 +59,11 @@ public class SqlMeasureTimeHelper
         return r;
     }
 
-    public void Before(bool measureTime, int waitMs, bool forceIsVps, string fn2 = "Sql.txt")
+    public void Before(string fn2 = "Sql.txt")
     {
-         mt = MSStoredProceduresI.measureTime;
-         waitMs = MSStoredProceduresI.waitMs;
-         forceIsVps = MSStoredProceduresI.forceIsVps;
+        mt = MSStoredProceduresI.measureTime;
+        waitMs = MSStoredProceduresI.waitMs;
+        forceIsVps = MSStoredProceduresI.forceIsVps;
 
         fn = fn2;
 

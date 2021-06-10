@@ -52,7 +52,7 @@ public class StopwatchStaticSql
     /// <summary>
     /// Must if (MSStoredProceduresI.measureTime) before calling
     /// </summary>
-    internal static void Start()
+    public static void Start()
     {
         sw.Start();
     }

@@ -9,7 +9,7 @@ public partial class Exceptions
     public static StringBuilder sbAdditionalInfoInner = new StringBuilder();
     public static StringBuilder sbAdditionalInfo = new StringBuilder();
 
-    internal static string IsTheSame(string before, string fst, string sec)
+    public static string IsTheSame(string before, string fst, string sec)
     {
         return before + $"{fst} and {sec} has the same value";
     }
@@ -103,7 +103,7 @@ public partial class Exceptions
     }
 
    
-    internal static string DivideByZero(string before)
+    public static string DivideByZero(string before)
     {
         return CheckBefore(before) + " is dividing by zero.";
     }

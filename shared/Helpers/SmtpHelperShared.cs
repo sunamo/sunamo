@@ -8,6 +8,6 @@ public partial class SmtpHelper
 {
     public static int ParsePort(string s)
     {
-        return BTS.ParseInt(s, Consts.defaultPortIfCannotBeParsed);
+        return BTS.ParseInt(s, NumConsts.defaultPortIfCannotBeParsed);
     }
 }

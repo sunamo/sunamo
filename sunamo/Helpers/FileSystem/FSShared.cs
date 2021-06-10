@@ -1248,25 +1248,25 @@ public partial class FS
 
 
         ComputerSizeUnits unit = ComputerSizeUnits.B;
-        if (size > Consts.kB)
+        if (size > NumConsts.kB)
         {
             unit = ComputerSizeUnits.KB;
-            size /= Consts.kB;
+            size /= NumConsts.kB;
         }
-        if (size > Consts.kB)
+        if (size > NumConsts.kB)
         {
             unit = ComputerSizeUnits.MB;
-            size /= Consts.kB;
+            size /= NumConsts.kB;
         }
-        if (size > Consts.kB)
+        if (size > NumConsts.kB)
         {
             unit = ComputerSizeUnits.GB;
-            size /= Consts.kB;
+            size /= NumConsts.kB;
         }
-        if (size > Consts.kB)
+        if (size > NumConsts.kB)
         {
             unit = ComputerSizeUnits.TB;
-            size /= Consts.kB;
+            size /= NumConsts.kB;
         }
 
         return size + " " + unit.ToString();

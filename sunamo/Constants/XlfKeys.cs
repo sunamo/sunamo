@@ -4297,4 +4297,5 @@ public class XlfKeys
     public const string AllCachesListingsInTabsProcessed = "AllCachesListingsInTabsProcessed";
     public const string WasCreatedListOfCachesWithNameColon = "WasCreatedListOfCachesWithNameColon";
     public const string ToUseThisWebYouHaveToBeLogined = "ToUseThisWebYouHaveToBeLogined";
+    public static string Generate = "Generate";
 }

@@ -35,5 +35,5 @@ public class HtmlTags
     public static string article = "article";
     public static string svg = "svg";
     public static string h3 = "h3";
-    internal static string script = "script";
+    public static string script = "script";
 }

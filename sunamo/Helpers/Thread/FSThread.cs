@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 /// </summary>
 public class FSThread
 {
-    internal static string GetFileName(string n)
+    public static string GetFileName(string n)
     {
         return Path.GetFileName(n);
     }

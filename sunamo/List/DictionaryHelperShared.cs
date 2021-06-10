@@ -156,39 +156,16 @@ public partial class DictionaryHelper
 
 
 
-    public static void AddOrCreate<Key, Value>(IDictionary<Key, List<Value>> sl, Key key, List< Value> values, bool withoutDuplicitiesInValue = false)
+    public static void AddOrCreate<Key, Value>(IDictionary<Key, List<Value>> sl, Key key, List< Value> values, bool withoutDuplicitiesInValue = false, Dictionary<Key, List<string>> dictS = null)
     {
         foreach (var value in values)
         {
-            AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
+            AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue, dictS);
         }
     }
 
-    public static Dictionary<T1, T2> GetDictionaryFromIEnumerable<T1, T2>(IEnumerable<KeyValuePair<T1, T2>> enumerable, bool addRandomWhenKeyExists = false)
-    {
-        Dictionary<T1, T2> d = new Dictionary<T1, T2>();
-        foreach (var item in enumerable)
-        {
-            var key = item.Key;
-
-            var c = d.ContainsKey(item.Key) ;
-            if (c)
-            {
-                if (addRandomWhenKeyExists)
-                {
-                    var k = key.ToString() + " " + RandomHelper.RandomString(5);
-                    key = (T1)(dynamic)k;
-                }
-            }
-            d.Add(key, item.Value);
-        }
-        return d;
-    }
-
-    public static Dictionary<T1, T2> GetDictionaryFromIOrderedEnumerable<T1, T2>(IOrderedEnumerable<KeyValuePair<T1, T2>> orderedEnumerable)
-    {
-        return GetDictionaryFromIEnumerable<T1, T2>(orderedEnumerable);
-    }
+    
+    
 
     public static Dictionary<T1, T2> GetDictionaryFromTwoList<T1, T2>(List<T1> t1, List<T2> t2, bool addRandomWhenKeyExists = false)
     {

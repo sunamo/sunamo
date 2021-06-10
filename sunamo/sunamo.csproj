@@ -52,6 +52,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Diacritics">
       <HintPath>..\dll\netstandard2.0\Diacritics.dll</HintPath>
@@ -152,6 +155,7 @@
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Args\DumpAsStringHeaderArgs.cs" />
     <Compile Include="Constants\NetFxExceptionsNotTranslateAble.cs" />
+    <Compile Include="Constants\NumConsts.cs" />
     <Compile Include="CryptHelper2Shared64.cs" />
     <Compile Include="Crypting\CryptHelperShared64.cs" />
     <Compile Include="Essential\ExceptionsShared64.cs" />
@@ -160,6 +164,7 @@
     <Compile Include="Essential\ThisAppShared64.cs" />
     <Compile Include="Essential\ThrowExceptionsShared64.cs" />
     <Compile Include="Extensions\IEnumerableExtensionsShared64.cs" />
+    <Compile Include="FileTextLogger.cs" />
     <Compile Include="Helpers\DT\DTHelperEnShared64.cs" />
     <Compile Include="Helpers\DT\DTHelperGeneralShared64.cs" />
     <Compile Include="Helpers\DT\DTHelperMultiShared64.cs" />

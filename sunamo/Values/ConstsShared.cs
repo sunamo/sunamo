@@ -7,18 +7,15 @@ using System.Text;
     /// </summary>
     public static partial class Consts
     {
-    public const string _3Asterisks = "_3Asterisks";
+    public const string _3Asterisks = "***";
     public const string Test_ = "Test_";
-    public const int defaultPortIfCannotBeParsed = 587;
+    
     public const string slashLocalhost = AllStrings.slash + Consts.localhost;
     public const string slashScz = AllStrings.slash + Consts.Cz;
     public const string dotScz = ".sunamo.cz";
     public const string dotSczSlash = ".sunamo.cz/";
     public const string localhostSlash = "localhost/";
-    /// <summary>
-    /// Min age is 18 due to GDPR - below 18 is needed parent agreement of child
-    /// </summary>
-    public const int MinAge = 18;
+    
     /// <summary>
     /// Must be also in Consts, not only in SqlServerHelper due to use in sunamo project
     /// </summary>
@@ -29,8 +26,7 @@ using System.Text;
     public static string dots3 = "...";
     public static DateTime nDateTimeMinVal= new DateTime(2010, 1, 1, 0, 0, 0);
     public static DateTime nDateTimeMaxVal= new DateTime(2032, 12, 31, 23, 59, 59);
-    public static short nDtMinVal = 10101;
-    public static short nDtMaxVal = 32271;
+    
     public const string appscs = "appscs";
     public const string ChytreAplikace = "chytre-aplikace.cz";
     public const string Nope = XlfKeys.Nope;
@@ -43,7 +39,7 @@ using System.Text;
 
     public const string fnReplacement = "{filename}";
 
-    public const long kB = 1024;
+    
         /// <summary>
         /// Dot space
         /// </summary>
@@ -91,9 +87,7 @@ using System.Text;
     /// </summary>
     public const string https = "https://";
     
-    public const double zeroDouble = 0;
-        public const int zeroInt = 0;
-        public const float zeroFloat = 0;
+    
 
 
         

@@ -69,8 +69,6 @@ public class CollectionWithoutDuplicates<T> : IDumpAsString
             {
                 c.Add(t2);
                 result = true;
-
-
             }
         }
         else
@@ -115,15 +113,11 @@ public class CollectionWithoutDuplicates<T> : IDumpAsString
                 {
                     return null;
                 }
-                else
-                {
 
-                }
-
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public int AddWithIndex(T t2)
@@ -165,17 +159,24 @@ public class CollectionWithoutDuplicates<T> : IDumpAsString
         return vr;
     }
 
+    List<T> wasNotAdded = new List<T>();
+
     /// <summary>
     /// If I want without checkink, use c.AddRange
     /// </summary>
     /// <param name="enumerable"></param>
     /// <param name="withoutChecking"></param>
-    public void AddRange(IEnumerable<T> list)
+    public List<T> AddRange(IEnumerable<T> list)
     {
+        wasNotAdded.Clear();
         foreach (var item in list)
         {
-            Add(item);
+            if(!Add(item))
+            {
+                wasNotAdded.Add(item);
+            }
         }
+        return wasNotAdded;
     }
 
     public string DumpAsString(string operation, DumpAsStringHeaderArgs a)

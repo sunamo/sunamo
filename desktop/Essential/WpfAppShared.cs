@@ -23,7 +23,7 @@ public partial class WpfApp{
     public static void Init()
     {
 #if MB
-        MessageBox.Show("Init WpfApp");
+        ShowMb("Init WpfApp");
 #endif
         if (!initialized)
         {
@@ -31,29 +31,31 @@ public partial class WpfApp{
             //CA.dFirstOrNull = new Func<IEnumerable, object>(r => WpfApp.DispatcherAction<IEnumerable, object>(dFirstOrNull, r));
 
 #if MB
-            //MessageBox.Show("inside if");
+            ShowMb("inside if");
 #endif
             initialized = true;
            
             Application.Current.ShutdownMode = ShutdownMode.OnLastWindowClose;
 
 #if MB
-            MessageBox.Show("attach in release");
-            //AttachHandlers();
+            ShowMb("attach in release");
+            AttachHandlers();
 #endif
+
+            //throw new Exception("avbc");
 
             // change ! by needs
             if (!Debugger.IsAttached)
             {
 #if MB
-                MessageBox.Show("Debugger wasnt attached");
+                ShowMb("Debugger wasnt attached");
 #endif
                 AttachHandlers();
             }
             else
             {
 #if MB
-                MessageBox.Show("Debugger was attached, no exceptions handlers is attached");
+                ShowMb("Debugger was attached, no exceptions handlers is attached");
 #endif
             }
         }
@@ -93,12 +95,25 @@ public partial class WpfApp{
     {
         if (!attached)
         {
+#if MB
+            ShowMb("!attached");
+#endif 
             attached = true;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             // Is handled also in Current_DispatcherUnhandledException , then will be opened two windows
             //Dispatcher.UnhandledException += Dispatcher_UnhandledException;
             Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+
+#if MB
+            ShowMb("!attached finished");
+#endif 
+        }
+        else
+        {
+#if MB
+            ShowMb("attached !!!");
+#endif 
         }
     }
 
@@ -106,68 +121,83 @@ public partial class WpfApp{
 
     static void DebuggerIsAttached()
     {
-        //MessageBox.Show("DebuggerIsAttached");
+        //ShowMb("DebuggerIsAttached");
         //Debugger.Break();
     }
 
     private static bool IsSomethingNull(string handler)
     {
 #if MB
-        TranslateDictionary.ShowMb("IsSomethingNull " + handler);
+        // Here must be ShowMb, not TranslateDictionary.ShowMb, which could not be attached here!
+        ShowMb("IsSomethingNull " + handler);
 #endif
-
         WpfApp.cd = Application.Current.Dispatcher;
         WpfApp.cdp = System.Windows.Threading.DispatcherPriority.Normal;
 
+        //return false;
 
-
-        return false;
-
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine(DesktopNotTranslateAble.EnteringIsSomethingNull);
+        //StringBuilder sb = new StringBuilder();
+        ShowMb(DesktopNotTranslateAble.EnteringIsSomethingNull);
         bool vr = false;
+        bool vr2 = false;
 
         if (WpfApp.cd == null)
         {
             vr = true;
         }
 
-        if (vr)
+        if (PD.delShowMb == null)
         {
+            vr2 = true;
+        }
 
-            sb.AppendLine(DesktopNotTranslateAble.WpfAppCdWasNull);
+        if (vr || vr2)
+        {
+            bool run = false;
+            if (vr)
+            {
+                ShowMb(DesktopNotTranslateAble.WpfAppCdWasNull);
+                run = true;
+            }
+            if (vr2)
+            {
+                ShowMb(DesktopNotTranslateAble.PDDelShowMbWasNull);
+                run = true;
+            }
+
             Exception ex = new Exception();
 
             try
             {
-                sb.AppendLine(DesktopNotTranslateAble.EmptyTryBlock);
+                ShowMb(DesktopNotTranslateAble.EmptyTryBlock);
             }
             catch (Exception ex2)
             {
                 ex = ex2;
-                sb.AppendLine(DesktopNotTranslateAble.CatchBlockFromEmptyTryBlock);
+                ShowMb(DesktopNotTranslateAble.CatchBlockFromEmptyTryBlock);
             }
 
-
-            bool run = false;
             //sb.AppendLine("Is my computer");
             //run = WindowsSecurityHelper.IsMyComputer();
-            run = true;
 
             if (run)
             {
+                 string nl = Environment.NewLine;
+                var err = handler + nl + Exc.GetStackTrace() +nl + Exceptions.TextOfExceptions(ex);
+                Debug.WriteLine(err);
                 
-                Clipboard.SetText(Exc.GetStackTrace() + Environment.NewLine + Exceptions.TextOfExceptions(ex));
 #if MB
-                MessageBox.Show(handler + " " + DesktopNotTranslateAble.SomethingIsNullProbablyWpfAppCdIntoClipboardWasCopiedStacktrace + ".");
+                ShowMb(handler + " " + DesktopNotTranslateAble.SomethingIsNullProbablyWpfAppCdIntoClipboardAndDebugWasCopiedStacktrace + ".");
 #endif
+                WpfApp.ShowMb(err);
+                Clipboard.SetText(err);
             }
             
         }
         else
         {
 #if MB
-            MessageBox.Show(handler + " Everything is ok");
+            ShowMb(handler + " Everything is ok");
 #endif
         }
 

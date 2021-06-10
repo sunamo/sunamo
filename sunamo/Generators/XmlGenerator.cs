@@ -32,6 +32,11 @@ public class XmlGenerator
         sb.AppendFormat("<{0} {1}=\"{2}\" {3}=\"{4}\" />", p1, p2, p3, p4, p5);
     }
 
+    public void WriteNonPairTagWithAttr(string p1, string p2, string p3)
+    {
+        sb.AppendFormat("<{0} {1}=\"{2}\" />", p1, p2, p3);
+    }
+
     public void Insert(int index, string text)
     {
         sb.Insert(index, text);

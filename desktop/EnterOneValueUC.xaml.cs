@@ -10,7 +10,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace desktop2.Controls.Input
+namespace desktop.Controls.Input
 {
     /// <summary>
     /// Use for variable name always longer, enterOneValue instead of eov
@@ -399,16 +399,16 @@ namespace desktop2.Controls.Input
 
     //    }
 
-    //    internal void Init(string whatEnter)
+    //    public void Init(string whatEnter)
     //    {
     //        throw new NotImplementedException();
     //    }
 
     //    public List<FrameworkElement> fwElemements = new List<FrameworkElement>();
-    //    internal string ValidatorBeforeAddingMessage = string.Empty;
+    //    public string ValidatorBeforeAddingMessage = string.Empty;
 
     //    public bool IsMultiline { get; set; } = true;
-    //    public Func<string, bool> ValidatorBeforeAdding { get; internal set; }
+    //    public Func<string, bool> ValidatorBeforeAdding { get; public set; }
 
     //    public object this[int i]
     //    {

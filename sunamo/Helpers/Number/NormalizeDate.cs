@@ -93,4 +93,11 @@ public class NormalizeDate
         var result = sb.ToString();
         return short.Parse( result);
     }
+
+    public static short AddMonths(short ntda, int v)
+    {
+        var dt = From(ntda);
+        dt = dt.AddMonths(v);
+        return To(dt);
+    }
 }

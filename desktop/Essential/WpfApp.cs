@@ -12,15 +12,31 @@ using System.Windows.Threading;
 
 public partial class WpfApp
 {
-    
     static WpfApp()
     {
         EnableDesktopLogging(true);
     }
 
+    public static Action<string> WriteToStartupLogRelease;
+
     public static void ShowMb(string t)
     {
-        MessageBox.Show(t);
+        if (false)
+        {
+            try
+            {
+                MessageBox.Show(t);
+            }
+            catch (Exception)
+            {
+                //0x800401D0 (CLIPBRD_E_CANT_OPEN))
+            }
+        }
+
+        if (WriteToStartupLogRelease != null)
+        {
+            WriteToStartupLogRelease(t);
+        }
     }
 
     public static void Shutdown(object o, EventArgs eh)

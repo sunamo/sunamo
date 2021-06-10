@@ -7,9 +7,6 @@ using sunamo;
 //using System.Activities;
 public partial class MSColumnsDB : List<MSSloupecDB>
 {
-
-   
-
     /// <summary>
     /// A2 is name of site - part before Layer class
     /// A3 is Lyr_ etc.

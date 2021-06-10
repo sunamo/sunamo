@@ -92,7 +92,7 @@ namespace AllProjectsSearch
             return false;
         }
 
-        public string ExeToRelease(SolutionFolder sln, string projectDistinction)
+        public string ExeToRelease(SolutionFolder sln, string projectDistinction, bool addProtectedWhenSelling = false)
         {
             var net = FS.Combine(sln.fullPathFolder, sln.nameSolution+projectDistinction, @"bin\Release\");
             var net5 = FS.Combine(net, "net5.0\\");
@@ -102,6 +102,13 @@ namespace AllProjectsSearch
                 net = net5;
             }
             var net4 = net + sln.nameSolution + projectDistinction + ".exe";
+            if (addProtectedWhenSelling)
+            {
+                if (net4.Contains("_Selling"))
+                {
+                    net4 = FS.InsertBetweenFileNameAndExtension(net4, "_protected");
+                }
+            }
 
             return net4;
         }

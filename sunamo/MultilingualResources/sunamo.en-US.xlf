@@ -13923,6 +13923,10 @@ A fraternal form of manifestation is the bliss</target>
           
           <target>Copy to clipboard founded</target>
         </trans-unit>
+        <trans-unit id="Generate" translate="no" xml:space="preserve">
+          
+          <target state="translated">Generate</target>
+        </trans-unit>
       </group>
     </body>
   </file>
