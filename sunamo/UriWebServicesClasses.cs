@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 public partial class UriWebServices
 {
+    public static class ITJobs
+    {
+        public const string cooljobs = @"https://www.cooljobs.eu/cz/%s";
+    }
+
     public static class ChromeSearchShortcut
     {
         public const string gp = "https://play.google.com/store/search?q=%s";

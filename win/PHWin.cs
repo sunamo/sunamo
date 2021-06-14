@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using sunamo.Helpers;
 
@@ -23,7 +24,7 @@ public class PHWin
         return FileUtil.WhoIsLocking(fullPath).Count > 0;
     }
 
-    static int opened = 0;
+    public static int opened = 0;
 
     /// <summary>
     /// A1 is chrome replacement
@@ -32,11 +33,13 @@ public class PHWin
     /// <param name="what"></param>
     public static void SearchInAll(IEnumerable array, string what)
     {
+        var br = Browsers.Chrome;
+        PHWin.AddBrowser(Browsers.Chrome);
         foreach (var item in array)
         {
             opened++;
             string uri = UriWebServices.FromChromeReplacement(item.ToString(), what);
-            PHWin.OpenInBrowser(uri);
+            PHWin.OpenInBrowser(br, uri);
             if (opened % 10 == 0)
             {
                 Debugger.Break();
@@ -59,103 +62,110 @@ public class PHWin
         }
     }
 
+    static int countOfBrowsers = 0;
+    static PHWin()
+    {
+        countOfBrowsers = EnumHelper.GetValues<Browsers>().Count;
+        // due to None
+        countOfBrowsers--;
+    }
+
     public static void AssignSearchInAll()
     {
-        AddBrowsers();
+        //AddBrowsers();
         UriWebServices.AssignSearchInAll(PHWin.SearchInAll);
     }
 
     public static string AddBrowser(Browsers prohlizec)
     {
-        string b = string.Empty;
-
-        switch (prohlizec)
+        if (path.Count != countOfBrowsers)
         {
-            case Browsers.Chrome:
-                b = @"c:\Program Files\Google\Chrome\Application\chrome.exe";
-                break;
-            case Browsers.Firefox:
-                b = @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-                if (!FS.ExistsFile(b))
-                {
-                    b = @"c:\Program Files\Mozilla Firefox\firefox.exe";
-                }
-                break;
-            case Browsers.Edge:
-                b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
-                
-                if (!FS.ExistsFile(b))
-                {
-                    //c:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe
-                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe", "MicrosoftEdge.exe");
-                }
+            string b = string.Empty;
 
-                break;
-            case Browsers.Opera:
-                // Opera has version also when is installing to PF, it cant be changed
-                //b = @"C:\Program Files\Opera\65.0.3467.78\opera.exe";
-                b = WindowsOSHelper.FileIn(@"C:\Program Files\Opera\", "opera.exe");
-                if (!FS.ExistsFile(b))
-                {
-                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Programs\Opera", "opera.exe");
-                }
-                break;
-            case Browsers.Vivaldi:
-                b = @"C:\Program Files\Vivaldi\Application\vivaldi.exe";
-                if (!FS.ExistsFile(b))
-                {
-                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, XlfKeys.Vivaldi, "vivaldi.exe");
-                }
-                break;
-            //case Browsers.InternetExplorer:
-            //    b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
-            //    break;
-            case Browsers.Maxthon:
-                b = @"C:\Program Files (x86)\Maxthon5\Bin\Maxthon.exe";
-                if (!FS.ExistsFile(b))
-                {
-                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Maxthon\Application", "Maxthon.exe");
-                }
-                break;
-            case Browsers.Seznam:
-                b = WindowsOSHelper.FileIn(UserFoldersWin.Roaming, @"Seznam Browser", "Seznam.cz.exe");
-                break;
-            case Browsers.Chromium:
-                b = @"d:\paSync\_browsers\Chromium\chrome.exe";
-                break;
-            case Browsers.ChromeCanary:
-                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Google\Chrome SxS", "chrome.exe");
-                break;
-            case Browsers.Tor:
-                b = @"d:\Desktop\Tor Browser\Browser\firefox.exe";
-                break;
-            case Browsers.Bravebrowser:
-                b = @"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe";
-                break;
-            case Browsers.Torch:
-                b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Torch\Application", "torch.exe");
-                break;
-            default:
-                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod(), prohlizec);
-                break;
+            switch (prohlizec)
+            {
+                case Browsers.Chrome:
+                    b = @"c:\Program Files\Google\Chrome\Application\chrome.exe";
+                    break;
+                case Browsers.Firefox:
+                    b = @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                    if (!FS.ExistsFile(b))
+                    {
+                        b = @"c:\Program Files\Mozilla Firefox\firefox.exe";
+                    }
+                    break;
+                case Browsers.Edge:
+                    b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
+
+                    if (!FS.ExistsFile(b))
+                    {
+                        //c:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe
+                        b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe", "MicrosoftEdge.exe");
+                    }
+
+                    break;
+                case Browsers.Opera:
+                    // Opera has version also when is installing to PF, it cant be changed
+                    //b = @"C:\Program Files\Opera\65.0.3467.78\opera.exe";
+                    b = WindowsOSHelper.FileIn(@"C:\Program Files\Opera\", "opera.exe");
+                    if (!FS.ExistsFile(b))
+                    {
+                        b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Programs\Opera", "opera.exe");
+                    }
+                    break;
+                case Browsers.Vivaldi:
+                    b = @"C:\Program Files\Vivaldi\Application\vivaldi.exe";
+                    if (!FS.ExistsFile(b))
+                    {
+                        b = WindowsOSHelper.FileIn(UserFoldersWin.Local, XlfKeys.Vivaldi, "vivaldi.exe");
+                    }
+                    break;
+                //case Browsers.InternetExplorer:
+                //    b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
+                //    break;
+                case Browsers.Maxthon:
+                    b = @"C:\Program Files (x86)\Maxthon5\Bin\Maxthon.exe";
+                    if (!FS.ExistsFile(b))
+                    {
+                        b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Maxthon\Application", "Maxthon.exe");
+                    }
+                    break;
+                case Browsers.Seznam:
+                    b = WindowsOSHelper.FileIn(UserFoldersWin.Roaming, @"Seznam Browser", "Seznam.cz.exe");
+                    break;
+                case Browsers.Chromium:
+                    b = @"d:\paSync\_browsers\Chromium\chrome.exe";
+                    break;
+                case Browsers.ChromeCanary:
+                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Google\Chrome SxS", "chrome.exe");
+                    break;
+                case Browsers.Tor:
+                    b = @"d:\Desktop\Tor Browser\Browser\firefox.exe";
+                    break;
+                case Browsers.Bravebrowser:
+                    b = @"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe";
+                    break;
+                case Browsers.Torch:
+                    b = WindowsOSHelper.FileIn(UserFoldersWin.Local, @"Torch\Application", "torch.exe");
+                    break;
+                default:
+                    ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), prohlizec);
+                    break;
+            }
+
+            if (b == null)
+            {
+                b = string.Empty;
+            }
+
+            path.Add(prohlizec, b);
+
+            return b;
         }
-
-        if (b == null)
-        {
-            b = string.Empty;
-        }
-
-        if (b == string.Empty)
-        {
-
-        }
-
-        path.Add(prohlizec, b);
-
-        return b;
+        return path[prohlizec];
     }
 
-    public static void OpenInBrowser(Browsers prohlizec, string s)
+    public static void OpenInBrowser(Browsers prohlizec, string s, int waitMs = 0)
     {
         opened++;
         string b = path[prohlizec];
@@ -168,9 +178,14 @@ public class PHWin
         if (!UH.HasHttpProtocol(s))
         {
             s = SH.WrapWithQm(s);
-        }; ;
+        };
 
         Process.Start(new ProcessStartInfo(b, s));
+
+        if (waitMs > 0)
+        {
+            Thread.Sleep(waitMs);
+        }
     }
 
     /// <summary>

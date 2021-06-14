@@ -184,6 +184,13 @@ public partial class UriWebServices
         return "https://radekjancik.visualstudio.com/_git/" + HttpUtility.UrlEncode(slnName);
     }
 
+    //
+    public static string AzureRepoWebUIFull(string slnName)
+    {
+        var enc = HttpUtility.UrlEncode(slnName);
+        return $"https://radekjancik@dev.azure.com/radekjancik/{enc}/_git/{enc}";
+    }
+
     public static string AzureRepoWebUI(string slnName)
     {
         return "https://dev.azure.com/radekjancik/" + HttpUtility.UrlEncode(slnName);
