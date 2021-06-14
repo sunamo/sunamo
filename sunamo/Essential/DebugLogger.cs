@@ -34,7 +34,7 @@ public class DebugLogger : LoggerBase
 
     public static void DebugWriteLine(string text, params object[] args)
     {
-        Debug.WriteLine(SH.Format2(text, args));
+        //Debug.WriteLine(SH.Format2(text, args));
     }
 #endif
 

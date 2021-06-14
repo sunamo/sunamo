@@ -336,7 +336,9 @@ public static partial class SH
         {
             foreach (var line in item)
             {
-                Debug.WriteLine(line.Length);
+#if DEBUG
+                DebugLogger.Instance.WriteLine(line.Length.ToString());
+#endif 
                 sb.AppendLine(line);
                 sb.AppendLine();
             }
