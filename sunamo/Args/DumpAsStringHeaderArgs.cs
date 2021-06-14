@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 public class DumpAsStringHeaderArgs
 {
+    public static DumpAsStringHeaderArgs Default = new DumpAsStringHeaderArgs();
+
+    public DumpAsStringHeaderArgs()
+    {
+
+    }
+
     /// <summary>
     /// If starting with ! => surely delete
     /// </summary>

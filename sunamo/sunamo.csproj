@@ -177,6 +177,7 @@
     <Compile Include="Helpers\Runtime\RuntimeHelperShared64.cs" />
     <Compile Include="Helpers\SerializerHelper.cs" />
     <Compile Include="Helpers\Text\SHShared64.cs" />
+    <Compile Include="Helpers\Text\StaticSBNoThread.cs" />
     <Compile Include="Helpers\Thread\CAThreadShared64.cs" />
     <Compile Include="Helpers\Types\BTSShared64.cs" />
     <Compile Include="Helpers\Types\EnumHelperShared64.cs" />

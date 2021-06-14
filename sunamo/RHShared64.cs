@@ -93,7 +93,7 @@ public partial class RH
     {
         if (a == null)
         {
-            a = new DumpAsStringHeaderArgs();
+            a = DumpAsStringHeaderArgs.Default;
         }
         var dasa = new DumpAsStringArgs { o = tableRowPageNew, deli = AllStrings.swd, onlyValues = true, onlyNames = a.onlyNames };
         return DumpAsString(dasa);
