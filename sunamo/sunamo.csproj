@@ -154,6 +154,9 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Args\DumpAsStringHeaderArgs.cs" />
+    <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
+    <Compile Include="Collections\CollectionWithoutDuplicatesStringComparing.cs" />
+    <Compile Include="Collections\SunamoHashSetWithoutDuplicates.cs" />
     <Compile Include="Constants\NetFxExceptionsNotTranslateAble.cs" />
     <Compile Include="Constants\NumConsts.cs" />
     <Compile Include="CryptHelper2Shared64.cs" />
@@ -174,6 +177,7 @@
     <Compile Include="Helpers\Number\LinearHelperShared64.cs" />
     <Compile Include="Helpers\Number\NHShared64.cs" />
     <Compile Include="Helpers\Resource\RandomHelperShared64.cs" />
+    <Compile Include="Helpers\Resource\RandomStringHelper.cs" />
     <Compile Include="Helpers\Runtime\RuntimeHelperShared64.cs" />
     <Compile Include="Helpers\SerializerHelper.cs" />
     <Compile Include="Helpers\Text\SHShared64.cs" />
@@ -185,6 +189,7 @@
     <Compile Include="List\CAShared64.cs" />
     <Compile Include="List\DictionaryHelperShared64.cs" />
     <Compile Include="RHShared64.cs" />
+    <Compile Include="Values\AllCharsConsts.cs" />
     <Compile Include="Values\AllListsNotTranslateAble64Shared.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
@@ -228,7 +233,7 @@
     <Compile Include="Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="Collections\BadGoodCollection.cs" />
     <Compile Include="Collections\CollectionToEnd.cs" />
-    <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
+    <Compile Include="Collections\CollectionWithoutDuplicatesBase.cs" />
     <Compile Include="Collections\CyclingCollection.cs" />
     <Compile Include="Collections\D.cs" />
     <Compile Include="Collections\DebugCollection.cs" />

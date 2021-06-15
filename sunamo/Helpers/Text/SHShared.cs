@@ -743,8 +743,6 @@ public static partial class SH
         List<int> alreadyProcessedItem1 = new List<int>();
         for (int i = l.Count - 1; i >= 0; i--)
         {
-            
-
             if (alreadyProcessedItem1.Contains(l[i].Item1))
             {
                 addToAnotherCollection.Add(l[i].Item1);

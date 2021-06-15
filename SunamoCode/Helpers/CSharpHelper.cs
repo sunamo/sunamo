@@ -354,7 +354,8 @@ public static partial class CSharpHelper
         foreach (var item in input)
         {
             var name = changeInput(item);
-            csg.Field(tabCount, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, string.Empty);
+            csg.Field(tabCount, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, item
+                );
         }
         return csg.ToString();
     }

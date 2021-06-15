@@ -8,13 +8,6 @@ public static partial class RandomHelper
     
     private static float s_lightColorBase = (float)(256 - 229);
 
-    /// <summary>
-    /// A1 je po�et ��sel p�ed des. ��rkou. Pokud bude men�� ne� 7, automaticky se dopln� i ��sla za desetinnou ��rku.
-    /// A2 je maxim�ln� hodnota v�sledn�ho ��sla. Pokud bude vypo�ten� vy��� ne� tato, vr�t�m tuto. Vhodn�� nastavit na float.MaxValue
-    /// A3 je ��slo, kter� m��e b�t nejvy��� jako ��slo p�ed des. ��rkou - finta, pokud chce� vygenerovat ��slo mezi 0 a 1 (exclude), zadej do t�to hodntoy 0 a po��te�n� ��slo bude v�dy tak 0. Pro nejvy��� mo�n� ��slo nastav na float.MaxValue nebo int.MaxValue
-    /// 
-    /// </summary>
-    /// <param name="p"></param>
     public static float RandomFloat(int p, float maxValue, int maxP)
     {
         if (p > 7)
@@ -76,14 +69,9 @@ public static partial class RandomHelper
         return RandomByte(0, 255);
     }
 
-    /// <summary>
-    /// Vrac� ��slo od A1 do A2 v�.
-    /// </summary>
-    /// <param name="od"></param>
-    /// <param name="to"></param>
-    public static byte RandomByte(int od, int to)
+    public static byte RandomByte(int od, int toInclude)
     {
-        return (byte)s_rnd.Next(od, to + 1);
+        return (byte)s_rnd.Next(od, toInclude + 1);
     }
 
     public static byte RandomColorPart(bool light)
