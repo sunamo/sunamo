@@ -254,16 +254,14 @@ public class TextOutputGenerator
         {
             sb.AppendLine(SF.PrepareToSerialization(item.Key, item.Value));
         }
-
-
     }
 
-    public void Dictionary<T1, T2>(Dictionary<T2, T2> d)
+    public void Dictionary<T1, T2>(Dictionary<T2, T2> d, string deli = AllStrings.verbar)
     {
         //StringBuilder sb = new StringBuilder();
         foreach (var item in d)
         {
-            sb.AppendLine(SF.PrepareToSerializationExplicit(CA.ToList<object>(item.Key, item.Value)));
+            sb.AppendLine(SF.PrepareToSerializationExplicitString(CA.ToList<object>(item.Key, item.Value), deli));
         }
 
     } 

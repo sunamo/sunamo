@@ -48,6 +48,14 @@ public static partial class SF
         }
     }
 
+    public static string PrepareToSerializationExplicitString(IEnumerable o, string p1 = AllStrings.verbar)
+    {
+        var o3 = CA.ToListString(o);
+        var o2 = CA.Trim(o3);
+        string vr = SH.GetString(o, p1);
+        return vr.Substring(0, vr.Length - p1.Length);
+    }
+
     /// <summary>
     /// Same as PrepareToSerialization - return without last
     /// If need to combine string and IEnumerable, lets use CA.Join
@@ -57,10 +65,8 @@ public static partial class SF
     /// <param name="o"></param>
     public static string PrepareToSerializationExplicit(IEnumerable o, char p1 = AllChars.verbar)
     {
-        var o3 = CA.ToListString(o);
-        var o2 = CA.Trim(o3);
-        string vr = SH.GetString(o, p1.ToString());
-        return vr.Substring(0, vr.Length - 1);
+        
+        return PrepareToSerializationExplicitString(o, p1.ToString());
     }
 
     public static List<List<string>> GetAllElementsFile(string file, char oddelovaciZnak = AllChars.verbar)

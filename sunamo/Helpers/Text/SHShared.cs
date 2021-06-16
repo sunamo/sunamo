@@ -107,6 +107,24 @@ public static partial class SH
 
 
     /// <summary>
+    /// Dont automatically change case
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="deli"></param>
+    /// <returns></returns>
+    public static string FirstCharOfEveryWordPart(string value, string deli)
+    {
+        var p = SH.Split(value, deli);
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in p)
+        {
+            sb.AppendLine(item[0].ToString());
+        }
+        return sb.ToString();
+    }
+
+
+    /// <summary>
     /// Nothing can be null
     /// </summary>
     /// <param name="content"></param>
