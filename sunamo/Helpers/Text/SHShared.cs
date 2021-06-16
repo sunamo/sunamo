@@ -118,9 +118,27 @@ public static partial class SH
         StringBuilder sb = new StringBuilder();
         foreach (var item in p)
         {
-            sb.AppendLine(item[0].ToString());
+            sb.Append(item[0].ToString());
         }
         return sb.ToString();
+    }
+
+    /// <summary>
+    /// When there is no number, append 1
+    /// Otherwise incr.
+    /// </summary>
+    /// <param name="acronym"></param>
+    public static void IncrementLastNumber(ref string acronym)
+    {
+        var ch = acronym[acronym.Length - 1];
+        if (char.IsNumber(ch))
+        {
+            var i = int.Parse(ch.ToString());
+            i++;
+            acronym = acronym.Substring(0, acronym.Length - 1) + i;
+            return;
+        }
+        acronym = acronym + "1";
     }
 
 
