@@ -7,6 +7,16 @@ using System.Threading.Tasks;
 
 public partial class GeneratorMsSql
 {
+    public static string CombinedWhere(ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere, ABC whereOr = null)
+    {
+        return GeneratorMsSqlWorker.CombinedWhere(true, where, isNotWhere, greaterThanWhere, lowerThanWhere, whereOr);
+    }
+
+    public static SqlCommand CombinedWhereCommand(string commandBeforeWhere, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere, string orderBy)
+    {
+        return GeneratorMsSqlWorker.CombinedWhereCommand(true, commandBeforeWhere, where, isNotWhere, greaterThanWhere, lowerThanWhere, orderBy);
+    }
+
     /// <summary>
     /// A3 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
     /// </summary>
@@ -78,6 +88,8 @@ public partial class GeneratorMsSql
 
         return sb.ToString();
     }
+
+    
 
     /// <summary>
     /// A3 - whether is not desirable to create references to other tables. Good while test tables and apps, when I will it delete later.

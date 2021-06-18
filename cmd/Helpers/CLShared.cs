@@ -197,7 +197,7 @@ public static void OperationWasStopped()
         }
         else
         {
-            CL.AskForEnter(what, true);
+            CL.AskForEnterWrite(what, true);
             CL.WriteLine(sess.i18n(XlfKeys.PressEnterWhenDataWillBeInClipboard));
             Console.ReadLine();
             imageFile = ClipboardHelper.GetText();
@@ -206,10 +206,15 @@ public static void OperationWasStopped()
         return imageFile;
     }
 
-    
+    private static void AskForEnterWrite(string what, bool v)
+    {
+        CL.WriteLine(AskForEnter( what, v));
+    }
 
 
-/// <summary>
+
+
+    /// <summary>
     /// Return null when user force stop 
     /// </summary>
     /// <param name = "what"></param>

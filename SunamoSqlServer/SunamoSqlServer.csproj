@@ -59,8 +59,11 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelper.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
     <Compile Include="Attributes\NoReturnSqlResultAttribute.cs" />
+    <Compile Include="Data\ComboABC.cs" />
     <Compile Include="Helpers\StopwatchStaticSql.cs" />
+    <Compile Include="MSSQL\GeneratorMsSqlNoParam.cs" />
     <Compile Include="MSSQL\GeneratorMsSqlShared64.cs" />
+    <Compile Include="MSSQL\GeneratorMsSqlWorker.cs" />
     <Compile Include="MSSQL\MSColumnsDBShared64.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerShared64.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIShared64.cs" />

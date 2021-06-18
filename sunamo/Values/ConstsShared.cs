@@ -9,7 +9,9 @@ using System.Text;
     {
     public const string _3Asterisks = "***";
     public const string Test_ = "Test_";
-    
+   
+
+
     public const string slashLocalhost = AllStrings.slash + Consts.localhost;
     public const string slashScz = AllStrings.slash + Consts.Cz;
     public const string dotScz = ".sunamo.cz";
@@ -26,7 +28,7 @@ using System.Text;
     public static string dots3 = "...";
     public static DateTime nDateTimeMinVal= new DateTime(2010, 1, 1, 0, 0, 0);
     public static DateTime nDateTimeMaxVal= new DateTime(2032, 12, 31, 23, 59, 59);
-    
+    public static string isNot = "!=";
     public const string appscs = "appscs";
     public const string ChytreAplikace = "chytre-aplikace.cz";
     public const string Nope = XlfKeys.Nope;

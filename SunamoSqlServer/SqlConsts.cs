@@ -10,6 +10,13 @@ public class SqlConsts
 {
     public const int timeout = 950;
     public const string dbo = "dbo";
+    public const string delete = "delete";
+    public const string update = "update";
+    public const string insert = "insert";
+    public const string select = "select";
+    public const string from = "from";
+    public const string top1 = "top(1)";
+
 }
 
 public class SqlMeasureTimeHelper

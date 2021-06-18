@@ -210,15 +210,15 @@ public partial class SqlServerHelper
         bool result = true;
         var p = SH.GetFirstWord(sql).ToLower();
 
-        if (p == "update")
+        if (p == SqlConsts.update)
         {
             Update(sql, ref table, ref columns, serie);
         }
-        else if (p == "insert")
+        else if (p == SqlConsts.insert)
         {
             Insert(sql, ref table, ref columns, serie);
         }
-        else if (p == "select")
+        else if (p == SqlConsts.select)
         {
             if (table != null)
             {
@@ -250,7 +250,7 @@ public partial class SqlServerHelper
 
             return false;
         }
-        else if (p == "delete")
+        else if (p == SqlConsts.delete)
         {
             return false;
         }
