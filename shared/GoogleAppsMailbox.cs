@@ -9,7 +9,7 @@ using System.Net.Mail;
 /// Seznam: working, DONT save sent to outbox
 /// </summary>
     public partial class GoogleAppsMailbox
-    {
+    {   
         /// <summary>
         /// Řetězec, který se objeví u příjemce jako odesílatel. Nemusí to být mailová adresa.
         /// </summary>

@@ -24,7 +24,7 @@ public partial class VpsHelperSunamo
         }
         else
         {
-            return @"e:\Documents\Visual Studio 2017\Projects\sunamo\";
+            return @"e:\Documents\vs\Projects\sunamo\";
         }
     }
 
@@ -36,7 +36,7 @@ public partial class VpsHelperSunamo
         }
         else
         {
-            return @"e:\Documents\Visual Studio 2017\Projects\sunamo.cz\";
+            return @"e:\Documents\vs\Projects\sunamo.cz\";
         }
     }
 

@@ -27,6 +27,7 @@ public class VpsHelper
     //public static PpkOnDrive list = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVps.txt"));
     //public static PpkOnDrive listMain = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVpsMain.txt"));
     public static PpkOnDrive listVpsNew = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVpsNew.txt"));
+    public static PpkOnDrive listSczAdmin64 = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnSczAdmin64.txt"));
 
     public static void PushAll()
     {

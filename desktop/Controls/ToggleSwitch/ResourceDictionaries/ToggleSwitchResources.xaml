@@ -7,6 +7,6 @@
         <!--<ResourceDictionary Source="pack://application:,,,/desktop;component/Controls/ToggleSwitch/Assets/ToggleSwitchStyles.xaml"/>-->
     </ResourceDictionary.MergedDictionaries>
 
-    <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    <BooleanToVisibilityConverter x:Key="VisibilityConverter" />
     <!--End ToggleSwitch-->
 </ResourceDictionary>

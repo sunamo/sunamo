@@ -14,7 +14,7 @@ public class FoldersWithSolutions
     #region data fields
     public static List<SolutionFolder> solutions = null;
     /// <summary>
-    /// d:\Documents
+    /// d:\Documents 
     /// </summary>
     public string documentsFolder = null;
     #endregion

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class SolutionsIndexerStrings
 {
-    public const string VisualStudio2017 = @"Visual Studio 2017";
+    public const string VisualStudio2017 = @"vs";
     public const string GitHub = "GitHub";
     public const string GitHubMy = "GitHubMy";
     public const string BitBucket = "BitBucket";

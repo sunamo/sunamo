@@ -41,7 +41,7 @@ public partial class TF
         var content = TF.ReadFile(f).Trim();
         var content2 = transformHtmlToMetro4.Invoke(content);
 
-        if (f == @"e:\Documents\Visual Studio 2017\Projects\sunamo.cz\AppsX\PhotoCs.cs")
+        if (f == @"e:\Documents\vs\Projects\sunamo.cz\AppsX\PhotoCs.cs")
         {
 
         }

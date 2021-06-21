@@ -173,7 +173,7 @@ public class ClipboardHelperWin : IClipboardHelper
                     #region Funguje dobře ale třeba VS má svou schránku. Když jsem vložil zkopírovaný text do VSCode, byl tam
                     // Další možnosti:
                     // https://github.com/CopyText/TextCopy
-                    // E:\Documents\Visual Studio 2017\Projects\ConsoleNetFw\ConsoleNetFw\Clippy.cs
+                    // E:\Documents\vs\Projects\ConsoleNetFw\ConsoleNetFw\Clippy.cs
                     W32.OpenClipboard(IntPtr.Zero);
                     var ptr = Marshal.StringToHGlobalUni(v);
                     W32.SetClipboardData(13, ptr);
