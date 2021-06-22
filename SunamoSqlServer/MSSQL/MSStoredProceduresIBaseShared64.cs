@@ -711,7 +711,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 #if DEBUG
             PrintDebugParameters(comm);
 #endif
+            if (comm.CommandText.ToLower().StartsWith(SqlConsts.update))
+            {
 
+            }
             var result = comm.ExecuteNonQuery();
             conn.Close();
 
