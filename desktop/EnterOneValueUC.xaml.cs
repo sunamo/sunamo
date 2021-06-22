@@ -408,7 +408,7 @@ namespace desktop.Controls.Input
     //    public string ValidatorBeforeAddingMessage = string.Empty;
 
     //    public bool IsMultiline { get; set; } = true;
-    //    public Func<string, bool> ValidatorBeforeAdding { get; public set; }
+    //    public Func<string, bool> ValidatorBeforeAdding { get; set; }
 
     //    public object this[int i]
     //    {

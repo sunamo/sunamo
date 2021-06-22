@@ -73,7 +73,10 @@ public class ClipboardHelperWin : IClipboardHelper
         try
         {
             // true to keep data also after app close
-            Clipboard.SetDataObject(v, true);
+            // Commented coz require import PresentationFramework to every assembly
+            //Clipboard.SetDataObject(v, true);
+
+            SetText3(v);
         }
         catch (Exception ex)
         {

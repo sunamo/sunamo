@@ -2,6 +2,7 @@
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,6 +73,8 @@ public class CmdBootStrap
         //ResourcesHelper rm = ResourcesHelper.Create(typeResources.FullName, typeResources.Assembly);
 
         XlfResourcesHSunamo.SaveResouresToRLSunamo();
+        //EventLog.Delete(ThisApp.Name + "64");
+        //EventLog.DeleteEventSource(ThisApp.Name + "64");
         WriterEventLog.CreateMainAppLog(ThisApp.Name);
 
         bool askUser = false;
