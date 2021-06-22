@@ -69,7 +69,10 @@ public class ClipboardHelperWin : IClipboardHelper
             clipboardMonitor.afterSet = null;
         }
 
-        SetText2(v);
+        // Must use not W32 method
+        Clipboard.SetDataObject(v);
+        // coz OpenClipboard exit app without exception
+        //SetText2(v);
     }
 
     public static string GetTextW32()
@@ -160,6 +163,11 @@ public class ClipboardHelperWin : IClipboardHelper
         return result;
     }
 
+    /// <summary>
+    /// Dont use
+    /// OpenClipboard exit app without exception
+    /// </summary>
+    /// <param name="v"></param>
     public void SetText2(string v)
     {
         if (!string.IsNullOrWhiteSpace(v))

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -25,5 +26,10 @@ public static partial class ButtonHelper{
         vr.Tag = d.tag;
         vr.ToolTip = d.tooltip;
         return vr;
+    }
+
+    public static void PerformClick(Button btnEnter)
+    {
+        btnEnter.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
     }
 }

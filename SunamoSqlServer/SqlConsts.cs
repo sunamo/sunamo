@@ -26,6 +26,26 @@ public class SqlMeasureTimeHelper
     bool forceIsVps = false;
     static string fn = null;
 
+    public void Before(bool mt, int waitMs, bool forceIsVps)
+    {
+        mt = MSStoredProceduresI.measureTime;
+        waitMs = MSStoredProceduresI.waitMs;
+        forceIsVps = MSStoredProceduresI.forceIsVps;
+
+        MSStoredProceduresI.measureTime = true;
+        MSStoredProceduresI.waitMs = 0; //StopwatchStaticSql.maxMs + 100;
+        MSStoredProceduresI.forceIsVps = true;
+
+        NewSw();
+    }
+
+    public void Before(string fn2 = "Sql.txt")
+    {
+        fn = fn2;
+
+        Before(mt, waitMs, forceIsVps);
+    }
+
     static Type type = typeof(Type);
 
     public  void NewSw()
@@ -66,20 +86,7 @@ public class SqlMeasureTimeHelper
         return r;
     }
 
-    public void Before(string fn2 = "Sql.txt")
-    {
-        mt = MSStoredProceduresI.measureTime;
-        waitMs = MSStoredProceduresI.waitMs;
-        forceIsVps = MSStoredProceduresI.forceIsVps;
-
-        fn = fn2;
-
-        MSStoredProceduresI.measureTime = true;
-        MSStoredProceduresI.waitMs = 0; //StopwatchStaticSql.maxMs + 100;
-        MSStoredProceduresI.forceIsVps = true;
-
-        NewSw();
-    }
+    
 
     public void After()
     {

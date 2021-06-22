@@ -9,6 +9,13 @@ namespace sunamo.Html
     }
 }
 
+namespace desktop.Extensions
+{
+    public class _ns
+    {
+    }
+}
+
 namespace desktop.Controls.Text
 {
     public class _ns
