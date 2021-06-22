@@ -157,7 +157,7 @@
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainerList.cs" />
     <Compile Include="..\..\sunamo\desktop\Windows\WindowWithUserControl.cs" />
-    <Compile Include="Controls\Panel\DynLayout.cs" />
+    <Compile Include="Controls\Panels\DynLayout.cs" />
     <Compile Include="Data\ControlInitData.cs" />
     <Compile Include="EnterOneValueUC.xaml.cs">
       <DependentUpon>EnterOneValueUC.xaml</DependentUpon>
@@ -165,7 +165,7 @@
     <Compile Include="Helpers\BaseControls\ControlsHelperValues.cs" />
     <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
     <Compile Include="Helpers\ContainerControls\GridHelperShared.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ButtonHelperDesktop2.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ButtonHelperDesktop.cs" />
     <Compile Include="Helpers\ControlsWithGet\TextBlockHelper.cs" />
     <Compile Include="Helpers\ControlsWithGet\TextBlockHelperShared.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />

@@ -70,7 +70,14 @@ public class ClipboardHelperWin : IClipboardHelper
         }
 
         // Must use not W32 method
-        Clipboard.SetDataObject(v);
+        try
+        {
+            // true to keep data also after app close
+            Clipboard.SetDataObject(v, true);
+        }
+        catch (Exception ex)
+        {
+        }
         // coz OpenClipboard exit app without exception
         //SetText2(v);
     }

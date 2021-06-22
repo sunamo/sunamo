@@ -23,6 +23,11 @@ public class GitHelper
             countFiles = FS.GetFiles(fullPathFolder, FS.MascFromExtension(), SearchOption.AllDirectories).Count;
         }
 
+        if (fullPathFolder.Contains("SunamoCzAdmin"))
+        {
+
+        }
+
         if (countFiles > 0)
         {
             gitStatus.Clear();
