@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 public class MailBox
-{ 
+{  
     #region V každé třídě MailSender
     public static GoogleAppsMailbox mb = null;
 
