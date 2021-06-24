@@ -26,7 +26,7 @@ public class DebugLogger : LoggerBase
     public DebugLogger(VoidStringParamsObjects writeLineHandler) : base(writeLineHandler)
     {
     }
-#if DEBUG //2
+#if DEBUG //2 
     public static void DebugWriteLine(TypeOfMessage tz, string text, params object[] args)
     {
         //DebugLogger.DebugWriteLine(tz.ToString() + AllStrings.cs2 + SH.Format2(text, args));
