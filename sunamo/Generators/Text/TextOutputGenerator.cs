@@ -227,7 +227,7 @@ public class TextOutputGenerator
         
         foreach (var item in ordered)
         {
-            sb.AppendLine(item.Key + AllLetters.x + AllStrings.space + item.Value);
+            sb.AppendLine(item.Key + AllStrings.space + item.Value);
         }
 
     }

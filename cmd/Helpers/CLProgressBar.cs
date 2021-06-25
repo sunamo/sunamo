@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 public class CLProgressBar : ProgressState, IProgressBar
 {
-    int _writeOnlyDividableBy;
+    int _writeOnlyDividableBy = 0;
     bool isWriteOnlyDividableBy = false;
     public bool isNotUt = false;
     public int writeOnlyDividableBy
