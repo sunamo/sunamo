@@ -69,18 +69,48 @@ public class ClipboardHelperWin : IClipboardHelper
             clipboardMonitor.afterSet = null;
         }
 
-        // Must use not W32 method
-        try
-        {
-            // true to keep data also after app close
-            // Commented coz require import PresentationFramework to every assembly
-            //Clipboard.SetDataObject(v, true);
+        //bool tryAgain = false;
 
-            SetText3(v);
-        }
-        catch (Exception ex)
+        for (int i = 0; i < 10; i++)
         {
+            try
+            {
+                // true to keep data also after app close
+                // Commented coz require import PresentationFramework to every assembly
+                //Clipboard.SetDataObject(v, true);
+
+                /*
+Zkusil jsem všechny možné metody uložení textu, u všech bylo 0xc0000374 exc:
+                Clipboard.SetDataObject(v, true);
+                SetText3
+                čekání a opakovaný pokus
+                ProcessHoldingClipboard
+                 */
+                System.Windows.Forms.Clipboard.SetText(v);
+
+                //SetText3(v);
+
+                return;
+            }
+            catch {
+                //var comException = ex as System.Runtime.InteropServices.COMException;
+
+                //if (comException != null && comException.ErrorCode == -2147221040)
+                //{
+                //    var pr = W32.ProcessHoldingClipboard();
+                //    pr.Kill();
+
+                //    //tryAgain = true;
+                //}
+
+            }
+            System.Threading.Thread.Sleep(10);
         }
+
+        //if (tryAgain)
+        //{
+        //    SetText3(v);
+        //}
         // coz OpenClipboard exit app without exception
         //SetText2(v);
     }

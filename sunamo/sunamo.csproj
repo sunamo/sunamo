@@ -190,6 +190,7 @@
     <Compile Include="List\DictionaryHelperShared64.cs" />
     <Compile Include="RHShared64.cs" />
     <Compile Include="Values\AllCharsConsts.cs" />
+    <Compile Include="Values\AllLetters.cs" />
     <Compile Include="Values\AllListsNotTranslateAble64Shared.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />

@@ -35,6 +35,8 @@ public class TextOutputGenerator
     {
         sb.AppendLine(Messages.NoData);
     }
+
+    
     #endregion
 
     #region Templates
@@ -218,6 +220,16 @@ public class TextOutputGenerator
         {
             sb.AppendLine(item.Key + delimiter + item.Value);
         }
+    }
+
+    public void DictionaryKeyValuePair<T1, T2>(IOrderedEnumerable<KeyValuePair<T1, T2>> ordered)
+    {
+        
+        foreach (var item in ordered)
+        {
+            sb.AppendLine(item.Key + AllLetters.x + AllStrings.space + item.Value);
+        }
+
     }
 
     public void Dictionary(Dictionary<string, List<string>> ls)

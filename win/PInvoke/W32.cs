@@ -8,8 +8,14 @@ using Shell32;
 /// SetLastError = true should be specified always, then I can get error value from Marshal.GetLastWin32Error. 
 /// https://stackoverflow.com/a/17918729/9327173
 /// </summary>
-public class W32
+public partial class W32
 {
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
+    static extern IntPtr GetOpenClipboardWindow();
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
     public static System.Drawing.Icon GetFileIcon(string name, IconSize size,
                                               bool linkOverlay = false)
     {

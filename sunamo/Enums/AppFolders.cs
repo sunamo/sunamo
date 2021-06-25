@@ -15,6 +15,7 @@
     Controls,
     Local,
     Roaming,
-    Crypted 
+    Crypted,
+    Reports
     #endregion
 }

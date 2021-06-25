@@ -260,6 +260,14 @@ public partial class WpfApp{
     /// <param name="e"></param>
     private static void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
     {
+        #region MyRegion
+        // https://stackoverflow.com/a/13523188
+        var comException = e.Exception as System.Runtime.InteropServices.COMException;
+
+        if (comException != null && comException.ErrorCode == -2147221040)
+            e.Handled = true; 
+        #endregion
+
         // cd je null
         if (IsSomethingNull("Current_DispatcherUnhandledException"))
         {
