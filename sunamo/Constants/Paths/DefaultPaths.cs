@@ -21,6 +21,7 @@ namespace sunamo.Constants
         public static string Music2 = @"d:\Music2\";
         public static string Backup = @"d:\Documents\Backup\";
         public static string VisualStudio2017 = @"e:\Documents\vs\";
+        public static string VisualStudio2017WoSlash = @"e:\Documents\vs";
         public static string Streamline = @"d:\Pictures\Streamline_All_Icons_PNG\PNG Icons\";
 
         /// <summary>

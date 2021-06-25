@@ -161,6 +161,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 4) Initialize helpers, SQL of app
         TF.isUsed = PHWin.IsUsed;
         //sunamoCzLoginManager.DoWebRequest = DoWebRequest;
+        // Assign JavascriptSerialization.utf8json
+        new JavascriptSerialization(SerializationLibrary.Utf8Json);
         #endregion
 
         #region 5) Set modes

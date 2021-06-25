@@ -85,6 +85,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return this.SelectDataTable(comm);
     }
 
+    public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, int limit, params AB[] ab)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP({2}) {0} FROM {1}", nazvySloupcu, tabulka, limit) + GeneratorMsSql.CombinedWhere(new ABC(ab)));
+        AddCommandParameterFromAbc(comm, ab);
+        //NT
+        return this.SelectDataTable(comm);
+    }
+
     public int UpdateOneRow(string table, string sloupecKUpdate, object n, params AB[] ab)
     {
         int pridavatOd = 1;
