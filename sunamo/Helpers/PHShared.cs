@@ -15,7 +15,7 @@ public partial class PH
     {
         try
         {
-            Process.Start(p);
+            Process.Start("cmd.exe", "/c " + p);
         }
         catch (Exception ex)
         {
@@ -36,6 +36,8 @@ public partial class PH
         }
 
     }
+
+    
 
     public static void StartHidden(string p, string k)
     {

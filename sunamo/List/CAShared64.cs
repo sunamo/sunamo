@@ -417,6 +417,10 @@ public static partial class CA
     /// <param name="f"></param>
     public static List<T> ToList<T>(params T[] f)
     {
+        if (f.Length == 0)
+        {
+            return new List<T>();
+        }
         #region 1
         IEnumerable enu = f;
         return ToList<T>(enu);

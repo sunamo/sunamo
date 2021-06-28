@@ -294,13 +294,20 @@ public static partial class CSharpHelper
         TF.SaveLines(c, pathXlfKeys);
     }
 
-    public static string GetConsts(List<string> list, bool toCamelConvention)
+    public static string GetConsts(List<string> list, bool? toCamelConvention)
     {
         return GetConsts(null, list, toCamelConvention);
     }
 
+    public static string GetConsts(List<string> names, List<string> list, bool? toCamelConventionFirstCharLower)
+    {
+        return GetConsts(names, list, toCamelConventionFirstCharLower, Types.tString);
+    }
+
     /// <summary>
     /// A1 can be null
+    /// 
+    /// A3 null = not use Pascal convention
     /// 
     /// GenerateConstants - const without value
     /// GetConsts - static readonly with value
@@ -308,8 +315,14 @@ public static partial class CSharpHelper
     /// <param name="list"></param>
     /// <param name="toCamelConventionFirstCharLower"></param>
     /// <returns></returns>
-    public static string GetConsts(List<string> names, List<string> list, bool toCamelConventionFirstCharLower)
+    public static string GetConsts(List<string> names, List<string> list, bool? toCamelConventionFirstCharLower, Type t)
     {
+        bool addHyphensToValue = true;
+        if (t != Types.tString)
+        {
+            addHyphensToValue = false;
+        }
+
         if (names != null)
         {
             ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(), type, Exc.CallingMethod(), "names", names, "list", list);
@@ -326,15 +339,18 @@ public static partial class CSharpHelper
                 name = names[i];
             }
 
-            if (toCamelConventionFirstCharLower)
+            if (toCamelConventionFirstCharLower.HasValue)
             {
-                name = ConvertCamelConvention.ToConvention(name);
+                if (toCamelConventionFirstCharLower.Value)
+                {
+                    name = ConvertPascalConventionWithNumbers.ToConvention(name);
+                }
+                else
+                {
+                    name = ConvertPascalConventionWithNumbers.ToConvention(name);
+                }
             }
-            else
-            {
-                name = ConvertPascalConvention.ToConvention(name);
-            }
-            csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
+            csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, ConvertTypeShortcutFullName.ToShortcut( t.FullName, false), name, addHyphensToValue, item);
         }
         var r = csg.ToString();
         return r;

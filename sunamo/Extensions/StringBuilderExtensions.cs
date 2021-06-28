@@ -21,7 +21,8 @@ namespace sunamo.Extensions
             
         }
 
-        public static void Trim(this StringBuilder sb)
+        #region For easy copy
+        public static void TrimEnd(this StringBuilder sb)
         {
             var length = sb.Length;
             for (int i = length - 1; i >= 0; i--)
@@ -36,7 +37,12 @@ namespace sunamo.Extensions
                 }
             }
 
-            length = sb.Length;
+        } 
+        #endregion
+
+        public static void TrimStart(this StringBuilder sb)
+        {
+            var length = sb.Length;
             for (int i = 0; i < length; i++)
             {
                 if (char.IsWhiteSpace(sb[i]))
@@ -48,6 +54,12 @@ namespace sunamo.Extensions
                     break;
                 }
             }
+        }
+
+        public static void Trim(this StringBuilder sb)
+        {
+            TrimEnd(sb);
+            TrimStart(sb);
         }
     }
 }

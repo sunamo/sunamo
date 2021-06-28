@@ -1,8 +1,11 @@
 ﻿using System;
 public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
 {
+    const string systemDot = "System.";
+
     public static string FromShortcut(string shortcut)
     {
+        
         switch (shortcut)
         {
             case "string":
@@ -56,6 +59,11 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
     /// <param name="fullName"></param>
     public static string ToShortcut(string fullName, bool throwExceptionWhenNotBasicType)
     {
+        if (!fullName.StartsWith(systemDot))
+        {
+            fullName = systemDot + fullName;
+        }
+
         switch (fullName)
         {
             #region MyRegion

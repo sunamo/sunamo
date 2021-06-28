@@ -83,6 +83,16 @@ public class CSharpGenerator : GeneratorCodeAbstract
         sb.AppendLine("[" + name + "(" + attrs + ")]");
     }
 
+    public static List<EnumItem> CreateEnumItemsFromList(List<string> l)
+    {
+        List<EnumItem> ei = new List<EnumItem>(l.Count);
+        foreach (var item in l)
+        {
+            ei.Add(new EnumItem { Name = item });
+        }
+        return ei;
+    }
+
     public void Field(int tabCount, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, bool addHyphensToValue, string value)
     {
         ObjectInitializationOptions oio = ObjectInitializationOptions.Original;
@@ -223,13 +233,20 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         else
         {
-            if (_static)
+            if (_static && variableModifiers == VariableModifiers.ReadOnly)
             {
-                sb.AddItem((object)"static");
+                sb.AddItem("const");
             }
-            if (variableModifiers == VariableModifiers.ReadOnly)
+            else
             {
-                sb.AddItem((object)"readonly");
+                if (_static)
+                {
+                    sb.AddItem((object)"static");
+                }
+                if (variableModifiers == VariableModifiers.ReadOnly)
+                {
+                    sb.AddItem((object)"readonly");
+                }
             }
         }
     }

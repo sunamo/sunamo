@@ -24,13 +24,15 @@ public class ConvertPascalConventionWithNumbers //: IConvertConvention
 
     /// <summary>
     /// Will include numbers
-    /// hello world = helloWorld
+    /// hello world = HelloWorld
     /// Hello world = HelloWorld
-    /// helloWorld = helloWorld
+    /// helloWorld = HelloWorld
     /// </summary>
     /// <param name="p"></param>
     public static string ToConvention(string p)
     {
+        
+
         StringBuilder sb = new StringBuilder();
         bool dalsiVelke = false;
         foreach (char item in p)
@@ -77,6 +79,9 @@ public class ConvertPascalConventionWithNumbers //: IConvertConvention
                 dalsiVelke = true;
             }
         }
-        return sb.ToString().Trim();
+
+        var result = sb.ToString().Trim();
+        result = SH.FirstCharUpper(result);
+        return result;
     }
 }

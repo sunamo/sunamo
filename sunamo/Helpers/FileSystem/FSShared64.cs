@@ -324,7 +324,10 @@ public partial class FS
 
             if (!SH.ContainsOnly(ext, RandomHelper.vsZnakyWithoutSpecial))
             {
-                return (dynamic)vr + AllStrings.dot + ext;
+                if (ext != string.Empty)
+                {
+                    return (dynamic)vr + AllStrings.dot + ext;
+                }
             }
             return (dynamic)vr;
         }

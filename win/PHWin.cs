@@ -80,6 +80,11 @@ public class PHWin
     {
         if (path.Count != countOfBrowsers)
         {
+            if (path.ContainsKey(prohlizec))
+            {
+                return path[prohlizec];
+            }
+
             string b = string.Empty;
 
             switch (prohlizec)

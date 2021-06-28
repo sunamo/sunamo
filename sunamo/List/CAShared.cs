@@ -1296,8 +1296,8 @@ public static void TrimWhereIsOnlyWhitespace(List<string> list)
 public static string DoubleOrMoreMultiLinesToSingle(ref string list)
     {
         var n = Environment.NewLine;
-        list = Regex.Replace(list, "[\\r\\n]+", System.Environment.NewLine, System.Text.RegularExpressions.RegexOptions.Multiline);
-        list = list.Replace(n, n + n);
+        list = Regex.Replace(list, @"(\r?\n\s*){2,}", Environment.NewLine + Environment.NewLine);
+        //list = list.Replace(n, n + n);
         return list;
     }
 

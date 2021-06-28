@@ -56,6 +56,8 @@ public class ClipboardHelperWin : IClipboardHelper
         return Instance;
     }
 
+    TextCopy.Clipboard clipboard = new TextCopy.Clipboard();
+
     #region Get,Set
     /// <summary>
     /// Use here only managed method! I could avoid reinstall Windows (RepairJpn). Use only managed also for working with formats.
@@ -71,41 +73,44 @@ public class ClipboardHelperWin : IClipboardHelper
 
         //bool tryAgain = false;
 
-        for (int i = 0; i < 10; i++)
-        {
-            try
-            {
-                // true to keep data also after app close
-                // Commented coz require import PresentationFramework to every assembly
-                //Clipboard.SetDataObject(v, true);
+        
+        clipboard.SetText(v);
 
-                /*
-Zkusil jsem všechny možné metody uložení textu, u všech bylo 0xc0000374 exc:
-                Clipboard.SetDataObject(v, true);
-                SetText3
-                čekání a opakovaný pokus
-                ProcessHoldingClipboard
-                 */
-                System.Windows.Forms.Clipboard.SetText(v);
+//        for (int i = 0; i < 10; i++)
+//        {
+//            try
+//            {
+//                // true to keep data also after app close
+//                // Commented coz require import PresentationFramework to every assembly
+//                //Clipboard.SetDataObject(v, true);
 
-                //SetText3(v);
+//                /*
+//Zkusil jsem všechny možné metody uložení textu, u všech bylo 0xc0000374 exc:
+//                Clipboard.SetDataObject(v, true);
+//                SetText3
+//                čekání a opakovaný pokus
+//                ProcessHoldingClipboard
+//                 */
+//                System.Windows.Forms.Clipboard.SetText(v);
 
-                return;
-            }
-            catch {
-                //var comException = ex as System.Runtime.InteropServices.COMException;
+//                //SetText3(v);
 
-                //if (comException != null && comException.ErrorCode == -2147221040)
-                //{
-                //    var pr = W32.ProcessHoldingClipboard();
-                //    pr.Kill();
+//                return;
+//            }
+//            catch {
+//                //var comException = ex as System.Runtime.InteropServices.COMException;
 
-                //    //tryAgain = true;
-                //}
+//                //if (comException != null && comException.ErrorCode == -2147221040)
+//                //{
+//                //    var pr = W32.ProcessHoldingClipboard();
+//                //    pr.Kill();
 
-            }
-            System.Threading.Thread.Sleep(10);
-        }
+//                //    //tryAgain = true;
+//                //}
+
+//            }
+//            System.Threading.Thread.Sleep(10);
+//        }
 
         //if (tryAgain)
         //{
@@ -292,7 +297,7 @@ Zkusil jsem všechny možné metody uložení textu, u všech bylo 0xc0000374 ex
         MemoryStream dropEffect = new MemoryStream();
         dropEffect.Write(moveEffect, 0, moveEffect.Length);
 
-        StringCollection filestToCut = new StringCollection();
+        var filestToCut = new StringCollection();
         filestToCut.AddRange(selected);
 
         DataObject data = new DataObject(sess.i18n(XlfKeys.PreferredDropEffect), dropEffect);
