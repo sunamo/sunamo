@@ -192,6 +192,7 @@
     <Compile Include="Values\AllCharsConsts.cs" />
     <Compile Include="Values\AllLetters.cs" />
     <Compile Include="Values\AllListsNotTranslateAble64Shared.cs" />
+    <Compile Include="Values\EmoticonsSingle.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

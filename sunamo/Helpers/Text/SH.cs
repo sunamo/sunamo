@@ -886,7 +886,7 @@ public static partial class SH
             text = text.Replace("&nbsp;", " ");
         }
         var p = SH.SplitByWhiteSpaces(text, true);
-        return SH.Join(p, " ");
+        return SH.JoinString(" ", p);
     }
 
     /// <summary>

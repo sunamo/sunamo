@@ -10,6 +10,8 @@ public class EmoticonsHelper
         Emoticons emoticons = new Emoticons();
         var fields = RH.GetFields(emoticons);
 
+        
+
         List<string> result = new List<string>();
 
         foreach (var item in fields)

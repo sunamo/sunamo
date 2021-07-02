@@ -29,5 +29,7 @@
     /// </summary>
     Geo_UploadedGpxTracks = 6,
     Sda_Video = 7,
-    Sda_Activity = 8
+    Sda_Activity = 8, 
+
+    None = 255
 }

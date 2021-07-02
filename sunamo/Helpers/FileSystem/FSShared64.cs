@@ -396,12 +396,12 @@ public partial class FS
     /// </summary>
     /// <param name="filename"></param>
     /// <returns></returns>
-    public static string ReplaceInvalidFileNameChars(string filename)
+    public static string ReplaceInvalidFileNameChars(string filename, params  char[] ch)
     {
         StringBuilder sb = new StringBuilder();
         foreach (var item in filename)
         {
-            if (!s_invalidFileNameChars.Contains(item))
+            if (!s_invalidFileNameChars.Contains(item) || ch.Contains(item))
             {
                 sb.Append(item);
             }

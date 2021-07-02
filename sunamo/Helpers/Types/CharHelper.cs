@@ -26,14 +26,39 @@ public partial class CharHelper
         return CA.IsEqualToAnyElement<char>(c, AllChars.generalChars);
     }
 
-    private static string OnlyAccepted(string v, Func<char, bool> isDigit)
+    public static string OnlyAccepted(string v, Func<char, bool> isDigit, bool not = false)
     {
         StringBuilder sb = new StringBuilder();
+        bool result = false;
         foreach (var item in v)
         {
-            if (isDigit.Invoke(item))
+            result = isDigit.Invoke(item);
+            if (not)
+            {
+                result = !result;
+            }
+
+            if (result)
             {
                 sb.Append(item);
+            }
+        }
+        return sb.ToString();
+    }
+
+    public static string OnlyAccepted(string v, List< Func<char, bool>> isDigit, bool not = false)
+    {
+        StringBuilder sb = new StringBuilder();
+        //bool result = true;
+        foreach (var item in v)
+        {
+            foreach (var item2 in isDigit)
+            {
+                if (item2.Invoke(item))
+                {
+                    sb.Append(item);
+                    break;
+                }
             }
         }
         return sb.ToString();
