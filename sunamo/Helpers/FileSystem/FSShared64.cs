@@ -1159,6 +1159,8 @@ public partial class FS
             return false;
         }
 
+        FS.MakeUncLongPath(ref selectedFile);
+
         var exists = File.Exists(selectedFile);
 
         if (falseIfSizeZeroOrEmpty)
