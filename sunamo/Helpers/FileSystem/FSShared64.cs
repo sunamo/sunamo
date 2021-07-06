@@ -1154,6 +1154,11 @@ public partial class FS
     /// <param name="selectedFile"></param>
     public static bool ExistsFile(string selectedFile, bool falseIfSizeZeroOrEmpty = true)
     {
+        if (selectedFile.Contains("VS Code"))
+        {
+
+        }
+
         if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
         {
             return false;

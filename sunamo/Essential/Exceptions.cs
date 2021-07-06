@@ -33,7 +33,8 @@ public partial class Exceptions
             ex = ex.InnerException;
             sb.AppendLine(ex.Message);
         }
-        return sb.ToString();
+        var  r = sb.ToString();
+        return r;
     }
 
 

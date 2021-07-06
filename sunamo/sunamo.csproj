@@ -176,6 +176,7 @@
     <Compile Include="Helpers\FileSystem\TFShared64.cs" />
     <Compile Include="Helpers\Number\LinearHelperShared64.cs" />
     <Compile Include="Helpers\Number\NHShared64.cs" />
+    <Compile Include="Helpers\PH2.cs" />
     <Compile Include="Helpers\Resource\RandomHelperShared64.cs" />
     <Compile Include="Helpers\Resource\RandomStringHelper.cs" />
     <Compile Include="Helpers\Runtime\RuntimeHelperShared64.cs" />

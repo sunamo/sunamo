@@ -12,6 +12,7 @@ using sunamo.Helpers;
 public class PHWin
 {
     static Type type = typeof(PHWin);
+
     public static void SaveAndOpenInBrowser(Browsers prohlizec, string htmlKod)
     {
         string s = Path.GetTempFileName() + ".html";
@@ -47,6 +48,28 @@ public class PHWin
         }
     }
 
+    const string CodeExe = "Code.exe";
+
+    public static void Code(string defFile)
+    {
+        //var v = AddPathIfNotContains( UserFoldersWin.Local, @"Programs\Microsoft VS Code", CodeExe);
+
+        //PH.StartWithFile(CodeExe, defFile);
+    }
+
+    private static string AddPathIfNotContains(UserFoldersWin local, string v, string codeExe)
+    {
+        if (!pathExe.ContainsKey(codeExe))
+        {
+            var fi = WindowsOSHelper.FileIn(local, v, codeExe);
+            fi = FS.GetDirectoryName(fi);
+            pathExe.Add(codeExe, fi);
+
+            return fi;
+        }
+        return pathExe[codeExe];
+    }
+
     public static void AddBrowsers()
     {
         if (path.Count == 0)
@@ -65,9 +88,10 @@ public class PHWin
     static int countOfBrowsers = 0;
     static PHWin()
     {
-        countOfBrowsers = EnumHelper.GetValues<Browsers>().Count;
-        // due to None
-        countOfBrowsers--;
+        var brs = EnumHelper.GetValues<Browsers>();
+        countOfBrowsers = brs.Count;
+        // None is deleting automatically
+        //countOfBrowsers--;
     }
 
     public static void AssignSearchInAll()
@@ -197,6 +221,8 @@ public class PHWin
     /// Not contains Other
     /// </summary>
     static Dictionary<Browsers, string> path = new Dictionary<Browsers, string>();
+    static Dictionary<string, string> pathExe = new Dictionary<string, string>();
+
     public static void OpenInBrowser(string uri)
     {
         OpenInBrowser(Browsers.Chrome, uri);

@@ -45,11 +45,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\AllProjectsSearch\AllProjectsSearch.Cmd\AllProjectsSearchConsoleResearch.cs">
+      <Link>AllProjectsSearchConsoleResearch.cs</Link>
+    </Compile>
     <Compile Include="..\..\AllProjectsSearch\AllProjectsSearch\AllProjectsSearchResearch.cs">
       <Link>AllProjectsSearchResearch.cs</Link>
-    </Compile>
-    <Compile Include="..\..\AllProjectsSearch\AllProjectsSearchConsole\AllProjectsSearchConsoleResearch.cs">
-      <Link>AllProjectsSearchConsoleResearch.cs</Link>
     </Compile>
     <Compile Include="..\..\ConsoleApp1\ConsoleApp1\ConsoleApp1Research.cs">
       <Link>ConsoleApp1Research.cs</Link>

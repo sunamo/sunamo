@@ -104,6 +104,11 @@ public partial class ThrowExceptions
         return true;
     }
 
+    public static void Custom(string stacktrace, object type, string methodName, Exception message, bool reallyThrow = true)
+    {
+        Custom(stacktrace, type, methodName, Exceptions.TextOfExceptions(message), reallyThrow);
+    }
+
     public static void Custom(string stacktrace, object type, string methodName, string message, bool reallyThrow = true)
     {
         ThrowIsNotNull(stacktrace, Exceptions.Custom(FullNameOfExecutedCode(type, methodName, true), message), reallyThrow);

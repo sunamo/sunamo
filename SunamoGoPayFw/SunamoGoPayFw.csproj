@@ -69,6 +69,10 @@
     <Content Include="sunamo.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj">
+      <Project>{8c993f06-4162-4111-b4b9-f9a6fd1e0218}</Project>
+      <Name>Scz</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\sunamoWithoutDep\GoPayApiFw\GoPayApiFw.csproj">
       <Project>{d325d161-c017-4416-8e6d-bd3371513563}</Project>
       <Name>GoPayApiFw</Name>
