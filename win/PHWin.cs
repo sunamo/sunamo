@@ -54,7 +54,7 @@ public class PHWin
     {
         //var v = AddPathIfNotContains( UserFoldersWin.Local, @"Programs\Microsoft VS Code", CodeExe);
 
-        //PH.StartWithFile(CodeExe, defFile);
+        PH.RunFromPath(CodeExe, defFile, false);
     }
 
     private static string AddPathIfNotContains(UserFoldersWin local, string v, string codeExe)
