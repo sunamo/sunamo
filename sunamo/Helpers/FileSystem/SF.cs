@@ -195,14 +195,5 @@ public static int keyCodeSeparator
         File.WriteAllText(VybranySouborLogu, sb.ToString());
     }
 
-    public static void WriteAllElementsToFile(string VybranySouborLogu, List<List<string>> p)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var item in p)
-        {
-            sb.AppendLine(PrepareToSerialization3(item));
-        }
-
-        File.WriteAllText(VybranySouborLogu, sb.ToString());
-    }
+    
 }
