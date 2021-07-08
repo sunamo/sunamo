@@ -80,8 +80,17 @@ public class TranslateDictionary : IDictionary<string, string>
 
     private string ThrowNotFoundError(string key, string customErr)
     {
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), customErr + ". " + key + " is not in " + _l + " dictionary");
-        return null;
+        if (string.IsNullOrEmpty(customErr))
+        {
+            ThrowExceptions.NotFoundTranslationKeyWithoutCustomError(Exc.GetStackTrace(), type, Exc.CallingMethod(), customErr + ". " + key + " is not in " + _l + " dictionary");
+            return null;
+        }
+        else
+        {
+            ThrowExceptions.NotFoundTranslationKeyWithCustomError(Exc.GetStackTrace(), type, Exc.CallingMethod(), customErr + ". " + key + " is not in " + _l + " dictionary");
+            return null;
+        }
+        
     }
 
     public ICollection<string> Keys => _d.Keys;

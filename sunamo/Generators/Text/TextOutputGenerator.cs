@@ -268,7 +268,7 @@ public class TextOutputGenerator
         }
     }
 
-    public void Dictionary<T1, T2>(Dictionary<T2, T2> d, string deli = AllStrings.verbar)
+    public void Dictionary<T1, T2>(Dictionary<T1, T2> d, string deli = AllStrings.verbar)
     {
         //StringBuilder sb = new StringBuilder();
         foreach (var item in d)

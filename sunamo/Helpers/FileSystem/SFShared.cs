@@ -129,11 +129,34 @@ public static partial class SF
         TF.SaveFile(sb.ToString(), file);
     }
 
+    public static void WriteAllElementsToFile<Key, Value>(string coolPeopleShortcuts, Dictionary<Key, Value> d2)
+    {
+        List<List<string>> list = ListFromDictionary(d2);
+        WriteAllElementsToFile(coolPeopleShortcuts, list);
+    }
 
+    public static void WriteAllElementsToFile(string VybranySouborLogu, List<List<string>> p)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in p)
+        {
+            sb.AppendLine(PrepareToSerialization3(item));
+        }
 
-    
+        File.WriteAllText(VybranySouborLogu, sb.ToString());
+    }
 
-/// <summary>
+    private static List<List<string>> ListFromDictionary<Key, Value>(Dictionary<Key, Value> d2)
+    {
+        List<List<string>> vs = new List<List<string>>();
+        foreach (var item in d2)
+        {
+            vs.Add(CA.ToListString(item.Key.ToString(), item.Value.ToString()));
+        }
+        return vs;
+    }
+
+    /// <summary>
     /// Return with the last
     /// DateTime is format with DTHelperEn.ToString
     /// </summary>

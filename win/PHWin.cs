@@ -225,7 +225,7 @@ public class PHWin
 
     public static void OpenInBrowser(string uri)
     {
-        OpenInBrowser(Browsers.Chrome, uri);
+        OpenInBrowser(defBr, uri);
     }
 
     /// <summary>
@@ -247,6 +247,12 @@ public class PHWin
         }
 
         return doesntExists;
+    }
+
+    static Browsers defBr = Browsers.Chrome;
+    public static void AddBrowser()
+    {
+        AddBrowser(defBr);
     }
 
     public static void OpenInAllBrowsers(string uri)

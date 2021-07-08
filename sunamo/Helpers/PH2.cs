@@ -8,32 +8,7 @@ using System.Threading.Tasks;
 
 public partial class PH
 {
-    /// <summary>
-    /// https://stackoverflow.com/a/12393522
-    /// Return SE or output if everything gone good
-    /// </summary>
-    /// <param name="exe"></param>
-    /// <param name="arguments"></param>
-    public static string RunFromPath(string exe, string arguments, bool withOutput)
-    {
-        var enviromentPath = System.Environment.GetEnvironmentVariable("PATH");
-
-        var paths = enviromentPath.Split(';');
-        var exePath = paths.Select(x => Path.Combine(x, exe))
-                           .Where(x => FS.ExistsFile(x))
-                           .FirstOrDefault();
-
-        if (!string.IsNullOrWhiteSpace(exePath))
-        {
-            if (withOutput)
-            {
-                return RunWithOutput(exe, arguments);
-            }
-            Process.Start(exe, arguments);
-            return string.Empty;
-        }
-        return null;
-    }
+    
 
     public static string RunFromPath2(string exe, string arguments)
     {
